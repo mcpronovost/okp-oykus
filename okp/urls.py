@@ -8,8 +8,7 @@ from okp.settings import STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api-auth/", include("rest_framework.urls")),
-    path("api/auth/", include("knox.urls")),
+    path("api/", include("okp.api.urls")),
 ] + static(
     STATIC_URL, document_root=STATIC_ROOT
 ) + static(

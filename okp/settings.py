@@ -109,6 +109,24 @@ DATABASES = {
     }
 }
 
+# =============================================================================
+# REST framework
+# https://www.django-rest-framework.org/api-guide/settings/
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer"
+    ],
+    "DEFAULT_PARSER_CLASSES": [
+        "rest_framework.parsers.JSONParser",
+        "rest_framework.parsers.MultiPartParser"
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "knox.auth.TokenAuthentication"
+    ]
+}
+
 REST_KNOX = {
   "TOKEN_TTL": timedelta(days=30),
   "TOKEN_LIMIT_PER_USER": 3,
