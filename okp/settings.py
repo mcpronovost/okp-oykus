@@ -56,7 +56,9 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates")
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -101,7 +103,8 @@ DATABASES = {
         "NAME": os.getenv("DB_NAME", ""),
         "USER": os.getenv("DB_USER", ""),
         "PASSWORD": os.getenv("DB_PASSWORD", ""),
-        "HOST": os.getenv("DB_HOST", "")
+        "HOST": os.getenv("DB_HOST", ""),
+        "PORT": os.getenv("DB_PORT", "")
     }
 }
 
@@ -208,7 +211,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Logging Settings
 # https://docs.djangoproject.com/en/4.1/topics/logging/
 
-LOGGING_old = {
+LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "filters": {
@@ -218,7 +221,7 @@ LOGGING_old = {
     },
     "formatters": {
         "verbose": {
-            "format": ">>> {levelname} {asctime} {module} : {message}",
+            "format": ">>> [{asctime}] {levelname} : {message}",
             "style": "{"
         }
     },
