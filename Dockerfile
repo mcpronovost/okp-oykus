@@ -33,16 +33,21 @@ RUN pip install "gunicorn==20.0.4"
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
-# Use /app folder as a directory where the source code is stored.
-WORKDIR /code
+# Use /backend folder as a directory where the source code is stored.
+WORKDIR /backend
 
 # Set this directory to be owned by the "oykus" user. This project
 # uses SQLite, the folder needs to be owned by the user that
 # will be writing to the database file.
-RUN chown oykus:oykus /code
+RUN chown oykus:oykus /backend
 
 # Copy the source code of the project into the container.
-COPY --chown=oykus:oykus . .
+COPY --chown=oykus:oykus ./locales ./locales
+COPY --chown=oykus:oykus ./okp ./okp
+COPY --chown=oykus:oykus ./static ./static
+COPY --chown=oykus:oykus ./templates ./templates
+COPY --chown=oykus:oykus ./.env ./.env
+COPY --chown=oykus:oykus ./manage.py ./manage.py
 
 # Use user "oykus" to run the build commands below and the server itself.
 USER oykus

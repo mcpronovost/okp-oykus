@@ -1,0 +1,13 @@
+{
+  "name": "okp-oykus",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@astrojs/node": "^6.0.3",
+    "astro": "^3.4.0"
+  }
+}

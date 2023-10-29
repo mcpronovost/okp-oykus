@@ -1,18 +1,40 @@
 version: "3"
 
 services:
-  web:
+  backend:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     # command: gunicorn okp.wsgi:application
     volumes:
-      - .:/code
+      - ./locales:/backend/locales
+      - ./okp:/backend/okp
+      - ./static:/backend/static
+      - ./templates:/backend/templates
+      - ./manage.py:/backend/manage.py
+      - ./requirements.txt:/backend/requirements.txt
     ports:
       - "8000:8000"
     depends_on:
       - "db"
     env_file: .env
-    restart: always
+    # restart: always
+
+  frontend:
+    build: ./frontend
+    command: ["npm", "run", "start", "--host"]
+    # command: node ./dist/server/entry.mjs
+    volumes:
+      - ./frontend/public:/frontend/public
+      - ./frontend/src:/frontend/src
+      - ./frontend/astro.config.mjs:/frontend/astro.config.mjs
+      - ./frontend/package.json:/frontend/package.json
+      - ./frontend/tsconfig.json:/frontend/tsconfig.json
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "db"
+    env_file: .env
+    # restart: always
 
   db:
     image: postgres:14.1-alpine
