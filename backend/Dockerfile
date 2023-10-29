@@ -26,15 +26,15 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     gettext \
  && rm -rf /var/lib/apt/lists/*
 
+# Use /backend folder as a directory where the source code is stored.
+WORKDIR /backend
+
 # Install the application server.
 RUN pip install "gunicorn==20.0.4"
 
 # Install the project requirements.
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
-
-# Use /backend folder as a directory where the source code is stored.
-WORKDIR /backend
 
 # Set this directory to be owned by the "oykus" user. This project
 # uses SQLite, the folder needs to be owned by the user that
@@ -46,7 +46,6 @@ COPY --chown=oykus:oykus ./locales ./locales
 COPY --chown=oykus:oykus ./okp ./okp
 COPY --chown=oykus:oykus ./static ./static
 COPY --chown=oykus:oykus ./templates ./templates
-COPY --chown=oykus:oykus ./.env ./.env
 COPY --chown=oykus:oykus ./manage.py ./manage.py
 
 # Use user "oykus" to run the build commands below and the server itself.

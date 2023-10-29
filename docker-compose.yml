@@ -2,16 +2,11 @@ version: "3"
 
 services:
   backend:
-    build: .
+    build: ./backend
     command: python manage.py runserver 0.0.0.0:8000
     # command: gunicorn okp.wsgi:application
     volumes:
-      - ./locales:/backend/locales
-      - ./okp:/backend/okp
-      - ./static:/backend/static
-      - ./templates:/backend/templates
-      - ./manage.py:/backend/manage.py
-      - ./requirements.txt:/backend/requirements.txt
+      - ./backend:/backend
     ports:
       - "8000:8000"
     depends_on:
