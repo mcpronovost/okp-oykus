@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # ===---
-    "colorfield ",  # https://pypi.org/project/django-colorfield/
+    "colorfield",  # https://pypi.org/project/django-colorfield/
     "corsheaders",  # https://github.com/adamchainz/django-cors-headers
     "rest_framework",  # https://www.django-rest-framework.org/
     "knox",  # https://pypi.org/project/django-rest-knox/

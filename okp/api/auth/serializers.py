@@ -1,8 +1,10 @@
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import gettext_lazy as _
-# from django.utils.text import slugify
+from django.utils.text import slugify
 
 from rest_framework import serializers
+
+from okp.users.models import okpUserProfile
 
 
 User = get_user_model()
@@ -24,6 +26,10 @@ class okpUserRegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({
                 "email": "Email is required."
             })
+        if "name" not in validated_data:
+            raise serializers.ValidationError({
+                "name": "Name is required."
+            })
         if User.objects.filter(username=validated_data["username"]).count():
             raise serializers.ValidationError({
                 "username": "A user with that username already exists."
@@ -41,11 +47,11 @@ class okpUserRegisterSerializer(serializers.ModelSerializer):
             validated_data["email"],
             validated_data["password"]
         )
-        # qpUserProfile.objects.create(
-        #    user=user,
-        #    name=validated_data["name"],
-        #    slug=slugify(validated_data["name"])
-        # )
+        okpUserProfile.objects.create(
+            user=user,
+            name=validated_data["name"],
+            slug=slugify(validated_data["name"])
+        )
         return user
 
 

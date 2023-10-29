@@ -7,7 +7,13 @@ from django.utils.translation import gettext_lazy as _
 from knox.admin import AuthTokenAdmin
 from knox.models import AuthToken
 
+from okp.users.models import okpUserProfile
+
 User = get_user_model()
+
+
+class okpUserProfileInline(admin.StackedInline):
+    model = okpUserProfile
 
 
 class okpUserAdmin(UserAdmin):
@@ -36,6 +42,7 @@ class okpUserAdmin(UserAdmin):
             ]
         })
     )
+    inlines = [okpUserProfileInline]
 
 
 class okpAuthTokenAdmin(AuthTokenAdmin):
