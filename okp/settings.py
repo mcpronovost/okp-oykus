@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "knox",
     # ===---
+    "okp.users",
     # ===---
     "django_cleanup"  # last | https://github.com/un1t/django-cleanup
 ]
