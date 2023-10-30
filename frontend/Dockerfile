@@ -7,6 +7,7 @@ COPY ./src ./src
 COPY ./astro.config.mjs ./astro.config.mjs
 COPY ./package.json ./package.json
 COPY ./tsconfig.json ./tsconfig.json
+COPY ./set_ip.sh ./set_ip.sh
 
 RUN npm install @esbuild/linux-x64 --save-dev
 RUN npm install

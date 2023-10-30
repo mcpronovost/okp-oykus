@@ -47,6 +47,7 @@ COPY --chown=oykus:oykus ./okp ./okp
 COPY --chown=oykus:oykus ./static ./static
 COPY --chown=oykus:oykus ./templates ./templates
 COPY --chown=oykus:oykus ./manage.py ./manage.py
+COPY --chown=oykus:oykus ./set_ip.sh ./set_ip.sh
 
 # Use user "oykus" to run the build commands below and the server itself.
 USER oykus

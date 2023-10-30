@@ -1,36 +1,6 @@
 version: "3"
 
 services:
-  backend:
-    build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
-    # command: gunicorn okp.wsgi:application
-    volumes:
-      - ./backend:/backend
-    ports:
-      - "8000:8000"
-    depends_on:
-      - "db"
-    env_file: .env
-    # restart: always
-
-  frontend:
-    build: ./frontend
-    command: ["npm", "run", "start", "--host"]
-    # command: node ./dist/server/entry.mjs
-    volumes:
-      - ./frontend/public:/frontend/public
-      - ./frontend/src:/frontend/src
-      - ./frontend/astro.config.mjs:/frontend/astro.config.mjs
-      - ./frontend/package.json:/frontend/package.json
-      - ./frontend/tsconfig.json:/frontend/tsconfig.json
-    ports:
-      - "8080:8080"
-    depends_on:
-      - "db"
-    env_file: .env
-    # restart: always
-
   db:
     image: postgres:14.1-alpine
     ports:
@@ -42,3 +12,49 @@ services:
       - "LANG=fr_CA=utf8"
     volumes:
       - .:/code
+    networks:
+      - oykus
+
+  backend:
+    container_name: backend
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    # command: gunicorn okp.wsgi:application
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "db"
+    networks:
+      - oykus
+    env_file: .env
+    # restart: always
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    entrypoint: /frontend/set_ip.sh
+    command: ["npm", "run", "start", "--host"]
+    # command: node ./dist/server/entry.mjs
+    volumes:
+      - ./frontend/public:/frontend/public
+      - ./frontend/src:/frontend/src
+      - ./frontend/astro.config.mjs:/frontend/astro.config.mjs
+      - ./frontend/package.json:/frontend/package.json
+      - ./frontend/tsconfig.json:/frontend/tsconfig.json
+      - ./frontend/set_ip.sh:/frontend/set_ip.sh
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    networks:
+      - oykus
+    environment:
+      - BACKEND_IP=${BACKEND_IP}
+    env_file: .env
+    # restart: always
+
+networks:
+  oykus:
+    driver: bridge
