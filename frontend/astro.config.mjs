@@ -11,22 +11,21 @@ export default defineConfig({
   redirects: {},
   site: "https://oykus.okp.ca",
   compressHTML: true,
-  trailingSlash: "always",
   output: "server",
   adapter: node({
     mode: "standalone"
   }),
   server: {
-    port: 8080,
+    port: 3000,
     host: true
   },
   vite: {
     server:{
       host: "0.0.0.0",
       hmr: {
-        clientPort: 8080
+        clientPort: 3000
       },
-      port: 8080,
+      port: 3000,
       watch: {
         usePolling: true
       }

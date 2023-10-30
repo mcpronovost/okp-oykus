@@ -45,7 +45,7 @@ services:
       - ./frontend/tsconfig.json:/frontend/tsconfig.json
       - ./frontend/set_ip.sh:/frontend/set_ip.sh
     ports:
-      - "8080:8080"
+      - "3000:3000"
     depends_on:
       - backend
     networks:
@@ -54,6 +54,17 @@ services:
       - BACKEND_IP=${BACKEND_IP}
     env_file: .env
     # restart: always
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    networks:
+      - oykus
 
 networks:
   oykus:
