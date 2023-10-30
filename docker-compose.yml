@@ -16,7 +16,6 @@ services:
       - oykus
 
   backend:
-    container_name: backend
     build: ./backend
     command: python manage.py runserver 0.0.0.0:8000
     # command: gunicorn okp.wsgi:application
@@ -32,7 +31,6 @@ services:
     # restart: always
 
   frontend:
-    container_name: frontend
     build: ./frontend
     entrypoint: /frontend/set_ip.sh
     command: ["npm", "run", "start", "--host"]
