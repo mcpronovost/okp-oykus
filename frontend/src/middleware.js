@@ -1,4 +1,4 @@
-import { languages, defaultLang } from "@/plugins/i18n/utils.js";
+import { languages, defaultLang } from "@/plugins/i18n";
 
 export function onRequest (context, next) {
     // ===---

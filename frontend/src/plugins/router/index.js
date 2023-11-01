@@ -1,4 +1,4 @@
-import { useTranslation } from "@/plugins/i18n/utils.js";
+import { useTranslation } from "@/plugins/i18n";
 import Home from "@/views/Home.astro";
 import Profile from "@/views/Profile.astro";
 import Error from "@/views/Error.astro";

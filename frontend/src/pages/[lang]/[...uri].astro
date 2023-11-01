@@ -1,6 +1,6 @@
 ---
-import { getLang } from "@/plugins/i18n/utils.js";
-import { getRoute } from "@/plugins/router/utils.js";
+import { getLang } from "@/plugins/i18n";
+import { getRoute } from "@/plugins/router";
 
 const { uri } = Astro.params;
 const lang = getLang(Astro.url);
