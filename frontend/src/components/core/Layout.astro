@@ -1,8 +1,9 @@
 ---
-import { getLang } from "@/plugins/i18n/utils.js";
+import { getLang, useTranslation } from "@/plugins/i18n/utils.js";
 
-const lang = getLang(Astro.url);
 const { title } = Astro.props;
+const lang = getLang(Astro.url);
+const t = useTranslation(lang);
 ---
 
 <!doctype html>
@@ -10,7 +11,7 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
+		<title>{title ? `${t(title)} - ` : ""}Oykus</title>
 		<meta name="description" content="Astro description" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

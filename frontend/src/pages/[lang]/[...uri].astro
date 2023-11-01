@@ -1,18 +1,12 @@
 ---
-import Layout from '@/components/core/Layout.astro';
 import { getLang } from "@/plugins/i18n/utils.js";
 import { getRoute } from "@/plugins/router/utils.js";
 
 const { uri } = Astro.params;
 const lang = getLang(Astro.url);
 
-console.log("----------------------- uri : ", uri);
-console.log("------ : ", Astro.url);
-
-const Template = getRoute(`/${uri}`)();
-console.log("11 : ", Template);
+const route = getRoute(`/${uri||""}`, lang);
+const Template = route.view();
 ---
 
-<Layout title="Welcome to Astro.">
-	<Template />
-</Layout>
+<Template meta={route.meta} />

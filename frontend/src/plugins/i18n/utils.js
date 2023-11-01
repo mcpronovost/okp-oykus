@@ -14,7 +14,7 @@ export const messages = {
 
 export const getLang = (url) => {
     const [, lang] = url.pathname.split("/");
-    if (lang in languages) return lang;
+    if (languages.includes(lang)) return lang;
     return defaultLang;
 };
 

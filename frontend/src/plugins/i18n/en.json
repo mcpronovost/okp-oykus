@@ -1,3 +1,5 @@
 {
-    "Home": "Home"
+    "Home": "Home",
+    "/profile": "/profile",
+    "Profile": "Profile"
 }
