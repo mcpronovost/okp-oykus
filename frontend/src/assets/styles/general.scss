@@ -1,4 +1,6 @@
 html, body {
+    overflow: hidden;
+    max-height: 100vh;
     padding: 0;
     margin: 0;
 }
@@ -20,6 +22,12 @@ body {
 }
 
 #okp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 100vh;
+
     h1, h2, h3, h4, h5, h6 {
         font-family: Quicksand, sans-serif;
     }

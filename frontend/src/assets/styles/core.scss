@@ -3,3 +3,9 @@
 @import "bootstrap/scss/bootstrap";
 @import "@/assets/styles/colours.scss";
 @import "@/assets/styles/general.scss";
+
+/* components */
+
+@import "@/assets/styles/components/core/_navbar.scss";
+@import "@/assets/styles/components/core/_main.scss";
+@import "@/assets/styles/components/core/_footer.scss";

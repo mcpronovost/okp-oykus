@@ -22,22 +22,15 @@ const t = useTranslation(lang);
 	</head>
 	<body>
 		<div id="okp">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<h1>Mon titre</h1>
-					</div>
-					<div class="col-6">
-						col-6
-					</div>
-					<div class="col-6">
-						col-6
-					</div>
-					<div class="col-12">
-						col-12
-					</div>
-				</div>
-			</div>
+			<nav id="okp-core-navbar">
+				navbar
+			</nav>
+			<main id="okp-core-main">
+				<slot />
+			</main>
+			<footer id="okp-core-footer">
+				footer
+			</footer>
 		</div>
 	</body>
 </html>

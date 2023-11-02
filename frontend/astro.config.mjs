@@ -6,7 +6,7 @@ import node from "@astrojs/node";
 export default defineConfig({
   root: ".",
   srcDir: "./src",
-  publicDir: false,
+  publicDir: "./public",
   outDir: "./dist",
   redirects: {},
   site: "https://oykus.okp.ca",
