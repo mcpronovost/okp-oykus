@@ -5,15 +5,16 @@ services:
     image: postgres:14.1-alpine
     ports:
       - "5432:5432"
-    environment:
-      - "POSTGRES_USER=${DB_USER}"
-      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
-      - "POSTGRES_DB=db"
-      - "LANG=fr_CA=utf8"
     volumes:
       - .:/code
     networks:
       - oykus
+    environment:
+      - "TZ=America/Toronto"
+      - "POSTGRES_USER=${DB_USER}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - "POSTGRES_DB=db"
+      - "LANG=fr_CA=utf8"
 
   backend:
     build: ./backend
@@ -27,6 +28,8 @@ services:
       - "db"
     networks:
       - oykus
+    environment:
+      - "TZ=America/Toronto"
     env_file: .env
     # restart: always
 
@@ -49,7 +52,8 @@ services:
     networks:
       - oykus
     environment:
-      - BACKEND_IP=${BACKEND_IP}
+      - "TZ=America/Toronto"
+      - "BACKEND_IP=${BACKEND_IP}"
     env_file: .env
     # restart: always
 
@@ -64,6 +68,8 @@ services:
       - frontend
     networks:
       - oykus
+    environment:
+      - "TZ=America/Toronto"
 
 networks:
   oykus:
