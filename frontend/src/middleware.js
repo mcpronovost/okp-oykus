@@ -7,7 +7,7 @@ export function onRequest (context, next) {
         return context.redirect(`${context.url.origin}/${defaultLang}/`, 303);
     };
     // ===---
-    context.locals.api = `http://${import.meta.env.BACKEND_IP}:8000`;
+    context.locals.api = `http://localhost:8000`;
     // ===---
     return next();
 };
