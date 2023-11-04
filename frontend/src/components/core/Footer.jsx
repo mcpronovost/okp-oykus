@@ -1,24 +1,24 @@
 import { useEffect } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
 
-const ProfileView = () => {
+const CoreFooter = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
 
   useEffect(() => {
-    console.log("Profile view");
+    console.log("Footer view");
     return () => {
-      console.log("Profile view cleanup");
+      console.log("Footer view cleanup");
     };
   }, []);
 
   return (
     <>
-      <div>
-        <h1>{t("Profile")}</h1>
-      </div>
+      <footer id="okp-core-footer">
+        <p>{t("Footer")}</p>
+      </footer>
     </>
   )
 };
 
-export default ProfileView;
+export default CoreFooter;

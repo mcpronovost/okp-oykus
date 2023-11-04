@@ -1,24 +1,24 @@
 import { useEffect } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
 
-const ProfileView = () => {
+const CoreNavbar = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
 
   useEffect(() => {
-    console.log("Profile view");
+    console.log("Navbar view");
     return () => {
-      console.log("Profile view cleanup");
+      console.log("Navbar view cleanup");
     };
   }, []);
 
   return (
     <>
-      <div>
-        <h1>{t("Profile")}</h1>
-      </div>
+      <nav id="okp-core-navbar">
+        <p>{t("Navbar")}</p>
+      </nav>
     </>
   )
 };
 
-export default ProfileView;
+export default CoreNavbar;

@@ -1,20 +1,21 @@
 import { useEffect } from "react";
-import { useTranslation, getLang } from "@/plugins/i18n";
+import { getTranslation, getLang } from "@/plugins/i18n";
+import CoreLayout from "@/components/core/Layout";
 
 const HomeView = () => {
   const lang = getLang(window.location);
-  const t = useTranslation(lang);
+  const t = getTranslation(lang);
 
   useEffect(() => {
-    console.log("Home page");
+    console.log("Home view");
   }, []);
 
   return (
-    <>
+    <CoreLayout>
       <div>
         <h1>{t("Home")}</h1>
       </div>
-    </>
+    </CoreLayout>
   )
 };
 
