@@ -1,10 +1,16 @@
-import { getLang } from "@/plugins/i18n";
+import { getLang, getTranslation } from "@/plugins/i18n";
 import { getRoute } from "@/plugins/router";
-import "@/assets/styles/App.css";
 
-const lang = getLang(window.location);
-const view = getRoute(window.location.pathname, lang).view();
+const AppView = () => {
+    const appName = "Oykus";
 
-const App = view;
+    const lang = getLang(window.location);
+    const t = getTranslation(lang);
+    const route = getRoute(window.location.pathname, lang);
 
-export default App;
+    window.document.title = `${t(route.meta.title)} - ${appName}`;
+
+    return route.view();
+};
+
+export default AppView;

@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "@/App.jsx";
-import "@/assets/styles/index.css";
+import AppView from "@/App.jsx";
+import "@/assets/styles/core.scss";
 
-const app = ReactDOM.createRoot(document.getElementById("app"));
+const app = document.getElementById("okp");
+const root = ReactDOM.createRoot(app);
 
-app.render(
+root.render(
   <React.StrictMode>
-    <App />
+    <AppView />
   </React.StrictMode>
 );
