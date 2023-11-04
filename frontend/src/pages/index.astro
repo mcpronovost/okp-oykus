@@ -1,8 +1,0 @@
----
-import { getLang, languages, defaultLang } from "@/plugins/i18n";
-
-const lang = getLang(Astro.url);
-const currentLang = languages[lang] ? lang : defaultLang;
-
-return Astro.redirect(`/${currentLang}/`);
----

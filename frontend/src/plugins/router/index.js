@@ -1,30 +1,31 @@
 import { useTranslation } from "@/plugins/i18n";
-import Home from "@/views/Home.astro";
-import Profile from "@/views/Profile.astro";
-import Error from "@/views/Error.astro";
+import HomeView from "@/views/Home.jsx";
+import ProfileView from "@/views/Profile.jsx";
+import ErrorView from "@/views/Error.jsx";
 
 export const routes = [
   {
-    path: "/",
-    view: () => (Home),
+    uri: "/",
+    view: () => (HomeView),
     meta: {
       title: "Home",
-    },
+    }
   },
   {
-    path: "/profile",
-    view: () => (Profile),
+    uri: "/profile/",
+    view: () => (ProfileView),
     meta: {
       title: "Profile",
-    },
+    }
   }
 ];
 
 export const getRoute = (path, lang) => {
+  if (path.substr(-1) != "/") path += "/";
   const t = useTranslation(lang);
   const route = routes.find((r) => {
-    return t(r.path) === path;
+    return `/${lang}${t(r.uri)}` === path;
   });
-  if (!route) return {view: () => (Error)};
+  if (!route) return {view: () => (ErrorView)};
   return route;
 };
