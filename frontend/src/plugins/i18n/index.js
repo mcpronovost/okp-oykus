@@ -18,7 +18,7 @@ export const getLang = (url) => {
     return defaultLang;
 };
 
-export const useTranslation = (lang) => {
+export const getTranslation = (lang) => {
     return function t(key) {
         return messages[lang][key] || messages[defaultLang][key] || key;
     };
