@@ -1,20 +1,21 @@
-import { useEffect } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
 import CoreLayout from "@/components/core/Layout";
 
-const ErrorView = () => {
+const Content = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
 
-  useEffect(() => {
-    console.log("Error view");
-  }, []);
+  return (
+    <div>
+      <h1>{t("Error")}</h1>
+    </div>
+  )
+};
 
+const ErrorView = () => {
   return (
     <CoreLayout>
-      <div>
-        <h1>{t("Error")}</h1>
-      </div>
+      <Content />
     </CoreLayout>
   )
 };

@@ -7,8 +7,11 @@ export default defineConfig({
   assetsDir: "assets",
   resolve: {
     alias: {
-      "@": "/src"
+      "@": "/src",
     }
+  },
+  optimizeDeps: {
+    include: ["jquery"],
   },
   server: {
     host: "localhost",
@@ -25,6 +28,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           framework: ["react", "react-dom"],
+          jquery: ["jquery"],
         },
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);

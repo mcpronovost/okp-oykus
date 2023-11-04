@@ -1,6 +1,5 @@
 import { getTranslation } from "@/plugins/i18n";
 import HomeView from "@/views/Home.jsx";
-import ProfileView from "@/views/Profile.jsx";
 import ErrorView from "@/views/Error.jsx";
 
 export const routes = [
@@ -9,13 +8,6 @@ export const routes = [
     view: HomeView,
     meta: {
       title: "Home",
-    }
-  },
-  {
-    uri: "/profile/",
-    view: ProfileView,
-    meta: {
-      title: "Profile",
     }
   }
 ];

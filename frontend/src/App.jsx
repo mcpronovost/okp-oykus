@@ -16,7 +16,7 @@ const AppView = () => {
         if (!pathLang || !languages.includes(pathLang)) {
             window.location.pathname = `/${lang}${window.location.pathname}`;
         }
-    }, []);
+    }, [lang]);
 
     return route.view();
 };
