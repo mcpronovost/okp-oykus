@@ -1,4 +1,4 @@
-import { useTranslation } from "@/plugins/i18n";
+import { getTranslation } from "@/plugins/i18n";
 import HomeView from "@/views/Home.jsx";
 import ProfileView from "@/views/Profile.jsx";
 import ErrorView from "@/views/Error.jsx";
@@ -6,14 +6,14 @@ import ErrorView from "@/views/Error.jsx";
 export const routes = [
   {
     uri: "/",
-    view: () => (HomeView),
+    view: HomeView,
     meta: {
       title: "Home",
     }
   },
   {
     uri: "/profile/",
-    view: () => (ProfileView),
+    view: ProfileView,
     meta: {
       title: "Profile",
     }
@@ -22,10 +22,15 @@ export const routes = [
 
 export const getRoute = (path, lang) => {
   if (path.substr(-1) != "/") path += "/";
-  const t = useTranslation(lang);
+  const t = getTranslation(lang);
   const route = routes.find((r) => {
     return `/${lang}${t(r.uri)}` === path;
   });
-  if (!route) return {view: () => (ErrorView)};
+  if (!route) return {
+    view: ErrorView,
+    meta: {
+      title: "Page Not Found",
+    }
+  };
   return route;
 };
