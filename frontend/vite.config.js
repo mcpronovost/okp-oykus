@@ -31,7 +31,7 @@ export default defineConfig({
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = "img";
           }
-          if (/\.(woff|woff2|eot|ttf|otf)$/.test(extType)) {
+          if (/woff|woff2|eot|ttf|otf/i.test(extType)) {
             extType = "fonts";
           }
           return `static/${extType}/[name]-[hash][extname]`;
