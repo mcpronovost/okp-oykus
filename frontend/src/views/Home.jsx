@@ -1,5 +1,4 @@
 import { getTranslation, getLang } from "@/plugins/i18n";
-import { Scrollbars } from "rc-scrollbars";
 import CoreLayout from "@/components/core/Layout";
 
 const Content = () => {
