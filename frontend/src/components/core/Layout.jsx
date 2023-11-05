@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Scrollbars } from "rc-scrollbars";
-import CoreNavbar from "@/components/core/Navbar";
-import CoreFooter from "@/components/core/Footer";
+import CoreHeader from "@/components/core/Header";
 
 const CoreLayout = ({ children }) => {
 
@@ -14,11 +13,10 @@ const CoreLayout = ({ children }) => {
 
   return (
     <>
-      <CoreNavbar />
+      <CoreHeader />
       <main id="okp-core-main">
         <Scrollbars>
           {children}
-          <CoreFooter />
         </Scrollbars>
       </main>
     </>
