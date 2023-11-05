@@ -12,6 +12,10 @@
   "dependencies": {
     "@fontsource/open-sans": "^5.0.17",
     "@fontsource/quicksand": "^5.0.15",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "jquery": "^3.7.1",
     "rc-scrollbars": "^1.1.6",
     "react": "^18.2.0",

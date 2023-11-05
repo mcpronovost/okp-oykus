@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "http://localhost:8000/",
   appType: "spa",
   assetsDir: "assets",
   resolve: {
@@ -29,6 +30,11 @@ export default defineConfig({
         manualChunks: {
           framework: ["react", "react-dom"],
           jquery: ["jquery"],
+          fontawesome: [
+            "@fortawesome/react-fontawesome",
+            "@fortawesome/fontawesome-svg-core",
+            "@fortawesome/free-solid-svg-icons",
+          ],
         },
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split(".").at(1);
