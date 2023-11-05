@@ -1,6 +1,7 @@
 import { getTranslation, getLang } from "@/plugins/i18n";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import imgLogo from "@/assets/img/favicon-32.png";
 
 const CoreHeader = () => {
   const lang = getLang(window.location);
@@ -9,27 +10,25 @@ const CoreHeader = () => {
   return (
     <>
       <header id="okp-core-header">
-        <nav aria-label="Main">
+        <nav id="okp-core-header-nav-main" aria-label="Main">
           <ul>
-            <li>
-              <a href={`/${lang}/`}>{t("Home")}</a>
+            <li className="okp-logo">
+              <a href={`/${lang}/`}>
+                <img src={ imgLogo } alt="Oykus" width={32} height={32} />
+                <span>{t("Oykus")}</span>
+              </a>
             </li>
           </ul>
           <ul>
             <li>
-              <a href={`/${lang}${t("/error/")}`}>{t("Community")}</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="/">{t("Hobeon")}</a>
+              <a href={`/${lang}/hobeon/`}>{t("Hobeon")}</a>
             </li>
             <li>
-              <a href="/">{t("Rhansidor")}</a>
+              <a href={`/${lang}/rhansidor/`}>{t("Rhansidor")}</a>
             </li>
           </ul>
         </nav>
-        <nav aria-label="User">
+        <nav id="okp-core-header-nav-user" aria-label="User">
           <ul>
             <li>
               <a href="/">
@@ -37,7 +36,14 @@ const CoreHeader = () => {
               </a>
             </li>
             <li>
-              <a href="/">{t("Anonymous Player")}</a>
+              <a href="/">
+                <FontAwesomeIcon icon={faBell} />
+              </a>
+            </li>
+            <li>
+              <button type="button" id="okp-toggle-sidebar" className="okp-btn-text">
+                <span>{t("Anonymous Player")}</span>
+              </button>
             </li>
           </ul>
         </nav>

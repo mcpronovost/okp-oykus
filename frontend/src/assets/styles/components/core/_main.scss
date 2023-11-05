@@ -1,5 +1,13 @@
 #okp-core-main {
-    overflow: hidden;
-    flex: 1 1 auto;
-    position: relative;
+  overflow: hidden;
+  flex: 1 1 auto;
+  order: 1;
+  position: relative;
 }
+
+@media (min-width: 768px) {
+  #okp-core-main {
+    order: 2;
+  }
+}
+

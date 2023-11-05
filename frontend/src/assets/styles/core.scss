@@ -2,8 +2,12 @@
 @import "@fontsource/open-sans/600.css";
 @import "@fontsource/quicksand";
 
-@import "@/assets/styles/colours.scss";
-@import "@/assets/styles/general.scss";
+/* common */
+
+@import "@/assets/styles/common/colours.scss";
+@import "@/assets/styles/common/general.scss";
+@import "@/assets/styles/common/_links.scss";
+@import "@/assets/styles/common/_buttons.scss";
 
 /* components */
 

@@ -1,0 +1,27 @@
+#okp-core-sidebar {
+  background-color: var(--okp-core);
+  overflow: hidden;
+  order: 3;
+  width: 0;
+  max-width: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: flex 0.3s, width 0.3s;
+
+  &.okp-open {
+    flex-basis: 300px;
+    width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  #okp-core-sidebar {
+    display: flex;
+    flex: 0 0 0;
+    width: 0;
+    position: relative;
+  }
+}

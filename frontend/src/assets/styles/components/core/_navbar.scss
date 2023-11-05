@@ -1,0 +1,61 @@
+#okp-core-navbar {
+  background-color: var(--okp-core);
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex: 0 0 56px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  order: 2;
+  position: relative;
+  padding: 12px 0;
+  margin: 0;
+
+  > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+
+    > li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      > a {
+        border-radius: 6px;
+        color: var(--okp-text-dark);
+        font-size: 1rem;
+        line-height: 100%;
+        display: flex;
+
+        &:hover {
+          background-color: var(--okp-core-light);
+          color: var(--okp-text);
+        }
+
+        .okp-icon {
+          font-size: 16px;
+          line-height: 32px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #okp-core-navbar {
+    order: 1;
+  }
+}

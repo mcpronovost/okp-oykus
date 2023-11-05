@@ -1,0 +1,51 @@
+button {
+    background-color: var(--okp-core);
+    border: 1px solid var(--okp-core);
+    border-radius: 4px;
+    color: var(--okp-text);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 100%;
+    outline: none;
+    display: inline-flex;
+    transition: all 0.3s;
+    padding: 12px 24px;
+    margin: 0;
+
+    &:disabled {
+        color: var(--okp-text-dark);
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    &:not(:disabled):hover {
+        background-color: var(--okp-core-light);
+        color: var(--okp-text-light);
+        border-color: var(--okp-core-light);
+        cursor: pointer;
+
+        &:active {
+            background-color: var(--okp-core-dark);
+            color: var(--okp-text-dark);
+            opacity: 0.7;
+        }
+    }
+
+    &.okp-btn-text {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        outline: none;
+        padding: 0;
+        margin: 0;
+
+        &:not(:disabled):hover {
+            background-color: transparent;
+            color: var(--okp-text-light);
+        }
+    }
+}

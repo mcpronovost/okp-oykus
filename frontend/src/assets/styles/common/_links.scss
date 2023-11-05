@@ -1,0 +1,9 @@
+a {
+    color: var(--okp-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: inherit;
+    }
+}
