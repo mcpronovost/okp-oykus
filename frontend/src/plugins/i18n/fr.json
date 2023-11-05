@@ -1,5 +1,8 @@
 {
     "Home": "Accueil",
+    "Community": "Communauté",
+    "Error": "Erreur",
     "/profile/": "/profil/",
+    "/error/": "/erreur/",
     "Page Not Found": "Page introuvable"
 }
