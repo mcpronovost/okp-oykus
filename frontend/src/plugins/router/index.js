@@ -9,6 +9,13 @@ export const routes = [
     meta: {
       title: "Home",
     }
+  },
+  {
+    uri: "/error/",
+    view: ErrorView,
+    meta: {
+      title: "Error",
+    }
   }
 ];
 
