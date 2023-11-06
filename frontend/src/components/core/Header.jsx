@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
+import StoreContext from "@/plugins/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import imgLogo from "@/assets/img/favicon-32.png";
@@ -6,6 +8,7 @@ import imgLogo from "@/assets/img/favicon-32.png";
 const CoreHeader = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
+  const { sidebarOpen, setStoreSidebarOpen } = useContext(StoreContext);
 
   return (
     <>
@@ -41,7 +44,7 @@ const CoreHeader = () => {
               </a>
             </li>
             <li>
-              <button type="button" id="okp-toggle-sidebar" className="okp-btn-text">
+              <button type="button" className="okp-btn-text" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>
                 <span>{t("Anonymous Player")}</span>
               </button>
             </li>
