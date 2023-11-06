@@ -13,7 +13,7 @@ const CoreSidebar = () => {
     <>
       <aside id="okp-core-sidebar" className={sidebarOpen ? "okp-open" : ""}>
         <section>
-          <CommonUserBanner avatar={imgAvatar} banner={imgAvatar} />
+          <CommonUserBanner />
         </section>
       </aside>
     </>

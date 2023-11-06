@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 const CommonUserBanner = ({ avatar, banner }) => {
   return (
     <div className="okp-userbanner">
@@ -5,7 +8,13 @@ const CommonUserBanner = ({ avatar, banner }) => {
         <div className="okp-banner-img" style={{ backgroundImage: banner ? `url('${banner}')` : "none"}}></div>
       </div>
       <div className="okp-avatar">
-        <img src={avatar} alt="Avatar" />
+        {avatar ? (
+            <img src={avatar} alt="Avatar" />
+          ) : (
+            <div className="okp-icon">
+              <FontAwesomeIcon icon={faUser} />
+            </div>
+          )}
       </div>
     </div>
   );

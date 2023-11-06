@@ -1,5 +1,6 @@
 #okp-core-sidebar {
-  background-color: var(--okp-core);
+  background-color: var(--okp-core-sidebar);
+  color: var(--okp-core-sidebar-text);
   overflow: hidden;
   order: 3;
   display: flex;
