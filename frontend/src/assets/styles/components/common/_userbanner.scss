@@ -1,0 +1,39 @@
+.okp-userbanner {
+    width: 100%;
+    position: relative;
+
+    .okp-banner {
+        background-color: var(--okp-core-light);
+        overflow: hidden;
+        width: 100%;
+        height: 120px;
+
+        .okp-banner-img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 120px;
+            opacity: 0.7;
+            filter: blur(6px) grayscale(1);
+        }
+    }
+
+    .okp-avatar {
+        background-color: var(--okp-core);
+        border: 6px solid var(--okp-core);
+        border-radius: 50%;
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+
+        > img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
