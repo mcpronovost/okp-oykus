@@ -2,6 +2,7 @@
   background-color: var(--okp-core);
   overflow: hidden;
   order: 3;
+  display: flex;
   width: 0;
   max-width: 300px;
   position: absolute;
@@ -19,7 +20,6 @@
 
 @media (min-width: 768px) {
   #okp-core-sidebar {
-    display: flex;
     flex: 0 0 0;
     width: 0;
     position: relative;
