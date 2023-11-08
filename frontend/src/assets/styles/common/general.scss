@@ -20,11 +20,10 @@ html {
 }
 
 body {
-  --bs-body-font-family: "Open Sans", "Helvetica Neue", "Noto Sans",
-    "Liberation Sans", Arial, sans-serif;
+  --bs-body-font-family: var(--okp-font-family);
   background-color: var(--okp-bg);
   color: var(--okp-text);
-  font-family: var(--bs-body-font-family);
+  font-family: var(--okp-font-family);
   font-size: 1rem;
   font-weight: 400;
   line-height: 125%;
