@@ -3,7 +3,7 @@ import { getTranslation, getLang } from "@/plugins/i18n";
 import StoreContext from "@/plugins/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import imgLogo from "@/assets/img/favicon-32.png";
+import imgLogo from "@/assets/img/oykus-white-50.png";
 
 const CoreHeader = () => {
   const lang = getLang(window.location);
@@ -14,10 +14,14 @@ const CoreHeader = () => {
     <>
       <header id="okp-core-header">
         <nav id="okp-core-header-nav-main" aria-label="Main">
-          <ul>
+          <ul id="okp-core-header-logo">
             <li className="okp-logo">
               <a href={`/${lang}/`}>
-                <img src={ imgLogo } alt="Oykus" width={32} height={32} />
+                <img src={ imgLogo } alt="Oykus" width={50} height={50} />
+              </a>
+            </li>
+            <li className="okp-name">
+              <a href={`/${lang}/`}>
                 <span>{t("Oykus")}</span>
               </a>
             </li>

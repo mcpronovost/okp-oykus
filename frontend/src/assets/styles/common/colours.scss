@@ -19,17 +19,23 @@
 }
 
 :root {
-    #okp-rpg-qalatlan {
-        --okp-bg: #c9cfd1;
-        --okp-core: #dbe0e2;
-        --okp-core-dark: #435259;
-        --okp-core-light: #7a8489;
-        --okp-text: #7a8489;
-        --okp-text-dark: #7a8489;
-        --okp-text-light: #7a8489;
+    body {
+        --okp-bg: #1e2329;
+        --okp-core: #252b33;
+        --okp-core-dark: #1e2329;
+        --okp-core-light: #2d343d;
+        --okp-text: #8b8f92;
+        --okp-text-dark: #52575d;
+        --okp-text-light: #f0f1f2;
 
-        --okp-primary: #d3b018;
+        --okp-primary: #1991eb;
 
-        --okp-scrollbar: rgba(0, 0, 0, 0.1);
+        --okp-scrollbar: rgba(255, 255, 255, 0.1);
+        --okp-core-header: var(--okp-bg);
+        --okp-core-header-text: var(--okp-text);
+        --okp-core-navbar: var(--okp-core);
+        --okp-core-navbar-text: var(--okp-text);
+        --okp-core-sidebar: var(--okp-core);
+        --okp-core-sidebar-text: var(--okp-text);
     }
 }
