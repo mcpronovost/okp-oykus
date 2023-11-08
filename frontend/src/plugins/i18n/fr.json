@@ -1,8 +1,22 @@
 {
     "Home": "Accueil",
-    "Community": "Communauté",
-    "Error": "Erreur",
+
     "/profile/": "/profil/",
+    "/community/": "/communaute/",
+    "/awards/": "/recompenses/",
+    "/achievements/": "/succes/",
+    "/rankings/": "/classements/",
+    "/settings/": "/parametres/",
+    "/faq/": "/faq/",
     "/error/": "/erreur/",
+
+    "Profile": "Profil",
+    "Community": "Communauté",
+    "Awards": "Récompenses",
+    "Achievements": "Succès",
+    "Rankings": "Classements",
+    "Settings": "Paramètres",
+    "FAQ": "FAQ",
+    "Error": "Erreur",
     "Page Not Found": "Page introuvable"
 }

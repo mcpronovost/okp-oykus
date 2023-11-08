@@ -1,8 +1,22 @@
 {
     "Home": "Home",
-    "Community": "Community",
-    "Error": "Error",
+
     "/profile/": "/profile/",
+    "/community/": "/community/",
+    "/awards/": "/awards/",
+    "/achievements/": "/achievements/",
+    "/rankings/": "/rankings/",
+    "/settings/": "/settings/",
+    "/faq/": "/faq/",
     "/error/": "/error/",
+
+    "Profile": "Profile",
+    "Community": "Community",
+    "Awards": "Awards",
+    "Achievements": "Achievements",
+    "Rankings": "Rankings",
+    "Settings": "Settings",
+    "FAQ": "FAQ",
+    "Error": "Error",
     "Page Not Found": "Page Not Found"
 }
