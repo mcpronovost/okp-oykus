@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
 import StoreContext from "@/plugins/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faEnvelope, faUser, faChevronDown, faXmark } from "@fortawesome/free-solid-svg-icons";
 import imgLogo from "@/assets/img/oykus-white-50.png";
 
 const CoreHeader = () => {
@@ -37,19 +37,30 @@ const CoreHeader = () => {
         </nav>
         <nav id="okp-core-header-nav-user" aria-label="User">
           <ul>
-            <li>
-              <a href="/">
+            <li className="okp-dot">
+              <a href="/" className="okp-icon">
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
             </li>
-            <li>
-              <a href="/">
+            <li className="okp-dot">
+              <a href="/" className="okp-icon">
                 <FontAwesomeIcon icon={faBell} />
               </a>
             </li>
             <li>
               <button type="button" className="okp-btn-text" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>
-                <span>{t("Anonymous Player")}</span>
+                <div className="okp-avatar">
+                  {/* <img src={imgLogo} alt="Oykus" width={32} height={32} style={{ opacity: 0.4}} /> */}
+                  <span className="okp-icon">
+                    <FontAwesomeIcon icon={faUser} />
+                  </span>
+                </div>
+                <div className="okp-user">
+                  <span className="okp-username">M-C Pronovost</span>
+                </div>
+                <div className="okp-toggle">
+                  <FontAwesomeIcon icon={sidebarOpen ? faXmark : faChevronDown} />
+                </div>
               </button>
             </li>
           </ul>

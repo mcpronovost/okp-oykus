@@ -14,7 +14,7 @@ const CoreSidebar = () => {
       <aside id="okp-core-sidebar" className={sidebarOpen ? "okp-open" : ""}>
         <section id="okp-sidebar-user-info">
           <CommonUserBanner height={180} banner={imgOykus} avatarSize={120} bannerSize={72} />
-          <h2>Kamuy Sinen</h2>
+          <h2>M-C Pronovost</h2>
         </section>
       </aside>
     </>

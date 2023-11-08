@@ -3,7 +3,7 @@
     position: relative;
 
     .okp-banner {
-        background-color: var(--okp-core-light);
+        background-color: var(--okp-primary);
         overflow: hidden;
         width: 100%;
         height: 72px;
@@ -14,9 +14,8 @@
             background-size: cover;
             width: 100%;
             height: 120px;
-            opacity: 0.5;
-            transform: scale(1.2);
-            filter: blur(6px) grayscale(1);
+            opacity: 0.75;
+            filter: grayscale(0.75);
         }
     }
 

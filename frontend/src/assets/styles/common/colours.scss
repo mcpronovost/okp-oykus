@@ -1,4 +1,5 @@
 :root {
+    --okp-font-family: "Open Sans", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
     --okp-bg: #0f0f0f;
     --okp-core: #060606;
     --okp-core-dark: #020202;
@@ -30,7 +31,7 @@
 
         --okp-primary: #1991eb;
 
-        --okp-scrollbar: rgba(255, 255, 255, 0.1);
+        --okp-scrollbar: rgba(255, 255, 255, 0.06);
         --okp-core-header: var(--okp-bg);
         --okp-core-header-text: var(--okp-text);
         --okp-core-navbar: var(--okp-core);

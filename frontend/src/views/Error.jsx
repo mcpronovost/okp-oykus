@@ -6,9 +6,15 @@ const Content = () => {
   const t = getTranslation(lang);
 
   return (
-    <div>
-      <h1>{t("Error")}</h1>
-    </div>
+    <section className="mt-5">
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1>{t("Error")}</h1>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 };
 

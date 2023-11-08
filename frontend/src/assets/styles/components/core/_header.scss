@@ -34,11 +34,11 @@
         flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
+        position: relative;
         padding: 0;
         margin: 0;
 
-        > a,
-        > button {
+        > a {
           color: var(--okp-text-dark);
           display: flex;
           flex-direction: row;
@@ -46,7 +46,7 @@
           align-items: center;
           justify-content: center;
           gap: 12px;
-          padding: 12px;
+          padding: 0;
 
           &:hover {
             color: var(--okp-text);
@@ -81,6 +81,7 @@
             font-size: 1.4rem;
             font-weight: 400;
             letter-spacing: 0.3em;
+            margin-left: 0.3em;
   
             a {
               color: var(--okp-text);
@@ -88,6 +89,147 @@
   
               &:hover {
                 opacity: 0.7;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &#okp-core-header-nav-main {
+      > ul {
+        > li {
+          > a {
+            padding: 12px;
+          }
+        }
+      }
+    }
+
+    &#okp-core-header-nav-user {
+      > ul {
+        > li {
+          &.okp-dot::after {
+            content: "";
+            background-color: var(--okp-primary);
+            border: 3px solid var(--okp-core-header);
+            border-radius: 50%;;
+            display: block;
+            width: 6px;
+            height: 6px;
+            position: absolute;
+            top: calc(50% - 6px);
+            left: calc(50% - 6px);
+            transform: translate(0.8em, -0.6em);
+          }
+
+          &:hover {
+            &.okp-dot::after {
+              border-color: var(--okp-core);
+            }
+          }
+
+          > a {
+            &.okp-icon {
+              font-size: 1rem;
+              font-weight: 400;
+              line-height: 100%;
+              width: 50px;
+              height: 50px;
+
+              &:hover {
+                background-color: var(--okp-core);
+              }
+            }
+          }
+
+          button {
+            color: var(--okp-text-dark);
+            font-size: 0;
+            line-height: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px;
+
+            .okp-avatar {
+              background-color: var(--okp-core-light);
+              border-radius: 50%;
+              overflow: hidden;
+              flex: 0 0 32px;
+              width: 32px;
+              height: 32px;
+              opacity: 0.7;
+              transition: opacity 0.3s;
+
+              .okp-icon {
+                color: var(--okp-core-dark);
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 32px;
+              }
+            }
+  
+            &:hover {
+              color: var(--okp-text);
+
+              .okp-avatar {
+                opacity: 1;
+              }
+            }
+
+            .okp-user {
+              text-align: left;
+              display: flex;
+              flex-direction: column;
+
+              .okp-username {
+                font-size: 0.8rem;
+                font-weight: 400;
+                line-height: 125%;
+              }
+            }
+
+            .okp-toggle {
+              font-size: 0.5rem;
+              font-weight: 400;
+              line-height: 100%;
+              width: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #okp-core-header {
+    > nav {
+      &#okp-core-header-nav-main {
+        > ul {
+          &#okp-core-header-logo {
+            margin-right: 6px;
+
+            > li {
+              &.okp-name {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      &#okp-core-header-nav-user {
+        > ul {
+          > li {
+            button {
+              .okp-user,
+              .okp-toggle {
+                display: none;
               }
             }
           }
