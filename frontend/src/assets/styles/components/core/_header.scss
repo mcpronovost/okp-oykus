@@ -109,26 +109,6 @@
     &#okp-core-header-nav-user {
       > ul {
         > li {
-          &.okp-dot::after {
-            content: "";
-            background-color: var(--okp-primary);
-            border: 3px solid var(--okp-core-header);
-            border-radius: 50%;;
-            display: block;
-            width: 6px;
-            height: 6px;
-            position: absolute;
-            top: calc(50% - 6px);
-            left: calc(50% - 6px);
-            transform: translate(0.8em, -0.6em);
-          }
-
-          &:hover {
-            &.okp-dot::after {
-              border-color: var(--okp-core);
-            }
-          }
-
           > a {
             &.okp-icon {
               font-size: 1rem;
@@ -139,6 +119,26 @@
 
               &:hover {
                 background-color: var(--okp-core);
+              }
+            }
+
+            &.okp-dot::after {
+              content: "";
+              background-color: var(--okp-primary);
+              border: 3px solid var(--okp-core-header);
+              border-radius: 50%;;
+              display: block;
+              width: 6px;
+              height: 6px;
+              position: absolute;
+              top: calc(50% - 6px);
+              left: calc(50% - 6px);
+              transform: translate(0.6em, -0.5em);
+            }
+  
+            &:hover {
+              &.okp-dot::after {
+                border-color: var(--okp-core);
               }
             }
           }

@@ -37,13 +37,13 @@ const CoreHeader = () => {
         </nav>
         <nav id="okp-core-header-nav-user" aria-label="User">
           <ul>
-            <li className="okp-dot">
+            <li>
               <a href="/" className="okp-icon">
                 <FontAwesomeIcon icon={faEnvelope} />
               </a>
             </li>
-            <li className="okp-dot">
-              <a href="/" className="okp-icon">
+            <li>
+              <a href="/" className="okp-icon okp-dot">
                 <FontAwesomeIcon icon={faBell} />
               </a>
             </li>
