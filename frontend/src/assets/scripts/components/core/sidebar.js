@@ -5,6 +5,7 @@ export const toggleSidebar = () => {
 
     if (sidebar.length && toggle.length) {
         toggle.on("click", () => {
+            $("#testvh").text("test");
             sidebar.toggleClass("okp-open");
         });
     }
