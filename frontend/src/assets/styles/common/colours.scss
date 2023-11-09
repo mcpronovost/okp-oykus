@@ -52,7 +52,7 @@
 
         --okp-primary: #89a411;
 
-        --okp-scrollbar: rgba(255, 255, 255, 0.06);
+        --okp-scrollbar: var(--okp-line);
         --okp-core-header: var(--okp-bg);
         --okp-core-header-text: var(--okp-text);
         --okp-core-navbar: var(--okp-core);
