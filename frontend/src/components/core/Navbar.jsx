@@ -3,38 +3,34 @@ import { getTranslation, getLang } from "@/plugins/i18n";
 import RouterContext from "@/plugins/router";
 import { Scrollbars } from "rc-scrollbars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUsers, faAward, faTrophy, faRankingStar, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faUsers, faAward, faTrophy, faRankingStar, faCog } from "@fortawesome/free-solid-svg-icons";
 import { faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
+import OkpRouteLink from "@/components/common/RouteLink.jsx";
 
 const CoreNavbar = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
-  const { goRoute, isCurrentRoute } = useContext(RouterContext);
+  const { isCurrentRoute } = useContext(RouterContext);
 
   const mainNavigation = [
     {
-      name: t("Home"),
-      url: `/`,
-      icon: faHome
-    },
-    {
       name: t("Community"),
-      url: `${t("/community/")}`,
+      url: `/${lang}${t("/community/")}`,
       icon: faUsers
     },
     {
       name: t("Awards"),
-      url: `${t("/awards/")}`,
+      url: `/${lang}${t("/awards/")}`,
       icon: faAward
     },
     {
       name: t("Achievements"),
-      url: `${t("/achievements/")}`,
+      url: `/${lang}${t("/achievements/")}`,
       icon: faTrophy
     },
     {
       name: t("Rankings"),
-      url: `${t("/rankings/")}`,
+      url: `/${lang}${t("/rankings/")}`,
       icon: faRankingStar
     }
   ]
@@ -46,28 +42,28 @@ const CoreNavbar = () => {
           <ul>
             {mainNavigation.map((nav, i) => (
               <li key={`navbar-link-${i}`}>
-                <button type="button" className={isCurrentRoute(nav.url, lang) ? "okp-active" : null} onClick={() => { goRoute(nav.url, lang) }} aria-label={nav.name}>
+                <OkpRouteLink route={nav.url} classes={isCurrentRoute(nav.url) ? "okp-active" : null} arialabel={nav.name}>
                   <span className="okp-icon">
                     <FontAwesomeIcon icon={nav.icon} />
                   </span>
-                </button>
+                </OkpRouteLink>
               </li>
             ))}
           </ul>
           <ul id="okp-core-navbar-nav-footer">
             <li>
-              <a href={`/${lang}${t("/settings/")}`} aria-label={t("Settings")}>
+              <OkpRouteLink route={`/${lang}${t("/settings/")}`} classes={isCurrentRoute(`/${lang}${t("/settings/")}`) ? "okp-active" : null} arialabel={t("Settings")}>
                 <span className="okp-icon">
                   <FontAwesomeIcon icon={faCog} />
                 </span>
-              </a>
+              </OkpRouteLink>
             </li>
             <li>
-              <a href={`/${lang}${t("/faq/")}`} aria-label={t("FAQ")}>
+              <OkpRouteLink route={`/${lang}${t("/faq/")}`} classes={isCurrentRoute(`/${lang}${t("/faq/")}`) ? "okp-active" : null} arialabel={t("FAQ")}>
                 <span className="okp-icon">
                   <FontAwesomeIcon icon={faCircleQuestion} />
                 </span>
-              </a>
+              </OkpRouteLink>
             </li>
           </ul>
         </div>

@@ -51,16 +51,17 @@ export const RouterProvider = ({ children }) => {
   const appName = "Oykus";
   const [route, setRoute] = useState(getRoute(window.location.pathname, "fr"));
 
-  const goRoute = (value, language) => {
-    const path = `/${language}${value}`;
+  const goRoute = (path) => {
+    const [, language] = path.split("/");
     setRoute(getRoute(path, language));
     history.pushState({}, "", path);
   };
 
-  const isCurrentRoute = (value, language) => {
-    const path = `/${language}${value}`;
+  const isCurrentRoute = (path) => {
     return window.location.pathname === path;
   };
+
+  /* ===--- effects and listeners ---=== */
 
   useEffect(() => {
     const metaTitle = `${t(route.meta.title)} - ${appName}`;
@@ -85,6 +86,8 @@ export const RouterProvider = ({ children }) => {
   window.onpopstate = () => {
     setRoute(getRoute(window.location.pathname, lang));
   };
+
+  /* ===--- render ---=== */
 
   return (
     <RouterContext.Provider value={{

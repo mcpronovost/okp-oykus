@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
+import RouterContext from "@/plugins/router";
 import StoreContext from "@/plugins/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faEnvelope, faUser, faChevronDown, faXmark } from "@fortawesome/free-solid-svg-icons";
+import OkpRouteLink from "@/components/common/RouteLink.jsx";
 import imgLogo from "@/assets/img/oykus-white-50.png";
 
 const CoreHeader = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
+  const { goRoute } = useContext(RouterContext);
   const { sidebarOpen, setStoreSidebarOpen } = useContext(StoreContext);
 
   return (
@@ -21,17 +24,17 @@ const CoreHeader = () => {
               </a>
             </li>
             <li className="okp-name">
-              <a href={`/${lang}/`}>
+              <button onClick={() => { goRoute("/", lang) }}>
                 <span>{t("Oykus")}</span>
-              </a>
+              </button>
             </li>
           </ul>
           <ul id="okp-core-header-games">
             <li>
-              <a href={`/${lang}/hobeon/`}>{t("Hobeon")}</a>
+              <OkpRouteLink route={`/${lang}/hobeon/`} children={t("Hobeon")} />
             </li>
             <li>
-              <a href={`/${lang}/rhansidor/`}>{t("Rhansidor")}</a>
+              <OkpRouteLink route={`/${lang}/rhansidor/`} children={t("Rhansidor")} />
             </li>
           </ul>
         </nav>
