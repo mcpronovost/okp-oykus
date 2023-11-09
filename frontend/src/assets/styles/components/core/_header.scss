@@ -166,10 +166,16 @@
               transition: opacity 0.3s;
 
               .okp-icon {
+                background-color: var(--okp-primary);
                 color: var(--okp-core-dark);
                 font-size: 1rem;
                 font-weight: 400;
                 line-height: 32px;
+                text-align: center;
+                display: block;
+                width: 32px;
+                height: 32px;
+                opacity: 0.7;
               }
             }
   
