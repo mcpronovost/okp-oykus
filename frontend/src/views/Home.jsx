@@ -20,7 +20,7 @@ const Content = () => {
   });
 
   return (
-    <div className="container pt-5">
+    <div className="container py-5">
       <div className="row">
         <div className="col">
           <CommonHeader title={t("Home")} />

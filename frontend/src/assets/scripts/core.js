@@ -1,14 +1,14 @@
 import jQuery from "jquery";
 import {
-    toggleSidebar
-} from "@/assets/scripts/components/core/sidebar.js";
+    okpUpdateNavbarActiveLink
+} from "@/assets/scripts/components/core/navbar.js";
 
 (function($) {
     $(function() {
         window.jQuery = window.$ = $;
         window.addEventListener("load", function() {
             console.log("loaded.");
-            toggleSidebar();
+            okpUpdateNavbarActiveLink();
         });
     });
 })(jQuery);

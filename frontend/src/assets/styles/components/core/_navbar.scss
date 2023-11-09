@@ -46,8 +46,10 @@
         padding: 0;
         margin: 0;
 
-        > a {
+        > a,
+        > button {
           background-color: var(--okp-core-light);
+          border: none;
           border-radius: 50%;
           color: var(--okp-text-dark);
           font-size: 1rem;
@@ -56,6 +58,7 @@
           width: 32px;
           height: 32px;
           transition: all 0.3s;
+          padding: 0;
           margin: 0 auto;
 
           &.okp-active,
@@ -147,9 +150,7 @@
         }
 
         &#okp-core-navbar-nav-footer {
-          border: none;
-          flex: 0 1 auto;
-          width: auto;
+          display: none;
         }
       }
     }

@@ -26,7 +26,7 @@ const CoreHeader = () => {
               </a>
             </li>
           </ul>
-          <ul>
+          <ul id="okp-core-header-games">
             <li>
               <a href={`/${lang}/hobeon/`}>{t("Hobeon")}</a>
             </li>
