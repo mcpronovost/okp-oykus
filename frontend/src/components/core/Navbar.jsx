@@ -9,9 +9,9 @@ import { faCircleQuestion } from "@fortawesome/free-regular-svg-icons";
 const CoreNavbar = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
-  const { goRoute } = useContext(RouterContext);
+  const { goRoute, isCurrentRoute } = useContext(RouterContext);
 
-  const allRoutes = [
+  const mainNavigation = [
     {
       name: t("Home"),
       url: `/`,
@@ -44,11 +44,11 @@ const CoreNavbar = () => {
       <Scrollbars>
         <div id="okp-core-navbar-wrapper">
           <ul>
-            {allRoutes.map((route, i) => (
+            {mainNavigation.map((nav, i) => (
               <li key={`navbar-link-${i}`}>
-                <button type="button" onClick={() => { goRoute(route.url, lang) }} aria-label={route.name}>
+                <button type="button" className={isCurrentRoute(nav.url, lang) ? "okp-active" : null} onClick={() => { goRoute(nav.url, lang) }} aria-label={nav.name}>
                   <span className="okp-icon">
-                    <FontAwesomeIcon icon={route.icon} />
+                    <FontAwesomeIcon icon={nav.icon} />
                   </span>
                 </button>
               </li>

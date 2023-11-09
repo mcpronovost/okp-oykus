@@ -26,9 +26,7 @@ const Content = () => {
           <div className="col">
             <CommonHeader title={t("Home")} />
             <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", padding: "32px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis.<br /><br />
-              
-              Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis.Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
 
               <div>
                 <button type="button" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>Mon bouton</button>
@@ -62,9 +60,7 @@ const Content = () => {
         <div className="row">
           <div className="col">
             <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", padding: "32px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis.<br /><br />
-              
-              Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis. Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
 
               <div>
                 <button type="button" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>Mon bouton</button>

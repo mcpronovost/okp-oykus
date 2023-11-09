@@ -57,6 +57,11 @@ export const RouterProvider = ({ children }) => {
     history.pushState({}, "", path);
   };
 
+  const isCurrentRoute = (value, language) => {
+    const path = `/${language}${value}`;
+    return window.location.pathname === path;
+  };
+
   useEffect(() => {
     const metaTitle = `${t(route.meta.title)} - ${appName}`;
     const metaDescription = t(route.meta.description) || t("Oykus is a project.");
@@ -84,7 +89,8 @@ export const RouterProvider = ({ children }) => {
   return (
     <RouterContext.Provider value={{
       route,
-      goRoute
+      goRoute,
+      isCurrentRoute
     }}>
       { children }
     </RouterContext.Provider>
