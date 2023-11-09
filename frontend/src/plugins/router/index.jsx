@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { getLang, getTranslation } from "@/plugins/i18n";
 import HomeView from "@/views/Home.jsx";
 import RankingsView from "@/views/Rankings.jsx";
+import FAQView from "@/views/FAQ.jsx";
 import ErrorView from "@/views/Error.jsx";
 
 export const routes = [
@@ -17,6 +18,13 @@ export const routes = [
     view: RankingsView,
     meta: {
       title: "Rankings",
+    }
+  },
+  {
+    uri: "/faq/",
+    view: FAQView,
+    meta: {
+      title: "FAQ",
     }
   },
   {

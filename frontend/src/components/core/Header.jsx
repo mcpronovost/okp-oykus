@@ -24,9 +24,9 @@ const CoreHeader = () => {
               </a>
             </li>
             <li className="okp-name">
-              <button onClick={() => { goRoute("/", lang) }}>
+              <OkpRouteLink route={`/${lang}/`}>
                 <span>{t("Oykus")}</span>
-              </button>
+              </OkpRouteLink>
             </li>
           </ul>
           <ul id="okp-core-header-games">

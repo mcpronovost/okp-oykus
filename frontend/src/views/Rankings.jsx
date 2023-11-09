@@ -18,7 +18,7 @@ const Content = () => {
   )
 };
 
-const RankingsView = () => {
+const View = () => {
   return (
     <CoreLayout>
       <Content />
@@ -26,4 +26,4 @@ const RankingsView = () => {
   )
 };
 
-export default RankingsView;
+export default View;

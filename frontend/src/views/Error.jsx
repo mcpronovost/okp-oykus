@@ -18,7 +18,7 @@ const Content = () => {
   )
 };
 
-const ErrorView = () => {
+const View = () => {
   return (
     <CoreLayout>
       <Content />
@@ -26,4 +26,4 @@ const ErrorView = () => {
   )
 };
 
-export default ErrorView;
+export default View;
