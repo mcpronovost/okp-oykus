@@ -1,6 +1,6 @@
 #okp-core-navbar {
   background-color: var(--okp-core-navbar);
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  border-right: 1px solid var(--okp-line);
   color: var(--okp-core-navbar-text);
   font-size: 0;
   line-height: 0;
@@ -27,7 +27,6 @@
     margin: 0;
   
     > ul {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
       list-style: none;
       display: flex;
       flex: 1 1 auto;
@@ -104,8 +103,7 @@
 
       &#okp-core-navbar-nav-footer {
         background-color: var(--okp-bg);
-        border-top: 1px solid rgba(0, 0, 0, 0.03);
-        border-bottom: none;
+        border-top: 1px solid var(--okp-line);
         flex: 0 1 auto;
 
         > li {
@@ -124,6 +122,8 @@
 
 @media (max-width: 767px) {
   #okp-core-navbar {
+    border-top: 1px solid var(--okp-line);
+    border-right: none;
     order: 2;
     flex-basis: 50px;
 

@@ -39,4 +39,25 @@
         --okp-core-sidebar: var(--okp-core);
         --okp-core-sidebar-text: var(--okp-text);
     }
+
+    body {
+        --okp-bg: #010409;
+        --okp-core: #0d1117;
+        --okp-core-dark: #010409;
+        --okp-core-light: #161b22;
+        --okp-text: #7d8590;
+        --okp-text-dark: #51575f;
+        --okp-text-light: #e6edf3;
+        --okp-line: #21262d;
+
+        --okp-primary: #89a411;
+
+        --okp-scrollbar: rgba(255, 255, 255, 0.06);
+        --okp-core-header: var(--okp-bg);
+        --okp-core-header-text: var(--okp-text);
+        --okp-core-navbar: var(--okp-core);
+        --okp-core-navbar-text: var(--okp-text);
+        --okp-core-sidebar: var(--okp-core);
+        --okp-core-sidebar-text: var(--okp-text);
+    }
 }

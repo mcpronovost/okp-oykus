@@ -1,6 +1,6 @@
 #okp-core-sidebar {
   background-color: var(--okp-core-sidebar);
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  border-left: 1px solid var(--okp-line);
   color: var(--okp-core-sidebar-text);
   overflow: hidden;
   order: 3;
