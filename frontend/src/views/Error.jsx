@@ -1,20 +1,22 @@
 import { getTranslation, getLang } from "@/plugins/i18n";
 import CoreLayout from "@/components/core/Layout";
+import OkpHeader from "@/components/common/Header";
 
 const Content = () => {
   const lang = getLang(window.location);
   const t = getTranslation(lang);
 
   return (
-    <section className="mt-5">
-      <div className="container">
+    <>
+      <div className="container py-5">
         <div className="row">
           <div className="col">
-            <h1>{t("Error")}</h1>
+            <OkpHeader title={t("Error")} />
+            <p>{t("An error occurred.")}</p>
           </div>
         </div>
       </div>
-    </section>
+    </>
   )
 };
 

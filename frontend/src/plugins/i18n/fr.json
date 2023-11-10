@@ -18,5 +18,7 @@
     "Settings": "Paramètres",
     "FAQ": "FAQ",
     "Error": "Erreur",
-    "Page Not Found": "Page introuvable"
+    "Page Not Found": "Page introuvable",
+    "An error occurred.": "Une erreur est survenue.",
+    "Under construction.": "En construction."
 }

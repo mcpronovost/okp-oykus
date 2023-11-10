@@ -18,5 +18,7 @@
     "Settings": "Settings",
     "FAQ": "FAQ",
     "Error": "Error",
-    "Page Not Found": "Page Not Found"
+    "Page Not Found": "Page Not Found",
+    "An error occurred.": "An error occurred.",
+    "Under construction.": "Under construction."
 }

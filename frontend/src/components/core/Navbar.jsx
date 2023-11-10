@@ -39,7 +39,7 @@ const CoreNavbar = () => {
     <nav id="okp-core-navbar">
       <Scrollbars>
         <div id="okp-core-navbar-wrapper">
-          <ul>
+          <ul id="okp-core-navbar-nav-main">
             {mainNavigation.map((nav, i) => (
               <li key={`navbar-link-${i}`}>
                 <OkpRouteLink route={nav.url} classes={isCurrentRoute(nav.url) ? "okp-active" : null} arialabel={nav.name}>
