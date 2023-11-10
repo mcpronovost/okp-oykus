@@ -1,4 +1,9 @@
 .rc-scrollbars-container {
+  .rc-scrollbars-view {
+    overflow-x: hidden !important;
+    margin-bottom: 0 !important;
+  }
+
   .rc-scrollbars-track {
     .rc-scrollbars-thumb {
       background-color: transparent !important;

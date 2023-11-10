@@ -1,35 +1,49 @@
 #okp-core-sidebar {
-  background-color: var(--okp-core-sidebar);
-  border-left: 1px solid var(--okp-line);
   color: var(--okp-core-sidebar-text);
   overflow: hidden;
   order: 3;
   display: flex;
+  flex: 0 0 0;
   flex-direction: column;
   width: 0;
   max-width: 300px;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   z-index: 100;
-  transition: flex 0.3s, width 0.3s;
+  transition: all 0.3s;
 
   &.okp-open {
     flex-basis: 300px;
     width: 300px;
   }
 
-  #okp-sidebar-user-info {
-    text-align: center;
+  #okp-core-sidebar-wrapper {
+    background-color: var(--okp-core-sidebar);
+    border-left: 1px solid var(--okp-line);
+    height: 100%;
     width: 300px;
+    margin: 0 0 0 auto;
+
+    #okp-sidebar-user-info {
+      text-align: center;
+      width: 300px;
+    }
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   #okp-core-sidebar {
-    flex: 0 0 0;
-    width: 0;
-    position: relative;
+    background: transparent;
+    position: absolute;
+    bottom: 51px;
+
+    &.okp-open {
+      background: rgba(0, 0, 0, 0.75);
+      flex-basis: 100%;
+      width: 100%;
+      max-width: 100%;
+    }
   }
 }
