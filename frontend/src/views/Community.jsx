@@ -3,6 +3,7 @@ import { getTranslation, getLang } from "@/plugins/i18n";
 import CoreLayout from "@/components/core/Layout";
 import OkpHeader from "@/components/common/Header";
 import OkpUserBanner from "@/components/common/UserBanner";
+import OkpRouteLink from "@/components/common/RouteLink.jsx";
 import imgOykus from "@/assets/img/oykus.jpg";
 import imgHaven from "@/assets/img/haven.jpg";
 
@@ -12,12 +13,18 @@ const Content = () => {
 
   const [listUsers, setListUsers] = useState([]);
 
-  const callApiCommunity = () => {
-    setListUsers([1,2,3,4,5,6,7,8,9,10]);
+  const callApiCommunityUsersList = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_DOMAIN}/api/community/users/list/`);
+      const data = await response.json();
+      setListUsers(data.users);
+    } catch {
+      setListUsers([]);
+    }
   };
 
   useEffect(() => {
-    callApiCommunity();
+    callApiCommunityUsersList();
   }, []);
 
   return (
@@ -32,12 +39,14 @@ const Content = () => {
           {listUsers.map((user, index) => {
             return (
               <div key={`userbox-${index}`} className="col-12 col-sm-6 col-xl-3">
-                <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", marginTop: "16px" }}>
-                  <OkpUserBanner avatar={imgOykus} banner={imgHaven} height={110} avatarSize={120} bannerSize={72} radiusTop="6px" centeredBanner />
-                  <h2 style={{ textAlign: "center", paddingBottom: "32px" }}>
-                    <span>{`User #${user}`}</span>
-                  </h2>
-                </div>
+                <OkpRouteLink route={`/${lang}${t("/community/")}`}>
+                  <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", height: "100%", marginTop: "16px" }}>
+                    <OkpUserBanner avatar={imgOykus} banner={imgHaven} height={110} avatarSize={120} bannerSize={72} radiusTop="6px" centeredBanner />
+                    <h2 style={{ textAlign: "center", paddingBottom: "32px" }}>
+                      <span>{user.name}</span>
+                    </h2>
+                  </div>
+                </OkpRouteLink>
               </div>
             )
           })}
