@@ -21,5 +21,6 @@
     "Error": "Erreur",
     "Page Not Found": "Page introuvable",
     "An error occurred.": "Une erreur est survenue.",
-    "Under construction.": "En construction."
+    "Under construction.": "En construction.",
+    "Failed to read data": "Impossible de lire les données"
 }

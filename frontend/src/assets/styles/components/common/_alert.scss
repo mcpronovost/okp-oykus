@@ -1,0 +1,53 @@
+.okp-alert {
+  border-radius: 16px;
+  border-style: dashed;
+  padding: 0 16px;
+
+  .okp-alert-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 16px 0;
+
+    .okp-alert-header-icon {
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 100%;
+      flex: 0 0 auto;
+    }
+
+    .okp-alert-header-title {
+      font-family: Quicksand, "Open Sans", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 100%;
+      flex: 1 1 auto;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .okp-alert-body {
+    margin: 16px 0;
+    margin-left: calc(1.2rem + 12px);
+  
+    .okp-alert-body-message {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 125%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &--error {
+    background-color: #311414;
+    border-color: #572c2c;
+
+    .okp-alert-header {
+      color: #a14444;
+    }
+  }
+}

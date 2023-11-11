@@ -21,5 +21,6 @@
     "Error": "Error",
     "Page Not Found": "Page Not Found",
     "An error occurred.": "An error occurred.",
-    "Under construction.": "Under construction."
+    "Under construction.": "Under construction.",
+    "Failed to read data": "Failed to read data"
 }

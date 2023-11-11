@@ -5,7 +5,8 @@ from okp.api.paginations import (
     okpPagination
 )
 from okp.api.permissions import (
-    okpPermissionReadOnly
+    okpPermissionReadOnly,
+    # okpPermissionAuthenticated
 )
 from okp.api.community.serializers import (
     okpUserSerializer
