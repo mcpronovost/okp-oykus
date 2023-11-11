@@ -50,4 +50,22 @@
       color: #a14444;
     }
   }
+
+  &--warning {
+    background-color: #2a2b12;
+    border-color: #56572c;
+
+    .okp-alert-header {
+      color: #a19644;
+    }
+  }
+
+  &--success {
+    background-color: #132d16;
+    border-color: #2c573a;
+
+    .okp-alert-header {
+      color: #44a148;
+    }
+  }
 }
