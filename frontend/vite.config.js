@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "http://localhost:8000/",
+  base: process.env.VITE_DOMAIN,
   appType: "spa",
   assetsDir: "assets",
   resolve: {
