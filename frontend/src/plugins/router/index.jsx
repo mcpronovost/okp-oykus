@@ -1,6 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import { getLang, getTranslation } from "@/plugins/i18n";
 import HomeView from "@/views/Home.jsx";
+import CommunityView from "@/views/Community.jsx";
+import AwardsView from "@/views/Awards.jsx";
+import AchievementsView from "@/views/Achievements.jsx";
 import RankingsView from "@/views/Rankings.jsx";
 import FAQView from "@/views/FAQ.jsx";
 import ErrorView from "@/views/Error.jsx";
@@ -11,6 +14,27 @@ export const routes = [
     view: HomeView,
     meta: {
       title: "Home",
+    }
+  },
+  {
+    uri: "/community/",
+    view: CommunityView,
+    meta: {
+      title: "Community",
+    }
+  },
+  {
+    uri: "/awards/",
+    view: AwardsView,
+    meta: {
+      title: "Awards",
+    }
+  },
+  {
+    uri: "/achievements/",
+    view: AchievementsView,
+    meta: {
+      title: "Achievements",
     }
   },
   {

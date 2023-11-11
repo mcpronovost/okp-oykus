@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const CommonUserBanner = ({ height, avatar, banner, avatarSize, bannerSize }) => {
+const CommonUserBanner = ({ height, avatar, banner, avatarSize, bannerSize, radiusTop, centeredBanner }) => {
   return (
     <div className="okp-userbanner" style={{
       height: `${height || avatarSize+bannerSize}px`
     }}>
       <div className="okp-banner" style={{
+        borderTopLeftRadius: radiusTop || "0",
+        borderTopRightRadius: radiusTop || "0",
         height: `${bannerSize}px`
       }}>
         <div className="okp-banner-img" style={{
@@ -16,7 +18,7 @@ const CommonUserBanner = ({ height, avatar, banner, avatarSize, bannerSize }) =>
       <div className="okp-avatar" style={{
         width: `${avatarSize}px`,
         height: `${avatarSize}px`,
-        top: `${bannerSize/2}px`
+        top: `${centeredBanner ? ((bannerSize/2)-(avatarSize/2)) : bannerSize/2}px`
       }}>
         {avatar ? (
             <img src={avatar} alt="Avatar" />

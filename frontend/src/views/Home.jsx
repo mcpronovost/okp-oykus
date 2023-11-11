@@ -32,7 +32,11 @@ const Content = () => {
                 <button type="button" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>Mon bouton</button>
               </div><br />
 
-              Liliput id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.<br /><br />
+              <div style={{ border: "1px dashed var(--okp-line)", borderRadius: "6px", fontSize: "0.75rem", padding: "16px" }}>
+                Liliput id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.
+              </div>
+              
+              <br />
 
               <div>
                 <div>{ JSON.stringify(sidebarOpen) }</div>

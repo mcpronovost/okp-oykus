@@ -1,6 +1,6 @@
 button {
-    background-color: var(--okp-core);
-    border: 1px solid var(--okp-core);
+    background-color: var(--okp-core-light);
+    border: 1px solid var(--okp-core-light);
     border-radius: 4px;
     color: var(--okp-text);
     font-family: var(--okp-font-family);
@@ -21,8 +21,8 @@ button {
 
     &:not(:disabled):hover {
         background-color: var(--okp-core-light);
+        border-color: var(--okp-line);
         color: var(--okp-text-light);
-        border-color: var(--okp-core-light);
         cursor: pointer;
 
         &:active {
