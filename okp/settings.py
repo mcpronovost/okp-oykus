@@ -86,9 +86,13 @@ APPEND_SLASH = True
 
 CSRF_COOKIE_AGE = 86400
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "localhost:8000",
+    "localhost:3000"
+]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -190,16 +194,16 @@ LOCALE_PATHS = [
 
 # Get code error notifications
 ADMINS = [
-    ("M-C Pronovost", "mcpronovostkurkiency@gmail.com")
+    ("M-C Pronovost", "support@oykus.ca")
 ]
 
 # Get broken link notifications
 MANAGERS = [
-    ("M-C Pronovost", "mcpronovostkurkiency@gmail.com")
+    ("M-C Pronovost", "support@oykus.ca")
 ]
 
 # Used only for error messages
-SERVER_EMAIL = "mcpronovostkurkiency@gmail.com"
+SERVER_EMAIL = "support@oykus.ca"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv("EMAIL_HOST", "")
@@ -208,7 +212,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 EMAIL_PORT = os.getenv("EMAIL_PORT", "")
 
 DEFAULT_FROM_EMAIL = "noreply@oykus.ca"
-DEFAULT_TO_EMAIL = "mcpronovostkurkiency@gmail.com"
+DEFAULT_TO_EMAIL = "info@oykus.ca"
 
 # =============================================================================
 # Static files (CSS, JavaScript, Images)
