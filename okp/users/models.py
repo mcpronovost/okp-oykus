@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from autoslug import AutoSlugField
 
+from okp.users.validators import okpValidatorsAvatar
+
 CHOIX_LANGS = [
     ("fr", _("French")),
     ("en", _("English"))
@@ -34,6 +36,13 @@ class okpUserProfile(models.Model):
         populate_from="name",
         unique=True,
         editable=True,
+        blank=True,
+        null=True
+    )
+    avatar = models.ImageField(
+        verbose_name=_("Avatar"),
+        upload_to="avatars/",
+        validators=[okpValidatorsAvatar],
         blank=True,
         null=True
     )
