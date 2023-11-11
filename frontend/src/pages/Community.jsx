@@ -5,7 +5,6 @@ import OkpHeader from "@/components/common/Header";
 import OkpUserBanner from "@/components/common/UserBanner";
 import OkpRouteLink from "@/components/common/RouteLink";
 import OkpLoading from "@/components/common/Loading";
-import imgOykus from "@/assets/img/oykus.jpg";
 
 const Content = () => {
   const lang = getLang(window.location);
@@ -48,10 +47,10 @@ const Content = () => {
           {(!isLoading && listUsers.length > 0) && listUsers.map((user, index) => {
             return (
               <div key={`userbox-${index}`} className="col-12 col-sm-6 col-xl-3">
-                <OkpRouteLink route={`/${lang}${t("/community")}/u/${user.slug}/`}>
-                  <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", height: "100%", marginTop: "16px" }}>
-                    <OkpUserBanner avatar={user.avatar} banner={imgOykus} height={110} avatarSize={120} bannerSize={72} radiusTop="6px" centeredBanner />
-                    <h2 style={{ textAlign: "center", paddingBottom: "16px" }}>
+                <OkpRouteLink route={`/${lang}${t("/community")}/u/${user.slug}/`} style={{ display: "block", height: "calc(100% - 6px)", marginTop: "6px" }}>
+                  <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", height: "100%" }}>
+                    <OkpUserBanner avatar={user.avatar} banner={user.avatar} height={96} avatarSize={100} bannerSize={72} radiusTop="6px" centeredBanner />
+                    <h2 style={{ fontSize: "1rem", textAlign: "center", paddingBottom: "16px" }}>
                       <span>{user.name}</span>
                     </h2>
                   </div>
