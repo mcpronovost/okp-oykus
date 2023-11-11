@@ -51,7 +51,7 @@ const Content = () => {
                 <OkpRouteLink route={`/${lang}${t("/community")}/u/${user.slug}/`}>
                   <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", height: "100%", marginTop: "16px" }}>
                     <OkpUserBanner avatar={user.avatar} banner={imgOykus} height={110} avatarSize={120} bannerSize={72} radiusTop="6px" centeredBanner />
-                    <h2 style={{ textAlign: "center", paddingBottom: "32px" }}>
+                    <h2 style={{ textAlign: "center", paddingBottom: "16px" }}>
                       <span>{user.name}</span>
                     </h2>
                   </div>

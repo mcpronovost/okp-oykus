@@ -24,4 +24,4 @@ class okpCommunityUsersListView(ListAPIView):
     )
     serializer_class = okpUserSerializer
     pagination_class = okpPagination
-    page_size = 1
+    page_size = 12
