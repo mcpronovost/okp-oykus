@@ -10,7 +10,7 @@ import ErrorView from "@/pages/Error";
 
 export const routes = [
   {
-    uri: "/",
+    uri: "",
     view: HomeView,
     meta: {
       title: "Home",

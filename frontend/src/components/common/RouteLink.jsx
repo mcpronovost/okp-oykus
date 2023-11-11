@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import RouterContext from "@/plugins/router";
 
-const OkpRouteLink = ({ children, route, classes, arialabel }) => {
+const OkpRouteLink = ({ children, route, classes, style, arialabel }) => {
   const { goRoute } = useContext(RouterContext);
 
   const handleGoRoute = (e) => {
@@ -11,7 +11,7 @@ const OkpRouteLink = ({ children, route, classes, arialabel }) => {
   };
 
   return (
-    <a href={route} onClick={handleGoRoute} className={classes ? classes : null} aria-label={arialabel ? arialabel : null}>
+    <a href={route} onClick={handleGoRoute} className={classes || null} style={style || null} aria-label={arialabel || null}>
       { children }
     </a>
   );
