@@ -51,7 +51,7 @@ const Content = () => {
             return (
               <div key={`userbox-${index}`} className="col-12 col-sm-6 col-xl-3">
                 <OkpRouteLink route={`/${lang}${t("/community")}/u/${user.slug}/`} style={{ display: "block", height: "calc(100% - 6px)", marginTop: "6px" }}>
-                  <div className="okp-core" style={{height: "100%" }}>
+                  <div className="okp-core" style={{height: "100%", padding: "0" }}>
                     <OkpUserBanner avatar={user.avatar} banner={user.avatar} height={96} avatarSize={100} bannerSize={72} radiusTop="6px" centeredBanner />
                     <h2 style={{ fontSize: "1rem", textAlign: "center", paddingBottom: "16px" }}>
                       <span>{user.name}</span>
@@ -62,12 +62,12 @@ const Content = () => {
             )
           })}
           {(!hasError && isLoading) && (
-            <div className="col">
+            <div className="col-12">
               <OkpLoading />
             </div>
           )}
           {(hasError) && (
-            <div className="col">
+            <div className="col-12">
               <OkpAlert title={t("An error occurred.")} message={hasError} />
             </div>
           )}
