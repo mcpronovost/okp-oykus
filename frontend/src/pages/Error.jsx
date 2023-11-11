@@ -1,5 +1,5 @@
 import { getTranslation, getLang } from "@/plugins/i18n";
-import CoreLayout from "@/components/core/Layout";
+import OkpLayout from "@/components/core/Layout";
 import OkpHeader from "@/components/common/Header";
 
 const Content = () => {
@@ -22,9 +22,9 @@ const Content = () => {
 
 const View = () => {
   return (
-    <CoreLayout>
+    <OkpLayout>
       <Content />
-    </CoreLayout>
+    </OkpLayout>
   )
 };
 

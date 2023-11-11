@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { getTranslation, getLang } from "@/plugins/i18n";
 import StoreContext from "@/plugins/store";
-import CoreLayout from "@/components/core/Layout";
+import OkpLayout from "@/components/core/Layout";
 import OkpHeader from "@/components/common/Header";
 
 const Content = () => {
@@ -23,9 +23,9 @@ const Content = () => {
     <>
       <div className="container py-5">
         <div className="row">
-          <div className="col">
+          <div className="col-12">
             <OkpHeader title={t("Home")} subtitle="La liste de tous les chapitres." />
-            <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", padding: "32px" }}>
+            <div className="okp-core">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis.Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
 
               <div>
@@ -38,10 +38,6 @@ const Content = () => {
               
               <br />
 
-              <div>
-                <div>{ JSON.stringify(sidebarOpen) }</div>
-              </div><br />
-
               Integer id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.
             </div>
           </div>
@@ -50,7 +46,7 @@ const Content = () => {
       <div style={{ backgroundColor: "var(--okp-core)", padding: "32px" }}>
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-12">
               <div style={{ background: "linear-gradient(92.05deg, #1242a4 12.09%, #34b27f 42.58%, #89a412 84.96%)", borderRadius: "6px", padding: "1px" }}>
                 <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", padding: "32px" }}>
                   Integer id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.
@@ -62,21 +58,9 @@ const Content = () => {
       </div>
       <div className="container py-5">
         <div className="row">
-          <div className="col">
-            <div style={{ backgroundColor: "var(--okp-core)", borderRadius: "6px", border: "1px solid var(--okp-line)", padding: "32px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis. Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.<br /><br />
-
-              <div>
-                <button type="button" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>Mon bouton</button>
-              </div><br />
-
-              Liliput id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.<br /><br />
-
-              <div>
-                <div>{ JSON.stringify(sidebarOpen) }</div>
-              </div><br />
-
-              Integer id lacus ex. Duis id lacinia massa. Integer et nibh et felis ultrices consectetur. Nunc non nunc porta, posuere risus non, maximus purus. Vivamus malesuada consequat erat, eget mollis sem finibus in. Cras tempus pulvinar porttitor. Aenean ornare ornare dolor, non suscipit quam porttitor at. Fusce et pharetra ipsum. Morbi condimentum tempus odio, nec ultricies magna pharetra ac. Nullam lobortis mi ac erat sollicitudin iaculis. Cras laoreet pellentesque neque at posuere. Nullam in facilisis lectus. Nam congue sapien a ante placerat, nec vulputate nulla facilisis. Proin ut turpis quis justo lacinia tincidunt. Donec et justo odio. Nullam ornare erat vitae porta vulputate.
+          <div className="col-12">
+            <div className="okp-core">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum quis urna sed mollis. Fusce lobortis feugiat tellus eget elementum. Proin sagittis ullamcorper ipsum non tincidunt. Vivamus et risus turpis. Curabitur hendrerit nisl quis neque sodales ultricies. Morbi lacinia elit facilisis mauris volutpat malesuada. Nulla sit amet dictum turpis. Nunc urna ante, hendrerit eget eros non, commodo facilisis tellus. Nulla facilisis auctor augue id pretium. Quisque consectetur ipsum purus, eget ultrices nunc ornare in.
             </div>
           </div>
         </div>
@@ -87,9 +71,9 @@ const Content = () => {
 
 const View = () => {
   return (
-    <CoreLayout>
+    <OkpLayout>
       <Content />
-    </CoreLayout>
+    </OkpLayout>
   )
 };
 
