@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { getLang, getTranslation } from "@/plugins/i18n";
-import HomeView from "@/views/Home.jsx";
-import CommunityView from "@/views/Community.jsx";
-import AwardsView from "@/views/Awards.jsx";
-import AchievementsView from "@/views/Achievements.jsx";
-import RankingsView from "@/views/Rankings.jsx";
-import FAQView from "@/views/FAQ.jsx";
-import ErrorView from "@/views/Error.jsx";
+import HomeView from "@/pages/Home";
+import CommunityView from "@/pages/Community";
+import AwardsView from "@/pages/Awards";
+import AchievementsView from "@/pages/Achievements";
+import RankingsView from "@/pages/Rankings";
+import FAQView from "@/pages/FAQ";
+import ErrorView from "@/pages/Error";
 
 export const routes = [
   {
@@ -17,42 +17,42 @@ export const routes = [
     }
   },
   {
-    uri: "/community/",
+    uri: "/community",
     view: CommunityView,
     meta: {
       title: "Community",
     }
   },
   {
-    uri: "/awards/",
+    uri: "/awards",
     view: AwardsView,
     meta: {
       title: "Awards",
     }
   },
   {
-    uri: "/achievements/",
+    uri: "/achievements",
     view: AchievementsView,
     meta: {
       title: "Achievements",
     }
   },
   {
-    uri: "/rankings/",
+    uri: "/rankings",
     view: RankingsView,
     meta: {
       title: "Rankings",
     }
   },
   {
-    uri: "/faq/",
+    uri: "/faq",
     view: FAQView,
     meta: {
       title: "FAQ",
     }
   },
   {
-    uri: "/error/",
+    uri: "/error",
     view: ErrorView,
     meta: {
       title: "Error",
@@ -61,10 +61,9 @@ export const routes = [
 ];
 
 export const getRoute = (path, lang) => {
-  if (path.substr(-1) != "/") path += "/";
   const t = getTranslation(lang);
   const route = routes.find((r) => {
-    return `/${lang}${t(r.uri)}` === path;
+    return `/${lang}${t(r.uri)}/` === path;
   });
   if (!route) return {
     view: ErrorView,

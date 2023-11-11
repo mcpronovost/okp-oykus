@@ -1,14 +1,15 @@
 {
     "Home": "Accueil",
 
-    "/profile/": "/profil/",
-    "/community/": "/communaute/",
-    "/awards/": "/recompenses/",
-    "/achievements/": "/succes/",
-    "/rankings/": "/classements/",
-    "/settings/": "/parametres/",
-    "/faq/": "/faq/",
-    "/error/": "/erreur/",
+    "/profile": "/profil",
+    "/community": "/communaute",
+    "/users": "/utilisateurs",
+    "/awards": "/recompenses",
+    "/achievements": "/succes",
+    "/rankings": "/classements",
+    "/settings": "/parametres",
+    "/faq": "/faq",
+    "/error": "/erreur",
 
     "Profile": "Profil",
     "Community": "Communauté",

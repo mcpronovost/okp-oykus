@@ -1,14 +1,15 @@
 {
     "Home": "Home",
 
-    "/profile/": "/profile/",
-    "/community/": "/community/",
-    "/awards/": "/awards/",
-    "/achievements/": "/achievements/",
-    "/rankings/": "/rankings/",
-    "/settings/": "/settings/",
-    "/faq/": "/faq/",
-    "/error/": "/error/",
+    "/profile": "/profile",
+    "/community": "/community",
+    "/users": "/users",
+    "/awards": "/awards",
+    "/achievements": "/achievements",
+    "/rankings": "/rankings",
+    "/settings": "/settings",
+    "/faq": "/faq",
+    "/error": "/error",
 
     "Profile": "Profile",
     "Community": "Community",
