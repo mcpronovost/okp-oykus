@@ -2,9 +2,14 @@
 
 A project.
 
+## Custom Frontend Plugins
+- Translations (i18n)
+- Seamless routing (router)
+- Stores (store)
+
 ## Installation
 
-### Backend
+### Backend (django)
 ```
 py -m venv .venv
 ```
@@ -24,7 +29,7 @@ py manage.py migrate
 py manage.py runserver
 ```
 
-### Frontend
+### Frontend (react)
 ```
 npm install
 ```
