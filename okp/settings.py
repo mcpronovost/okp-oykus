@@ -194,16 +194,16 @@ LOCALE_PATHS = [
 
 # Get code error notifications
 ADMINS = [
-    ("M-C Pronovost", "support@oykus.ca")
+    ("Admin", os.getenv("EMAIL_SUPPORT", ""))
 ]
 
 # Get broken link notifications
 MANAGERS = [
-    ("M-C Pronovost", "support@oykus.ca")
+    ("Manager", os.getenv("EMAIL_SUPPORT", ""))
 ]
 
 # Used only for error messages
-SERVER_EMAIL = "support@oykus.ca"
+SERVER_EMAIL = os.getenv("EMAIL_SUPPORT", "")
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv("EMAIL_HOST", "")
@@ -211,8 +211,8 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 EMAIL_PORT = os.getenv("EMAIL_PORT", "")
 
-DEFAULT_FROM_EMAIL = "noreply@oykus.ca"
-DEFAULT_TO_EMAIL = "info@oykus.ca"
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_FROM", "")
+DEFAULT_TO_EMAIL = os.getenv("EMAIL_TO", "")
 
 # =============================================================================
 # Static files (CSS, JavaScript, Images)
