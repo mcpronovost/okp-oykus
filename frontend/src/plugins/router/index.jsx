@@ -6,6 +6,7 @@ import AwardsView from "@/pages/Awards";
 import AchievementsView from "@/pages/Achievements";
 import RankingsView from "@/pages/Rankings";
 import FAQView from "@/pages/FAQ";
+import { authRoutes } from "@/plugins/router/AuthRoutes";
 import ErrorView from "@/pages/Error";
 
 export const routes = [
@@ -51,6 +52,7 @@ export const routes = [
       title: "FAQ",
     }
   },
+  ...authRoutes,
   {
     uri: "/error",
     view: ErrorView,

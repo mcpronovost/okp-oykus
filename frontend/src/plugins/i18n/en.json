@@ -9,6 +9,9 @@
     "/rankings": "/rankings",
     "/settings": "/settings",
     "/faq": "/faq",
+    "/login": "/auth/login",
+    "/logout": "/auth/logout",
+    "/register": "/auth/register",
     "/error": "/error",
 
     "Profile": "Profile",
@@ -18,9 +21,15 @@
     "Rankings": "Rankings",
     "Settings": "Settings",
     "FAQ": "FAQ",
+    "Login": "Login",
+    "Logout": "Logout",
+    "Register": "Register",
     "Error": "Error",
     "Page Not Found": "Page Not Found",
     "An error occurred.": "An error occurred.",
     "Under construction.": "Under construction.",
-    "Failed to read data": "Failed to read data"
+    "Failed to read data": "Failed to read data",
+    "Main Navigation": "Main Navigation",
+    "User Navigation": "User Navigation",
+    "Authentication Navigation": "Authentication Navigation"
 }

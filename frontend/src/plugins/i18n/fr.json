@@ -9,6 +9,9 @@
     "/rankings": "/classements",
     "/settings": "/parametres",
     "/faq": "/faq",
+    "/auth/login": "/auth/connexion",
+    "/auth/logout": "/auth/deconnexion",
+    "/auth/register": "/auth/inscription",
     "/error": "/erreur",
 
     "Profile": "Profil",
@@ -18,9 +21,15 @@
     "Rankings": "Classements",
     "Settings": "Paramètres",
     "FAQ": "FAQ",
+    "Login": "Connexion",
+    "Logout": "Déconnexion",
+    "Register": "Inscription",
     "Error": "Erreur",
     "Page Not Found": "Page introuvable",
     "An error occurred.": "Une erreur est survenue.",
     "Under construction.": "En construction.",
-    "Failed to read data": "Impossible de lire les données"
+    "Failed to read data": "Impossible de lire les données",
+    "Main Navigation": "Navigation principale",
+    "User Navigation": "Navigation utilisateur",
+    "Authentication Navigation": "Navigation d'authentification"
 }
