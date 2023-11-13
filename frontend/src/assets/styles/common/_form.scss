@@ -1,0 +1,31 @@
+form {
+    label {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 125%;
+        display: flex;
+        margin: 0 0 6px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        background-color: var(--okp-core);
+        border: 1px solid var(--okp-line);
+        border-radius: 6px;
+        box-sizing: border-box;
+        color: var(--okp-text);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 125%;
+        width: 100%;
+        padding: 6px 12px;
+        margin: 0 0 16px;
+
+        &:focus {
+            background-color: var(--okp-core-light);
+            border-color: var(--okp-line);
+            color: var(--okp-text-light);
+            outline: none;
+        }
+    }
+}

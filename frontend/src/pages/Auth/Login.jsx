@@ -23,7 +23,7 @@ const Content = () => {
           <h1>{t("Sign in to Oykus")}</h1>
         </header>
         <div className="okp-core">
-          <form method="get" onSubmit={(e) => { handleFormLogin(e) }}>
+          <form className="okp-auth-login-form" method="get" onSubmit={(e) => { handleFormLogin(e) }}>
             <div>
               <label htmlFor="okp-login-username">{t("Username")}</label>
               <input type="text" id="okp-login-username" name="username" required />

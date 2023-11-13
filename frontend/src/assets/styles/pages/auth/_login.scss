@@ -14,4 +14,23 @@
       margin: 0 auto 24px;
     }
   }
+
+  .okp-auth-login-form {
+    width: 300px;
+    max-width: calc(100vw - 32px);
+    margin: 0 auto;
+  }
+
+  .okp-auth-login-footer {
+    border: 1px dashed var(--okp-line);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 125%;
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    padding: 16px;
+    margin: 16px 0;
+  }
 }
