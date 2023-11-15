@@ -52,10 +52,14 @@ const CoreHeader = () => {
               <li>
                 <button type="button" className="okp-btn-text" onClick={() => { setStoreSidebarOpen(!sidebarOpen) }}>
                   <div className="okp-avatar">
-                    {/* <img src={imgLogo} alt="Oykus" width={32} height={32} style={{ opacity: 0.4}} /> */}
-                    <span className="okp-icon">
-                      <FontAwesomeIcon icon={faUser} />
-                    </span>
+                    {(user.avatar) && (
+                      <img src={user.avatar} alt="Oykus" width={32} height={32} style={{ opacity: 0.4}} />
+                    )}
+                    {(!user.avatar) && (
+                      <span className="okp-icon">
+                        <FontAwesomeIcon icon={faUser} />
+                      </span>
+                    )}
                   </div>
                   <div className="okp-user">
                     <span className="okp-username">{user.name}</span>
