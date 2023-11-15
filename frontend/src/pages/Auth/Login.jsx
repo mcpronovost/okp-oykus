@@ -18,9 +18,9 @@ const Content = () => {
       <div id="okp-auth-login">
         <header className="okp-auth-login-header">
           <div className="okp-auth-login-logo">
-            <img src={ imgLogo } alt="Oykus" width={100} height={100} />
+            <img src={ imgLogo } alt="Oykus" width={72} height={72} />
           </div>
-          <h1>{t("Sign in to Oykus")}</h1>
+          <h1>{t("Log in to Oykus")}</h1>
         </header>
         <div className="okp-core">
           <form className="okp-auth-login-form" method="get" onSubmit={(e) => { handleFormLogin(e) }}>
@@ -32,14 +32,14 @@ const Content = () => {
               <label htmlFor="okp-login-password">{t("Password")}</label>
               <input type="password" id="okp-login-password" name="password" required />
             </div>
-            <div>
-              <button type="submit">{t("Sign in")}</button>
+            <div className="pt-2">
+              <button type="submit">{t("Log in")}</button>
             </div>
           </form>
         </div>
         <footer className="okp-auth-login-footer">
           <span>{t("Don't have an account?")}</span>
-          <OkpRouteLink route={`/${lang}${t("/auth/register")}/`} children={t("Create an account")} />
+          <OkpRouteLink route={`/${lang}${t("/auth/register")}/`} children={t("Sign up")} />
         </footer>
       </div>
     </>

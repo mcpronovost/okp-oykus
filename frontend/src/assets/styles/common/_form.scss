@@ -9,11 +9,11 @@ form {
 
     input[type="text"],
     input[type="password"] {
-        background-color: var(--okp-core);
+        background-color: var(--okp-core-dark);
         border: 1px solid var(--okp-line);
         border-radius: 6px;
         box-sizing: border-box;
-        color: var(--okp-text);
+        color: var(--okp-text-dark);
         font-size: 1rem;
         font-weight: 400;
         line-height: 125%;
@@ -23,8 +23,8 @@ form {
 
         &:focus {
             background-color: var(--okp-core-light);
-            border-color: var(--okp-line);
-            color: var(--okp-text-light);
+            border-color: var(--okp-primary);
+            color: var(--okp-text);
             outline: none;
         }
     }

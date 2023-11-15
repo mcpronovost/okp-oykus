@@ -31,5 +31,11 @@
     "Failed to read data": "Impossible de lire les données",
     "Main Navigation": "Navigation principale",
     "User Navigation": "Navigation utilisateur",
-    "Authentication Navigation": "Navigation d'authentification"
+    "Authentication Navigation": "Navigation d'authentification",
+    "Username": "Nom d'utilisateur",
+    "Password": "Mot de passe",
+    "Log in": "Se connecter",
+    "Sign up": "S'inscrire",
+    "Don't have an account?": "Vous n'avez pas de compte ?",
+    "Log in to Oykus": "Se connecter à Oykus"
 }
