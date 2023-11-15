@@ -61,14 +61,26 @@ class okpUserLoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(**data)
-        if user and user.is_active:
+        if user and user.is_active and hasattr(user, "profile"):
             return user
         raise serializers.ValidationError(_("Invalid details."))
 
 
 class okpUserSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source="profile.name", read_only=True)
+    slug = serializers.CharField(source="profile.slug", read_only=True)
+    avatar = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = User
         fields = [
-            "id", "username"
+            "id", "username", "name", "slug", "avatar"
         ]
+
+    def get_avatar(self, obj):
+        request = self.context.get("request")
+        if obj.profile.avatar:
+            return request.build_absolute_uri(
+                obj.profile.avatar.url
+            )
+        return None
