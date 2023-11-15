@@ -10,6 +10,7 @@
 @import "@/assets/styles/common/_utilities.scss";
 @import "@/assets/styles/common/_links.scss";
 @import "@/assets/styles/common/_buttons.scss";
+@import "@/assets/styles/common/_form.scss";
 
 /* components */
 
@@ -23,3 +24,7 @@
 @import "@/assets/styles/components/core/_navbar.scss";
 @import "@/assets/styles/components/core/_sidebar.scss";
 @import "@/assets/styles/components/core/_main.scss";
+
+/* pages */
+
+@import "@/assets/styles/pages/auth/_login.scss";

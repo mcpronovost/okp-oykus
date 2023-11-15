@@ -12,7 +12,7 @@ const Content = () => {
         <div className="row">
           <div className="col">
             <OkpHeader title={t("Error")} />
-            <p>{t("An error occurred.")}</p>
+            <p>{t("An error occurred")}</p>
           </div>
         </div>
       </div>

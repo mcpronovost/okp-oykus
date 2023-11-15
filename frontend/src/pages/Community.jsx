@@ -68,7 +68,7 @@ const Content = () => {
           )}
           {(hasError) && (
             <div className="col-12">
-              <OkpAlert title={t("An error occurred.")} message={hasError} />
+              <OkpAlert title={t("An error occurred")} message={hasError} />
             </div>
           )}
         </div>

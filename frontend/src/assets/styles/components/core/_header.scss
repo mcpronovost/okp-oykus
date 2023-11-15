@@ -213,6 +213,18 @@
         }
       }
     }
+
+    &#okp-core-header-nav-auth {
+      margin-right: 16px;
+
+      > ul {
+        > li {
+          > a {
+            padding: 12px;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -69,3 +69,10 @@ h6 {
   border-radius: 6px;
   padding: 32px;
 }
+
+@media (max-width: 767px) {
+  .okp-core {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
