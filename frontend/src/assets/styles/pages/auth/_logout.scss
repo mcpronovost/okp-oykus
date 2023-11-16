@@ -1,0 +1,17 @@
+#okp-auth-logout {
+  text-align: center;
+
+  .okp-auth-logout-header {
+    display: block;
+    margin: 0 0 32px;
+
+    .okp-auth-logout-logo {
+      border-radius: 50%;
+      overflow: hidden;
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import LoginView from "@/pages/Auth/Login";
+import LogoutView from "@/pages/Auth/Logout";
 
 export const authRoutes = [
   {
@@ -6,6 +7,13 @@ export const authRoutes = [
     view: LoginView,
     meta: {
       title: "Login",
+    }
+  },
+  {
+    uri: "/auth/logout",
+    view: LogoutView,
+    meta: {
+      title: "Logout",
     }
   }
 ];
