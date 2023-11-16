@@ -21,7 +21,7 @@ const CoreSidebar = () => {
                 <OkpUserBanner height={200} avatar={user.avatar || null} banner={user.avatar || imgOykus} avatarSize={120} bannerSize={120} />
                 <h2>{user.name}</h2>
               </section>
-              <section id="okp-sidebar-user-menu">
+              <section id="okp-sidebar-user-logout">
                 <OkpRouteLink route={`/${lang}${t("/auth/logout")}/`} classes="okp-sidebar-btn-logout" children={t("Logout")} />
               </section>
             </div>
