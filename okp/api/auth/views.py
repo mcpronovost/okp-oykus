@@ -15,6 +15,24 @@ from okp.api.auth.serializers import (
 )
 
 
+class okpAuthView(generics.RetrieveAPIView):
+    permission_classes = [okpPermissionAny]
+    serializer_class = okpUserSerializer
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return Response({
+                "valid": True,
+                "user": self.get_serializer(
+                    request.user,
+                    context=self.get_serializer_context()
+                ).data
+            })
+        return Response({
+            "valid": False
+        })
+
+
 class okpRegisterView(generics.CreateAPIView):
     permission_classes = [okpPermissionAny]
     serializer_class = okpUserRegisterSerializer
