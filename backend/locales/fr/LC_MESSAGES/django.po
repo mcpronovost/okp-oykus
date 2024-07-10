@@ -1,0 +1,82 @@
+# Oykus - French Translation.
+# Copyright (C) 2024 M-C Pronovost.
+# This file is distributed under the same license as the okp-oykus package.
+# M-C Pronovost <mcpronovostkurkiency@gmail.com>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: okp-oykus 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-10 12:26-0400\n"
+"PO-Revision-Date: 2024-07-10 12:08-0400\n"
+"Last-Translator: M-C Pronovost <mcpronovostkurkiency@gmail.com>\n"
+"Language-Team: M-C Pronovost <mcpronovostkurkiency@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: okp/auth/apps.py:8
+msgid "Auth"
+msgstr "Authentification"
+
+#: okp/forums/apps.py:8
+msgid "Forums"
+msgstr "Forums"
+
+#: okp/games/admin.py:16
+msgid "General"
+msgstr "Général"
+
+#: okp/games/apps.py:8 okp/games/models.py:49
+msgid "Games"
+msgstr "Jeux"
+
+#: okp/games/models.py:12
+msgid "Founder"
+msgstr "Fondateur"
+
+#: okp/games/models.py:20
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: okp/games/models.py:25 okp/users/admin.py:40 okp/users/models.py:16
+msgid "Name"
+msgstr "Nom"
+
+#: okp/games/models.py:31
+msgid "Active"
+msgstr "Actif"
+
+#: okp/games/models.py:35
+msgid "Created At"
+msgstr "Créé"
+
+#: okp/games/models.py:41
+msgid "Updated At"
+msgstr "Mis à jour"
+
+#: okp/games/models.py:48
+msgid "Game"
+msgstr "Jeu"
+
+#: okp/users/admin.py:21
+msgid "Authentication Informations"
+msgstr "Informations d'authentification"
+
+#: okp/users/admin.py:30
+msgid "Permissions"
+msgstr "Permissions"
+
+#: okp/users/apps.py:8
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: okp/users/models.py:11 okp/users/models.py:23
+msgid "Profile"
+msgstr "Profil"
+
+#: okp/users/models.py:24
+msgid "Profiles"
+msgstr "Profils"
