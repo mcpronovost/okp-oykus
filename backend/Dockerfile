@@ -14,6 +14,8 @@ COPY requirements.txt /code/requirements.txt
 
 RUN pip install -r requirements.txt
 
+COPY . /code/
+
 EXPOSE 8000
 
 CMD ["gunicorn", "okp.wsgi"]

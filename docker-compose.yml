@@ -21,7 +21,7 @@ services:
   backend:
     container_name: okp-oykus-backend
     build: backend/.
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - "./backend:/code"
     ports:
@@ -39,7 +39,7 @@ services:
     container_name: okp-oykus-db
     image: postgis/postgis:16-3.4
     volumes:
-      - "./data:/var/lib/postgresql/data"
+      - "./dbdata:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
     environment:
@@ -48,4 +48,4 @@ services:
       - POSTGRES_PASSWORD=oykus
 
 volumes:
-  data:
+  dbdata:
