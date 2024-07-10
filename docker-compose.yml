@@ -1,0 +1,55 @@
+services:
+  traefik:
+    container_name: okp-oykus-traefik
+    image: "traefik:v3.0.4"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      # - "--providers.file.directory=/etc/certs"
+      # - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      # - "./certs:/etc/certs"
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+
+  backend:
+    container_name: okp-oykus-backend
+    build: backend/.
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - "./backend:/code"
+    ports:
+      - "8000:8000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`192.168.2.29`)||Host(`69.157.154.101`)||Host(`127.0.0.1`)"
+      - "traefik.http.routers.backend.tls=true"
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=oykus
+      - POSTGRES_PASSWORD=oykus
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    container_name: okp-oykus-db
+    image: postgis/postgis:16-3.4
+    volumes:
+      - "./db_oykus:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=oykus
+      - POSTGRES_PASSWORD=oykus
+
+volumes:
+  db_oykus:
