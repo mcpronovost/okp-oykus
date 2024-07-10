@@ -35,6 +35,11 @@ INSTALLED_APPS = [
     # tiers
     "rest_framework",
     "silk",
+    # okp
+    "okp.users",
+    "okp.auth",
+    "okp.games",
+    "okp.forums"
 ]
 
 MIDDLEWARE = [
