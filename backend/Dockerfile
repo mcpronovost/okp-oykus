@@ -6,9 +6,9 @@ WORKDIR /code
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y \
     gettext \
-    && apt clean
+    && apt-get clean
 
 COPY requirements.txt /code/requirements.txt
 
