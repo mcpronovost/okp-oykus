@@ -18,6 +18,10 @@ class okpUserProfile(models.Model):
         blank=False,
         null=False
     )
+    list_unread_topics = models.JSONField(
+        verbose_name=_("List of Unread Topics"),
+        default=list
+    )
 
     class Meta:
         verbose_name = _("Profile")
