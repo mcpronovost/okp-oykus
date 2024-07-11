@@ -28,12 +28,29 @@ services:
       - "8000:8000"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`192.168.2.29`)||Host(`69.157.154.101`)||Host(`127.0.0.1`)"
+      - "traefik.http.routers.backend.rule=(Host(`192.168.2.29`)||Host(`69.157.154.101`)||Host(`127.0.0.1`))&&(PathPrefix(`/admin/`)||PathPrefix(`/static/`)||PathPrefix(`/media/`)||PathPrefix(`/api/`))"
       # - "traefik.http.routers.backend.tls=true"
     env_file:
       - .env
     depends_on:
       - db
+
+  frontend:
+    container_name: okp-oykus-frontend
+    build: frontend/.
+    command: "npm run dev"
+    volumes:
+      - "./frontend:/code:rw"
+    ports:
+      - "3000:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=(Host(`192.168.2.29`)||Host(`69.157.154.101`)||Host(`127.0.0.1`))"
+      # - "traefik.http.routers.frontend.tls=true"
+    env_file:
+      - .env
+    # depends_on:
+    #  - db
 
   db:
     container_name: okp-oykus-db
