@@ -16,8 +16,10 @@ static/
 
 # generated types
 .astro/
+frontend-demo/
 
 # dependencies
+node_modules
 node_modules/
 package-lock.json
 
