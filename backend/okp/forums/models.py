@@ -54,13 +54,17 @@ class okpForumCategory(models.Model):
     )
     list_topics = models.JSONField(
         verbose_name=_("List of Topics"),
-        default=list
+        default=list,
+        blank=True,
+        null=False
     )
     total_topics = models.PositiveSmallIntegerField(
-        verbose_name=_("Total Topics")
+        verbose_name=_("Total Topics"),
+        default=0
     )
     total_messages = models.PositiveIntegerField(
-        verbose_name=_("Total Messages")
+        verbose_name=_("Total Messages"),
+        default=0
     )
 
     class Meta:
@@ -106,13 +110,17 @@ class okpForumSection(models.Model):
     )
     list_topics = models.JSONField(
         verbose_name=_("List of Topics"),
-        default=list
+        default=list,
+        blank=True,
+        null=False
     )
     total_topics = models.PositiveSmallIntegerField(
-        verbose_name=_("Total Topics")
+        verbose_name=_("Total Topics"),
+        default=0
     )
     total_messages = models.PositiveIntegerField(
-        verbose_name=_("Total Messages")
+        verbose_name=_("Total Messages"),
+        default=0
     )
 
     class Meta:
@@ -163,7 +171,8 @@ class okpForumTopic(models.Model):
         null=False
     )
     total_messages = models.PositiveIntegerField(
-        verbose_name=_("Total Messages")
+        verbose_name=_("Total Messages"),
+        default=0
     )
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),

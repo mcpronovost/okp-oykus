@@ -18,9 +18,13 @@ ADMINS = [
 ]
 
 ALLOWED_HOSTS = [
+    "127.0.0.1:80",
+    "127.0.0.1:3000",
     "127.0.0.1",
     "192.168.2.29",
-    "69.157.154.101"
+    "69.157.154.101",
+    "backend",
+    "frontend"
 ]
 
 # Application definition
@@ -33,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # tiers
+    "corsheaders",
     "rest_framework",
     "silk",
     # okp
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

@@ -26,6 +26,12 @@ class okpGame(models.Model):
         blank=False,
         null=False
     )
+    slug = models.SlugField(
+        verbose_name=_("Slug"),
+        max_length=255,
+        blank=False,
+        null=False
+    )
     is_active = models.BooleanField(
         verbose_name=_("Active"),
         default=False

@@ -1,0 +1,78 @@
+$primary: #699212;
+$secondary: #334D90;
+$darken: #151A27;
+$dark: #161B28;
+$mid: #1D2333;
+$light: #21283B;
+$lighten: #454D62;
+$text: #FEFEFE;
+
+$htopbar: 52px;
+$wnavbar: 52px;
+
+:root {
+  --okp-primary: #699212;
+  --okp-secondary: #334D90;
+  --okp-darken: #151A27;
+  --okp-dark: #161B28;
+  --okp-mid: #1D2333;
+  --okp-light: #21283B;
+  --okp-lighten: #454D62;
+  --okp-text: #FEFEFE;
+}
+
+body {
+  background: $dark;
+  color: $text;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.okp-core-header {
+  background-color: $secondary;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: $htopbar;
+}
+
+.okp-core-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100vw;
+  height: calc(100vh - $htopbar);
+}
+
+.okp-core-leftbar {
+  background-color: $mid;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: $wnavbar;
+  height: calc(100vh - $htopbar);
+}
+
+.okp-core-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: calc(100vw - $wnavbar - $wnavbar);
+  height: calc(100vh - $htopbar);
+}
+
+.okp-core-righbar {
+  background-color: $mid;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: $wnavbar;
+  height: calc(100vh - $htopbar);
+}

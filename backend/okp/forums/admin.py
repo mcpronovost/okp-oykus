@@ -26,8 +26,8 @@ class okpForumAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumCategory)
 class okpForumCategoryAdmin(admin.ModelAdmin):
-    list_display = ["forum", "name"]
-    list_filter = ["is_visible"]
+    list_display = ["name", "forum", "is_visible"]
+    list_filter = ["forum", "is_visible"]
     fieldsets = (
         (_("General"), {
             "fields": [
@@ -53,8 +53,8 @@ class okpForumCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumSection)
 class okpForumSectionAdmin(admin.ModelAdmin):
-    list_display = ["forum", "category", "name"]
-    list_filter = ["is_visible"]
+    list_display = ["name", "category", "forum"]
+    list_filter = ["forum", "is_visible"]
     fieldsets = (
         (_("General"), {
             "fields": [
