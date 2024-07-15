@@ -23,7 +23,8 @@ services:
   backend:
     container_name: okp-oykus-backend
     build: backend/.
-    command: sh -c "python manage.py collectstatic --clear --noinput && python manage.py runserver 0.0.0.0:8000"
+    # command: sh -c "python manage.py collectstatic --clear --noinput && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - "./backend:/code:rw"
     networks:
@@ -45,7 +46,9 @@ services:
     command: "npm run dev -- -p 3000"
     # command: "npm run start -- -p 3000"
     volumes:
-      - "./frontend:/code:rw"
+      - "./frontend/:/code/:rw"
+      - /code/node_modules
+      - /code/.next
     networks:
       - okp-oykus-network
     ports:

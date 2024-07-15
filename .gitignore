@@ -11,12 +11,14 @@ pnpm-debug.log*
 *.log
 
 # build output
+.next/
 dist/
 static/
 
 # generated types
 .astro/
 frontend-demo/
+frontend-next/
 
 # dependencies
 node_modules

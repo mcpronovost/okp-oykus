@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { headers } from "next/headers";
 
 async function getData(game: string) {
@@ -28,32 +27,30 @@ export default async function Page({params}: {params: {game: string}}) {
 
   return (
     <>
-      <ErrorBoundary fallback={"error"}>
+      <div>
         <div>
-          <div>
-            <h1>{data.game.name}</h1>
-          </div>
-          <div>
-            {data.categories.map((category) => {
-              return (
-                <div key={`category-${category.id}`}>
-                  <h2>{category.name}</h2>
-                  <p>{category.description}</p>
-                  <div>
-                    {category.sections.map((section) => {
-                      return (
-                        <div key={`section-${section.id}`}>
-                          <h3>{section.name}</h3>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          <h1>{data.game.name}</h1>
         </div>
-      </ErrorBoundary>
+        <div>
+          {data.categories.map((category) => {
+            return (
+              <div key={`category-${category.id}`}>
+                <h2>{category.name}</h2>
+                <p>{category.description}</p>
+                <div>
+                  {category.sections.map((section) => {
+                    return (
+                      <div key={`section-${section.id}`}>
+                        <h3>{section.name}</h3>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </>
   );
 }

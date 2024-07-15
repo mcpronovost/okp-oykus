@@ -1,0 +1,44 @@
+// core/leftbar
+
+.okp-core-leftbar {
+  background-color: $mid;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: $wnavbar;
+  height: calc(100vh - $htopbar);
+
+  &.okp-open {
+    width: 250px;
+  }
+
+  .okp-links,
+  .okp-links li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    > a {
+      background-color: $mid;
+      border-radius: 6px;
+      color: $lighten;
+      display: flex;
+      min-width: 32px;
+      min-height: 32px;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 4px;
+      margin: 32px 0;
+
+      &:hover, &:focus {
+        background-color: $light;
+        color: $primary;
+      }
+
+      &:active {
+        color: $text;
+      }
+    }
+  }
+}
