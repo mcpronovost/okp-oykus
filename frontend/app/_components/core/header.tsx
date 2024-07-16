@@ -12,7 +12,7 @@ export default async function CoreHeader({ lang }: { lang: okpLocale}) {
   return (
     <header className="okp-core-header">
       <Link href={`/${lang}`} className="okp-brand">
-        <div className="okp-logo" style={{ filter: `drop-shadow(#fefefe 0 1000px 0)` }}>
+        <div className="okp-logo">
           <Image src={imgOykus} alt="logo" width={52} height={52} />
         </div>
         <div className={`okp-name ${fontQuicksand.className}`}>

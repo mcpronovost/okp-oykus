@@ -1,5 +1,5 @@
 .okp-core-righbar {
-  background-color: $mid;
+  background-color: var(--okp-mid);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -21,8 +21,8 @@
       margin: 16px 0;
 
       > a {
-        background-color: $light;
-        color: $text;
+        background-color: var(--okp-light);
+        color: var(--okp-text);
         font-size: 0.9rem;
         font-weight: 600;
         line-height: 40px;
@@ -38,13 +38,13 @@
         margin: 0;
 
         &:hover, &:focus {
-          background-color: $light;
-          color: $primary;
+          background-color: var(--okp-light);
+          color: var(--okp-primary);
           opacity: 1;
         }
 
         &:active {
-          color: $text;
+          color: var(--okp-text);
           opacity: 0.5;
         }
       }
@@ -71,7 +71,7 @@
     }
 
     + .okp-navigation {
-      border-top: 2px solid $light;
+      border-top: 2px solid var(--okp-light);
     }
   }
 }

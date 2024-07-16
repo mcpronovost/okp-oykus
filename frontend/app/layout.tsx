@@ -18,17 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { lang: okpLocale };
 }>) {
+  const lang = params.lang || "fr";
+
   return (
     <>
-      <html lang={params.lang}>
+      <html lang={lang}>
         <body className={fontOpenSans.className}>
-          <CoreHeader lang={params.lang} />
+          <CoreHeader lang={lang} />
           <div className="okp-core-content">
-            <CoreLeftbar lang={params.lang} />
+            <CoreLeftbar lang={lang} />
             <main className="okp-core-main">
               {children}
             </main>
-            <CoreRighbar lang={params.lang} />
+            <CoreRighbar lang={lang} />
           </div>
         </body>
       </html>

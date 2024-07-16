@@ -45,7 +45,7 @@ export default async function CoreLeftbar({ lang }: { lang: okpLocale }) {
       </ul>
       <ul className="okp-navigation">
         <li>
-          <Link href={`/${lang}/settings`}>
+          <Link href={`/${lang}/settings`} className="okp-disabled">
             <Settings size={24} />
             <span className="okp-link-name">
               {t.Settings}
