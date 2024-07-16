@@ -4,9 +4,7 @@ import { headers } from "next/headers";
 async function getData(game: string) {
   const protocol = headers().get("x-forwarded-proto");
   try {
-    const res = await fetch(`${protocol}://backend:8000/api/forum/${game}/index/`).catch((e) => {
-      throw new Error("Failed to fetch data");
-    })
+    const res = await fetch(`${protocol}://backend:8000/api/forum/${game}/index/`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -16,14 +14,19 @@ async function getData(game: string) {
   }
 }
 
-export const metadata: Metadata = {
-  title: "Forum",
-  description: "Index du forum.",
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const data = await getData(params.game);
+  return {
+    title: data.game.name,
+    description: "Index du forum.",
+  };
 };
 
 export default async function Page({params}: {params: {game: string}}) {
   const data = await getData(params.game);
-  if (data?.game?.name) metadata.title = data.game.name;
 
   return (
     <>

@@ -10,12 +10,8 @@
   width: $wnavbar;
   height: calc(100vh - $htopbar);
 
-  &.okp-open {
-    width: 250px;
-  }
-
-  .okp-links,
-  .okp-links li {
+  .okp-navigation,
+  .okp-navigation li {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -25,19 +21,58 @@
       border-radius: 6px;
       color: $lighten;
       display: flex;
-      min-width: 32px;
-      min-height: 32px;
+      align-items: center;
+      min-width: 24px;
+      min-height: 24px;
       transition: background-color 0.3s, color 0.3s;
-      padding: 4px;
-      margin: 32px 0;
+      padding: 12px;
+      margin: 24px 0;
+
+      .okp-link-name {
+        color: $lighten;
+        font-size: 0;
+        line-height: 0;
+        display: none;
+        transition: color 0.3s, font-size 0.3s;
+        margin: 0 0 0 12px;
+      }
 
       &:hover, &:focus {
         background-color: $light;
         color: $primary;
+
+        .okp-link-name {
+          color: $text;
+        }
       }
 
       &:active {
         color: $text;
+
+        .okp-link-name {
+          color: $light;
+        }
+      }
+    }
+  }
+
+  &.okp-open {
+    width: 250px;
+
+    .okp-navigation,
+    .okp-navigation li {
+      display: block;
+      width: calc(100% - 24px);
+
+      > a {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+
+      .okp-link-name {
+        font-size: 0.9rem;
+        line-height: 120%;
+        display: inline-block;
       }
     }
   }
