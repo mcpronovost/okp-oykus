@@ -1,20 +1,32 @@
-import { NextResponse } from "next/server";
- 
-let locales = ["fr", "en"]
+import { NextRequest, NextResponse } from "next/server";
 
-function getLocale(request) {
+let locales = ["fr", "en"];
+let defaultLocale = "fr";
+
+// Get the preferred locale, similar to the above or using a library
+function getLocale(request: NextRequest) {
   let language = "fr";
-  let defaultLocale = "fr";
   if (locales.includes(language)) return language;
-  return defaultLocale
+  return defaultLocale;
 }
- 
+
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.includes("/favicon.ico")) return NextResponse.next();
-  // return NextResponse.redirect(request.nextUrl)
-  return NextResponse.next()
+  // Check if there is any supported locale in the pathname
+  const { pathname } = request.nextUrl;
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) return;
+
+  // Redirect if there is no locale
+  const locale = getLocale(request);
+  request.nextUrl.pathname = `/${locale}${pathname}`;
+  // e.g. incoming request is /products
+  // The new URL is now /en-US/products
+  return NextResponse.redirect(request.nextUrl);
 }
- 
+
 export const config = {
   matcher: [
     /*
@@ -23,6 +35,6 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      */
-    '/((?!api|_next/static|_next/image).*)',
+    '/((?!api|_next/static|_next/image|image|favicon.ico).*)',
   ],
-}
+};
