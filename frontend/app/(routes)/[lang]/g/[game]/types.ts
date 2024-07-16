@@ -12,11 +12,11 @@ export type GameForumIndex = {
   categories: {
     id: Number;
     name: string;
-    description: string;
+    description: string | null;
     sections: {
       id: Number;
       name: string;
-      description: string;
+      description: string | null;
     }[];
   }[];
 };

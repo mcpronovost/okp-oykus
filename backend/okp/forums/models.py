@@ -45,8 +45,8 @@ class okpForumCategory(models.Model):
     description = models.CharField(
         verbose_name=_("Description"),
         max_length=255,
-        blank=False,
-        null=False
+        blank=True,
+        null=True
     )
     is_visible = models.BooleanField(
         verbose_name=_("Visible"),
@@ -101,8 +101,8 @@ class okpForumSection(models.Model):
     description = models.CharField(
         verbose_name=_("Description"),
         max_length=255,
-        blank=False,
-        null=False
+        blank=True,
+        null=True
     )
     is_visible = models.BooleanField(
         verbose_name=_("Visible"),
