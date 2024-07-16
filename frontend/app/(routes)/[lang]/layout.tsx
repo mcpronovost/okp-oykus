@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
+import type { okpLocale } from "@/app/_lib/i18n/types";
 import { fontOpenSans } from "@/app/_lib/fonts";
 import "@/app/_assets/styles/main.scss";
-import Providers from "@/app/_components/Providers";
 import CoreHeader from "@/app/_components/core/header";
 import CoreLeftbar from "@/app/_components/core/leftbar";
 import CoreRighbar from "@/app/_components/core/righbar";
-
-interface LangParams {
-  lang: string;
-};
 
 export const metadata: Metadata = {
   title: "Oykus",
@@ -20,7 +16,7 @@ export default function RootLayout({
   params
 }: Readonly<{
   children: React.ReactNode;
-  params: LangParams;
+  params: { lang: okpLocale };
 }>) {
   return (
     <>

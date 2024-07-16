@@ -1,32 +1,39 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
+import type { GameForumIndex } from "./types";
+import { cache } from "react";
 import { headers } from "next/headers";
+ 
+type Props = {
+  params: { game: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-async function getData(game: string) {
+const getData = cache(async (game: string) => {
   const protocol = headers().get("x-forwarded-proto");
   try {
     const res = await fetch(`${protocol}://backend:8000/api/forum/${game}/index/`);
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
-    return res.json()
+    return res.json();
   } catch {
     throw new Error("Failed to fetch data");
   }
-}
+});
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const data = await getData(params.game);
+  const data: GameForumIndex = await getData(params.game);
   return {
     title: data.game.name,
     description: "Index du forum.",
   };
 };
 
-export default async function Page({params}: {params: {game: string}}) {
-  const data = await getData(params.game);
+export default async function Page({params}: Props) {
+  const data: GameForumIndex = await getData(params.game);
 
   return (
     <>
@@ -56,4 +63,4 @@ export default async function Page({params}: {params: {game: string}}) {
       </div>
     </>
   );
-}
+};

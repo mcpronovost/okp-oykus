@@ -1,3 +1,4 @@
+import type { okpLocale } from "@/app/_lib/i18n/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Bell, Ellipsis, LayoutGrid, Mail, Menu, Smile } from "lucide-react";
@@ -5,7 +6,7 @@ import { fontQuicksand } from "@/app/_lib/fonts";
 import { getTrans } from "@/app/_lib/i18n";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
-export default async function CoreHeader({ lang }: { lang: string}) {
+export default async function CoreHeader({ lang }: { lang: okpLocale}) {
   const t = await getTrans(lang);
 
   return (

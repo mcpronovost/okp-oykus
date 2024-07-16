@@ -1,8 +1,9 @@
+import type { okpLocale } from "@/app/_lib/i18n/types";
 import Link from "next/link";
 import { Award, BarChart3, Orbit, Settings, UsersRound } from "lucide-react";
 import { getTrans } from "@/app/_lib/i18n";
 
-export default async function CoreLeftbar({ lang }: { lang: string }) {
+export default async function CoreLeftbar({ lang }: { lang: okpLocale }) {
   const t = await getTrans(lang);
 
   return (
