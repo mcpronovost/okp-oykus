@@ -27,9 +27,9 @@ export default async function Page({params}: Props) {
 
   return (
     <>
-      <div>
-        {t.Community}
-      </div>
+    <header className="okp-container">
+      <h1>{t.Community}</h1>
+    </header>
     </>
   );
 };

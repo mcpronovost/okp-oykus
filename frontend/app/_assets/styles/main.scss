@@ -2,14 +2,14 @@ $htopbar: 48px;
 $wnavbar: 64px;
 
 :root {
-  --okp-primary: #699212;
-  --okp-secondary: #334D90;
-  --okp-darken: #151A27;
-  --okp-dark: #161B28;
-  --okp-mid: #1D2333;
-  --okp-light: #21283B;
-  --okp-lighten: #454D62;
-  --okp-text: #FEFEFE;
+  --okp-primary: #5B7934;
+  --okp-secondary: #36597C;
+  --okp-darken: #151518;
+  --okp-dark: #1C1C20;
+  --okp-mid: #232327;
+  --okp-light: #2B2B30;
+  --okp-lighten: #37373D;
+  --okp-text: #ECECEC;
 }
 
 body {
@@ -49,6 +49,7 @@ a:hover {
   height: calc(100vh - $htopbar);
 }
 
+@import "grid.scss";
 @import "core/header.scss";
 @import "core/leftbar.scss";
 @import "core/righbar.scss";

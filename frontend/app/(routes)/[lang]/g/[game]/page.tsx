@@ -1,17 +1,20 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import type { okpLocale } from "@/app/_lib/i18n/types";
 import type { GameForumIndex } from "./types";
 import { cache } from "react";
 import { headers } from "next/headers";
- 
+
 type Props = {
-  params: { game: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: { lang: okpLocale; game: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 const getData = cache(async (game: string) => {
   const protocol = headers().get("x-forwarded-proto");
   try {
-    const res = await fetch(`${protocol}://backend:8000/api/forum/${game}/index/`);
+    const res = await fetch(
+      `${protocol}://backend:8000/api/forum/${game}/index/`
+    );
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -30,9 +33,9 @@ export async function generateMetadata(
     title: data.game.name,
     description: "Index du forum.",
   };
-};
+}
 
-export default async function Page({params}: Props) {
+export default async function Page({ params }: Props) {
   const data: GameForumIndex = await getData(params.game);
 
   return (
@@ -53,14 +56,14 @@ export default async function Page({params}: Props) {
                       <div key={`section-${section.id}`}>
                         <h3>{section.name}</h3>
                       </div>
-                    )
+                    );
                   })}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </>
   );
-};
+}

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { okpLocale } from "@/app/_lib/i18n/types";
 import { fontOpenSans } from "@/app/_lib/fonts";
 import "@/app/_assets/styles/main.scss";
-import CoreHeader from "@/app/_components/core/header";
-import CoreLeftbar from "@/app/_components/core/leftbar";
-import CoreRighbar from "@/app/_components/core/righbar";
+import CoreHeader from "@/app/_components/core/Header";
+import CoreLeftbar from "@/app/_components/core/Leftbar";
+import CoreRighbar from "@/app/_components/core/Righbar";
 
 export const metadata: Metadata = {
   title: "Oykus",
