@@ -90,7 +90,7 @@ export default async function CoreHeader({ lang }: { lang: okpLocale }) {
               </Link>
             </li>
             <li>
-              <Link href="/register" className="okp-signup">
+              <Link href="/signup" className="okp-signup">
                 <span>{t.SignUp}</span>
               </Link>
             </li>
