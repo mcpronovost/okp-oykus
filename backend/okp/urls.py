@@ -5,11 +5,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
 
+from okp.users.views import okpPing
 from okp.forums.views.index import okpForumIndex
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("silk/", include("silk.urls", namespace="silk")),
+    path("api/ping/", okpPing.as_view()),
     path("api/forum/<slug:slug>/index/", okpForumIndex.as_view()),
 ] + i18n_patterns(
     # re_path(r"^", include(wagtail_urls))
