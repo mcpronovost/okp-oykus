@@ -19,7 +19,6 @@ import ToggleLeftbar from "@/app/_components/core/header/ToggleLeftbar";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
 const getPing = cache(async () => {
-  console.log("header :: ", await apiHeaders());
   try {
     const res = await fetch(await api("/ping/"), await apiHeaders());
     if (!res.ok) {
@@ -34,7 +33,6 @@ const getPing = cache(async () => {
 export default async function CoreHeader({ lang }: { lang: okpLocale }) {
   const t = await getTrans(lang);
   const ping = await getPing();
-  console.log(">> ping :: ", ping);
   const isAuth = ping.auth;
 
   return (

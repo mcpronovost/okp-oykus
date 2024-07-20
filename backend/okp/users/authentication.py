@@ -27,7 +27,10 @@ class RatAuthentication(BaseAuthentication):
         if not auth or auth[0].lower() != self.keyword.lower().encode():
             return None
 
-        if not authagent or authagent[0].lower() != self.keyword.lower().encode():
+        if (
+            not authagent
+            or authagent[0].lower() != self.keyword.lower().encode()
+        ):
             return None
 
         if len(auth) == 1:
@@ -48,6 +51,10 @@ class RatAuthentication(BaseAuthentication):
             agent = authagent[1].decode()
         except UnicodeError:
             msg = _("Rat or Agent should't contain invalid characters.")
+            raise AuthenticationFailed(msg)
+
+        if rat is None or agent is None:
+            msg = _("No credentials provided.")
             raise AuthenticationFailed(msg)
 
         return self.authenticate_credentials(

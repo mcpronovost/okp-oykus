@@ -13,16 +13,20 @@ export const getRat = async () => {
   }
 };
 
-export const setRat = async (rat) => {
+export const setRat = async (rat, agent) => {
   const drat = `okp${rat.slice(0, 11)}oykus`;
   const frat = `oykus${rat.slice(11)}okp`;
   const drat64 = Buffer.from(drat, "ascii").toString("base64");
   const frat64 = Buffer.from(frat, "ascii").toString("base64");
+  const agent64 = Buffer.from(agent, "ascii").toString("base64");
   const expireDate = Date.now() + 30 * 86400 * 1000;
   await cookies().set("okp-drat", drat64, {
     expires: expireDate,
   });
   await cookies().set("okp-frat", frat64, {
+    expires: expireDate,
+  });
+  await cookies().set("okp-arat", agent64, {
     expires: expireDate,
   });
 };
@@ -32,14 +36,6 @@ export const getAgent = async () => {
   if (agent) {
     return agent;
   }
-};
-
-export const setAgent = async (agent) => {
-  const agent64 = Buffer.from(agent, "ascii").toString("base64");
-  const expireDate = Date.now() + 30 * 86400 * 1000;
-  await cookies().set("okp-arat", agent64, {
-    expires: expireDate,
-  });
 };
 
 export const delAuth = async () => {

@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { delAuth } from "@/app/_lib/api";
 
 export default function Button() {
+  const { push } = useRouter();
 
   function doLogout() {
-    delAuth();
+    delAuth().then(() => {
+      push("/");
+    });
   }
 
   return (
