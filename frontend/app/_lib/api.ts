@@ -27,12 +27,6 @@ export const setRat = async (rat) => {
   });
 };
 
-export const delRat = async () => {
-  await cookies().delete("okp-drat");
-  await cookies().delete("okp-frat");
-  await cookies().delete("okp-arat");
-};
-
 export const getAgent = async () => {
   const agent: string | undefined = await cookies().get("okp-arat")?.value;
   if (agent) {
@@ -46,6 +40,12 @@ export const setAgent = async (agent) => {
   await cookies().set("okp-arat", agent64, {
     expires: expireDate,
   });
+};
+
+export const delAuth = async () => {
+  await cookies().delete("okp-drat");
+  await cookies().delete("okp-frat");
+  await cookies().delete("okp-arat");
 };
 
 export const api = async (path) => {
@@ -62,7 +62,7 @@ export const apiHeaders = async () => {
     if (rat) {
       result["headers"] = {
         Authorization: `Rat ${rat}`,
-        Agent: `Rat ${agent}`
+        Agent: `Rat ${agent}`,
       };
     }
   } catch (e) {

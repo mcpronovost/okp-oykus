@@ -1,11 +1,11 @@
 "use client"
 
-import { delRat } from "@/app/_lib/api";
+import { delAuth } from "@/app/_lib/api";
 
 export default function Button() {
 
   function doLogout() {
-    delRat();
+    delAuth();
   }
 
   return (
