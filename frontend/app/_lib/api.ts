@@ -30,6 +30,7 @@ export const setRat = async (rat) => {
 export const delRat = async () => {
   await cookies().delete("okp-drat");
   await cookies().delete("okp-frat");
+  await cookies().delete("okp-arat");
 };
 
 export const getAgent = async () => {
