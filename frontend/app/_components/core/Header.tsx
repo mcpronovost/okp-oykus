@@ -1,15 +1,39 @@
 import type { okpLocale } from "@/app/_lib/i18n/types";
+import { cache } from "react";
+import { cookies, headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
-import { Bell, Ellipsis, LayoutGrid, LogIn, Mail, Menu, Smile } from "lucide-react";
+import {
+  Bell,
+  Ellipsis,
+  LayoutGrid,
+  LogIn,
+  Mail,
+  Menu,
+  Smile,
+} from "lucide-react";
+import { api, apiHeaders } from "@/app/_lib/api";
 import { fontQuicksand } from "@/app/_lib/fonts";
 import { getTrans } from "@/app/_lib/i18n";
 import ToggleLeftbar from "@/app/_components/core/header/ToggleLeftbar";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
+const getPing = cache(async () => {
+  try {
+    const res = await fetch(await api("/ping/"), await apiHeaders());
+    if (!res.ok) {
+      return { auth: false };
+    }
+    return res.json();
+  } catch {
+    return { auth: false };
+  }
+});
+
 export default async function CoreHeader({ lang }: { lang: okpLocale }) {
   const t = await getTrans(lang);
-  const isAuth = false;
+  const ping = await getPing();
+  const isAuth = ping.auth;
 
   return (
     <header className="okp-core-header">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import { getTrans } from "@/app/_lib/i18n";
+import Button from "./Button";
  
 type Props = {
   params: { game: string };
@@ -29,6 +30,7 @@ export default async function Page({params}: Props) {
     <>
     <header className="okp-container">
       <h1>{t.Logout}</h1>
+      <Button />
     </header>
     </>
   );
