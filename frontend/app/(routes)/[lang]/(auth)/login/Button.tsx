@@ -1,12 +1,14 @@
 "use client"
 
-import { setRat } from "@/app/_lib/api";
+import { setRat, setAgent } from "@/app/_lib/api";
 
 export default function Button() {
-  const token = "4ffb6cfc6a955d585370e2096986f6345fcbfd49";
 
   function doLogin() {
+    const token = "154227ea81a3a2ba1563aefc0ec301995f675c36";
+    const agent = navigator.userAgent;
     setRat(token);
+    setAgent(agent);
   }
 
   return (

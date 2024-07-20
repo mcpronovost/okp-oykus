@@ -30,7 +30,22 @@ export const setRat = async (rat) => {
 export const delRat = async () => {
   await cookies().delete("okp-drat");
   await cookies().delete("okp-frat");
-}
+};
+
+export const getAgent = async () => {
+  const agent: string | undefined = await cookies().get("okp-arat")?.value;
+  if (agent) {
+    return agent;
+  }
+};
+
+export const setAgent = async (agent) => {
+  const agent64 = Buffer.from(agent, "ascii").toString("base64");
+  const expireDate = Date.now() + 30 * 86400 * 1000;
+  await cookies().set("okp-arat", agent64, {
+    expires: expireDate,
+  });
+};
 
 export const api = async (path) => {
   const protocol = await headers().get("x-forwarded-proto");
@@ -42,9 +57,11 @@ export const apiHeaders = async () => {
   // ===---
   try {
     const rat = await getRat();
+    const agent = await getAgent();
     if (rat) {
       result["headers"] = {
-        Authorization: `Token ${rat}`,
+        Authorization: `Rat ${rat}`,
+        Agent: `Rat ${agent}`
       };
     }
   } catch (e) {

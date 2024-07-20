@@ -4,7 +4,10 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
-from okp.users.models import okpUserProfile
+from okp.users.models import (
+    okpUserProfile,
+    okpRat
+)
 
 User = get_user_model()
 
@@ -40,6 +43,12 @@ class okpUserAdmin(UserAdmin):
     @admin.display(description=_("Name"))
     def profile_name(self, obj):
         return obj.profile.name if obj.profile is not None else "-"
+
+
+@admin.register(okpRat)
+class okpRatAdmin(admin.ModelAdmin):
+    list_display = ["user", "rat", "expired_at"]
+    readonly_fields = ["rat", "expired_at", "created_at"]
 
 
 admin.site.unregister(User)
