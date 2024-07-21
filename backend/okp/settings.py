@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     # tiers
     "corsheaders",
     "rest_framework",
-    "rest_framework.authtoken",
     "silk",
     # okp
     "okp.users",
@@ -169,7 +168,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
+        "okp.users.authentication.okpRatAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ]
 }

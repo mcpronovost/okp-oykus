@@ -16,7 +16,7 @@ def get_agent_header(request):
     return auth
 
 
-class RatAuthentication(BaseAuthentication):
+class okpRatAuthentication(BaseAuthentication):
     keyword = "Rat"
     model = okpRat
 
