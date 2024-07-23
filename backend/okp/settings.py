@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "silk",
     # okp
     "okp.users",
-    "okp.auth",
     "okp.games",
     "okp.forums"
 ]
