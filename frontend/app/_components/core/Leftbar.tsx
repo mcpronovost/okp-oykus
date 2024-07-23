@@ -1,12 +1,19 @@
+import type { okpPingAuth } from "@/app/_lib/api/types";
 import type { okpLocale } from "@/app/_lib/i18n/types";
+// ===---
 import Link from "next/link";
 import { Award, BarChart3, Orbit, Settings, UsersRound } from "lucide-react";
+// ===---
 import { getPing } from "@/app/_lib/api";
 import { getTrans } from "@/app/_lib/i18n";
 
-export default async function CoreLeftbar({ lang }: { lang: okpLocale }) {
+type Props = {
+  lang: okpLocale,
+  ping: okpPingAuth
+};
+
+export default async function CoreLeftbar({ lang, ping }: Props) {
   const t = await getTrans(lang);
-  const ping = await getPing();
   const isAuth = ping.auth;
 
   return (

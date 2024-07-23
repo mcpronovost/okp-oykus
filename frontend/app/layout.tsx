@@ -29,9 +29,9 @@ export default async function RootLayout({
         <body className={fontOpenSans.className}>
           <CoreHeader lang={lang} ping={ping} />
           <div className="okp-core-content">
-            <CoreLeftbar lang={lang} />
+            <CoreLeftbar lang={lang} ping={ping} />
             <main className="okp-core-main">{children}</main>
-            <CoreRighbar lang={lang} />
+            <CoreRighbar lang={lang} ping={ping} />
           </div>
         </body>
       </html>

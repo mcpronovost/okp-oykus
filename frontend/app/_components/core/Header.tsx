@@ -21,8 +21,8 @@ import ToggleLeftbar from "@/app/_components/core/header/ToggleLeftbar";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
 type Props = {
-  lang: okpLocale,
-  ping: okpPingAuth
+  lang: okpLocale;
+  ping: okpPingAuth;
 };
 
 export default async function CoreHeader({ lang, ping }: Props) {
@@ -33,7 +33,13 @@ export default async function CoreHeader({ lang, ping }: Props) {
     <header className="okp-core-header">
       <Link href={`/${lang}`} className="okp-brand">
         <div className="okp-logo">
-          <Image src={imgOykus} alt="logo" width={52} height={52} priority={true} />
+          <Image
+            src={imgOykus}
+            alt="logo"
+            width={52}
+            height={52}
+            priority={true}
+          />
         </div>
         <div className={`okp-name ${fontQuicksand.className}`}>
           <span>Oykus</span>

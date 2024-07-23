@@ -1,15 +1,23 @@
+import type { okpPingAuth } from "@/app/_lib/api/types";
 import type { okpLocale } from "@/app/_lib/i18n/types";
+// ===---
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, Users } from "lucide-react";
+// ===---
 import { fontQuicksand } from "@/app/_lib/fonts";
 import { getTrans } from "@/app/_lib/i18n";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 import imgMcpk from "@/app/_assets/img/mcpk.jpg";
 
-export default async function CoreRighbar({ lang }: { lang: okpLocale }) {
+type Props = {
+  lang: okpLocale;
+  ping: okpPingAuth;
+};
+
+export default async function CoreRighbar({ lang, ping }: Props) {
   const t = await getTrans(lang);
-  const isAuth = false;
+  const isAuth = ping.auth;
   const hasUsers = false;
 
   return (
