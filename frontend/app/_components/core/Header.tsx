@@ -1,5 +1,6 @@
+import type { okpPingAuth } from "@/app/_lib/api/types";
 import type { okpLocale } from "@/app/_lib/i18n/types";
-import { cache } from "react";
+// ===---
 import { cookies, headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,34 +13,27 @@ import {
   Menu,
   Smile,
 } from "lucide-react";
+// ===---
 import { api, apiHeaders } from "@/app/_lib/api";
 import { fontQuicksand } from "@/app/_lib/fonts";
 import { getTrans } from "@/app/_lib/i18n";
 import ToggleLeftbar from "@/app/_components/core/header/ToggleLeftbar";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
-const getPing = cache(async () => {
-  try {
-    const res = await fetch(await api("/ping/"), await apiHeaders());
-    if (!res.ok) {
-      return { auth: false };
-    }
-    return res.json();
-  } catch {
-    return { auth: false };
-  }
-});
+type Props = {
+  lang: okpLocale,
+  ping: okpPingAuth
+};
 
-export default async function CoreHeader({ lang }: { lang: okpLocale }) {
+export default async function CoreHeader({ lang, ping }: Props) {
   const t = await getTrans(lang);
-  const ping = await getPing();
   const isAuth = ping.auth;
 
   return (
     <header className="okp-core-header">
       <Link href={`/${lang}`} className="okp-brand">
         <div className="okp-logo">
-          <Image src={imgOykus} alt="logo" width={52} height={52} />
+          <Image src={imgOykus} alt="logo" width={52} height={52} priority={true} />
         </div>
         <div className={`okp-name ${fontQuicksand.className}`}>
           <span>Oykus</span>

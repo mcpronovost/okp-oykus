@@ -8,6 +8,7 @@ export default function Button() {
   const { push } = useRouter();
 
   function doLogout() {
+    console.log("doLogout");
     delAuth().then(() => {
       push("/");
     });

@@ -1,5 +1,7 @@
 "use server";
 
+import type { okpPingAuth } from "./types";
+import { cache } from "react";
 import { cookies, headers } from "next/headers";
 import { Buffer } from "buffer";
 
@@ -13,7 +15,7 @@ export const getRat = async () => {
   }
 };
 
-export const setRat = async (rat, agent) => {
+export const setRat = async (rat) => {
   const drat = `okp${rat.slice(0, 11)}oykus`;
   const frat = `oykus${rat.slice(11)}okp`;
   const drat64 = Buffer.from(drat, "ascii").toString("base64");
@@ -25,12 +27,6 @@ export const setRat = async (rat, agent) => {
   await cookies().set("okp-frat", frat64, {
     expires: expireDate,
   });
-  if (agent) {
-    const agent64 = Buffer.from(agent, "ascii").toString("base64");
-    await cookies().set("okp-arat", agent64, {
-      expires: expireDate,
-    });
-  }
 };
 
 export const setAgent = async (agent) => {
@@ -77,3 +73,20 @@ export const apiHeaders = async () => {
   // ===---
   return result;
 };
+
+export const getPing = cache(async () => {
+  const unAuth: okpPingAuth = {
+    user: null,
+    rat: null,
+    auth: false
+  };
+  try {
+    const res = await fetch(await api("/ping/"), await apiHeaders());
+    if (!res.ok) {
+      return unAuth;
+    }
+    return await res.json();
+  } catch {
+    return unAuth;
+  }
+});

@@ -1,21 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
+import type { okpLocale } from "@/app/_lib/i18n/types";
 import { cache } from "react";
 import { cookies } from "next/headers";
 import { getTrans } from "@/app/_lib/i18n";
 import LoginForm from "./LoginForm";
 
 type Props = {
-  params: { game: string };
+  params: { lang: okpLocale };
 };
 
-const getData = cache(async (game: string) => {
-  return null;
-});
-
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTrans(params.lang);
 
   return {
