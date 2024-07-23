@@ -10,7 +10,6 @@ from okp.users.views import (
     okpLoginView,
     okpRatView
 )
-from okp.forums.views.index import okpForumIndex
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -18,9 +17,9 @@ urlpatterns = [
     path("api/ping/", okpPingView.as_view()),
     path("api/auth/login/", okpLoginView.as_view()),
     path("api/auth/rat/", okpRatView.as_view()),
-    path("api/forum/<slug:slug>/index/", okpForumIndex.as_view()),
+    path("api/forum/", include("okp.forums.urls", namespace="okp.forums")),
 ] + i18n_patterns(
-    # re_path(r"^", include(wagtail_urls))
+    # re_path(r"^", include("example.urls"))
 ) + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 ) + static(
