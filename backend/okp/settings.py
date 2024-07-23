@@ -171,3 +171,11 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ]
 }
+
+
+# Django Silk - fix "Response to request with pk {...} but was unable to parse it"
+# https://github.com/jazzband/django-silk/issues/374
+
+SILKY_IGNORE_PATHS = [
+    "/admin/jsi18n/"
+]
