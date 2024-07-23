@@ -21,8 +21,15 @@ class okpPingView(GenericAPIView):
             "auth": False
         }
         if request.user.is_authenticated:
-            request.user.last_login = timezone.now()
-            request.user.save()
+            if (
+                request.user.last_login is None
+                or (
+                    (timezone.now() - timezone.timedelta(minutes=5))
+                    > request.user.last_login
+                )
+            ):
+                request.user.last_login = timezone.now()
+                request.user.save()
             content["user"] = str(request.user)
             content["rat"] = str(request.auth)
             content["auth"] = True
