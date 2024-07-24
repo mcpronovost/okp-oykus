@@ -1,22 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { LayoutGrid } from "lucide-react";
-import { setCookie, getCookie } from "@/app/_lib/client";
+import StoreContext from "@/app/_lib/store";
 
 export default function ToggleLeftbar() {
-  const cookieToggleLeftbar = getCookie("okp-toggle-leftbar");
-  const [ toggleLeftbar, setToggleLeftbar ] = useState(cookieToggleLeftbar);
+  const { toggleSidebar, setStoreToggleSidebar } = useContext(StoreContext);
 
   const doSetToggle = () => {
-    const result = cookieToggleLeftbar == 1 ? 0 : 1;
-    setCookie("okp-toggle-leftbar", result, 30);
-    setToggleLeftbar(result);
+    setStoreToggleSidebar(!toggleSidebar);
   };
-
-  useEffect(() => {
-    console.log("cookie : ", cookieToggleLeftbar);
-  }, [toggleLeftbar]);
 
   return (
     <>
