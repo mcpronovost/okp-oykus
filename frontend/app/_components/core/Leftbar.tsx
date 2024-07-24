@@ -1,3 +1,5 @@
+"use client";
+
 import type { okpPingAuth } from "@/app/_lib/api/types";
 import type { okpLocale } from "@/app/_lib/i18n/types";
 // ===---
@@ -6,20 +8,21 @@ import { Award, BarChart3, Orbit, Settings, UsersRound } from "lucide-react";
 // ===---
 import { getPing } from "@/app/_lib/api";
 import { getTrans } from "@/app/_lib/i18n";
+import Navbar from "@/app/_components/core/_leftbar/Navbar";
 
 type Props = {
   lang: okpLocale,
   ping: okpPingAuth
 };
 
-export default async function CoreLeftbar({ lang, ping }: Props) {
-  const t = await getTrans(lang);
+export default function CoreLeftbar({ lang, ping }: Props) {
+  const t = getTrans(lang);
   const isAuth = ping.auth;
 
   return (
     <>
       {isAuth && (
-        <nav className={`okp-core-leftbar okp-close`}>
+        <Navbar>
           <div>params</div>
           <ul className="okp-navigation">
             <li>
@@ -55,7 +58,7 @@ export default async function CoreLeftbar({ lang, ping }: Props) {
               </Link>
             </li>
           </ul>
-        </nav>
+        </Navbar>
       )}
     </>
   );

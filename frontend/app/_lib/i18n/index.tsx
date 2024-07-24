@@ -1,5 +1,4 @@
 import type { okpLocale, okpTranslation } from "./types";
-import "server-only";
  
 const trans = {
   fr: () => import("./fr.json").then((module) => module.default),

@@ -17,7 +17,7 @@ import {
 import { api, apiHeaders } from "@/app/_lib/api";
 import { fontQuicksand } from "@/app/_lib/fonts";
 import { getTrans } from "@/app/_lib/i18n";
-import ToggleLeftbar from "@/app/_components/core/header/ToggleLeftbar";
+import ToggleLeftbar from "@/app/_components/core/_header/ToggleLeftbar";
 import imgOykus from "@/app/_assets/img/oykus-w.png";
 
 type Props = {

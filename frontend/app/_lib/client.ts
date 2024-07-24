@@ -14,7 +14,7 @@ export const getAgent64 = () => {
   return undefined;
 };
 
-export const getCookie = (cname) => {
+export function getCookie (cname) {
   if (typeof document != "undefined") {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -30,4 +30,11 @@ export const getCookie = (cname) => {
     }
   }
   return undefined;
+};
+
+export const setCookie = (cname, cvalue, exdays) => {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Lax";
 };

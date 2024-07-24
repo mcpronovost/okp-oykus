@@ -1,7 +1,7 @@
 // core/leftbar
 
 .okp-core-leftbar {
-  background-color: var(--okp-mid);
+  background-color: var(--okp-light);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -17,9 +17,9 @@
     margin: 0;
 
     > a {
-      background-color: var(--okp-mid);
+      background-color: transparent;
       border-radius: 6px;
-      color: var(--okp-lighten);
+      color: var(--okp-text-low);
       display: flex;
       align-items: center;
       min-width: 24px;
@@ -29,7 +29,7 @@
       margin: 24px 0;
 
       .okp-link-name {
-        color: var(--okp-lighten);
+        color: var(--okp-text-low);
         font-size: 0;
         line-height: 0;
         display: none;
@@ -38,7 +38,7 @@
       }
 
       &:hover, &:focus {
-        background-color: var(--okp-light);
+        background-color: var(--okp-lighten);
         color: var(--okp-primary);
 
         .okp-link-name {
