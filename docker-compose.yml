@@ -43,12 +43,12 @@ services:
   frontend:
     container_name: okp-oykus-frontend
     build: frontend/.
-    command: "npm run dev -- -p 3000"
-    # command: "npm run start -- -p 3000"
+    tty: true
+    command: "npm run dev -- --host"
+    # command: "npm run start"
     volumes:
       - "./frontend/:/code/:rw"
       - /code/node_modules
-      - /code/.next
     networks:
       - okp-oykus-network
     ports:
