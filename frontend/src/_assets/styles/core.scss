@@ -1,0 +1,48 @@
+$htopbar: 48px;
+$wnavbar: 64px;
+
+:root {
+  --okp-primary: #D2BD10;
+  --okp-secondary: #ff0000;
+  --okp-darken: #0D0D11;
+  --okp-dark: #111217;
+  --okp-mid: #161920;
+  --okp-light: #1a1d26;
+  --okp-lighten: #232531;
+  --okp-text: #F4F4F4;
+  --okp-text-low: #4b526e;
+
+  background-color: var(--okp-mid);
+  color: var(--okp-text);
+}
+
+body {
+  background-color: var(--okp-mid);
+  color: var(--okp-text);
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: var(--okp-text);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
