@@ -11,9 +11,13 @@ $wnavbar: 64px;
   --okp-lighten: #232531;
   --okp-text: #F4F4F4;
   --okp-text-low: #4b526e;
+}
 
+html {
   background-color: var(--okp-mid);
   color: var(--okp-text);
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -26,8 +30,6 @@ body {
   overflow: hidden;
   padding: 0;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a,
@@ -46,3 +48,26 @@ a {
     cursor: pointer;
   }
 }
+
+/* ===---=== */
+
+#okp-core-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 400px;
+  height: calc(100vh - $htopbar);
+}
+
+#okp-core-main {
+  display: block;
+  flex: 1 1 100%;
+  height: calc(100vh - $htopbar);
+}
+
+/* ===---=== */
+
+@import "core/header.scss";
+@import "core/navbar.scss";
+@import "core/sidebar.scss";

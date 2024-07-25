@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@/_assets/styles/core.scss";
+import "@/_assets/styles/main.scss";
 import Providers from "@/components/Providers";
 import AppView from "@/App.tsx";
 
