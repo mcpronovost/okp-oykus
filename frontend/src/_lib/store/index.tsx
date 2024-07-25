@@ -20,9 +20,17 @@ export const deleteStoreItem = (key) => {
 const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
+  const [toggleNavbar, setStoreToggleNavbar] = useState(
+    getStoreItem("toggle-navbar") || false
+  );
   const [toggleSidebar, setStoreToggleSidebar] = useState(
     getStoreItem("toggle-sidebar") || false
   );
+
+  const setToggleNavbar = (value) => {
+    setStoreItem("toggle-navbar", value);
+    setStoreToggleNavbar(value);
+  };
 
   const setToggleSidebar = (value) => {
     setStoreItem("toggle-sidebar", value);
@@ -32,6 +40,8 @@ export const StoreProvider = ({ children }) => {
   return (
     <StoreContext.Provider
       value={{
+        toggleNavbar,
+        setToggleNavbar,
         toggleSidebar,
         setToggleSidebar,
       }}

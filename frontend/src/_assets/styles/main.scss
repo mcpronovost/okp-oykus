@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+
 $htopbar: 48px;
 $wnavbar: 64px;
 
 :root {
-  --okp-primary: #D2BD10;
+  --okp-primary: #d2bd10;
   --okp-secondary: #ff0000;
-  --okp-darken: #0D0D11;
+  --okp-darken: #0d0d11;
   --okp-dark: #111217;
   --okp-mid: #161920;
   --okp-light: #1a1d26;
   --okp-lighten: #232531;
-  --okp-text: #F4F4F4;
+  --okp-text: #f4f4f4;
   --okp-text-low: #4b526e;
 }
 
@@ -49,6 +51,12 @@ a {
   }
 }
 
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* ===---=== */
 
 #okp-core-body {
@@ -64,6 +72,7 @@ a {
   display: block;
   flex: 1 1 100%;
   height: calc(100vh - $htopbar);
+  transition: flex-basis 0.3s;
 }
 
 /* ===---=== */
