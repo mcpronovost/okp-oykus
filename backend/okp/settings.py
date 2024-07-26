@@ -17,10 +17,11 @@ ADMINS = [
 ]
 
 ALLOWED_HOSTS = [
+    "localhost",
     "127.0.0.1:80",
     "127.0.0.1:3000",
     "127.0.0.1",
-    "192.168.2.29",
+    "172.18.0.2",
     "69.157.154.101",
     "backend",
     "frontend"
@@ -168,7 +169,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "okp.users.authentication.okpRatAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
     ]
 }
 

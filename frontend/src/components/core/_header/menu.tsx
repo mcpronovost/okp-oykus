@@ -19,9 +19,9 @@ export default function HeaderMenu(): ReactNode {
           </Link>
         </li>
         <li>
-          <a href="/contact" className="okp-menu-link">
+          <Link href="/contact" className="okp-menu-link">
             {t("Contact")}
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -46,8 +46,8 @@ export const RouterProvider = ({ children }) => {
   const [route, setRoute] = useState(getRoute(window.location.pathname, lang));
 
   const goRoute = (path) => {
-    const [, language] = path.split("/");
-    setRoute(getRoute(path, language));
+    if (!path) path = "/";
+    setRoute(getRoute(path, lang));
     history.pushState({}, "", path);
   };
 

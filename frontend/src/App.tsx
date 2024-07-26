@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { locales, getLang } from "@/_lib/i18n";
 import RouterContext from "@/_lib/router";
+import StoreContext from "@/_lib/store";
 import CoreHeader from "@/components/core/Header";
 import CoreNavbar from "@/components/core/Navbar";
 import CoreSidebar from "@/components/core/Sidebar";
 
 const AppView = () => {
   const { route } = useContext(RouterContext);
+  const { user } = useContext(StoreContext);
   const lang = getLang();
   const pathUrl = window.location.pathname;
 
@@ -18,11 +20,11 @@ const AppView = () => {
     <>
       <CoreHeader />
       <div id="okp-core-body">
-        <CoreNavbar />
+        {!!user && <CoreNavbar />}
         <main id="okp-core-main">
           <route.view />
         </main>
-        <CoreSidebar />
+        {!!user && <CoreSidebar />}
       </div>
     </>
   );

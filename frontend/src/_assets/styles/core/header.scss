@@ -96,7 +96,31 @@
   }
 
   .okp-notifications {
+    position: relative;
     padding: 0 16px;
+
+    &::before,
+    &::after {
+      content: "";
+      border-color: var(--okp-text-low);
+      border-style: solid;
+      border-width: 0;
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      opacity: 0.4;
+    }
+
+    &::before {
+      border-left-width: 1px;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      border-right-width: 1px;
+      right: 0;
+    }
 
     > ul {
       display: flex;
@@ -126,6 +150,33 @@
       &:hover {
         color: var(--okp-text);
         cursor: pointer;
+      }
+    }
+  }
+
+  .okp-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    &-name {
+      flex: 1 1 250px;
+      padding: 0 12px 0 32px;
+    }
+
+    &-avatar {
+      display: flex;
+      flex: 0 0 64px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: $htopbar;
+
+      &-img {
+        border-radius: 50%;
+        overflow: hidden;
       }
     }
   }

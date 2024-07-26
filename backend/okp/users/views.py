@@ -8,6 +8,7 @@ from rest_framework.response import Response
 
 from okp.users.authentication import okpRatAuthentication
 from okp.users.models import okpRat
+from okp.users.serializers import okpUserLoginSerializer
 
 
 class okpPingView(GenericAPIView):
@@ -38,10 +39,11 @@ class okpPingView(GenericAPIView):
 
 class okpLoginView(GenericAPIView):
     permission_classes = [AllowAny]
+    serializer_class = okpUserLoginSerializer
 
     def post(self, request, *args, **kwargs):
         username = str(request.data.get("username"))
-        password = str(request.data.get("mdp"))
+        password = str(request.data.get("password"))
         agent = str(request.data.get("agent"))
         user = authenticate(
             username=username,
@@ -56,7 +58,8 @@ class okpLoginView(GenericAPIView):
             )
             return Response({
                 "valid": True,
-                "rat": rat.rat
+                "username": str(user.username),
+                "rat": str(rat.rat)
             })
         return Response({
             "valid": False
