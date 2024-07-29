@@ -4,15 +4,15 @@ import { getTrans } from "@/_lib/i18n";
 
 const t = getTrans();
 
-export const metaHome: okpMeta = {
-  title: t("Home"),
+export const metaDevblog: okpMeta = {
+  title: t("Devblog"),
 };
 
-export default function HomeView(): ReactNode {
+export default function DevblogView(): ReactNode {
   return (
     <>
       <div className="okp-container">
-        <h1>{t("Home")}</h1>
+        <h1>{t("Devblog")}</h1>
       </div>
     </>
   );

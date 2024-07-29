@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { okpMeta } from "@/_lib/router/types";
 import { useContext, useState } from "react";
 import { Buffer } from "buffer";
+import RouterContext from "@/_lib/router";
 import StoreContext from "@/_lib/store";
 import { api, getHeaders } from "@/_lib/api";
 import { getTrans } from "@/_lib/i18n";
@@ -13,6 +14,7 @@ export const metaLogin: okpMeta = {
 };
 
 export default function LoginView(): ReactNode {
+  const { goRoute } = useContext(RouterContext);
   const { user, setUser } = useContext(StoreContext);
 
   const [formLogin, setFormLogin] = useState({
@@ -51,6 +53,7 @@ export default function LoginView(): ReactNode {
         username: response.username,
         rat: response.rat
       });
+      goRoute(t("/"));
     } catch (e) {
       console.log("error : ", e);
     }

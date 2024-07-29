@@ -1,8 +1,9 @@
 import type { okpRoute } from "./types";
 import { createContext, useEffect, useState } from "react";
-import { getLang, getTrans } from "@/_lib/i18n";
+import { defaultLang, getLang, getTrans } from "@/_lib/i18n";
 import HomeView, { metaHome } from "@/views/Home";
 import { routesAuth } from "./routesAuth";
+import DevblogView, { metaDevblog } from "@/views/Devblog";
 import Error404View, { metaError404 } from "@/views/errors/Error404";
 
 export const routes: okpRoute[] = [
@@ -10,6 +11,11 @@ export const routes: okpRoute[] = [
     uri: "",
     view: HomeView,
     meta: metaHome,
+  },
+  {
+    uri: "/devblog",
+    view: DevblogView,
+    meta: metaDevblog,
   },
   ...routesAuth,
   {
@@ -47,6 +53,9 @@ export const RouterProvider = ({ children }) => {
 
   const goRoute = (path) => {
     if (!path) path = "/";
+    if (path != "/") path = t(path);
+    if (path == "/" && lang != defaultLang) path = `/${lang}`;
+    else if (lang != defaultLang) path = `/${lang}${path}`;
     setRoute(getRoute(path, lang));
     history.pushState({}, "", path);
   };

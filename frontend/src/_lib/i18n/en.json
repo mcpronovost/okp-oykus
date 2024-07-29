@@ -2,5 +2,9 @@
   "Oykus": "Oykus",
   "Home": "Home",
   "Login": "Login",
-  "/login": "/login"
+  "/login": "/login",
+  "Logout": "Logout",
+  "/logout": "/logout",
+  "Devblog": "Devblog",
+  "/devblog": "/devblog"
 }

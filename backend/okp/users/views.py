@@ -1,19 +1,21 @@
 import base64
-# from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from okp.users.authentication import okpRatAuthentication
+from okp.users.authentication import (
+    get_authorization_header,
+    get_agent_header
+)
 from okp.users.models import okpRat
 from okp.users.serializers import okpUserLoginSerializer
 
 
 class okpPingView(GenericAPIView):
     permission_classes = [AllowAny]
-    authentication_classes = [okpRatAuthentication]
 
     def get(self, request, *args, **kwargs):
         content = {
@@ -60,6 +62,35 @@ class okpLoginView(GenericAPIView):
                 "valid": True,
                 "username": str(user.username),
                 "rat": str(rat.rat)
+            })
+        return Response({
+            "valid": False
+        })
+
+
+class okpLogoutView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = okpUserLoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        if request.user is not None:
+            authtoken = get_authorization_header(request).split()
+            authagent = get_agent_header(request).split()
+            rat = authtoken[1].decode()
+            agent = base64.b64decode(authagent[1].decode()).decode("UTF-8")
+            try:
+                okpRat.objects.get(
+                    user=request.user,
+                    rat=rat,
+                    agent=agent
+                ).delete()
+            except self.model.DoesNotExist:
+                return Response({
+                    "valid": False,
+                    "msg": _("Token doesn't exist.")
+                })
+            return Response({
+                "valid": True
             })
         return Response({
             "valid": False

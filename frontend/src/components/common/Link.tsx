@@ -17,9 +17,6 @@ export default function CommonLink({
   const { goRoute } = useContext(RouterContext);
   const lang = getLang();
   const t = getTrans();
-  if (href != "/") href = t(href);
-  if (href == "/" && lang != defaultLang) href = `/${lang}`;
-  else if (lang != defaultLang) href = `/${lang}${href}`;
 
   function doClick (e) {
     e.preventDefault();
