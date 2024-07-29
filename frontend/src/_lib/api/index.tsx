@@ -9,9 +9,16 @@ export function getHeaders(rat = null) {
   };
   if (rat) {
     headers["Authorization"] = `Rat ${rat}`;
-    headers["Agent"] = `Rat ${Buffer.from(window.navigator.userAgent).toString(
-      "base64"
-    )}`;
   }
   return headers;
+}
+
+export async function getPing(user) {
+  if (!user) return false;
+  const f = await fetch(`${api}/ping/`, {headers: getHeaders(user.rat)});
+  if (f.ok) {
+    const r = await f.json();
+    if (r.auth) return true;
+  }
+  return false;
 }

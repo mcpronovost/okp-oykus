@@ -16,6 +16,7 @@ export const routes: okpRoute[] = [
     uri: "/devblog",
     view: DevblogView,
     meta: metaDevblog,
+    needauth: true
   },
   ...routesAuth,
   {

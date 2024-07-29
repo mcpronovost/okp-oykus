@@ -1,4 +1,3 @@
-import base64
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate
 from django.utils import timezone
@@ -44,9 +43,10 @@ class okpLoginView(GenericAPIView):
     serializer_class = okpUserLoginSerializer
 
     def post(self, request, *args, **kwargs):
+        authagent = get_agent_header(request)
+        agent = authagent.decode()
         username = str(request.data.get("username"))
         password = str(request.data.get("password"))
-        agent = str(request.data.get("agent"))
         user = authenticate(
             username=username,
             password=password
@@ -56,7 +56,7 @@ class okpLoginView(GenericAPIView):
             user.save()
             rat, created = okpRat.objects.get_or_create(
                 user=user,
-                agent=base64.b64decode(agent).decode("UTF-8")
+                agent=agent
             )
             return Response({
                 "valid": True,
@@ -75,47 +75,22 @@ class okpLogoutView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         if request.user is not None:
             authtoken = get_authorization_header(request).split()
-            authagent = get_agent_header(request).split()
+            authagent = get_agent_header(request)
             rat = authtoken[1].decode()
-            agent = base64.b64decode(authagent[1].decode()).decode("UTF-8")
+            agent = authagent.decode()
             try:
-                okpRat.objects.get(
+                okpRat.objects.filter(
                     user=request.user,
                     rat=rat,
                     agent=agent
                 ).delete()
-            except self.model.DoesNotExist:
+            except Exception:
                 return Response({
                     "valid": False,
                     "msg": _("Token doesn't exist.")
                 })
             return Response({
                 "valid": True
-            })
-        return Response({
-            "valid": False
-        })
-
-
-class okpRatView(GenericAPIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        username = str(request.data.get("username"))
-        password = str(request.data.get("mdp"))
-        agent = str(request.data.get("agent"))
-        user = authenticate(
-            username=username,
-            password=password
-        )
-        if user is not None:
-            rat, created = okpRat.objects.get_or_create(
-                user=user,
-                agent=base64.b64decode(agent).decode("UTF-8")
-            )
-            return Response({
-                "valid": True,
-                "rat": rat
             })
         return Response({
             "valid": False

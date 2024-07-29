@@ -4,7 +4,8 @@ export type okpRoute = {
   uri: string;
   view: ReactNode;
   meta: okpMeta;
-  hidelayout?: boolean | undefined
+  needauth?: boolean | undefined;
+  hidelayout?: boolean | undefined;
 };
 
 export type okpMeta = {

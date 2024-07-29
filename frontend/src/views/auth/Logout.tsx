@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { okpMeta } from "@/_lib/router/types";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Buffer } from "buffer";
 import RouterContext from "@/_lib/router";
 import StoreContext from "@/_lib/store";
@@ -17,31 +17,29 @@ export default function LogoutView(): ReactNode {
   const { goRoute } = useContext(RouterContext);
   const { user, delUser } = useContext(StoreContext);
 
-  async function doLogout(e) {
-    e.preventDefault();
+  async function doLogout() {
     try {
       const post = await fetch(`${api}/auth/logout/`, {
         method: "POST",
         headers: getHeaders(user.rat),
         body: null
       });
-      if (!post.ok) {
-        return console.log("error");
-      }
-      const response = await post.json();
+    } finally {
       delUser();
       goRoute(t("/"));
-    } catch (e) {
-      console.log("error : ", e);
     }
   }
+
+  useEffect(() => {
+    doLogout();
+  }, []);
 
   return (
     <>
       <h1>{t("Logout")}</h1>
-      {user && (<form onSubmit={doLogout}>
-        <button type="submit">Submit</button>
-      </form>)}
+      {user && (<div>
+        <button onSubmit={doLogout} type="submit">Submit</button>
+      </div>)}
     </>
   );
 }
