@@ -6,7 +6,6 @@ import OkpBrand from "@/components/core/_header/brand";
 import OkpMenu from "@/components/core/_header/menu";
 import OkpNotifications from "@/components/core/_header/notifications";
 import OkpUser from "@/components/core/_header/user";
-import imgAvatar from "@/_assets/img/mcpk.jpg";
 
 export default function CoreHeader(): ReactNode {
   const { user, toggleNavbar, setToggleNavbar } = useContext(StoreContext);
