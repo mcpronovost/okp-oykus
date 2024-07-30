@@ -32,7 +32,10 @@ class okpPingView(GenericAPIView):
             ):
                 request.user.last_login = timezone.now()
                 request.user.save()
-            content["user"] = str(request.user)
+            content["user"] = {
+                "username": str(request.user),
+                "name": str(request.user.profile.name)
+            }
             content["rat"] = str(request.auth)
             content["auth"] = True
         return Response(content)

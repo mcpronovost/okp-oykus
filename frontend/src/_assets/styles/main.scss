@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
 
 $htopbar: 48px;
 $wnavbar: 64px;
@@ -53,6 +53,12 @@ a {
 
 ul, li {
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+figure, section, article {
+  display: block;
   padding: 0;
   margin: 0;
 }

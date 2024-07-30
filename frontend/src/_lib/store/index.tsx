@@ -29,11 +29,12 @@ export const StoreProvider = ({ children }) => {
   );
 
   const setUser = (value) => {
-    setStoreItem("user", value);
     setStoreUser(user => ({
       ...user,
-      ...value
+      ...value,
+      updated: Date.now()
     }));
+    setStoreItem("user", user);
   };
 
   const delUser = () => {

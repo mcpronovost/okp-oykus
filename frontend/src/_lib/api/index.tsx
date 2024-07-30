@@ -18,7 +18,7 @@ export async function getPing(user) {
   const f = await fetch(`${api}/ping/`, {headers: getHeaders(user.rat)});
   if (f.ok) {
     const r = await f.json();
-    if (r.auth) return true;
+    if (r.auth) return r.user;
   }
   return false;
 }

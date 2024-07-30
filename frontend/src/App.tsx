@@ -9,7 +9,7 @@ import CoreSidebar from "@/components/core/Sidebar";
 
 function AppView () {
   const { route, goRoute } = useContext(RouterContext);
-  const { user } = useContext(StoreContext);
+  const { user, setUser } = useContext(StoreContext);
   const lang = getLang();
   const pathUrl = window.location.pathname;
 
@@ -19,8 +19,15 @@ function AppView () {
 
   useEffect(() => {
     (async () => {
-      const ping = await getPing(user);
-      if (route.needauth && !ping) goRoute("/login");
+      if (user.updated < (Date.now() - 300000)) {
+        const ping = await getPing(user);
+        if (ping) {
+          setUser({
+            ...ping
+          });
+        }
+        if (route.needauth && !ping) goRoute("/login");
+      }
     })();
   }, [route]);
 

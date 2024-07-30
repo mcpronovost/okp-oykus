@@ -17,6 +17,8 @@
   "/achievements": "/achievements",
   "Rankings": "Rankings",
   "/rankings": "/rankings",
+  "Market": "Market",
+  "/market": "/market",
   "Settings": "Settings",
   "/settings": "/settings"
 }
