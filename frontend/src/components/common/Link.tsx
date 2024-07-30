@@ -25,7 +25,7 @@ export default function CommonLink({
 
   return (
     <>
-      <a href={href} className={className} onClick={doClick}>
+      <a href={t(href)} className={className} onClick={doClick}>
         {children}
       </a>
     </>

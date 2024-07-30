@@ -1,5 +1,7 @@
 #okp-core-navbar {
   background-color: var(--okp-light);
+  font-size: 0;
+  line-height: 0;
   display: flex;
   flex: 0 0 64px;
   flex-direction: column;
@@ -8,8 +10,142 @@
   height: calc(100vh - $htopbar);
   transition: flex-basis 0.3s;
 
+  .okp-menu {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      > li {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 6px;
+      }
+    }
+
+    &-link {
+      background-color: transparent;
+      border-radius: 6px;
+      color: var(--okp-text-low);
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      flex: 0 0 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      transition: all 0.3s;
+      padding: 6px 12px;
+
+      &:hover {
+        background-color: var(--okp-lighten);
+        color: var(--okp-text);
+
+        .okp-menu-link-icon {
+          color: var(--okp-primary);
+        }
+      }
+
+      &-name {
+        box-sizing: border-box;
+        font-family: "Quicksand", "Noto Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 120%;
+        overflow: hidden;
+        display: block;
+        flex: 0 0 calc(100% - 24px);
+        transition: all 0.3s;
+        padding: 12px;
+      }
+    }
+  }
+
+  .okp-footer {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 6px;
+
+    &-link {
+      background-color: transparent;
+      border-radius: 6px;
+      color: var(--okp-text-low);
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      flex: 0 0 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      transition: all 0.3s;
+      padding: 6px 12px;
+
+      &:hover {
+        background-color: var(--okp-lighten);
+        color: var(--okp-text);
+
+        .okp-menu-link-icon {
+          color: var(--okp-primary);
+        }
+      }
+
+      &-name {
+        box-sizing: border-box;
+        font-family: "Quicksand", "Noto Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 120%;
+        overflow: hidden;
+        display: block;
+        flex: 0 0 calc(100% - 24px);
+        transition: all 0.3s;
+        padding: 12px;
+      }
+    }
+  }
+
   &.okp-close {
     flex-basis: 64px;
+
+    .okp-menu {
+      &-link {
+        flex: 0 0 48px;
+        width: 48px;
+        padding: 0;
+
+        &-name {
+          flex: 0 0 0;
+          width: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    .okp-footer {
+      &-link {
+        flex: 0 0 48px;
+        width: 48px;
+        padding: 0;
+
+        &-name {
+          flex: 0 0 0;
+          width: 0;
+          padding: 0;
+        }
+      }
+    }
   }
 
   &.okp-open {
