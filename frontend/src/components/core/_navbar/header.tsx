@@ -31,13 +31,13 @@ export default function NavbarHeader(): ReactNode {
       <section className="okp-header-counts">
         <ul>
           <li>
-            <span>1688</span> <span>messages</span>
+            <span>9 999 999</span> <span>messages</span>
           </li>
           <li>
-            <span>999</span> <span>topics</span>
+            <span>99 999</span> <span>topics</span>
           </li>
           <li>
-            <span>182</span> <span>succès</span>
+            <span>99 999</span> <span>succès</span>
           </li>
         </ul>
       </section>
