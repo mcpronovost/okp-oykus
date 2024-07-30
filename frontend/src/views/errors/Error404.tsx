@@ -18,8 +18,10 @@ export default function Error404View (): ReactNode {
 
   return (
     <>
-      <h1>Error 404</h1>
-      <button onClick={doClick}>retour home</button>
+      <section className="okp-container">
+        <h1>Error 404</h1>
+        <button onClick={doClick}>retour home</button>
+      </section>
     </>
   );
 };
