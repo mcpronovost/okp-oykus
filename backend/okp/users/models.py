@@ -86,3 +86,30 @@ class okpRat(models.Model):
     @classmethod
     def generate_rat(cls):
         return binascii.hexlify(os.urandom(20)).decode()
+
+    @property
+    def browser(self):
+        if self.agent is None:
+            return "-"
+        if "Brave/" in self.agent:
+            return "Brave"
+        if "Firefox/" in self.agent and "Seamonkey/" not in self.agent:
+            return "Firefox"
+        if "Seamonkey/" in self.agent:
+            return "Seamonkey"
+        if "Opera/" in self.agent or "OPR/" in self.agent:
+            return "Opera"
+        if (
+            "Safari/" in self.agent
+            and ("Chrome/" not in self.agent and "Chromium/" not in self.agent)
+        ):
+            return "Safari"
+        if "Chromium/" in self.agent:
+            return "Chromium"
+        if (
+            "Chrome/" in self.agent
+            and "Edg." not in self.agent
+        ):
+            return "Chrome"
+        return f"({self.agent.split(" ")[1]})"
+    browser.fget.short_description = _("Browser")

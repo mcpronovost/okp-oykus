@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from rest_framework import HTTP_HEADER_ENCODING
 from rest_framework.authentication import (
@@ -11,6 +12,12 @@ from okp.users.models import okpRat
 def get_agent_header(request):
     agent = request.META.get("HTTP_USER_AGENT", b"")
     if isinstance(agent, str):
+        agent = agent.replace("Mozilla/5.0 ", "")
+        if "HTTP_SEC_CH_UA" in request.META:
+            if "Brave" in request.META["HTTP_SEC_CH_UA"]:
+                agent = agent.replace("Chrome/", "Brave/")
+            elif "Chromium" in request.META["HTTP_SEC_CH_UA"]:
+                agent = agent.replace("Chrome/", "Chromium/")
         agent = agent.encode(HTTP_HEADER_ENCODING)
     return agent
 
@@ -63,6 +70,10 @@ class okpRatAuthentication(BaseAuthentication):
 
         if token is None or not token.user.is_active:
             raise AuthenticationFailed(_("User inactive or deleted."))
+
+        if token.expired_at < timezone.now():
+            token.delete()
+            raise AuthenticationFailed(_("Token expired."))
 
         return (token.user, token)
 

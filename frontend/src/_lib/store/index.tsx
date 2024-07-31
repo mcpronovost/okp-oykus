@@ -34,7 +34,14 @@ export const StoreProvider = ({ children }) => {
       ...value,
       updated: Date.now()
     }));
-    setStoreItem("user", user);
+    setStoreItem("user", !!user ? {
+      ...user,
+      ...value,
+      updated: Date.now()
+    } : {
+      ...value,
+      updated: Date.now()
+    });
   };
 
   const delUser = () => {

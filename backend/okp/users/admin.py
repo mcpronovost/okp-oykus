@@ -47,8 +47,8 @@ class okpUserAdmin(UserAdmin):
 
 @admin.register(okpRat)
 class okpRatAdmin(admin.ModelAdmin):
-    list_display = ["user", "rat", "expired_at"]
-    readonly_fields = ["rat", "expired_at", "created_at"]
+    list_display = ["user", "rat", "browser", "expired_at"]
+    readonly_fields = ["browser", "rat", "expired_at", "created_at"]
 
 
 admin.site.unregister(User)

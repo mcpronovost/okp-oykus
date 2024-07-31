@@ -19,15 +19,16 @@ function AppView () {
 
   useEffect(() => {
     (async () => {
-      if (user.updated < (Date.now() - 300000)) {
+      if (user && user.updated < (Date.now() - (5 * 60 * 1000))) {
         const ping = await getPing(user);
         if (ping) {
           setUser({
             ...ping
           });
         }
-        if (route.needauth && !ping) goRoute("/login");
-      }
+        if (!ping && user) goRoute("/logout");
+        if (!ping && route.needauth) goRoute("/login");
+      } else if (!user && route.needauth) goRoute("/login");
     })();
   }, [route]);
 

@@ -23,6 +23,9 @@ class okpPingView(GenericAPIView):
             "auth": False
         }
         if request.user.is_authenticated:
+            if request.auth.expired_at <= timezone.now():
+                request.auth.delete()
+                return Response(content)
             if (
                 request.user.last_login is None
                 or (
