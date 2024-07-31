@@ -17,17 +17,31 @@ function AppView () {
     window.location.pathname = pathUrl.slice(0, -1);
   }
 
+  const doPing = async () => {
+    const ping = await getPing(user);
+    if (ping) {
+      setUser({
+        ...ping
+      });
+    }
+    if (!ping && user) goRoute("/logout");
+    if (!ping && route.needauth) goRoute("/login");
+  };
+
+  useEffect(() => {
+    (async () => {
+      if (window?.performance?.getEntriesByType) {
+        if (["navigate", "reload"].includes(window.performance.getEntriesByType("navigation")[0].type)) {
+          await doPing();
+        }
+      }
+    })();
+  }, []);
+
   useEffect(() => {
     (async () => {
       if (user && user.updated < (Date.now() - (5 * 60 * 1000))) {
-        const ping = await getPing(user);
-        if (ping) {
-          setUser({
-            ...ping
-          });
-        }
-        if (!ping && user) goRoute("/logout");
-        if (!ping && route.needauth) goRoute("/login");
+        await doPing();
       } else if (!user && route.needauth) goRoute("/login");
     })();
   }, [route]);
