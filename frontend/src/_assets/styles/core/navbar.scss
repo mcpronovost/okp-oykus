@@ -54,6 +54,23 @@
           width: 100%;
           height: 100%;
         }
+
+        &-initial {
+          background-color: var(--okp-dark);
+          color: var(--okp-text);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+
+          > span {
+            font-family: "Cinzel Decorative", "Quicksand", "Noto Sans", sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 120%;
+          }
+        }
       }
     }
 

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useContext } from "react";
+import { qpabbr } from "@mcpronovost/qpfilters";
 import { getTrans } from "@/_lib/i18n";
 import StoreContext from "@/_lib/store";
 import Link from "@/components/common/Link";
@@ -17,12 +18,18 @@ export default function NavbarHeader(): ReactNode {
           <img src={imgAvatar} alt={t("User's banner")} className="okp-header-banner-cover-img" />
         </figure>
         <figure className="okp-header-banner-avatar">
-          <img src={imgAvatar} alt={("User's avatar")} className="okp-header-banner-avatar-img" />
+          {user.avatar ? (
+            <img src={user.avatar} alt={("User's avatar")} className="okp-header-banner-avatar-img" />
+          ) : (
+            <div className="okp-header-banner-avatar-initial">
+              <span>{qpabbr(user.name || user.username)}</span>
+            </div>
+          )}
         </figure>
       </section>
       <section className="okp-header-info">
         <div className="okp-header-info-name">
-          <span>{user.name}</span>
+          <span>{user.name || user.username}</span>
         </div>
         <div className="okp-header-info-title">
           <span>@{user.username}</span>
@@ -31,13 +38,13 @@ export default function NavbarHeader(): ReactNode {
       <section className="okp-header-counts">
         <ul>
           <li>
-            <span>9 999 999</span> <span>messages</span>
+            <span>0</span> <span>{t("messages")}</span>
           </li>
           <li>
-            <span>99 999</span> <span>topics</span>
+            <span>0</span> <span>{t("topics")}</span>
           </li>
           <li>
-            <span>99 999</span> <span>succès</span>
+            <span>0</span> <span>{t("achievements")}</span>
           </li>
         </ul>
       </section>
