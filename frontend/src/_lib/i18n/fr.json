@@ -20,5 +20,11 @@
   "Market": "Marché",
   "/market": "/marche",
   "Settings": "Paramètres",
-  "/settings": "/parametres"
+  "/settings": "/parametres",
+  "message": "message",
+  "messages": "messages",
+  "topic": "sujet",
+  "topics": "sujets",
+  "achievement": "succès",
+  "achievements": "succès"
 }

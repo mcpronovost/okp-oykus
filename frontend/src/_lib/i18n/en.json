@@ -20,5 +20,11 @@
   "Market": "Market",
   "/market": "/market",
   "Settings": "Settings",
-  "/settings": "/settings"
+  "/settings": "/settings",
+  "message": "message",
+  "messages": "messages",
+  "topic": "topic",
+  "topics": "topics",
+  "achievement": "achievement",
+  "achievements": "achievements"
 }
