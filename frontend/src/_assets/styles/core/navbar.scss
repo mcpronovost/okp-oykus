@@ -14,6 +14,7 @@
     text-align: center;
     width: 100%;
     position: relative;
+    padding: 0 0 32px;
 
     &-banner {
       height: 148px;
@@ -213,7 +214,7 @@
         background-color: var(--okp-lighten);
         color: var(--okp-text);
 
-        .okp-menu-link-icon {
+        .okp-footer-link-icon {
           color: var(--okp-primary);
         }
       }
@@ -237,6 +238,8 @@
     flex-basis: 64px;
 
     .okp-header {
+      padding: 0;
+
       &-banner {
         height: 76px;
 
