@@ -15,7 +15,9 @@ export default function NavbarHeader(): ReactNode {
     <header className="okp-header">
       <section className="okp-header-banner">
         <figure className="okp-header-banner-cover">
-          <img src={imgAvatar} alt={t("User's banner")} className="okp-header-banner-cover-img" />
+          {user.avatar && (
+            <img src={imgAvatar} alt={t("User's banner")} className="okp-header-banner-cover-img" />
+          )}
         </figure>
         <figure className="okp-header-banner-avatar">
           {user.avatar ? (
