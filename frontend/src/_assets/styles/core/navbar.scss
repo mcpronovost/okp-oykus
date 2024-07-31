@@ -21,6 +21,7 @@
       transition: height 0.3s;
 
       &-cover {
+        background-color: var(--okp-lighten);
         overflow: hidden;
         width: 100%;
         height: 96px;
@@ -57,7 +58,6 @@
 
         &-initial {
           background-color: var(--okp-dark);
-          color: var(--okp-text);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -65,10 +65,13 @@
           height: 100%;
 
           > span {
+            color: var(--okp-text-low);
             font-family: "Cinzel Decorative", "Quicksand", "Noto Sans", sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 400;
             line-height: 120%;
+            cursor: default;
+            transition: font-size 0.3s;
           }
         }
       }
@@ -269,6 +272,12 @@
           width: 48px;
           height: 48px;
           top: 12px;
+
+          &-initial {
+            > span {
+              font-size: 0.8rem;
+            }
+          }
         }
       }
 
