@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { defaultLang, getLang, getTrans } from "@/_lib/i18n";
 import HomeView, { metaHome } from "@/views/Home";
 import { routesAuth } from "./routesAuth";
+import { routesForum } from "./routesForum";
 import DevblogView, { metaDevblog } from "@/views/Devblog";
 import Error404View, { metaError404 } from "@/views/errors/Error404";
 
@@ -19,6 +20,7 @@ export const routes: okpRoute[] = [
     needauth: true
   },
   ...routesAuth,
+  ...routesForum,
   {
     uri: "/error",
     view: Error404View,
@@ -33,6 +35,9 @@ export const getRoute = (path: string, lang: string): okpRoute => {
     if (path.startsWith(`/${lang}`)) {
       return `/${lang}${t(r.uri)}` === path;
     } else {
+      if (r.regex) {
+        return path.match(r.regex);
+      }
       return `${t(r.uri)}` === path;
     }
   });
