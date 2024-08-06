@@ -17,7 +17,7 @@ export const routes: okpRoute[] = [
     uri: "/devblog",
     view: DevblogView,
     meta: metaDevblog,
-    needauth: true
+    needauth: true,
   },
   ...routesAuth,
   ...routesForum,
@@ -70,15 +70,26 @@ export const RouterProvider = ({ children }) => {
     return window.location.pathname === path;
   };
 
-  /* ===--- effects and listeners ---=== */
-
-  useEffect(() => {
-    const metaTitle = `${t(route.meta.title)} - ${appName}`;
+  const setMeta = (title: string | null, description: string | null) => {
+    const metaTitle =
+      title || description
+        ? `${title} - ${appName}`
+        : route.meta
+        ? `${t(route.meta.title)} - ${appName}`
+        : appName;
     const metaDescription =
-      t(route.meta.description) || t("Oykus is a project.");
+      title || description
+        ? description || t("Oykus is a project.")
+        : t(route.meta.description) || t("Oykus is a project.");
 
     window.document.documentElement.lang = lang;
     window.document.title = metaTitle;
+  };
+
+  /* ===--- effects and listeners ---=== */
+
+  useEffect(() => {
+    setMeta();
   }, [route]);
 
   window.onpopstate = () => {
@@ -93,6 +104,7 @@ export const RouterProvider = ({ children }) => {
         route,
         goRoute,
         isCurrentRoute,
+        setMeta,
       }}
     >
       {children}
