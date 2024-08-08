@@ -1,11 +1,8 @@
-import type { ReactNode } from "react";
 import { Bell, Mail, Smile } from "lucide-react";
-import { getTrans } from "@/_lib/i18n";
-import Link from "@/components/common/Link";
+// import { getTrans } from "@/_lib/i18n";
+// import Link from "@/components/common/Link";
 
-const t = getTrans();
-
-export default function CoreHeader(): ReactNode {
+export default function HeaderNotifications() {
 
   return (
     <div className="okp-notifications">
