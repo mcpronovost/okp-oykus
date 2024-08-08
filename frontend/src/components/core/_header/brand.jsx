@@ -1,12 +1,13 @@
-// import { getTrans } from "@/_lib/i18n";
-// import Link from "@/components/common/Link";
+import { Link } from "react-router-dom";
+import { getTrans } from "@/_lib/i18n";
 import imgOykus from "@/_assets/img/oykus-w.png";
 
 export default function HeaderBrand() {
+  const t = getTrans();
 
   return (
     <div className="okp-brand">
-      <a href="/" className="okp-brand-link">
+      <Link to={t("/")} aria-label={t("BackToHome")} className="okp-brand-link">
         <div className="okp-brand-logo">
           <img
             src={imgOykus}
@@ -16,8 +17,8 @@ export default function HeaderBrand() {
             className="okp-brand-img"
           />
         </div>
-        <span className="okp-brand-name">Oykus</span>
-      </a>
+        <span className="okp-brand-name">{t("Oykus")}</span>
+      </Link>
     </div>
   );
 }

@@ -1,21 +1,26 @@
+import { Link } from "react-router-dom";
+import { getTrans } from "@/_lib/i18n";
+
 export default function HeaderMenu() {
+  const t = getTrans();
+
   return (
     <nav className="okp-menu">
       <ul>
         <li>
-          <a href="/devblog" className="okp-menu-link">
-          Devblog
-          </a>
+          <Link to={t("/devblog")} className="okp-menu-link">
+            {t("Devblog")}
+          </Link>
         </li>
         <li>
-          <a href="/faq" className="okp-menu-link">
-          FAQ
-          </a>
+          <Link to={t("/faq")} className="okp-menu-link">
+            {t("FAQ")}
+          </Link>
         </li>
         <li>
-          <a href="/contact" className="okp-menu-link">
-          Contact
-          </a>
+          <Link to={t("/contact")} className="okp-menu-link">
+            {t("Contact")}
+          </Link>
         </li>
       </ul>
     </nav>

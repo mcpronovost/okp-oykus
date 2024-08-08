@@ -1,14 +1,16 @@
+import { useContext } from "react";
 import { LayoutGrid } from "lucide-react";
+import StoreContext from "@/_lib/store";
 import OkpBrand from "@/components/core/_header/brand";
 import OkpMenu from "@/components/core/_header/menu";
 import OkpNotifications from "@/components/core/_header/notifications";
 import OkpUser from "@/components/core/_header/user";
 
 export default function CoreHeaderComponent() {
+  const { user, toggleNavbar, setToggleNavbar } = useContext(StoreContext);
 
   const doToggleNavbar = () => {
-    console.log("doToggleNavbar");
-    // setToggleNavbar(!toggleNavbar);
+    setToggleNavbar(!toggleNavbar);
   };
 
   return (
@@ -21,7 +23,7 @@ export default function CoreHeaderComponent() {
       </div>
       <OkpMenu />
       <div className="okp-space"></div>
-      <OkpNotifications />
+      {!!user && <OkpNotifications />}
       <OkpUser />
     </header>
   );

@@ -1,0 +1,9 @@
+{
+  "/": "/",
+  "/devblog": "/devblog",
+  "/faq": "/faq",
+  "/contact": "/contact",
+  "/login": "/connexion",
+  "/logout": "/deconnexion",
+  "/signup": "/inscription"
+}

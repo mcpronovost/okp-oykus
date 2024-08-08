@@ -3,6 +3,7 @@ import CoreView from "@/Core";
 import HomeView from "@/views/Home";
 import LoginView from "@/views/auth/Login";
 import LogoutView from "@/views/auth/Logout";
+import DevblogView from "@/views/Devblog";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
         index: true,
         element: <HomeView />
       },
+      {
+        path: "/en",
+        element: <HomeView />
+      },
       ...["/en/login", "/connexion"].map((r) => ({
         path: r,
         element: <LoginView />
@@ -20,6 +25,10 @@ export const router = createBrowserRouter([
       ...["/en/logout", "/deconnexion"].map((r) => ({
         path: r,
         element: <LogoutView />
+      })),
+      ...["/en/devblog", "/devblog"].map((r) => ({
+        path: r,
+        element: <DevblogView />
       })),
     ]
   },
