@@ -84,6 +84,15 @@ article {
   transition: flex-basis 0.3s;
 }
 
+.okp-fullview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - $htopbar);
+}
+
 /* ===---=== */
 
 @import "./grid.scss";
