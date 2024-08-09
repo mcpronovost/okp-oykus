@@ -178,7 +178,7 @@ class okpForumTopic(models.Model):
     )
     title = models.CharField(
         verbose_name=_("Title"),
-        max_length=32,
+        max_length=120,
         blank=False,
         null=False
     )
