@@ -77,8 +77,21 @@ class okpForumCategory(models.Model):
 
     @property
     def path(self):
+        g = f"{self.forum.game.slug}"
         c = f"{self.pk}-{slugify(self.name)}"
-        return f"{self.forum.game.slug}/{c}"
+        return f"{g}/{c}"
+
+    @property
+    def breadcrumbs(self):
+        crumbs = []
+        # =-
+        g = f"/g/{self.forum.game.slug}"
+        crumbs.append({
+            "name": self.forum.game.name,
+            "href": g
+        })
+        # =-
+        return crumbs
 
 
 class okpForumSection(models.Model):
@@ -146,9 +159,40 @@ class okpForumSection(models.Model):
 
     @property
     def path(self):
+        g = f"{self.forum.game.slug}"
         c = f"{self.category.pk}-{slugify(self.category.name)}"
         s = f"{self.pk}-{slugify(self.name)}"
-        return f"{self.forum.game.slug}/{c}/{s}"
+        return f"{g}/{c}/{s}"
+
+    @property
+    def breadcrumbs(self):
+        crumbs = []
+        # =-
+        g = f"/g/{self.forum.game.slug}"
+        crumbs.append({
+            "name": self.forum.game.name,
+            "href": g
+        })
+        # =-
+        c = f"{self.category.pk}-{slugify(self.category.name)}"
+        crumbs.append({
+            "name": self.category.name,
+            "href": f"{g}/{c}"
+        })
+        # =-
+        sections = []
+        section = self.section
+        while section is not None:
+            s = f"{section.pk}-{slugify(section.name)}"
+            sections.append({
+                "name": section.name,
+                "href": f"{g}/{c}/{s}"
+            })
+            section = section.section
+        # =-
+        sections.reverse()
+        crumbs += sections
+        return crumbs
 
 
 class okpForumTopic(models.Model):
@@ -216,10 +260,41 @@ class okpForumTopic(models.Model):
 
     @property
     def path(self):
+        g = f"{self.forum.game.slug}"
         c = f"{self.category.pk}-{slugify(self.category.name)}"
         s = f"{self.section.pk}-{slugify(self.section.name)}"
         t = f"{self.pk}-{slugify(self.title)}"
-        return f"{self.forum.game.slug}/{c}/{s}/{t}"
+        return f"{g}/{c}/{s}/{t}"
+
+    @property
+    def breadcrumbs(self):
+        crumbs = []
+        # =-
+        g = f"/g/{self.forum.game.slug}"
+        crumbs.append({
+            "name": self.forum.game.name,
+            "href": g
+        })
+        # =-
+        c = f"{self.category.pk}-{slugify(self.category.name)}"
+        crumbs.append({
+            "name": self.category.name,
+            "href": f"{g}/{c}"
+        })
+        # =-
+        sections = []
+        section = self.section
+        while section is not None:
+            s = f"{section.pk}-{slugify(section.name)}"
+            sections.append({
+                "name": section.name,
+                "href": f"{g}/{c}/{s}"
+            })
+            section = section.section
+        # =-
+        sections.reverse()
+        crumbs += sections
+        return crumbs
 
 
 class okpForumMessage(models.Model):

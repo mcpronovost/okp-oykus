@@ -1,9 +1,9 @@
-.okp-forum-section-topics {
+.okp-forum-topics {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -12px;
 
-  .okp-forum-section-topic {
+  .okp-forum-topic {
     box-sizing: border-box;
     display: flex;
     flex: 1 0 auto;
@@ -43,5 +43,16 @@
         }
       }
     }
+  }
+
+  &-empty {
+    background-color: var(--okp-light);
+    border-radius: 6px;
+    color: var(--okp-text-low);
+    text-align: center;
+    width: 100%;
+    opacity: 0.6;
+    padding: 12px;
+    margin: 12px;
   }
 }

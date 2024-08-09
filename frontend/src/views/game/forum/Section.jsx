@@ -1,8 +1,9 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 import OkpHeader from "@/components/common/Header";
 import OkpBreadcrumbs from "@/components/common/Breadcrumbs";
+import OkpForumSectionCard from "@/components/forum/SectionCard";
 import OkpTopicCard from "@/components/forum/TopicCard";
 
 export async function loader({ params }) {
@@ -27,30 +28,35 @@ export async function loader({ params }) {
 
 export default function ForumSectionView() {
   const { data } = useLoaderData();
-  const { slug } = useParams();
-
-  const breadcrumbs = [
-    {
-      name: data.game.name,
-      href: `/g/${slug}`,
-    },
-    {
-      name: data.category.name,
-      href: `/g/${data.category.path}`,
-    },
-  ];
+  const t = getTrans();
 
   return (
     <section className="okp-forum-section">
       <OkpHeader title={data.name} subtitle={data.description}>
-        <OkpBreadcrumbs crumbs={breadcrumbs} />
+        <OkpBreadcrumbs crumbs={data.breadcrumbs} />
       </OkpHeader>
-      <section className="okp-forum-section-topics">
-        {data.topics.map((topic) => {
+      {!!data.sections.length && (
+        <div className="okp-forum-sections">
+          {data.sections.map((section) => {
+            return (
+              <OkpForumSectionCard
+                key={`section-${section.id}`}
+                section={section}
+              />
+            );
+          })}
+        </div>
+      )}
+      <section className="okp-forum-topics">
+        {data.topics.length ? (data.topics.map((topic) => {
           return (
             <OkpTopicCard key={`topic-${topic.id}`} topic={topic} />
           )
-        })}
+        })) : (
+          <div className="okp-forum-topics-empty">
+            <span>{t("Thissectionisempty")}</span>
+          </div>
+        )}
       </section>
     </section>
   );

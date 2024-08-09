@@ -16,7 +16,7 @@ export default function ForumCategory({ category, breadcrumbs, nolink }) {
       >
         {!!breadcrumbs && <OkpBreadcrumbs crumbs={breadcrumbs} />}
       </OkpHeader>
-      <div className="okp-forum-category-sections">
+      <div className="okp-forum-sections">
         {category.sections.length ? (
           category.sections.map((section) => {
             return (
@@ -28,7 +28,7 @@ export default function ForumCategory({ category, breadcrumbs, nolink }) {
             );
           })
         ) : (
-          <div className="okp-forum-category-sections-empty">
+          <div className="okp-forum-sections-empty">
             <span>{t("Thiscategoryisempty")}</span>
           </div>
         )}

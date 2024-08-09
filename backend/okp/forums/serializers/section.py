@@ -41,7 +41,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumSection
         fields = [
-            "id", "name", "description", "path", "game", "category", "sections", "topics"
+            "id", "name", "description", "path", "breadcrumbs", "game", "category", "sections", "topics"
         ]
 
     def get_game(self, obj):

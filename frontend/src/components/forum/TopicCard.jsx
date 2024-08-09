@@ -8,8 +8,8 @@ export default function ForumTopicCard({ topic }) {
   };
 
   return (
-    <article className="okp-forum-section-topic">
-      <div onClick={handleCardClick} className="okp-forum-section-topic-card">
+    <article className="okp-forum-topic">
+      <div onClick={handleCardClick} className="okp-forum-topic-card">
         <header>
           <h3>{topic.title}</h3>
         </header>

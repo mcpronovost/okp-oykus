@@ -6,6 +6,7 @@ import {
   ShoppingBasket,
   UsersRound,
   Leaf,
+  Gem
 } from "lucide-react";
 import { Scrollbars } from "rc-scrollbars";
 import { getTrans } from "@/_lib/i18n";
@@ -51,6 +52,12 @@ export default function NavbarMenu() {
             <Link to={t("/g/qalatlan")} className="okp-menu-link">
               <Leaf size={24} className="okp-menu-link-icon" />
               <span className="okp-menu-link-name">{t("Qalatlán")}</span>
+            </Link>
+          </li>
+          <li>
+            <Link to={t("/g/rhansidor")} className="okp-menu-link">
+              <Gem size={24} className="okp-menu-link-icon" />
+              <span className="okp-menu-link-name">{t("Rhansidor")}</span>
             </Link>
           </li>
         </ul>
