@@ -1,0 +1,35 @@
+import { getTrans } from "@/_lib/i18n";
+import OkpHeader from "@/components/common/Header";
+import OkpForumSectionCard from "@/components/forum/SectionCard";
+
+export default function ForumCategory({ category }) {
+  const t = getTrans();
+
+  return (
+    <section>
+      <OkpHeader
+        h="2"
+        title={category.name}
+        subtitle={category.description}
+        href={`/g/${category.path}`}
+      />
+      <div className="okp-forum-category-sections">
+        {category.sections.length ? (
+          category.sections.map((section) => {
+            return (
+              <OkpForumSectionCard
+                h="3"
+                key={`forum-section-${section.id}`}
+                section={section}
+              />
+            );
+          })
+        ) : (
+          <div className="okp-forum-category-sections-empty">
+            <span>{t("Thiscategoryisempty")}</span>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

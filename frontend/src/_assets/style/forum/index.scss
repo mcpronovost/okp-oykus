@@ -1,0 +1,37 @@
+.okp-forum-category-sections {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+
+  .okp-forum-category-section {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 0 auto;
+    width: 25%;
+    min-width: 300px;
+    padding: 12px;
+
+    &-card {
+      background-color: var(--okp-light);
+      border-radius: 6px;
+      width: 100%;
+      transition: opacity 0.3s;
+      padding: 12px;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &-empty {
+    background-color: var(--okp-light);
+    border-radius: 6px;
+    color: var(--okp-text-low);
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    margin: 12px;
+  }
+}

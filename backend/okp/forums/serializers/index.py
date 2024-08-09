@@ -20,7 +20,7 @@ class okpForumIndexSectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumSection
         fields = [
-            "id", "name", "description"
+            "id", "name", "description", "path"
         ]
 
 
@@ -30,7 +30,7 @@ class okpForumIndexCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumCategory
         fields = [
-            "id", "name", "description", "sections"
+            "id", "name", "description", "path", "sections"
         ]
 
     def get_sections(self, obj):

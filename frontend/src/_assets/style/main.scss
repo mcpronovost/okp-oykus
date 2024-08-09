@@ -51,6 +51,13 @@ a {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+  line-height: 120%;
+  padding: 0;
+  margin: 0;
+}
+
 ul,
 li {
   list-style: none;
@@ -100,4 +107,7 @@ article {
 @import "./core/navbar.scss";
 @import "./core/sidebar.scss";
 
-@import "./components/loading.scss";
+@import "./common/header.scss";
+@import "./common/loading.scss";
+
+@import "./forum/index.scss";

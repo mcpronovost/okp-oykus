@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from okp.games.models import okpGame
@@ -74,6 +75,11 @@ class okpForumCategory(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
+    def path(self):
+        c = f"{self.pk}-{slugify(self.name)}"
+        return f"{self.forum.game.slug}/{c}"
+
 
 class okpForumSection(models.Model):
     forum = models.ForeignKey(
@@ -129,6 +135,12 @@ class okpForumSection(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    @property
+    def path(self):
+        c = f"{self.category.pk}-{slugify(self.category.name)}"
+        s = f"{self.pk}-{slugify(self.name)}"
+        return f"{self.forum.game.slug}/{c}/{s}"
 
 
 class okpForumTopic(models.Model):
@@ -193,6 +205,13 @@ class okpForumTopic(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+    @property
+    def path(self):
+        c = f"{self.category.pk}-{slugify(self.category.name)}"
+        s = f"{self.section.pk}-{slugify(self.section.name)}"
+        t = f"{self.pk}-{slugify(self.name)}"
+        return f"{self.forum.game.slug}/{c}/{s}/{t}"
 
 
 class okpForumMessage(models.Model):

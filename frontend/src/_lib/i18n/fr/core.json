@@ -4,5 +4,21 @@
   "BackToHome": "Retour à l'accueil",
   "PrivateMessages": "Messages privés",
   "Notifications": "Notifications",
-  "Friends": "Amis"
+  "Message": "Message",
+  "Messages": "Messages",
+  "messages": "messages",
+  "Topic": "Sujet",
+  "Topics": "Sujets",
+  "topics": "sujets",
+  "Friends": "Amis",
+  "Cynosts": "Cynosts",
+  "Community": "Communauté",
+  "Achievement": "Succès",
+  "Achievements": "Succès",
+  "achievements": "succès",
+  "Ranking": "Classement",
+  "Rankings": "Classements",
+  "Market": "Marché",
+  "Thiscategoryisempty": "Cette catégorie est vide",
+  "Thissectionisempty": "Cette section est vide"
 }

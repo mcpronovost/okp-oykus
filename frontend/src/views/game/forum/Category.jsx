@@ -5,7 +5,8 @@ import OkpForumCategory from "@/components/forum/Category";
 export async function loader({ params }) {
   if (!params.slug) return;
   try {
-    const req = await fetch(`${api}/forum/${params.slug}/index/`, {
+    const url = `${params.slug}/categories/${params.category}`;
+    const req = await fetch(`${api}/forum/${url}`, {
       headers: getHeaders(),
     });
     if (!req.ok) {
@@ -13,25 +14,19 @@ export async function loader({ params }) {
     }
     const response = await req.json();
     return {
-      data: response
+      category: response,
     };
   } catch (e) {
     return;
   }
 }
 
-export default function ForumIndexView() {
-  const { data } = useLoaderData();
+export default function ForumCategoryView() {
+  const { category } = useLoaderData();
 
   return (
     <>
-      <div>
-        {data.categories.map((category) => {
-          return (
-            <OkpForumCategory key={`forum-category-${category.id}`} category={category} />
-          )
-        })}
-      </div>
+      <OkpForumCategory category={category} />
     </>
   );
 }

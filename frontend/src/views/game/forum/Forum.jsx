@@ -1,6 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { api, getHeaders } from "@/_lib/api";
-import OkpForumCategory from "@/components/forum/Category";
 
 export async function loader({ params }) {
   if (!params.slug) return;
@@ -20,17 +19,16 @@ export async function loader({ params }) {
   }
 }
 
-export default function ForumIndexView() {
+export default function ForumView() {
   const { data } = useLoaderData();
 
   return (
     <>
-      <div>
-        {data.categories.map((category) => {
-          return (
-            <OkpForumCategory key={`forum-category-${category.id}`} category={category} />
-          )
-        })}
+      <div className="okp-container">
+        <h1>{data.game.name}</h1>
+        <div>
+          <Outlet />
+        </div>
       </div>
     </>
   );
