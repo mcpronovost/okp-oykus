@@ -210,7 +210,7 @@ class okpForumTopic(models.Model):
     def path(self):
         c = f"{self.category.pk}-{slugify(self.category.name)}"
         s = f"{self.section.pk}-{slugify(self.section.name)}"
-        t = f"{self.pk}-{slugify(self.name)}"
+        t = f"{self.pk}-{slugify(self.title)}"
         return f"{self.forum.game.slug}/{c}/{s}/{t}"
 
 
