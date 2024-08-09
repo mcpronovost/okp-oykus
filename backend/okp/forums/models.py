@@ -98,6 +98,14 @@ class okpForumSection(models.Model):
         blank=True,
         null=True
     )
+    section = models.ForeignKey(
+        "self",
+        on_delete=models.SET_NULL,
+        related_name="sections",
+        verbose_name=_("Section"),
+        blank=True,
+        null=True
+    )
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=32,

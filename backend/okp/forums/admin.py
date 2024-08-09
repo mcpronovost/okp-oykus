@@ -60,6 +60,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
             "fields": [
                 "forum",
                 "category",
+                "section",
                 "name",
                 "description",
             ]

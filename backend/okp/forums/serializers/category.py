@@ -39,6 +39,7 @@ class okpForumCategorySerializer(serializers.ModelSerializer):
 
     def get_sections(self, obj):
         sections = obj.sections.filter(
+            section=None,
             is_visible=True
         )
         return okpForumSectionSerializer(sections, many=True).data
