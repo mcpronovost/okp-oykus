@@ -234,6 +234,11 @@ class okpForumTopic(models.Model):
         blank=False,
         null=False
     )
+    content = models.TextField(
+        verbose_name=_("Content"),
+        blank=True,
+        null=True
+    )
     total_messages = models.PositiveIntegerField(
         verbose_name=_("Total Messages"),
         default=0

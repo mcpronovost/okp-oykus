@@ -4,7 +4,8 @@ from okp.games.models import okpGame
 from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
-    okpForumTopic
+    okpForumTopic,
+    okpForumMessage
 )
 
 
@@ -32,15 +33,24 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
         ]
 
 
+class okpForumMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpForumMessage
+        fields = [
+            "id", "content"
+        ]
+
+
 class okpForumTopicSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
     category = serializers.SerializerMethodField()
     section = serializers.SerializerMethodField()
+    messages = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumTopic
         fields = [
-            "id", "title", "total_messages", "path", "breadcrumbs", "game", "category", "section"
+            "id", "title", "content", "total_messages", "path", "breadcrumbs", "game", "category", "section", "messages"
         ]
 
     def get_game(self, obj):
@@ -54,3 +64,7 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
     def get_section(self, obj):
         section = obj.section
         return okpForumSectionSerializer(section).data
+
+    def get_messages(self, obj):
+        messages = obj.messages.all()
+        return okpForumMessageSerializer(messages, many=True).data

@@ -92,6 +92,7 @@ class okpForumTopicAdmin(admin.ModelAdmin):
                 "section",
                 "author",
                 "title",
+                "content",
                 "total_messages",
             ]
         }),
