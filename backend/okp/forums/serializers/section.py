@@ -28,7 +28,7 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumTopic
         fields = [
-            "id", "title", "path"
+            "id", "title", "total_messages", "path"
         ]
 
 
