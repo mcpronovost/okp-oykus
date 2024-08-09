@@ -3,6 +3,7 @@ import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 import OkpHeader from "@/components/common/Header";
 import OkpBreadcrumbs from "@/components/common/Breadcrumbs";
+import OkpTopicCard from "@/components/forum/TopicCard";
 
 export async function loader({ params }) {
   const t = getTrans();
@@ -40,10 +41,17 @@ export default function ForumSectionView() {
   ];
 
   return (
-    <>
+    <section className="okp-forum-section">
       <OkpHeader title={data.name} subtitle={data.description}>
-        {!!breadcrumbs && <OkpBreadcrumbs crumbs={breadcrumbs} />}
+        <OkpBreadcrumbs crumbs={breadcrumbs} />
       </OkpHeader>
-    </>
+      <section className="okp-forum-section-topics">
+        {data.topics.map((topic) => {
+          return (
+            <OkpTopicCard key={`topic-${topic.id}`} topic={topic} />
+          )
+        })}
+      </section>
+    </section>
   );
 }

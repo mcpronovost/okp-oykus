@@ -1,8 +1,9 @@
 import { Outlet, useLoaderData } from "react-router-dom";
+import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 
 export async function loader({ params }) {
-  if (!params.slug) return;
+  const t = getTrans();
   try {
     const req = await fetch(`${api}/forum/${params.slug}/index/`, {
       headers: getHeaders(),
@@ -15,7 +16,8 @@ export async function loader({ params }) {
       data: response
     };
   } catch (e) {
-    return;
+    if (e === 401) throw new Response(t("Unauthorized"), { status: 401 });
+    else throw new Response(t("NotFound"), { status: 404 });
   }
 }
 
@@ -24,9 +26,9 @@ export default function ForumView() {
 
   return (
     <>
-      <div className="okp-container">
+      <div>
         <h1 style={{ textAlign: "center", padding: "120px 0" }}>{data.game.name}</h1>
-        <div>
+        <div className="okp-container">
           <Outlet />
         </div>
       </div>
