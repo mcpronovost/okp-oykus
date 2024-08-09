@@ -3,7 +3,7 @@ import OkpHeader from "@/components/common/Header";
 import OkpForumSectionCard from "@/components/forum/SectionCard";
 import OkpBreadcrumbs from "@/components/common/Breadcrumbs";
 
-export default function ForumCategory({ category, breadcrumbs }) {
+export default function ForumCategory({ category, breadcrumbs, nolink }) {
   const t = getTrans();
 
   return (
@@ -12,7 +12,7 @@ export default function ForumCategory({ category, breadcrumbs }) {
         h="2"
         title={category.name}
         subtitle={category.description}
-        href={`/g/${category.path}`}
+        href={nolink ? null : `/g/${category.path}`}
       >
         {!!breadcrumbs && <OkpBreadcrumbs crumbs={breadcrumbs} />}
       </OkpHeader>

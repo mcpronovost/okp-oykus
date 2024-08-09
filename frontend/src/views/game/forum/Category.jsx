@@ -36,7 +36,7 @@ export default function ForumCategoryView() {
 
   return (
     <>
-      <OkpForumCategory category={data} breadcrumbs={breadcrumbs} />
+      <OkpForumCategory category={data} breadcrumbs={breadcrumbs} nolink />
     </>
   );
 }
