@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { qpabbr } from "@mcpronovost/qpfilters";
 import StoreContext from "@/_lib/store";
 import { getTrans } from "@/_lib/i18n";
-import imgAvatar from "@/_assets/img/mcpk.jpg";
 
 export default function HeaderUser() {
   const { user } = useContext(StoreContext);
@@ -19,15 +19,15 @@ export default function HeaderUser() {
               </Link>
             </span>
           </div>
-          <div className="okp-user-avatar">
-            <img
-              src={imgAvatar}
-              alt="Kamuy Sinen"
-              width="32"
-              height="32"
-              className="okp-user-avatar-img"
-            />
-          </div>
+          <figure className="okp-user-avatar">
+            {user.avatar ? (
+              <img src={user.avatar} alt={("User's avatar")} width="32" height="32" className="okp-user-avatar-img" />
+            ) : (
+              <div className="okp-user-avatar-initial">
+                <span>{qpabbr(user.name || user.username)}</span>
+              </div>
+            )}
+          </figure>
         </div>
       )}
       {!user && (

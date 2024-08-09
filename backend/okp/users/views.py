@@ -37,7 +37,8 @@ class okpPingView(GenericAPIView):
                 request.user.save()
             content["user"] = {
                 "username": str(request.user),
-                "name": str(request.user.profile.name)
+                "name": str(request.user.profile.name),
+                "avatar": request.user.profile.avatar.url if request.user.profile.avatar else None
             }
             content["rat"] = str(request.auth)
             content["auth"] = True

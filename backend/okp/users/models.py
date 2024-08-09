@@ -21,6 +21,12 @@ class okpUserProfile(models.Model):
         blank=False,
         null=False
     )
+    avatar = models.ImageField(
+        verbose_name=_("Avatar"),
+        upload_to="avatars/",
+        blank=True,
+        null=True
+    )
     list_unread_topics = models.JSONField(
         verbose_name=_("List of Unread Topics"),
         default=list,

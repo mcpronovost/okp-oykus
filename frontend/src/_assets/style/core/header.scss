@@ -178,6 +178,26 @@
         border-radius: 50%;
         overflow: hidden;
       }
+
+      &-initial {
+        background-color: var(--okp-mid);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+
+        > span {
+          color: var(--okp-text-low);
+          font-family: "Cinzel Decorative", "Quicksand", "Noto Sans", sans-serif;
+          font-size: 0.8rem;
+          font-weight: 400;
+          line-height: 120%;
+          cursor: default;
+          transition: font-size 0.3s;
+        }
+      }
     }
   }
 }

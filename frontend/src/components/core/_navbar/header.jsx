@@ -12,7 +12,7 @@ export default function NavbarHeader() {
       <section className="okp-header-banner">
         <figure className="okp-header-banner-cover">
           {user.avatar && (
-            <img src={imgAvatar} alt={t("User's banner")} className="okp-header-banner-cover-img" />
+            <img src={user.avatar} alt={t("User's banner")} className="okp-header-banner-cover-img" />
           )}
         </figure>
         <figure className="okp-header-banner-avatar">
