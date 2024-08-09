@@ -4,20 +4,20 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from okp.forums.models import (
-    okpForumCategory
+    okpForumSection
 )
-from okp.forums.serializers.category import (
-    okpForumCategorySerializer
+from okp.forums.serializers.section import (
+    okpForumSectionSerializer
 )
 
 
-class okpForumCategoryView(RetrieveAPIView):
+class okpForumSectionView(RetrieveAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    serializer_class = okpForumCategorySerializer
+    serializer_class = okpForumSectionSerializer
     lookup_field = "pk"
 
     def get_queryset(self):
-        queryset = okpForumCategory.objects.filter(
+        queryset = okpForumSection.objects.filter(
             is_visible=True,
             forum__is_active=True,
             forum__game__is_active=True
@@ -34,6 +34,6 @@ class okpForumCategoryView(RetrieveAPIView):
 
         obj = queryset.first()
         if obj is None:
-            raise Http404(_("This category doesn't exist."))
+            raise Http404(_("This section doesn't exist."))
         self.check_object_permissions(self.request, obj)
         return obj

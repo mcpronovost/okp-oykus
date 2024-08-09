@@ -25,7 +25,7 @@ export default function ForumView() {
   return (
     <>
       <div className="okp-container">
-        <h1>{data.game.name}</h1>
+        <h1 style={{ textAlign: "center", padding: "120px 0" }}>{data.game.name}</h1>
         <div>
           <Outlet />
         </div>

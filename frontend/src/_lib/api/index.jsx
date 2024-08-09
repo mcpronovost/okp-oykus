@@ -1,12 +1,15 @@
+import { getStoreItem } from "@/_lib/store";
+
 export const api = "http://127.0.0.1/api";
 
-export function getHeaders(rat = null) {
+export function getHeaders() {
   const headers = {
     Accept: "application/json;charset=UTF-8",
     "Content-Type": "application/json;charset=UTF-8",
   };
-  if (rat) {
-    headers["Authorization"] = `Rat ${rat}`;
+  const user = getStoreItem("user");
+  if (user && user.rat) {
+    headers["Authorization"] = `Rat ${user.rat}`;
   }
   return headers;
 }

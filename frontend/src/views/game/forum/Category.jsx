@@ -1,11 +1,12 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
+import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 import OkpForumCategory from "@/components/forum/Category";
 
 export async function loader({ params }) {
-  if (!params.slug) return;
+  const t = getTrans();
   try {
-    const url = `${params.slug}/categories/${params.category}`;
+    const url = `${params.slug}/categories/${params.category}/`;
     const req = await fetch(`${api}/forum/${url}`, {
       headers: getHeaders(),
     });
@@ -14,19 +15,28 @@ export async function loader({ params }) {
     }
     const response = await req.json();
     return {
-      category: response,
+      data: response,
     };
   } catch (e) {
-    return;
+    if (e === 401) throw new Response(t("Unauthorized"), { status: 401 });
+    else throw new Response(t("NotFound"), { status: 404 });
   }
 }
 
 export default function ForumCategoryView() {
-  const { category } = useLoaderData();
+  const { data } = useLoaderData();
+  const { slug } = useParams();
+
+  const breadcrumbs = [
+    {
+      name: data.game.name,
+      href: `/g/${slug}`
+    }
+  ]
 
   return (
     <>
-      <OkpForumCategory category={category} />
+      <OkpForumCategory category={data} breadcrumbs={breadcrumbs} />
     </>
   );
 }

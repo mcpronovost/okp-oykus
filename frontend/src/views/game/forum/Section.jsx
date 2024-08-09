@@ -1,14 +1,49 @@
-// import { useLoaderData } from "react-router-dom";
-// import { api, getHeaders } from "@/_lib/api";
+import { useLoaderData, useParams } from "react-router-dom";
+import { getTrans } from "@/_lib/i18n";
+import { api, getHeaders } from "@/_lib/api";
+import OkpHeader from "@/components/common/Header";
+import OkpBreadcrumbs from "@/components/common/Breadcrumbs";
+
+export async function loader({ params }) {
+  const t = getTrans();
+  try {
+    const url = `${params.slug}/sections/${params.section}/`;
+    const req = await fetch(`${api}/forum/${url}`, {
+      headers: getHeaders(),
+    });
+    if (!req.ok) {
+      throw req.status;
+    }
+    const response = await req.json();
+    return {
+      data: response,
+    };
+  } catch (e) {
+    if (e === 401) throw new Response(t("Unauthorized"), { status: 401 });
+    else throw new Response(t("NotFound"), { status: 404 });
+  }
+}
 
 export default function ForumSectionView() {
-  // const { data } = useLoaderData();
+  const { data } = useLoaderData();
+  const { slug } = useParams();
+
+  const breadcrumbs = [
+    {
+      name: data.game.name,
+      href: `/g/${slug}`,
+    },
+    {
+      name: data.category.name,
+      href: `/g/${data.category.path}`,
+    },
+  ];
 
   return (
     <>
-      <div className="okp-container">
-        <h1>section</h1>
-      </div>
+      <OkpHeader title={data.name} subtitle={data.description}>
+        {!!breadcrumbs && <OkpBreadcrumbs crumbs={breadcrumbs} />}
+      </OkpHeader>
     </>
   );
 }

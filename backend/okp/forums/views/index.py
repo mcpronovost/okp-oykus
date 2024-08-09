@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.utils.translation import gettext_lazy as _
 from rest_framework.generics import RetrieveAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from okp.forums.models import (
     okpForum
@@ -12,7 +12,7 @@ from okp.forums.serializers.index import (
 
 
 class okpForumIndex(RetrieveAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = okpForumIndexSerializer
     lookup_field = "slug"
 

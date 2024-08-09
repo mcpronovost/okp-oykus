@@ -15,12 +15,29 @@
       background-color: var(--okp-light);
       border-radius: 6px;
       width: 100%;
-      transition: opacity 0.3s;
+      position: relative;
+      transition: filter 0.3s;
       padding: 12px;
 
+      &::before {
+        content: "";
+        border: 2px solid var(--okp-light);
+        border-radius: 6px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: filter 0.3s;
+      }
+
       &:hover {
+        filter: brightness(1.1);
         cursor: pointer;
-        opacity: 0.8;
+
+        &::before {
+          filter: brightness(1.1);
+        }
       }
     }
   }
@@ -31,6 +48,7 @@
     color: var(--okp-text-low);
     text-align: center;
     width: 100%;
+    opacity: 0.6;
     padding: 12px;
     margin: 12px;
   }
