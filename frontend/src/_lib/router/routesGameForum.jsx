@@ -1,6 +1,5 @@
-import StoreContext from "@/_lib/store";
 import GameForumView, { loader as getForum } from "@/views/game/forum/Forum";
-import GameForumIndexView, { loader as getIndex } from "@/views/game/forum/Index";
+import GameForumIndexView from "@/views/game/forum/Index";
 import GameForumCategoryView, { loader as getCategory } from "@/views/game/forum/Category";
 import GameForumSectionView, { loader as getSection } from "@/views/game/forum/Section";
 import GameForumTopicView, { loader as getTopic } from "@/views/game/forum/Topic";
@@ -19,7 +18,7 @@ export const routesGameForum = [
       {
         index: true,
         element: <GameForumIndexView />,
-        loader: getIndex,
+        // loader: getIndex,
       },
       ...[":category", ":category"].map((r) => ({
         path: r,
