@@ -9,7 +9,7 @@ import OkpCoreSidebar from "@/components/core/Sidebar";
 
 export default function CoreView() {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { user, setUser } = useContext(StoreContext);
 
   const doPing = async () => {
@@ -39,13 +39,13 @@ export default function CoreView() {
     <>
       <OkpCoreHeader />
       <div id="okp-core-body">
-        {!!user && <OkpCoreNavbar />}
+        <OkpCoreNavbar />
         <main id="okp-core-main">
           <Scrollbars style={{ height: "100%" }} autoHide>
             <Outlet />
           </Scrollbars>
         </main>
-        {!!user && <OkpCoreSidebar />}
+        <OkpCoreSidebar />
       </div>
     </>
   );

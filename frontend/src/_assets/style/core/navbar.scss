@@ -74,11 +74,32 @@
             transition: font-size 0.3s;
           }
         }
+
+        &-icon {
+          background-color: var(--okp-dark);
+          color: var(--okp-text-low);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+
+          > .lucide {
+            width: 50%;
+            height: 50%;
+            cursor: default;
+            transition: width 0.3s, height 0.3s;
+          }
+        }
       }
     }
 
     &-info {
-      &-name {
+      display: flex;
+      flex-direction: column;
+
+      &-name,
+      &-signup {
         color: var(--okp-text);
         font-family: "Quicksand", "Noto Sans", sans-serif;
         font-size: 1.2rem;
@@ -90,7 +111,8 @@
         padding: 12px 12px 4px;
       }
 
-      &-title {
+      &-title,
+      &-login {
         color: var(--okp-text-low);
         font-family: "Quicksand", "Noto Sans", sans-serif;
         font-size: 0.8rem;
@@ -100,6 +122,13 @@
         opacity: 1;
         transition: all 0.3s;
         padding: 4px 12px 24px;
+      }
+
+      &-signup,
+      &-login {
+        &:hover {
+          color: var(--okp-primary);
+        }
       }
     }
 
