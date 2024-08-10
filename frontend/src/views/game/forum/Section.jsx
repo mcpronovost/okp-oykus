@@ -50,7 +50,7 @@ export default function ForumSectionView() {
       <section className="okp-forum-topics">
         {data.topics.length ? (data.topics.map((topic) => {
           return (
-            <OkpTopicCard key={`topic-${topic.id}`} topic={topic} />
+            <OkpTopicCard key={`topic-${topic.id}`} data={topic} />
           )
         })) : (
           <div className="okp-forum-topics-empty">

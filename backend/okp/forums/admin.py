@@ -83,7 +83,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
 @admin.register(okpForumTopic)
 class okpForumTopicAdmin(admin.ModelAdmin):
     list_display = ["forum", "category", "section", "author", "title"]
-    readonly_fields = ["created_at", "updated_at"]
+    readonly_fields = ["total_messages", "created_at", "updated_at"]
     fieldsets = (
         (_("General"), {
             "fields": [
@@ -107,7 +107,7 @@ class okpForumTopicAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumMessage)
 class okpForumMessageAdmin(admin.ModelAdmin):
-    list_display = ["forum", "category", "section", "author", "topic"]
+    list_display = ["topic", "author", "section", "category", "forum"]
     readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (_("General"), {

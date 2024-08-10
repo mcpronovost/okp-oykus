@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Scrollbars } from "rc-scrollbars";
 import StoreContext from "@/_lib/store";
 import { getPing } from "@/_lib/api";
 import OkpCoreHeader from "@/components/core/Header";
@@ -40,7 +41,9 @@ export default function CoreView() {
       <div id="okp-core-body">
         {!!user && <OkpCoreNavbar />}
         <main id="okp-core-main">
-          <Outlet />
+          <Scrollbars style={{ height: "100%" }} autoHide>
+            <Outlet />
+          </Scrollbars>
         </main>
         {!!user && <OkpCoreSidebar />}
       </div>

@@ -3,7 +3,10 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
-from okp.games.models import okpGame
+from okp.games.models import (
+    okpGame,
+    okpGameCharacter
+)
 
 
 class okpForum(models.Model):
@@ -221,7 +224,7 @@ class okpForumTopic(models.Model):
         null=True
     )
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        okpGameCharacter,
         on_delete=models.SET_NULL,
         related_name="topics",
         verbose_name=_("Author"),
@@ -239,10 +242,6 @@ class okpForumTopic(models.Model):
         blank=True,
         null=True
     )
-    total_messages = models.PositiveIntegerField(
-        verbose_name=_("Total Messages"),
-        default=0
-    )
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),
         auto_now_add=True,
@@ -259,9 +258,14 @@ class okpForumTopic(models.Model):
     class Meta:
         verbose_name = _("Topic")
         verbose_name_plural = _("Topics")
+        ordering = ["-updated_at", "-created_at"]
 
     def __str__(self):
         return f"{self.title}"
+
+    @property
+    def total_messages(self):
+        return self.messages.count()
 
     @property
     def path(self):
@@ -336,7 +340,7 @@ class okpForumMessage(models.Model):
         null=False
     )
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        okpGameCharacter,
         on_delete=models.SET_NULL,
         related_name="messages",
         verbose_name=_("Author"),
@@ -364,6 +368,7 @@ class okpForumMessage(models.Model):
     class Meta:
         verbose_name = _("Message")
         verbose_name_plural = _("Messages")
+        ordering = ["created_at"]
 
     def __str__(self):
         return f"#{self.pk}"

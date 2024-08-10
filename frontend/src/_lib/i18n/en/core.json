@@ -10,6 +10,10 @@
   "Topic": "Topic",
   "Topics": "Topics",
   "topics": "topics",
+  "reply": "reply",
+  "replies": "replies",
+  "Reply": "Reply",
+  "Replies": "Replies",
   "Friends": "Friends",
   "Cynosts": "Cynosts",
   "Community": "Community",
@@ -20,5 +24,6 @@
   "Rankings": "Rankings",
   "Market": "Market",
   "Thiscategoryisempty": "This category is empty",
-  "Thissectionisempty": "This section is empty"
+  "Thissectionisempty": "This section is empty",
+  "Thismessagehasbeendeleted": "This message has been deleted"
 }

@@ -10,6 +10,10 @@
   "Topic": "Sujet",
   "Topics": "Sujets",
   "topics": "sujets",
+  "reply": "réponse",
+  "replies": "réponses",
+  "Reply": "Réponse",
+  "Replies": "Réponses",
   "Friends": "Amis",
   "Cynosts": "Cynosts",
   "Community": "Communauté",
@@ -20,5 +24,6 @@
   "Rankings": "Classements",
   "Market": "Marché",
   "Thiscategoryisempty": "Cette catégorie est vide",
-  "Thissectionisempty": "Cette section est vide"
+  "Thissectionisempty": "Cette section est vide",
+  "Thismessagehasbeendeleted": "Ce message a été supprimé"
 }

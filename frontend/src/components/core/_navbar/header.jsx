@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { qpabbr } from "@mcpronovost/qpfilters";
+import { qpabbr, qpunit } from "@mcpronovost/qpfilters";
 import StoreContext from "@/_lib/store";
 import { getTrans } from "@/_lib/i18n";
 
@@ -36,13 +36,13 @@ export default function NavbarHeader() {
       <section className="okp-header-counts">
         <ul>
           <li>
-            <span>0</span> <span>{t("messages")}</span>
+            <span>{qpunit(0)}</span> <span>{t("messages")}</span>
           </li>
           <li>
-            <span>0</span> <span>{t("topics")}</span>
+            <span>{qpunit(0)}</span> <span>{t("topics")}</span>
           </li>
           <li>
-            <span>0</span> <span>{t("achievements")}</span>
+            <span>{qpunit(0)}</span> <span>{t("achievements")}</span>
           </li>
         </ul>
       </section>

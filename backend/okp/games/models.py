@@ -55,3 +55,61 @@ class okpGame(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class okpGameCharacter(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="characters",
+        verbose_name=_("User"),
+        blank=False,
+        null=False
+    )
+    game = models.ForeignKey(
+        okpGame,
+        on_delete=models.SET_NULL,
+        related_name="characters",
+        verbose_name=_("Game"),
+        blank=True,
+        null=True
+    )
+    name = models.CharField(
+        verbose_name=_("Name"),
+        max_length=32,
+        blank=False,
+        null=False
+    )
+    avatar = models.ImageField(
+        verbose_name=_("Avatar"),
+        upload_to="characters/avatars/",
+        blank=True,
+        null=True
+    )
+    is_active = models.BooleanField(
+        verbose_name=_("Active"),
+        default=True
+    )
+    is_valid = models.BooleanField(
+        verbose_name=_("Valid"),
+        default=False
+    )
+    created_at = models.DateTimeField(
+        verbose_name=_("Created At"),
+        auto_now_add=True,
+        blank=False,
+        null=False
+    )
+    updated_at = models.DateTimeField(
+        verbose_name=_("Updated At"),
+        auto_now=True,
+        blank=False,
+        null=False
+    )
+
+    class Meta:
+        verbose_name = _("Character")
+        verbose_name_plural = _("Characters")
+
+    def __str__(self):
+        return f"{self.name}"

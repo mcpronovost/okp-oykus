@@ -4,15 +4,17 @@ $htopbar: 48px;
 $wnavbar: 64px;
 
 :root {
-  --okp-primary: #d2bd10;
-  --okp-secondary: #1065d2;
-  --okp-darken: #0d0d11;
+  --okp-primary: #D2BD10;
+  --okp-secondary: #1065D2;
+  --okp-darken: #0D0D11;
   --okp-dark: #111217;
   --okp-mid: #161920;
-  --okp-light: #1a1d26;
+  --okp-light: #1A1D26;
   --okp-lighten: #232531;
-  --okp-text: #f4f4f4;
-  --okp-text-low: #4b526e;
+  --okp-text: #DDDDDD;
+  --okp-text-low: #4B526E;
+
+  --c-oahu: #48B2E0;
 }
 
 html {
@@ -119,3 +121,4 @@ article {
 
 @import "./forum/sections.scss";
 @import "./forum/topics.scss";
+@import "./forum/messages.scss";

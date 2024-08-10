@@ -1,12 +1,30 @@
 from rest_framework import serializers
 
-from okp.games.models import okpGame
+from okp.games.models import (
+    okpGame,
+    okpGameCharacter
+)
 from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
     okpForumTopic,
     okpForumMessage
 )
+
+
+class okpForumAuthorSerializer(serializers.ModelSerializer):
+    avatar = serializers.SerializerMethodField()
+
+    class Meta:
+        model = okpGameCharacter
+        fields = [
+            "id", "name", "avatar"
+        ]
+
+    def get_avatar(self, obj):
+        if obj.avatar:
+            return obj.avatar.url
+        return None
 
 
 class okpForumGameSerializer(serializers.ModelSerializer):
@@ -34,10 +52,12 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
 
 
 class okpForumMessageSerializer(serializers.ModelSerializer):
+    author = okpForumAuthorSerializer()
+
     class Meta:
         model = okpForumMessage
         fields = [
-            "id", "content"
+            "id", "content", "author"
         ]
 
 
@@ -45,12 +65,13 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
     category = serializers.SerializerMethodField()
     section = serializers.SerializerMethodField()
+    author = okpForumAuthorSerializer()
     messages = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumTopic
         fields = [
-            "id", "title", "content", "total_messages", "path", "breadcrumbs", "game", "category", "section", "messages"
+            "id", "title", "author", "content", "total_messages", "path", "breadcrumbs", "game", "category", "section", "messages"
         ]
 
     def get_game(self, obj):
