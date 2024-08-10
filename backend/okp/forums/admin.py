@@ -42,6 +42,7 @@ class okpForumCategoryAdmin(admin.ModelAdmin):
         }),
         (_("Permissions"), {
             "fields": [
+                "order_by",
                 "is_visible",
             ]
         }),
