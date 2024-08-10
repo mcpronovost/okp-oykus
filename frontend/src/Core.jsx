@@ -28,11 +28,13 @@ export default function CoreView() {
   };
 
   useEffect(() => {
-    (async () => {
-      if (user && user.updated < (Date.now() + (5 * 60 * 1000))) {
-        await doPing();
-      }// else if (!user && route.needauth) navigate("/login");
-    })();
+    if (!["/deconnexion", "/en/logout"].includes(location.pathname)) {
+      (async () => {
+        if (user && user.updated > (Date.now() + (5 * 60 * 1000))) {
+          await doPing();
+        }// else if (!user && route.needauth) navigate("/login");
+      })();
+    }
   }, [location]);
 
   return (
