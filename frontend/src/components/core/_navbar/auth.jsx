@@ -20,10 +20,10 @@ export default function NavbarHeader() {
       </section>
       <section className="okp-header-info">
         <Link to={t("/signup")} className="okp-header-info-signup">
-          <span>Inscription</span>
+          <span>{t("SignUp")}</span>
         </Link>
         <Link to={t("/login")} className="okp-header-info-login">
-          <span>Connexion</span>
+          <span>{t("Login")}</span>
         </Link>
       </section>
     </header>
