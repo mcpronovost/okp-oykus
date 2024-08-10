@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StoreContext from "@/_lib/store";
 import { getTrans } from "@/_lib/i18n";
-import { api, getHeaders } from "@/_lib/api";
+import { api, getHeaders, getPing } from "@/_lib/api";
 
 export default function LoginView() {
   const navigate = useNavigate();
@@ -28,6 +28,21 @@ export default function LoginView() {
     });
   }
 
+  async function doPing (data) {
+    try {
+      const ping = await getPing(data);
+      if (ping) {
+        setUser({
+          ...ping
+        });
+      }
+    } catch (e) {
+      console.log("error : ", e);
+    } finally {
+      navigate(-1);
+    }
+  };
+
   async function doLogin(e) {
     e.preventDefault();
 
@@ -45,7 +60,7 @@ export default function LoginView() {
         username: response.username,
         rat: response.rat
       });
-      navigate(-1);
+      doPing(response);
     } catch (e) {
       console.log("error : ", e);
     }
