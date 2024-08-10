@@ -6,7 +6,7 @@ import { api, getHeaders } from "@/_lib/api";
 export async function loader({ params }) {
   const t = getTrans();
   try {
-    const req = await fetch(`${api}/forum/${params.slug}/index/`, {
+    const req = await fetch(`${api}/game/${params.slug}/`, {
       headers: getHeaders(),
     });
     if (!req.ok) {
@@ -27,10 +27,10 @@ export default function ForumView() {
 
   const setGameStyle = () => {
     const tag = document.head.querySelector("#okp-game-stylesheet");
-    if (!!tag && tag.dataset["game"] != data.game.slug) tag.remove();
+    if (!!tag && tag.dataset["game"] != data.slug) tag.remove();
     if (!tag) {
-      if (data.game.slug == "rhansidor") {
-        document.head.insertAdjacentHTML("beforeend", `<style id="okp-game-stylesheet" data-game="${data.game.slug}">
+      if (data.slug == "rhansidor") {
+        document.head.insertAdjacentHTML("beforeend", `<style id="okp-game-stylesheet" data-game="${data.slug}">
           :root {
             --okp-primary: #336447;
             --okp-lighten: #221b20;
@@ -53,7 +53,7 @@ export default function ForumView() {
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center", padding: "120px 0" }}>{data.game.name}</h1>
+        <h1 style={{ textAlign: "center", padding: "120px 0" }}>{data.name}</h1>
         <div className="okp-container">
           <Outlet />
         </div>
