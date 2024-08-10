@@ -48,18 +48,6 @@ export default function NavbarMenu() {
               <span className="okp-menu-link-name">{t("Market")}</span>
             </Link>
           </li>
-          <li>
-            <Link to={t("/g/qalatlan")} className="okp-menu-link">
-              <Leaf size={24} className="okp-menu-link-icon" />
-              <span className="okp-menu-link-name">{t("Qalatlán")}</span>
-            </Link>
-          </li>
-          <li>
-            <Link to={t("/g/rhansidor")} className="okp-menu-link">
-              <Gem size={24} className="okp-menu-link-icon" />
-              <span className="okp-menu-link-name">{t("Rhansidor")}</span>
-            </Link>
-          </li>
         </ul>
       </Scrollbars>
     </nav>
