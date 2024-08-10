@@ -7,7 +7,7 @@ export default function ForumCategory({ category, breadcrumbs, nolink }) {
   const t = getTrans();
 
   return (
-    <section>
+    <section className="okp-forum-category">
       <OkpHeader
         h="2"
         title={category.name}
