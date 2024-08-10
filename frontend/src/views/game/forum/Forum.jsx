@@ -40,6 +40,7 @@ export default function ForumView() {
             --okp-darken: #080709;
             --okp-text: #b6afb6;
             --okp-text-low: #715c71;
+            --okp-shadow: rgba(0, 0, 0, 0.2);
           }
         </style>`)
       }

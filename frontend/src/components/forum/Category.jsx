@@ -23,7 +23,7 @@ export default function ForumCategory({ category, breadcrumbs, nolink }) {
               <OkpForumSectionCard
                 h="3"
                 key={`forum-section-${section.id}`}
-                section={section}
+                data={section}
               />
             );
           })

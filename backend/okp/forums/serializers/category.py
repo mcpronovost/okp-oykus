@@ -1,10 +1,30 @@
 from rest_framework import serializers
 
-from okp.games.models import okpGame
+from okp.games.models import (
+    okpGame,
+    okpGameCharacter
+)
 from okp.forums.models import (
     okpForumCategory,
-    okpForumSection
+    okpForumSection,
+    okpForumTopic,
+    okpForumMessage
 )
+
+
+class okpForumAuthorSerializer(serializers.ModelSerializer):
+    avatar = serializers.SerializerMethodField()
+
+    class Meta:
+        model = okpGameCharacter
+        fields = [
+            "id", "name", "avatar"
+        ]
+
+    def get_avatar(self, obj):
+        if obj.avatar:
+            return obj.avatar.url
+        return None
 
 
 class okpForumGameSerializer(serializers.ModelSerializer):
@@ -15,12 +35,47 @@ class okpForumGameSerializer(serializers.ModelSerializer):
         ]
 
 
+class okpForumTopicSerializer(serializers.ModelSerializer):
+    author = okpForumAuthorSerializer()
+
+    class Meta:
+        model = okpForumTopic
+        fields = [
+            "id", "author", "created_at"
+        ]
+
+
+class okpForumMessageSerializer(serializers.ModelSerializer):
+    author = okpForumAuthorSerializer()
+
+    class Meta:
+        model = okpForumMessage
+        fields = [
+            "id", "author", "created_at"
+        ]
+
+
 class okpForumSectionSerializer(serializers.ModelSerializer):
+    last_message = serializers.SerializerMethodField()
+
     class Meta:
         model = okpForumSection
         fields = [
-            "id", "name", "description", "path"
+            "id", "name", "description", "path", "total_messages", "last_message"
         ]
+
+    def get_last_message(self, obj):
+        last_topic = obj.all_topics.last()
+        last_message = obj.all_messages.last()
+        if last_topic is None and last_message is None:
+            return None
+        if (
+            last_message is None
+            or last_message.created_at < last_topic.created_at
+        ):
+            return okpForumTopicSerializer(last_topic).data
+        else:
+            return okpForumMessageSerializer(last_message).data
 
 
 class okpForumCategorySerializer(serializers.ModelSerializer):

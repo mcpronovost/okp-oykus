@@ -10,6 +10,9 @@ from okp.forums.models import (
     okpForumTopic,
     okpForumMessage
 )
+from okp.forums.serializers.category import (
+    okpForumSectionSerializer as okpForumSubSectionSerializer
+)
 
 
 class okpForumAuthorSerializer(serializers.ModelSerializer):
@@ -94,7 +97,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
         sections = obj.sections.filter(
             is_visible=True
         )
-        return okpForumSectionSerializer(sections, many=True).data
+        return okpForumSubSectionSerializer(sections, many=True).data
 
     def get_topics(self, obj):
         topics = obj.topics.all()

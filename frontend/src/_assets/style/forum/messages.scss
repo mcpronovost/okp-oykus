@@ -7,14 +7,14 @@
   .okp-forum-message {
     background-color: var(--okp-light);
     border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px var(--okp-shadow);
     display: flex;
     flex-direction: column;
     padding: 0;
     margin: 32px 0;
 
     &.okp-first {
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 6px var(--okp-shadow);
     }
 
     &-header {

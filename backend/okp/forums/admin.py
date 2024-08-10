@@ -65,6 +65,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
         ("section", admin.RelatedOnlyFieldListFilter)
     ]
     search_fields = ["name"]
+    readonly_fields = ["total_topics", "total_messages"]
     fieldsets = (
         (_("General"), {
             "fields": [

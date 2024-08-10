@@ -155,14 +155,6 @@ class okpForumSection(models.Model):
         blank=True,
         null=False
     )
-    total_topics = models.PositiveSmallIntegerField(
-        verbose_name=_("Total Topics"),
-        default=0
-    )
-    total_messages = models.PositiveIntegerField(
-        verbose_name=_("Total Messages"),
-        default=0
-    )
 
     class Meta:
         verbose_name = _("Section")
@@ -171,6 +163,30 @@ class okpForumSection(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    @property
+    def total_topics(self):
+        total = self.topics.count()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                total += section.topics.count()
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return total
+
+    @property
+    def total_messages(self):
+        total = self.messages.count()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                total += section.messages.count()
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return total + self.total_topics
 
     @property
     def path(self):
@@ -208,6 +224,30 @@ class okpForumSection(models.Model):
         sections.reverse()
         crumbs += sections
         return crumbs
+
+    @property
+    def all_messages(self):
+        query = self.messages.all()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                query |= section.messages.all()
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return query
+
+    @property
+    def all_topics(self):
+        query = self.topics.all()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                query |= section.topics.all()
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return query
 
 
 class okpForumTopic(models.Model):

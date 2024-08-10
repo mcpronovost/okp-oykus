@@ -41,7 +41,7 @@ export default function ForumSectionView() {
             return (
               <OkpForumSectionCard
                 key={`section-${section.id}`}
-                section={section}
+                data={section}
               />
             );
           })}
