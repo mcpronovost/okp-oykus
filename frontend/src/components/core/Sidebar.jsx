@@ -8,7 +8,7 @@ export default function CoreSidebarComponent() {
   return (
     <nav id="okp-core-sidebar" className={`okp-${toggleSidebar ? "open" : "close"}`}>
       <div>
-        {!user && (<OkpPopular />)}
+        <OkpPopular />
       </div>
       <div></div>
       <div></div>

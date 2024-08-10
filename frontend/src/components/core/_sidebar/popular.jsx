@@ -4,20 +4,26 @@ import { qpabbr } from "@mcpronovost/qpfilters";
 import { api, getHeaders } from "@/_lib/api";
 
 export default function SidebarPopular() {
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const getPopular = async () => {
-    try {
-      const req = await fetch(`${api}/game/side-popular/`, {
-        headers: getHeaders(),
-      });
-      if (!req.ok) {
-        throw req.status;
+    if (!data.length && !isLoading) {
+      setIsLoading(true);
+      try {
+        const req = await fetch(`${api}/game/side-popular/`, {
+          headers: getHeaders(),
+        });
+        if (!req.ok) {
+          throw req.status;
+        }
+        const response = await req.json();
+        if (response.count) setData(response.results);
+      } catch (e) {
+        console.log("error : ", e);
+      } finally {
+        setIsLoading(false);
       }
-      const response = await req.json();
-      if (response.count) setData(response.results);
-    } catch (e) {
-      console.log("error : ", e);
     }
   };
 
