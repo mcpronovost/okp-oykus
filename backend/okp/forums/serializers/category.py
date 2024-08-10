@@ -41,17 +41,18 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumTopic
         fields = [
-            "id", "author", "created_at"
+            "id", "author", "title", "created_at"
         ]
 
 
 class okpForumMessageSerializer(serializers.ModelSerializer):
     author = okpForumAuthorSerializer()
+    title = serializers.CharField(source="topic.title")
 
     class Meta:
         model = okpForumMessage
         fields = [
-            "id", "author", "created_at"
+            "id", "author", "title", "created_at"
         ]
 
 
@@ -65,7 +66,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
         ]
 
     def get_last_message(self, obj):
-        last_topic = obj.all_topics.last()
+        last_topic = obj.all_topics.first()
         last_message = obj.all_messages.last()
         if last_topic is None and last_message is None:
             return None
