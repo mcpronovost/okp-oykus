@@ -52,6 +52,11 @@ class okpForumCategory(models.Model):
         blank=True,
         null=True
     )
+    order_by = models.PositiveSmallIntegerField(
+        verbose_name=_("Ordering"),
+        blank=True,
+        null=True
+    )
     is_visible = models.BooleanField(
         verbose_name=_("Visible"),
         default=False
@@ -74,6 +79,7 @@ class okpForumCategory(models.Model):
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
+        ordering = ["forum", "order_by", "pk"]
 
     def __str__(self):
         return f"{self.name}"
@@ -134,6 +140,11 @@ class okpForumSection(models.Model):
         blank=True,
         null=True
     )
+    order_by = models.PositiveSmallIntegerField(
+        verbose_name=_("Ordering"),
+        blank=True,
+        null=True
+    )
     is_visible = models.BooleanField(
         verbose_name=_("Visible"),
         default=False
@@ -156,6 +167,7 @@ class okpForumSection(models.Model):
     class Meta:
         verbose_name = _("Section")
         verbose_name_plural = _("Sections")
+        ordering = ["forum", "category", "order_by", "pk"]
 
     def __str__(self):
         return f"{self.name}"

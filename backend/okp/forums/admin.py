@@ -27,7 +27,11 @@ class okpForumAdmin(admin.ModelAdmin):
 @admin.register(okpForumCategory)
 class okpForumCategoryAdmin(admin.ModelAdmin):
     list_display = ["name", "forum", "is_visible"]
-    list_filter = ["forum", "is_visible"]
+    list_filter = [
+        "is_visible",
+        ("forum", admin.RelatedOnlyFieldListFilter)
+    ]
+    search_fields = ["name"]
     fieldsets = (
         (_("General"), {
             "fields": [
@@ -53,14 +57,25 @@ class okpForumCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumSection)
 class okpForumSectionAdmin(admin.ModelAdmin):
-    list_display = ["name", "category", "forum"]
-    list_filter = ["forum", "is_visible"]
+    list_display = ["name", "section", "category", "forum"]
+    list_filter = [
+        "is_visible",
+        ("forum", admin.RelatedOnlyFieldListFilter),
+        ("category", admin.RelatedOnlyFieldListFilter),
+        ("section", admin.RelatedOnlyFieldListFilter)
+    ]
+    search_fields = ["name"]
     fieldsets = (
         (_("General"), {
             "fields": [
                 "forum",
                 "category",
                 "section",
+                "order_by"
+            ]
+        }),
+        (_("General"), {
+            "fields": [
                 "name",
                 "description",
             ]
@@ -83,6 +98,12 @@ class okpForumSectionAdmin(admin.ModelAdmin):
 @admin.register(okpForumTopic)
 class okpForumTopicAdmin(admin.ModelAdmin):
     list_display = ["forum", "category", "section", "author", "title"]
+    list_filter = [
+        ("forum", admin.RelatedOnlyFieldListFilter),
+        ("category", admin.RelatedOnlyFieldListFilter),
+        ("section", admin.RelatedOnlyFieldListFilter)
+    ]
+    search_fields = ["title", "author__name"]
     readonly_fields = ["total_messages", "created_at", "updated_at"]
     fieldsets = (
         (_("General"), {
@@ -90,9 +111,17 @@ class okpForumTopicAdmin(admin.ModelAdmin):
                 "forum",
                 "category",
                 "section",
+            ]
+        }),
+        (_("Content"), {
+            "fields": [
                 "author",
                 "title",
                 "content",
+            ]
+        }),
+        (_("Informations"), {
+            "fields": [
                 "total_messages",
             ]
         }),
@@ -108,6 +137,13 @@ class okpForumTopicAdmin(admin.ModelAdmin):
 @admin.register(okpForumMessage)
 class okpForumMessageAdmin(admin.ModelAdmin):
     list_display = ["topic", "author", "section", "category", "forum"]
+    list_filter = [
+        ("forum", admin.RelatedOnlyFieldListFilter),
+        ("category", admin.RelatedOnlyFieldListFilter),
+        ("section", admin.RelatedOnlyFieldListFilter),
+        ("topic", admin.RelatedOnlyFieldListFilter)
+    ]
+    search_fields = ["topic__title", "author__name"]
     readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (_("General"), {
@@ -115,7 +151,11 @@ class okpForumMessageAdmin(admin.ModelAdmin):
                 "forum",
                 "category",
                 "section",
-                "topic",
+                "topic"
+            ]
+        }),
+        (_("General"), {
+            "fields": [
                 "author",
                 "content"
             ]
