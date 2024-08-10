@@ -57,15 +57,20 @@ class okpForumMessageSerializer(serializers.ModelSerializer):
 
 
 class okpForumSectionSerializer(serializers.ModelSerializer):
-    last_message = serializers.SerializerMethodField()
+    # last_message = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumSection
         fields = [
-            "id", "name", "description", "path", "total_messages", "last_message"
+            "id",
+            "name",
+            "description",
+            "path",
+            "total_messages",
+            #"last_message"
         ]
 
-    def get_last_message(self, obj):
+    def old_get_last_message(self, obj):
         last_topic = obj.all_topics.first()
         last_message = obj.all_messages.last()
         if last_topic is None and last_message is None:
@@ -81,7 +86,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
 
 class okpForumCategorySerializer(serializers.ModelSerializer):
     game = serializers.SerializerMethodField()
-    sections = serializers.SerializerMethodField()
+    sections = okpForumSectionSerializer(many=True)
 
     class Meta:
         model = okpForumCategory
@@ -92,10 +97,3 @@ class okpForumCategorySerializer(serializers.ModelSerializer):
     def get_game(self, obj):
         game = obj.forum.game
         return okpForumGameSerializer(game).data
-
-    def get_sections(self, obj):
-        sections = obj.sections.filter(
-            section=None,
-            is_visible=True
-        )
-        return okpForumSectionSerializer(sections, many=True).data

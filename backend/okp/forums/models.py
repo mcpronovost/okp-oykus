@@ -249,6 +249,10 @@ class okpForumSection(models.Model):
         # =-
         return query
 
+    @property
+    def last_message(self):
+        return None
+
 
 class okpForumTopic(models.Model):
     forum = models.ForeignKey(

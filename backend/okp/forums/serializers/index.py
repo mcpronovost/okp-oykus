@@ -22,36 +22,28 @@ class okpForumIndexGameSerializer(serializers.ModelSerializer):
 
 
 class okpForumIndexCategorySerializer(serializers.ModelSerializer):
-    sections = serializers.SerializerMethodField()
+    sections = okpForumIndexSectionSerializer(many=True)
 
     class Meta:
         model = okpForumCategory
         fields = [
-            "id", "name", "description", "path", "breadcrumbs", "sections"
+            "id",
+            "name",
+            "description",
+            "path",
+            "breadcrumbs",
+            "sections"
         ]
-
-    def get_sections(self, obj):
-        sections = okpForumSection.objects.filter(
-            category=obj,
-            section=None,
-            is_visible=True
-        )
-        return okpForumIndexSectionSerializer(sections, many=True).data
 
 
 class okpForumIndexSerializer(serializers.ModelSerializer):
     game = okpForumIndexGameSerializer()
-    categories = serializers.SerializerMethodField()
+    categories = okpForumIndexCategorySerializer(many=True)
 
     class Meta:
         model = okpForum
         fields = [
-            "id", "game", "categories"
+            "id",
+            "game",
+            "categories"
         ]
-
-    def get_categories(self, obj):
-        categories = okpForumCategory.objects.filter(
-            forum=obj,
-            is_visible=True
-        )
-        return okpForumIndexCategorySerializer(categories, many=True).data
