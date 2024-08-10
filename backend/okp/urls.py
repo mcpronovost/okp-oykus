@@ -14,6 +14,7 @@ urlpatterns = [
     path("silk/", include("silk.urls", namespace="silk")),
     path("api/ping/", okpPingView.as_view()),
     path("api/auth/", include("okp.users.urls")),
+    path("api/game/", include("okp.games.urls", namespace="okp.games")),
     path("api/forum/", include("okp.forums.urls", namespace="okp.forums")),
 ] + i18n_patterns(
     # re_path(r"^", include("example.urls"))

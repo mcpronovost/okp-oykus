@@ -1,9 +1,10 @@
 from django.urls import path
-
-# from okp.games.views import okpGameView
+from okp.games.views import (
+    okpGameSidePopularView
+)
 
 app_name = "okp.games"
 
 urlpatterns = [
-    # path("<slug:slug>/", okpGameView.as_view()),
+    path("side-popular/", okpGameSidePopularView.as_view()),
 ]
