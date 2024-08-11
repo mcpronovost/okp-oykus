@@ -7,7 +7,7 @@ export default function NavbarFooter() {
 
   return (
     <footer className="okp-footer">
-      <Link to="/settings" className="okp-footer-link">
+      <Link to={t("/settings")} className="okp-footer-link">
         <Settings size={24} className="okp-footer-link-icon" />
         <span className="okp-footer-link-name">{t("Settings")}</span>
       </Link>

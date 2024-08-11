@@ -8,6 +8,7 @@
   "/achievements": "/succes",
   "/rankings": "/classements",
   "/market": "/marche",
+  "/settings": "/parametres",
   "/login": "/connexion",
   "/logout": "/deconnexion",
   "/signup": "/inscription"
