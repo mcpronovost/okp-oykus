@@ -57,9 +57,6 @@ export default function ForumSectionCard({ data }) {
             <li>
               <span>{qpunit(data.total_topics)}</span> <span>{t("topics")}</span>
             </li>
-            <li>
-              <span>{qpunit(data.total_likes)}</span> <span>{t("likes")}</span>
-            </li>
           </ul>
         </section>
       </div>
