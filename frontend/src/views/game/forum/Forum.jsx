@@ -54,10 +54,17 @@ export default function ForumView() {
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center", padding: "120px 0" }}>{data.name}</h1>
+        <header>
+          <h1 style={{ fontFamily: "Quicksand, sans-serif", fontSize: "6rem", fontWeight: "300", textAlign: "center", padding: "120px 0" }}>
+            {data.name}
+          </h1>
+        </header>
         <div className="okp-container">
           <Outlet />
         </div>
+        <footer style={{ color: "var(--okp-text-low)",fontSize: "0.8rem", textAlign: "center", padding: "120px 0 32px" }}>
+          <small>&copy; 2024 {data.founder?.name}{data.owner?.id != data.founder?.id ? ` - ${data.owner.name}` : ""}</small>
+        </footer>
       </div>
     </>
   );
