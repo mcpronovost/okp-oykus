@@ -20,20 +20,24 @@ export default function CoreView() {
           ...ping
         });
       }
-      // if (!ping && user) navigate("/logout");
+      if (!ping && user) navigate("/logout");
       // if (!ping && route.needauth) navigate("/login");
-    } catch (e) {
-      console.log(">> ", e);
+    } catch {
+      navigate("/logout");
     }
   };
 
   useEffect(() => {
+    if (location.pathname == "/g/" || !location.pathname.startsWith("/g/")) {
+      const tag = document.head.querySelector("#okp-game-stylesheet");
+      if (!!tag) tag.remove();
+    }
     if (!["/deconnexion", "/en/logout"].includes(location.pathname)) {
-      (async () => {
-        if (user && user.updated > (Date.now() + (5 * 60 * 1000))) {
+      if (user && user.updated > (Date.now() + (5 * 60 * 1000))) {
+        (async () => {
           await doPing();
-        }// else if (!user && route.needauth) navigate("/login");
-      })();
+        })();
+      }// else if (!user && route.needauth) navigate("/login");
     }
   }, [location]);
 
