@@ -58,6 +58,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
             "cover",
             "path",
             "total_messages",
+            "total_topics",
             "last_post"
         ]
 
