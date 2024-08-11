@@ -9,6 +9,17 @@
   transition: flex-basis 0.3s;
 
   .okp-sidegames {
+    &-icon {
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin: 12px 0;
+    }
+
     .okp-sidegame {
       margin: 12px 0;
 
