@@ -12,6 +12,7 @@ class okpGameAdmin(admin.ModelAdmin):
     list_display = ["name", "owner", "is_active"]
     list_filter = ["is_active"]
     prepopulated_fields = {"slug": ["name"]}
+    search_fields = ["name"]
     readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (_("General"), {
@@ -30,8 +31,9 @@ class okpGameAdmin(admin.ModelAdmin):
 
 @admin.register(okpGameCharacter)
 class okpGameCharacterAdmin(admin.ModelAdmin):
-    list_display = ["name", "game", "is_active"]
+    list_display = ["name", "user", "game", "is_active"]
     list_filter = ["is_active", "is_valid", "game"]
+    search_fields = ["name"]
     readonly_fields = ["created_at", "updated_at"]
     fieldsets = (
         (_("General"), {

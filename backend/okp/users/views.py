@@ -36,6 +36,7 @@ class okpPingView(GenericAPIView):
                 request.user.last_login = timezone.now()
                 request.user.save()
             content["user"] = {
+                "rat": str(request.auth),
                 "username": str(request.user),
                 "name": str(request.user.profile.name),
                 "avatar": request.user.profile.avatar.url if request.user.profile.avatar else None

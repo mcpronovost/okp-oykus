@@ -1,13 +1,20 @@
 from django.http import Http404
 from django.utils.translation import gettext_lazy as _
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+from rest_framework.generics import (
+    ListAPIView,
+    RetrieveAPIView
+)
+from rest_framework.permissions import (
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly
+)
 from okp.games.models import (
-    okpGame
+    okpGame,
+    okpGameCharacter
 )
 from okp.games.serializers import (
     okpGameSerializer,
+    okpGameSideCharacterSerializer,
     okpGameSideSerializer
 )
 
@@ -34,6 +41,18 @@ class okpGameView(RetrieveAPIView):
             raise Http404(_("This forum doesn't exist."))
         self.check_object_permissions(self.request, obj)
         return obj
+
+
+class okpGameSideCharactersView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = okpGameSideCharacterSerializer
+
+    def get_queryset(self):
+        queryset = okpGameCharacter.objects.filter(
+            user=self.request.user,
+            is_active=True,
+        )
+        return queryset
 
 
 class okpGameSidePopularView(ListAPIView):

@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from okp.games.models import okpGame
+from okp.games.models import (
+    okpGame,
+    okpGameCharacter
+)
 
 
 class okpGameUserSerializer(serializers.ModelSerializer):
@@ -21,6 +24,14 @@ class okpGameSerializer(serializers.ModelSerializer):
         model = okpGame
         fields = [
             "id", "name", "slug", "founder", "owner"
+        ]
+
+
+class okpGameSideCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpGameCharacter
+        fields = [
+            "id", "name", "avatar"
         ]
 
 

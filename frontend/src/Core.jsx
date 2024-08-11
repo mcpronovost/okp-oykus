@@ -9,7 +9,7 @@ import OkpCoreSidebar from "@/components/core/Sidebar";
 
 export default function CoreView() {
   const location = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { user, setUser } = useContext(StoreContext);
 
   const doPing = async () => {

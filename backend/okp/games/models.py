@@ -111,6 +111,7 @@ class okpGameCharacter(models.Model):
     class Meta:
         verbose_name = _("Character")
         verbose_name_plural = _("Characters")
+        ordering = ["game", "user", "name", "-pk"]
 
     def __str__(self):
         return f"{self.name}"
