@@ -253,7 +253,7 @@ class okpForumSection(models.Model):
                     (
                         sec_last is not None
                         and last is not None
-                        and sec_last.created_at > last.created_last
+                        and sec_last.created_at > last.created_at
                     ) or (
                         last is None
                     )
@@ -285,7 +285,7 @@ class okpForumSection(models.Model):
                     (
                         sec_last is not None
                         and last is not None
-                        and sec_last.created_at > last.created_last
+                        and sec_last.created_at > last.created_at
                     ) or (
                         last is None
                     )
