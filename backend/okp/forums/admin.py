@@ -100,7 +100,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumTopic)
 class okpForumTopicAdmin(admin.ModelAdmin):
-    list_display = ["forum", "category", "section", "author", "title"]
+    list_display = ["title", "author", "section", "category", "forum"]
     list_filter = [
         ("forum", admin.RelatedOnlyFieldListFilter),
         ("category", admin.RelatedOnlyFieldListFilter),
