@@ -1,5 +1,3 @@
-import OkpCoreHeader from "@/components/core/Header";
-
 export default function UnderConstructionView() {
   return (
     <>
