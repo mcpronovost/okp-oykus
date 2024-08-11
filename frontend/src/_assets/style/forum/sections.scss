@@ -17,6 +17,10 @@
       background-color: var(--okp-light);
       border-radius: 6px;
       box-shadow: 0 0 6px var(--okp-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
       position: relative;
       padding: 0;
@@ -24,9 +28,13 @@
 
     &-header {
       text-align: center;
+      display: flex;
+      flex: 1 1 100%;
+      flex-direction: column;
+      width: 100%;
 
       &-banner {
-        height: 132px;
+        height: 112px;
         position: relative;
         margin: 0;
 
@@ -40,13 +48,13 @@
           position: relative;
 
           &-img {
-            width: 120%;
+            min-width: 110%;
+            min-height: 96px;
             position: absolute;
             top: 50%;
             left: 50%;
             opacity: 0.5;
             transform: translate(-50%, -40%);
-            filter: blur(10px);
           }
         }
 
@@ -88,20 +96,76 @@
       }
 
       &-title {
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Quicksand", sans-serif;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 120%;
-        display: block;
-        padding: 0;
+        display: flex;
+        flex: 1 1 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 0 0;
         margin: 0;
 
         > a {
           display: block;
           padding: 6px 12px;
+          transition: color 0.3s;
 
           &:hover {
             color: var(--okp-primary);
+          }
+        }
+      }
+    }
+  
+    &-counts {
+      width: 100%;
+      opacity: 0.7;
+      padding: 12px 12px 24px;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      > ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        > li {
+          font-size: 0.8rem;
+          font-weight: 600;
+          line-height: 120%;
+          display: flex;
+          flex: 0 0 64px;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: all 0.3s;
+          padding: 0 6px;
+
+          + li::after {
+            content: "";
+            background-color: var(--okp-lighten);
+            width: 1px;
+            height: 32px;
+            position: absolute;
+            top: 6px;
+            left: 0;
+          }
+
+          > span + span {
+            color: var(--okp-text-low);
+            font-size: 0.4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            padding: 3px 0 0;
           }
         }
       }

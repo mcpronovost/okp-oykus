@@ -80,6 +80,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
             "fields": [
                 "name",
                 "description",
+                "cover"
             ]
         }),
         (_("Permissions"), {

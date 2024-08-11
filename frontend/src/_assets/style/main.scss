@@ -47,7 +47,7 @@ a:active {
 }
 
 a {
-  color: var(--okp-text);
+  color: inherit;
 
   &:hover {
     cursor: pointer;
@@ -120,6 +120,7 @@ article {
 @import "./common/breadcrumbs.scss";
 @import "./common/loading.scss";
 
+@import "./forum/categories.scss";
 @import "./forum/sections.scss";
 @import "./forum/topics.scss";
 @import "./forum/messages.scss";

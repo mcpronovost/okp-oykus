@@ -42,7 +42,7 @@ class okpForumCategory(models.Model):
     )
     name = models.CharField(
         verbose_name=_("Name"),
-        max_length=32,
+        max_length=120,
         blank=False,
         null=False
     )
@@ -130,13 +130,19 @@ class okpForumSection(models.Model):
     )
     name = models.CharField(
         verbose_name=_("Name"),
-        max_length=32,
+        max_length=120,
         blank=False,
         null=False
     )
     description = models.CharField(
         verbose_name=_("Description"),
         max_length=255,
+        blank=True,
+        null=True
+    )
+    cover = models.ImageField(
+        verbose_name=_("Cover"),
+        upload_to="forums/sections/covers/",
         blank=True,
         null=True
     )
@@ -225,7 +231,6 @@ class okpForumSection(models.Model):
         crumbs += sections
         return crumbs
 
-    @property
     def all_messages(self):
         query = self.messages.all()
         # =-
@@ -237,7 +242,27 @@ class okpForumSection(models.Model):
         # =-
         return query
 
-    @property
+    def last_message(self):
+        last = self.messages.last()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                sec_last = section.messages.last()
+                if (
+                    (
+                        sec_last is not None
+                        and last is not None
+                        and sec_last.created_at > last.created_last
+                    ) or (
+                        last is None
+                    )
+                ):
+                    last = sec_last
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return last
+
     def all_topics(self):
         query = self.topics.all()
         # =-
@@ -249,9 +274,42 @@ class okpForumSection(models.Model):
         # =-
         return query
 
+    def last_topic(self):
+        last = self.topics.first()
+        # =-
+        sections = self.sections.filter(is_visible=True)
+        while len(sections) > 0:
+            for section in sections:
+                sec_last = section.topics.first()
+                if (
+                    (
+                        sec_last is not None
+                        and last is not None
+                        and sec_last.created_at > last.created_last
+                    ) or (
+                        last is None
+                    )
+                ):
+                    last = sec_last
+            sections = section.sections.filter(is_visible=True)
+        # =-
+        return last
+
     @property
-    def last_message(self):
-        return None
+    def last_post(self):
+        last_topic = self.last_topic()
+        last_message = self.last_message()
+        if last_topic is None and last_message is None:
+            return None
+        last = last_topic if (
+            last_message is None
+            or last_message.created_at < last_topic.created_at
+        ) else last_message
+        return {
+            "title": last.title or last.topic.title,
+            "author": last.author,
+            "created_at": last.created_at
+        }
 
 
 class okpForumTopic(models.Model):

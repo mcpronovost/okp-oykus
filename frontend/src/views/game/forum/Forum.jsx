@@ -33,7 +33,7 @@ export default function ForumView() {
         document.head.insertAdjacentHTML("beforeend", `<style id="okp-game-stylesheet" data-game="${data.slug}">
           :root {
             --okp-primary: #336447;
-            --okp-lighten: #221b20;
+            --okp-lighten: #2D222A;
             --okp-light: #1a181b;
             --okp-mid: #2a1f27;
             --okp-dark: #100f11;

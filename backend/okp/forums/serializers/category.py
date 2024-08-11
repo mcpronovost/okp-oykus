@@ -35,19 +35,9 @@ class okpForumGameSerializer(serializers.ModelSerializer):
         ]
 
 
-class okpForumTopicSerializer(serializers.ModelSerializer):
+class okpForumLastMessageSerializer(serializers.ModelSerializer):
     author = okpForumAuthorSerializer()
-
-    class Meta:
-        model = okpForumTopic
-        fields = [
-            "id", "author", "title", "created_at"
-        ]
-
-
-class okpForumMessageSerializer(serializers.ModelSerializer):
-    author = okpForumAuthorSerializer()
-    title = serializers.CharField(source="topic.title")
+    title = serializers.CharField()
 
     class Meta:
         model = okpForumMessage
@@ -57,7 +47,7 @@ class okpForumMessageSerializer(serializers.ModelSerializer):
 
 
 class okpForumSectionSerializer(serializers.ModelSerializer):
-    # last_message = serializers.SerializerMethodField()
+    last_post = okpForumLastMessageSerializer()
 
     class Meta:
         model = okpForumSection
@@ -65,23 +55,11 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
+            "cover",
             "path",
             "total_messages",
-            #"last_message"
+            "last_post"
         ]
-
-    def old_get_last_message(self, obj):
-        last_topic = obj.all_topics.first()
-        last_message = obj.all_messages.last()
-        if last_topic is None and last_message is None:
-            return None
-        if (
-            last_message is None
-            or last_message.created_at < last_topic.created_at
-        ):
-            return okpForumTopicSerializer(last_topic).data
-        else:
-            return okpForumMessageSerializer(last_message).data
 
 
 class okpForumCategorySerializer(serializers.ModelSerializer):
