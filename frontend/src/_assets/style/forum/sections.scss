@@ -14,10 +14,7 @@
     padding: 12px;
 
     &-card {
-      background-color: var(--okp-light);
-      border-radius: 6px;
-      box-shadow: 0 0 6px var(--okp-shadow);
-      display: flex;
+      @include okp-card;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
@@ -59,8 +56,8 @@
         }
 
         &-last {
-          background-color: var(--okp-light);
-          border: 6px solid var(--okp-light);
+          background-color: var(--okp-card);
+          border: 6px solid var(--okp-card);
           border-radius: 50%;
           overflow: hidden;
           width: 90px;
@@ -170,8 +167,7 @@
   }
 
   &-empty {
-    background-color: var(--okp-light);
-    border-radius: 6px;
+    @include okp-card;
     color: var(--okp-text-low);
     text-align: center;
     width: 100%;

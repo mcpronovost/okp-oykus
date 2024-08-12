@@ -1,5 +1,5 @@
 #okp-core-navbar {
-  background-color: var(--okp-light);
+  background-color: var(--okp-card);
   font-size: 0;
   line-height: 0;
   display: flex;
@@ -40,7 +40,7 @@
       }
 
       &-avatar {
-        border: 6px solid var(--okp-light);
+        border: 6px solid var(--okp-card);
         border-radius: 50%;
         overflow: hidden;
         width: 96px;

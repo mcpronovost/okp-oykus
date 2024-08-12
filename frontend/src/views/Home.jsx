@@ -1,5 +1,6 @@
 import { getTrans } from "@/_lib/i18n";
 import OkpHeader from "@/components/common/Header";
+import OkpTest from "@/components/test";
 
 export default function HomeView() {
   const t = getTrans();
@@ -8,7 +9,7 @@ export default function HomeView() {
     <>
       <section className="okp-container">
         <OkpHeader title={t("Home")} />
-        <p>Under construction.</p>
+        <OkpTest />
       </section>
     </>
   );

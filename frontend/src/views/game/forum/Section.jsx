@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { Pencil } from "lucide-react";
 import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 import OkpHeader from "@/components/common/Header";
@@ -54,7 +55,7 @@ export default function ForumSectionView() {
       <section className="okp-forum-topics">
         <aside className="okp-forum-topics-aside">
           <section className="okp-forum-topics-aside-buttons">
-            <OkpButton width="100%" padding="24px 32px" margin="0 0 24px">
+            <OkpButton block colour="primary" start={<Pencil size="1rem" />}>
               <span>{t("New Chapter")}</span>
             </OkpButton>
           </section>

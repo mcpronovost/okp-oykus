@@ -1,23 +1,173 @@
 .okp-button {
   @include okp-card;
-  background-color: var(--okp-dark);
-  border: 1px solid var(--okp-dark);
-  color: var(--okp-text);
   font-family: "Quicksand", "Noto Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   line-height: 120%;
   width: auto;
   height: auto;
-  padding: 12px 32px;
+  position: relative;
+  padding: 0;
   margin: 0;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
+  transition: filter 0.3s, opacity 0.2s;
 
-  &:hover, &:focus {
+  &:hover {
+    filter: brightness(1.2);
     cursor: pointer;
   }
 
   &:active {
     opacity: 0.7;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  .okp-btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(-50%);
+  }
+
+  &.okp-isloading {
+    background-color: var(--okp-dark) !important;
+    border-color: var(--okp-dark) !important;
+    pointer-events: none;
+
+    .okp-btn {
+      opacity: 0.1;
+    }
+  }
+
+  .okp-btn {
+    border-radius: var(--okp-radius);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    filter: brightness(3);
+    padding: 10px 24px;
+
+    &-start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px 0 0;
+    }
+
+    &-mid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    &-end {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0 0 12px;
+    }
+  }
+}
+
+.okp-button:not([disabled]) {
+  color: var(--okp-text-low);
+
+  &.okp-default {
+    background-color: var(--okp-dark);
+    border: 1px solid var(--okp-dark);
+
+    .okp-btn {
+      color: var(--okp-text-low);
+      filter: brightness(1);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-dark);
+    }
+  }
+
+  &.okp-primary {
+    background-color: var(--okp-primary);
+    border: 1px solid var(--okp-primary);
+
+    .okp-btn {
+      color: var(--okp-primary);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-primary);
+    }
+  }
+
+  &.okp-secondary {
+    background-color: var(--okp-secondary);
+    border: 1px solid var(--okp-secondary);
+
+    .okp-btn {
+      color: var(--okp-secondary);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-secondary);
+    }
+  }
+
+  &.okp-success {
+    background-color: var(--okp-success);
+    border: 1px solid var(--okp-success);
+
+    .okp-btn {
+      color: var(--okp-success);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-success);
+    }
+  }
+
+  &.okp-warning {
+    background-color: var(--okp-warning);
+    border: 1px solid var(--okp-warning);
+
+    .okp-btn {
+      color: var(--okp-warning);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-warning);
+    }
+  }
+
+  &.okp-danger {
+    background-color: var(--okp-danger);
+    border: 1px solid var(--okp-danger);
+
+    .okp-btn {
+      color: var(--okp-danger);
+    }
+
+    &-outline .okp-btn {
+      border: 1px solid var(--okp-danger);
+    }
+  }
+}
+
+.okp-button:disabled {
+  background-color: var(--okp-dark);
+  border-color: var(--okp-dark);
+
+  .okp-btn {
+    color: var(--okp-text-low);
+    opacity: 0.3;
+  }
+
+  &.okp-default-outline .okp-btn {
+    border: 1px solid var(--okp-mid);
   }
 }

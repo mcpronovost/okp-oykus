@@ -1,32 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
 
 $htopbar: 48px;
 $wnavbar: 64px;
 
 :root {
-  --okp-primary: #D2BD10;
-  --okp-secondary: #1065D2;
-  --okp-darken: #0D0D11;
-  --okp-dark: #111217;
-  --okp-mid: #161920;
-  --okp-light: #1A1D26;
-  --okp-lighten: #232531;
-  --okp-text: #DDDDDD;
+  --okp-primary: #686700;
+  --okp-secondary: #125373;
+  --okp-success: #063c06;
+  --okp-warning: #402200;
+  --okp-danger: #400000;
+
+  --okp-bg: #f00;
+  --okp-card: #0f0;
+
+  --okp-lighten: #36393f;
+  --okp-light: #36393f;
+  --okp-mid: #36393f;
+  --okp-dark: #36393f;
+  --okp-darken: #36393f;
+
+  --okp-text: #ddd;
   --okp-text-low: #4B526E;
+  // --okp-lighten: #232531;
+  // --okp-light: #1A1D26;
+  // --okp-mid: #161920;
+  // --okp-dark: #111217;
+  // --okp-darken: #0D0D11;
+  // --okp-text: #DDDDDD;
+  // --okp-text-low: #4B526E;
+
   --okp-shadow: rgba(0, 0, 0, 0.1);
+  --okp-radius: 6px;
 
   --c-oahu: #48B2E0;
 }
 
 html {
-  background-color: var(--okp-mid);
+  background-color: var(--okp-bg);
   font-size: 16px;
   padding: 0;
   margin: 0;
 }
 
 body {
-  background-color: var(--okp-mid);
+  background-color: var(--okp-bg);
   color: var(--okp-text);
   font-family: "Noto Sans", sans-serif;
   font-size: 1rem;
