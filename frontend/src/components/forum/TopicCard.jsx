@@ -43,13 +43,13 @@ export default function ForumTopicCard({ data }) {
           </h3>
         </header>
         <footer className="okp-forum-topic-footer">
-          <div>
+          <div className="okp-forum-topic-footer-lastdate">
             <Clock size={12} />
             <span>
               {qpdate(data.last_message?.created_at || data.created_at)}
             </span>
           </div>
-          <div>
+          <div className="okp-forum-topic-footer-replies">
             <span>
               {qpunit(data.total_messages)} {data.total_messages > 1 ? t("replies") : t("reply")}
             </span>

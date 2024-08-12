@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
 import OkpHeader from "@/components/common/Header";
+import OkpButton from "@/components/common/Button";
 import OkpBreadcrumbs from "@/components/common/Breadcrumbs";
 import OkpForumSectionCard from "@/components/forum/SectionCard";
 import OkpTopicCard from "@/components/forum/TopicCard";
@@ -36,27 +37,45 @@ export default function ForumSectionView() {
         <OkpBreadcrumbs crumbs={data.breadcrumbs} />
       </OkpHeader>
       {!!data.sections.length && (
-        <div className="okp-forum-sections">
-          {data.sections.map((section) => {
-            return (
-              <OkpForumSectionCard
-                key={`section-${section.id}`}
-                data={section}
-              />
-            );
-          })}
-        </div>
+        <>
+          <section className="okp-forum-sections">
+            {data.sections.map((section) => {
+              return (
+                <OkpForumSectionCard
+                  key={`section-${section.id}`}
+                  data={section}
+                />
+              );
+            })}
+          </section>
+          <hr />
+        </>
       )}
       <section className="okp-forum-topics">
-        {data.topics.length ? (data.topics.map((topic) => {
-          return (
-            <OkpTopicCard key={`topic-${topic.id}`} data={topic} />
-          )
-        })) : (
-          <div className="okp-forum-topics-empty">
-            <span>{t("Thissectionisempty")}</span>
-          </div>
-        )}
+        <aside className="okp-forum-topics-aside">
+          <section className="okp-forum-topics-aside-buttons">
+            <OkpButton width="100%" padding="24px 32px" margin="0 0 24px">
+              <span>{t("New Chapter")}</span>
+            </OkpButton>
+          </section>
+          <section className="okp-forum-topics-aside-quests">
+            quests
+          </section>
+          <section className="okp-forum-topics-aside-permissions">
+            permissions<br />permissions<br />permissions<br />permissions<br />
+          </section>
+        </aside>
+        <div className="okp-forum-topics-list">
+          {data.topics.length ? (data.topics.map((topic) => {
+            return (
+              <OkpTopicCard key={`topic-${topic.id}`} data={topic} />
+            )
+          })) : (
+            <div className="okp-forum-topics-empty">
+              <span>{t("Thissectionisempty")}</span>
+            </div>
+          )}
+        </div>
       </section>
     </section>
   );

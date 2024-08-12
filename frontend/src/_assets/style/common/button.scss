@@ -1,0 +1,23 @@
+.okp-button {
+  @include okp-card;
+  background-color: var(--okp-dark);
+  border: 1px solid var(--okp-dark);
+  color: var(--okp-text);
+  font-family: "Quicksand", "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 120%;
+  width: auto;
+  height: auto;
+  padding: 12px 32px;
+  margin: 0;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
+
+  &:hover, &:focus {
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
