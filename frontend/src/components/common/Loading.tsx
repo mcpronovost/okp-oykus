@@ -1,6 +1,6 @@
 import { getTrans } from "@/_lib/i18n";
 
-export default function CommonLoading({ border, size, className }) {
+export default function OkpLoading({ border, size, className }) {
   const t = getTrans();
 
   return (

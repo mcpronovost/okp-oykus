@@ -1,4 +1,4 @@
-export default function CommonButton({ children, width, padding, margin }) {
+export default function OkpButton({ children, width, padding, margin }) {
   return (
     <button type="button" className="okp-button" style={
       {

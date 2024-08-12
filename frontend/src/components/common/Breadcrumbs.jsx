@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Compass } from "lucide-react";
 
-export default function BreadcrumbsComponent({ crumbs }) {
+export default function OkpBreadcrumbs({ crumbs }) {
   return (
     <>
       {!!crumbs && !!crumbs.length && (

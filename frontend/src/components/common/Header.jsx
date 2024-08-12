@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function HeaderComponent({ children, h, title, subtitle, href }) {
+export default function OkpHeader({ children, h, title, subtitle, href }) {
   const navigate = useNavigate();
 
   function handleCategoryClick (path) {
