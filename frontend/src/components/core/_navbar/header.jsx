@@ -36,13 +36,13 @@ export default function NavbarHeader() {
       <section className="okp-header-counts">
         <ul>
           <li>
-            <span>{qpunit(0)}</span> <span>{t("messages")}</span>
+            <span>{qpunit(user.total_messages)}</span> <span>{user.total_messages > 1 ? t("messages") : t("message")}</span>
           </li>
           <li>
-            <span>{qpunit(0)}</span> <span>{t("topics")}</span>
+            <span>{qpunit(user.total_topics)}</span> <span>{user.total_topics > 1 ? t("topics") : t("topic")}</span>
           </li>
           <li>
-            <span>{qpunit(0)}</span> <span>{t("achievements")}</span>
+            <span>{qpunit(user.total_achievements)}</span> <span>{user.total_achievements > 1 ? t("achievements") : t("achievement")}</span>
           </li>
         </ul>
       </section>
