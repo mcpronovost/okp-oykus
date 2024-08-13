@@ -29,7 +29,7 @@ export default function OkpButton({
     >
       {!!loading && (
         <div className="okp-btn-loading">
-          <OkpLoading size={"1rem"} colour={colour == "default" ? "primary" : colour} />
+          <OkpLoading size={"1rem"} colour={colour != "default" ? colour : null} />
         </div>
       )}
       <div className="okp-btn">

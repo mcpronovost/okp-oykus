@@ -1,6 +1,6 @@
 #okp-core-header {
-  background-color: var(--okp-dark);
-  color: var(--okp-text-low);
+  background-color: var(--okp-secondary);
+  color: var(--okp-tertiary);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,7 +10,7 @@
   z-index: 10;
 
   .okp-brand {
-    color: var(--okp-text);
+    color: var(--okp-tertiary);
     display: block;
     width: 250px;
     height: $htopbar;
@@ -45,17 +45,18 @@
   .okp-toggle-navbar {
     &-btn {
       background: transparent;
-      color: var(--okp-text-low);
+      color: var(--okp-tertiary);
       border: none;
       width: $htopbar;
       height: $htopbar;
-      transition: color 0.3s;
+      opacity: 0.6;
       padding: 0;
       margin: 0;
+      transition: opacity 0.3s;
 
       &:hover {
-        color: var(--okp-text);
         cursor: pointer;
+        opacity: 1;
       }
     }
   }
@@ -75,18 +76,19 @@
     }
 
     &-link {
-      color: var(--okp-text-low);
+      color: var(--okp-tertiary);
       font-family: "Quicksand", "Noto Sans", sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
       line-height: $htopbar;
       display: block;
       height: $htopbar;
-      transition: color 0.3s;
+      opacity: 0.6;
       padding: 0 12px;
+      transition: opacity 0.3s;
 
       &:hover {
-        color: var(--okp-text);
+        opacity: 1;
       }
     }
   }
@@ -102,7 +104,7 @@
     &::before,
     &::after {
       content: "";
-      border-color: var(--okp-text-low);
+      border-color: var(--okp-tertiary);
       border-style: solid;
       border-width: 0;
       position: absolute;
@@ -136,20 +138,21 @@
     &-btn {
       background: transparent;
       border: none;
-      color: var(--okp-text-low);
+      color: var(--okp-tertiary);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: $htopbar;
       height: $htopbar;
-      transition: color 0.3s;
+      opacity: 0.6;
       padding: 0;
       margin: 0;
+      transition: opacity 0.3s;
 
       &:hover {
-        color: var(--okp-text);
         cursor: pointer;
+        opacity: 1;
       }
     }
   }
@@ -180,7 +183,7 @@
       }
 
       &-initial {
-        background-color: var(--okp-mid);
+        background-color: var(--okp-dark);
         border-radius: 50%;
         display: flex;
         align-items: center;

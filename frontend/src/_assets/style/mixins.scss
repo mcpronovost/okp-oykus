@@ -4,7 +4,7 @@
   border-block: none;
   border-inline: none;
   border-radius: var(--okp-radius);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 var(--okp-shadow-blur) var(--okp-shadow-colour);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

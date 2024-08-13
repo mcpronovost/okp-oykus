@@ -12,7 +12,7 @@
     margin: 32px 0;
 
     &.okp-first {
-      box-shadow: 0 0 6px var(--okp-shadow);
+      box-shadow: 0 0 var(--okp-shadow-blur) var(--okp-shadow-color);
     }
 
     &-header {
@@ -99,6 +99,7 @@
     }
 
     &-content {
+      box-sizing: border-box;
       color: var(--okp-text);
       font-family: "Noto Sans", sans-serif;
       font-size: 1.1rem;
@@ -122,7 +123,7 @@
     &-deleted {
       background-color: var(--okp-dark);
       box-sizing: border-box;
-      color: var(--okp-primary);
+      color: var(--okp-text);
       font-family: "Noto Sans", sans-serif;
       font-size: 1rem;
       font-weight: 400;

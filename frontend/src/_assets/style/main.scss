@@ -4,32 +4,27 @@ $htopbar: 48px;
 $wnavbar: 64px;
 
 :root {
-  --okp-primary: #686700;
-  --okp-secondary: #125373;
-  --okp-success: #063c06;
-  --okp-warning: #402200;
-  --okp-danger: #400000;
+  --okp-primary: #806243;
+  --okp-secondary: #435159;
+  --okp-tertiary: #DBDFE1;
+  --okp-success: #346032;
+  --okp-warning: #623e29;
+  --okp-danger: #712020;
 
-  --okp-bg: #f00;
-  --okp-card: #0f0;
+  --okp-bg: #C9CED1;
+  --okp-card: #DBDFE1;
 
-  --okp-lighten: #36393f;
-  --okp-light: #36393f;
-  --okp-mid: #36393f;
-  --okp-dark: #36393f;
-  --okp-darken: #36393f;
+  --okp-lighten: #EDEFF0;
+  --okp-light: #E4E7E9;
+  --okp-mid: #DBDFE1;
+  --okp-dark: #B5BCBF;
+  --okp-darken: #69757B;
 
-  --okp-text: #ddd;
-  --okp-text-low: #4B526E;
-  // --okp-lighten: #232531;
-  // --okp-light: #1A1D26;
-  // --okp-mid: #161920;
-  // --okp-dark: #111217;
-  // --okp-darken: #0D0D11;
-  // --okp-text: #DDDDDD;
-  // --okp-text-low: #4B526E;
+  --okp-text: #435159;
+  --okp-text-low: #899295;
 
-  --okp-shadow: rgba(0, 0, 0, 0.1);
+  --okp-shadow-blur: 6px;
+  --okp-shadow-colour: rgba(0, 0, 0, 0.04);
   --okp-radius: 6px;
 
   --c-oahu: #48B2E0;
@@ -102,7 +97,7 @@ article {
 hr {
   background-color: transparent;
   border: none;
-  border-top: 1px dashed var(--okp-lighten);
+  border-top: 1px dashed var(--okp-text-low);
   width: 100%;
   height: 1px;
   padding: 0;

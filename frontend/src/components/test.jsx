@@ -1,4 +1,4 @@
-import { Construction } from "lucide-react";
+import { Construction, CircleCheckBig, OctagonX, TriangleAlert } from "lucide-react";
 import OkpButton from "@/components/common/Button";
 
 export default function Test() {
@@ -12,13 +12,13 @@ export default function Test() {
       <br />
       <OkpButton colour="secondary">Secondary</OkpButton>
       <br />
-      <OkpButton colour="success">Success</OkpButton>
+      <OkpButton colour="success" start={<CircleCheckBig />}>Success</OkpButton>
       <br />
-      <OkpButton colour="warning">Warning</OkpButton>
+      <OkpButton colour="warning" start={<TriangleAlert />}>Warning</OkpButton>
       <br />
-      <OkpButton colour="danger">Error</OkpButton>
+      <OkpButton colour="danger" start={<OctagonX />}>Error</OkpButton>
       <br />
-      <OkpButton disabled>Disabled</OkpButton>
+      <OkpButton>Disabled</OkpButton>
       <br />
       <OkpButton start={<Construction />}>With Start</OkpButton>
       <br />

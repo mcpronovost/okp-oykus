@@ -7,7 +7,8 @@ export default function OkpLoading({ border, colour, size, className }) {
     <div
       className="okp-loading"
       style={{
-        borderTopColor: `var(--okp-${!!colour ? colour : "primary"})`,
+        borderTopColor: `var(--okp-${!!colour ? colour : "text"})`,
+        borderLeftColor: `var(--okp-${!!colour ? colour : "text"})`,
         borderWidth: border,
         width: size,
         height: size
