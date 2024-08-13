@@ -14,10 +14,16 @@ export default function OkpHeader({ children, h, title, subtitle, href }) {
         {createElement(
           `h${h || "1"}`,
           {
-            onClick: () => handleCategoryClick(href),
-            className: `okp-header-title ${!!href ? "okp-link" : ""}`,
+            className: `okp-header-title ${!!href ? "okp-link" : undefined}`,
           },
-          title
+          createElement(
+            "span",
+            {
+              onClick: () => handleCategoryClick(href),
+              className: !!href ? "okp-header-title-link" : undefined,
+            },
+            title
+          )
         )}
         {!!subtitle && <p className="okp-header-subtitle">{subtitle}</p>}
       </div>

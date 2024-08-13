@@ -27,8 +27,11 @@
     padding: 0;
     margin: 0;
 
-    &.okp-link {
+    &-link {
+      transition: opacity 0.3s;
+
       &:hover {
+        opacity: 0.6;
         cursor: pointer;
       }
     }
