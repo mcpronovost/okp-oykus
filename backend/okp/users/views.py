@@ -39,7 +39,14 @@ class okpPingView(GenericAPIView):
                 "rat": str(request.auth),
                 "username": str(request.user),
                 "name": str(request.user.profile.name),
-                "avatar": request.user.profile.avatar.url if request.user.profile.avatar else None
+                "avatar": (
+                    request.user.profile.avatar.url
+                    if request.user.profile.avatar
+                    else None
+                ),
+                "total_messages": int(request.user.profile.total_messages),
+                "total_topics": int(request.user.profile.total_topics),
+                "total_achievements": int(request.user.profile.total_achievements),
             }
             content["rat"] = str(request.auth)
             content["auth"] = True

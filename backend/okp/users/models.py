@@ -41,6 +41,25 @@ class okpUserProfile(models.Model):
     def __str__(self):
         return f"{_('Profile')}"
 
+    @property
+    def total_messages(self):
+        result = 0
+        for character in self.user.characters.filter(is_active=True):
+            result += character.topics.count()
+            result += character.messages.count()
+        return result
+
+    @property
+    def total_topics(self):
+        result = 0
+        for character in self.user.characters.filter(is_active=True):
+            result += character.topics.count()
+        return result
+
+    @property
+    def total_achievements(self):
+        return 0
+
 
 class okpRat(models.Model):
     user = models.ForeignKey(
