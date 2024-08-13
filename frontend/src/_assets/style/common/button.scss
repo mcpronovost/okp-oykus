@@ -94,7 +94,7 @@
   }
 
   &.okp-default {
-    background-color: var(--okp-mid);
+    background-color: var(--okp-card);
 
     .okp-btn {
       color: var(--okp-text);
@@ -102,7 +102,7 @@
     }
 
     &-outline .okp-btn {
-      border-color: var(--okp-dark);
+      border-color: var(--okp-text);
     }
   }
 
