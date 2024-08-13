@@ -24,18 +24,18 @@
     pointer-events: none;
   }
 
-  .okp-btn-loading {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-
   &.okp-isloading {
     pointer-events: none;
+
+    .okp-btn-loading {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
 
     .okp-btn {
       opacity: 0.2;
@@ -75,7 +75,7 @@
   }
 }
 
-.okp-button:not([disabled]) {
+.okp-button {
   color: var(--okp-text-low);
 
   &.okp-isloading {
@@ -166,18 +166,8 @@
       border: 1px solid var(--okp-danger);
     }
   }
-}
 
-.okp-button:disabled {
-  background-color: var(--okp-dark);
-  border: none;
-
-  .okp-btn {
-    color: var(--okp-text-low);
+  &:disabled {
     opacity: 0.3;
-  }
-
-  &.okp-default-outline .okp-btn {
-    border-color: var(--okp-mid);
   }
 }

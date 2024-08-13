@@ -3,9 +3,7 @@ import OkpButton from "@/components/common/Button";
 
 export default function Test() {
   return (
-    <div>
-      <Construction />
-      <br /><br />
+    <div className="okp-container">
       <OkpButton>Default</OkpButton>
       <br />
       <OkpButton colour="primary">Primary</OkpButton>
@@ -18,7 +16,9 @@ export default function Test() {
       <br />
       <OkpButton colour="danger" start={<OctagonX />}>Error</OkpButton>
       <br />
-      <OkpButton>Disabled</OkpButton>
+      <OkpButton disabled>Disabled</OkpButton>
+      <br />
+      <OkpButton loading>Loading</OkpButton>
       <br />
       <OkpButton start={<Construction />}>With Start</OkpButton>
       <br />

@@ -12,7 +12,7 @@ export default function OkpButton({
   block
 }) {
   if (!colour) colour = "default";
-  if (disabled && colour != "default") colour = "default";
+  // if (disabled && colour != "default") colour = "default";
 
   return (
     <button
