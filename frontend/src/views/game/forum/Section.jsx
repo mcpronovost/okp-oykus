@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData, useLocation } from "react-router-dom";
 import { Pencil } from "lucide-react";
 import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
@@ -30,14 +31,24 @@ export async function loader({ params }) {
 
 export default function ForumSectionView() {
   const { data } = useLoaderData();
+  const location = useLocation();
   const t = getTrans();
+  const [toggleWriteTopic, setToggleWriteTopic] = useState(false);
+
+  function handleWriteTopic () {
+    setToggleWriteTopic(!toggleWriteTopic);
+  };
+
+  useEffect(() => {
+    if (toggleWriteTopic) setToggleWriteTopic(false);
+  }, [location]);
 
   return (
     <section className="okp-forum-section">
       <OkpHeader title={data.name} subtitle={data.description}>
         <OkpBreadcrumbs crumbs={data.breadcrumbs} />
       </OkpHeader>
-      {!!data.sections.length && (
+      {!toggleWriteTopic && !!data.sections.length && (
         <>
           <section className="okp-forum-sections">
             {data.sections.map((section) => {
@@ -52,32 +63,54 @@ export default function ForumSectionView() {
           <hr />
         </>
       )}
-      <section className="okp-forum-topics">
-        <aside className="okp-forum-topics-aside">
-          <section className="okp-forum-topics-aside-buttons">
-            <OkpButton block colour="primary" start={<Pencil size="1rem" />}>
-              <span>{t("New Chapter")}</span>
+      {!toggleWriteTopic && (
+        <section className="okp-forum-topics">
+          <aside className="okp-forum-topics-aside">
+            <section className="okp-forum-topics-aside-buttons">
+              <OkpButton onClick={handleWriteTopic} block colour="primary" start={<Pencil size="1rem" />}>
+                <span>{t("New Chapter")}</span>
+              </OkpButton>
+            </section>
+            <section className="okp-forum-topics-aside-quests">quests</section>
+            <section className="okp-forum-topics-aside-permissions">
+              permissions
+              <br />
+              permissions
+              <br />
+              permissions
+              <br />
+              permissions
+              <br />
+            </section>
+          </aside>
+          <div className="okp-forum-topics-list">
+            {data.topics.length ? (
+              data.topics.map((topic) => {
+                return <OkpTopicCard key={`topic-${topic.id}`} data={topic} />;
+              })
+            ) : (
+              <div className="okp-forum-topics-empty">
+                <span>{t("Thissectionisempty")}</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+      {toggleWriteTopic && (
+        <section className="okp-forum-write-topic">
+          <article className="okp-forum-write-topic-card">
+            aaa
+          </article>
+          <footer className="okp-forum-write-topic-footer">
+            <OkpButton onClick={handleWriteTopic}>
+              <span>{t("Cancel")}</span>
             </OkpButton>
-          </section>
-          <section className="okp-forum-topics-aside-quests">
-            quests
-          </section>
-          <section className="okp-forum-topics-aside-permissions">
-            permissions<br />permissions<br />permissions<br />permissions<br />
-          </section>
-        </aside>
-        <div className="okp-forum-topics-list">
-          {data.topics.length ? (data.topics.map((topic) => {
-            return (
-              <OkpTopicCard key={`topic-${topic.id}`} data={topic} />
-            )
-          })) : (
-            <div className="okp-forum-topics-empty">
-              <span>{t("Thissectionisempty")}</span>
-            </div>
-          )}
-        </div>
-      </section>
+            <OkpButton colour="primary">
+              <span>{t("Send")}</span>
+            </OkpButton>
+          </footer>
+        </section>
+      )}
     </section>
   );
 }
