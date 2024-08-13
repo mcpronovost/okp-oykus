@@ -52,10 +52,10 @@ export default function ForumSectionCard({ data }) {
         <section className="okp-forum-section-counts">
           <ul>
             <li>
-              <span>{qpunit(data.total_messages)}</span> <span>{t("messages")}</span>
+              <span>{qpunit(data.total_messages)}</span> <span>{data.total_messages > 1 ? t("messages") : t("message")}</span>
             </li>
             <li>
-              <span>{qpunit(data.total_topics)}</span> <span>{t("topics")}</span>
+              <span>{qpunit(data.total_topics)}</span> <span>{data.total_topics > 1 ? t("topics") : t("topic")}</span>
             </li>
           </ul>
         </section>
