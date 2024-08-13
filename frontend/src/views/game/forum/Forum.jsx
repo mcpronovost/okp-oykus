@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import { getTrans } from "@/_lib/i18n";
 import { api, getHeaders } from "@/_lib/api";
+import OkpTest from "@/components/test";
 
 export async function loader({ params }) {
   const t = getTrans();
@@ -67,6 +68,7 @@ export default function ForumView() {
           <Outlet />
         </div>
         <footer style={{ color: "var(--okp-text-low)",fontSize: "0.8rem", textAlign: "center", padding: "120px 0 32px" }}>
+          <OkpTest />
           <small>&copy; 2024 {data.founder?.name}{data.owner?.id != data.founder?.id ? ` - ${data.owner.name}` : ""}</small>
         </footer>
       </div>

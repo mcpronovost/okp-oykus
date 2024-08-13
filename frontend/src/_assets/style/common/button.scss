@@ -122,11 +122,12 @@
     background-color: var(--okp-secondary);
 
     .okp-btn {
-      color: var(--okp-secondary);
+      color: var(--okp-tertiary);
+      filter: brightness(1);
     }
 
     &-outline .okp-btn {
-      border-color: var(--okp-secondary);
+      border-color: var(--okp-tertiary);
     }
   }
 
