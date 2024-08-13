@@ -18,7 +18,7 @@ export default function CoreHeaderComponent() {
       <OkpBrand />
       <div className="okp-toggle-navbar">
         <button onClick={doToggleNavbar} className="okp-toggle-navbar-btn">
-          <LayoutGrid size={24} />
+          <LayoutGrid size={20} />
         </button>
       </div>
       <OkpMenu />
