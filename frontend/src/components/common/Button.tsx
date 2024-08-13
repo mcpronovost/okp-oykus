@@ -2,6 +2,7 @@ import OkpLoading from "@/components/common/Loading";
 
 export default function OkpButton({
   children,
+  onClick,
   start,
   end,
   colour,
@@ -15,6 +16,7 @@ export default function OkpButton({
 
   return (
     <button
+      onClick={onClick}
       type="button"
       disabled={disabled}
       className={
