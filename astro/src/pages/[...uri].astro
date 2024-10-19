@@ -1,0 +1,32 @@
+---
+import Content from "@/components/cms/Content.astro";
+
+const { api } = Astro.locals;
+
+let hasErrorPage = false;
+let pages = [];
+let page = null;
+let website = null;
+// Fetch data on the server side
+try {
+    const hostname = Astro.url.hostname || "";
+    const host = Astro.url.host || "";
+    const protocol = ["astro.localhost"].includes(hostname) ? "http" : "https";
+    const pathname = Astro?.url?.pathname?.slice(1) || "";
+    console.log("pathname : ", pathname);
+    const response = await fetch(
+        `${protocol}://${api}/api/pages?where[pathname]=${pathname}`,
+    );
+    if (response.ok) {
+        pages = await response.json();
+        page = pages[0];
+        console.log("page : ", page);
+        // website = page.website;
+    } else {
+        throw new Error("Failed to fetch data");
+    }
+} catch (error) {
+    hasErrorPage = true;
+}
+---
+{!hasErrorPage && page ? <Content page={page} /> : <div>error</div>}

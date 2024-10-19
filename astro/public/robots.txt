@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+Allow: /$
+
+User-agent: GPTBot
+Disallow: /
+Allow: /$

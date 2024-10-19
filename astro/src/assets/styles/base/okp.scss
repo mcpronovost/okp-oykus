@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist/variable/Geist-wght.ttf") format("truetype-variations");
+  font-weight: 1 999;
+}
+
+:root {
+  --okp-core-bg: #c9cfd1;
+  --okp-core-text: #435259;
+  --okp-core-head-bg: #435259;
+  --okp-core-head-text: #c9cfd1;
+  --okp-core-sideleft-bg: #dbe0e2;
+  --okp-core-sideleft-text: #435259;
+  --okp-core-siderigh-bg: #dbe0e2;
+  --okp-core-siderigh-text: #435259;
+}
+
+html, body {
+  background-color: var(--okp-core-bg);
+  color: var(--okp-core-text);
+  font-family: "Geist", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#okp {
+  display: flex;
+  flex-direction: column;
+}
+
+#okp-core-head {
+  background-color: var(--okp-core-head-bg);
+  color: var(--okp-core-head-text);
+  display: flex;
+  flex: 0 0 48px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+}
+
+#okp-core-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+#okp-core-sideleft {
+  background-color: var(--okp-core-sideleft-bg);
+  color: var(--okp-core-sideleft-text);
+  display: flex;
+  flex: 0 0 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 50;
+}
+
+#okp-core-siderigh {
+  background-color: var(--okp-core-siderigh-bg);
+  color: var(--okp-core-siderigh-text);
+  display: flex;
+  flex: 0 0 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 50;
+}
+
+#okp-core-main {
+  flex: 1 1 auto;
+}

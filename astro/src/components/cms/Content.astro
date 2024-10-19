@@ -1,0 +1,9 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const { page } = Astro.props;
+---
+
+<MainLayout title={page.title}>
+    my content : {page.meta_description}
+</MainLayout>
