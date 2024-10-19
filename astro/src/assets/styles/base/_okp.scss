@@ -31,18 +31,6 @@ html, body {
   flex-direction: column;
 }
 
-#okp-core-head {
-  background-color: var(--okp-core-head-bg);
-  color: var(--okp-core-head-text);
-  display: flex;
-  flex: 0 0 48px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 100;
-}
-
 #okp-core-body {
   display: flex;
   flex: 1 1 auto;

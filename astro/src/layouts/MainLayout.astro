@@ -1,5 +1,8 @@
 ---
 import "@/assets/styles/main.scss";
+import CoreHead from "@/components/core/Head.astro";
+import CoreSideleft from "@/components/core/Sideleft.astro";
+import CoreSiderigh from "@/components/core/Siderigh.astro";
 
 const { title, description } = Astro.props;
 ---
@@ -15,11 +18,14 @@ const { title, description } = Astro.props;
     <meta name="author" content="mcpronovost" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body>
-    <header>(header)</header>
-    <main>
-      <slot />
-    </main>
-    <footer>(footer)</footer>
+  <body id="okp" itemscope itemtype="https://schema.org/Game">
+    <CoreHead />
+    <div id="okp-core-body">
+      <CoreSideleft />
+      <main id="okp-core-main">
+        <slot />
+      </main>
+      <CoreSiderigh />
+    </div>
   </body>
 </html>

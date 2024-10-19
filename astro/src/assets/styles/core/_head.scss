@@ -1,0 +1,16 @@
+#okp-core-head {
+  background-color: var(--okp-core-head-bg);
+  color: var(--okp-core-head-text);
+  display: flex;
+  max-height: 48px;
+  flex: 0 0 48px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+
+  #okp-branding {
+    min-width: 200px;
+  }
+}
