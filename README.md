@@ -1,6 +1,6 @@
 # Oykus
 
-Just a textual storytelling rpg game build with Astro and Django.
+Just a textual storytelling roleplay game build with Astro and Django.
 
 
 ## Project Structure
@@ -22,8 +22,9 @@ Under construction.
 │   │           └── new topic
 │   └── <characters>
 │       └── profile
-└── community
-    └── <players>
+|── community
+|   └── <players>
+└── settings
 ```
 
 Under construction.
