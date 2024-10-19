@@ -9,16 +9,21 @@ Under construction.
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── home
+├── <games>
+│   ├── lore
+│   ├── rules
+│   ├── forum
+│   │   └── <categories>
+│   │       └── <sections>
+│   │           ├── <topics>
+│   │           |   ├── <messages>
+│   │           |   └── new message
+│   │           └── new topic
+│   └── <characters>
+│       └── profile
+└── community
+    └── <players>
 ```
 
 Under construction.
