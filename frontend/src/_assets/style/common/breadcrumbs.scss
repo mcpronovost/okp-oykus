@@ -1,0 +1,39 @@
+.okp-breadcrumbs {
+  color: var(--okp-text-low);
+  font-size: 0.8rem;
+  line-height: 120%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6px 0;
+
+  > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 6px;
+
+    > li {
+      padding: 0 6px;
+
+      +li::before {
+        content: ">";
+        display: inline-block;
+        padding: 0 12px 0 0;
+      }
+
+      a {
+        color: var(--okp-text-low);
+        transition: color 0.3s;
+
+        &:hover {
+          color: var(--okp-primary);
+        }
+      }
+    }
+  }
+}

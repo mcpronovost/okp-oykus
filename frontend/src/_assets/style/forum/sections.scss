@@ -1,0 +1,179 @@
+.okp-forum-sections {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+
+  .okp-forum-section {
+    box-sizing: border-box;
+    font-size: 0;
+    line-height: 0;
+    display: flex;
+    flex: 1 0 auto;
+    width: 25%;
+    min-width: 300px;
+    padding: 12px;
+
+    &-card {
+      @include okp-card;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      position: relative;
+      padding: 0;
+    }
+
+    &-header {
+      text-align: center;
+      display: flex;
+      flex: 1 1 100%;
+      flex-direction: column;
+      width: 100%;
+
+      &-banner {
+        height: 112px;
+        position: relative;
+        margin: 0;
+
+        &-cover {
+          background-color: var(--okp-lighten);
+          border-top-left-radius: 6px;
+          border-top-right-radius: 6px;
+          overflow: hidden;
+          width: 100%;
+          height: 96px;
+          position: relative;
+
+          &-img {
+            min-width: 110%;
+            min-height: 96px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0.5;
+            transform: translate(-50%, -40%);
+          }
+        }
+
+        &-last {
+          background-color: var(--okp-card);
+          border: 6px solid var(--okp-card);
+          border-radius: 50%;
+          overflow: hidden;
+          width: 90px;
+          height: 90px;
+          position: absolute;
+          top: 24px;
+          left: 50%;
+          transform: translate(-50%, 0);
+  
+          &-img {
+            width: 100%;
+            height: 100%;
+          }
+  
+          &-initial {
+            background-color: var(--okp-lighten);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+  
+            > span {
+              color: var(--okp-text-low);
+              font-family: "Cinzel Decorative", "Quicksand", "Noto Sans", sans-serif;
+              font-size: 2rem;
+              font-weight: 400;
+              line-height: 120%;
+              cursor: default;
+            }
+          }
+        }
+      }
+
+      &-title {
+        font-family: "Quicksand", sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 120%;
+        display: flex;
+        flex: 1 1 calc(100% - 112px);
+        align-items: center;
+        justify-content: center;
+        padding: 24px 0 0;
+        margin: 0;
+
+        > a {
+          display: block;
+          width: 100%;
+          padding: 6px 12px;
+          transition: color 0.3s;
+
+          &:hover {
+            color: var(--okp-primary);
+          }
+        }
+      }
+    }
+  
+    &-counts {
+      width: 100%;
+      opacity: 0.8;
+      padding: 12px 12px 24px;
+      transition: opacity 0.3s;
+
+      > ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        > li {
+          font-size: 0.8rem;
+          font-weight: 600;
+          line-height: 120%;
+          display: flex;
+          flex: 0 0 64px;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: all 0.3s;
+          padding: 0 6px;
+
+          + li::after {
+            content: "";
+            background-color: var(--okp-text-low);
+            width: 1px;
+            height: 32px;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            opacity: 0.3;
+          }
+
+          > span + span {
+            color: var(--okp-text-low);
+            font-size: 0.6rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            padding: 3px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  &-empty {
+    @include okp-card;
+    color: var(--okp-text-low);
+    text-align: center;
+    width: 100%;
+    opacity: 0.6;
+    padding: 12px;
+    margin: 12px;
+  }
+}

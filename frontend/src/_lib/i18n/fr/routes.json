@@ -1,0 +1,15 @@
+{
+  "/": "/",
+  "/devblog": "/devblog",
+  "/faq": "/faq",
+  "/contact": "/contact",
+  "/cynost": "/cynost",
+  "/community": "/communaute",
+  "/achievements": "/succes",
+  "/rankings": "/classements",
+  "/market": "/marche",
+  "/settings": "/parametres",
+  "/login": "/connexion",
+  "/logout": "/deconnexion",
+  "/signup": "/inscription"
+}

@@ -1,0 +1,270 @@
+# Oykus - French Translation.
+# Copyright (C) 2024 M-C Pronovost.
+# This file is distributed under the same license as the okp-oykus package.
+# M-C Pronovost <mcpronovostkurkiency@gmail.com>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: okp-oykus 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-09 23:00-0400\n"
+"PO-Revision-Date: 2024-07-10 12:08-0400\n"
+"Last-Translator: M-C Pronovost <mcpronovostkurkiency@gmail.com>\n"
+"Language-Team: M-C Pronovost <mcpronovostkurkiency@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: okp/forums/admin.py:18 okp/forums/admin.py:36 okp/forums/admin.py:69
+#: okp/forums/admin.py:77 okp/forums/admin.py:109 okp/forums/admin.py:149
+#: okp/forums/admin.py:157 okp/games/admin.py:17 okp/games/admin.py:37
+msgid "General"
+msgstr "Général"
+
+#: okp/forums/admin.py:43 okp/forums/admin.py:83 okp/users/admin.py:33
+msgid "Permissions"
+msgstr "Permissions"
+
+#: okp/forums/admin.py:48 okp/forums/admin.py:88 okp/forums/admin.py:123
+msgid "Informations"
+msgstr "Informations"
+
+#: okp/forums/admin.py:116 okp/forums/models.py:253 okp/forums/models.py:363
+msgid "Content"
+msgstr "Contenu"
+
+#: okp/forums/admin.py:128 okp/forums/admin.py:163
+msgid "Dates"
+msgstr "Dates"
+
+#: okp/forums/apps.py:8 okp/forums/models.py:28
+msgid "Forums"
+msgstr "Forums"
+
+#: okp/forums/models.py:17 okp/games/models.py:53 okp/games/models.py:73
+msgid "Game"
+msgstr "Jeu"
+
+#: okp/forums/models.py:22 okp/games/models.py:36 okp/games/models.py:90
+msgid "Active"
+msgstr "Actif"
+
+#: okp/forums/models.py:27 okp/forums/models.py:39 okp/forums/models.py:111
+#: okp/forums/models.py:218 okp/forums/models.py:326
+msgid "Forum"
+msgstr "Forum"
+
+#: okp/forums/models.py:44 okp/forums/models.py:132 okp/games/models.py:24
+#: okp/games/models.py:78 okp/users/admin.py:43 okp/users/models.py:19
+msgid "Name"
+msgstr "Nom"
+
+#: okp/forums/models.py:50 okp/forums/models.py:138
+msgid "Description"
+msgstr "Description"
+
+#: okp/forums/models.py:56 okp/forums/models.py:144
+msgid "Ordering"
+msgstr "Ordre"
+
+#: okp/forums/models.py:61 okp/forums/models.py:149
+msgid "Visible"
+msgstr "Visible"
+
+#: okp/forums/models.py:65 okp/forums/models.py:153
+msgid "List of Topics"
+msgstr "Liste des sujets"
+
+#: okp/forums/models.py:71 okp/forums/models.py:159
+msgid "Total Topics"
+msgstr "Total de sujets"
+
+#: okp/forums/models.py:75 okp/forums/models.py:163
+msgid "Total Messages"
+msgstr "Total de messages"
+
+#: okp/forums/models.py:80 okp/forums/models.py:119 okp/forums/models.py:226
+#: okp/forums/models.py:334
+msgid "Category"
+msgstr "Catégorie"
+
+#: okp/forums/models.py:81
+msgid "Categories"
+msgstr "Catégories"
+
+#: okp/forums/models.py:127 okp/forums/models.py:168 okp/forums/models.py:234
+#: okp/forums/models.py:342
+msgid "Section"
+msgstr "Section"
+
+#: okp/forums/models.py:169
+msgid "Sections"
+msgstr "Sections"
+
+#: okp/forums/models.py:242 okp/forums/models.py:358
+msgid "Author"
+msgstr "Auteur"
+
+#: okp/forums/models.py:247
+msgid "Title"
+msgstr "Titre"
+
+#: okp/forums/models.py:258 okp/forums/models.py:368 okp/games/models.py:40
+#: okp/games/models.py:98 okp/users/models.py:73
+msgid "Created At"
+msgstr "Créé"
+
+#: okp/forums/models.py:264 okp/forums/models.py:374 okp/games/models.py:46
+#: okp/games/models.py:104
+msgid "Updated At"
+msgstr "Mis à jour"
+
+#: okp/forums/models.py:271 okp/forums/models.py:350
+msgid "Topic"
+msgstr "Sujet"
+
+#: okp/forums/models.py:272
+msgid "Topics"
+msgstr "Sujets"
+
+#: okp/forums/models.py:381
+msgid "Message"
+msgstr "Message"
+
+#: okp/forums/models.py:382
+msgid "Messages"
+msgstr "Messages"
+
+#: okp/forums/views/category.py:37
+msgid "This category doesn't exist."
+msgstr "Cette catégorie n'existe pas."
+
+#: okp/forums/views/index.py:36
+msgid "This forum doesn't exist."
+msgstr "Ce forum n'existe pas."
+
+#: okp/forums/views/section.py:37
+msgid "This section doesn't exist."
+msgstr "Cette section n'existe pas."
+
+#: okp/forums/views/topic.py:36
+msgid "This topic doesn't exist."
+msgstr "Ce sujet n'existe pas."
+
+#: okp/games/apps.py:8 okp/games/models.py:54
+msgid "Games"
+msgstr "Jeux"
+
+#: okp/games/models.py:11
+msgid "Founder"
+msgstr "Fondateur"
+
+#: okp/games/models.py:19
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: okp/games/models.py:30
+msgid "Slug"
+msgstr "Slug"
+
+#: okp/games/models.py:65 okp/users/models.py:50
+msgid "User"
+msgstr "Utilisateur"
+
+#: okp/games/models.py:84 okp/users/models.py:25
+msgid "Avatar"
+msgstr "Avatar"
+
+#: okp/games/models.py:94
+msgid "Valid"
+msgstr "Validé"
+
+#: okp/games/models.py:111
+msgid "Character"
+msgstr "Personnage"
+
+#: okp/games/models.py:112
+msgid "Characters"
+msgstr "Personnages"
+
+#: okp/urls.py:28 okp/urls.py:29
+msgid "Oykus Admin Panel"
+msgstr "Oykus - Panneau d'administration"
+
+#: okp/urls.py:30
+msgid "Administration"
+msgstr "Administration"
+
+#: okp/users/admin.py:24
+msgid "Authentication Informations"
+msgstr "Informations d'authentification"
+
+#: okp/users/apps.py:8
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: okp/users/authentication.py:40
+msgid "No rat provided."
+msgstr "Aucun RAT fournis."
+
+#: okp/users/authentication.py:43
+msgid "Rat should not contain spaces."
+msgstr "Le RAT ne doit pas contenir d'espace."
+
+#: okp/users/authentication.py:50
+msgid "Rat or Agent should't contain invalid characters."
+msgstr "Le RAT ou l'agent contient des caractères invalides."
+
+#: okp/users/authentication.py:54
+msgid "No credentials provided."
+msgstr "Aucun identifiant fourni."
+
+#: okp/users/authentication.py:69
+msgid "Invalid Rat and/or Agent."
+msgstr "RAT et/ou agent invalide."
+
+#: okp/users/authentication.py:72
+msgid "User inactive or deleted."
+msgstr "Utilisateur inactif ou supprimé."
+
+#: okp/users/authentication.py:76
+msgid "Token expired."
+msgstr "Jeton expiré."
+
+#: okp/users/models.py:14 okp/users/models.py:38
+msgid "Profile"
+msgstr "Profil"
+
+#: okp/users/models.py:31
+msgid "List of Unread Topics"
+msgstr "Liste des sujets non-lus"
+
+#: okp/users/models.py:39
+msgid "Profiles"
+msgstr "Profils"
+
+#: okp/users/models.py:55 okp/users/models.py:80
+msgid "Rat"
+msgstr "Rat"
+
+#: okp/users/models.py:62
+msgid "Agent"
+msgstr "Agent"
+
+#: okp/users/models.py:68
+msgid "Expired At"
+msgstr "Expiration"
+
+#: okp/users/models.py:81
+msgid "Rats"
+msgstr "Rats"
+
+#: okp/users/models.py:121
+msgid "Browser"
+msgstr "Navigateur"
+
+#: okp/users/views.py:97
+msgid "Token doesn't exist."
+msgstr "Le jeton n'existe pas."
