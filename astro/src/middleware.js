@@ -1,6 +1,7 @@
 export function onRequest({ locals, request }, next) {
   const API_URL = import.meta.env.API_URL || process.env.API_URL;
   const API_PORT = import.meta.env.API_PORT || process.env.API_PORT;
+  const API_ENV = import.meta.env.NODE_ENV || process.env.NODE_ENV;
 
   if (
     API_URL !== undefined &&
@@ -12,6 +13,7 @@ export function onRequest({ locals, request }, next) {
   } else {
     locals.api = "http://localhost:8010";
   }
+  locals.protocol = API_ENV !== "development" ? "https" : "http";
   locals.uri = new URL(request.url).pathname;
 
   // return a Response or the result of calling `next()`
