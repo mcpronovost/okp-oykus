@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "knox",  # https://jazzband.github.io/django-rest-knox/
     # okp
     # "okp.users",
-    # "okp.games",
+    "okp.games",
     # "okp.forums",
     # cleanup
     "django_cleanup.apps.CleanupConfig"  # https://pypi.org/project/django-cleanup/

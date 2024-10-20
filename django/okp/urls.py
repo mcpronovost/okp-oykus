@@ -7,7 +7,8 @@ from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/auth/", include("knox.urls"))
+    path("api/auth/", include("knox.urls")),
+    path("api/games/", include("okp.games.urls"))
 ] + i18n_patterns(
     # re_path(r"^", include("example.urls"))
 ) + static(
