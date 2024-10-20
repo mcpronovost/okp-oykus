@@ -19,7 +19,7 @@
   max-height: 200px; /* Minimum height of the thumb handle */
 }
 
-.okp-scrollable {
+.okp-scrollablse {
   overflow-y: auto;
   mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 6px, black 6px);
   mask-size: 100% 20000px;
@@ -29,8 +29,8 @@
   -webkit-mask-position: left bottom;
   position: relative;
   transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-}
 
-.okp-scrollable:hover {
-  -webkit-mask-position: left top;
+  &:hover {
+    -webkit-mask-position: left top;
+  }
 }

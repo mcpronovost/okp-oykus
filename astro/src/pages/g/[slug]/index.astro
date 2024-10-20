@@ -42,11 +42,11 @@ await getGame();
 
 <MainLayout>
   {!hasError && game ? (
-    <div class="okp-grid">
-      <section class="okp-game">
-        <header class="okp-game-header">
-          <h1 class="okp-game-header-title">{game.name}</h1>
-        </header>
+    <section class="okp-game">
+      <header class="okp-game-header">
+        <h1 class="okp-game-header-title">{game.name}</h1>
+      </header>
+      <div class="okp-grid">
         <section class="okp-forum">
           <section class="okp-categories">
             {(categories && categories.length) ? categories.map((item) => (
@@ -56,8 +56,8 @@ await getGame();
             )}
           </section>
         </section>
-      </section>
-    </div>
+      </div>
+    </section>
   ) : (
     <div>an error occurred</div>
   )}
