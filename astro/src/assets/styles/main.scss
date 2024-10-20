@@ -1,7 +1,12 @@
 @use "./base/reset.scss";
+@use "./base/scrollbar.scss";
 @use "./base/grid.scss";
 @use "./base/okp.scss";
 
 @use "./core/head.scss";
 
+@use "./games/header";
 @use "./games/listcard";
+
+@use "./forums/categoriesCard";
+@use "./forums/sections";

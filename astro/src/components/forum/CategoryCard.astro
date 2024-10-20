@@ -1,0 +1,18 @@
+---
+import SectionCard from "@/components/forum/SectionCard.astro";
+
+const { category } = Astro.props;
+---
+
+<article class="okp-categories-card">
+  <header>
+    <h2 class="okp-categories-card-title">{category.name}</h2>
+  </header>
+  <section class="okp-forum-sections">
+    {(category.sections && category.sections.length) ? category.sections.map((item) => (
+        <SectionCard section={item} />
+    )) : (
+        <div>-</div>
+    )}
+  </section>
+</article>

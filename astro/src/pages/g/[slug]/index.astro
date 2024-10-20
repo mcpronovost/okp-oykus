@@ -1,29 +1,63 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ForumCategoryCard from "@/components/forum/CategoryCard.astro";
 
-const { api, protocol } = Astro.locals;
+const { api } = Astro.locals;
 const { slug } = Astro.params;
 
 let hasError = null;
 let game = null;
+let categories = [];
 
-try {
-  const response = await fetch(`${protocol}://${api}/api/games/${slug}/`);
-  if (response.ok) {
-    game = await response.json();
-  } else {
-    throw new Error("Failed to fetch data");
+async function getGame () {
+  try {
+    const response = await fetch(`${api}/games/${slug}/`);
+    if (response.ok) {
+      game = await response.json();
+      await getForumCategories();
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch {
+    hasError = true;
   }
-} catch {
-  hasError = true;
-}
+};
+
+async function getForumCategories () {
+  try {
+    const response = await fetch(`${api}/forums/${slug}/categories/`);
+    if (response.ok) {
+      categories = await response.json();
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch {
+    hasError = true;
+  }
+};
+
+await getGame();
+
 ---
 
 <MainLayout>
-  {!hasError ? (
-    <ul>
-      {game.name}
-    </ul>
+  {!hasError && game ? (
+    <div class="okp-grid">
+      <section class="okp-game">
+        <header class="okp-game-header">
+          <h1 class="okp-game-header-title">{game.name}</h1>
+        </header>
+        <section class="okp-forum">
+          <section class="okp-categories">
+            {(categories && categories.length) ? categories.map((item) => (
+              <ForumCategoryCard category={item} />
+            )) : (
+              <div>empty</div>
+            )}
+          </section>
+        </section>
+      </section>
+    </div>
   ) : (
     <div>an error occurred</div>
   )}

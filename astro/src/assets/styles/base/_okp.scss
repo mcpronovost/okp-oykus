@@ -1,6 +1,12 @@
 @font-face {
   font-family: "Geist";
-  src: url("/fonts/Geist/variable/Geist-wght.ttf") format("truetype-variations");
+  src: url("/fonts/Geist/Geist-wght.ttf") format("truetype-variations");
+  font-weight: 1 999;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand/Quicksand-wght.ttf") format("truetype-variations");
   font-weight: 1 999;
 }
 
@@ -13,6 +19,9 @@
   --okp-core-sideleft-text: #435259;
   --okp-core-siderigh-bg: #dbe0e2;
   --okp-core-siderigh-text: #435259;
+
+  --okp-scrollbar-bg: rgba(0, 0, 0, 0.1);
+  --okp-scrollbar-fg: rgba(67, 82, 89, 0.32);
 }
 
 html, body {
@@ -62,5 +71,7 @@ html, body {
 }
 
 #okp-core-main {
+  overflow-x: hidden;
   flex: 1 1 auto;
+  height: calc(100vh - 48px);
 }

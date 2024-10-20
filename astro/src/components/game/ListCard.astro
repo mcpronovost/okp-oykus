@@ -3,7 +3,7 @@ const { game } = Astro.props;
 ---
 
 <li class="okp-games-list-card">
-  <div>
-    <a href={`/g/${game.slug}/`}>{game.name}</a>
-  </div>
+  <a class="okp-games-list-card" href={`/g/${game.slug}/`}>
+    <h2>{game.name}</h2>
+  </a>
 </li>

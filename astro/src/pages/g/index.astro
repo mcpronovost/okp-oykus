@@ -2,13 +2,13 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import ListCard from "@/components/game/ListCard.astro";
 
-const { api, protocol } = Astro.locals;
+const { api } = Astro.locals;
 
 let hasError = null;
 let games = [];
 
 try {
-  const response = await fetch(`${protocol}://${api}/api/games/`);
+  const response = await fetch(`${api}/games/`);
   if (response.ok) {
     games = await response.json();
   } else {
@@ -23,11 +23,17 @@ try {
   {
     !hasError ? (
       <div class="okp-grid">
-        <ul class="okp-games-list">
+        <section class="okp-games-list">
           {games.map((game) => (
-            <ListCard game={game} />
+            <article class="okp-games-list-card">
+              <a href={`/g/${game.slug}/`}>
+                <header>
+                  <h2>{game.name}</h2>
+                </header>
+              </a>
+            </article>
           ))}
-        </ul>
+        </section>
       </div>
     ) : (
       <div>an error occurred</div>

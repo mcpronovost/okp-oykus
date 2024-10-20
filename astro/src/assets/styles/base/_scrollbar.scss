@@ -1,0 +1,36 @@
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: var(--okp-scrollbar-bg);
+  border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--okp-scrollbar-fg);
+  border-radius: 32px;
+}
+/* To handle height for vertical scrollbar, you can control the thumb height */
+::-webkit-scrollbar-thumb {
+  max-height: 200px; /* Minimum height of the thumb handle */
+}
+
+.okp-scrollable {
+  overflow-y: auto;
+  mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 6px, black 6px);
+  mask-size: 100% 20000px;
+  mask-position: left bottom;
+  -webkit-mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 6px, black 6px);
+  -webkit-mask-size: 100% 20000px;
+  -webkit-mask-position: left bottom;
+  position: relative;
+  transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+}
+
+.okp-scrollable:hover {
+  -webkit-mask-position: left top;
+}
