@@ -1,4 +1,7 @@
 @use "./base/reset.scss";
+@use "./base/grid.scss";
 @use "./base/okp.scss";
 
 @use "./core/head.scss";
+
+@use "./games/listcard";

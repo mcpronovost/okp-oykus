@@ -1,0 +1,36 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ListCard from "@/components/game/ListCard.astro";
+
+const { api, protocol } = Astro.locals;
+
+let hasError = null;
+let games = [];
+
+try {
+  const response = await fetch(`${protocol}://${api}/api/games/`);
+  if (response.ok) {
+    games = await response.json();
+  } else {
+    throw new Error("Failed to fetch data");
+  }
+} catch {
+  hasError = true;
+}
+---
+
+<MainLayout>
+  {
+    !hasError ? (
+      <div class="okp-grid">
+        <ul class="okp-games-list">
+          {games.map((game) => (
+            <ListCard game={game} />
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <div>an error occurred</div>
+    )
+  }
+</MainLayout>

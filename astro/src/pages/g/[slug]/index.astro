@@ -1,5 +1,30 @@
 ---
-import Home from "@/components/game/Home.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const { api, protocol } = Astro.locals;
+const { slug } = Astro.params;
+
+let hasError = null;
+let game = null;
+
+try {
+  const response = await fetch(`${protocol}://${api}/api/games/${slug}/`);
+  if (response.ok) {
+    game = await response.json();
+  } else {
+    throw new Error("Failed to fetch data");
+  }
+} catch {
+  hasError = true;
+}
 ---
 
-<Home />
+<MainLayout>
+  {!hasError ? (
+    <ul>
+      {game.name}
+    </ul>
+  ) : (
+    <div>an error occurred</div>
+  )}
+</MainLayout>

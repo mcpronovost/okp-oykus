@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import F
-from django.utils import timezone
-from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from okp.utils import get_unique_slug
@@ -55,6 +53,9 @@ class okpGame(models.Model):
         verbose_name = _("Game")
         verbose_name_plural = _("Games")
         ordering = ["-updated_at", "name"]
+
+    def __str__(self):
+        return f"{self.name}"
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     # okp
     # "okp.users",
     "okp.games",
-    # "okp.forums",
+    "okp.forums",
     # cleanup
     "django_cleanup.apps.CleanupConfig"  # https://pypi.org/project/django-cleanup/
 ]
