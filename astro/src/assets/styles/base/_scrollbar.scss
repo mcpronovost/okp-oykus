@@ -19,18 +19,16 @@
   max-height: 200px; /* Minimum height of the thumb handle */
 }
 
-.okp-scrollablse {
-  overflow-y: auto;
-  mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 6px, black 6px);
-  mask-size: 100% 20000px;
-  mask-position: left bottom;
-  -webkit-mask-image: linear-gradient(to top, transparent, black), linear-gradient(to left, transparent 6px, black 6px);
-  -webkit-mask-size: 100% 20000px;
-  -webkit-mask-position: left bottom;
-  position: relative;
-  transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+.simplebar-scrollbar::before {
+  background-color: var(--okp-scrollbar-fg);
+}
 
-  &:hover {
-    -webkit-mask-position: left top;
-  }
+.okp-scrollable:hover .simplebar-scrollbar::before {
+  opacity: 0.4;
+  transition-delay: 0s;
+  transition-duration: 0s;
+}
+
+.okp-scrollable:hover .simplebar-hover > .simplebar-scrollbar::before {
+  opacity: 0.8;
 }
