@@ -29,6 +29,7 @@ class okpForumCategory(models.Model):
     )
     sortby = models.PositiveSmallIntegerField(
         verbose_name=_("Sort"),
+        default=None,
         blank=True,
         null=True
     )
@@ -92,6 +93,7 @@ class okpForumSection(models.Model):
     )
     sortby = models.PositiveSmallIntegerField(
         verbose_name=_("Sort"),
+        default=None,
         blank=True,
         null=True
     )
@@ -124,7 +126,7 @@ class okpForumSection(models.Model):
         return super().save(*args, **kwargs)
 
 
-class okpForumTopic(models.Model):
+class okpForumChapter(models.Model):
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=120,
@@ -140,7 +142,7 @@ class okpForumTopic(models.Model):
     game = models.ForeignKey(
         okpGame,
         on_delete=models.SET_NULL,
-        related_name="topics",
+        related_name="chapters",
         verbose_name=_("Game"),
         blank=True,
         null=True
@@ -148,7 +150,7 @@ class okpForumTopic(models.Model):
     category = models.ForeignKey(
         okpForumCategory,
         on_delete=models.SET_NULL,
-        related_name="topics",
+        related_name="chapters",
         verbose_name=_("Category"),
         blank=True,
         null=True
@@ -156,7 +158,7 @@ class okpForumTopic(models.Model):
     section = models.ForeignKey(
         okpForumSection,
         on_delete=models.SET_NULL,
-        related_name="topics",
+        related_name="chapters",
         verbose_name=_("Section"),
         blank=True,
         null=True
@@ -175,8 +177,8 @@ class okpForumTopic(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Topic")
-        verbose_name_plural = _("Topics")
+        verbose_name = _("Chapter")
+        verbose_name_plural = _("Chapters")
         ordering = [
             "-updated_at",
             "-created_at"
@@ -221,11 +223,11 @@ class okpForumMessage(models.Model):
         blank=True,
         null=True
     )
-    topic = models.ForeignKey(
-        okpForumTopic,
+    chapter = models.ForeignKey(
+        okpForumChapter,
         on_delete=models.SET_NULL,
         related_name="messages",
-        verbose_name=_("Topic"),
+        verbose_name=_("chapter"),
         blank=True,
         null=True
     )

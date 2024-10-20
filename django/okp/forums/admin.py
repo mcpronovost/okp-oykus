@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
-    okpForumTopic,
+    okpForumChapter,
     okpForumMessage
 )
 
@@ -18,13 +18,13 @@ class okpForumCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumSection)
 class okpForumSectionAdmin(admin.ModelAdmin):
-    list_display = ["name", "category", "game"]
+    list_display = ["name", "category", "game", "sortby"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["name"]
 
 
-@admin.register(okpForumTopic)
-class okpForumTopicAdmin(admin.ModelAdmin):
+@admin.register(okpForumChapter)
+class okpForumChapterAdmin(admin.ModelAdmin):
     list_display = ["name", "section", "category", "game"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["name"]
@@ -32,5 +32,5 @@ class okpForumTopicAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumMessage)
 class okpForumMessageAdmin(admin.ModelAdmin):
-    list_display = ["__str__", "topic", "section", "category", "game"]
+    list_display = ["__str__", "chapter", "section", "category", "game"]
     readonly_fields = ["created_at", "updated_at"]
