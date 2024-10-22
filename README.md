@@ -11,8 +11,8 @@ Under construction.
 /
 ├── home
 ├── <games>
-│   ├── lore
 │   ├── rules
+│   ├── lore
 │   ├── forum
 │   │   └── <categories>
 │   │       └── <sections>
@@ -20,8 +20,9 @@ Under construction.
 │   │           |   ├── <messages>
 │   │           |   └── new message
 │   │           └── new chapter
-│   └── <characters>
-│       └── profile
+│   └── community
+│       └── <characters>
+│           └── profile
 |── community
 |   └── <players>
 └── settings
