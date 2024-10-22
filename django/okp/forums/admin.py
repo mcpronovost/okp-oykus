@@ -11,7 +11,7 @@ from okp.forums.models import (
 
 @admin.register(okpForumCategory)
 class okpForumCategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "game"]
+    list_display = ["name", "game", "sortby"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["name"]
 

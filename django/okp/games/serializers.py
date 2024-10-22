@@ -6,4 +6,4 @@ from okp.games.models import okpGame
 class okpGamesSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpGame
-        fields = ["id", "name", "slug"]
+        fields = ["id", "name", "slug", "abbr"]

@@ -4,9 +4,10 @@
 @use "./base/okp.scss";
 
 @use "./core/head.scss";
+@use "./core/siderigh.scss";
 
 @use "./games/header";
 @use "./games/listcard";
 
-@use "./forums/categoriesCard";
+@use "./forums/categories";
 @use "./forums/sections";

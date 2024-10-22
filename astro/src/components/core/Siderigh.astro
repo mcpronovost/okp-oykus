@@ -1,8 +1,63 @@
 ---
-// core sideright
+import { Sparkles, Users } from "lucide-astro";
+
+const { api } = Astro.locals;
+
+let hasError = null;
+let characters = [];
+let games = [];
+
+try {
+  const response = await fetch(`${api}/games/`);
+  if (response.ok) {
+    games = await response.json();
+  } else {
+    throw new Error("Failed to fetch data");
+  }
+} catch {
+  hasError = true;
+}
 ---
 
 <aside id="okp-core-siderigh">
-  <span>nav</span>
-  <span>nav</span>
+  {
+    !!characters.length && (
+      <nav class="okp-siderigh-games">
+        <ul class="okp-siderigh-cards">
+          <li class="okp-siderigh-card">
+            <span class="okp-siderigh-card-abbr">
+              <Users width="32" />
+            </span>
+          </li>
+          {characters.map((character) => (
+            <li class="okp-siderigh-card">
+              <a href={`/`} class="okp-siderigh-card-link">
+                <span class="okp-siderigh-card-abbr">{character.abbr}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+  {
+    !!games.length && (
+      <nav class="okp-siderigh-games">
+        <ul class="okp-siderigh-cards">
+          <li class="okp-siderigh-card">
+            <span class="okp-siderigh-card-abbr">
+              <Sparkles width="32" />
+            </span>
+          </li>
+          {games.map((game) => (
+            <li class="okp-siderigh-card">
+              <a href={`/g/${game.slug}/`} class="okp-siderigh-card-link">
+                <span class="okp-siderigh-card-abbr">{game.abbr}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
 </aside>

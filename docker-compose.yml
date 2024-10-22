@@ -23,8 +23,8 @@ services:
     command: yarn start --host --port 3000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.astro.rule=Host(`astro.localhost`) && !PathPrefix(`/health`)"
-      - "traefik.http.routers.astro.entrypoints=web"
+      - "traefik.http.routers.okp.rule=Host(`okp.localhost`) && !PathPrefix(`/health`)"
+      - "traefik.http.routers.okp.entrypoints=web"
     expose:
       - 3000
     ports:
@@ -48,7 +48,7 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`astro.localhost`) && (PathPrefix(`/admin`)||PathPrefix(`/static`)||PathPrefix(`/media`)||PathPrefix(`/api`))"
+      - "traefik.http.routers.django.rule=Host(`okp.localhost`) && (PathPrefix(`/admin`)||PathPrefix(`/static`)||PathPrefix(`/media`)||PathPrefix(`/api`))"
     expose:
       - 8000
     ports:

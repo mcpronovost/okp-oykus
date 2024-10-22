@@ -57,6 +57,10 @@ class okpGame(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
+    def abbr(self):
+        return "".join([x[0] for x in self.name.split()[:2]]).upper()
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = get_unique_slug(self.name, okpGame)

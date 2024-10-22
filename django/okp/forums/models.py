@@ -27,6 +27,11 @@ class okpForumCategory(models.Model):
         blank=False,
         null=False
     )
+    description = models.TextField(
+        verbose_name=_("Description"),
+        blank=True,
+        null=True
+    )
     sortby = models.PositiveSmallIntegerField(
         verbose_name=_("Sort"),
         default=None,
@@ -72,6 +77,11 @@ class okpForumSection(models.Model):
     slug = models.SlugField(
         verbose_name=_("Slug"),
         max_length=120,
+        blank=True,
+        null=True
+    )
+    description = models.TextField(
+        verbose_name=_("Description"),
         blank=True,
         null=True
     )

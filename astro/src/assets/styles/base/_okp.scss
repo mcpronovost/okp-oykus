@@ -11,6 +11,8 @@
 }
 
 :root {
+  --okp-primary: #d3b018;
+
   --okp-core-bg: #c9cfd1;
   --okp-core-text: #435259;
   --okp-core-head-bg: #435259;
@@ -19,6 +21,10 @@
   --okp-core-sideleft-text: #435259;
   --okp-core-siderigh-bg: #dbe0e2;
   --okp-core-siderigh-text: #435259;
+
+  --okp-header-title: #435259;
+  --okp-header-subtitle: #869195;
+  --okp-header-separator: #869195;
 
   --okp-scrollbar-bg: rgba(0, 0, 0, 0.1);
   --okp-scrollbar-fg: #435259;
@@ -49,18 +55,6 @@ html, body {
 #okp-core-sideleft {
   background-color: var(--okp-core-sideleft-bg);
   color: var(--okp-core-sideleft-text);
-  display: flex;
-  flex: 0 0 48px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 50;
-}
-
-#okp-core-siderigh {
-  background-color: var(--okp-core-siderigh-bg);
-  color: var(--okp-core-siderigh-text);
   display: flex;
   flex: 0 0 48px;
   flex-direction: column;

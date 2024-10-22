@@ -25,7 +25,7 @@ ALLOWED_HOSTS = [
     "astro",
     "django",
     "locaLhost",
-    "astro.localhost"
+    "okp.localhost"
 ]
 
 # Application definition

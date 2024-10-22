@@ -16,10 +16,14 @@ class okpForumCategoriesView(APIView):
         categories = [{
             "id": c.id,
             "name": c.name,
+            "slug": c.slug,
+            "description": c.description,
             "sortby": c.sortby,
             "sections": [{
                 "id": s.id,
                 "name": s.name,
+                "slug": s.slug,
+                "description": c.description,
                 "sortby": c.sortby
             } for s in c.sections.all()]
         } for c in queryset]
