@@ -5,7 +5,7 @@ from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
     okpForumChapter,
-    okpForumMessage
+    okpForumMessage,
 )
 
 

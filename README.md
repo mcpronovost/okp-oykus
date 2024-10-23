@@ -34,8 +34,9 @@ Under construction.
 
 ## API endpoints
 
-| Command                        | Action                                              |
-| :----------------------------- | :-------------------------------------------------- |
-| `/games`                       | List of all games                                   |
-| `/games/<slug>`                | Data of a game                                      |
-| `/forums/<slug>/categories`    | List of forum categories of a game                  |
+| Command                               | Action                                                |
+| :------------------------------------ | :---------------------------------------------------- |
+| `/games`                              | List of games                                         |
+| `/games/<slug>`                       | Data of a game                                        |
+| `/forums/<slug>/categories`           | List of forum categories of a game                    |
+| `/forums/<slug>/categories/<pk>/`     | Data of a forum category                              |
