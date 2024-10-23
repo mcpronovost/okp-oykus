@@ -11,7 +11,7 @@ const { category, singleton } = Astro.props;
         {singleton ? (
             <span>{category.name}</span>
         ) : (
-            <a href={`/g/${slug}/c${category.id}-${category.slug}/`}>{category.name}</a>
+            <a href={`${category.path}`}>{category.name}</a>
         )}
     </h2>
     {category.description && (

@@ -62,6 +62,12 @@ class okpForumCategory(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
+    def path(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.pk}-{self.slug}"
+        return f"{g}{c}"
+
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
         return super().save(*args, **kwargs)
@@ -130,6 +136,13 @@ class okpForumSection(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    @property
+    def path(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.category.pk}-{self.category.slug}"
+        s = f"/s{self.pk}-{self.slug}"
+        return f"{g}{c}{s}"
 
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
@@ -238,6 +251,11 @@ class okpForumMessage(models.Model):
         on_delete=models.SET_NULL,
         related_name="messages",
         verbose_name=_("topics"),
+        blank=True,
+        null=True
+    )
+    content = models.TextField(
+        verbose_name=_("Content"),
         blank=True,
         null=True
     )

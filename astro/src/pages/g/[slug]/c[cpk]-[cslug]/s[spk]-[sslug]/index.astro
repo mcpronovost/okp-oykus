@@ -1,18 +1,19 @@
 ---
 import GameLayout from "@/layouts/GameLayout.astro";
+import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumCategory from "@/components/forum/Category.astro";
 
 const { api } = Astro.locals;
-const { slug } = Astro.params;
+const { slug, cpk, spk } = Astro.params;
 
 let hasError = null;
-let categories = [];
+let section = null;
 
-async function getForumCategories () {
+async function getForumSection () {
   try {
-    const response = await fetch(`${api}/forums/${slug}/categories/`);
+    const response = await fetch(`${api}/forums/${slug}/sections/${spk}`);
     if (response.ok) {
-      categories = await response.json();
+      section = await response.json();
     } else {
       throw new Error("Failed to fetch data");
     }
@@ -21,7 +22,7 @@ async function getForumCategories () {
   }
 };
 
-await getForumCategories();
+await getForumSection();
 
 ---
 
@@ -29,12 +30,13 @@ await getForumCategories();
   <div class="okp-grid">
     <section class="okp-forum">
       <section class="okp-forum-categories">
-        {(categories && categories.length) ? categories.map((item) => (
-          <ForumCategory category={item} />
-        )) : (
-          <div>empty</div>
+        {!!section ? (
+          <ForumCategory category={section} />
+        ) : (
+          <AlertNotFound />
         )}
       </section>
     </section>
   </div>
+</section>
 </GameLayout>
