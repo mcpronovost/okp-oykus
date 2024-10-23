@@ -16,10 +16,10 @@ Under construction.
 │   ├── forum
 │   │   └── <categories>
 │   │       └── <sections>
-│   │           ├── <chapters>
+│   │           ├── <topics>
 │   │           |   ├── <messages>
 │   │           |   └── new message
-│   │           └── new chapter
+│   │           └── new topic
 │   └── community
 │       └── <characters>
 │           └── profile

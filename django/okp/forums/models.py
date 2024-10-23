@@ -200,8 +200,8 @@ class okpForumTopic(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Chapter")
-        verbose_name_plural = _("Chapters")
+        verbose_name = _("Topic")
+        verbose_name_plural = _("Topics")
         ordering = [
             "-updated_at",
             "-created_at"
