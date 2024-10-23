@@ -136,7 +136,7 @@ class okpForumSection(models.Model):
         return super().save(*args, **kwargs)
 
 
-class okpForumChapter(models.Model):
+class okpForumTopic(models.Model):
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=120,
@@ -152,7 +152,7 @@ class okpForumChapter(models.Model):
     game = models.ForeignKey(
         okpGame,
         on_delete=models.SET_NULL,
-        related_name="chapters",
+        related_name="topics",
         verbose_name=_("Game"),
         blank=True,
         null=True
@@ -160,7 +160,7 @@ class okpForumChapter(models.Model):
     category = models.ForeignKey(
         okpForumCategory,
         on_delete=models.SET_NULL,
-        related_name="chapters",
+        related_name="topics",
         verbose_name=_("Category"),
         blank=True,
         null=True
@@ -168,7 +168,7 @@ class okpForumChapter(models.Model):
     section = models.ForeignKey(
         okpForumSection,
         on_delete=models.SET_NULL,
-        related_name="chapters",
+        related_name="topics",
         verbose_name=_("Section"),
         blank=True,
         null=True
@@ -233,11 +233,11 @@ class okpForumMessage(models.Model):
         blank=True,
         null=True
     )
-    chapter = models.ForeignKey(
-        okpForumChapter,
+    topic = models.ForeignKey(
+        okpForumTopic,
         on_delete=models.SET_NULL,
         related_name="messages",
-        verbose_name=_("chapter"),
+        verbose_name=_("topics"),
         blank=True,
         null=True
     )

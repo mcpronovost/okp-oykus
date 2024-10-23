@@ -1,6 +1,11 @@
 from rest_framework import serializers
 
-from okp.forums.models import okpForumCategory
+from okp.forums.models import (
+    okpForumCategory,
+    okpForumSection,
+    okpForumTopic,
+    okpForumMessage,
+)
 
 
 class okpForumsCategoriesSerializer(serializers.ModelSerializer):
