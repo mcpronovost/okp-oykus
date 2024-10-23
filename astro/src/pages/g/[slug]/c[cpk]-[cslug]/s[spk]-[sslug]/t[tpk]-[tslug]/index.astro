@@ -4,16 +4,16 @@ import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumCategory from "@/components/forum/Category.astro";
 
 const { api } = Astro.locals;
-const { slug, cpk, spk } = Astro.params;
+const { slug, cpk, spk, tpk } = Astro.params;
 
 let hasError = null;
-let section = null;
+let topic = null;
 
-async function getForumSection () {
+async function getForumTopic () {
   try {
-    const response = await fetch(`${api}/forums/${slug}/sections/${spk}/`);
+    const response = await fetch(`${api}/forums/${slug}/topics/${tpk}/`);
     if (response.ok) {
-      section = await response.json();
+      topic = await response.json();
     } else {
       throw new Error("Failed to fetch data");
     }
@@ -22,7 +22,7 @@ async function getForumSection () {
   }
 };
 
-await getForumSection();
+await getForumTopic();
 
 ---
 
@@ -30,8 +30,8 @@ await getForumSection();
   <div class="okp-grid">
     <section class="okp-forum">
       <section class="okp-forum-categories">
-        {!!section ? (
-          <ForumCategory category={section} />
+        {!!topic ? (
+          <ForumCategory category={topic} />
         ) : (
           <AlertNotFound />
         )}

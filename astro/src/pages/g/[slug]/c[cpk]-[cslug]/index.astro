@@ -11,7 +11,7 @@ let category = null;
 
 async function getForumCategory () {
   try {
-    const response = await fetch(`${api}/forums/${slug}/categories/${cpk}`);
+    const response = await fetch(`${api}/forums/${slug}/categories/${cpk}/`);
     if (response.ok) {
       category = await response.json();
     } else {
