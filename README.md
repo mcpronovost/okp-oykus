@@ -26,6 +26,8 @@ Under construction.
 |── community
 |   └── <players>
 └── settings
+    |── profile
+    └── account
 ```
 
 Under construction.
@@ -34,7 +36,8 @@ Under construction.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                              |
-| :------------------------ | :-------------------------------------------------- |
-| `/games`                  | List of all games                                   |
-| `/games/<slug>`           | Data of a game                                      |
+| Command                        | Action                                              |
+| :----------------------------- | :-------------------------------------------------- |
+| `/games`                       | List of all games                                   |
+| `/games/<slug>`                | Data of a game                                      |
+| `/forums/<slug>/categories`    | List of forum categories of a game                  |
