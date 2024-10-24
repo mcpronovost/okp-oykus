@@ -1,0 +1,20 @@
+---
+import ForumHeader from "@/components/forum/common/Header.astro";
+import SectionCard from "@/components/forum/SectionCard.astro";
+
+const { slug } = Astro.params;
+const { section } = Astro.props;
+---
+
+<article class="okp-forum-section">
+  <ForumHeader title={section.name} />
+  <section class="okp-forum-section-topics">
+    {
+      section.topics && section.topics.length ? (
+        section.topics.map((item) => <SectionCard section={item} />)
+      ) : (
+        <div>-</div>
+      )
+    }
+  </section>
+</article>

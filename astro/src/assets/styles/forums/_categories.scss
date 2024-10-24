@@ -4,41 +4,4 @@
 
 .okp-categories-card {
   margin: 64px 0;
-
-  &-header {
-    position: relative;
-    padding: 0 0 24px;
-    margin: 24px 0;
-
-    &::after {
-      content: "";
-      background-color: var(--okp-header-separator);
-      display: block;
-      width: 64px;
-      height: 2px;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-    }
-  }
-
-  &-title {
-    color: var(--okp-header-title);
-    font-family: "Quicksand", sans-serif;
-    font-size: 3.2rem;
-    font-weight: 300;
-    line-height: 120%;
-    letter-spacing: 1px;
-  }
-
-  &-description {
-    color: var(--okp-header-subtitle);
-    font-family: "Geist", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: 2px;
-    padding: 0;
-    margin: 12px 0 0;
-  }
 }

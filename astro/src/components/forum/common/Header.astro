@@ -1,0 +1,20 @@
+---
+const { title, description, path } = Astro.props;
+---
+
+<header class="okp-forum-header">
+  <h2 class="okp-forum-header-title">
+    {
+      path ? (
+        <a href={`${path}`}>{title}</a>
+      ) : (
+        <span>{title}</span>
+      )
+    }
+  </h2>
+  {
+    description && (
+      <p class="okp-forum-header-description">{description}</p>
+    )
+  }
+</header>

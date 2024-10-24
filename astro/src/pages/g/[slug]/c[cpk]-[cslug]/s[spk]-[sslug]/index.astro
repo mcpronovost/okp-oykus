@@ -1,7 +1,7 @@
 ---
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
-import ForumCategory from "@/components/forum/Category.astro";
+import ForumSection from "@/components/forum/Section.astro";
 
 const { api } = Astro.locals;
 const { slug, cpk, spk } = Astro.params;
@@ -29,9 +29,9 @@ await getForumSection();
 <GameLayout slug={slug}>
   <div class="okp-grid">
     <section class="okp-forum">
-      <section class="okp-forum-categories">
+      <section class="okp-forum-sections">
         {!!section ? (
-          <ForumCategory category={section} />
+          <ForumSection section={section} />
         ) : (
           <AlertNotFound />
         )}

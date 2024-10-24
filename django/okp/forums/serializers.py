@@ -23,13 +23,13 @@ class okpForumMessageSerializer(serializers.ModelSerializer):
 class okpForumTopicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug"]
+        fields = ["id", "name", "slug", "path"]
 
 
 class okpForumTopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "messages"]
+        fields = ["id", "name", "slug", "path", "messages"]
 
 
 class okpForumSectionsSerializer(serializers.ModelSerializer):
@@ -39,9 +39,11 @@ class okpForumSectionsSerializer(serializers.ModelSerializer):
 
 
 class okpForumSectionSerializer(serializers.ModelSerializer):
+    topics = okpForumTopicsSerializer(many=True)
+
     class Meta:
         model = okpForumSection
-        fields = ["id", "name", "slug", "path"]
+        fields = ["id", "name", "slug", "path", "topics"]
 
 
 class okpForumsCategoriesSerializer(serializers.ModelSerializer):

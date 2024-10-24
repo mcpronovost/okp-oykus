@@ -210,6 +210,14 @@ class okpForumTopic(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
+    def path(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.category.pk}-{self.category.slug}"
+        s = f"/s{self.section.pk}-{self.section.slug}"
+        t = f"/t{self.pk}-{self.slug}"
+        return f"{g}{c}{s}{t}"
+
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
         return super().save(*args, **kwargs)

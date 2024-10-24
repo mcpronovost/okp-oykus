@@ -10,7 +10,8 @@ from okp.forums.models import (
 from okp.forums.serializers import (
     okpForumsCategoriesSerializer,
     okpForumsCategorySerializer,
-    okpForumSectionSerializer
+    okpForumSectionSerializer,
+    okpForumTopicSerializer
 )
 
 
@@ -49,4 +50,18 @@ class okpForumSectionView(APIView):
         if queryset is None:
             return Response(None, status=404)
         section = okpForumSectionSerializer(queryset).data
+        return Response(section)
+
+
+class okpForumTopicView(APIView):
+    authentication_classes = []
+    permission_classes = [AllowAny]
+
+    def get(self, request, format=None, *args, **kwargs):
+        queryset = okpForumTopic.objects.filter(
+            pk=kwargs["pk"], game__slug=kwargs["slug"]
+        ).first()
+        if queryset is None:
+            return Response(None, status=404)
+        section = okpForumTopicSerializer(queryset).data
         return Response(section)

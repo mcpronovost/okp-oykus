@@ -1,28 +1,24 @@
 ---
+import ForumHeader from "@/components/forum/common/Header.astro";
 import SectionCard from "@/components/forum/SectionCard.astro";
 
 const { slug } = Astro.params;
 const { category, singleton } = Astro.props;
 ---
 
-<article class="okp-categories-card">
-  <header class="okp-categories-card-header">
-    <h2 class="okp-categories-card-title">
-        {singleton ? (
-            <span>{category.name}</span>
-        ) : (
-            <a href={`${category.path}`}>{category.name}</a>
-        )}
-    </h2>
-    {category.description && (
-        <p class="okp-categories-card-description">{category.description}</p>
-    )}
-  </header>
-  <section class="okp-forum-sections">
-    {(category.sections && category.sections.length) ? category.sections.map((item) => (
-        <SectionCard section={item} />
-    )) : (
+<article class="okp-forum-category">
+  <ForumHeader
+    title={category.name}
+    description={category.description}
+    path={singleton ? null : category.path}
+  />
+  <section class="okp-forum-category-sections">
+    {
+      category.sections && category.sections.length ? (
+        category.sections.map((item) => <SectionCard section={item} />)
+      ) : (
         <div>-</div>
-    )}
+      )
+    }
   </section>
 </article>

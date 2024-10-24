@@ -31,7 +31,7 @@ await getForumCategory();
     <section class="okp-forum">
       <section class="okp-forum-categories">
         {!!category ? (
-          <ForumCategory category={category} />
+          <ForumCategory category={category} singleton />
         ) : (
           <AlertNotFound />
         )}
