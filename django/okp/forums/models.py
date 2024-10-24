@@ -224,12 +224,6 @@ class okpForumTopic(models.Model):
 
 
 class okpForumMessage(models.Model):
-    name = models.CharField(
-        verbose_name=_("Name"),
-        max_length=120,
-        blank=False,
-        null=False
-    )
     game = models.ForeignKey(
         okpGame,
         on_delete=models.SET_NULL,

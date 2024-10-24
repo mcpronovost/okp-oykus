@@ -11,12 +11,6 @@ from okp.forums.models import (
 class okpForumMessagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumMessage
-        fields = ["id", "created_at", "updated_at"]
-
-
-class okpForumMessageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = okpForumMessage
         fields = ["id", "content", "created_at", "updated_at"]
 
 
@@ -27,6 +21,8 @@ class okpForumTopicsSerializer(serializers.ModelSerializer):
 
 
 class okpForumTopicSerializer(serializers.ModelSerializer):
+    messages = okpForumMessagesSerializer(many=True)
+
     class Meta:
         model = okpForumTopic
         fields = ["id", "name", "slug", "path", "messages"]

@@ -1,6 +1,6 @@
 ---
 import ForumHeader from "@/components/forum/common/Header.astro";
-import SectionCard from "@/components/forum/SectionCard.astro";
+import MessageCard from "@/components/forum/MessageCard.astro";
 
 const { slug } = Astro.params;
 const { topic } = Astro.props;
@@ -11,7 +11,7 @@ const { topic } = Astro.props;
   <section class="okp-forum-topic-messages">
     {
       topic.messages && topic.messages.length ? (
-      topic.messages.map((item) => <SectionCard section={item} />)
+      topic.messages.map((item) => <MessageCard message={item} />)
       ) : (
         <div>-</div>
       )
