@@ -69,4 +69,83 @@
   .okp-space {
     flex: 1 1 auto;
   }
+
+  .okp-notifications {
+    display: flex;
+    flex-direction: row;
+    margin: 0 32px;
+
+    &-alerts,
+    &-privates,
+    &-friends {
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      margin: 0 6px;
+
+      .okp-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        position: relative;
+
+        > div {
+          position: relative;
+        }
+      }
+      
+      &:hover .okp-wrapper::before {
+        content: "";
+        background-color: var(--okp-core-head-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.1;
+      }
+    }
+  }
+
+  .okp-auth {
+    &-user {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+
+      &-playername {
+        margin: 0 12px;
+      }
+
+      &-avatar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+
+        figure {
+          background-color: #f00;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+
+          span {
+            font-size: 12px;
+            line-height: 32px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
 }
