@@ -55,6 +55,7 @@ class okpForumCategory(models.Model):
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
         ordering = [
+            "game",
             F("sortby").asc(nulls_last=True),
             "created_at"
         ]
@@ -130,6 +131,8 @@ class okpForumSection(models.Model):
         verbose_name = _("Section")
         verbose_name_plural = _("Sections")
         ordering = [
+            "game",
+            "category",
             F("sortby").asc(nulls_last=True),
             "created_at"
         ]
