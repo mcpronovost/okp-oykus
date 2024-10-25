@@ -1,6 +1,7 @@
 ---
 import ForumHeader from "@/components/forum/common/Header.astro";
 import MessageCard from "@/components/forum/MessageCard.astro";
+import MessagesView from "@/components/forum/MessagesView.vue";
 
 const { slug } = Astro.params;
 const { topic } = Astro.props;
@@ -9,9 +10,10 @@ const { topic } = Astro.props;
 <article class="okp-forum-topic">
   <ForumHeader title={topic.name} />
   <section class="okp-forum-topic-messages">
+    <MessagesView messages={topic.messages} client:only="vue" />
     {
       topic.messages && topic.messages.length ? (
-      topic.messages.map((item) => <MessageCard message={item} />)
+        topic.messages.map((item) => <MessageCard message={item} />)
       ) : (
         <div>-</div>
       )

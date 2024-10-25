@@ -1,6 +1,7 @@
 import { defineConfig, passthroughImageService } from "astro/config";
 import { fileURLToPath, URL } from "url";
 import node from "@astrojs/node";
+import vue from "@astrojs/vue";
 
 const PUBLIC_PORT = parseInt(
   import.meta.env.PUBLIC_PORT || process.env.PUBLIC_PORT || 3000
@@ -20,7 +21,7 @@ export default defineConfig({
     service: passthroughImageService(),
   },
   compressHTML: true,
-  integrations: [],
+  integrations: [vue({ jsx: true })],
   vite: {
     css: {
       preprocessorOptions: {

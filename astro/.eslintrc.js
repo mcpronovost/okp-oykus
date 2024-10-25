@@ -9,12 +9,13 @@ module.exports = {
   overrides: [
     {
       // Define the configuration for `.astro` file and enable it.
-      files: ["*.astro"],
-      plugins: ["astro"],
+      files: ["*.astro", "*.vue"],
+      plugins: ["astro", "vue"],
       env: {
         // Enables global variables available in Astro components.
         node: true,
         "astro/astro": true,
+        "vue/vue": true,
         es2020: true,
       },
       // Allows Astro components to be parsed.
