@@ -6,9 +6,12 @@
 @use "./core/head.scss";
 @use "./core/siderigh.scss";
 
+@use "./common/loading";
+
 @use "./games/header";
 @use "./games/listcard";
 
-@use "./forums/common/header" as forumheader;
+@use "./forums/common/header" as forumscommonheader;
 @use "./forums/categories";
 @use "./forums/sections";
+@use "./forums/messages" as forumsmessages;

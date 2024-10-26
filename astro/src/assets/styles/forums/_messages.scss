@@ -1,0 +1,18 @@
+.okp-forum-messages {
+  //
+}
+
+.okp-messages-card {
+  background-color: var(--okp-card-bg);
+  color: var(--okp-card-text);
+  margin: 32px 0;
+
+  &-content {
+    font-size: 1.2rem;
+    line-height: 250%;
+    text-align: justify;
+    max-width: 800px;
+    padding: 32px;
+    margin: 0 auto;
+  }
+}
