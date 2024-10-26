@@ -5,7 +5,8 @@ from okp.forums.views import (
     okpForumCategoriesView,
     okpForumCategoryView,
     okpForumSectionView,
-    okpForumTopicView
+    okpForumTopicView,
+    okpForumTopicMessagesView
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("<slug:slug>/categories/<int:pk>/", okpForumCategoryView.as_view()),
     path("<slug:slug>/sections/<int:pk>/", okpForumSectionView.as_view()),
     path("<slug:slug>/topics/<int:pk>/", okpForumTopicView.as_view()),
+    path("<slug:slug>/topics/<int:pk>/messages/", okpForumTopicMessagesView.as_view()),
 ]

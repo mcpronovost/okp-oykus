@@ -21,11 +21,27 @@ class okpForumTopicsSerializer(serializers.ModelSerializer):
 
 
 class okpForumTopicSerializer(serializers.ModelSerializer):
-    messages = okpForumMessagesSerializer(many=True)
+    class Meta:
+        model = okpForumTopic
+        fields = ["id", "name", "slug", "path"]
+
+
+class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
+    messages = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumTopic
         fields = ["id", "name", "slug", "path", "messages"]
+
+    def get_messages(self, obj):
+        page = self.context.get("page", 1)
+        page_size = 20
+
+        start = (page - 1) * page_size
+        end = start + page_size
+        messages = obj.messages.all()[start:end]
+
+        return okpForumMessagesSerializer(messages, many=True).data
 
 
 class okpForumSectionsSerializer(serializers.ModelSerializer):
