@@ -22,6 +22,9 @@ export default defineConfig({
   },
   compressHTML: true,
   integrations: [react({ jsx: true })],
+  devToolbar: {
+    enabled: false
+  },
   vite: {
     css: {
       preprocessorOptions: {
