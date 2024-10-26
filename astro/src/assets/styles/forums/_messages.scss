@@ -7,12 +7,20 @@
   color: var(--okp-card-text);
   margin: 32px 0;
 
+  &-header {
+    text-align: center;
+  }
+
   &-content {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 250%;
     text-align: justify;
     max-width: 800px;
     padding: 32px;
     margin: 0 auto;
+  }
+
+  &-footer {
+    text-align: center;
   }
 }
