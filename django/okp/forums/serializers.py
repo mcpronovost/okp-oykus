@@ -35,10 +35,10 @@ class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
 
     def get_messages(self, obj):
         page = self.context.get("page", 1)
-        page_size = 20
+        size = self.context.get("size", 10)
 
-        start = (page - 1) * page_size
-        end = start + page_size
+        start = (page - 1) * size
+        end = start + size
         messages = obj.messages.all()[start:end]
 
         return okpForumMessagesSerializer(messages, many=True).data
