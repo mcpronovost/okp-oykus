@@ -8,7 +8,6 @@ export default function OkpToggleSideleft () {
   const sideleftOpen = useStore(sideleftOpenStore);
 
   const handleToggle = (value) => {
-    // Cookies.set("okp-web-sideleftOpen", value, {expires: 30});
     sideleftOpenStore.set(value);
   };
 
