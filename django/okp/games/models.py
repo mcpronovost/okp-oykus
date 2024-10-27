@@ -36,6 +36,12 @@ class okpGame(models.Model):
         blank=True,
         null=True
     )
+    version = models.CharField(
+        verbose_name=_("Version"),
+        default="0.1.0",
+        blank=False,
+        null=False
+    )
     created_at = models.DateTimeField(
         verbose_name=_("Created"),
         auto_now_add=True,

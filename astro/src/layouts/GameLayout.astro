@@ -32,7 +32,10 @@ await getGame();
       </header>
       <slot />
       <footer class="okp-game-footer">
-        <small>&copy;&nbsp;2024&nbsp;M-C Pronovost - Tous droits réservés</small>
+        <small>
+          <p>{game.name}&nbsp;&copy;&nbsp;2024&nbsp;M-C Pronovost &mdash; Tous droits réservés &mdash; Version {game.version}</p>
+          <p>Oykus&nbsp;&copy;&nbsp;2024&nbsp;<a href="https://github.com/mcpronovost" target="_blank">mcpronovost</a> &mdash; Tous droits réservés &mdash; Version 0.3.0-alpha</p>
+        </small>
       </footer>
     </section>
   ) : (
