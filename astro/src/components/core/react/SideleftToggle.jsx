@@ -4,7 +4,7 @@ import { LayoutPanelLeft } from "lucide-react";
 import Cookies from "js-cookie";
 import { sideleftOpenStore } from "@/stores/storeWeb.js";
 
-export default function OkpToggleSideleft () {
+export default function SideleftToggle () {
   const sideleftOpen = useStore(sideleftOpenStore);
 
   const handleToggle = (value) => {
