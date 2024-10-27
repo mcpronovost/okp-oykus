@@ -40,10 +40,10 @@ List of all API endpoints.
 | :------------------------------------ | :---------------------------------------------------- |
 | `/games/`                             | List of games                                         |
 | `/games/<slug>/`                      | Data of a game                                        |
-| :------------------------------------ | :---------------------------------------------------- |
+|  |  |
 | `/forums/<slug>/categories/`          | List of forum categories of a game                    |
 | `/forums/<slug>/categories/<pk>/`     | Data of a forum category                              |
 | `/forums/<slug>/sections/<pk>/`       | Data of a forum section                               |
 | `/forums/<slug>/topics/<pk>/`         | Data of a forum topic                                 |
 | `/forums/<slug>/topics/<pk>/messages/`| List of forum messages of a topic                     |
-| :------------------------------------ | :---------------------------------------------------- |
+|  |  |
