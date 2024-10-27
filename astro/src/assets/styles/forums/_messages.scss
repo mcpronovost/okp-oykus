@@ -1,14 +1,30 @@
 .okp-forum-messages {
-  //
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &-writing {
+      button {
+        margin: 12px 12px 12px 0;
+      }
+    }
+  }
 }
 
 .okp-messages-card {
   background-color: var(--okp-card-bg);
+  border-radius: var(--okp-card-radius);
   color: var(--okp-card-text);
-  margin: 32px 0;
+  margin: 12px 0 32px;
 
   &-header {
+    background-color: #b2babd;
+    border-top-left-radius: var(--okp-card-radius);
+    border-top-right-radius: var(--okp-card-radius);
     text-align: center;
+    height: 120px;
   }
 
   &-content {
@@ -18,6 +34,11 @@
     max-width: 800px;
     padding: 32px;
     margin: 0 auto;
+
+    @media (max-width: 600px) {
+      font-size: 1rem;
+      line-height: 200%;
+    }
   }
 
   &-footer {

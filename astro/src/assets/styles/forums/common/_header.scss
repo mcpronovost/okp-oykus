@@ -1,7 +1,7 @@
 .okp-forum-header {
   position: relative;
   padding: 0 0 24px;
-  margin: 24px 0;
+  margin: 32px 0;
 
   &::after {
     content: "";
@@ -25,7 +25,7 @@
 
   &-description {
     color: var(--okp-header-subtitle);
-    font-family: "Geist", sans-serif;
+    font-family: "OpenSans", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 150%;

@@ -1,0 +1,27 @@
+.okp-btn {
+  background-color: var(--okp-btn-bg);
+  border-radius: var(--okp-btn-radius);
+  color: var(--okp-btn-text);
+  font-family: "OpenSans", sans-serif;
+  font-size:0.9rem;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 1px;
+  opacity: 1;
+  padding: 12px 32px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &-primary {
+    background-color: var(--okp-btn-primary-bg);
+    color: var(--okp-btn-primary-text);
+  }
+}

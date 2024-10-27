@@ -71,7 +71,19 @@ export default function MessagesView ({ slug, topic}) {
     <section className="okp-forum-messages">
       {(!hasError && !isLoading && messages.length) ? (
         <>
-          {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
+          <section className="okp-forum-messages-actions">
+            <div className="okp-forum-messages-actions-writing">
+              <button className="okp-btn okp-btn-primary">
+                <span>Nouveau</span>
+              </button>
+              <button className="okp-btn">
+                <span>Répondre</span>
+              </button>
+            </div>
+            <div className="okp-forum-messages-actions-paginate">
+              {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
+            </div>
+          </section>
           {messages.map((message) => (
             <article key={message.id} className="okp-messages-card">
               <header className="okp-messages-card-header">
@@ -85,13 +97,7 @@ export default function MessagesView ({ slug, topic}) {
               </footer>
             </article>
           ))}
-          <div>
-            <Select
-              defaultValue={{value: messagesPerPage, label: messagesPerPage}}
-              options={[{value: "2", label: "2"}, {value: "4", label: "4"}, {value: "10", label: "10"}]}
-              onChange={handleSelectPageSize}
-            />
-          </div>
+          {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
         </>
       ) : (!hasError && !isLoading && messages.length === 0) ? (
         <div>

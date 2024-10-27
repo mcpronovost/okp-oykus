@@ -1,13 +1,15 @@
 @font-face {
-  font-family: "Geist";
-  src: url("/fonts/Geist/Geist-wght.ttf") format("truetype-variations");
-  font-weight: 1 999;
+  font-family: "OpenSans";
+  src: url("/fonts/OpenSans/OpenSans-variable.ttf") format("truetype-variations");
+  font-weight: 300 800;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Quicksand";
-  src: url("/fonts/Quicksand/Quicksand-wght.ttf") format("truetype-variations");
-  font-weight: 1 999;
+  src: url("/fonts/Quicksand/Quicksand-variable.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-display: swap;
 }
 
 :root {
@@ -28,6 +30,14 @@
 
   --okp-card-bg: #dbe0e2;
   --okp-card-text: #435259;
+  --okp-card-radius: 4px;
+
+  --okp-btn-bg: #dbe0e2;
+  --okp-btn-text: #435259;
+  --okp-btn-radius: 4px;
+
+  --okp-btn-primary-bg: #435259;
+  --okp-btn-primary-text: #dbe0e2;
 
   --okp-scrollbar-bg: rgba(0, 0, 0, 0.1);
   --okp-scrollbar-fg: #435259;
@@ -36,7 +46,7 @@
 html, body {
   background-color: var(--okp-core-bg);
   color: var(--okp-core-text);
-  font-family: "Geist", sans-serif;
+  font-family: "OpenSans", sans-serif;
   font-size: 16px;
   font-weight: 400;
   overflow: hidden;
