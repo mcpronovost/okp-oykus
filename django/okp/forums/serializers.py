@@ -1,3 +1,4 @@
+import math
 from rest_framework import serializers
 
 from okp.forums.models import (
@@ -28,10 +29,11 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
 
 class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
     messages = serializers.SerializerMethodField()
+    messages_pages = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "path", "messages"]
+        fields = ["id", "name", "slug", "path", "messages", "messages_pages"]
 
     def get_messages(self, obj):
         page = self.context.get("page", 1)
@@ -42,6 +44,13 @@ class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
         messages = obj.messages.all()[start:end]
 
         return okpForumMessagesSerializer(messages, many=True).data
+
+    def get_messages_pages(self, obj):
+        size = self.context.get("size", 10)
+
+        total_pages = math.ceil(obj.messages.count() / size)
+
+        return int(total_pages)
 
 
 class okpForumSectionsSerializer(serializers.ModelSerializer):
