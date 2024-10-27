@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { LayoutPanelLeft } from "lucide-react";
 import Cookies from "js-cookie";
@@ -8,9 +8,13 @@ export default function OkpToggleSideleft () {
   const sideleftOpen = useStore(sideleftOpenStore);
 
   const handleToggle = (value) => {
-    Cookies.set("okp-web-sideleftOpen", value);
+    // Cookies.set("okp-web-sideleftOpen", value, {expires: 30});
     sideleftOpenStore.set(value);
   };
+
+  useEffect(() => {
+    Cookies.set("okp-web-sideleftOpen", sideleftOpen, {expires: 30});
+  }, [sideleftOpen]);
 
   return (
     <>

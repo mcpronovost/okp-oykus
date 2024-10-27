@@ -5,4 +5,4 @@ const { slug } = Astro.params;
 const webSideleftOpen = Astro.cookies.get("okp-web-sideleftOpen");
 ---
 
-<OkpSideleftPanel slug={slug} open={webSideleftOpen.boolean()} client:idle />
+<OkpSideleftPanel slug={slug} open={webSideleftOpen?.boolean()} client:idle />
