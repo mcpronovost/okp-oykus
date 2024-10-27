@@ -41,6 +41,20 @@
     }
   }
 
+  .okp-toggle {
+    margin: 0 12px;
+
+    button {
+      opacity: 0.6;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+
   .okp-menu {
     font-size: 0.8rem;
 

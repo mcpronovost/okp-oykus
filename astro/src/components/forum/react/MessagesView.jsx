@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
 import { useStore } from "@nanostores/react";
 import { messagesPerPageStore } from "@/stores/storeForums.js";
 import OkpPaginate from "@/components/ui/Paginate";

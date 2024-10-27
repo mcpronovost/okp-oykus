@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { Bell, Mail, Smile } from "lucide-astro";
+import { Bell, Mail, LayoutPanelLeft, Smile } from "lucide-astro";
+import OkpToggleSideleft from "@/components/core/react/ToggleSideleft.jsx";
 import imgLogo from "@/assets/img/oykus-32.png";
 import imgAvatar from "@/assets/img/mc.jpg";
 ---
@@ -14,6 +15,7 @@ import imgAvatar from "@/assets/img/mc.jpg";
       <span class="okp-branding-name" itemprop="name">Oykus</span>
     </a>
   </section>
+  <OkpToggleSideleft client:idle />
   <section class="okp-menu">
     <nav>
       <ul>

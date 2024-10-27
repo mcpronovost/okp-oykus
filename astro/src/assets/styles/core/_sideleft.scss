@@ -1,0 +1,15 @@
+#okp-core-sideleft {
+  background-color: var(--okp-core-sideleft-bg);
+  color: var(--okp-core-sideleft-text);
+  display: flex;
+  flex: 0 0 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 50;
+
+  &.okp-open {
+    flex: 0 0 200px;
+  }
+}
