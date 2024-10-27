@@ -10,7 +10,7 @@ const { topic } = Astro.props;
 
 <article class="okp-forum-topic">
   <ForumHeader title={topic.name} />
-  <section class="okp-forum-topic-messages">
+  <section class="okp-forum-messages">
     <MessagesView slug={slug} topic={topic} client:only="react">
       <Loading slot="fallback" />
     </MessagesView>

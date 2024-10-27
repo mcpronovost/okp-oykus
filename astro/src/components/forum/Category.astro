@@ -12,7 +12,7 @@ const { category, singleton } = Astro.props;
     description={category.description}
     path={singleton ? null : category.path}
   />
-  <section class="okp-forum-category-sections">
+  <section class="okp-forum-sections">
     {
       category.sections && category.sections.length ? (
         category.sections.map((item) => <SectionCard section={item} />)

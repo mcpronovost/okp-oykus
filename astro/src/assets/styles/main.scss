@@ -17,6 +17,6 @@
 @use "./games/listcard";
 
 @use "./forums/common/header" as forumscommonheader;
-@use "./forums/categories";
-@use "./forums/sections";
-@use "./forums/messages" as forumsmessages;
+@use "./forums/category" as forumscategory;
+@use "./forums/section" as forumssection;
+@use "./forums/topic" as forumstopic;

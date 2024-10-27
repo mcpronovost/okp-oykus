@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import imgAvatar from "@/assets/img/mc.jpg";
+
+const { topic } = Astro.props;
+---
+
+<article class="okp-topics-card">
+  <section class="okp-topics-card-authors">
+    <figure class="okp-topics-card-authors-banner">
+      {true ? (
+        <Image src={imgAvatar} alt="" class="okp-topics-card-authors-banner-img" />
+      ) : (
+        <span class="okp-topics-card-authors-banner-abbr">MC</span>
+      )}
+    </figure>
+    <figure class="okp-topics-card-authors-avatar">
+      {false ? (
+        <Image src={imgAvatar} alt="" class="okp-topics-card-authors-avatar-img" />
+      ) : (
+        <span class="okp-topics-card-authors-avatar-abbr">MC</span>
+      )}
+    </figure>
+  </section>
+  <header>
+    <div>
+      <span>31 octobre 2024</span>
+    </div>
+    <h3>
+      <a href={`${topic.path}`}>{topic.name}</a>
+    </h3>
+  </header>
+  <footer>
+    <time>
+      <span>31 octobre 2024</span>
+    </time>
+    <div>
+      <span>34</span>
+    </div>
+  </footer>
+</article>
