@@ -2,6 +2,7 @@
 import { Sparkles, Users } from "lucide-astro";
 
 const { api } = Astro.locals;
+const { slug } = Astro.params;
 
 let hasError = null;
 let characters = [];
@@ -50,7 +51,7 @@ try {
             </span>
           </li>
           {games.map((game) => (
-            <li class="okp-siderigh-card">
+            (!slug || slug != game.slug) && <li class="okp-siderigh-card">
               <a href={`/g/${game.slug}/`} class="okp-siderigh-card-link">
                 <span class="okp-siderigh-card-abbr">{game.abbr}</span>
               </a>
