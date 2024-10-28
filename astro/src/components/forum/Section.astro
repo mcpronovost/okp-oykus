@@ -11,7 +11,7 @@ const { section } = Astro.props;
   <section class="okp-forum-topics">
     {
       section.topics && section.topics.length ? (
-        [...section.topics, ...section.topics, ...section.topics, ...section.topics].map((item) => <OkpTopicCard topic={item} />)
+        section.topics.map((item) => <OkpTopicCard topic={item} />)
       ) : (
         <div>-</div>
       )

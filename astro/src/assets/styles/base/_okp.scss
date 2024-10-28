@@ -26,6 +26,7 @@
   --okp-core-bg: #c9cfd1;
   --okp-core-text: #435259;
 
+  // core
   --okp-core-head-bg: #435259;
   --okp-core-head-text: #c9cfd1;
 
@@ -39,16 +40,20 @@
   --okp-core-siderigh-bg: #dbe0e2;
   --okp-core-siderigh-text: #435259;
 
+  // header
   --okp-header-title: #435259;
   --okp-header-subtitle: #869195;
   --okp-header-separator: #869195;
 
+  // card
   --okp-card-bg: #dbe0e2;
   --okp-card-text: #435259;
+  --okp-card-subtle: #869195;
   --okp-card-mask-bg: #869195;
   --okp-card-mask-text: #dbe0e2;
   --okp-card-radius: 4px;
 
+  // button
   --okp-btn-bg: #dbe0e2;
   --okp-btn-text: #435259;
   --okp-btn-radius: 4px;
@@ -56,6 +61,7 @@
   --okp-btn-primary-bg: #435259;
   --okp-btn-primary-text: #dbe0e2;
 
+  // scrollbar
   --okp-scrollbar-bg: rgba(0, 0, 0, 0.1);
   --okp-scrollbar-fg: #435259;
 }

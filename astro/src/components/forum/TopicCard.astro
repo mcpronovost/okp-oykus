@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { CircleArrowOutDownRight } from "lucide-astro";
+import { CircleArrowOutDownRight, Clock, MessagesSquare } from "lucide-astro";
 import imgAvatar from "@/assets/img/mc.jpg";
 
 const { topic } = Astro.props;
@@ -16,7 +16,7 @@ const { topic } = Astro.props;
       )}
     </figure>
     <figure class="okp-topics-card-authors-avatar">
-      <a href="/" class="okp-topics-card-authors-linklastmessage">
+      <a href={`${topic.path}`} class="okp-topics-card-authors-linklastmessage">
         <CircleArrowOutDownRight size={32} alt="Aller au dernier message" class="okp-topics-card-authors-golastmessage" />
         {true ? (
           <Image src={imgAvatar} alt="" class="okp-topics-card-authors-avatar-img" aria-hidden="true" />
@@ -26,20 +26,22 @@ const { topic } = Astro.props;
       </a>
     </figure>
   </section>
-  <header>
-    <div>
+  <header class="okp-topics-card-header">
+    <div class="okp-topics-card-header-date">
       <span>31 octobre 2024</span>
     </div>
-    <h3>
+    <h3 class="okp-topics-card-header-title">
       <a href={`${topic.path}`}>{topic.name}</a>
     </h3>
   </header>
-  <footer>
-    <time>
-      <span>31 octobre 2024</span>
+  <footer class="okp-topics-card-footer">
+    <time class="okp-topics-card-footer-date">
+      <span class="okp-icon"><Clock size={14} /></span>
+      <span class="okp-text">31 octobre 2024</span>
     </time>
-    <div>
-      <span>34</span>
+    <div class="okp-topics-card-footer-total">
+      <span class="okp-text">31</span>
+      <span class="okp-icon"><MessagesSquare size={14} /></span>
     </div>
   </footer>
 </article>
