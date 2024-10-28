@@ -46,7 +46,6 @@ class okpGame(models.Model):
     created_at = models.DateTimeField(
         verbose_name=_("Created"),
         auto_now_add=True,
-        editable=True,
         blank=False,
         null=False
     )
@@ -143,13 +142,13 @@ class okpGameTheme(models.Model):
     )
     core_sideleft_highlight_bg = ColorField(
         verbose_name=_("Core Sideleft Hightlight Background Colour"),
-        default="#edf3f6",
+        default="#435259",
         blank=False,
         null=False
     )
     core_sideleft_highlight_text = ColorField(
         verbose_name=_("Core Sideleft Hightlight Text Colour"),
-        default="#435259",
+        default="#dbe0e2",
         blank=False,
         null=False
     )
