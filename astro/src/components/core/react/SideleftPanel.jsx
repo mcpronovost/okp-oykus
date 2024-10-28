@@ -3,7 +3,6 @@ import { useStore } from "@nanostores/react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
 import { sideleftOpenStore } from "@/stores/storeWeb.js";
-import imgBanner from "@/assets/img/haven.jpg";
 import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function SideleftPanel ({ slug, open }) {
@@ -23,10 +22,10 @@ export default function SideleftPanel ({ slug, open }) {
             {!!user ? (
               <section className="okp-sideleft-auth-display" aria-hidden="true">
                 <figure className="okp-sideleft-auth-display-banner">
-                  <img src={imgBanner.src} alt="" className="okp-sideleft-auth-display-banner-img" />
+                  <img src={imgAvatar.src} alt="" className="okp-sideleft-auth-display-banner-img" />
                 </figure>
                 <figure className="okp-sideleft-auth-display-avatar">
-                  {false ? (
+                  {true ? (
                     <img src={imgAvatar.src} alt="" className="okp-sideleft-auth-display-avatar-img" />
                   ) : (
                     <span className="okp-sideleft-auth-display-avatar-abbr">MC</span>

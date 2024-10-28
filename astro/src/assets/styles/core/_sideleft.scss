@@ -27,7 +27,7 @@
 
       &-banner {
         background-color: var(--okp-core-sideleft-mask-bg);
-        height: 0;
+        height: 32px;
         position: relative;
         transition: width 0.3s, height 0.3s;
 
@@ -35,7 +35,8 @@
           width: 100%;
           height: 100px;
           object-fit: cover;
-          opacity: 0;
+          opacity: 0.3;
+          transition: opacity 0.3s;
         }
       }
 
@@ -45,24 +46,24 @@
         border-radius: 50%;
         overflow: hidden;
         display: block;
-        width: 48px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         position: absolute;
-        top: 3px;
+        top: 12px;
         left: 50%;
         transform: translateX(-50%);
-        transition: width 0.3s, height 0.3s, top 0.3s;
+        transition: border-width 0.3s, width 0.3s, height 0.3s, top 0.3s;
 
         &-img {
           background-color: var(--okp-core-sideleft-bg);
-          border: 3px solid var(--okp-core-sideleft-bg);
+          border: 0 solid var(--okp-core-sideleft-bg);
           border-radius: 50%;
           overflow: hidden;
         }
 
         &-abbr {
           background-color: var(--okp-core-sideleft-mask-bg);
-          border: 3px solid var(--okp-core-sideleft-bg);
+          border: 0 solid var(--okp-core-sideleft-bg);
           border-radius: 50%;
           color: var(--okp-core-sideleft-mask-text);
           font-family: "Hurricane", sans-serif;
@@ -105,12 +106,12 @@
           justify-content: flex-start;
           opacity: 0.7;
           padding: 6px;
-          margin: 6px;
+          margin: 12px 6px;
           transition: background-color 0.3s, color 0.3s, opacity 0.3s, padding 0.3s, margin 0.3s;
   
           &:hover {
             background-color: var(--okp-core-sideleft-highlight-bg);
-            border-radius: 6px;
+            border-radius: var(--okp-card-radius);
             color: var(--okp-core-sideleft-highlight-text);
             opacity: 1;
 
@@ -154,15 +155,21 @@
         min-height: 150px;
 
         &-banner {
-          height: 100px;
+          height: 88px;
+
+          &-img {
+            opacity: 0.6;
+          }
         }
   
         &-avatar {
+          border-width: 3px;
           width: 100px;
           height: 100px;
           top: 32px;
   
           &-abbr {
+            border-width: 3px;
             font-size: 1.5rem;
             line-height: 88px;
           }

@@ -22,7 +22,7 @@
       margin: 12px 0 32px;
     
       &-header {
-        background-color: #b2babd;
+        background-color: var(--okp-card-mask-bg);
         border-top-left-radius: var(--okp-card-radius);
         border-top-right-radius: var(--okp-card-radius);
         text-align: center;
