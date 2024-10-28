@@ -6,12 +6,16 @@ const { slug } = Astro.props;
 
 let hasError = null;
 let game = null;
+let theme = null;
 
 async function getGame () {
   try {
     const response = await fetch(`${api}/games/${slug}/`);
     if (response.ok) {
       game = await response.json();
+      game.created = new Date(game.created_at).getFullYear();
+      game.updated = new Date(game.updated_at).getFullYear();
+      if (game.theme) setTheme();
     } else {
       throw new Error("Failed to fetch data");
     }
@@ -20,11 +24,50 @@ async function getGame () {
   }
 };
 
+function setTheme () {
+  console.log("setTheme");
+  theme = `
+    --okp-primary: ${game.theme.core_primary};
+    --okp-core-bg: ${game.theme.core_bg};
+    --okp-core-text: ${game.theme.core_text};
+
+    --okp-core-head-bg: ${game.theme.core_head_bg};
+    --okp-core-head-text: ${game.theme.core_head_text};
+
+    --okp-core-sideleft-bg: ${game.theme.core_sideleft_bg};
+    --okp-core-sideleft-text: ${game.theme.core_sideleft_text};
+    --okp-core-sideleft-mask-bg: ${game.theme.core_sideleft_mask_bg};
+    --okp-core-sideleft-mask-text: ${game.theme.core_sideleft_mask_text};
+    --okp-core-sideleft-highlight-bg: ${game.theme.core_sideleft_highlight_bg};
+    --okp-core-sideleft-highlight-text: ${game.theme.core_sideleft_highlight_text};
+
+    --okp-core-siderigh-bg: ${game.theme.core_siderigh_bg};
+    --okp-core-siderigh-text: ${game.theme.core_siderigh_text};
+
+    --okp-header-title: ${game.theme.header_title};
+    --okp-header-subtitle: ${game.theme.header_subtitle};
+    --okp-header-separator: ${game.theme.header_separator};
+
+    --okp-card-bg: ${game.theme.card_bg};
+    --okp-card-text: ${game.theme.card_text};
+    --okp-card-subtle: ${game.theme.card_subtle};
+    --okp-card-mask-bg: ${game.theme.card_mask_bg};
+    --okp-card-mask-text: ${game.theme.card_mask_text};
+    --okp-card-radius: ${game.theme.card_radius}px;
+
+    --okp-btn-bg: ${game.theme.btn_bg};
+    --okp-btn-text: ${game.theme.btn_text};
+    --okp-btn-primary-bg: ${game.theme.btn_primary_bg};
+    --okp-btn-primary-text: ${game.theme.btn_primary_text};
+    --okp-btn-radius: ${game.theme.btn_radius}px;
+  `;
+};
+
 await getGame();
 
 ---
 
-<MainLayout>
+<MainLayout theme={theme}>
   {!hasError && game ? (
     <section class="okp-game">
       <header class="okp-game-header">
@@ -33,7 +76,7 @@ await getGame();
       <slot />
       <footer class="okp-game-footer">
         <small>
-          <p>{game.name}&nbsp;&copy;&nbsp;2024&nbsp;M-C Pronovost &mdash; Tous droits réservés &mdash; Version {game.version}</p>
+          <p>{game.name}&nbsp;&copy;&nbsp;{game.created}{game.updated != game.created ? `-${game.updated}` : null}&nbsp;{game.founder ? `${game.founder?.name} ` : null}&mdash; Tous droits réservés &mdash; Version {game.version}</p>
           <p>Oykus&nbsp;&copy;&nbsp;2024&nbsp;<a href="https://github.com/mcpronovost" target="_blank">mcpronovost</a> &mdash; Tous droits réservés &mdash; Version 0.3.0-alpha</p>
         </small>
       </footer>

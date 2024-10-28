@@ -16,6 +16,6 @@ class okpGameAdmin(admin.ModelAdmin):
 
 @admin.register(okpGameTheme)
 class okpGameThemeAdmin(admin.ModelAdmin):
-    list_display = ["__str__", "game", "updated_at"]
+    list_display = ["game", "updated_at"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["game"]

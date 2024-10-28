@@ -46,6 +46,7 @@ class okpGame(models.Model):
     created_at = models.DateTimeField(
         verbose_name=_("Created"),
         auto_now_add=True,
+        editable=True,
         blank=False,
         null=False
     )
@@ -82,12 +83,6 @@ class okpGameTheme(models.Model):
         verbose_name=_("Game"),
         blank=True,
         null=True
-    )
-    created_at = models.DateTimeField(
-        verbose_name=_("Created"),
-        auto_now_add=True,
-        blank=False,
-        null=False
     )
     # =-
     core_primary = ColorField(
@@ -259,6 +254,12 @@ class okpGameTheme(models.Model):
         null=False
     )
     # ===---
+    created_at = models.DateTimeField(
+        verbose_name=_("Created"),
+        auto_now_add=True,
+        blank=False,
+        null=False
+    )
     updated_at = models.DateTimeField(
         verbose_name=_("Updated"),
         auto_now=True,

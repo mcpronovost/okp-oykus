@@ -5,7 +5,7 @@ import CoreHead from "@/components/core/Head.astro";
 import CoreSideleft from "@/components/core/Sideleft.astro";
 import CoreSiderigh from "@/components/core/Siderigh.astro";
 
-const { title, description } = Astro.props;
+const { title, description, theme } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,7 +24,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <meta name="theme-color" content="#c9cfd1" /> 
   </head>
-  <body id="okp" itemscope itemtype="https://schema.org/Game">
+  <body id="okp" style={theme} itemscope itemtype="https://schema.org/Game">
     <CoreHead />
     <div id="okp-core-body">
       <CoreSideleft />
