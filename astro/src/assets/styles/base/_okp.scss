@@ -12,8 +12,16 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Hurricane";
+  src: url("/fonts/Hurricane/Hurricane.ttf") format("truetype");
+  font-weight: 400;
+}
+
 :root {
   --okp-primary: #d3b018;
+
+  --okp-boxshadow: 0 0 6px rgba(0, 0, 0, 0.2);
 
   --okp-core-bg: #c9cfd1;
   --okp-core-text: #435259;

@@ -8,8 +8,9 @@
     .okp-topics-card {
       background-color: var(--okp-card-bg);
       border-radius: var(--okp-card-radius);
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
       color: var(--okp-card-text);
+      font-size: 0;
+      line-height: 0;
       flex: 1 1 auto;
       min-width: 250px;
     
@@ -54,26 +55,56 @@
           transform: translateX(-50%);
   
           &-img {
-            background-color: var(--okp-core-sideleft-bg);
-            border: 2px solid var(--okp-core-sideleft-bg);
+            background-color: var(--okp-card-bg);
+            border: 2px solid var(--okp-card-bg);
             border-radius: 50%;
             overflow: hidden;
+            transition: opacity 0.3s;
           }
   
           &-abbr {
-            background-color: var(--okp-core-sideleft-mask-bg);
-            border: 2px solid var(--okp-core-sideleft-bg);
+            background-color: var(--okp-card-mask-bg);
+            border: 2px solid var(--okp-card-bg);
             border-radius: 50%;
-            color: var(--okp-core-sideleft-mask-text);
-            font-family: "Quicksand", sans-serif;
+            color: var(--okp-card-mask-text);
+            font-family: "Hurricane", sans-serif;
             font-size: 1.5rem;
-            line-height: calc(90px - px);
+            line-height: 82px;
             text-align: center;
             display: block;
             width: 100%;
             height: 100%;
-            transition: font-size 0.3s, line-height 0.3s;
+            transition: opacity 0.3s;
           }
+        }
+
+        &-linklastmessage {
+          display: block;
+          width: 86px;
+          height: 86px;
+          position: relative;
+          transition: opacity 0.3s;
+
+          &:hover {
+            .okp-topics-card-authors-avatar-img,
+            .okp-topics-card-authors-avatar-abbr {
+              opacity: 0.3;
+            }
+
+            .okp-topics-card-authors-golastmessage {
+              opacity: 1;
+            }
+          }
+        }
+
+        &-golastmessage {
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          transition: opacity 0.3s;
         }
       }
     }

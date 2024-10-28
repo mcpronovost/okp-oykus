@@ -26,7 +26,7 @@ export default function SideleftPanel ({ slug, open }) {
                   <img src={imgBanner.src} alt="" className="okp-sideleft-auth-display-banner-img" />
                 </figure>
                 <figure className="okp-sideleft-auth-display-avatar">
-                  {true ? (
+                  {false ? (
                     <img src={imgAvatar.src} alt="" className="okp-sideleft-auth-display-avatar-img" />
                   ) : (
                     <span className="okp-sideleft-auth-display-avatar-abbr">MC</span>

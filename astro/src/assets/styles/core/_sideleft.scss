@@ -1,6 +1,6 @@
 #okp-core-sideleft {
   background-color: var(--okp-core-sideleft-bg);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--okp-boxshadow);
   color: var(--okp-core-sideleft-text);
   overflow-x: hidden;
   display: flex;
@@ -65,9 +65,9 @@
           border: 3px solid var(--okp-core-sideleft-bg);
           border-radius: 50%;
           color: var(--okp-core-sideleft-mask-text);
-          font-family: "Quicksand", sans-serif;
-          font-size: 0.6rem;
-          line-height: 36px;
+          font-family: "Hurricane", sans-serif;
+          font-size: 0.8rem;
+          line-height: 38px;
           text-align: center;
           display: block;
           width: 100%;
