@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",  # https://www.django-rest-framework.org/
     "knox",  # https://jazzband.github.io/django-rest-knox/
+    "colorfield",  # https://pypi.org/project/django-colorfield/
     # okp
     # "okp.users",
     "okp.games",
