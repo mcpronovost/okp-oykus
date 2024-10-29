@@ -31,7 +31,7 @@ const { topic } = Astro.props;
       <span>31 octobre 2024</span>
     </div>
     <h3 class="okp-topics-card-header-title">
-      <a href={`${topic.path}`}>{topic.name}</a>
+      <a href={`${topic.path}`}>{topic.name.length > 64 ? `${topic.name.substring(0, 64)}...` : topic.name}</a>
     </h3>
   </header>
   <footer class="okp-topics-card-footer">
