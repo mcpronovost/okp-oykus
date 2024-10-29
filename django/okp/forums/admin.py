@@ -21,7 +21,7 @@ class okpForumCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumSection)
 class okpForumSectionAdmin(admin.ModelAdmin):
-    list_display = ["name", "category", "game", "sortby"]
+    list_display = ["name", "category", "game", "total_messages", "total_topics", "sortby"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["name"]
     list_filter = [
@@ -32,7 +32,7 @@ class okpForumSectionAdmin(admin.ModelAdmin):
 
 @admin.register(okpForumTopic)
 class okpForumTopicAdmin(admin.ModelAdmin):
-    list_display = ["name", "section", "category", "game"]
+    list_display = ["name", "last_message", "section", "category", "game", "total_messages"]
     readonly_fields = ["created_at", "updated_at"]
     search_fields = ["name"]
     list_filter = [

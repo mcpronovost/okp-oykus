@@ -108,6 +108,34 @@ class okpForumSection(models.Model):
         blank=False,
         null=False
     )
+    last_topic = models.OneToOneField(
+        "okpForumTopic",
+        on_delete=models.SET_NULL,
+        related_name="last_topic_section",
+        verbose_name=_("Last Topic"),
+        blank=True,
+        null=True
+    )
+    last_message = models.OneToOneField(
+        "okpForumMessage",
+        on_delete=models.SET_NULL,
+        related_name="last_message_section",
+        verbose_name=_("Last Message"),
+        blank=True,
+        null=True
+    )
+    total_topics = models.PositiveSmallIntegerField(
+        verbose_name=_("Total Topics"),
+        default=0,
+        blank=False,
+        null=False
+    )
+    total_messages = models.PositiveSmallIntegerField(
+        verbose_name=_("Total Messages"),
+        default=0,
+        blank=False,
+        null=False
+    )
     sortby = models.PositiveSmallIntegerField(
         verbose_name=_("Sort"),
         default=None,
@@ -189,6 +217,20 @@ class okpForumTopic(models.Model):
         blank=True,
         null=True
     )
+    last_message = models.OneToOneField(
+        "okpForumMessage",
+        on_delete=models.SET_NULL,
+        related_name="last_message_topic",
+        verbose_name=_("Last Message"),
+        blank=True,
+        null=True
+    )
+    total_messages = models.PositiveSmallIntegerField(
+        verbose_name=_("Total Messages"),
+        default=0,
+        blank=False,
+        null=False
+    )
     created_at = models.DateTimeField(
         verbose_name=_("Created"),
         auto_now_add=True,
@@ -223,7 +265,14 @@ class okpForumTopic(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+        # Update section total topics
+        if self.section:
+            self.section.total_topics = self.section.topics.count()
+            self.section.save(
+                update_fields=["total_topics"]
+            )
 
 
 class okpForumMessage(models.Model):
@@ -247,7 +296,7 @@ class okpForumMessage(models.Model):
         okpForumSection,
         on_delete=models.SET_NULL,
         related_name="messages",
-        verbose_name=_("Category"),
+        verbose_name=_("Section"),
         blank=True,
         null=True
     )
@@ -255,7 +304,7 @@ class okpForumMessage(models.Model):
         okpForumTopic,
         on_delete=models.SET_NULL,
         related_name="messages",
-        verbose_name=_("topics"),
+        verbose_name=_("Topic"),
         blank=True,
         null=True
     )
@@ -286,3 +335,26 @@ class okpForumMessage(models.Model):
 
     def __str__(self):
         return f"Message #{self.pk}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        # Update the last message on the topic
+        if self.topic:
+            self.topic.last_message = self
+            self.topic.total_messages = self.topic.messages.count()
+            self.topic.save(
+                update_fields=["last_message", "total_messages"]
+            )
+
+        # Update the last topic and last message on the section
+        if self.section:
+            print("section : ", self.section.total_messages)
+            self.section.last_topic = self.topic
+            self.section.last_message = self
+            self.section.total_messages = self.section.topics.aggregate(
+                models.Sum("total_messages")
+            )["total_messages__sum"] or 0
+            self.section.save(
+                update_fields=["last_topic", "last_message", "total_messages"]
+            )

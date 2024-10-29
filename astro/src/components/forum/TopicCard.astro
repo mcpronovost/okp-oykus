@@ -37,10 +37,12 @@ const { topic } = Astro.props;
   <footer class="okp-topics-card-footer">
     <time class="okp-topics-card-footer-date">
       <span class="okp-icon"><Clock size={14} /></span>
-      <span class="okp-text">31 octobre 2024</span>
+      <span class="okp-text">{
+        topic.last_message?.created_at || topic.created_at
+      }</span>
     </time>
     <div class="okp-topics-card-footer-total">
-      <span class="okp-text">31</span>
+      <span class="okp-text">{topic.total_messages}</span>
       <span class="okp-icon"><MessagesSquare size={14} /></span>
     </div>
   </footer>

@@ -5,7 +5,8 @@ from rest_framework.views import APIView
 from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
-    okpForumTopic
+    okpForumTopic,
+    okpForumMessage
 )
 from okp.forums.serializers import (
     okpForumsCategoriesSerializer,
@@ -47,6 +48,9 @@ class okpForumSectionView(APIView):
     def get(self, request, format=None, *args, **kwargs):
         queryset = okpForumSection.objects.filter(
             pk=kwargs["pk"], game__slug=kwargs["slug"]
+        ).prefetch_related(
+            "topics",
+            "topics__last_message"
         ).first()
         if queryset is None:
             return Response(None, status=404)

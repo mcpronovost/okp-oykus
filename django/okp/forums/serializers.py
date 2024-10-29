@@ -9,6 +9,12 @@ from okp.forums.models import (
 )
 
 
+class okpForumLastMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpForumMessage
+        fields = ["id", "created_at", "updated_at"]
+
+
 class okpForumMessagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumMessage
@@ -16,15 +22,17 @@ class okpForumMessagesSerializer(serializers.ModelSerializer):
 
 
 class okpForumTopicsSerializer(serializers.ModelSerializer):
+    last_message = okpForumLastMessageSerializer(read_only=True)
+
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "path"]
+        fields = ["id", "name", "slug", "path", "last_message", "total_messages", "created_at", "updated_at"]
 
 
 class okpForumTopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "path"]
+        fields = ["id", "name", "slug", "path", "created_at", "updated_at"]
 
 
 class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
@@ -56,7 +64,7 @@ class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
 class okpForumSectionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumSection
-        fields = ["id", "name", "slug", "path"]
+        fields = ["id", "name", "slug", "path", "total_topics", "total_messages"]
 
 
 class okpForumSectionSerializer(serializers.ModelSerializer):
