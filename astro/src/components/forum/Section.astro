@@ -7,7 +7,7 @@ const { section } = Astro.props;
 ---
 
 <article class="okp-forum-section">
-  <ForumHeader title={section.name} />
+  <ForumHeader title={section.name} description={section.description} />
   <section class="okp-forum-topics">
     {
       section.topics && section.topics.length ? (
