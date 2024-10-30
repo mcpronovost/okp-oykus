@@ -221,6 +221,19 @@ class okpGameTheme(models.Model):
         blank=False,
         null=False
     )
+    # topic
+    topic_title_text = ColorField(
+        verbose_name=_("Topic Title Text Colour"),
+        default="#435259",
+        blank=False,
+        null=False
+    )
+    topic_title_hover = ColorField(
+        verbose_name=_("Topic Title Text Hover Colour"),
+        default="#d3b018",
+        blank=False,
+        null=False
+    )
     # button
     btn_bg = ColorField(
         verbose_name=_("Button Background Colour"),

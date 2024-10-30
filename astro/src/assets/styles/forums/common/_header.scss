@@ -31,11 +31,15 @@
   &-description {
     color: var(--okp-header-subtitle);
     font-family: "OpenSans", sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 400;
     line-height: 150%;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     padding: 0;
     margin: 12px 0 0;
+
+    @media (min-width: 1024px) {
+      max-width: 75%;
+    }
   }
 }
