@@ -14,6 +14,20 @@
       flex: 1 1 200px;
       flex-direction: column;
       min-width: 200px;
+
+      @media (min-width: 1280px) {
+        &.okp-basis-100 {
+          flex-basis: 100%;
+        }
+
+        &.okp-basis-50 {
+          flex-basis: calc(50% - 24px);
+        }
+
+        &.okp-basis-33 {
+          flex-basis: calc((100% / 3) - 48px);
+        }
+      }
     
       &-authors {
         border-top-left-radius: var(--okp-card-radius);

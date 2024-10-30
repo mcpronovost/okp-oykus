@@ -6,10 +6,11 @@ import CoreSideleft from "@/components/core/Sideleft.astro";
 import CoreSiderigh from "@/components/core/Siderigh.astro";
 
 const { title, description, theme } = Astro.props;
+const lang = "fr";
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,7 +28,7 @@ const { title, description, theme } = Astro.props;
   <body id="okp" style={theme} itemscope itemtype="https://schema.org/Game">
     <CoreHead />
     <div id="okp-core-body">
-      <CoreSideleft />
+      <CoreSideleft lang={lang} />
       <main id="okp-core-main" class="okp-scrollable">
         <slot />
       </main>

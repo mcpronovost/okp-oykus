@@ -2,7 +2,8 @@
 import OkpSideleftPanel from "./react/SideleftPanel.jsx";
 
 const { slug } = Astro.params;
+const { lang } = Astro.props;
 const webSideleftOpen = Astro.cookies.get("okp-web-sideleftOpen");
 ---
 
-<OkpSideleftPanel slug={slug} open={webSideleftOpen?.boolean()} client:idle />
+<OkpSideleftPanel lang={lang} slug={slug} open={webSideleftOpen?.boolean()} client:idle />

@@ -3,9 +3,12 @@ import { useStore } from "@nanostores/react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
 import { sideleftOpenStore } from "@/stores/storeWeb.js";
+import { getTranslation } from "@/i18n/i18n.js";
 import imgAvatar from "@/assets/img/mc.jpg";
 
-export default function SideleftPanel ({ slug, open }) {
+export default function SideleftPanel ({ lang, slug, open }) {
+  const t = getTranslation(lang);
+
   const sideleftOpen = useStore(sideleftOpenStore);
   const [isOpen, setIsOpen] = useState(open);
   const user = true;
@@ -44,7 +47,7 @@ export default function SideleftPanel ({ slug, open }) {
                     <House size={24} />
                   </span>
                   <span className="okp-text">
-                    Home
+                    {t("Home")}
                   </span>
                 </a>
               </li>
