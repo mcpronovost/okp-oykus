@@ -72,10 +72,10 @@ export default function MessagesView ({ slug, topic}) {
         <>
           <section className="okp-forum-messages-actions">
             <div className="okp-forum-messages-actions-writing">
-              <button className="okp-btn okp-btn-primary">
+              <button className="okp-btn okp-btn-primary okp-animate-boxup">
                 <span>Nouveau</span>
               </button>
-              <button className="okp-btn">
+              <button className="okp-btn okp-animate-boxup">
                 <span>Répondre</span>
               </button>
             </div>
