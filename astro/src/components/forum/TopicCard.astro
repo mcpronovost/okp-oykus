@@ -10,8 +10,6 @@ const hasBasis = (
   (((total % 6) === 0) && (index === 0 || index === 1)) ? "50" :
   (((total % 7) === 0) && (index === 0 || index === 1 || index === 2)) ? "33" : null
 );
-
-console.log("> hasBasis : ", hasBasis);
 ---
 
 <article class={`okp-topics-card okp-animate-boxup ${hasBasis ? `okp-basis-${hasBasis}` : ""}`}>
