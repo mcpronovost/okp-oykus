@@ -1,7 +1,7 @@
 ---
 import ForumHeader from "@/components/forum/common/Header.astro";
 import MessageCard from "@/components/forum/MessageCard.astro";
-import MessagesView from "@/components/forum/react/MessagesView.jsx";
+import OkpMessagesList from "@/components/forum/react/MessagesList.jsx";
 import Loading from "@/components/common/Loading.astro";
 
 const { slug } = Astro.params;
@@ -11,8 +11,8 @@ const { topic } = Astro.props;
 <article class="okp-forum-topic">
   <ForumHeader title={topic.name} />
   <section class="okp-forum-messages">
-    <MessagesView slug={slug} topic={topic} client:only="react">
+    <OkpMessagesList slug={slug} topic={topic} client:only="react">
       <Loading slot="fallback" />
-    </MessagesView>
+    </OkpMessagesList>
   </section>
 </article>

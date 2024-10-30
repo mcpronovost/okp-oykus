@@ -4,6 +4,19 @@
     display: flex;
     flex-wrap: wrap;
 
+    &-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+  
+      &-writing {
+        button {
+          margin: 12px 12px 12px 0;
+        }
+      }
+    }
+
     .okp-topics-card {
       background-color: var(--okp-card-bg);
       border-radius: var(--okp-card-radius);

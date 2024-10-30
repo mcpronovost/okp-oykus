@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
-import { messagesPerPageStore } from "@/stores/storeForums.js";
+import { messagesPerPage } from "@/stores/storeForums.js";
 import OkpPaginate from "@/components/ui/Paginate";
+import OkpMessageCard from "./MessageCard";
 
 export default function MessagesView ({ slug, topic}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,14 +13,14 @@ export default function MessagesView ({ slug, topic}) {
   });
   const [messages, setMessages] = useState([]);
   const [messagesPages, setMessagesPages] = useState(0);
-  const messagesPerPage = useStore(messagesPerPageStore);
+  const $messagesPerPage = useStore(messagesPerPage);
 
   const doGetMessages = async () => {
     if (!isLoading) {
       setIsLoading(true);
       setHasError(null);
       try {
-        const url = `/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${messagesPerPage}`;
+        const url = `/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${$messagesPerPage}`;
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
@@ -44,12 +45,12 @@ export default function MessagesView ({ slug, topic}) {
   };
 
   const handleSelectPageSize = (e) => {
-    messagesPerPageStore.set(e.value);
+    messagesPerPage.set(e.value);
   };
 
   useEffect(() => {
     doGetMessages();
-  }, [currentPage, messagesPerPage]);
+  }, [currentPage, $messagesPerPage]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -83,20 +84,9 @@ export default function MessagesView ({ slug, topic}) {
               {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
             </div>
           </section>
-          {messages.map((message) => (
-            <article key={message.id} className="okp-messages-card">
-              <header className="okp-messages-card-header">
-                (author)
-              </header>
-              <div className="okp-messages-card-content">
-                {message.content}
-              </div>
-              <footer className="okp-messages-card-footer">
-                (footer)
-              </footer>
-            </article>
+          {messages.map((item, i) => (
+            <OkpMessageCard key={i} message={item} />
           ))}
-          {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
         </>
       ) : (!hasError && !isLoading && messages.length === 0) ? (
         <div>
@@ -108,7 +98,7 @@ export default function MessagesView ({ slug, topic}) {
         </div>
       ) : (
         <div>
-          {{hasError}}
+          {JSON.stringify(hasError)}
         </div>
       )}
     </section>

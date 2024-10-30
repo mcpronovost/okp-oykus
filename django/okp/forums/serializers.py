@@ -46,18 +46,14 @@ class okpForumTopicMessagesSerializer(serializers.ModelSerializer):
     def get_messages(self, obj):
         page = self.context.get("page", 1)
         size = self.context.get("size", 10)
-
         start = (page - 1) * size
         end = start + size
         messages = obj.messages.all()[start:end]
-
         return okpForumMessagesSerializer(messages, many=True).data
 
     def get_messages_pages(self, obj):
         size = self.context.get("size", 10)
-
         total_pages = math.ceil(obj.messages.count() / size)
-
         return int(total_pages)
 
 
@@ -73,6 +69,28 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumSection
         fields = ["id", "name", "description", "slug", "path", "topics"]
+
+
+class okpForumSectionTopicsSerializer(serializers.ModelSerializer):
+    topics = serializers.SerializerMethodField()
+    topics_pages = serializers.SerializerMethodField()
+
+    class Meta:
+        model = okpForumSection
+        fields = ["id", "name", "description", "slug", "path", "topics", "topics_pages"]
+
+    def get_topics(self, obj):
+        page = self.context.get("page", 1)
+        size = self.context.get("size", 10)
+        start = (page - 1) * size
+        end = start + size
+        topics = obj.topics.all()[start:end]
+        return okpForumTopicsSerializer(topics, many=True).data
+
+    def get_topics_pages(self, obj):
+        size = self.context.get("size", 10)
+        total_pages = math.ceil(obj.topics.count() / size)
+        return int(total_pages)
 
 
 class okpForumsCategoriesSerializer(serializers.ModelSerializer):

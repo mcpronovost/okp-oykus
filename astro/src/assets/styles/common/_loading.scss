@@ -1,7 +1,9 @@
 .okp-loading {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
+  padding: 12px;
 
   &-spinner {
     &.okp-squareline {
