@@ -57,7 +57,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                     <Trophy size={24} />
                   </span>
                   <span className="okp-text">
-                    Succès
+                    {t("Achievements")}
                   </span>
                 </a>
               </li>
@@ -67,7 +67,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                     <Award size={24} />
                   </span>
                   <span className="okp-text">
-                    Récompenses
+                    {t("Awards")}
                   </span>
                 </a>
               </li>
@@ -77,7 +77,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                     <ChartNoAxesCombined size={24} />
                   </span>
                   <span className="okp-text">
-                    Classements
+                    {t("Leaderboards")}
                   </span>
                 </a>
               </li>
@@ -90,7 +90,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                       <Scale size={24} />
                     </span>
                     <span className="okp-text">
-                      Règlement
+                      {t("Rules")}
                     </span>
                   </a>
                 </li>
@@ -100,7 +100,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                       <LibraryBig size={24} />
                     </span>
                     <span className="okp-text">
-                      Contexte
+                      {t("Lore")}
                     </span>
                   </a>
                 </li>
@@ -110,7 +110,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                       <MessagesSquare size={24} />
                     </span>
                     <span className="okp-text">
-                      Forum
+                      {t("Forum")}
                     </span>
                   </a>
                 </li>
@@ -120,7 +120,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                       <Users size={24} />
                     </span>
                     <span className="okp-text">
-                      Communauté
+                      {t("Community")}
                     </span>
                   </a>
                 </li>
@@ -134,7 +134,7 @@ export default function SideleftPanel ({ lang, slug, open }) {
                     <Settings size={24} />
                   </span>
                   <span className="okp-text">
-                    Paramètres
+                    {t("Settings")}
                   </span>
                 </a>
               </li>
