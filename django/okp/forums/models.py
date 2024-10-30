@@ -349,7 +349,6 @@ class okpForumMessage(models.Model):
 
         # Update the last topic and last message on the section
         if self.section:
-            print("section : ", self.section.total_messages)
             self.section.last_topic = self.topic
             self.section.last_message = self
             self.section.total_messages = self.section.topics.aggregate(
