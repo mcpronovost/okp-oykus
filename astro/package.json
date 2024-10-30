@@ -16,6 +16,7 @@
   "dependencies": {
     "@astrojs/node": "^8.3.4",
     "@astrojs/react": "^3.6.2",
+    "@mcpronovost/qpfilters": "^2.2.0",
     "@nanostores/react": "^0.8.0",
     "astro": "^4.16.7",
     "dotenv": "^16.4.5",
