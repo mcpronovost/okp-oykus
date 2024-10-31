@@ -1,50 +1,78 @@
 import { defineConfig, passthroughImageService } from "astro/config";
-import { fileURLToPath, URL } from "url";
+import { fileURLToPath } from "url";
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 
-const PUBLIC_PORT = parseInt(
-  import.meta.env.PUBLIC_PORT || process.env.PUBLIC_PORT || 3000
-);
+const PUBLIC_PORT = parseInt(process.env.PUBLIC_PORT || 3000);
 
-// https://astro.build/config
 export default defineConfig({
   output: "server",
+
+  // Server configuration
   adapter: node({
-    mode: "standalone",
+    mode: "standalone"
   }),
   server: {
-    port: PUBLIC_PORT,
-    // host: "astro",
+    port: PUBLIC_PORT
   },
-  image: {
-    service: passthroughImageService(),
-  },
+
+  // Performance optimizations
   compressHTML: true,
-  integrations: [react({ jsx: true })],
+  prefetch: true,
+  build: {
+    inlineStylesheets: "auto",
+    minify: true
+  },
+
+  // Image handling
+  image: {
+    service: passthroughImageService()
+  },
+
+  // React integration
+  integrations: [
+    react({
+      include: ["**/*.{jsx,tsx}"],
+      strictMode: true,
+    })
+  ],
+
+  // Development tools
   devToolbar: {
     enabled: false
   },
+
+  // Vite configuration
   vite: {
+    build: {
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom"],
+          }
+        }
+      }
+    },
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern-compiler" // or "modern"
+          api: "modern-compiler"
         }
       }
     },
     server: {
       watch: {
-        usePolling: true,
+        usePolling: true
       },
       fs: {
-        allow: [".."],
-      },
+        allow: [".."]
+      }
     },
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
-      },
+        "@": fileURLToPath(new URL("./src", import.meta.url))
+      }
     },
-  },
+  }
 });
