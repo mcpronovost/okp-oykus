@@ -1,47 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useStore } from "@nanostores/react";
 import { topicsPerPage } from "@/stores/storeForums.js";
 import OkpTopicCard from "./TopicCard";
 import OkpPaginate from "@/components/ui/Paginate";
 
 export default function TopicsList ({ slug, section }) {
+  const renderCount = useRef(0);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "1";
-  });
   const [topics, setTopics] = useState([]);
   const [topicsPages, setTopicsPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(
+    new URLSearchParams(window.location.search).get("page") || "1"
+  );
   const $topicsPerPage = useStore(topicsPerPage);
 
-  const doGetMessages = async () => {
-    if (!isLoading) {
-      setIsLoading(true);
-      setHasError(null);
-      try {
-        const url = `/api/forums/${slug}/sections/${section.id}/topics/?page=${currentPage}&size=${$topicsPerPage}`;
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setTopics(data.topics);
-          setTopicsPages(data.topics_pages);
-        } else {
-          throw new Error(response.status);
-        }
-      } catch (e) {
-        setHasError(e);
-      } finally {
-        setIsLoading(false);
-      }
+  const doGetTopics = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    setHasError(null);
+    try {
+      const url = `/api/forums/${slug}/sections/${section.id}/topics/?page=${currentPage}&size=${$topicsPerPage}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(response.status);
+      const data = await response.json();
+      setTopics(data.topics);
+      setTopicsPages(data.topics_pages);
+      setIsLoading(false);
+    } catch (e) {
+      setHasError(e);
+      setIsLoading(false);
     }
   };
 
-  const handleSelectPage = (e) => {
-    const url = new URL(window.location)
-    url.searchParams.set("page", e)
+  const handleSelectPage = (page) => {
+    const url = new URL(window.location);
+    url.searchParams.set("page", page);
     history.pushState(null, "", url);
-    setCurrentPage(e);
+    setCurrentPage(page);
   };
 
   const handleSelectPageSize = (e) => {
@@ -49,23 +46,23 @@ export default function TopicsList ({ slug, section }) {
   };
 
   useEffect(() => {
-    doGetMessages();
+    doGetTopics();
   }, [currentPage, $topicsPerPage]);
 
   useEffect(() => {
     const handlePopState = () => {
-      const params = new URLSearchParams(window.location.search);
-      const page = params.get("page") || "1";
+      const page = new URLSearchParams(window.location.search).get("page") || "1";
       setCurrentPage(page);
     };
 
-    // Listen to popstate event for back/forward navigation
     window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  useEffect(() => {
+    renderCount.current += 1;
+    console.log('>> TopicsList render', renderCount.current);
+  });
 
   return (
     <section className="okp-forum-topics-list">
