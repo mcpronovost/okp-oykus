@@ -55,7 +55,7 @@ module.exports = {
     "space-before-function-paren": "off",
     indent: [
       "error",
-      4,
+      2,
       { SwitchCase: 1, ignoredNodes: ["ConditionalExpression"] },
     ],
     "no-tabs": 0,

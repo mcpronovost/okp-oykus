@@ -1,8 +1,6 @@
 ---
-import ForumHeader from "@/components/forum/common/Header.astro";
-import OkpTopicCard from "@/components/forum/TopicCard.astro";
-import OkpTopicsList from "@/components/forum/react/TopicsList.jsx";
-import Loading from "@/components/common/Loading.astro";
+import ForumHeader from "./common/Header.astro";
+import OkpTopicsList from "./react/TopicsList.jsx";
 
 const { slug } = Astro.params;
 const { section } = Astro.props;
@@ -10,7 +8,5 @@ const { section } = Astro.props;
 
 <article class="okp-forum-section">
   <ForumHeader title={section.name} description={section.description} />
-  <OkpTopicsList slug={slug} section={section} client:only="react">
-    <Loading slot="fallback" />
-  </OkpTopicsList>
+  <OkpTopicsList slug={slug} section={section} client:only="react" />
 </article>

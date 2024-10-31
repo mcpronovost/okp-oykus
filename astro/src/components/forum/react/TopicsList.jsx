@@ -6,7 +6,7 @@ import OkpPaginate from "@/components/ui/Paginate";
 
 export default function TopicsList ({ slug, section }) {
   const renderCount = useRef(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(null);
   const [topics, setTopics] = useState([]);
   const [topicsPages, setTopicsPages] = useState(0);
@@ -16,10 +16,10 @@ export default function TopicsList ({ slug, section }) {
   const $topicsPerPage = useStore(topicsPerPage);
 
   const doGetTopics = async () => {
-    if (isLoading) return;
-    
-    setIsLoading(true);
-    setHasError(null);
+    if (!isLoading || hasError) {
+      setIsLoading(true);
+      setHasError(null);
+    }
     try {
       const url = `/api/forums/${slug}/sections/${section.id}/topics/?page=${currentPage}&size=${$topicsPerPage}`;
       const response = await fetch(url);
@@ -27,9 +27,9 @@ export default function TopicsList ({ slug, section }) {
       const data = await response.json();
       setTopics(data.topics);
       setTopicsPages(data.topics_pages);
-      setIsLoading(false);
     } catch (e) {
       setHasError(e);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -61,7 +61,11 @@ export default function TopicsList ({ slug, section }) {
 
   useEffect(() => {
     renderCount.current += 1;
-    console.log('>> TopicsList render', renderCount.current);
+    console.log('>> TopicsList render', renderCount.current, {
+      isLoading,
+      hasError,
+      topicsLength: topics.length
+    });
   });
 
   return (
