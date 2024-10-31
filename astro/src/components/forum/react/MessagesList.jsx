@@ -7,41 +7,38 @@ import OkpMessageCard from "./MessageCard";
 export default function MessagesView ({ slug, topic}) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "1";
-  });
   const [messages, setMessages] = useState([]);
   const [messagesPages, setMessagesPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(
+    new URLSearchParams(window.location.search).get("page") || "1"
+  );
   const $messagesPerPage = useStore(messagesPerPage);
 
   const doGetMessages = async () => {
-    if (!isLoading) {
-      setIsLoading(true);
-      setHasError(null);
-      try {
-        const url = `/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${$messagesPerPage}`;
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setMessages(data.messages);
-          setMessagesPages(data.messages_pages);
-        } else {
-          throw new Error(response.status);
-        }
-      } catch (e) {
-        setHasError(e);
-      } finally {
-        setIsLoading(false);
-      }
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    setHasError(null);
+    try {
+      const url = `/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${$messagesPerPage}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(response.status);
+      
+      const data = await response.json();
+      setMessages(data.messages);
+      setMessagesPages(data.messages_pages);
+    } catch (e) {
+      setHasError(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleSelectPage = (e) => {
-    const url = new URL(window.location)
-    url.searchParams.set("page", e)
+  const handleSelectPage = (page) => {
+    const url = new URL(window.location);
+    url.searchParams.set("page", page);
     history.pushState(null, "", url);
-    setCurrentPage(e);
+    setCurrentPage(page);
   };
 
   const handleSelectPageSize = (e) => {
@@ -54,17 +51,12 @@ export default function MessagesView ({ slug, topic}) {
 
   useEffect(() => {
     const handlePopState = () => {
-      const params = new URLSearchParams(window.location.search);
-      const page = params.get("page") || "1";
+      const page = new URLSearchParams(window.location.search).get("page") || "1";
       setCurrentPage(page);
     };
 
-    // Listen to popstate event for back/forward navigation
     window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   return (
