@@ -59,15 +59,6 @@ export default function TopicsList ({ slug, section }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  useEffect(() => {
-    renderCount.current += 1;
-    console.log('>> TopicsList render', renderCount.current, {
-      isLoading,
-      hasError,
-      topicsLength: topics.length
-    });
-  });
-
   return (
     <section className="okp-forum-topics-list">
       {(!hasError && !isLoading && topics.length) ? (
