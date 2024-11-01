@@ -3,9 +3,17 @@ import { CircleArrowOutDownRight, Clock, MessagesSquare } from "lucide-react";
 import { qpdate, qpunit } from "@mcpronovost/qpfilters";
 import imgAvatar from "@/assets/img/mc.jpg";
 
-export default function TopicCard ({ topic }) {
+export default function TopicCard({ index, topic, total }) {
+  console.log(index, total);
+  const basis = (
+    (total % 5 === 0) && (index === 0)
+  ) ? "okp-basis-100" : (
+    (total % 6 === 0) && (index === 0 || index === 1)
+  ) ? "okp-basis-50" : (
+    (total % 7 === 0) && (index === 0 || index === 1 || index === 2)
+  ) ? "okp-basis-33" : "";
   return (
-    <article className={`okp-topics-card okp-animate-boxup`}>
+    <article className={`okp-topics-card okp-animate-boxup ${basis}`}>
       <section className="okp-topics-card-authors">
         <figure className="okp-topics-card-authors-banner">
           {true ? (

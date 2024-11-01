@@ -59,39 +59,33 @@ export default function TopicsList ({ slug, section }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  if (hasError) {
+    return <div>{JSON.stringify(hasError)}</div>;
+  }
+
   return (
-    <section className="okp-forum-topics-list">
-      {(!hasError && !isLoading && topics.length) ? (
-        <>
-          <section className="okp-forum-topics-actions">
-            <div className="okp-forum-topics-actions-writing">
-              <button className="okp-btn okp-btn-primary okp-animate-boxup">
-                <span>Nouveau</span>
-              </button>
-            </div>
-            <div className="okp-forum-topics-actions-paginate">
-              {topicsPages > 1 && <OkpPaginate pages={topicsPages} current={currentPage} onChange={handleSelectPage} />}
-            </div>
-          </section>
-          <section className="okp-forum-topics">
-            {topics.map((item, i) => (
-              <OkpTopicCard key={i} topic={item} />
-            ))}
-          </section>
-        </>
-      ) : (!hasError && !isLoading && topics.length === 0) ? (
-        <div>
-          empty
+    <>
+      <section className="okp-forum-topics-actions">
+        <div className="okp-forum-topics-actions-writing">
+          <button className="okp-btn okp-btn-primary okp-animate-boxup">
+            <span>Nouveau</span>
+          </button>
         </div>
-      ) : (!hasError && isLoading) ? (
-        <div className="okp-loading">
+        <div className="okp-forum-topics-actions-paginate">
+          {topicsPages > 1 && <OkpPaginate pages={topicsPages} current={currentPage} onChange={handleSelectPage} />}
+        </div>
+      </section>
+      {(isLoading) ? (
+        <section className="okp-loading">
           <div className="okp-loading-spinner okp-tripleline"></div>
-        </div>
+        </section>
       ) : (
-        <div>
-          {JSON.stringify(hasError)}
-        </div>
+        <section className="okp-forum-topics">
+          {topics.map((item, i) => (
+            <OkpTopicCard key={i} topic={item} total={topics.length} index={i} />
+          ))}
+        </section>
       )}
-    </section>
+    </>
   );
 }

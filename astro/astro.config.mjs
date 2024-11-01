@@ -74,9 +74,5 @@ export default defineConfig({
         "@": fileURLToPath(new URL("./src", import.meta.url))
       }
     },
-  },
-  typescript: {
-    allowJs: true,
-    checkJs: false
   }
 });

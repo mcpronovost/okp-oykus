@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
 import { sideleftOpenStore } from "@/stores/storeWeb.js";
-import { getTranslation } from "@/i18n/i18n.js";
+import { getTranslation } from "@/i18n/i18n";
 import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function SideleftPanel ({ lang, slug, open }) {

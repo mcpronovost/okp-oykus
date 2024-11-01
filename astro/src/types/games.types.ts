@@ -1,0 +1,16 @@
+export interface Game {
+  name: string;
+  version: string;
+  created_at: string;
+  updated_at: string;
+  created?: number;
+  updated?: number;
+  founder?: {
+    name: string;
+  };
+  theme?: ThemeConfig;
+}
+
+export interface ThemeConfig {
+  [key: string]: string;
+}
