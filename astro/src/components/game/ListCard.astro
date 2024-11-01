@@ -1,5 +1,11 @@
 ---
-const { game } = Astro.props;
+import type { Game } from "@/types/games.types";
+
+interface Props {
+  game: Game;
+}
+
+const { game }: Props = Astro.props;
 ---
 
 <li class="okp-games-list-card">

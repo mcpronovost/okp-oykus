@@ -1,13 +1,18 @@
 ---
+import type { Section } from "@/types/forums.types";
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumSection from "@/components/forum/Section.astro";
 
-const { api } = Astro.locals;
-const { slug, cpk, spk } = Astro.params;
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
+const { slug, spk } = Astro.params;
 
 let hasError = null;
-let section = null;
+let section: Section | null = null;
 
 async function getForumSection () {
   try {

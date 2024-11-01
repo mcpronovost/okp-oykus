@@ -1,13 +1,18 @@
 ---
+import type { Topic } from "@/types/forums.types";
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumTopic from "@/components/forum/Topic.astro";
 
-const { api } = Astro.locals;
-const { slug, cpk, spk, tpk } = Astro.params;
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
+const { slug, tpk } = Astro.params;
 
 let hasError = null;
-let topic = null;
+let topic: Topic | null = null;
 
 async function getForumTopic () {
   try {

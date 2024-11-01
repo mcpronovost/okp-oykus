@@ -1,9 +1,14 @@
 ---
+import type { Category } from "@/types/forums.types";
 import ForumHeader from "./common/Header.astro";
 import SectionCard from "./SectionCard.astro";
 
-const { slug } = Astro.params;
-const { category, singleton } = Astro.props;
+interface Props {
+  category: Category;
+  singleton?: boolean;
+}
+
+const { category, singleton }: Props = Astro.props;
 ---
 
 <article class="okp-forum-category">

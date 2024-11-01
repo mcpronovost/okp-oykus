@@ -1,11 +1,15 @@
 ---
+import type { Game } from "@/types/games.types";
 import MainLayout from "@/layouts/MainLayout.astro";
-import ListCard from "@/components/game/ListCard.astro";
 
-const { api } = Astro.locals;
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
 
 let hasError = null;
-let games = [];
+let games: Game[] = [];
 
 try {
   const response = await fetch(`${api}/games/`);

@@ -1,11 +1,15 @@
 ---
+import type { Topic } from "@/types/forums.types";
 import ForumHeader from "@/components/forum/common/Header.astro";
-import MessageCard from "@/components/forum/MessageCard.astro";
 import OkpMessagesList from "@/components/forum/react/MessagesList.jsx";
 import Loading from "@/components/common/Loading.astro";
 
+interface Props {
+  topic: Topic;
+}
+
 const { slug } = Astro.params;
-const { topic } = Astro.props;
+const { topic }: Props = Astro.props;
 ---
 
 <article class="okp-forum-topic">

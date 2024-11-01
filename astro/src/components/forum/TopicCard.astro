@@ -1,10 +1,18 @@
 ---
+import type { SectionTopic } from "@/types/forums.types";
 import { Image } from "astro:assets";
 import { CircleArrowOutDownRight, Clock, MessagesSquare } from "lucide-astro";
 import { qpdate, qpunit } from "@mcpronovost/qpfilters";
 import imgAvatar from "@/assets/img/mc.jpg";
 
-const { topic, index, total } = Astro.props;
+interface Props {
+  topic: SectionTopic;
+  index: number;
+  total: number;
+}
+
+const { topic, index, total }: Props = Astro.props;
+
 const hasBasis = (
   (((total % 5) === 0) && index === 0) ? "100" :
   (((total % 6) === 0) && (index === 0 || index === 1)) ? "50" :

@@ -1,13 +1,18 @@
 ---
+import type { Category } from "@/types/forums.types";
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumCategory from "@/components/forum/Category.astro";
 
-const { api } = Astro.locals;
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
 const { slug, cpk } = Astro.params;
 
 let hasError = null;
-let category = null;
+let category: Category | null = null;
 
 async function getForumCategory () {
   try {
@@ -30,7 +35,7 @@ await getForumCategory();
   <div class="okp-grid">
     <section class="okp-forum">
       <section class="okp-forum-categories">
-        {!!category ? (
+        {(!!category) ? (
           <ForumCategory category={category} singleton />
         ) : (
           <AlertNotFound />

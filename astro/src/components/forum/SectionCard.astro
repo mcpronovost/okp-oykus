@@ -1,5 +1,11 @@
 ---
-const { section } = Astro.props;
+import type { CategorySection } from "@/types/forums.types";
+
+interface Props {
+  section: CategorySection;
+} 
+
+const { section }: Props = Astro.props;
 ---
 
 <article class="okp-sections-card okp-animate-boxup">

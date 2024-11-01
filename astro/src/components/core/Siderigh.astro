@@ -1,12 +1,21 @@
 ---
+import type { Game, Character } from "@/types/games.types";
 import { Sparkles, Users } from "lucide-astro";
 
-const { api } = Astro.locals;
-const { slug } = Astro.params;
+interface Locals {
+  api?: string;
+}
+
+interface Props {
+  slug?: string;
+}
+
+const { api }: Locals = Astro.locals;
+const { slug }: Props = Astro.props;
 
 let hasError = null;
-let characters = [];
-let games = [];
+let characters: Character[] = [];
+let games: Game[] = [];
 
 try {
   const response = await fetch(`${api}/games/`);

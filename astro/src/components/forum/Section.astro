@@ -1,9 +1,14 @@
 ---
+import type { Section } from "@/types/forums.types";
 import ForumHeader from "./common/Header.astro";
 import OkpTopicsList from "./react/TopicsList.jsx";
 
+interface Props {
+  section: Section;
+}
+
 const { slug } = Astro.params;
-const { section } = Astro.props;
+const { section }: Props = Astro.props;
 ---
 
 <article class="okp-forum-section">

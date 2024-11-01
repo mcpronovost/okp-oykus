@@ -1,5 +1,11 @@
 ---
-const { title, description, path } = Astro.props;
+interface Props {
+  title: string;
+  description?: string | null;
+  path?: string | null;
+}
+
+const { title, description, path }: Props = Astro.props;
 ---
 
 <header class="okp-forum-header">
