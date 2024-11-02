@@ -1,5 +1,4 @@
 import { defineConfig, passthroughImageService } from "astro/config";
-import { fileURLToPath } from "url";
 import node from "@astrojs/node";
 import react from "@astrojs/react";
 
@@ -71,7 +70,7 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url))
+        "@": "/src"
       }
     },
   }

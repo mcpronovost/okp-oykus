@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useStore } from "@nanostores/react";
-import { topicsPerPage } from "@/stores/storeForums.js";
+import { topicsPerPage } from "@/stores/storeForums";
 import OkpTopicCard from "./TopicCard";
 import OkpPaginate from "@/components/ui/Paginate";
 
 export default function TopicsList ({ slug, section }) {
-  const renderCount = useRef(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(null);
   const [topics, setTopics] = useState([]);
@@ -39,10 +38,6 @@ export default function TopicsList ({ slug, section }) {
     url.searchParams.set("page", page);
     history.pushState(null, "", url);
     setCurrentPage(page);
-  };
-
-  const handleSelectPageSize = (e) => {
-    topicsPerPage.set(e.value);
   };
 
   useEffect(() => {

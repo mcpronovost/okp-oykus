@@ -1,6 +1,6 @@
 {
-  "name": "okp-oykus-astro",
-  "description": "Astro frontend for OKP Oykus project.",
+  "name": "okp-oykus-frontend",
+  "description": "Frontend for Oykus project.",
   "type": "module",
   "version": "0.0.1",
   "license": "UNLICENSED",
@@ -14,11 +14,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --config config/.eslintrc.js",
     "format": "prettier --write .",
     "type-check": "astro check"
   },

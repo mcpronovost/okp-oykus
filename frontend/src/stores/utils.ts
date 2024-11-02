@@ -1,13 +1,13 @@
 import { atom } from "nanostores";
 
-export const okpKey = (item) => `okp-${item}`;
+export const okpKey = (item: string) => `okp-${item}`;
 
 const DB_NAME = 'okpDatabase';
 const STORE_NAME = 'okpStore';
 const DB_VERSION = 1;
 
 // Initialize the database
-const initDB = () => {
+const initDB = (): Promise<IDBDatabase | null> => {
   return new Promise((resolve, reject) => {
     if (typeof window === "undefined") return resolve(null);
     
@@ -16,8 +16,8 @@ const initDB = () => {
     request.onerror = () => reject(request.error);
     request.onsuccess = () => resolve(request.result);
     
-    request.onupgradeneeded = (event) => {
-      const db = event.target.result;
+    request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
+      const db = (event.target as IDBOpenDBRequest).result;
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         db.createObjectStore(STORE_NAME);
       }
@@ -26,7 +26,7 @@ const initDB = () => {
 };
 
 // Helper functions for IndexedDB operations
-const getValue = async (key) => {
+const getValue = async (key: string) => {
   const db = await initDB();
   if (!db) return null;
   
@@ -40,11 +40,11 @@ const getValue = async (key) => {
   });
 };
 
-const setValue = async (key, value) => {
+const setValue = async (key: string, value: any) => {
   const db = await initDB();
   if (!db) return;
   
-  const transaction = db.transaction(STORE_NAME, 'readwrite');
+  const transaction = db.transaction(STORE_NAME, "readwrite");
   const store = transaction.objectStore(STORE_NAME);
   
   if (value === null) {
@@ -54,13 +54,13 @@ const setValue = async (key, value) => {
   }
 };
 
-export const okpStore = (key, defaultValue = null) => {
-  const store = atom(defaultValue);
+export const okpStore = <T>(key: string, defaultValue: T = null as T) => {
+  const store = atom<T>(defaultValue);
   
   // Initialize store with value from IndexedDB
   if (typeof window !== "undefined") {
     getValue(key).then(value => {
-      store.set(value ?? defaultValue);
+      store.set((value === null || value === undefined) ? defaultValue : value as T);
     });
   }
 

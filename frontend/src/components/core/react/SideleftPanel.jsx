@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useStore } from "@nanostores/react";
+import React from "react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
-import { sideleftOpenStore } from "@/stores/storeWeb.js";
+import { useSideleft } from "@/hooks/core/useSideleft";
 import { getTranslation } from "@/i18n/i18n";
 import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function SideleftPanel ({ lang, slug, open }) {
   const t = getTranslation(lang);
-
-  const sideleftOpen = useStore(sideleftOpenStore);
-  const [isOpen, setIsOpen] = useState(open);
+  const { isOpen } = useSideleft(open);
   const user = true;
-
-  useEffect(() => {
-    setIsOpen(sideleftOpen);
-  }, [sideleftOpen]);
 
   return (
     <>

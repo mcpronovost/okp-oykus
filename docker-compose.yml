@@ -19,8 +19,8 @@ services:
       - django
 
   astro:
-    build: ./astro
-    command: yarn start --host --port 3000
+    build: ./frontend
+    command: yarn dev --host --port 3000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.okp.rule=Host(`okp.localhost`) && !PathPrefix(`/health`)"
@@ -36,14 +36,14 @@ services:
       API_URL: django
       API_PORT: 8000
     volumes:
-      - "./astro:/app:rw"
+      - "./frontend:/app:rw"
     networks:
       - okpoykus
     depends_on:
       - django
 
   django:
-    build: ./django
+    build: ./backend
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
     restart: unless-stopped
     labels:
@@ -63,7 +63,7 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     env_file: .env
     volumes:
-      - "./django:/app:rw"
+      - "./backend:/app:rw"
     networks:
       - okpoykus
     depends_on:
