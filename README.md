@@ -33,7 +33,8 @@ Oykus is a web-based roleplaying platform that combines storytelling with game m
 | └── <players>
 └── settings
 |── profile
-└── account```
+└── account
+```
 
 ## 🔧 Installation
 
