@@ -43,6 +43,7 @@ export default defineConfig({
 
   // Vite configuration
   vite: {
+    cacheDir: "./.vite",
     build: {
       cssMinify: true,
       rollupOptions: {
