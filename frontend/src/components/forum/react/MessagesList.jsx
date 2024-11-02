@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
-import { messagesPerPage } from "@/stores/storeForums.js";
+import { messagesPerPage } from "@/stores/storeForums";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpMessageCard from "./MessageCard";
 
