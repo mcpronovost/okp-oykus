@@ -16,11 +16,10 @@ let topic: Topic | null = null;
 async function getForumTopic () {
   try {
     const response = await fetch(`${api}/forums/${slug}/topics/${tpk}/`);
-    if (response.ok) {
-      topic = await response.json();
-    } else {
-      throw new Error("Failed to fetch data");
-    }
+    if (!response.ok) throw new Error("Failed to fetch data");
+
+    topic = await response.json();
+    if (!topic) throw new Error("Topic not found");
   } catch {}
 };
 

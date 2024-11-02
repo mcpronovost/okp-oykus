@@ -11,20 +11,16 @@ interface Locals {
 const { api }: Locals = Astro.locals;
 const { slug, spk } = Astro.params;
 
-let hasError = null;
 let section: Section | null = null;
 
 async function getForumSection () {
   try {
     const response = await fetch(`${api}/forums/${slug}/sections/${spk}/`);
-    if (response.ok) {
-      section = await response.json();
-    } else {
-      throw new Error("Failed to fetch data");
-    }
-  } catch {
-    hasError = true;
-  }
+    if (!response.ok) throw new Error("Failed to fetch data");
+  
+    section = await response.json();
+    if (!section) throw new Error("Section not found");
+  } catch {}
 };
 
 await getForumSection();
