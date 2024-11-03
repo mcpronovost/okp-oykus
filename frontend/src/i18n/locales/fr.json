@@ -7,5 +7,7 @@
   "Lore": "Contexte",
   "Forum": "Forum",
   "Community": "Communauté",
-  "Settings": "Paramètres"
+  "Settings": "Paramètres",
+  "No Categories Found": "Aucune catégorie trouvée",
+  "It seems there are no categories available at the moment.": "Il semble qu'il n'y ait aucune catégorie disponible pour le moment."
 }

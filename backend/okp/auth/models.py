@@ -135,6 +135,10 @@ class okpUser(AbstractBaseUser):
         verbose_name = _("User")
         verbose_name_plural = _("Users")
 
+    @property
+    def abbr(self):
+        return "".join([x[0] for x in self.playername.split()[:2]]).upper()
+
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)

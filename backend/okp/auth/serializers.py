@@ -9,6 +9,7 @@ class okpUserSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "playername",
+            "abbr",
             "avatar"
         ]
         read_only_fields = [

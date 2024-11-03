@@ -1,13 +1,15 @@
 ---
+import type { Lang } from "@/types/i18n.types";
 import "@/assets/styles/vendors/simplebar.scss";
 import "@/assets/styles/main.scss";
+import { getUser } from "@/utils/auth";
 import CoreHead from "@/components/core/Head.astro";
 import CoreSideleft from "@/components/core/Sideleft.astro";
 import CoreSiderigh from "@/components/core/Siderigh.astro";
-import { getUser } from "@/utils/auth";
 
 interface Locals {
   api?: string;
+  lang?: Lang;
 }
 
 interface Props {
@@ -16,9 +18,8 @@ interface Props {
   theme?: string;
 }
 
-const { api }: Locals = Astro.locals;
+const { api, lang }: Locals = Astro.locals;
 const { title, description, theme }: Props = Astro.props;
-const lang = "fr";
 
 const user = api ? await getUser(api) : null;
 ---

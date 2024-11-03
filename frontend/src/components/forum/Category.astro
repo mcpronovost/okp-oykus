@@ -1,5 +1,9 @@
 ---
+import type { Lang } from "@/types/i18n.types";
 import type { Category } from "@/types/forums.types";
+import { AlertCircle } from "lucide-astro";
+import { getTranslation } from "@/i18n/i18n";
+import { getValue } from "@/stores/utils";
 import ForumHeader from "./common/Header.astro";
 import SectionCard from "./SectionCard.astro";
 
@@ -9,6 +13,8 @@ interface Props {
 }
 
 const { category, singleton }: Props = Astro.props;
+const lang = Astro.cookies.get("okp-web-lang")?.value as Lang || "fr";
+const t = getTranslation(lang);
 ---
 
 <article class="okp-forum-category">
@@ -22,7 +28,11 @@ const { category, singleton }: Props = Astro.props;
       category.sections && category.sections.length ? (
         category.sections.map((item) => <SectionCard section={item} />)
       ) : (
-        <div>-</div>
+        <div class="okp-forum-notfound">
+          <AlertCircle class="icon" />
+          <h2>{t("No Categories Found")}</h2>
+          <p>{t("It seems there are no categories available at the moment.")}</p>
+        </div>
       )
     }
   </section>

@@ -2,8 +2,8 @@ import { atom } from "nanostores";
 
 export const okpKey = (item: string) => `okp-${item}`;
 
-const DB_NAME = 'okpDatabase';
-const STORE_NAME = 'okpStore';
+const DB_NAME = "okpDatabase";
+const STORE_NAME = "okpStore";
 const DB_VERSION = 1;
 
 // Initialize the database
@@ -26,12 +26,12 @@ const initDB = (): Promise<IDBDatabase | null> => {
 };
 
 // Helper functions for IndexedDB operations
-const getValue = async (key: string) => {
+export const getValue = async (key: string) => {
   const db = await initDB();
   if (!db) return null;
   
   return new Promise((resolve) => {
-    const transaction = db.transaction(STORE_NAME, 'readonly');
+    const transaction = db.transaction(STORE_NAME, "readonly");
     const store = transaction.objectStore(STORE_NAME);
     const request = store.get(okpKey(key));
     

@@ -9,7 +9,9 @@ export interface Game {
   created?: number;
   updated?: number;
   founder?: {
-    name: string;
+    id: number;
+    playername: string;
+    abbr: string;
   };
   theme?: ThemeConfig;
 }

@@ -91,8 +91,8 @@ await getGame();
         <small>
           <p>
             {game.name}&nbsp;&copy;&nbsp;{game.created}
-            {game.updated !== game.created && `-${game.updated}`}
-            {game.founder?.name && `&nbsp;${game.founder.name}`}
+            {(game.updated !== game.created) && `-${game.updated}`}
+            {(game.founder?.playername) && ` ${game.founder.playername}`}
             &mdash; Tous droits réservés &mdash; Version {game.version}
           </p>
           <p>

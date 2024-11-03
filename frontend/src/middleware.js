@@ -1,3 +1,5 @@
+import { parse } from "cookie";
+
 export function onRequest({ locals, request }, next) {
   const API_URL = import.meta.env.API_URL || process.env.API_URL;
   const API_PORT = import.meta.env.API_PORT || process.env.API_PORT;
@@ -18,6 +20,10 @@ export function onRequest({ locals, request }, next) {
 
   locals.uri = new URL(request.url).pathname;
   locals.protocol = API_PROTOCOL;
+
+  const cookieHeader = request.headers.get("cookie");
+  const cookies = cookieHeader ? parse(cookieHeader) : {};
+  locals.lang = cookies["okp-web-lang"] || "fr";
 
   // return a Response or the result of calling `next()`
   return next();

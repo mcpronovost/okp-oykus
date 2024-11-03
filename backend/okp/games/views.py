@@ -3,7 +3,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from okp.games.models import okpGame
-from okp.games.serializers import okpGamesSerializer
+from okp.games.serializers import (
+    okpGamesSerializer,
+    okpGameSerializer
+)
 
 
 class okpGamesView(APIView):
@@ -24,5 +27,5 @@ class okpGameView(APIView):
         queryset = okpGame.objects.filter(slug=kwargs["slug"]).first()
         if queryset is None:
             return Response(None, status=404)
-        game = okpGamesSerializer(queryset).data
+        game = okpGameSerializer(queryset).data
         return Response(game)

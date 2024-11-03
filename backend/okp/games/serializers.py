@@ -12,9 +12,39 @@ class okpGameThemeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class okpGameSerializer(serializers.ModelSerializer):
+    founder = serializers.SerializerMethodField()
+    owner = serializers.SerializerMethodField()
+    theme = okpGameThemeSerializer()
+
+    class Meta:
+        model = okpGame
+        fields = ["id", "name", "slug", "abbr", "founder", "owner", "version",
+                  "theme", "created_at", "updated_at"]
+
+    def get_founder(self, obj):
+        if obj.founder:
+            return {
+                "id": obj.founder.id,
+                "playername": obj.founder.playername,
+                "abbr": obj.founder.abbr
+            }
+        return None
+
+    def get_owner(self, obj):
+        if obj.owner:
+            return {
+                "id": obj.owner.id,
+                "playername": obj.owner.playername,
+                "abbr": obj.owner.abbr
+            }
+        return None
+
+
 class okpGamesSerializer(serializers.ModelSerializer):
     theme = okpGameThemeSerializer()
 
     class Meta:
         model = okpGame
-        fields = ["id", "name", "slug", "abbr", "version", "theme", "created_at", "updated_at"]
+        fields = ["id", "name", "slug", "abbr", "version",
+                  "theme", "created_at", "updated_at"]
