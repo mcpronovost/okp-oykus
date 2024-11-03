@@ -144,8 +144,9 @@
         height: 48px;
 
         figure {
-          background-color: #f00;
+          background-color: var(--okp-core-head-mask-bg);
           border-radius: 50%;
+          color: var(--okp-core-head-mask-text);
           overflow: hidden;
           display: flex;
           flex-direction: row;

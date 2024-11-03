@@ -1,5 +1,7 @@
 ---
+import type { User } from "@/types/auth.types";
 import type { Game, Character } from "@/types/games.types";
+import type { Lang } from "@/types/i18n.types";
 import { Sparkles, Users } from "lucide-astro";
 
 interface Locals {
@@ -7,6 +9,8 @@ interface Locals {
 }
 
 interface Props {
+  lang: Lang;
+  user: User | null;
   slug?: string;
 }
 

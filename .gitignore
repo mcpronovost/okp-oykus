@@ -65,6 +65,7 @@ Pipfile.lock
 .astro/
 .vite/
 nohup.out
+backend/media
 
 # dependencies
 node_modules/

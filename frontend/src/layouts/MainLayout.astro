@@ -4,6 +4,11 @@ import "@/assets/styles/main.scss";
 import CoreHead from "@/components/core/Head.astro";
 import CoreSideleft from "@/components/core/Sideleft.astro";
 import CoreSiderigh from "@/components/core/Siderigh.astro";
+import { getUser } from "@/utils/auth";
+
+interface Locals {
+  api?: string;
+}
 
 interface Props {
   title?: string;
@@ -11,8 +16,11 @@ interface Props {
   theme?: string;
 }
 
+const { api }: Locals = Astro.locals;
 const { title, description, theme }: Props = Astro.props;
 const lang = "fr";
+
+const user = api ? await getUser(api) : null;
 ---
 
 <!doctype html>
@@ -34,13 +42,13 @@ const lang = "fr";
     <link rel="icon" sizes="16x16" href="/favicon-16x16.png" type="image/png" />
   </head>
   <body id="okp" style={theme} itemscope itemtype="https://schema.org/Game">
-    <CoreHead />
+    <CoreHead lang={lang} user={user} />
     <div id="okp-core-body">
-      <CoreSideleft lang={lang} />
+      <CoreSideleft lang={lang} user={user} />
       <main id="okp-core-main" class="okp-scrollable">
         <slot />
       </main>
-      <CoreSiderigh />
+      <CoreSiderigh lang={lang} user={user} />
     </div>
   </body>
 </html>

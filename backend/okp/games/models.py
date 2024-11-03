@@ -115,6 +115,30 @@ class okpGameTheme(models.Model):
         blank=False,
         null=False
     )
+    core_head_mask_bg = ColorField(
+        verbose_name=_("Core Head Mask Background Colour"),
+        default="#51636b",
+        blank=False,
+        null=False
+    )
+    core_head_mask_text = ColorField(
+        verbose_name=_("Core Head Mask Text Colour"),
+        default="#a2acaf",
+        blank=False,
+        null=False
+    )
+    core_head_highlight_bg = ColorField(
+        verbose_name=_("Core Head Highlight Background Colour"),
+        default="#505f65",
+        blank=False,
+        null=False
+    )
+    core_head_highlight_text = ColorField(
+        verbose_name=_("Core Head Highlight Text Colour"),
+        default="#c9cfd1",
+        blank=False,
+        null=False
+    )
     # =-
     core_sideleft_bg = ColorField(
         verbose_name=_("Core Sideleft Background Colour"),

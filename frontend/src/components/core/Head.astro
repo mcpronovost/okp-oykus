@@ -1,9 +1,18 @@
 ---
+import type { User } from "@/types/auth.types";
+import type { Lang } from "@/types/i18n.types";
 import { Image } from "astro:assets";
 import { Bell, Mail, Smile } from "lucide-astro";
+import { qpabbr } from "@mcpronovost/qpfilters";
 import OkpSideleftToggle from "@/components/core/react/SideleftToggle.jsx";
 import imgLogo from "@/assets/img/oykus-32.png";
-import imgAvatar from "@/assets/img/mc.jpg";
+
+interface Props {
+  lang: Lang;
+  user: User | null;
+}
+
+const { lang, user }: Props = Astro.props;
 ---
 
 <header id="okp-core-head">
@@ -53,15 +62,17 @@ import imgAvatar from "@/assets/img/mc.jpg";
     </div>
   </section>
   <section class="okp-auth">
-    <div class="okp-auth-user">
-      <div class="okp-auth-user-playername">
-        <span>M-C Pronovost</span>
+    {(user) && (
+      <div class="okp-auth-user">
+        <div class="okp-auth-user-playername">
+          <span>{user.playername}</span>
+        </div>
+        <div class="okp-auth-user-avatar">
+          <figure>
+            {(user.avatar) ? <Image src={user.avatar} alt="" width="32" height="32" /> : <span>{qpabbr(user.playername)}</span>}
+          </figure>
+        </div>
       </div>
-      <div class="okp-auth-user-avatar">
-        <figure>
-          <Image src={imgAvatar} alt="" width="32" height="32" />
-        </figure>
-      </div>
-    </div>
+    )}
   </section>
 </header>
