@@ -2,8 +2,8 @@ from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
 
-class okpForumsConfig(AppConfig):
+class okpAuthConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "okp.forums"
-    label = "okp_forums"
-    verbose_name = _("Forums")
+    name = "okp.auth"
+    label = "okp_auth"
+    verbose_name = _("Auth")

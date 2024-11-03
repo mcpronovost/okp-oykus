@@ -39,16 +39,18 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # tiers
     "corsheaders",
+    "colorfield",  # https://pypi.org/project/django-colorfield/
     "rest_framework",  # https://www.django-rest-framework.org/
     "knox",  # https://jazzband.github.io/django-rest-knox/
-    "colorfield",  # https://pypi.org/project/django-colorfield/
     # okp
-    # "okp.users",
+    "okp.auth",
     "okp.games",
     "okp.forums",
     # cleanup
     "django_cleanup.apps.CleanupConfig"  # https://pypi.org/project/django-cleanup/
 ]
+
+AUTH_USER_MODEL = "okp_auth.okpUser"
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
