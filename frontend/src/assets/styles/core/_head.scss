@@ -105,21 +105,15 @@
         width: 48px;
         height: 48px;
         position: relative;
+      
+        &:hover {
+          background-color: var(--okp-core-head-highlight-bg);
+          color: var(--okp-core-head-highlight-text);
+        }
 
         > div {
           position: relative;
         }
-      }
-      
-      &:hover .okp-wrapper::before {
-        content: "";
-        background-color: var(--okp-core-head-text);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        opacity: 0.1;
       }
     }
   }
