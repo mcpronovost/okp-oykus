@@ -49,6 +49,8 @@ data/*
 db.sqlite3
 media/*
 django/media/*
+backend/media
+backend/media/*
 .env
 env
 .vscode
@@ -65,7 +67,6 @@ Pipfile.lock
 .astro/
 .vite/
 nohup.out
-backend/media
 
 # dependencies
 node_modules/
