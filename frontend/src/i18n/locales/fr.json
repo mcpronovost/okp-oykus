@@ -9,5 +9,9 @@
   "Community": "Communauté",
   "Settings": "Paramètres",
   "No Categories Found": "Aucune catégorie trouvée",
-  "It seems there are no categories available at the moment.": "Il semble qu'il n'y ait aucune catégorie disponible pour le moment."
+  "It seems there are no categories available at the moment.": "Il semble qu'il n'y ait aucune catégorie disponible pour le moment.",
+  "No Topics Found": "Aucun sujet trouvé",
+  "It seems there are no topics available at the moment.": "Il semble qu'il n'y ait aucun sujet disponible pour le moment.",
+  "No Messages Found": "Aucun message trouvé",
+  "It seems there are no messages available at the moment.": "Il semble qu'il n'y ait aucun message disponible pour le moment."
 }

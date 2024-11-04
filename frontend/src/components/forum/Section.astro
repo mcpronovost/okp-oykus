@@ -1,17 +1,19 @@
 ---
+import type { Lang } from "@/types/i18n.types";
 import type { Section } from "@/types/forums.types";
 import ForumHeader from "./common/Header.astro";
 import OkpTopicsList from "./react/TopicsList.jsx";
 
 interface Props {
+  lang: Lang;
   section: Section;
 }
 
 const { slug } = Astro.params;
-const { section }: Props = Astro.props;
+const { lang, section }: Props = Astro.props;
 ---
 
 <article class="okp-forum-section">
   <ForumHeader title={section.name} description={section.description} />
-  <OkpTopicsList slug={slug} section={section} client:only="react" />
+  <OkpTopicsList lang={lang} slug={slug} section={section} client:only="react" />
 </article>

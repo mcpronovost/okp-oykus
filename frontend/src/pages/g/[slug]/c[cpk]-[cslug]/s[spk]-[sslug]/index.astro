@@ -1,14 +1,17 @@
 ---
+
 import type { Section } from "@/types/forums.types";
+import type { Lang } from "@/types/i18n.types";
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumSection from "@/components/forum/Section.astro";
 
 interface Locals {
   api?: string;
+  lang?: Lang;
 }
 
-const { api }: Locals = Astro.locals;
+const { api, lang }: Locals = Astro.locals;
 const { slug, spk } = Astro.params;
 
 let section: Section | null = null;
@@ -32,7 +35,7 @@ await getForumSection();
     <section class="okp-forum">
       <section class="okp-forum-sections">
         {!!section ? (
-          <ForumSection section={section} />
+          <ForumSection lang={lang} section={section} />
         ) : (
           <AlertNotFound />
         )}

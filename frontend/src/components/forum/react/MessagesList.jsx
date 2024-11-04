@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
+import { AlertCircle } from "lucide-react";
+import { getTranslation } from "@/i18n/i18n";
 import { messagesPerPage } from "@/stores/storeForums";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpMessageCard from "./MessageCard";
 
-export default function MessagesView ({ slug, topic}) {
+export default function MessagesView ({ lang, slug, topic }) {
+  const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -60,39 +63,37 @@ export default function MessagesView ({ slug, topic}) {
   }, []);
 
   return (
-    <section className="okp-forum-messages">
-      {(!hasError && !isLoading && messages.length) ? (
-        <>
-          <section className="okp-forum-messages-actions">
-            <div className="okp-forum-messages-actions-writing">
-              <button className="okp-btn okp-btn-primary okp-animate-boxup">
-                <span>Nouveau</span>
-              </button>
-              <button className="okp-btn okp-animate-boxup">
-                <span>Répondre</span>
-              </button>
-            </div>
-            <div className="okp-forum-messages-actions-paginate">
-              {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
-            </div>
-          </section>
-          {messages.map((item, i) => (
-            <OkpMessageCard key={i} message={item} />
-          ))}
-        </>
-      ) : (!hasError && !isLoading && messages.length === 0) ? (
-        <div>
-          empty
+    <>
+      <section className="okp-forum-messages-actions">
+        <div className="okp-forum-messages-actions-writing">
+          <button className="okp-btn okp-btn-primary okp-animate-boxup">
+            <span>Nouveau</span>
+          </button>
+          <button className="okp-btn okp-animate-boxup">
+            <span>Répondre</span>
+          </button>
         </div>
-      ) : (!hasError && isLoading) ? (
-        <div className="okp-loading">
+        <div className="okp-forum-messages-actions-paginate">
+          {messagesPages > 1 && <OkpPaginate pages={messagesPages} current={currentPage} onChange={handleSelectPage} />}
+        </div>
+      </section>
+      {(isLoading) ? (
+        <section className="okp-loading">
           <div className="okp-loading-spinner okp-tripleline"></div>
-        </div>
+        </section>
       ) : (
-        <div>
-          {JSON.stringify(hasError)}
-        </div>
+        <section className="okp-forum-topics">
+          {messages.length ? messages.map((item, i) => (
+            <OkpMessageCard key={i} message={item} />
+          )) : (
+            <div className="okp-forum-notfound">
+              <AlertCircle className="icon" />
+              <h2>{t("No Messages Found")}</h2>
+              <p>{t("It seems there are no messages available at the moment.")}</p>
+            </div>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 }

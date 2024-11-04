@@ -1,14 +1,16 @@
 ---
 import type { Topic } from "@/types/forums.types";
+import type { Lang } from "@/types/i18n.types";
 import GameLayout from "@/layouts/GameLayout.astro";
 import AlertNotFound from "@/components/common/AlertNotFound.astro";
 import ForumTopic from "@/components/forum/Topic.astro";
 
 interface Locals {
   api?: string;
+  lang?: Lang;
 }
 
-const { api }: Locals = Astro.locals;
+const { api, lang }: Locals = Astro.locals;
 const { slug, tpk } = Astro.params;
 
 let topic: Topic | null = null;
@@ -32,7 +34,7 @@ await getForumTopic();
     <section class="okp-forum">
       <section class="okp-forum-topic">
         {!!topic ? (
-          <ForumTopic topic={topic} />
+          <ForumTopic lang={lang} topic={topic} />
         ) : (
           <AlertNotFound />
         )}

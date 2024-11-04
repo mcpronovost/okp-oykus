@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useStore } from "@nanostores/react";
+import { AlertCircle } from "lucide-react";
+import { getTranslation } from "@/i18n/i18n";
 import { topicsPerPage } from "@/stores/storeForums";
 import OkpTopicCard from "./TopicCard";
 import OkpPaginate from "@/components/ui/Paginate";
 
-export default function TopicsList ({ slug, section }) {
+export default function TopicsList ({ lang, slug, section }) {
+  const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(null);
   const [topics, setTopics] = useState([]);
@@ -76,9 +79,15 @@ export default function TopicsList ({ slug, section }) {
         </section>
       ) : (
         <section className="okp-forum-topics">
-          {topics.map((item, i) => (
+          {topics.length ? topics.map((item, i) => (
             <OkpTopicCard key={i} topic={item} total={topics.length} index={i} />
-          ))}
+          )) : (
+            <div className="okp-forum-notfound">
+              <AlertCircle className="icon" />
+              <h2>{t("No Topics Found")}</h2>
+              <p>{t("It seems there are no topics available at the moment.")}</p>
+            </div>
+          )}
         </section>
       )}
     </>
