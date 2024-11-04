@@ -5,16 +5,12 @@ from rest_framework.views import APIView
 from okp.forums.models import (
     okpForumCategory,
     okpForumSection,
-    okpForumTopic,
-    okpForumMessage
+    okpForumTopic
 )
 from okp.forums.serializers import (
-    okpForumsCategoriesSerializer,
     okpForumsCategorySerializer,
     okpForumSectionSerializer,
-    okpForumSectionTopicsSerializer,
-    okpForumTopicSerializer,
-    okpForumTopicMessagesSerializer
+    okpForumTopicSerializer
 )
 
 
@@ -24,7 +20,7 @@ class okpForumCategoriesView(APIView):
 
     def get(self, request, format=None, *args, **kwargs):
         queryset = okpForumCategory.objects.filter(game__slug=kwargs["slug"])
-        categories = okpForumsCategoriesSerializer(queryset, many=True).data
+        categories = okpForumsCategorySerializer(queryset, many=True).data
         return Response(categories)
 
 
@@ -74,7 +70,8 @@ class okpForumSectionTopicsView(APIView):
             return Response(None, status=404)
         page = int(request.query_params.get("page", 1))
         size = int(request.query_params.get("size", 10))
-        topic = okpForumSectionTopicsSerializer(queryset, context={
+        topic = okpForumSectionSerializer(queryset, context={
+            "show_topics": True,
             "page": page,
             "size": size
         }).data
@@ -102,12 +99,15 @@ class okpForumTopicMessagesView(APIView):
     def get(self, request, format=None, *args, **kwargs):
         queryset = okpForumTopic.objects.filter(
             pk=kwargs["pk"], game__slug=kwargs["slug"]
+        ).prefetch_related(
+            "messages"
         ).first()
         if queryset is None:
             return Response(None, status=404)
         page = int(request.query_params.get("page", 1))
         size = int(request.query_params.get("size", 10))
-        topic = okpForumTopicMessagesSerializer(queryset, context={
+        topic = okpForumTopicSerializer(queryset, context={
+            "show_messages": True,
             "page": page,
             "size": size
         }).data

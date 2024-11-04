@@ -2,7 +2,7 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
-import okp.auth.fields
+import okp.fields
 from django.db import migrations, models
 
 
@@ -17,18 +17,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='okpUser',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('password', models.CharField(max_length=128, verbose_name='password')),
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('username', models.CharField(error_messages={'unique': 'A user with that username already exists.'}, help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.', max_length=150, unique=True, validators=[django.contrib.auth.validators.UnicodeUsernameValidator()], verbose_name='Username')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('password', models.CharField(
+                    max_length=128, verbose_name='password')),
+                ('last_login', models.DateTimeField(
+                    blank=True, null=True, verbose_name='last login')),
+                ('username', models.CharField(error_messages={'unique': 'A user with that username already exists.'}, help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.',
+                 max_length=150, unique=True, validators=[django.contrib.auth.validators.UnicodeUsernameValidator()], verbose_name='Username')),
                 ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('playername', models.CharField(max_length=255, verbose_name='Playername')),
-                ('avatar', okp.auth.fields.okpImageField(blank=True, null=True, upload_to='users/avatars', validators=[okp.auth.fields.okpImageSizeValidator], verbose_name='Avatar')),
-                ('is_staff', models.BooleanField(default=False, verbose_name='Staff')),
-                ('is_superuser', models.BooleanField(default=False, verbose_name='Superuser')),
-                ('is_active', models.BooleanField(default=True, verbose_name='Active')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated')),
+                ('playername', models.CharField(
+                    max_length=255, verbose_name='Playername')),
+                ('avatar', okp.fields.okpImageField(blank=True, null=True, upload_to='users/avatars',
+                 validators=[okp.fields.okpImageSizeValidator], verbose_name='Avatar')),
+                ('is_staff', models.BooleanField(
+                    default=False, verbose_name='Staff')),
+                ('is_superuser', models.BooleanField(
+                    default=False, verbose_name='Superuser')),
+                ('is_active', models.BooleanField(
+                    default=True, verbose_name='Active')),
+                ('created_at', models.DateTimeField(
+                    auto_now_add=True, verbose_name='Created')),
+                ('updated_at', models.DateTimeField(
+                    auto_now=True, verbose_name='Updated')),
             ],
             options={
                 'verbose_name': 'User',

@@ -6,7 +6,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .fields import okpImageField, okpImageSizeValidator
+from okp.fields import okpImageField, okpImageSizeValidator
 
 
 class okpUserManager(BaseUserManager):

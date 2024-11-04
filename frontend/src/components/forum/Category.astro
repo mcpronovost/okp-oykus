@@ -25,8 +25,8 @@ const t = getTranslation(lang);
   />
   <section class="okp-forum-sections">
     {
-      category.sections && category.sections.length ? (
-        category.sections.map((item) => <SectionCard section={item} />)
+      category.sections?.length ? (
+      category.sections.map((item) => <SectionCard section={item} />)
       ) : (
         <div class="okp-forum-notfound">
           <AlertCircle class="icon" />

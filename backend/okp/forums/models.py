@@ -3,6 +3,7 @@ from django.db.models import F
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
+from okp.fields import okpImageField, okpImageSizeValidator
 from okp.games.models import okpGame
 
 
@@ -92,6 +93,21 @@ class okpForumSection(models.Model):
         blank=True,
         null=True
     )
+    banner = okpImageField(
+        verbose_name=_("Banner"),
+        upload_to="forums/sections/banners",
+        max_width=1000,
+        max_height=200,
+        blank=True,
+        null=True,
+        validators=[okpImageSizeValidator],
+    )
+    banner_height = models.PositiveSmallIntegerField(
+        verbose_name=_("Banner Height"),
+        default=100,
+        blank=False,
+        null=False
+    )
     game = models.ForeignKey(
         okpGame,
         on_delete=models.CASCADE,
@@ -133,6 +149,18 @@ class okpForumSection(models.Model):
     total_messages = models.PositiveSmallIntegerField(
         verbose_name=_("Total Messages"),
         default=0,
+        blank=False,
+        null=False
+    )
+    show_last_message = models.BooleanField(
+        verbose_name=_("Show Last Message"),
+        default=True,
+        blank=False,
+        null=False
+    )
+    show_last_topic = models.BooleanField(
+        verbose_name=_("Show Last Topic"),
+        default=True,
         blank=False,
         null=False
     )

@@ -12,8 +12,11 @@ export interface CategorySection {
   name: string;
   slug: string;
   path: string;
+  banner: string | null;
   total_topics: number;
   total_messages: number;
+  show_last_message: boolean;
+  show_last_topic: boolean;
 }
 
 export interface Section {
@@ -23,6 +26,7 @@ export interface Section {
   slug: string;
   path: string;
   topics: SectionTopic[] | [];
+  topics_pages: number;
   total_topics: number;
   total_messages: number;
 }
@@ -49,6 +53,15 @@ export interface Topic {
   name: string;
   slug: string;
   path: string;
+  messages: TopicMessage[] | [];
+  messages_pages: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TopicMessage {
+  id: number;
+  content: string;
   created_at: string;
   updated_at: string;
 }

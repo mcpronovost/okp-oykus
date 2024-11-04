@@ -1,6 +1,7 @@
 ---
 import type { CategorySection } from "@/types/forums.types";
-
+import { CircleArrowOutDownRight } from "lucide-astro";
+import imgAvatar from "@/assets/img/mc.jpg";
 interface Props {
   section: CategorySection;
 } 
@@ -9,9 +10,38 @@ const { section }: Props = Astro.props;
 ---
 
 <article class="okp-sections-card okp-animate-boxup">
-  <header>
-    <h2 class="okp-sections-card-title">
-      <a href={`${section.path}`}>{section.name}</a>
-    </h2>
+  {section.banner && (
+    <section class="okp-sections-card-banner">
+      <figure class="okp-sections-card-banner-figure">
+        <img src={section.banner} alt="" class="okp-sections-card-banner-figure-img" aria-hidden="true" />
+      </figure>
+    </section>
+  )}
+  {section.show_last_message && (
+    <section class={`okp-sections-card-lastmessage ${section.banner ? "okp-with-banner" : ""}`}>
+      <figure class="okp-sections-card-lastmessage-avatar">
+        <a href={`${section.path}`} class="okp-sections-card-lastmessage-link">
+          <CircleArrowOutDownRight size={32} alt="Aller au dernier message" class="okp-sections-card-lastmessage-golast" />
+          {true ? (
+            <img src={imgAvatar.src} alt="" class="okp-sections-card-lastmessage-avatar-img" aria-hidden="true" />
+          ) : (
+            <span class="okp-sections-card-lastmessage-avatar-abbr" aria-hidden="true">MC</span>
+          )}
+        </a>
+      </figure>
+    </section>
+  )}
+  <header class="okp-sections-card-header">
+    <h3 class="okp-sections-card-header-title">
+      <a href={`${section.path}`}>{section.name.length > 64 ? `${section.name.substring(0, 64)}...` : section.name}</a>
+    </h3>
   </header>
+  {section.show_last_topic && (
+    <footer class="okp-sections-card-footer">
+      <div class="okp-sections-card-footer-lastmessage">
+        <a href={`${section.path}`}>Last topic title</a>
+        <span>date of last message</span>
+      </div>
+    </footer>
+  )}
 </article>
