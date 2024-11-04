@@ -13,6 +13,8 @@ export interface CategorySection {
   slug: string;
   path: string;
   banner: string | null;
+  banner_height: number;
+  basis: string;
   total_topics: number;
   total_messages: number;
   show_last_message: boolean;

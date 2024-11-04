@@ -1,0 +1,18 @@
+---
+import GameLayout from "@/layouts/GameLayout.astro";
+import { Construction } from "lucide-astro";
+
+const { slug } = Astro.params;
+---
+
+<GameLayout slug={slug}>
+  <div class="okp-grid">
+    <section class="okp-forum">
+      <div class="okp-forum-notfound">
+        <Construction class="icon" />
+        <h2>Under Construction</h2>
+        <p>This section is currently being built</p>
+      </div>
+    </section>
+  </div>
+</GameLayout>

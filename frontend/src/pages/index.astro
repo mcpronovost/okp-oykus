@@ -1,5 +1,16 @@
 ---
-import Home from "@/components/front/Home.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Home } from "lucide-astro";
 ---
 
-<Home />
+<MainLayout>
+    <div class="okp-grid" style="padding: 200px 0 0;">
+      <section class="okp-forum">
+        <div class="okp-forum-notfound">
+          <Home class="icon" />
+          <h2>Hello World!</h2>
+          <p>This is the home page</p>
+        </div>
+      </section>
+    </div>
+</MainLayout>

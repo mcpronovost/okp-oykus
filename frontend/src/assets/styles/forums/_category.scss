@@ -4,23 +4,57 @@
 
 .okp-forum-category {
   .okp-forum-sections {
-    gap: 24px;
+    font-size: 0;
+    line-height: 0;
     display: flex;
     flex-wrap: wrap;
     padding: 12px 0;
+    margin: -12px;
 
     .okp-sections-card {
-      background-color: var(--okp-card-bg);
-      border-radius: var(--okp-card-radius);
-      color: var(--okp-card-text);
-      font-size: 0;
-      line-height: 0;
       text-align: center;
       display: flex;
       flex: 1 1 200px;
       flex-direction: column;
       align-items: center;
       min-width: 200px;
+      padding: 12px;
+
+      &-wrapper {
+        background-color: var(--okp-card-bg);
+        border-radius: var(--okp-card-radius);
+        color: var(--okp-card-text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (min-width: 1280px) {
+        &.okp-basis-100 {
+          flex: 0 0 100%;
+        }
+        &.okp-basis-75 {
+          flex: 0 0 75%;
+        }
+
+        &.okp-basis-66 {
+          flex: 0 0 calc((100% / 3) * 2);
+        }
+
+        &.okp-basis-50 {
+          flex: 0 0 calc(50%);
+        }
+
+        &.okp-basis-33 {
+          flex: 0 0 calc((100% / 3));
+        }
+
+        &.okp-basis-25 {
+          flex: 0 0 calc(50%);
+        }
+      }
 
       &-banner {
         border-top-left-radius: var(--okp-card-radius);

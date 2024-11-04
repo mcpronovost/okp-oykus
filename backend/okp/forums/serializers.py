@@ -90,7 +90,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
 class okpForumCategorySectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumSection
-        fields = ["id", "name", "slug", "path", "banner", "total_topics",
+        fields = ["id", "name", "slug", "path", "banner", "banner_height", "basis", "total_topics",
                   "total_messages", "show_last_message", "show_last_topic"]
 
 

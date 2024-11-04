@@ -6,6 +6,15 @@ from django.utils.translation import gettext_lazy as _
 from okp.fields import okpImageField, okpImageSizeValidator
 from okp.games.models import okpGame
 
+CHOIX_SECTION_BASIS = (
+    ("100", _("100% (4/4)")),
+    ("75", _("75% (3/4)")),
+    ("66", _("66% (2/3)")),
+    ("50", _("50% (2/4)")),
+    ("33", _("33% (1/3)")),
+    ("25", _("25% (1/4)"))
+)
+
 
 class okpForumCategory(models.Model):
     name = models.CharField(
@@ -105,6 +114,14 @@ class okpForumSection(models.Model):
     banner_height = models.PositiveSmallIntegerField(
         verbose_name=_("Banner Height"),
         default=100,
+        blank=False,
+        null=False
+    )
+    basis = models.CharField(
+        verbose_name=_("Basis"),
+        max_length=4,
+        choices=CHOIX_SECTION_BASIS,
+        default="25",
         blank=False,
         null=False
     )
