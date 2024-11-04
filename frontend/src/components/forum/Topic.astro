@@ -17,8 +17,6 @@ const { lang, topic }: Props = Astro.props;
 <article class="okp-forum-topic">
   <ForumHeader title={topic.name} />
   <section class="okp-forum-messages">
-    <OkpMessagesList lang={lang} slug={slug} topic={topic} client:only="react">
-      <Loading slot="fallback" />
-    </OkpMessagesList>
+    <OkpMessagesList lang={lang} slug={slug} topic={topic} client:only="react" />
   </section>
 </article>
