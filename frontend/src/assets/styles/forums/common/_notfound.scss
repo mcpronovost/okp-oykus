@@ -1,5 +1,5 @@
 .okp-forum-notfound {
-  background-color: var(--okp-card-bg);
+  background: linear-gradient(to right, var(--okp-card-mask-bg), 5px, var(--okp-card-bg), 5px, var(--okp-card-bg));
   border-radius: var(--okp-card-radius);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: var(--okp-card-text);
