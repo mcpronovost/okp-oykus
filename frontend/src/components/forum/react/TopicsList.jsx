@@ -83,9 +83,11 @@ export default function TopicsList ({ lang, slug, section }) {
             <OkpTopicCard key={i} topic={item} total={topics.length} index={i} />
           )) : (
             <div className="okp-forum-notfound">
-              <AlertCircle className="icon" />
-              <h2>{t("No Topics Found")}</h2>
-              <p>{t("It seems there are no topics available at the moment.")}</p>
+              <div className="okp-forum-notfound-wrapper">
+                <AlertCircle className="icon" />
+                <h2>{t("No Topics Found")}</h2>
+                <p>{t("It seems there are no topics available at the moment.")}</p>
+              </div>
             </div>
           )}
         </section>

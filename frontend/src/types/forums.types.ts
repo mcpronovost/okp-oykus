@@ -19,6 +19,21 @@ export interface CategorySection {
   total_messages: number;
   show_last_message: boolean;
   show_last_topic: boolean;
+  last_topic: CategorySectionTopic | null;
+  last_message: CategorySectionTopicMessage | null;
+}
+
+export interface CategorySectionTopic {
+  id: number;
+  name: string;
+  slug: string;
+  path: string;
+  created_at: string;
+}
+
+export interface CategorySectionTopicMessage {
+  id: number;
+  created_at: string;
 }
 
 export interface Section {

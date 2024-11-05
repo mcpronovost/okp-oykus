@@ -7,12 +7,13 @@ from okp.fields import okpImageField, okpImageSizeValidator
 from okp.games.models import okpGame
 
 CHOIX_SECTION_BASIS = (
-    ("100", _("100% (4/4)")),
-    ("75", _("75% (3/4)")),
-    ("66", _("66% (2/3)")),
-    ("50", _("50% (2/4)")),
+    ("auto", _("Default")),
+    ("25", _("25% (1/4)")),
     ("33", _("33% (1/3)")),
-    ("25", _("25% (1/4)"))
+    ("50", _("50% (2/4)")),
+    ("66", _("66% (2/3)")),
+    ("75", _("75% (3/4)")),
+    ("100", _("100% (4/4)"))
 )
 
 
@@ -121,7 +122,7 @@ class okpForumSection(models.Model):
         verbose_name=_("Basis"),
         max_length=4,
         choices=CHOIX_SECTION_BASIS,
-        default="25",
+        default="auto",
         blank=False,
         null=False
     )
@@ -315,8 +316,9 @@ class okpForumTopic(models.Model):
         # Update section total topics
         if self.section:
             self.section.total_topics = self.section.topics.count()
+            self.section.last_topic = self
             self.section.save(
-                update_fields=["total_topics"]
+                update_fields=["total_topics", "last_topic"]
             )
 
 

@@ -87,11 +87,27 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
         return int(total_pages)
 
 
+class okpForumCategorySectionTopicMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpForumMessage
+        fields = ["id", "created_at"]
+
+
+class okpForumCategorySectionTopicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpForumTopic
+        fields = ["id", "name", "slug", "path", "created_at"]
+
+
 class okpForumCategorySectionSerializer(serializers.ModelSerializer):
+    last_topic = okpForumCategorySectionTopicSerializer(read_only=True)
+    last_message = okpForumCategorySectionTopicMessageSerializer(
+        read_only=True)
+
     class Meta:
         model = okpForumSection
         fields = ["id", "name", "slug", "path", "banner", "banner_height", "basis", "total_topics",
-                  "total_messages", "show_last_message", "show_last_topic"]
+                  "total_messages", "show_last_message", "show_last_topic", "last_topic", "last_message"]
 
 
 class okpForumsCategorySerializer(serializers.ModelSerializer):

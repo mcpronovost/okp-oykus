@@ -87,9 +87,11 @@ export default function MessagesView ({ lang, slug, topic }) {
             <OkpMessageCard key={i} message={item} />
           )) : (
             <div className="okp-forum-notfound">
-              <AlertCircle className="icon" />
-              <h2>{t("No Messages Found")}</h2>
-              <p>{t("It seems there are no messages available at the moment.")}</p>
+              <div className="okp-forum-notfound-wrapper">
+                <AlertCircle className="icon" />
+                <h2>{t("No Messages Found")}</h2>
+                <p>{t("It seems there are no messages available at the moment.")}</p>
+              </div>
             </div>
           )}
         </section>
