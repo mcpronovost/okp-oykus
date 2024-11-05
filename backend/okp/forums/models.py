@@ -316,9 +316,8 @@ class okpForumTopic(models.Model):
         # Update section total topics
         if self.section:
             self.section.total_topics = self.section.topics.count()
-            self.section.last_topic = self
             self.section.save(
-                update_fields=["total_topics", "last_topic"]
+                update_fields=["total_topics"]
             )
 
 
