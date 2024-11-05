@@ -6,15 +6,22 @@ import { messagesPerPage } from "@/stores/storeForums";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpMessageCard from "./MessageCard";
 
+function getPageParam(topic) {
+  const pageParam = new URLSearchParams(window.location.search).get("page");
+  if (pageParam === "last") {
+    return topic.total_pages.toString();
+  }
+  return pageParam || "1";
+}
+
 export default function MessagesView ({ lang, slug, topic }) {
   const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
   const [messages, setMessages] = useState([]);
   const [messagesPages, setMessagesPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(
-    new URLSearchParams(window.location.search).get("page") || "1"
-  );
+  const [currentPage, setCurrentPage] = useState(getPageParam(topic));
+  const goToLastMessage = new URLSearchParams(window.location.search).get("page") === "last";
   const $messagesPerPage = useStore(messagesPerPage);
 
   const doGetMessages = async () => {
@@ -29,7 +36,7 @@ export default function MessagesView ({ lang, slug, topic }) {
       
       const data = await response.json();
       setMessages(data.messages);
-      setMessagesPages(data.messages_pages);
+      setMessagesPages(data.total_pages);
     } catch (e) {
       setHasError(e);
     } finally {
@@ -44,9 +51,29 @@ export default function MessagesView ({ lang, slug, topic }) {
     setCurrentPage(page);
   };
 
-  const handleSelectPageSize = (e) => {
-    messagesPerPage.set(e.value);
-  };
+  // const handleSelectPageSize = (e) => {
+  //   messagesPerPage.set(e.value);
+  // };
+
+  useEffect(() => {
+    const scrollToLastMessage = () => {
+      if (!isLoading && messages.length > 0 && goToLastMessage) {
+        const mainEl = document.querySelector("#okp-core-main .simplebar-content-wrapper");
+        const lastMessage = document.querySelector(".okp-messages-card:last-child");
+        if (lastMessage) {
+          const viewportHeight = window.innerHeight;
+          const elementRect = lastMessage.getBoundingClientRect();
+          const scrollTo = window.scrollY + elementRect.top - ((viewportHeight / 4) * 1);
+          mainEl.scrollTo({
+            top: scrollTo,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    scrollToLastMessage();
+  }, [isLoading, messages, currentPage]);
 
   useEffect(() => {
     doGetMessages();
@@ -54,8 +81,7 @@ export default function MessagesView ({ lang, slug, topic }) {
 
   useEffect(() => {
     const handlePopState = () => {
-      const page = new URLSearchParams(window.location.search).get("page") || "1";
-      setCurrentPage(page);
+      setCurrentPage(getPageParam(topic));
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -67,10 +93,10 @@ export default function MessagesView ({ lang, slug, topic }) {
       <section className="okp-forum-messages-actions">
         <div className="okp-forum-messages-actions-writing">
           <button className="okp-btn okp-btn-primary okp-animate-boxup">
-            <span>Nouveau</span>
+            <span>{t("New Topic")}</span>
           </button>
           <button className="okp-btn okp-animate-boxup">
-            <span>Répondre</span>
+            <span>{t("Reply")}</span>
           </button>
         </div>
         <div className="okp-forum-messages-actions-paginate">

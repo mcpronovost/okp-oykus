@@ -33,6 +33,7 @@ export interface CategorySectionTopic {
 
 export interface CategorySectionTopicMessage {
   id: number;
+  path: string;
   created_at: string;
 }
 
@@ -71,7 +72,7 @@ export interface Topic {
   slug: string;
   path: string;
   messages: TopicMessage[] | [];
-  messages_pages: number;
+  total_pages: number;
   created_at: string;
   updated_at: string;
 }

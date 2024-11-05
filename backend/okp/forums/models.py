@@ -382,6 +382,14 @@ class okpForumMessage(models.Model):
     def __str__(self):
         return f"Message #{self.pk}"
 
+    @property
+    def path(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.category.pk}-{self.category.slug}"
+        s = f"/s{self.section.pk}-{self.section.slug}"
+        t = f"/t{self.topic.pk}-{self.topic.slug}"
+        return f"{g}{c}{s}{t}"
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 

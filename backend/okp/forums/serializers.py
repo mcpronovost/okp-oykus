@@ -17,11 +17,12 @@ class okpForumTopicMessageSerializer(serializers.ModelSerializer):
 
 class okpForumTopicSerializer(serializers.ModelSerializer):
     messages = serializers.SerializerMethodField()
-    messages_pages = serializers.SerializerMethodField()
+    total_pages = serializers.SerializerMethodField()
 
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "path", "messages", "messages_pages"]
+        fields = ["id", "name", "slug", "path",
+                  "messages", "total_messages", "total_pages"]
 
     def get_messages(self, obj):
         show_messages = self.context.get("show_messages", False)
@@ -34,10 +35,7 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
         messages = obj.messages.all()[start:end]
         return okpForumTopicMessageSerializer(messages, many=True).data
 
-    def get_messages_pages(self, obj):
-        show_messages = self.context.get("show_messages", False)
-        if not show_messages:
-            return 0
+    def get_total_pages(self, obj):
         size = self.context.get("size", 10)
         total_pages = math.ceil(obj.messages.count() / size)
         return int(total_pages)
@@ -90,7 +88,7 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
 class okpForumCategorySectionTopicMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpForumMessage
-        fields = ["id", "created_at"]
+        fields = ["id", "path", "created_at"]
 
 
 class okpForumCategorySectionTopicSerializer(serializers.ModelSerializer):

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MessageCard ({ message }) {
   return (
-    <article key={message.id} className="okp-messages-card">
+    <article key={message.id} id={`okp-message-${message.id}`} className="okp-messages-card">
       <header className="okp-messages-card-header">
         (author)
       </header>
