@@ -11,6 +11,8 @@ interface Props {
 }
 
 const { lang, section }: Props = Astro.props;
+
+console.log(">> section: ", section);
 ---
 
 <article class={`okp-sections-card okp-basis-${section.basis}`}>
