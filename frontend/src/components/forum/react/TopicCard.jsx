@@ -4,7 +4,6 @@ import { qpdate, qpunit } from "@mcpronovost/qpfilters";
 import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function TopicCard({ index, topic, total }) {
-  console.log(index, total);
   const basis = (
     (total % 5 === 0) && (index === 0)
   ) ? "okp-basis-100" : (
