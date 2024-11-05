@@ -2,7 +2,8 @@ from rest_framework import serializers
 
 from okp.games.models import (
     okpGame,
-    okpGameTheme
+    okpGameTheme,
+    okpCharacter
 )
 
 
@@ -48,3 +49,13 @@ class okpGamesSerializer(serializers.ModelSerializer):
         model = okpGame
         fields = ["id", "name", "slug", "abbr", "version",
                   "theme", "created_at", "updated_at"]
+
+
+class okpCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpCharacter
+        fields = ["id", "name", "abbr", "slug", "avatar"]
+        read_only_fields = [
+            "id",
+            "slug"
+        ]

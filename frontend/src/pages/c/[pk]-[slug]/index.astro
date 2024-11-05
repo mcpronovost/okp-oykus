@@ -1,0 +1,46 @@
+---
+import type { Character } from "@/types/games.types";
+import { Construction } from "lucide-astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
+const { pk, slug } = Astro.params;
+
+let character: Character = {} as Character;
+
+async function getCharacter () {
+  try {
+    const response = await fetch(`${api}/games/characters/${pk}/`);
+    if (!response.ok) throw new Error("Failed to fetch data");
+
+    character = await response.json();
+    if (!character) throw new Error("Character not found");
+  } catch {}
+};
+
+await getCharacter();
+---
+
+<MainLayout>
+  <div class="okp-grid">
+    <section class="okp-characters">
+      {(character && character.id) ? (
+        <div>
+          <h1>{character.name}</h1>
+        </div>
+      ) : (
+        <div class="okp-forum-notfound">
+          <div class="okp-forum-notfound-wrapper">
+            <Construction class="icon" />
+            <h2>Under Construction</h2>
+            <p>This section is currently being built</p>
+          </div>
+        </div>
+      )}
+    </section>
+  </div>
+</MainLayout>
