@@ -149,7 +149,7 @@ class okpUser(AbstractBaseUser):
 
     @property
     def abbr(self):
-        return "".join([x[0] for x in self.playername.split()[:2]]).upper()
+        return "".join([x[0] for x in self.playername.split()[:3]]).upper()
 
     def clean(self):
         super().clean()

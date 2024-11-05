@@ -2,7 +2,9 @@
 import type { User } from "@/types/auth.types";
 import type { Game, Character } from "@/types/games.types";
 import type { Lang } from "@/types/i18n.types";
-import { Sparkles, Users } from "lucide-astro";
+import { Image } from "astro:assets";
+import { Drama, Sparkles } from "lucide-astro";
+import { getTranslation } from "@/i18n/i18n";
 
 interface Locals {
   api?: string;
@@ -15,22 +17,34 @@ interface Props {
 }
 
 const { api }: Locals = Astro.locals;
-const { slug }: Props = Astro.props;
+const { slug, lang }: Props = Astro.props;
+const t = getTranslation(lang);
 
-let hasError = null;
 let characters: Character[] = [];
 let games: Game[] = [];
 
-try {
-  const response = await fetch(`${api}/games/`);
-  if (response.ok) {
+async function getCharacters () {
+  try {
+    const response = await fetch(`${api}/auth/me/characters/`);
+    if (!response.ok) throw new Error("Failed to fetch data");
+
+    characters = await response.json();
+    if (!characters) throw new Error("No characters found");
+  } catch {}
+};
+
+async function getGames () {
+  try {
+    const response = await fetch(`${api}/games/`);
+    if (!response.ok) throw new Error("Failed to fetch data");
+
     games = await response.json();
-  } else {
-    throw new Error("Failed to fetch data");
-  }
-} catch {
-  hasError = true;
-}
+    if (!games) throw new Error("No games found");
+  } catch {}
+};
+
+await getCharacters();
+await getGames();
 ---
 
 <aside id="okp-core-siderigh" class="okp-scrollable">
@@ -39,14 +53,16 @@ try {
       <nav class="okp-siderigh-games">
         <ul class="okp-siderigh-cards">
           <li class="okp-siderigh-card">
-            <span class="okp-siderigh-card-abbr">
-              <Users width="32" />
+            <span class="okp-siderigh-card-icon" aria-label={t("Characters")} title={t("Characters")}>
+              <Drama size={20} />
             </span>
           </li>
           {characters.map((character) => (
             <li class="okp-siderigh-card">
-              <a href={`/`} class="okp-siderigh-card-link">
-                <span class="okp-siderigh-card-abbr">{character.abbr}</span>
+              <a href={`/c/${character.id}-${character.slug}/`} class="okp-siderigh-card-link" aria-label={character.name} title={character.name}>
+                {character.avatar ? (
+                  <Image src={character.avatar} alt={character.name} width={32} height={32} loading="lazy" class="okp-siderigh-card-link-img" />
+                ) : <span class="okp-siderigh-card-link-abbr">{character.abbr}</span>}
               </a>
             </li>
           ))}
@@ -59,14 +75,16 @@ try {
       <nav class="okp-siderigh-games">
         <ul class="okp-siderigh-cards">
           <li class="okp-siderigh-card">
-            <span class="okp-siderigh-card-abbr">
-              <Sparkles width="32" />
+            <span class="okp-siderigh-card-icon" aria-label={t("Games")} title={t("Games")}>
+              <Sparkles size={20} />
             </span>
           </li>
           {games.map((game) => (
             (!slug || slug != game.slug) && <li class="okp-siderigh-card">
-              <a href={`/g/${game.slug}/`} class="okp-siderigh-card-link">
-                <span class="okp-siderigh-card-abbr">{game.abbr}</span>
+              <a href={`/g/${game.slug}/`} class="okp-siderigh-card-link" aria-label={game.name} title={game.name}>
+                {game.logo ? (
+                  <Image src={game.logo} alt={game.name} width={32} height={32} loading="lazy" class="okp-siderigh-card-link-img" />
+                ) : <span class="okp-siderigh-card-link-abbr">{game.abbr}</span>}
               </a>
             </li>
           ))}

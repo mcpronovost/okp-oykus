@@ -4,10 +4,9 @@ export interface Game {
   slug: string;
   abbr: string;
   version: string;
+  logo?: string | null;
   created_at: string;
   updated_at: string;
-  created?: number;
-  updated?: number;
   founder?: {
     id: number;
     playername: string;
@@ -22,5 +21,8 @@ export interface ThemeConfig {
 
 export interface Character {
   id: number;
+  name: string;
   abbr: string;
+  slug: string;
+  avatar: string | null;
 }

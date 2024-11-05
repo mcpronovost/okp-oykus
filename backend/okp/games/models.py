@@ -4,6 +4,7 @@ from django.db.models import F
 from django.utils.translation import gettext_lazy as _
 from colorfield.fields import ColorField
 
+from okp.fields import okpImageField, okpImageSizeValidator
 from okp.utils import get_unique_slug
 
 
@@ -66,7 +67,7 @@ class okpGame(models.Model):
 
     @property
     def abbr(self):
-        return "".join([x[0] for x in self.name.split()[:2]]).upper()
+        return "".join([x[0] for x in self.name.split()[:3]]).upper()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -345,6 +346,15 @@ class okpCharacter(models.Model):
         blank=True,
         null=True
     )
+    avatar = okpImageField(
+        verbose_name=_("Avatar"),
+        upload_to="characters/avatars",
+        max_width=200,
+        max_height=200,
+        blank=True,
+        null=True,
+        validators=[okpImageSizeValidator],
+    )
     created_at = models.DateTimeField(
         verbose_name=_("Created"),
         auto_now_add=True,
@@ -368,7 +378,7 @@ class okpCharacter(models.Model):
 
     @property
     def abbr(self):
-        return "".join([x[0] for x in self.name.split()[:2]]).upper()
+        return "".join([x[0] for x in self.name.split()[:3]]).upper()
 
     def save(self, *args, **kwargs):
         if not self.slug:

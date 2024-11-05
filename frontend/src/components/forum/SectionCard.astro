@@ -13,8 +13,6 @@ interface Props {
 
 const { lang, section }: Props = Astro.props;
 const t = getTranslation(lang);
-
-console.log(">> section: ", section);
 ---
 
 <article class={`okp-sections-card okp-basis-${section.basis}`}>
