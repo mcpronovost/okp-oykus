@@ -1,5 +1,6 @@
 services:
   traefik:
+    container_name: okp-oykus-traefik
     image: "traefik:v2.10.1"
     command:
       # - "--log.level=DEBUG"
@@ -21,6 +22,7 @@ services:
       - django
 
   astro:
+    container_name: okp-oykus-astro
     build: ./frontend
     command: sh -c "yarn dev --host --port 3000"
     labels:
@@ -46,6 +48,7 @@ services:
       - django
 
   django:
+    container_name: okp-oykus-django
     build: ./backend
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
     restart: unless-stopped
@@ -74,6 +77,7 @@ services:
       - db
 
   db:
+    container_name: okp-oykus-db
     image: postgres:13.16-alpine
     command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
     restart: unless-stopped
@@ -91,6 +95,7 @@ services:
       - okpoykus
 
   # elasticsearch:
+  #   container_name: okp-oykus-elasticsearch
   #   image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
   #   volumes:
   #     - esdata:/usr/share/elasticsearch/data

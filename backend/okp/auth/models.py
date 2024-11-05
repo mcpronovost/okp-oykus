@@ -104,6 +104,18 @@ class okpUser(AbstractBaseUser):
         null=True,
         validators=[okpImageSizeValidator],
     )
+    total_topics = models.PositiveIntegerField(
+        verbose_name=_("Total Topics"),
+        default=0,
+        blank=False,
+        null=False,
+    )
+    total_messages = models.PositiveIntegerField(
+        verbose_name=_("Total Messages"),
+        default=0,
+        blank=False,
+        null=False,
+    )
     is_staff = models.BooleanField(
         verbose_name=_("Staff"),
         default=False,

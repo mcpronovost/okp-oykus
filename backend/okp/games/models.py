@@ -313,3 +313,64 @@ class okpGameTheme(models.Model):
 
     def __str__(self):
         return f"{_("Theme")}"
+
+
+class okpCharacter(models.Model):
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name="characters",
+        verbose_name=_("User"),
+        blank=False,
+        null=False
+    )
+    game = models.ForeignKey(
+        okpGame,
+        on_delete=models.SET_NULL,
+        related_name="characters",
+        verbose_name=_("Game"),
+        blank=True,
+        null=True
+    )
+    name = models.CharField(
+        verbose_name=_("Name"),
+        max_length=120,
+        blank=False,
+        null=False
+    )
+    slug = models.SlugField(
+        verbose_name=_("Slug"),
+        max_length=120,
+        unique=True,
+        blank=True,
+        null=True
+    )
+    created_at = models.DateTimeField(
+        verbose_name=_("Created"),
+        auto_now_add=True,
+        blank=False,
+        null=False
+    )
+    updated_at = models.DateTimeField(
+        verbose_name=_("Updated"),
+        auto_now=True,
+        blank=False,
+        null=False
+    )
+
+    class Meta:
+        verbose_name = _("Character")
+        verbose_name_plural = _("Characters")
+        ordering = ["-updated_at", "name"]
+
+    def __str__(self):
+        return f"{self.name}"
+
+    @property
+    def abbr(self):
+        return "".join([x[0] for x in self.name.split()[:2]]).upper()
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = get_unique_slug(self.name, okpGame)
+        return super().save(*args, **kwargs)
