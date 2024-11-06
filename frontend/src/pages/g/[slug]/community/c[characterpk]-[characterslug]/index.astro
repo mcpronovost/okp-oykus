@@ -1,6 +1,6 @@
 ---
 import type { Character } from "@/types/games.types";
-import MainLayout from "@/layouts/MainLayout.astro";
+import GameLayout from "@/layouts/GameLayout.astro";
 import OkpHeader from "@/components/common/Header.astro";
 import OkpAlertNotFound from "@/components/common/AlertNotFound.astro";
 
@@ -9,7 +9,7 @@ interface Locals {
 }
 
 const { api }: Locals = Astro.locals;
-const { characterpk } = Astro.params;
+const { slug, characterpk } = Astro.params;
 
 let character: Character = {} as Character;
 
@@ -27,7 +27,7 @@ async function getCharacter () {
 await getCharacter();
 ---
 
-<MainLayout>
+<GameLayout slug={slug}>
   <div class="okp-grid">
     <section class="okp-characters">
       {(character && character.id) ? (
@@ -39,4 +39,4 @@ await getCharacter();
       )}
     </section>
   </div>
-</MainLayout>
+</GameLayout>

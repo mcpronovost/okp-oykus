@@ -10,10 +10,18 @@ from okp.forums.models import (
 from okp.games.models import okpCharacter
 
 
+class okpForumTopicMessageCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpCharacter
+        fields = ["id", "name", "abbr", "slug", "avatar"]
+
+
 class okpForumTopicMessageSerializer(serializers.ModelSerializer):
+    character = okpForumTopicMessageCharacterSerializer(read_only=True)
+
     class Meta:
         model = okpForumMessage
-        fields = ["id", "content", "created_at", "updated_at"]
+        fields = ["id", "character", "content", "created_at", "updated_at"]
 
 
 class okpForumTopicSerializer(serializers.ModelSerializer):

@@ -98,7 +98,16 @@ export interface Topic {
 
 export interface TopicMessage {
   id: number;
+  character: TopicMessageCharacter | null;
   content: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface TopicMessageCharacter {
+  id: number;
+  name: string;
+  abbr: string;
+  slug: string;
+  avatar: string | null;
 }

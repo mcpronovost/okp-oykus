@@ -59,10 +59,12 @@ await getGames();
           </li>
           {characters.map((character) => (
             <li class="okp-siderigh-card">
-              <a href={`/c/${character.id}-${character.slug}`} class="okp-siderigh-card-link" aria-label={character.name} title={character.name}>
+              <a href={character.game?.slug ? `/g/${character.game?.slug}/community/c${character.id}-${character.slug}/` : "#"} class="okp-siderigh-card-link" aria-label={character.name} title={character.name}>
                 {character.avatar ? (
                   <Image src={character.avatar} alt={character.name} width={32} height={32} loading="lazy" class="okp-siderigh-card-link-img" />
-                ) : <span class="okp-siderigh-card-link-abbr">{character.abbr}</span>}
+                ) : (
+                  <span class="okp-siderigh-card-link-abbr">{character.abbr}</span>
+                )}
               </a>
             </li>
           ))}
@@ -81,7 +83,7 @@ await getGames();
           </li>
           {games.map((game) => (
             (!slug || slug != game.slug) && <li class="okp-siderigh-card">
-              <a href={`/g/${game.slug}`} class="okp-siderigh-card-link" aria-label={game.name} title={game.name}>
+              <a href={`/g/${game.slug}/`} class="okp-siderigh-card-link" aria-label={game.name} title={game.name}>
                 {game.logo ? (
                   <Image src={game.logo} alt={game.name} width={32} height={32} loading="lazy" class="okp-siderigh-card-link-img" />
                 ) : <span class="okp-siderigh-card-link-abbr">{game.abbr}</span>}

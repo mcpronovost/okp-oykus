@@ -86,7 +86,9 @@ await getGame();
       <header class="okp-game-header">
         <h1 class="okp-game-header-title">{game.name}</h1>
       </header>
-      <slot />
+      <div class="okp-game-main">
+        <slot />
+      </div>
       <footer class="okp-game-footer">
         <small>
           <p>

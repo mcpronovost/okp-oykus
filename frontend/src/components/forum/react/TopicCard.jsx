@@ -1,7 +1,6 @@
 import React from "react";
 import { CircleArrowOutDownRight, Clock, MessagesSquare, Shell } from "lucide-react";
 import { qpdate, qpunit } from "@mcpronovost/qpfilters";
-import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function TopicCard({ index, topic, total }) {
   const basis = (
@@ -30,7 +29,7 @@ export default function TopicCard({ index, topic, total }) {
               </span>
             ) : (
               <span className="okp-topics-card-authors-avatar-icon" aria-hidden="true">
-                <Shell />
+                <Shell size={24} />
               </span>
             )}
           </a>
