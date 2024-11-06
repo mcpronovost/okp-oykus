@@ -1,23 +1,25 @@
 ---
 import type { Character } from "@/types/games.types";
-import { Construction } from "lucide-astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import OkpHeader from "@/components/common/Header.astro";
+import OkpAlertNotFound from "@/components/common/AlertNotFound.astro";
 
 interface Locals {
   api?: string;
 }
 
 const { api }: Locals = Astro.locals;
-const { pk, slug } = Astro.params;
+const { characterpk } = Astro.params;
 
 let character: Character = {} as Character;
 
 async function getCharacter () {
   try {
-    const response = await fetch(`${api}/games/characters/${pk}/`);
+    const response = await fetch(`${api}/games/characters/${characterpk}/`);
     if (!response.ok) throw new Error("Failed to fetch data");
 
     character = await response.json();
+    console.log(character);
     if (!character) throw new Error("Character not found");
   } catch {}
 };
@@ -30,16 +32,10 @@ await getCharacter();
     <section class="okp-characters">
       {(character && character.id) ? (
         <div>
-          <h1>{character.name}</h1>
+          <OkpHeader title={character.name} />
         </div>
       ) : (
-        <div class="okp-forum-notfound">
-          <div class="okp-forum-notfound-wrapper">
-            <Construction class="icon" />
-            <h2>Under Construction</h2>
-            <p>This section is currently being built</p>
-          </div>
-        </div>
+        <OkpAlertNotFound title="Character Not Found" subtitle="The character you are looking for does not exist" />
       )}
     </section>
   </div>

@@ -25,4 +25,6 @@ export interface Character {
   abbr: string;
   slug: string;
   avatar: string | null;
+  created_at?: string;
+  updated_at?: string;
 }

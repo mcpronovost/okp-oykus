@@ -54,7 +54,8 @@ class okpGamesSerializer(serializers.ModelSerializer):
 class okpCharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = okpCharacter
-        fields = ["id", "name", "abbr", "slug", "avatar"]
+        fields = ["id", "name", "abbr", "slug",
+                  "avatar", "created_at", "updated_at"]
         read_only_fields = [
             "id",
             "slug"
