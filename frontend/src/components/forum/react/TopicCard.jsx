@@ -1,5 +1,5 @@
 import React from "react";
-import { CircleArrowOutDownRight, Clock, MessagesSquare } from "lucide-react";
+import { CircleArrowOutDownRight, Clock, MessagesSquare, Shell } from "lucide-react";
 import { qpdate, qpunit } from "@mcpronovost/qpfilters";
 import imgAvatar from "@/assets/img/mc.jpg";
 
@@ -15,19 +15,23 @@ export default function TopicCard({ index, topic, total }) {
     <article className={`okp-topics-card okp-animate-boxup ${basis}`}>
       <section className="okp-topics-card-authors">
         <figure className="okp-topics-card-authors-banner">
-          {true ? (
-            <img src={imgAvatar.src} alt="" className="okp-topics-card-authors-banner-img" />
-          ) : (
-            <span className="okp-topics-card-authors-banner-abbr">MC</span>
+          {(topic.character?.avatar) && (
+            <img src={topic.character.avatar} alt="" className="okp-topics-card-authors-banner-img" />
           )}
         </figure>
         <figure className="okp-topics-card-authors-avatar">
           <a href={`${topic.path}`} className="okp-topics-card-authors-linklastmessage">
             <CircleArrowOutDownRight size={32} alt="Aller au dernier message" className="okp-topics-card-authors-golastmessage" />
-            {true ? (
-              <img src={imgAvatar.src} alt="" className="okp-topics-card-authors-avatar-img" aria-hidden="true" />
+            {(topic.last_message.character?.avatar) ? (
+              <img src={topic.last_message.character.avatar} alt="" className="okp-topics-card-authors-avatar-img" aria-hidden="true" />
+            ) : (topic.last_message.character?.name) ? (
+              <span className="okp-topics-card-authors-avatar-abbr" aria-hidden="true">
+                {topic.last_message.character?.abbr}
+              </span>
             ) : (
-              <span className="okp-topics-card-authors-avatar-abbr" aria-hidden="true">MC</span>
+              <span className="okp-topics-card-authors-avatar-icon" aria-hidden="true">
+                <Shell />
+              </span>
             )}
           </a>
         </figure>

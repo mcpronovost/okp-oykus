@@ -7,6 +7,7 @@ from okp.forums.models import (
     okpForumTopic,
     okpForumMessage,
 )
+from okp.games.models import okpCharacter
 
 
 class okpForumTopicMessageSerializer(serializers.ModelSerializer):
@@ -41,18 +42,27 @@ class okpForumTopicSerializer(serializers.ModelSerializer):
         return int(total_pages)
 
 
+class okpForumSectionTopicMessageCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpCharacter
+        fields = ["id", "name", "abbr", "slug", "avatar"]
+
+
 class okpForumSectionTopicMessageSerializer(serializers.ModelSerializer):
+    character = okpForumSectionTopicMessageCharacterSerializer(read_only=True)
+
     class Meta:
         model = okpForumMessage
-        fields = ["id", "created_at", "updated_at"]
+        fields = ["id", "character", "created_at", "updated_at"]
 
 
 class okpForumSectionTopicSerializer(serializers.ModelSerializer):
+    character = okpForumSectionTopicMessageCharacterSerializer(read_only=True)
     last_message = okpForumSectionTopicMessageSerializer(read_only=True)
 
     class Meta:
         model = okpForumTopic
-        fields = ["id", "name", "slug", "path", "last_message",
+        fields = ["id", "name", "slug", "path", "character", "last_message",
                   "total_messages", "created_at", "updated_at"]
 
 
@@ -85,10 +95,19 @@ class okpForumSectionSerializer(serializers.ModelSerializer):
         return int(total_pages)
 
 
+class okpForumCategorySectionTopicMessageCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = okpCharacter
+        fields = ["id", "name", "abbr", "slug", "avatar"]
+
+
 class okpForumCategorySectionTopicMessageSerializer(serializers.ModelSerializer):
+    character = okpForumCategorySectionTopicMessageCharacterSerializer(
+        read_only=True)
+
     class Meta:
         model = okpForumMessage
-        fields = ["id", "path", "created_at"]
+        fields = ["id", "path", "character", "created_at"]
 
 
 class okpForumCategorySectionTopicSerializer(serializers.ModelSerializer):

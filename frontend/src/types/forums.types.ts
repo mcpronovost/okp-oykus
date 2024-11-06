@@ -20,7 +20,7 @@ export interface CategorySection {
   show_last_message: boolean;
   show_last_topic: boolean;
   last_topic: CategorySectionTopic | null;
-  last_message: CategorySectionTopicMessage | null;
+  last_message: CategorySectionMessage | null;
 }
 
 export interface CategorySectionTopic {
@@ -31,10 +31,19 @@ export interface CategorySectionTopic {
   created_at: string;
 }
 
-export interface CategorySectionTopicMessage {
+export interface CategorySectionMessage {
   id: number;
   path: string;
+  character: CategorySectionMessageCharacter | null;
   created_at: string;
+}
+
+export interface CategorySectionMessageCharacter {
+  id: number;
+  name: string;
+  abbr: string;
+  slug: string;
+  avatar: string | null;
 }
 
 export interface Section {
@@ -54,6 +63,7 @@ export interface SectionTopic {
   name: string;
   slug: string;
   path: string;
+  character: SectionTopicCharacter | null;
   last_message: SectionTopicMessage | null;
   total_messages: number;
   created_at: string;
@@ -62,8 +72,17 @@ export interface SectionTopic {
 
 export interface SectionTopicMessage {
   id: number;
+  character: SectionTopicCharacter | null;
   created_at: string;
   updated_at: string;
+}
+
+export interface SectionTopicCharacter {
+  id: number;
+  name: string;
+  abbr: string;
+  slug: string;
+  avatar: string | null;
 }
 
 export interface Topic {

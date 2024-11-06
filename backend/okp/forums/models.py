@@ -429,18 +429,19 @@ class okpForumMessage(models.Model):
         return f"{d}{g}{c}{s}{t}"
 
     def save(self, *args, **kwargs):
+        is_new = self._state.adding
         super().save(*args, **kwargs)
 
-        # Update the last message on the topic
-        if self.topic:
+        # Update the last message on the topic only if this is a new message
+        if is_new and self.topic:
             self.topic.last_message = self
             self.topic.total_messages = self.topic.messages.count()
             self.topic.save(
                 update_fields=["last_message", "total_messages"]
             )
 
-        # Update the last topic and last message on the section
-        if self.section:
+        # Update the last topic and last message on the section only if this is a new message
+        if is_new and self.section:
             self.section.last_topic = self.topic
             self.section.last_message = self
             self.section.total_messages = self.section.topics.aggregate(

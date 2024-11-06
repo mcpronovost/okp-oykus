@@ -1,7 +1,7 @@
 ---
 import type { Lang } from "@/types/i18n.types";
 import type { CategorySection } from "@/types/forums.types";
-import { CircleArrowOutDownRight } from "lucide-astro";
+import { CircleArrowOutDownRight, Shell } from "lucide-astro";
 import { qpdate } from "@mcpronovost/qpfilters";
 import { getTranslation } from "@/i18n/i18n";
 import imgAvatar from "@/assets/img/mc.jpg";
@@ -29,10 +29,16 @@ const t = getTranslation(lang);
         <figure class="okp-sections-card-lastmessage-avatar">
           <a href={`${section.last_message.path}?page=last`} class="okp-sections-card-lastmessage-link" aria-label={t("Go to the last message")} title={t("Go to the last message")}>
             <CircleArrowOutDownRight size={32} alt="Aller au dernier message" class="okp-sections-card-lastmessage-golast" />
-            {true ? (
-              <img src={imgAvatar.src} alt="" class="okp-sections-card-lastmessage-avatar-img" aria-hidden="true" />
+            {(section.last_message.character?.avatar) ? (
+              <img src={section.last_message.character.avatar} alt="" class="okp-sections-card-lastmessage-avatar-img" aria-hidden="true" />
+            ) : (section.last_message.character?.name) ? (
+              <span class="okp-sections-card-lastmessage-avatar-abbr" aria-hidden="true">
+                {section.last_message.character?.abbr}
+              </span>
             ) : (
-              <span class="okp-sections-card-lastmessage-avatar-abbr" aria-hidden="true">MC</span>
+              <span class="okp-sections-card-lastmessage-avatar-icon" aria-hidden="true">
+                <Shell />
+              </span>
             )}
           </a>
         </figure>
