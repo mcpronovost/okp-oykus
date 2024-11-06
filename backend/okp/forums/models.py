@@ -1,10 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import F
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from okp.fields import okpImageField, okpImageSizeValidator
-from okp.games.models import okpGame
+from okp.games.models import okpGame, okpCharacter
 
 CHOIX_SECTION_BASIS = (
     ("auto", _("Default")),
@@ -227,6 +228,22 @@ class okpForumSection(models.Model):
 
 
 class okpForumTopic(models.Model):
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.SET_NULL,
+        related_name="author_topics",
+        verbose_name=_("User"),
+        blank=True,
+        null=True
+    )
+    character = models.ForeignKey(
+        okpCharacter,
+        on_delete=models.SET_NULL,
+        related_name="author_topics",
+        verbose_name=_("Character"),
+        blank=True,
+        null=True
+    )
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=120,
@@ -322,6 +339,22 @@ class okpForumTopic(models.Model):
 
 
 class okpForumMessage(models.Model):
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.SET_NULL,
+        related_name="author_messages",
+        verbose_name=_("User"),
+        blank=True,
+        null=True
+    )
+    character = models.ForeignKey(
+        okpCharacter,
+        on_delete=models.SET_NULL,
+        related_name="author_messages",
+        verbose_name=_("Character"),
+        blank=True,
+        null=True
+    )
     game = models.ForeignKey(
         okpGame,
         on_delete=models.SET_NULL,
