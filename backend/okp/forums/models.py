@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import F
@@ -77,9 +78,10 @@ class okpForumCategory(models.Model):
 
     @property
     def path(self):
+        d = f"{settings.DOMAIN}"
         g = f"/g/{self.game.slug}"
         c = f"/c{self.pk}-{self.slug}"
-        return f"{g}{c}"
+        return f"{d}{g}{c}"
 
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
@@ -217,10 +219,11 @@ class okpForumSection(models.Model):
 
     @property
     def path(self):
+        d = f"{settings.DOMAIN}"
         g = f"/g/{self.game.slug}"
         c = f"/c{self.category.pk}-{self.category.slug}"
         s = f"/s{self.pk}-{self.slug}"
-        return f"{g}{c}{s}"
+        return f"{d}{g}{c}{s}"
 
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
@@ -320,11 +323,12 @@ class okpForumTopic(models.Model):
 
     @property
     def path(self):
+        d = f"{settings.DOMAIN}"
         g = f"/g/{self.game.slug}"
         c = f"/c{self.category.pk}-{self.category.slug}"
         s = f"/s{self.section.pk}-{self.section.slug}"
         t = f"/t{self.pk}-{self.slug}"
-        return f"{g}{c}{s}{t}"
+        return f"{d}{g}{c}{s}{t}"
 
     def save(self, *args, **kwargs):
         self.slug = f"{slugify(self.name)[:120]}"
@@ -417,11 +421,12 @@ class okpForumMessage(models.Model):
 
     @property
     def path(self):
+        d = f"{settings.DOMAIN}"
         g = f"/g/{self.game.slug}"
         c = f"/c{self.category.pk}-{self.category.slug}"
         s = f"/s{self.section.pk}-{self.section.slug}"
         t = f"/t{self.topic.pk}-{self.topic.slug}"
-        return f"{g}{c}{s}{t}"
+        return f"{d}{g}{c}{s}{t}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

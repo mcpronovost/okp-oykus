@@ -12,6 +12,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", False)
 
+DOMAIN = os.getenv("DOMAIN", "http://localhost")
+
 ADMINS = [
     (os.getenv("ADMIN_NAME"), os.getenv("ADMIN_EMAIL"))
 ]
