@@ -3,7 +3,6 @@ import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, S
 import SimpleBarReact from "simplebar-react";
 import { useSideleft } from "@/hooks/core/useSideleft";
 import { getTranslation } from "@/i18n/i18n";
-import imgAvatar from "@/assets/img/mc.jpg";
 
 export default function SideleftPanel ({ lang, user, slug, open }) {
   const t = getTranslation(lang);
@@ -23,7 +22,9 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
                   {(user.avatar) ? (
                     <img src={user.avatar} alt="" className="okp-sideleft-auth-display-avatar-img" />
                   ) : (
-                    <span className="okp-sideleft-auth-display-avatar-abbr">MC</span>
+                    <span className="okp-sideleft-auth-display-avatar-abbr">
+                      {user.abbr}
+                    </span>
                   )}
                 </figure>
               </section>
@@ -121,7 +122,7 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
             <div className="okp-sideleft-space"></div>
             <ul className="okp-sideleft-settings">
               <li>
-                <a href="/">
+                <a href="/settings">
                   <span className="okp-icon" aria-hidden="true">
                     <Settings size={24} />
                   </span>
