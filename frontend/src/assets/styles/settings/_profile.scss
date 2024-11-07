@@ -1,0 +1,138 @@
+.okp-settings-profile {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 240px auto;
+    gap: 12px;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &-menu {
+    // width: 240px;
+  }
+
+  &-content {
+    &-profilecard {
+      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      
+      @media (max-width: 1023px) {
+        grid-template-columns: 1fr 1fr;
+      
+        .okp-settings-profile-content-profilecard-preview {
+          grid-column: 1 / -1;
+        }
+      }
+      
+      @media (max-width: 599px) {
+        grid-template-columns: 1fr;
+      }
+
+      &-preview,
+      &-playername,
+      &-avatar {
+        background-color: var(--okp-card-bg);
+        border-radius: var(--okp-card-radius);
+        text-align: center;
+      }
+
+      &-playername,
+      &-avatar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 12px;
+
+        .okp-icon {
+          transition: color 0.3s;
+        }
+
+        span {
+          margin: 12px 0 4px;
+        }
+
+        small {
+          color: var(--okp-card-subtle);
+          font-size: 0.7rem;
+          line-height: 120%;
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .okp-icon {
+            color: var(--okp-primary);
+          }
+
+          &:active {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      &-preview {
+        min-height: 64px;
+        position: relative;
+        transition: min-height 0.3s;
+  
+        .okp-banner {
+          background-color: var(--okp-card-mask-bg);
+          border-top-left-radius: var(--okp-card-radius);
+          border-top-right-radius: var(--okp-card-radius);
+          height: 64px;
+          position: relative;
+  
+          &-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            opacity: 0.3;
+          }
+        }
+  
+        .okp-avatar {
+          background-color: var(--okp-card-bg);
+          border: 3px solid var(--okp-card-bg);
+          border-radius: 50%;
+          overflow: hidden;
+          display: block;
+          width: 90px;
+          height: 90px;
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translateX(-50%);
+  
+          &-img {
+            background-color: var(--okp-card-bg);
+            border: 0 solid var(--okp-card-bg);
+            border-radius: 50%;
+            overflow: hidden;
+          }
+  
+          &-abbr {
+            background-color: var(--okp-card-mask-bg);
+            border: 0 solid var(--okp-card-bg);
+            border-radius: 50%;
+            color: var(--okp-card-mask-text);
+            font-family: "Hurricane", sans-serif;
+            font-size: 0.8rem;
+            line-height: 38px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .okp-playername {
+          padding: 48px 12px 20px;
+        }
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@
 @use "./core/siderigh.scss";
 
 @use "./common/animate";
+@use "./common/card";
 @use "./common/loading";
 
 @use "./ui/button";
@@ -23,3 +24,5 @@
 @use "./forums/category" as forumscategory;
 @use "./forums/section" as forumssection;
 @use "./forums/topic" as forumstopic;
+
+@use "./settings/profile" as settingsprofile;

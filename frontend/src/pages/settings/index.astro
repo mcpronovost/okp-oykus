@@ -1,0 +1,17 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import OkpProfile from "@/components/settings/Profile.astro";
+import { getUser } from "@/utils/auth";
+
+interface Locals {
+  api?: string;
+}
+
+const { api }: Locals = Astro.locals;
+
+const user = api ? await getUser(api) : null;
+---
+
+<MainLayout>
+  <OkpProfile user={user} />
+</MainLayout>

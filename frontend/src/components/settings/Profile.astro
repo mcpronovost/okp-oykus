@@ -1,0 +1,40 @@
+---
+import type { User } from "@/types/auth.types";
+import { Home } from "lucide-astro";
+import OkpHeader from "@/components/common/Header.astro";
+import OkpProfilePlayerCard from "./react/ProfilePlayerCard.jsx";
+
+interface Props {
+  user: User | null;
+}
+
+const { user }: Props = Astro.props;  
+---
+
+<section class="okp-settings-profile">
+
+  <div class="okp-grid">
+    <OkpHeader title="Settings" />
+
+    <div class="okp-settings-profile-wrapper">
+      <div class="okp-settings-profile-menu">
+        <div class="okp-card">
+          menu
+        </div>
+      </div>
+      
+      <div class="okp-settings-profile-content">
+        <OkpProfilePlayerCard user={user} client:only="react" />
+      </div>
+    </div>
+
+    <div class="okp-forum-notfound">
+      <div class="okp-forum-notfound-wrapper">
+        <Home class="icon" />
+        <h2>Hello World!</h2>
+        <p>This is the home page</p>
+      </div>
+    </div>
+  </div>
+
+</section>
