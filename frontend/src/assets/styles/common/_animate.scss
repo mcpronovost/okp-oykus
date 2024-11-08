@@ -8,3 +8,182 @@
     // transform: translateY(-2px);
   }
 }
+
+.okp-animate-svg {
+  display: inline-block;
+  width: 150px;
+  position: relative;
+
+  .okp-circular {
+    circle.path {
+      stroke-dasharray: 330;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      opacity: 0.4;
+      animation: 1s okp-draw-circle ease-out;
+  
+      @keyframes okp-draw-circle {
+        0% {
+          stroke-dasharray: 0,330;
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+        60% {
+          stroke-dasharray: 330,330;
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+        100%{
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  &.okp-svg-success {
+    .okp-circular {
+      stroke: var(--okp-success);
+    }
+
+    .okp-checkmark {
+      stroke: var(--okp-success);
+      stroke-width: 6.25;
+      stroke-linecap: round;
+      width: 52px;
+      height: 40px;
+      position: absolute;
+      top: 56px;
+      left: 49px;
+
+      path {
+        opacity: 1;
+        animation: 1s okp-draw-check ease-out;
+      }
+    }
+
+    @keyframes okp-draw-check {
+      0% {
+        stroke-dasharray: 49,80;
+        stroke-dashoffset: 48;
+        opacity: 0;
+      }
+      50% {
+        stroke-dasharray: 49,80;
+        stroke-dashoffset: 48;
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        stroke-dasharray: 130,80;
+        stroke-dashoffset: 48;
+      }
+    }
+  }
+
+  &.okp-svg-error {
+    .okp-circular {
+      stroke: var(--okp-error);
+    }
+
+    .okp-cross {
+      stroke: var(--okp-error);
+      stroke-width: 6.25;
+      stroke-linecap: round;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 54px;
+      left: 54px;
+
+      path.line1 {
+        opacity: 1;
+        animation: 0.7s okp-draw-first-line ease-out;
+      }
+
+      path.line2 {
+        opacity: 1;
+        animation: 0.7s okp-draw-second-line ease-out;
+      }
+    }
+
+    @keyframes okp-draw-first-line {
+      0% {
+        stroke-dasharray: 0,56;
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+      50% {
+        stroke-dasharray: 0,56;
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        stroke-dasharray: 56,330;
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    @keyframes okp-draw-second-line {
+      0% {
+        stroke-dasharray: 0,55;
+        stroke-dashoffset: 1;
+        opacity: 0;
+      }
+      50% {
+        stroke-dasharray: 0,55;
+        stroke-dashoffset: 1;
+        opacity: 0;
+      }
+      75% {
+        opacity: 1;
+      }
+      100% {
+        stroke-dasharray: 55,0;
+        stroke-dashoffset: 70;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.okp-svg-warning {
+    .okp-circular {
+      stroke: var(--okp-warning);
+    }
+
+    .okp-exclamation {
+      stroke: var(--okp-warning);
+      stroke-width:6.25;
+      stroke-linecap: round;
+      width: 15px;
+      height: 70px;
+      position: absolute;
+      top: 40px;
+      left: 68px;
+      animation: 0.5s okp-draw-exclamation cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+      .dot {
+        stroke: none;
+        fill: var(--okp-warning);
+      }
+    }
+
+    @keyframes okp-draw-exclamation {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+}
