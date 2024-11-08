@@ -1,0 +1,52 @@
+---
+import { Cog, Smile, UserCircle } from "lucide-astro";
+
+interface Props {
+  tab?: string;
+}
+
+const { tab }: Props = Astro.props;
+
+const navList = [
+  {
+    title: "Public Profile",
+    subtitle: "Change your playername, avatar and more!",
+    href: "/settings",
+    tab: "profile",
+    icon: UserCircle,
+  },
+  {
+    title: "Account",
+    subtitle: "Manage your account settings",
+    href: "/settings/account",
+    tab: "account",
+    icon: Cog,
+  },
+  {
+    title: "Friends",
+    subtitle: "Manage your friends and invites",
+    href: "/settings/friends",
+    tab: "friends",
+    icon: Smile,
+  },
+];
+---
+
+<nav class="okp-settings-profile-menu">
+  {navList.map((item) => (
+    <section class="okp-settings-profile-menu-section">
+      <a href={item.href} class={`okp-settings-profile-menu-section-header ${tab === item.tab && "okp-active"}`}>
+        <div class="okp-icon">
+          <item.icon size={20} />
+        </div>
+        <div class="okp-heading">
+          <p class="okp-heading-title">{item.title}</p>
+          <p class="okp-heading-subtitle">{item.subtitle}</p>
+        </div>
+        <div class="okp-toggle">
+          <span></span>
+        </div>
+      </a>
+    </section>
+  ))}
+</nav>

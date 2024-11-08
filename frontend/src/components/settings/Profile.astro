@@ -1,40 +1,44 @@
 ---
 import type { User } from "@/types/auth.types";
-import { Home } from "lucide-astro";
 import OkpHeader from "@/components/common/Header.astro";
+import OkpSidenav from "./common/Sidenav.astro";
 import OkpProfilePlayerCard from "./react/ProfilePlayerCard.jsx";
 
 interface Props {
   user: User | null;
+  tab?: string;
 }
 
-const { user }: Props = Astro.props;  
+const { user, tab }: Props = Astro.props;
 ---
 
 <section class="okp-settings-profile">
-
   <div class="okp-grid">
     <OkpHeader title="Settings" />
-
     <div class="okp-settings-profile-wrapper">
-      <div class="okp-settings-profile-menu">
-        <div class="okp-card">
-          menu
-        </div>
-      </div>
-      
-      <div class="okp-settings-profile-content">
-        <OkpProfilePlayerCard user={user} client:only="react" />
-      </div>
-    </div>
+      <OkpSidenav tab={tab} />
 
-    <div class="okp-forum-notfound">
-      <div class="okp-forum-notfound-wrapper">
-        <Home class="icon" />
-        <h2>Hello World!</h2>
-        <p>This is the home page</p>
+      <div class="okp-settings-profile-content">
+        <header>
+          <h2>Public Profile</h2>
+          <p>Change your playername, avatar and more!</p>
+        </header>
+        <OkpProfilePlayerCard user={user} client:only="react" />
+        <section class="okp-card">
+          <h3>About Me</h3>
+          <form method="post">
+            <div>
+              <div class="okp-form-field">
+                <label for="okp-form-playername">
+                  <span>Playername</span>
+                  <input type="text" id="okp-form-playername" name="playername" placeholder="Enter your playername" />
+                </label>
+              </div>
+            </div>
+          </form>
+        </section>
       </div>
+
     </div>
   </div>
-
 </section>
