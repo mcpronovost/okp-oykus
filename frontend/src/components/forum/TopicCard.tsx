@@ -5,7 +5,13 @@ import { qpdate, qpunit } from "@mcpronovost/qpfilters";
 import { useRouter } from "@/hooks/core/useRouter";
 import GameContext from "@/stores/storeGame";
 
-export default function TopicCard({ index, topic, total }: { index: number, topic: SectionTopic, total: number }) {
+interface Props {
+  index: number;
+  topic: SectionTopic;
+  total: number;
+}
+
+export default function TopicCard ({ index, topic, total }: Props) {
   const { lang } = useContext(GameContext);
   const { doRoute } = useRouter();
   const basis = (

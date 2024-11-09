@@ -5,7 +5,12 @@ import OkpLoading from "@/components/ui/Loading";
 import OkpForumHeader from "@/components/forum/common/Header";
 import OkpMessagesList from "@/components/forum/MessagesList";
 
-export default function OkpForumTopic ({ slug, tpk }: { slug: string, tpk: string }) {
+interface Props {
+  slug: string;
+  tpk: string;
+}
+
+export default function OkpForumTopic ({ slug, tpk }: Props) {
   const { messagesPerPage } = useContext(GameContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState<Topic | null>(null);

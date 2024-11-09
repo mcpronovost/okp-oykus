@@ -7,7 +7,14 @@ import { useRouter } from "@/hooks/core/useRouter";
 import { useSideleft } from "@/hooks/core/useSideleft";
 import { getTranslation } from "@/i18n/i18n";
 
-export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang, user: User, slug: string, open: boolean }) {
+interface Props {
+  lang: Lang;
+  user: User;
+  slug: string;
+  open: boolean;
+}
+
+export default function SideleftPanel ({ lang, user, slug, open }: Props) {
   const t = getTranslation(lang);
   const { isOpen } = useSideleft(open);
   const { doRoute } = useRouter();

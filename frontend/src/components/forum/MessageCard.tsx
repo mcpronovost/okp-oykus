@@ -1,7 +1,12 @@
+import type { TopicMessage } from "@/types/forums.types";
 import React from "react";
 import { Shell } from "lucide-react";
 
-export default function MessageCard ({ message }) {
+interface Props {
+  message: TopicMessage;
+}
+
+export default function MessageCard ({ message }: Props) {
   return (
     <article key={message.id} id={`okp-message-${message.id}`} className="okp-messages-card">
       <header className="okp-messages-card-header">

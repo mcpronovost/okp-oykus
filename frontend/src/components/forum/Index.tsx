@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import OkpLoading from "@/components/ui/Loading";
 import OkpForumCategoryCard from "@/components/forum/CategoryCard";
 
-export default function OkpForumIndex ({ slug }: { slug: string }) {
+interface Props {
+  slug: string;
+}
+
+export default function OkpForumIndex ({ slug }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
 

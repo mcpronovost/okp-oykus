@@ -4,7 +4,12 @@ import OkpLoading from "@/components/ui/Loading";
 import OkpForumHeader from "@/components/forum/common/Header";
 import OkpTopicsList from "@/components/forum/TopicsList";
 
-export default function OkpForumSection ({ slug, spk }: { slug: string, spk: string }) {
+interface Props {
+  slug: string;
+  spk: string;
+}
+
+export default function OkpForumSection ({ slug, spk }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [section, setSection] = useState<Section | null>(null);
 

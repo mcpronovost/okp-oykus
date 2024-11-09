@@ -6,7 +6,12 @@ import GameContext from "@/stores/storeGame";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpTopicCard from "./TopicCard";
 
-export default function TopicsList ({ slug, section }: { slug: string, section: Section }) {
+interface Props {
+  slug: string;
+  section: Section;
+}
+
+export default function TopicsList ({ slug, section }: Props) {
   const { lang, topicsPerPage } = useContext(GameContext);
   const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(true);

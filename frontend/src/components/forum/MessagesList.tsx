@@ -6,6 +6,11 @@ import GameContext from "@/stores/storeGame";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpMessageCard from "./MessageCard";
 
+interface Props {
+  slug: string;
+  topic: Topic;
+}
+
 function getPageParam(topic: Topic) {
   const pageParam = new URLSearchParams(window.location.search).get("page");
   if (pageParam === "last") {
@@ -14,7 +19,7 @@ function getPageParam(topic: Topic) {
   return pageParam || "1";
 }
 
-export default function MessagesView ({ slug, topic }: { slug: string, topic: Topic }) {
+export default function MessagesView ({ slug, topic }: Props) {
   const { lang, messagesPerPage } = useContext(GameContext);
   const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(false);
