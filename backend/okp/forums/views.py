@@ -88,7 +88,12 @@ class okpForumTopicView(APIView):
         ).first()
         if queryset is None:
             return Response(None, status=404)
-        topic = okpForumTopicSerializer(queryset).data
+        page = int(request.query_params.get("page", 1))
+        size = int(request.query_params.get("size", 10))
+        topic = okpForumTopicSerializer(queryset, context={
+            "page": page,
+            "size": size
+        }).data
         return Response(topic)
 
 
