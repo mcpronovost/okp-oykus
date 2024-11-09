@@ -1,0 +1,42 @@
+.okp-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  &-content {
+    border-bottom: 4px solid var(--okp-card-mask-bg);
+    text-align: center;
+    max-width: 400px;
+
+    h1 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--okp-card-text);
+    }
+
+    p {
+      color: var(--okp-card-text);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &-icons {
+    display: inline-block;
+    position: relative;
+    padding: 1rem 0 0;
+    
+    .okp-icon-primary {
+      color: var(--okp-primary);
+    }
+    
+    .okp-icon-secondary {
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      color: var(--okp-card-text);
+    }
+  }
+}

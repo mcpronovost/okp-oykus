@@ -7,7 +7,7 @@ const translations: Record<Lang, Record<string, string>> = { en, fr };
 const defaultLang = "en";
 
 export const getTranslation = (lang: Lang) => {
-  return function t(key: string) {
+  return function t (key: string) {
     return translations[lang]?.[key] || translations[defaultLang][key] || key;
   };
 };

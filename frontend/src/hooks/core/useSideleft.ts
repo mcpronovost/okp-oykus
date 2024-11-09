@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import Cookies from "js-cookie";
 import { sideleftOpenStore } from "@/stores/storeWeb";
 
-export function useSideleft(initialState: boolean = false) {
+export function useSideleft (initialState: boolean = false) {
   const sideleftOpen = useStore(sideleftOpenStore);
   const [isOpen, setIsOpen] = useState(initialState);
 
@@ -13,7 +13,7 @@ export function useSideleft(initialState: boolean = false) {
     Cookies.set("okp-web-sideleftOpen", String(newState), {
       path: "/",
       expires: 30,
-      sameSite: "strict"
+      sameSite: "strict",
     });
   };
 

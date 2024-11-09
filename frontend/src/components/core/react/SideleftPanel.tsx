@@ -1,12 +1,21 @@
+import type { Lang } from "@/types/i18n.types";
+import type { User } from "@/types/auth.types";
 import React from "react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
+import { useRouter } from "@/hooks/core/useRouter";
 import { useSideleft } from "@/hooks/core/useSideleft";
 import { getTranslation } from "@/i18n/i18n";
 
-export default function SideleftPanel ({ lang, user, slug, open }) {
+export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang, user: User, slug: string, open: boolean }) {
   const t = getTranslation(lang);
   const { isOpen } = useSideleft(open);
+  const { doSetRouter } = useRouter();
+
+  const handleRoute = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    doSetRouter(e.currentTarget.href);
+  };
 
   return (
     <>
@@ -78,7 +87,7 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
             {!!slug && (
               <ul className="okp-sideleft-game">
                 <li>
-                  <a href={`/g/${slug}/rules`}>
+                  <a href={`/g/${slug}/rules`} onClick={handleRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <Scale size={24} />
                     </span>
@@ -88,7 +97,7 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}/lore`}>
+                  <a href={`/g/${slug}/lore`} onClick={handleRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <LibraryBig size={24} />
                     </span>
@@ -98,7 +107,7 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}`}>
+                  <a href={`/g/${slug}`} onClick={handleRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <MessagesSquare size={24} />
                     </span>
@@ -108,7 +117,7 @@ export default function SideleftPanel ({ lang, user, slug, open }) {
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}/community`}>
+                  <a href={`/g/${slug}/community`} onClick={handleRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <Users size={24} />
                     </span>

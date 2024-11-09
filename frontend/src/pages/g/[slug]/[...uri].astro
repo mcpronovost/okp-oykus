@@ -1,20 +1,13 @@
 ---
 import GameLayout from "@/layouts/GameLayout.astro";
-import { Construction } from "lucide-astro";
+import OkpGame from "src/components/game/Game";
+import OkpLoading from "@/components/common/Loading.astro";
 
-const { slug } = Astro.params;
+const { slug, uri } = Astro.params;
 ---
 
 <GameLayout slug={slug}>
-  <div class="okp-grid">
-    <section class="okp-forum">
-      <div class="okp-forum-notfound">
-        <div class="okp-forum-notfound-wrapper">
-          <Construction class="icon" />
-          <h2>Under Construction</h2>
-          <p>This section is currently being built</p>
-        </div>
-      </div>
-    </section>
-  </div>
+  <OkpGame slug={slug || ""} uri={uri || "forum"} client:only="react">
+    <OkpLoading slot="fallback" />
+  </OkpGame>
 </GameLayout>

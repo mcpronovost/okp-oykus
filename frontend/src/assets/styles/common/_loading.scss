@@ -6,7 +6,7 @@
   padding: 12px;
 
   &-spinner {
-    &.okp-squareline {
+    &.okp-squares {
       display: inline-block;
       width: 48px;
       height: 48px;
@@ -50,7 +50,7 @@
       }
     }
 
-    &.okp-tripleline {
+    &.okp-circles {
       border: 3px solid;
       border-color: var(--okp-core-text) var(--okp-core-text) transparent transparent;
       border-radius: 50%;
