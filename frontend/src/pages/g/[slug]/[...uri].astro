@@ -3,11 +3,11 @@ import GameLayout from "@/layouts/GameLayout.astro";
 import OkpGame from "src/components/game/Game";
 import OkpLoading from "@/components/common/Loading.astro";
 
-const { slug, uri } = Astro.params;
+const { slug } = Astro.params;
 ---
 
 <GameLayout slug={slug}>
-  <OkpGame slug={slug || ""} uri={uri || "forum"} client:only="react">
+  <OkpGame slug={slug || ""} client:only="react">
     <OkpLoading slot="fallback" />
   </OkpGame>
 </GameLayout>
