@@ -39,8 +39,8 @@ export default function OkpForumSection ({ slug, spk }: Props) {
       <section className="okp-forum">
         {(section) && (
           <section className="okp-forum-section">
-              <OkpForumHeader title={section.name} description={section.description} />
-              <OkpTopicsList slug={slug} section={section} />
+            <OkpForumHeader title={section.name} description={section.description} />
+            <OkpTopicsList slug={slug} section={section} />
           </section>
         )}
       </section>

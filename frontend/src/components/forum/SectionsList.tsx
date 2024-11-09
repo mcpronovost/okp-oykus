@@ -1,10 +1,9 @@
 import type { CategorySection } from "@/types/forums.types";
-import React, { useState } from "react";
+import React from "react";
 import { useStore } from "@nanostores/react";
 import { AlertCircle } from "lucide-react";
 import { getTranslation } from "@/i18n/i18n";
 import { lang } from "@/stores/storeWeb";
-import OkpLoading from "@/components/ui/Loading";
 import OkpForumSectionCard from "@/components/forum/SectionCard";
 
 interface Props {
@@ -12,11 +11,8 @@ interface Props {
 }
 
 export default function OkpSectionsList ({ sections }: Props) {
-  const [isLoading, setIsLoading] = useState(false);
   const $lang = useStore(lang);
   const t = getTranslation($lang);
-
-  if (isLoading) return <OkpLoading />;
 
   return (
     <section className="okp-forum-sections">

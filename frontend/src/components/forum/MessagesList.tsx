@@ -4,7 +4,7 @@ import { AlertCircle } from "lucide-react";
 import { getTranslation } from "@/i18n/i18n";
 import GameContext from "@/stores/storeGame";
 import OkpPaginate from "@/components/ui/Paginate";
-import OkpMessageCard from "./MessageCard";
+import OkpMessageCard from "@/components/forum/MessageCard";
 
 interface Props {
   slug: string;

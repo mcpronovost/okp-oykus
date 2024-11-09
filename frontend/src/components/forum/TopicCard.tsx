@@ -11,7 +11,7 @@ interface Props {
   total: number;
 }
 
-export default function TopicCard ({ index, topic, total }: Props) {
+export default function TopicCard({ index, topic, total }: Props) {
   const { lang } = useContext(GameContext);
   const { doRoute } = useRouter();
   const basis = (
@@ -58,9 +58,8 @@ export default function TopicCard ({ index, topic, total }: Props) {
       <footer className="okp-topics-card-footer">
         <time className="okp-topics-card-footer-date">
           <span className="okp-icon"><Clock size={12} /></span>
-          <span className="okp-text">{
-            qpdate(topic.last_message?.created_at || topic.created_at, lang)
-          }</span>
+          <span className="okp-text">
+            {qpdate(topic.last_message?.created_at || topic.created_at, lang)}</span>
         </time>
         <div className="okp-topics-card-footer-total">
           <span className="okp-text">{qpunit(topic.total_messages)}</span>
