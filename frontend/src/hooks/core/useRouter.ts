@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { router } from "@/stores/storeWeb";
@@ -20,11 +21,16 @@ export function useRouter () {
     setRoute(null);
   };
 
+  const doRoute = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    doSetRouter(e.currentTarget.href);
+  };
+
   useEffect(() => {
     if ($router) {
       doSetRoute($router);
     }
   }, [$router]);
 
-  return { route, doSetRouter, doSetRoute, doCleanRouter };
+  return { route, doSetRouter, doSetRoute, doCleanRouter, doRoute };
 }

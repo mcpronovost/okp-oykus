@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useStore } from "@nanostores/react";
+import type { Topic } from "@/types/forums.types";
+import React, { useContext, useEffect, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { getTranslation } from "@/i18n/i18n";
-import { messagesPerPage } from "@/stores/storeForums";
+import GameContext from "@/stores/storeGame";
 import OkpPaginate from "@/components/ui/Paginate";
 import OkpMessageCard from "./MessageCard";
 
-function getPageParam(topic) {
+function getPageParam(topic: Topic) {
   const pageParam = new URLSearchParams(window.location.search).get("page");
   if (pageParam === "last") {
     return topic.total_pages.toString();
@@ -14,7 +14,8 @@ function getPageParam(topic) {
   return pageParam || "1";
 }
 
-export default function MessagesView ({ lang, slug, topic }) {
+export default function MessagesView ({ slug, topic }: { slug: string, topic: Topic }) {
+  const { lang, messagesPerPage } = useContext(GameContext);
   const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
@@ -22,30 +23,29 @@ export default function MessagesView ({ lang, slug, topic }) {
   const [messagesPages, setMessagesPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(getPageParam(topic));
   const goToLastMessage = new URLSearchParams(window.location.search).get("page") === "last";
-  const $messagesPerPage = useStore(messagesPerPage);
 
   const doGetMessages = async () => {
     if (isLoading) return;
-    
-    setIsLoading(true);
-    setHasError(null);
+    if (!isLoading || hasError) {
+      setIsLoading(true);
+      setHasError(null);
+    }
     try {
-      const url = `/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${$messagesPerPage}`;
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(response.status);
-      
-      const data = await response.json();
-      setMessages(data.messages);
-      setMessagesPages(data.total_pages);
-    } catch (e) {
-      setHasError(e);
+      const query = await fetch(`/api/forums/${slug}/topics/${topic.id}/messages/?page=${currentPage}&size=${messagesPerPage}`);
+      if (!query.ok) throw new Error("Failed to fetch data");
+
+      const response = await query.json();
+      if (!response) throw new Error("Messages not found");
+
+      setMessages(response.messages);
+      setMessagesPages(response.total_pages);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSelectPage = (page) => {
-    const url = new URL(window.location);
+  const handleSelectPage = (page: string) => {
+    const url = new URL(window.location.href);
     url.searchParams.set("page", page);
     history.pushState(null, "", url);
     setCurrentPage(page);
@@ -55,12 +55,13 @@ export default function MessagesView ({ lang, slug, topic }) {
   //   messagesPerPage.set(e.value);
   // };
 
+  // Scroll to last message
   useEffect(() => {
     const scrollToLastMessage = () => {
       if (!isLoading && messages.length > 0 && goToLastMessage) {
         const mainEl = document.querySelector("#okp-core-main .simplebar-content-wrapper");
         const lastMessage = document.querySelector(".okp-messages-card:last-child");
-        if (lastMessage) {
+        if (mainEl && lastMessage) {
           const viewportHeight = window.innerHeight;
           const elementRect = lastMessage.getBoundingClientRect();
           const scrollTo = window.scrollY + elementRect.top - ((viewportHeight / 4) * 1);
@@ -75,10 +76,12 @@ export default function MessagesView ({ lang, slug, topic }) {
     scrollToLastMessage();
   }, [isLoading, messages, currentPage]);
 
+  // Get messages
   useEffect(() => {
     doGetMessages();
-  }, [currentPage, $messagesPerPage]);
+  }, [currentPage, messagesPerPage]);
 
+  // Handle popstate
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPage(getPageParam(topic));
@@ -108,7 +111,7 @@ export default function MessagesView ({ lang, slug, topic }) {
           <div className="okp-loading-spinner okp-tripleline"></div>
         </section>
       ) : (
-        <section className="okp-forum-topics">
+        <section className="okp-forum-messages">
           {messages.length ? messages.map((item, i) => (
             <OkpMessageCard key={i} message={item} />
           )) : (

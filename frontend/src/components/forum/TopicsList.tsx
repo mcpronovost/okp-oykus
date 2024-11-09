@@ -1,43 +1,44 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useStore } from "@nanostores/react";
+import type { Section, SectionTopic } from "@/types/forums.types";
+import React, { useContext, useEffect, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { getTranslation } from "@/i18n/i18n";
-import { topicsPerPage } from "@/stores/storeForums";
-import OkpTopicCard from "./TopicCard";
+import GameContext from "@/stores/storeGame";
 import OkpPaginate from "@/components/ui/Paginate";
+import OkpTopicCard from "./TopicCard";
 
-export default function TopicsList ({ lang, slug, section }) {
+export default function TopicsList ({ slug, section }: { slug: string, section: Section }) {
+  const { lang, topicsPerPage } = useContext(GameContext);
   const t = getTranslation(lang);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(null);
-  const [topics, setTopics] = useState([]);
+  const [topics, setTopics] = useState<SectionTopic[]>([]);
   const [topicsPages, setTopicsPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(
     new URLSearchParams(window.location.search).get("page") || "1"
   );
-  const $topicsPerPage = useStore(topicsPerPage);
 
   const doGetTopics = async () => {
+    if (isLoading) return;
     if (!isLoading || hasError) {
       setIsLoading(true);
       setHasError(null);
     }
     try {
-      const url = `/api/forums/${slug}/sections/${section.id}/topics/?page=${currentPage}&size=${$topicsPerPage}`;
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(response.status);
-      const data = await response.json();
-      setTopics(data.topics);
-      setTopicsPages(data.topics_pages);
-    } catch (e) {
-      setHasError(e);
+      const query = await fetch(`/api/forums/${slug}/sections/${section.id}/topics/?page=${currentPage}&size=${topicsPerPage}`);
+      if (!query.ok) throw new Error("Failed to fetch data");
+
+      const response = await query.json();
+      if (!response) throw new Error("Topics not found");
+
+      setTopics(response.topics);
+      setTopicsPages(response.topics_pages);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSelectPage = (page) => {
-    const url = new URL(window.location);
+  const handleSelectPage = (page: string) => {
+    const url = new URL(window.location.href);
     url.searchParams.set("page", page);
     history.pushState(null, "", url);
     setCurrentPage(page);
@@ -45,8 +46,9 @@ export default function TopicsList ({ lang, slug, section }) {
 
   useEffect(() => {
     doGetTopics();
-  }, [currentPage, $topicsPerPage]);
+  }, [currentPage]);
 
+  // Handle popstate
   useEffect(() => {
     const handlePopState = () => {
       const page = new URLSearchParams(window.location.search).get("page") || "1";

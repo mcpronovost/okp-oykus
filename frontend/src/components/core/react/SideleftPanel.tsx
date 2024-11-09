@@ -10,12 +10,7 @@ import { getTranslation } from "@/i18n/i18n";
 export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang, user: User, slug: string, open: boolean }) {
   const t = getTranslation(lang);
   const { isOpen } = useSideleft(open);
-  const { doSetRouter } = useRouter();
-
-  const handleRoute = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    doSetRouter(e.currentTarget.href);
-  };
+  const { doRoute } = useRouter();
 
   return (
     <>
@@ -87,7 +82,7 @@ export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang,
             {!!slug && (
               <ul className="okp-sideleft-game">
                 <li>
-                  <a href={`/g/${slug}/rules`} onClick={handleRoute}>
+                  <a href={`/g/${slug}/rules`} onClick={doRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <Scale size={24} />
                     </span>
@@ -97,7 +92,7 @@ export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang,
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}/lore`} onClick={handleRoute}>
+                  <a href={`/g/${slug}/lore`} onClick={doRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <LibraryBig size={24} />
                     </span>
@@ -107,7 +102,7 @@ export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang,
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}`} onClick={handleRoute}>
+                  <a href={`/g/${slug}`} onClick={doRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <MessagesSquare size={24} />
                     </span>
@@ -117,7 +112,7 @@ export default function SideleftPanel ({ lang, user, slug, open }: { lang: Lang,
                   </a>
                 </li>
                 <li>
-                  <a href={`/g/${slug}/community`} onClick={handleRoute}>
+                  <a href={`/g/${slug}/community`} onClick={doRoute}>
                     <span className="okp-icon" aria-hidden="true">
                       <Users size={24} />
                     </span>
