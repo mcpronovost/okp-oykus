@@ -7,6 +7,7 @@ import OkpForumIndex from "@/components/forum/Index";
 import OkpForumCategory from "@/components/forum/Category";
 import OkpForumSection from "@/components/forum/Section";
 import OkpForumTopic from "@/components/forum/Topic";
+import OkpCharacter from "@/components/game/Character";
 
 interface Props {
   slug: string;
@@ -20,10 +21,12 @@ export default function OkpGame ({ slug }: Props) {
   const doSetView = (path: string | null) => {
     setIsLoading(true);
     doCleanRouter();
+
     path = path || "";
     let cpk: string | undefined;
     let spk: string | undefined;
     let tpk: string | undefined;
+
     try {
       switch (true) {
         case /^c\d+-[\w-]+\/s\d+-[\w-]+\/t\d+-[\w-]+/.test(path):
@@ -43,6 +46,11 @@ export default function OkpGame ({ slug }: Props) {
           break;
         case path === "forum":
           setView(<OkpForumIndex slug={slug} />);
+          break;
+        case /^community\/c\d+-[\w-]+/.test(path):
+          cpk = path.match(/^community\/c(\d+)-/)?.[1];
+          if (!cpk) break;
+          setView(<OkpCharacter cpk={cpk} />);
           break;
         default:
           setView(<OkpNotFound />);
