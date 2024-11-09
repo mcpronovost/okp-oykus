@@ -4,7 +4,9 @@ import fr from "./locales/fr.json";
 
 const translations: Record<Lang, Record<string, string>> = { en, fr };
 
-const defaultLang = "en";
+export const defaultLang = "fr";
+
+export const locales = ["en", "fr"];
 
 export const getTranslation = (lang: Lang) => {
   return function t (key: string) {
