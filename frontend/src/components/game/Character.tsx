@@ -1,4 +1,4 @@
-import type { Character } from "@/types/game.types";
+import type { Character } from "@/types/games.types";
 import React, { useContext, useEffect, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { getTranslation } from "@/i18n/i18n";
