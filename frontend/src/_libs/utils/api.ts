@@ -26,4 +26,9 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
 
 export const authApi = {
   getUser: () => fetchApi("/auth/me/"),
+  getCharacters: () => fetchApi("/auth/me/characters/"),
+};
+
+export const coreApi = {
+  getGames: () => fetchApi("/games/"),
 };

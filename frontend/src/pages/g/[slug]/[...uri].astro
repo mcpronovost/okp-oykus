@@ -1,7 +1,7 @@
 ---
 import type { User } from "@/_libs/types/auth.types";
-import type { Game } from "@/_libs/types/games.types";
-import { authApi } from "@/_libs/utils/api";
+import type { Game, Character } from "@/_libs/types/games.types";
+import { authApi, coreApi } from "@/_libs/utils/api";
 import CoreLayout from "@/layouts/CoreLayout.astro";
 import OkpGameView from "@/components/views/Game.tsx";
 
@@ -23,6 +23,9 @@ let game: Game = {} as Game;
 let theme = "";
 
 const user = await authApi.getUser().catch(() => ({})) as User;
+const characters = await authApi.getCharacters().catch(() => []) as Character[];
+const games = await coreApi.getGames().catch(() => []) as Game[];
+const core = { characters, games };
 
 async function getGame () {
   try {
@@ -88,5 +91,5 @@ await getGame();
 ---
 
 <CoreLayout theme={theme}>
-  <OkpGameView slug={slug} uri={uri} user={user} game={game} client:only="react" />
+  <OkpGameView slug={slug} uri={uri} user={user} core={core} game={game} client:only="react" />
 </CoreLayout>

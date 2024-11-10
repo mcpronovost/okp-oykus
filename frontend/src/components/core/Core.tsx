@@ -1,4 +1,5 @@
 import type { User } from "@/_libs/types/auth.types";
+import type { Game, Character } from "@/_libs/types/games.types";
 import React from "react";
 import SimpleBarReact from "simplebar-react";
 import OkpProviders from "@/components/common/Providers";
@@ -10,9 +11,14 @@ interface Props {
   children: React.ReactNode;
   slug?: string;
   user?: User;
+  core?: {
+    user?: User;
+    characters?: Character[];
+    games?: Game[];
+  };
 }
 
-export default function OkpCore ({ children, slug, user }: Props) {
+export default function OkpCore ({ children, slug, user, core }: Props) {
   return (
     <OkpProviders>
       <OkpCoreHead user={user} />
@@ -23,7 +29,7 @@ export default function OkpCore ({ children, slug, user }: Props) {
             {children}
           </SimpleBarReact>
         </main>
-        <OkpCoreRight user={user} />
+        <OkpCoreRight slug={slug} user={user} characters={core?.characters} games={core?.games} />
       </div>
     </OkpProviders>
   );
