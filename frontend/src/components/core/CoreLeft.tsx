@@ -1,3 +1,4 @@
+import type { User } from "@/_libs/types/auth.types";
 import React, { useContext } from "react";
 import { Award, ChartNoAxesCombined, House, LibraryBig, MessagesSquare, Scale, Settings, Trophy, Users } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
@@ -6,12 +7,12 @@ import WebContext from "@/_libs/store/storeWeb";
 
 interface Props {
   slug?: string;
+  user?: User;
 }
 
-export default function OkpCoreLeft ({ slug }: Props) {
+export default function OkpCoreLeft ({ slug, user }: Props) {
   const { lang, isCoreLeftOpen } = useContext(WebContext);
   const t = getTranslation(lang);
-  const user = null;
   const doRoute = () => {};
 
   return (

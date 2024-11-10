@@ -1,3 +1,4 @@
+import type { User } from "@/_libs/types/auth.types";
 import React, { useContext } from "react";
 import { Bell, LayoutPanelLeft, Mail, Smile } from "lucide-react";
 import { qpabbr } from "@mcpronovost/qpfilters";
@@ -5,10 +6,13 @@ import { getTranslation } from "@/_libs/i18n";
 import WebContext from "@/_libs/store/storeWeb";
 import imgLogo from "@/_assets/img/oykus-32.png";
 
-export default function OkpCoreHead () {
+interface Props {
+  user?: User;
+}
+
+export default function OkpCoreHead ({ user }: Props) {
   const { lang, isCoreLeftOpen, doSetCoreLeftOpen } = useContext(WebContext);
   const t = getTranslation(lang);
-  const user = null;
 
   const handleToggle = () => {
     doSetCoreLeftOpen(!isCoreLeftOpen);
@@ -73,7 +77,7 @@ export default function OkpCoreHead () {
             </div>
             <div className="okp-auth-user-avatar">
               <figure>
-                {(user.avatar) ? <Image src={user.avatar} alt="" width="32" height="32" /> : <span>{qpabbr(user.playername)}</span>}
+                {(user.avatar) ? <img src={user.avatar} alt="" width="32" height="32" /> : <span>{qpabbr(user.playername)}</span>}
               </figure>
             </div>
           </div>
