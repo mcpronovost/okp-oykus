@@ -1,6 +1,6 @@
 ---
 import type { Lang } from "@/_libs/types/i18n.types.ts";
-import "@/_assets/vendors/simplebar/simplebar.scss";
+import "simplebar-react/dist/simplebar.min.css";
 import "@/_assets/css/main.scss";
 
 interface Props {
@@ -36,15 +36,3 @@ const lang = Astro.cookies.get("lang")?.value as Lang ?? "fr";
     <slot />
   </body>
 </html>
-
-<script>
-  import { SimpleBar } from "@/_assets/vendors/simplebar/simplebar.min.js";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const mainElement = document.getElementById("okp-core-main");
-    const siderighElement = document.getElementById("okp-core-siderigh");
-
-    if (mainElement) new SimpleBar(mainElement);
-    if (siderighElement) new SimpleBar(siderighElement);
-  });
-</script>

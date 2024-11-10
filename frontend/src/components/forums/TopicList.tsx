@@ -1,12 +1,12 @@
-import type { Section, SectionTopic } from "@/types/forums.types";
+import type { Section, SectionTopic } from "@/_libs/types/forums.types";
 import React, { useContext, useEffect, useState } from "react";
 import { AlertCircle } from "lucide-react";
-import { getTranslation } from "@/i18n/i18n";
-import WebContext from "@/stores/storeWeb";
-import GameContext from "@/stores/storeGame";
-import OkpLoading from "@/components/ui/Loading";
-import OkpPaginate from "@/components/ui/Paginate";
-import OkpTopicCard from "@/components/forum/TopicCard";
+import { getTranslation } from "@/_libs/i18n";
+import WebContext from "@/_libs/store/storeWeb";
+import GameContext from "@/_libs/store/storeGame";
+import OkpLoading from "@/components/common/Loading";
+import OkpPaginate from "@/components/common/Paginate";
+import OkpTopicCard from "@/components/forums/TopicCard";
 
 interface Props {
   slug: string;

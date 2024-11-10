@@ -1,4 +1,5 @@
 import React from "react";
+import SimpleBarReact from "simplebar-react";
 import OkpProviders from "@/components/common/Providers";
 import OkpCoreHead from "@/components/core/CoreHead";
 import OkpCoreLeft from "@/components/core/CoreLeft";
@@ -16,7 +17,9 @@ export default function OkpCore ({ children, slug }: Props) {
       <div id="okp-core-body">
         <OkpCoreLeft slug={slug} />
         <main id="okp-core-main">
-          {children}
+          <SimpleBarReact style={{ height: "calc(100vh - 48px)" }}>
+            {children}
+          </SimpleBarReact>
         </main>
         <OkpCoreRight />
       </div>

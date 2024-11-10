@@ -8,12 +8,19 @@
 @use "./core/left.scss" as coreleft;
 @use "./core/right.scss" as coreright;
 
+@use "./common/animate.scss" as commonanimate;
+@use "./common/button.scss" as commonbutton;
+@use "./common/card.scss" as commoncard;
 @use "./common/loading.scss" as commonloading;
+@use "./common/notfound.scss" as commonnotfound;
+@use "./common/paginate.scss" as commonpaginate;
 
 @use "./games/game.scss" as game;
 @use "./games/header.scss" as gameheader;
 @use "./games/footer.scss" as gamefooter;
 
+@use "./forums/common/header.scss" as forumcommonheader;
+@use "./forums/common/notfound.scss" as forumcommonnotfound;
 @use "./forums/category.scss" as forumscategory;
 @use "./forums/section.scss" as forumssection;
 @use "./forums/topic.scss" as forumstopic;

@@ -1,9 +1,9 @@
-import type { SectionTopic } from "@/types/forums.types";
+import type { SectionTopic } from "@/_libs/types/forums.types";
 import React, { useContext } from "react";
 import { CircleArrowOutDownRight, Clock, MessagesSquare, Shell } from "lucide-react";
 import { qpdate, qpunit } from "@mcpronovost/qpfilters";
-import { useRouter } from "@/hooks/core/useRouter";
-import WebContext from "@/stores/storeWeb";
+// import { useRouter } from "@/_libs/hooks/core/useRouter";
+import WebContext from "@/_libs/store/storeWeb";
 
 interface Props {
   index: number;
@@ -13,7 +13,9 @@ interface Props {
 
 export default function TopicCard({ index, topic, total }: Props) {
   const { lang } = useContext(WebContext);
-  const { doRoute } = useRouter();
+  // const { doRoute } = useRouter();
+  const doRoute = () => {};
+
   const basis = (
     (total % 5 === 0) && (index === 0)
   ) ? "okp-basis-100" : (

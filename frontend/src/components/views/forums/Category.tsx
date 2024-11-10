@@ -1,6 +1,6 @@
 import type { Category } from "@/_libs/types/forums.types";
 import React, { useEffect, useState } from "react";
-import OkpLoading from "src/components/common/Loading";
+import OkpLoading from "@/components/common/Loading";
 import OkpForumCategoryCard from "@/components/forums/CategoryCard";
 
 interface Props {
