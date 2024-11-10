@@ -1,8 +1,13 @@
+import type { User } from "@/_libs/types/auth.types";
 import OkpCore from "@/components/core/Core";
 
-export default function OkpHomeView () {
+interface Props {
+  user?: User;
+}
+
+export default function OkpHomeView ({ user }: Props) {
   return (
-    <OkpCore>
+    <OkpCore user={user}>
       <h1>Hello World!</h1>
     </OkpCore>
   );

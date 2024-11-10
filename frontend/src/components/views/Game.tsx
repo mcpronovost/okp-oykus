@@ -1,3 +1,4 @@
+import type { User } from "@/_libs/types/auth.types";
 import type { Game } from "@/_libs/types/games.types";
 import React, { Suspense } from "react";
 import OkpLoading from "@/components/common/Loading";
@@ -8,10 +9,11 @@ interface Props {
   // children?: React.ReactNode;
   slug?: string;
   uri?: string;
+  user?: User;
   game?: Game;
 }
 
-export default function OkpGameView ({ slug, uri, game }: Props) {
+export default function OkpGameView ({ slug, uri, user, game }: Props) {
   let View;
   if (!uri) {
     View = React.lazy(() => import("./forums/Index"));
@@ -28,7 +30,7 @@ export default function OkpGameView ({ slug, uri, game }: Props) {
   }
 
   return (
-    <OkpCore slug={slug}>
+    <OkpCore slug={slug} user={user}>
       {(game) && (
         <section className="okp-game">
           <header className="okp-game-header">
