@@ -10,7 +10,6 @@ interface Props {
 }
 
 const { title, description, theme }: Props = Astro.props;
-
 const lang = Astro.cookies.get("lang")?.value as Lang ?? "fr";
 ---
 
