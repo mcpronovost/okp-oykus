@@ -3,7 +3,7 @@ import { parse } from "cookie";
 export function onRequest({ locals, request }, next) {
   const API_URL = import.meta.env.API_URL || process.env.API_URL;
   const API_PORT = import.meta.env.API_PORT || process.env.API_PORT;
-  const API_ENV = import.meta.env.NODE_ENV || process.env.NODE_ENV;
+  const API_ENV = import.meta.env.API_ENV || process.env.API_ENV || import.meta.env.NODE_ENV || process.env.NODE_ENV;
 
   const API_PROTOCOL = API_ENV !== "development" ? "https" : "http";
 
