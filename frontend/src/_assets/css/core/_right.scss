@@ -1,0 +1,63 @@
+#okp-core-right {
+  background-color: var(--okp-core-right-bg);
+  box-shadow: var(--okp-boxshadow);
+  color: var(--okp-core-right-text);
+  font-size: 0;
+  line-height: 0;
+  display: flex;
+  height: calc(100vh - 48px);
+  flex: 0 0 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 50;
+
+  .simplebar-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 48px);
+  }
+
+  .okp-right-cards {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 0 0;
+  
+    .okp-right-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+  
+      &-link {
+        background-color: var(--okp-core-head-bg);
+        border-radius: 50%;
+        color: var(--okp-core-head-text);
+        text-align: center;
+        overflow: hidden;
+        display: block;
+        width: 32px;
+        height: 32px;
+        opacity: 0.9;
+        transition: opacity 0.3s, border-radius 0.3s;
+
+        &-abbr {
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 32px;
+        }
+  
+        &:hover {
+          border-radius: 8px;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

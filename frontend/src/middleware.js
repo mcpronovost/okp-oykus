@@ -23,7 +23,7 @@ export function onRequest({ locals, request }, next) {
 
   const cookieHeader = request.headers.get("cookie");
   const cookies = cookieHeader ? parse(cookieHeader) : {};
-  locals.lang = cookies["okp-web-lang"] || "fr";
+  locals.lang = cookies["okp-web-lang"]?.toString() || "fr";
 
   // return a Response or the result of calling `next()`
   return next();

@@ -1,0 +1,19 @@
+@use "./base/fonts.scss" as basefonts;
+@use "./base/reset.scss" as basereset;
+@use "./base/scrollbar.scss" as basescrollbar;
+@use "./base/grid.scss" as basegrid;
+@use "./base/okp.scss" as okp;
+
+@use "./core/head.scss" as corehead;
+@use "./core/left.scss" as coreleft;
+@use "./core/right.scss" as coreright;
+
+@use "./common/loading.scss" as commonloading;
+
+@use "./games/game.scss" as game;
+@use "./games/header.scss" as gameheader;
+@use "./games/footer.scss" as gamefooter;
+
+@use "./forums/category.scss" as forumscategory;
+@use "./forums/section.scss" as forumssection;
+@use "./forums/topic.scss" as forumstopic;

@@ -1,18 +1,8 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
-import { Home } from "lucide-astro";
+import CoreLayout from "@/layouts/CoreLayout.astro";
+import OkpHomeView from "@/components/views/Home";
 ---
 
-<MainLayout>
-    <div class="okp-grid" style="padding: 200px 0 0;">
-      <section class="okp-forum">
-        <div class="okp-forum-notfound">
-          <div class="okp-forum-notfound-wrapper">
-            <Home class="icon" />
-            <h2>Hello World!</h2>
-            <p>This is the home page</p>
-          </div>
-        </div>
-      </section>
-    </div>
-</MainLayout>
+<CoreLayout>
+  <OkpHomeView client:only="react" />
+</CoreLayout>
