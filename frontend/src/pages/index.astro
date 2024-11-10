@@ -1,8 +1,12 @@
 ---
+import type { User } from "@/_libs/types/auth.types";
+import { authApi } from "@/_libs/utils/api";
 import CoreLayout from "@/layouts/CoreLayout.astro";
 import OkpHomeView from "@/components/views/Home";
+
+const user = await authApi.getUser().catch(() => ({})) as User;
 ---
 
 <CoreLayout>
-  <OkpHomeView client:only="react" />
+  <OkpHomeView user={user} client:only="react" />
 </CoreLayout>

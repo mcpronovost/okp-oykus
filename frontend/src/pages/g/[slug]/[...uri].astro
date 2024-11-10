@@ -1,5 +1,7 @@
 ---
+import type { User } from "@/_libs/types/auth.types";
 import type { Game } from "@/_libs/types/games.types";
+import { authApi } from "@/_libs/utils/api";
 import CoreLayout from "@/layouts/CoreLayout.astro";
 import OkpGameView from "@/components/views/Game.tsx";
 
@@ -19,6 +21,8 @@ const { slug, uri }: Props = Astro.params;
 let hasError = null;
 let game: Game = {} as Game;
 let theme = "";
+
+const user = await authApi.getUser().catch(() => ({})) as User;
 
 async function getGame () {
   try {
@@ -84,5 +88,5 @@ await getGame();
 ---
 
 <CoreLayout theme={theme}>
-  <OkpGameView slug={slug} uri={uri} game={game} client:only="react" />
+  <OkpGameView slug={slug} uri={uri} user={user} game={game} client:only="react" />
 </CoreLayout>
