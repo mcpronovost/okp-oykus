@@ -18,11 +18,11 @@ services:
     networks:
       - okpoykus
     depends_on:
-      - astro
+      - frontend
       - django
 
-  astro:
-    container_name: okp-oykus-astro
+  frontend:
+    container_name: okp-oykus-frontend
     build: ./frontend
     command: sh -c "yarn dev --host --port 3000"
     labels:
@@ -35,12 +35,12 @@ services:
       - 3000:3000
     environment:
       TZ: America/Toronto
+      VITE_LANGUAGE: ${FRONTEND_LANGUAGE}
+      VITE_PORT: ${FRONTEND_PORT}
+      VITE_API_URL: django
+      VITE_API_PORT: 8000
+      VITE_API_ENV: development
       NODE_ENV: development
-      PUBLIC_LANGUAGE: ${ASTRO_LANGUAGE}
-      PUBLIC_PORT: ${ASTRO_PORT}
-      API_URL: django
-      API_PORT: 8000
-      API_ENV: development
     volumes:
       - "./frontend:/app:rw"
     networks:
