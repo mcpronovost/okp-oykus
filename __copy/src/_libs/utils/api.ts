@@ -1,6 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "django";
-const API_PORT = import.meta.env.VITE_API_PORT ?? "8000";
-const API_PROTOCOL = import.meta.env.VITE_API_ENV === "development" ? "http" : "https";
+const API_URL = import.meta.env.API_URL || "django";
+const API_PORT = import.meta.env.API_PORT || "8000";
+const API_PROTOCOL = import.meta.env.API_ENV === "development" ? "http" : "https";
 const BASE_URL = `${API_PROTOCOL}://${API_URL}:${API_PORT}/api`;
 
 export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {

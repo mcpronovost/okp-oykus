@@ -1,14 +1,16 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
+import eslintPluginAstro from "eslint-plugin-astro";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 export default tseslint.config(
-  { ignores: ["dist", ".vite", "**/*.d.ts"] },
+  { ignores: ["dist", ".vite", ".astro", "**/*.d.ts"] },
   {
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
+      ...eslintPluginAstro.configs.recommended,
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {

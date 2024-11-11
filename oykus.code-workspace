@@ -19,7 +19,7 @@
     
     // Django settings
     "files.associations": {
-      "*.html": "django-html"
+      "*.html": "html"
     },
     "[python]": {
       "editor.formatOnSave": true,

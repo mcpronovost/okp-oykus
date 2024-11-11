@@ -1,0 +1,20 @@
+---
+import type { User } from "@/_libs/types/auth.types";
+import type { Game, Character } from "@/_libs/types/games.types";
+import { authApi } from "@/_libs/utils/api";
+import { coreApi } from "@/_libs/utils/api";
+import CoreLayout from "@/layouts/CoreLayout.astro";
+import OkpProviders from "@/components/common/Providers";
+import OkpHomeView from "@/components/views/Home";
+
+const user = await authApi.getUser().catch(() => ({})) as User;
+const characters = await authApi.getCharacters().catch(() => []) as Character[];
+const games = await coreApi.getGames().catch(() => []) as Game[];
+const core = { characters, games };
+---
+
+<CoreLayout>
+  <OkpProviders client:only="react">
+    <OkpHomeView user={user} core={core} client:only="react" />
+  </OkpProviders>
+</CoreLayout>
