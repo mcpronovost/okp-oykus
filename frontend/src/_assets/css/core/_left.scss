@@ -95,6 +95,7 @@
       > li {
         > a {
           background-color: transparent;
+          border-radius: var(--okp-card-radius);
           color: var(--okp-core-left-text);
           font-size: 0.8rem;
           font-weight: 500;
@@ -111,7 +112,6 @@
   
           &:hover {
             background-color: var(--okp-core-left-highlight-bg);
-            border-radius: var(--okp-card-radius);
             color: var(--okp-core-left-highlight-text);
             opacity: 1;
 
