@@ -11,11 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/mcpronovost/okp-oykus.git"
   },
-  "private": true,  "scripts": {
+  "private": true,
+  "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check-translations": "node ./src/_libs/i18n/check-translations.js"
   },
   "dependencies": {
     "@mcpronovost/qpfilters": "^2.2.0",
