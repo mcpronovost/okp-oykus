@@ -35,12 +35,12 @@ services:
       - 3000:3000
     environment:
       TZ: America/Toronto
-      VITE_LANGUAGE: ${FRONTEND_LANGUAGE}
-      VITE_PORT: ${FRONTEND_PORT}
-      VITE_API_URL: django
-      VITE_API_PORT: 8000
-      VITE_API_ENV: development
-      NODE_ENV: development
+      VITE_LANGUAGE: ${VITE_LANGUAGE}
+      VITE_PORT: ${VITE_PORT}
+      VITE_PROTOCOL: ${VITE_PROTOCOL}
+      VITE_DOMAIN: ${VITE_DOMAIN}
+      VITE_NODE_ENV: ${NODE_ENV}
+    env_file: .env
     volumes:
       - "./frontend:/app:rw"
     networks:
