@@ -1,18 +1,14 @@
-import { useContext, useState, useEffect } from "react";
-// import { WebContext } from "@/_libs/stores/WebContext";
-import { authApi } from "@/_libs/utils/api";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/_libs/stores/AuthContext";
 import OkpCoreHead from "@/components/core/Head";
 import OkpCoreLeft from "@/components/core/Left";
 import OkpCoreRight from "@/components/core/Right";
 
-export default function App () {
-  // const { lang, setLang } = useContext(WebContext);
-  const [user, setUser] = useState(null);
+export default function App({ children }: { children: React.ReactNode }) {
+  const { doUpdateUser } = useContext(AuthContext);
 
   useEffect(() => {
-    authApi.getUser().then((user) => {
-      console.log(user);
-    });
+    doUpdateUser();
   }, []);
 
   return (
@@ -21,7 +17,7 @@ export default function App () {
       <div id="okp-core-body">
         <OkpCoreLeft />
         <main id="okp-core-main">
-          content
+          {children}
         </main>
         <OkpCoreRight />
       </div>

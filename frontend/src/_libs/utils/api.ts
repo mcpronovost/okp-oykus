@@ -1,10 +1,11 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "django";
-const API_PORT = import.meta.env.VITE_API_PORT ?? "8000";
-const API_PROTOCOL = import.meta.env.VITE_API_ENV === "development" ? "http" : "https";
-const BASE_URL = `${API_PROTOCOL}://${API_URL}:${API_PORT}/api`;
+import type { User } from "@/_libs/types/auth.types";
+
+const API_DOMAIN = import.meta.env.VITE_DOMAIN ?? "django";
+const API_PROTOCOL = import.meta.env.VITE_NODE_ENV === "development" ? "http" : "https";
+const API_URL = `${API_PROTOCOL}://${API_DOMAIN}/api`;
 
 export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const url = `${BASE_URL}${endpoint}`;
+  const url = `${API_URL}${endpoint}`;
   
   const defaultOptions: RequestInit = {
     credentials: "include", // for handling cookies
@@ -25,7 +26,7 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
 }
 
 export const authApi = {
-  getUser: () => fetchApi("/auth/me/"),
+  getUser: () => fetchApi<User>("/auth/me/"),
   getCharacters: () => fetchApi("/auth/me/characters/"),
 };
 

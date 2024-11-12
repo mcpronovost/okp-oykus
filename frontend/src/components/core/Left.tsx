@@ -2,14 +2,15 @@
 import { useContext } from "react";
 import { Award, ChartNoAxesCombined, House, Settings, Trophy } from "lucide-react";
 import SimpleBarReact from "simplebar-react";
-// import { getTranslation } from "@/_libs/i18n";
-import { WebContext } from "@/_libs/stores/ContextWeb";
+import { AppContext } from "@/_libs/stores/AppContext";
+import { AuthContext } from "@/_libs/stores/AuthContext";
+import { I18nContext } from "@/_libs/stores/I18nContext";
 // import OkpCoreLeftNavGame from "./left/NavGame";
 
 export default function CoreLeft () {
-  const { lang, isCoreLeftOpen } = useContext(WebContext);
-  const t = (v: string) => v;
-  const user = null;
+  const { isCoreLeftOpen } = useContext(AppContext);
+  const { user } = useContext(AuthContext);
+  const { t } = useContext(I18nContext);
 
   return (
     <aside id="okp-core-left" className={`okp-scrollable ${isCoreLeftOpen ? "okp-open" : "okp-close"}`}>
