@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Bell, LayoutPanelLeft, Mail, Smile } from "lucide-react";
+import { qpabbr } from "@mcpronovost/qpfilters";
 import { WebContext } from "@/_libs/stores/ContextWeb";
+import { getTranslation } from "@/_libs/i18n";
 import imgLogo from "@/_assets/img/oykus-32.png";
 
 export default function CoreHead () {
   const { lang, doToggleCoreLeft } = useContext(WebContext);
-  const t = (v: string) => v;
+  const t = getTranslation(lang);
   const user = null;
 
   return (
@@ -30,13 +32,13 @@ export default function CoreHead () {
               <a href="/">{t("About")}</a>
             </li>
             <li>
-              <a href="/">Cynorrs</a>
+              <a href="/">{t("Cynorrs")}</a>
             </li>
             <li>
-              <a href="/">FAQ</a>
+              <a href="/">{t("FAQ")}</a>
             </li>
             <li>
-              <a href="/">Politique de confidentialité</a>
+              <a href="/">{t("Privacy Policy")}</a>
             </li>
           </ul>
         </nav>
