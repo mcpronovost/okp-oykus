@@ -5,12 +5,14 @@ import SimpleBarReact from "simplebar-react";
 import { AppContext } from "@/_libs/stores/AppContext";
 import { AuthContext } from "@/_libs/stores/AuthContext";
 import { I18nContext } from "@/_libs/stores/I18nContext";
+import { RouterContext } from "@/_libs/stores/RouterContext";
 // import OkpCoreLeftNavGame from "./left/NavGame";
 
 export default function CoreLeft () {
   const { isCoreLeftOpen } = useContext(AppContext);
   const { user } = useContext(AuthContext);
   const { t } = useContext(I18nContext);
+  const { doRoute } = useContext(RouterContext);
 
   return (
     <aside id="okp-core-left" className={`okp-scrollable ${isCoreLeftOpen ? "okp-open" : "okp-close"}`}>
@@ -38,7 +40,7 @@ export default function CoreLeft () {
         <nav>
           <ul className="okp-left-main">
             <li>
-              <a href="/">
+              <a href="/" onClick={doRoute}>
                 <span className="okp-icon" aria-hidden="true">
                   <House size={24} />
                 </span>
@@ -48,7 +50,7 @@ export default function CoreLeft () {
               </a>
             </li>
             <li>
-              <a href="/">
+              <a href="/achievements" onClick={doRoute}>
                 <span className="okp-icon" aria-hidden="true">
                   <Trophy size={24} />
                 </span>
