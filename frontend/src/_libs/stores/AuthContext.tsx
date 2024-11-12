@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setStore("auth-user", value ? JSON.stringify(updatedValue) : null);
   };
 
-  const doUpdateUser = () => {
+  const doUpdateUser = async() => {
     if (user && user.fetched_at && (user.fetched_at + (1000 * 60 * 5)) > Date.now()) {
       return Promise.resolve(user);
     }

@@ -4,10 +4,11 @@ import { RouterContext } from "@/_libs/stores/RouterContext";
 import OkpCoreHead from "@/components/core/Head";
 import OkpCoreLeft from "@/components/core/Left";
 import OkpCoreRight from "@/components/core/Right";
+import GameView from "@/views/GameView";
 
 export default function App({ children }: { children: React.ReactNode }) {
   const { doUpdateUser } = useContext(AuthContext);
-  const { route, doRouteTo } = useContext(RouterContext);
+  const { route, doRouteTo, gameRoute } = useContext(RouterContext);
 
   // Check current route
   const doCheckCurrentRoute = (push: boolean = true) => {
@@ -19,8 +20,7 @@ export default function App({ children }: { children: React.ReactNode }) {
 
   // Initialization
   useEffect(() => {
-    doUpdateUser();
-    doCheckCurrentRoute();
+    doUpdateUser().then(() => doCheckCurrentRoute());
   }, []);
 
   // Handle popstate
@@ -31,7 +31,7 @@ export default function App({ children }: { children: React.ReactNode }) {
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+  }, [route]);
 
   return (
     <>
@@ -39,7 +39,8 @@ export default function App({ children }: { children: React.ReactNode }) {
       <div id="okp-core-body">
         <OkpCoreLeft />
         <main id="okp-core-main">
-          {children}
+          route : {gameRoute}
+          {gameRoute ? <GameView /> : children}
         </main>
         <OkpCoreRight />
       </div>

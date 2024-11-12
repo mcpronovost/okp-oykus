@@ -1,4 +1,5 @@
 import type { User } from "@/_libs/types/auth.types";
+import type { Character, Game } from "@/_libs/types/games.types";
 
 const API_DOMAIN = import.meta.env.VITE_DOMAIN ?? "django";
 const API_PROTOCOL = import.meta.env.VITE_NODE_ENV === "development" ? "http" : "https";
@@ -27,9 +28,9 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
 
 export const authApi = {
   getUser: () => fetchApi<User>("/auth/me/"),
-  getCharacters: () => fetchApi("/auth/me/characters/"),
+  getCharacters: () => fetchApi<Character[]>("/auth/me/characters/"),
 };
 
-export const coreApi = {
-  getGames: () => fetchApi("/games/"),
+export const gamesApi = {
+  getGames: () => fetchApi<Game[]>("/games/"),
 };
