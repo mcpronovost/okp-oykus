@@ -21,7 +21,7 @@ export async function fetchApi<T>(endpoint: string, options: RequestInit = {}): 
 
     return await response.json();
   } catch (error) {
-    console.error("API Error:", error);
+    // console.error("API Error:", error);
     throw error;
   }
 }
@@ -33,4 +33,5 @@ export const authApi = {
 
 export const gamesApi = {
   getGames: () => fetchApi<Game[]>("/games/"),
+  getGame: (slug: string) => fetchApi<Game>(`/games/${slug}/`),
 };
