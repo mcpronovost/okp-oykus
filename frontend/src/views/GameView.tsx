@@ -26,17 +26,21 @@ export default function GameView() {
   };
 
   const doSetView = (path: string | null) => {
-    if (!path || path === "/" || path == "") {
-      setView(React.lazy(() => import("./forums/Index")));
-    } else if (/^\/c\d+-[\w-]+\/s\d+-[\w-]+\/t\d+-[\w-]+/.test(path)) {
-      setView(React.lazy(() => import("./forums/Topic")));
-    } else if (/^\/c\d+-[\w-]+\/s\d+-[\w-]+/.test(path)) {
-      setView(React.lazy(() => import("./forums/Section")));
-    } else if (/^\/c\d+-[\w-]+/.test(path)) {
-      setView(React.lazy(() => import("./forums/Category")));
-    } else if (path === "rules") {
-      setView(React.lazy(() => import("./forums/Index")));
-    } else {
+    try {
+      if (!path || path === "/" || path == "") {
+        setView(React.lazy(() => import("./forums/Index")));
+      } else if (/^\/c\d+-[\w-]+\/s\d+-[\w-]+\/t\d+-[\w-]+/.test(path)) {
+        setView(React.lazy(() => import("./forums/Topic")));
+      } else if (/^\/c\d+-[\w-]+\/s\d+-[\w-]+/.test(path)) {
+        setView(React.lazy(() => import("./forums/Section")));
+      } else if (/^\/c\d+-[\w-]+/.test(path)) {
+        setView(React.lazy(() => import("./forums/Category")));
+      } else if (path === "rules") {
+        setView(React.lazy(() => import("./forums/Index")));
+      } else {
+        setView(null);
+      }
+    } catch {
       setView(null);
     }
   };
@@ -61,7 +65,7 @@ export default function GameView() {
             <h1 className="okp-game-header-title">{game?.name}</h1>
           </header>
           <Suspense fallback={<OkpLoading />}>
-            {View ? <View key={gameSlug} /> : <OkpNotFound />}
+            {View ? <View key={gameSlug} slug={gameSlug} /> : <OkpNotFound />}
           </Suspense>
           <footer className="okp-game-footer">
             <small>

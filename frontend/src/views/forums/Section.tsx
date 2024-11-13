@@ -5,8 +5,8 @@ import OkpLoading from "@/components/common/Loading";
 import OkpForumHeader from "@/components/forums/common/Header";
 import OkpTopicList from "@/components/forums/TopicList";
 
-export default function OkpForumsSectionView () {
-  const { route, gameSlug } = useContext(RouterContext);
+export default function OkpForumsSectionView ({ slug }: { slug: string }) {
+  const { route } = useContext(RouterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [section, setSection] = useState<Section | null>(null);
 
@@ -16,7 +16,7 @@ export default function OkpForumsSectionView () {
       const spk = route?.match(/\/s(\d+)-/)?.[1];
       if (!spk) throw new Error("Section not found");
 
-      const query = await fetch(`/api/forums/${gameSlug}/sections/${spk}/`);
+      const query = await fetch(`/api/forums/${slug}/sections/${spk}/`);
       if (!query.ok) throw new Error("Failed to fetch data");
   
       const response = await query.json();
@@ -37,10 +37,10 @@ export default function OkpForumsSectionView () {
   return (
     <div className="okp-grid">
       <section className="okp-forum">
-        {(!!gameSlug && section) && (
+        {(!!slug && section) && (
           <section className="okp-forum-section">
             <OkpForumHeader title={section.name} description={section.description} />
-            <OkpTopicList slug={gameSlug} section={section} />
+            <OkpTopicList slug={slug} section={section} />
           </section>
         )}
       </section>

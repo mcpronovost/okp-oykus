@@ -4,8 +4,8 @@ import { RouterContext } from "@/_libs/stores/RouterContext";
 import OkpLoading from "@/components/common/Loading";
 import OkpForumCategoryCard from "@/components/forums/CategoryCard";
 
-export default function OkpForumsCategoryView () {
-  const { route, gameSlug } = useContext(RouterContext);
+export default function OkpForumsCategoryView ({ slug }: { slug: string }) {
+  const { route } = useContext(RouterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState<Category | null>(null);
 
@@ -15,7 +15,7 @@ export default function OkpForumsCategoryView () {
       const cpk = route?.match(/\/c(\d+)-/)?.[1];
       if (!cpk) throw new Error("Category not found");
 
-      const query = await fetch(`/api/forums/${gameSlug}/categories/${cpk}/`);
+      const query = await fetch(`/api/forums/${slug}/categories/${cpk}/`);
       if (!query.ok) throw new Error("Failed to fetch data");
   
       const response = await query.json();
@@ -37,7 +37,7 @@ export default function OkpForumsCategoryView () {
     <div className="okp-grid">
       <section className="okp-forum">
         <section className="okp-forum-categories">
-          {(!!gameSlug && category) && (
+          {(!!slug && category) && (
             <OkpForumCategoryCard key={category.id} data={category} singleton />
           )}
         </section>

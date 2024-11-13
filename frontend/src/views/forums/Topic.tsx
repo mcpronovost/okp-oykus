@@ -5,8 +5,8 @@ import OkpLoading from "@/components/common/Loading";
 import OkpForumHeader from "@/components/forums/common/Header";
 import OkpMessageList from "@/components/forums/MessageList";
 
-export default function OkpForumsTopicView () {
-  const { route, gameSlug } = useContext(RouterContext);
+export default function OkpForumsTopicView ({ slug }: { slug: string }) {
+  const { route } = useContext(RouterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState<Topic | null>(null);
   const messagesPerPage = 10;
@@ -17,7 +17,7 @@ export default function OkpForumsTopicView () {
       const tpk = route?.match(/\/t(\d+)-/)?.[1];
       if (!tpk) throw new Error("Topic not found");
 
-      const query = await fetch(`/api/forums/${gameSlug}/topics/${tpk}/?size=${messagesPerPage}`);
+      const query = await fetch(`/api/forums/${slug}/topics/${tpk}/?size=${messagesPerPage}`);
       if (!query.ok) throw new Error("Failed to fetch data");
   
       const response = await query.json();
@@ -38,10 +38,10 @@ export default function OkpForumsTopicView () {
   return (
     <div className="okp-grid">
       <section className="okp-forum">
-        {(!!gameSlug && topic) && (
+        {(!!slug && !!topic) && (
           <section className="okp-forum-topic">
             <OkpForumHeader title={topic.name} />
-            <OkpMessageList slug={gameSlug} topic={topic} />
+            <OkpMessageList slug={slug} topic={topic} />
           </section>
         )}
       </section>
