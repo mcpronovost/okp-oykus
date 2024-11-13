@@ -1,15 +1,18 @@
-import { Construction, AlertCircle } from "lucide-react";
+import { useContext } from "react";
+import { I18nContext } from "@/_libs/stores/I18nContext";
+import { AlertCircle } from "lucide-react";
 
 export default function OkpNotFound(): JSX.Element {
+  const { t } = useContext(I18nContext);
+
   return (
-    <div className="okp-not-found">
-      <div className="okp-card okp-not-found-content">
-        <div className="okp-not-found-icons">
-          <Construction className="okp-icon okp-icon-primary" size={48} />
-          <AlertCircle className="okp-icon okp-icon-secondary" size={32} />
+    <div className="okp-grid">
+      <div className="okp-forum-notfound">
+        <div className="okp-forum-notfound-wrapper">
+          <AlertCircle className="icon" />
+          <h2>{t("Page Not Found")}</h2>
+          <p>{t("The page you're looking for doesn't exist or has been moved.")}</p>
         </div>
-        <h1>Page Not Found</h1>
-        <p>The page you're looking for doesn't exist or has been moved.</p>
       </div>
     </div>
   );
