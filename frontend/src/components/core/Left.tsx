@@ -6,13 +6,13 @@ import { AppContext } from "@/_libs/stores/AppContext";
 import { AuthContext } from "@/_libs/stores/AuthContext";
 import { I18nContext } from "@/_libs/stores/I18nContext";
 import { RouterContext } from "@/_libs/stores/RouterContext";
-// import OkpCoreLeftNavGame from "./left/NavGame";
+import OkpCoreLeftNavGame from "./left/NavGame";
 
 export default function CoreLeft () {
   const { isCoreLeftOpen } = useContext(AppContext);
   const { user } = useContext(AuthContext);
   const { t } = useContext(I18nContext);
-  const { doRoute } = useContext(RouterContext);
+  const { doRoute, gameSlug } = useContext(RouterContext);
 
   return (
     <aside id="okp-core-left" className={`okp-scrollable ${isCoreLeftOpen ? "okp-open" : "okp-close"}`}>
@@ -80,9 +80,9 @@ export default function CoreLeft () {
               </a>
             </li>
           </ul>
-          {/* {!!slug && (
-            <OkpCoreLeftNavGame slug={slug} />
-          )} */}
+          {!!gameSlug && (
+            <OkpCoreLeftNavGame slug={gameSlug} />
+          )}
           <div className="okp-left-space"></div>
           <ul className="okp-left-settings">
             <li>

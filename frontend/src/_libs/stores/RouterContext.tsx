@@ -6,7 +6,7 @@ interface RouterContextType {
   doSetRoute: (value: string) => void;
   doRouteTo: (value: string, push: boolean) => void;
   doRoute: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-  gameRoute: string | null;
+  gameSlug: string | null;
 }
 
 export const RouterContext = createContext<RouterContextType>(null!);
@@ -15,7 +15,7 @@ export const RouterProvider = ({ children }: { children: React.ReactNode }) => {
   const [route, setRoute] = useState<string>(
     getStore("router-route", "/") ?? "/"
   );
-  const [gameRoute, setGameRoute] = useState<string | null>(
+  const [gameSlug, setGameSlug] = useState<string | null>(
     route.match(/^\/g\/([\w-]+)/)?.[1] || null
   );
 
@@ -42,7 +42,7 @@ export const RouterProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    setGameRoute(route.match(/^\/g\/([\w-]+)/)?.[1] || null);
+    setGameSlug(route.match(/^\/g\/([\w-]+)/)?.[1] || null);
   }, [route]);
 
   return (
@@ -51,7 +51,7 @@ export const RouterProvider = ({ children }: { children: React.ReactNode }) => {
       doSetRoute,
       doRouteTo,
       doRoute,
-      gameRoute
+      gameSlug
     }}>
       {children}
     </RouterContext.Provider>

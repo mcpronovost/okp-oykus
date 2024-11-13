@@ -1,11 +1,17 @@
-import React from "react";
 import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
 
-export default function Paginate({ pages, current, around = 2, onChange = () => {} }) {
-  const currentPage = parseInt(current);
-  const aroundPages = parseInt(around);
+interface Props {
+  pages: number;
+  current: string;
+  around?: number;
+  onChange?: (page: number) => void;
+}
 
-  const handlePageChange = (page) => {
+export default function Paginate({ pages, current, around = 2, onChange = () => {} }: Props) {
+  const currentPage = parseInt(current);
+  const aroundPages = parseInt(around.toString());
+
+  const handlePageChange = (page: number) => {
     if (page >= 1 && page <= pages) onChange(page);
   };
 
@@ -53,8 +59,8 @@ export default function Paginate({ pages, current, around = 2, onChange = () => 
           ) : (
             <button
               key={index}
-              onClick={() => handlePageChange(page)}
-              className={currentPage === page ? "okp-active" : ""}
+              onClick={() => handlePageChange(parseInt(page as string))}
+              className={currentPage === parseInt(page as string) ? "okp-active" : ""}
             >
               <span>{page}</span>
             </button>

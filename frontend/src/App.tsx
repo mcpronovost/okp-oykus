@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import SimpleBarReact from "simplebar-react";
 import { AuthContext } from "@/_libs/stores/AuthContext";
 import { RouterContext } from "@/_libs/stores/RouterContext";
 import OkpCoreHead from "@/components/core/Head";
@@ -8,7 +9,7 @@ import GameView from "@/views/GameView";
 
 export default function App({ children }: { children: React.ReactNode }) {
   const { doUpdateUser } = useContext(AuthContext);
-  const { route, doRouteTo, gameRoute } = useContext(RouterContext);
+  const { route, doRouteTo, gameSlug } = useContext(RouterContext);
 
   // Check current route
   const doCheckCurrentRoute = (push: boolean = true) => {
@@ -39,8 +40,9 @@ export default function App({ children }: { children: React.ReactNode }) {
       <div id="okp-core-body">
         <OkpCoreLeft />
         <main id="okp-core-main">
-          route : {gameRoute}
-          {gameRoute ? <GameView /> : children}
+          <SimpleBarReact style={{ height: "calc(100vh - 48px)" }}>
+            {gameSlug ? <GameView /> : children}
+          </SimpleBarReact>
         </main>
         <OkpCoreRight />
       </div>

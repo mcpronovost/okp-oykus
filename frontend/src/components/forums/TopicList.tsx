@@ -1,5 +1,5 @@
 import type { Section, SectionTopic } from "@/_libs/types/forums.types";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AlertCircle } from "lucide-react";
 import { I18nContext } from "@/_libs/stores/I18nContext";
 import OkpLoading from "@/components/common/Loading";
@@ -13,8 +13,6 @@ interface Props {
 
 export default function TopicsList ({ slug, section }: Props) {
   const { t } = useContext(I18nContext);
-  // const { topicsPerPage } = useContext(GameContext);
-  const topicsPerPage = 10;
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(null);
   const [topics, setTopics] = useState<SectionTopic[]>([]);
@@ -22,6 +20,7 @@ export default function TopicsList ({ slug, section }: Props) {
   const [currentPage, setCurrentPage] = useState(
     new URLSearchParams(window.location.search).get("page") || "1"
   );
+  const topicsPerPage = 2;
 
   const doGetTopics = async () => {
     if (isLoading) return;

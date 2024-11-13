@@ -5,14 +5,14 @@ import OkpLoading from "@/components/common/Loading";
 import OkpForumCategoryCard from "@/components/forums/CategoryCard";
 
 export default function OkpForumCategoryList () {
-  const { gameRoute } = useContext(RouterContext);
+  const { gameSlug } = useContext(RouterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
 
   async function getForumCategories () {
     setIsLoading(true);
     try {
-      const query = await fetch(`/api/forums/${gameRoute}/categories/`);
+      const query = await fetch(`/api/forums/${gameSlug}/categories/`);
       if (!query.ok) throw new Error("Failed to fetch data");
   
       const response = await query.json();

@@ -1,27 +1,23 @@
 import type { Topic } from "@/_libs/types/forums.types";
-import React, { useContext, useEffect, useState } from "react";
-import GameContext from "@/_libs/store/storeGame";
+import { useContext, useEffect, useState } from "react";
+import { RouterContext } from "@/_libs/stores/RouterContext";
 import OkpLoading from "@/components/common/Loading";
 import OkpForumHeader from "@/components/forums/common/Header";
 import OkpMessageList from "@/components/forums/MessageList";
 
-interface Props {
-  slug?: string;
-  uri?: string;
-}
-
-export default function OkpForumsTopicView ({ slug, uri }: Props) {
-  const { messagesPerPage } = useContext(GameContext);
+export default function OkpForumsTopicView () {
+  const { route, gameSlug } = useContext(RouterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topic, setTopic] = useState<Topic | null>(null);
+  const messagesPerPage = 10;
 
   async function getForumTopic () {
     setIsLoading(true);
     try {
-      const tpk = uri?.match(/\/t(\d+)-/)?.[1];
+      const tpk = route?.match(/\/t(\d+)-/)?.[1];
       if (!tpk) throw new Error("Topic not found");
 
-      const query = await fetch(`/api/forums/${slug}/topics/${tpk}/?size=${messagesPerPage}`);
+      const query = await fetch(`/api/forums/${gameSlug}/topics/${tpk}/?size=${messagesPerPage}`);
       if (!query.ok) throw new Error("Failed to fetch data");
   
       const response = await query.json();
@@ -42,10 +38,10 @@ export default function OkpForumsTopicView ({ slug, uri }: Props) {
   return (
     <div className="okp-grid">
       <section className="okp-forum">
-        {(topic) && (
+        {(!!gameSlug && topic) && (
           <section className="okp-forum-topic">
             <OkpForumHeader title={topic.name} />
-            <OkpMessageList slug={slug} topic={topic} />
+            <OkpMessageList slug={gameSlug} topic={topic} />
           </section>
         )}
       </section>

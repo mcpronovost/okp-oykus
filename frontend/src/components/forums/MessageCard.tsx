@@ -1,5 +1,4 @@
-import type { TopicMessage } from "@/types/forums.types";
-import React from "react";
+import type { TopicMessage } from "@/_libs/types/forums.types";
 import { Shell } from "lucide-react";
 
 interface Props {

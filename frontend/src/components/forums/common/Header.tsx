@@ -1,4 +1,5 @@
-import React from "react";
+import { useContext } from "react";
+import { RouterContext } from "@/_libs/stores/RouterContext";
 
 interface Props {
   title: string;
@@ -8,7 +9,7 @@ interface Props {
 }
 
 export default function OkpForumHeader({ title, description, path, singleton }: Props) {
-  const doRoute = () => {};
+  const { doRoute } = useContext(RouterContext);
 
   return (
     <header className="okp-forum-header">

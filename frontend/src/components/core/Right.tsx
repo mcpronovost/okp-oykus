@@ -7,7 +7,7 @@ import { authApi, gamesApi } from "@/_libs/utils/api";
 
 export default function CoreRight () {
   const { t } = useContext(I18nContext);
-  const { doRoute, gameRoute } = useContext(RouterContext);
+  const { doRoute, gameSlug } = useContext(RouterContext);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [games, setGames] = useState<Game[]>([]);
 
@@ -48,7 +48,7 @@ export default function CoreRight () {
                 <Sparkles size={20} />
             </span>
             </li>
-            {games.map((game) => ((!gameRoute || gameRoute != game.slug) && (
+            {games.map((game) => ((!gameSlug || gameSlug != game.slug) && (
               <li key={game.id} className="okp-right-card">
                 <a href={`/g/${game.slug}/`} onClick={doRoute} className="okp-right-card-link" aria-label={game.name} title={game.name}>
                   {game.logo ? (
