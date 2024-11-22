@@ -1,78 +1,80 @@
 # Oykus
 
-A textual storytelling roleplay game built with Astro and Django.
+> Create worlds, weave stories, live adventures together.
 
-## 🎮 Overview
+Oykus is a web-based collaborative storytelling platform where players can craft unique universes, develop rich characters, and embark on epic quests together. Through the power of collective imagination, every story becomes an unforgettable journey.
 
-Oykus is a web-based roleplaying platform that combines storytelling with game mechanics. It provides a rich environment for players to create characters, participate in forum discussions, and engage in collaborative storytelling.
+## 🌟 Features
 
-## 🚀 Tech Stack
+- **Universe Creation**: Design and shape entire worlds with custom rules, lore, and settings
+- **Character Development**: Create detailed characters with unique backgrounds, traits, and abilities
+- **Collaborative Storytelling**: Write and experience stories together with other players
+- **Quest System**: Engage in challenging quests that shape the narrative
+- **Dynamic World Events**: Participate in world-changing events that affect all players
+- **Rich Lore System**: Document and expand your universe's history and mythology
 
-- **Frontend**: Astro + React
-- **Backend**: Django + Django REST Framework
-- **Styling**: SCSS
-- **Container**: Docker
+## 🛠️ Technology Stack
 
-## 🛠️ Project Structure
-```text
-/home
-├── <games>
-│ ├── rules
-│ ├── lore
-│ ├── forum
-│ │ └── <categories>
-│ │ └── <sections>
-│ │ ├── <topics>
-│ │ | ├── <messages>
-│ │ | └── new message
-│ │ └── new topic
-│ └── community
-│ └── <characters>
-│ └── profile
-|── community
-| └── <players>
-└── settings
-|── profile
-└── account
-```
+### Frontend
+- **Astro**: For fast, content-focused static site generation
+- **React**: For interactive UI components and dynamic features
+- **TypeScript**: For type-safe code
 
-## 🔧 Installation
+### Backend
+- **Django**: Web framework for robust backend development
+- **Django REST Framework**: For RESTful API development
+- **PostgreSQL**: Database management
 
-### Prerequisites
+## 🎮 Getting Started
 
-- Node.js >= 18.14.1
-- npm >= 9.3.1
-- Python 3.12.4
-- Docker (optional)
+1. Create an account on Oykus
+2. Join an existing universe or create your own
+3. Design your character
+4. Begin your adventure!
+
+## 🌍 Universe Creation
+
+In Oykus, universes can be:
+- Fantasy realms with magic and mythical creatures
+- Sci-fi worlds with advanced technology
+- Alternative history settings
+- Modern day scenarios
+- Or any combination you can imagine!
+
+## ⚔️ Gameplay
+
+- **Collaborative Decision Making**: Work with other players to drive the story forward
+- **Character Interactions**: Develop relationships and alliances with other characters
+- **Quest Completion**: Take on challenges alone or with a party
+- **World Building**: Contribute to the expanding lore of your chosen universe
+
+## 🤝 Community Guidelines
+
+- Respect other players and their creative contributions
+- Follow universe-specific rules and settings
+- Keep content appropriate
+- Contribute positively to the community
 
 
-## 🌐 API Endpoints
+## 🛠️ Technical Requirements
 
-| Endpoint | Action |
-| :------- | :----- |
-| `/games/` | List of games |
-| `/games/<slug>/` | Data of a game |
-| `/forums/<slug>/categories/` | List of forum categories of a game |
-| `/forums/<slug>/categories/<pk>/` | Data of a forum category |
-| `/forums/<slug>/sections/<pk>/` | Data of a forum section |
-| `/forums/<slug>/topics/<pk>/` | Data of a forum topic |
-| `/forums/<slug>/topics/<pk>/messages/` | List of forum messages of a topic |
+- Modern web browser
+- Internet connection
+- Account registration
 
-## 🌍 Internationalization
+## 📝 Contributing
 
-Oykus supports multiple languages. Currently available:
-- English (en)
-- French (fr)
+We welcome contributions to Oykus! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 📝 License
+## 📜 License
 
-This project is private and unlicensed. All rights reserved.
+This project is licensed under the [Attribution-NonCommercial License](LICENSE.md)
 
-## 👤 Author
+## 🌟 Support
 
-**M-C Pronovost**
-- GitHub: [@mcpronovost](https://github.com/mcpronovost)
+For support, questions, or suggestions:
+- ...
 
 ---
 
-© 2024 M-C Pronovost - All Rights Reserved
+*Oykus - Where every player is both author and adventurer.*
