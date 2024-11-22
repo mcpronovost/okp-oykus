@@ -78,10 +78,10 @@ Please maintain the existing project structure:
 ```plaintext
 /okp-oykus
 ├── frontend/
-│   ├── assets/
+│   ├── _assets/
 │   │   ├── css/
 │   │   └── img/
-│   ├── services/
+│   ├── _services/
 │   │   ├── api/
 │   │   ├── store/
 │   │   └── utils/
@@ -92,7 +92,7 @@ Please maintain the existing project structure:
 │   │   ├── common/
 │   │   ├── core/
 │   │   └── layout/
-│   └── views/
+│   └── pages/
 ├── backend/
 │   ├── locale/
 │   ├── media/

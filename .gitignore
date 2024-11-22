@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.env
+
+# Django
+*.migrations/
+*.static/
+*.media/
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+
+# Vite/Astro/React
+.astro/
+.vite/
+.cache/
+*.local
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE generated files
+.vscode/

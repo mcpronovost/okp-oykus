@@ -1,0 +1,102 @@
+# version: "3.8"
+
+services:
+  backend:
+    container_name: okp-oykus-backend
+    build:
+      context: ./backend
+      dockerfile: ../.docker/backend/Dockerfile
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    expose:
+      - 8000
+    volumes:
+      - "./backend:/app:rw"
+    environment:
+      - TZ=America/Toronto
+    env_file:
+      - .env
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`api.localhost`)"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+    networks:
+      - okp-oykus
+
+  frontend:
+    container_name: okp-oykus-frontend
+    build:
+      context: ./frontend
+      dockerfile: ../.docker/frontend/Dockerfile
+    command: sh -c "npm run dev --host"
+    expose:
+      - 3000
+    volumes:
+      - "./frontend:/app:rw"
+    environment:
+      - TZ=America/Toronto
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`okp.localhost`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
+    networks:
+      - okp-oykus
+
+  db:
+    container_name: okp-oykus-db
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - TZ=America/Toronto
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - okp-oykus
+
+  mailpit:
+    container_name: okp-oykus-mailpit
+    image: axllent/mailpit:latest
+    expose:
+      - 1025
+      - 8025
+    volumes:
+      - mailpit_data:/data
+    environment:
+      - TZ=America/Toronto
+      - MP_DATABASE=/data/mailpit.db
+      - MP_SMTP_AUTH_ACCEPT_ANY=1
+      - MP_MAX_MESSAGES=1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mailpit.rule=Host(`mail.localhost`)"
+      - "traefik.http.services.mailpit.loadbalancer.server.port=8025"
+    networks:
+      - okp-oykus
+
+  traefik:
+    container_name: okp-oykus-traefik
+    image: traefik:v2.10.1
+    command:
+      # - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - okp-oykus
+
+volumes:
+  postgres_data:
+  mailpit_data:
+
+networks:
+  okp-oykus:
+    driver: bridge
