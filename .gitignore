@@ -12,6 +12,8 @@ __pycache__/
 *.migrations/
 *.static/
 *.media/
+backend/media/
+backend/static/
 
 # Node
 node_modules/
