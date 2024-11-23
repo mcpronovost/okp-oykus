@@ -3,6 +3,7 @@ Django settings for okp project.
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
@@ -13,6 +14,16 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET", "django-insecure-)!ff1hbu^t2%")
 DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")
+
+CORS_ALLOW_HEADERS  = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "x-okp-api-version",
+]
 
 # Applications
 # https://docs.djangoproject.com/en/5.1/ref/applications/
@@ -26,11 +37,17 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # Add third-party apps here
+    "corsheaders",  # https://pypi.org/project/django-cors-headers/
+    "rest_framework",  # https://www.django-rest-framework.org/
+    "drf_spectacular",  # https://drf-spectacular.readthedocs.io/
+    "knox",  # https://jazzband.github.io/django-rest-knox/
 ]
 
 OKP_APPS = [
-    # Add your local apps here
+    "okp.users",
+    "okp.api",
+    # cleanup
+    "django_cleanup.apps.CleanupConfig",  # https://pypi.org/project/django-cleanup/
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OKP_APPS
@@ -106,8 +123,21 @@ LANGUAGES = [
     ("en", "English"),
 ]
 
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -130,6 +160,43 @@ DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_FROM", "")
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Custom user model
+# https://docs.djangoproject.com/en/5.1/topics/auth/customizing/#specifying-a-custom-user-model
+AUTH_USER_MODEL = "users.OkpUser"
+
+# REST Framework Settings
+# https://www.django-rest-framework.org/api-guide/settings/
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "knox.auth.TokenAuthentication"
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+# REST Knox Settings
+# https://jazzband.github.io/django-rest-knox/settings/
+
+REST_KNOX = {
+  "TOKEN_LIMIT_PER_USER": 3,
+  "TOKEN_TTL": timedelta(days=7),
+  "AUTO_REFRESH": True,
+  "AUTO_REFRESH_MAX_TTL": timedelta(days=30),
+  "MIN_REFRESH_INTERVAL": 60 * 24,
+  "AUTH_HEADER_PREFIX": "OKP",
+  "USER_SERIALIZER": "okp.api.v1.users.serializers.okpUserSerializer",
+}
+
+# DRF Spectacular Settings
+# https://drf-spectacular.readthedocs.io/en/latest/settings.html
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Oykus API",
+    "DESCRIPTION": "API for the Oykus project",
+    "VERSION": "0.0.0-alpha.7",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
 
 # Security settings
 # https://docs.djangoproject.com/en/5.1/ref/settings/#security-settings
