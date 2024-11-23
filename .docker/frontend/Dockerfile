@@ -10,17 +10,22 @@ ENV PATH=/node_modules/.bin:$PATH
 # Update system packages
 RUN apk update && apk upgrade --no-cache
 
-# Copy package.json and package-lock.json (or yarn.lock) first to leverage Docker layer caching
-COPY package.json /
+# Create non-root user
+RUN adduser -D oykus
 
-# Install Node.js dependencies
+# Set working directory and fix permissions
+WORKDIR /app
+RUN chown -R oykus:oykus /app
+
+# Copy package.json and install dependencies as non-root
+COPY --chown=oykus:oykus package.json /
 RUN npm install --no-cache --verbose
 
-# Set working directory
-WORKDIR /app
+# Switch to non-root user
+USER oykus
 
 # Copy the rest of the application source code
-COPY . .
+COPY --chown=oykus:oykus . .
 
 # Expose the port for the Vite development server
 EXPOSE 3000

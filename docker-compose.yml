@@ -36,6 +36,8 @@ services:
       - "./frontend:/app:rw"
     environment:
       - TZ=America/Toronto
+    env_file:
+      - .env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`okp.localhost`)"
@@ -45,7 +47,7 @@ services:
 
   db:
     container_name: okp-oykus-db
-    image: postgres:16-alpine
+    image: postgres:16
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -53,6 +55,8 @@ services:
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_USER=${DATABASE_USERNAME}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    env_file:
+      - .env
     networks:
       - okp-oykus
 
@@ -69,6 +73,7 @@ services:
       - MP_DATABASE=/data/mailpit.db
       - MP_SMTP_AUTH_ACCEPT_ANY=1
       - MP_MAX_MESSAGES=1000
+      - MP_SMTP_AUTH_ALLOW_INSECURE=1
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.mailpit.rule=Host(`mail.localhost`)"
@@ -78,7 +83,7 @@ services:
 
   traefik:
     container_name: okp-oykus-traefik
-    image: traefik:v2.10.1
+    image: traefik:v2.11.14
     command:
       # - "--log.level=DEBUG"
       - "--api.insecure=true"
