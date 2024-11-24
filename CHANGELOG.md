@@ -7,7 +7,8 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.0-alpha.9] - 2024-11-24
 ### Added
-- Initial multi-language routing
+- Init multi-language routing
+- Init redux store
 
 ## [0.0.0-alpha.8] - 2024-11-23
 ### Changed
