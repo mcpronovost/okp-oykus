@@ -1,68 +1,89 @@
 ---
+import type { LangType, RouteMapType } from "@/services/utils/types";
+import { LANG_DEFAULT, LANGUAGES } from "@/services/utils/constants";
 import MainLayout from "@/components/layout/MainLayout.astro";
 
+type ParamsType = {
+    lang: LangType;
+    uri: string | undefined;
+};
+
+/**
+ * Glob import views (lazy loading)
+ */
 const views = import.meta.glob("../../components/views/**/*.astro", {
     eager: false,
 });
 
-interface Route {
-    component: string;
-    translations: {
-        en: string;
-        fr: string;
-    };
-}
-
-interface RouteMap {
-    [key: string]: Route;
-}
-
-const routes: RouteMap = {
+/**
+ * Define routes
+ */
+const routes: RouteMapType = {
     home: {
         component: "Home",
-        translations: {
-            en: "home",
-            fr: "accueil",
+        paths: {
+            en: "/",
+            fr: "/",
         },
     },
     about: {
         component: "About",
-        translations: {
+        paths: {
             en: "about",
             fr: "a-propos",
         },
     },
     contact: {
         component: "About/Contact",
-        translations: {
+        paths: {
             en: "about/contact",
             fr: "a-propos/contact",
         },
     },
 };
 
-const { lang = "fr", uri = "" } = Astro.params;
+/**
+ * Get params
+ */
+const { lang, uri = "/" } = Astro.params as ParamsType;
 
-if (!lang ||!["en", "fr"].includes(lang)) {
-    return Astro.redirect("/404");
+/**
+ * Redirect to default language if not specified
+ */
+if (!LANGUAGES.includes(lang)) {
+    return Astro.redirect(LANG_DEFAULT);
 }
 
-// Find the route by matching the URI to translations
+/**
+ * Find the route by matching the URI to translations
+ */
 const route = Object.entries(routes).find(([_, r]) => {
-    return r.translations[lang] === uri;
+    return r.paths[lang] === uri;
 });
 
-if (!route || !lang) {
+/**
+ * Redirect to 404 if no route is found
+ */
+if (!route) {
     return Astro.redirect("/404");
 }
 
+/**
+ * Find the view by matching the component name
+ */
 const [_, { component }] = route;
 const viewPath = `../../components/views/${component}.astro`;
 
+/**
+ * Redirect to 404 if the view is not found
+ */
 if (!(viewPath in views)) {
     return Astro.redirect("/404");
 }
 
+/**
+ * Get the view component
+ */
 const ViewComponent = (await views[viewPath]()) as { default: any };
 ---
 
