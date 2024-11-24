@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - This section will be used for upcoming changes that are planned but not yet released.
 
+## [0.0.0-alpha.9] - 2024-11-24
+### Added
+- Initial multi-language routing
+
 ## [0.0.0-alpha.8] - 2024-11-23
 ### Changed
 - Refactor API service
