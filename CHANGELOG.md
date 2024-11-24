@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - This section will be used for upcoming changes that are planned but not yet released.
 
+## [0.0.0-alpha.8] - 2024-11-23
+### Changed
+- Refactor API service
+
+### Added
+- Add shared API service for client and server
+
 ## [0.0.0-alpha.7] - 2024-11-21
 ### Changed
 - Refactor

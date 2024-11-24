@@ -7,6 +7,6 @@ const loginResult = await authService.login("", "");
 ---
 
 <MainLayout>
-	{loginResult || "no loginResult"}
+	server : {loginResult || "no loginResult"}
 	<Test client:only="react" />
 </MainLayout>

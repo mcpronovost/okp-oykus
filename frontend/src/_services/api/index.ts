@@ -5,8 +5,15 @@ import type {
     AxiosError,
     InternalAxiosRequestConfig,
 } from "axios";
+import type { HttpMethodType } from "@/services/utils/types/api";
 import axios from "axios";
-import { API } from "@/services/utils/constants";
+import { API, HTTP_METHODS } from "@/services/utils/constants";
+
+interface ApiErrorResponse {
+    status: number;
+    msg: string;
+    detail?: string;
+}
 
 /**
  * Default headers for API requests
@@ -26,29 +33,33 @@ const defaultHeaders = {
 const doRequestError = async (
     side: "client" | "server",
     response: AxiosResponse | Response | undefined,
-) => {
-    const e = {
+): Promise<ApiErrorResponse> => {
+    const errorResponse: ApiErrorResponse = {
         status: response?.status || 0,
-        msg: response?.statusText || "An error occurred",
+        msg: "An error occurred",
     };
-    try {
-        const data =
-            side === "server"
-                ? await (response as Response).json()
-                : (response as AxiosResponse)?.data;
-        if (response?.status === 400) {
-            if (!!data) {
-                e.msg = data;
+
+    if (response) {
+        try {
+            const data =
+                side === "server"
+                    ? await (response as Response).json()
+                    : (response as AxiosResponse)?.data;
+
+            switch (response.status) {
+                case 400:
+                    errorResponse.msg = data || errorResponse.msg;
+                    break;
+                case 401:
+                    errorResponse.msg = data?.detail?.includes("Token")
+                        ? "Unauthorized access"
+                        : errorResponse.msg;
+                    break;
             }
-        } else if (response?.status === 401) {
-            if (data?.detail?.includes("Token")) {
-                e.msg = "Unauthorized access";
-            }
-        }
-        throw Error("Error");
-    } catch {
-        return JSON.stringify(e);
+        } catch {} // If parsing fails, we'll use the default error
     }
+
+    return errorResponse;
 };
 
 /**
@@ -91,8 +102,8 @@ doClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 // This interceptor processes responses and handles specific error cases
 doClient.interceptors.response.use(
     (response: AxiosResponse) => response,
-    (error: AxiosError<{ detail?: string }>) => {
-        return Promise.reject(doRequestError("client", error.response));
+    async (error: AxiosError<{ detail?: string }>) => {
+        return Promise.reject(await doRequestError("client", error.response));
     },
 );
 
@@ -105,7 +116,7 @@ const doServerInterceptorRequest = (request: RequestInit) => {
 // Add response interceptor
 const doServerInterceptorResponse = async (response: Response) => {
     if (!response.ok) {
-        throw Error(await doRequestError("server", response));
+        throw Error(JSON.stringify(await doRequestError("server", response)));
     }
     return response;
 };
@@ -119,11 +130,11 @@ const doServerInterceptorResponse = async (response: Response) => {
  * @returns Promise resolving to Response or Error
  */
 const doServer = async (
-    method: string,
+    method: HttpMethodType,
     url: string,
-    data?: any,
+    data?: unknown,
     options: RequestInit = {},
-): Promise<Response | Error> => {
+): Promise<Response> => {
     let request: RequestInit = {
         method,
         body: data ? JSON.stringify(data) : undefined,
@@ -133,15 +144,10 @@ const doServer = async (
             ...(options.headers as Record<string, string>),
         },
     };
-    request = doServerInterceptorRequest(request);
-    try {
-        const response = await fetch(`${API.BACKEND}/v${API.VERSION}/${url}`, request);
-        const result = await doServerInterceptorResponse(response);
-        return result;
-    } catch (e) {
-        if (e instanceof Error) throw e;
-        throw Error(JSON.stringify(e));
-    }
+
+    const interceptedRequest = doServerInterceptorRequest(request);
+    const response = await fetch(`${API.BACKEND}/v${API.VERSION}/${url}`, interceptedRequest);
+    return doServerInterceptorResponse(response);
 };
 
 /**
@@ -154,29 +160,27 @@ const doServer = async (
  * @returns Promise resolving to AxiosResponse, Response, or Error
  */
 const doRequest = async (
-    method: string,
+    method: HttpMethodType,
     url: string,
-    data?: any,
+    data?: unknown,
     options: RequestInit = {},
-): Promise<AxiosResponse | Response | Error> => {
+): Promise<AxiosResponse | Response> => {
     const isServer = typeof window === "undefined";
-    if (isServer) {
-        // Use fetch for server-side Astro
-        try {
-            const result = await doServer(method, url, data, options);
-            return result;
-        } catch (e) {
-            if (e instanceof Error) throw e.message;
-            throw Error(JSON.stringify(e));
+
+    try {
+        if (isServer) {
+            return await doServer(method, url, data, options);
         }
-    } else {
-        // Use Axios for client-side React
-        return doClient.request({
+
+        return await doClient.request({
             url,
             method,
             data,
             ...options,
         } as InternalAxiosRequestConfig);
+    } catch (error) {
+        if (error instanceof Error) throw error.message;
+        throw JSON.stringify(error);
     }
 };
 
@@ -189,15 +193,16 @@ export const api = {
      * @param url - API endpoint URL
      * @param options - Request options
      */
-    get: (url: string, options: RequestInit = {}) => doRequest("GET", url, undefined, options),
-    post: (url: string, data: any = null, options: RequestInit = {}) =>
-        doRequest("POST", url, data, options),
-    put: (url: string, data: any, options: RequestInit = {}) =>
-        doRequest("PUT", url, data, options),
-    patch: (url: string, data: any, options: RequestInit = {}) =>
-        doRequest("PATCH", url, data, options),
+    get: (url: string, options: RequestInit = {}) =>
+        doRequest(HTTP_METHODS.GET, url, undefined, options),
+    post: (url: string, data?: unknown, options: RequestInit = {}) =>
+        doRequest(HTTP_METHODS.POST, url, data, options),
+    put: (url: string, data: unknown, options: RequestInit = {}) =>
+        doRequest(HTTP_METHODS.PUT, url, data, options),
+    patch: (url: string, data: unknown, options: RequestInit = {}) =>
+        doRequest(HTTP_METHODS.PATCH, url, data, options),
     delete: (url: string, options: RequestInit = {}) =>
-        doRequest("DELETE", url, undefined, options),
+        doRequest(HTTP_METHODS.DELETE, url, undefined, options),
 };
 
 export * from "./authService";

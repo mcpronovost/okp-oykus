@@ -9,3 +9,11 @@ export const API = {
     },
     VERSION: VITE_API_VERSION,
 } as const;
+
+export const HTTP_METHODS = {
+    GET: "GET",
+    POST: "POST",
+    PUT: "PUT",
+    PATCH: "PATCH",
+    DELETE: "DELETE",
+} as const;

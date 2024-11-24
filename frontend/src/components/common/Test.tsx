@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "@/services/api";
 
 export default function Test() {
-  useEffect(() => {
-    const ping = async () => {
-      const pingResult = await authService.login("", "");
-      console.log(pingResult);
-    };
-    ping();
-  }, []);
+    const [result, setResult] = useState<any>(null);
 
-	return <div>Test</div>;
+    useEffect(() => {
+        const ping = async () => {
+            const result = await authService.login("", "");
+            setResult(result);
+        };
+        ping();
+    }, []);
+
+    return <div>client : {result || "no result"}</div>;
 }
