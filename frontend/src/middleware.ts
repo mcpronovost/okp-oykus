@@ -1,4 +1,3 @@
-
 export function onRequest(context: any, next: any) {
     const cookiesArray = context.request.headers.get("cookie")?.split("; ") || [];
     const cookies = cookiesArray.reduce((acc: Record<string, string>, cookie: string) => {
