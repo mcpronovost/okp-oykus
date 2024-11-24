@@ -47,9 +47,9 @@ const routes: RouteMapType = {
                             fr: "testfr",
                         },
                     },
-                }
+                },
             },
-        }
+        },
     },
 };
 
@@ -68,7 +68,7 @@ if (!LANGUAGES.includes(lang)) {
 /**
  * Recursive function to find the route by matching the URI to translations
  */
- function findRoute(uri: string, routes: RouteMapType, lang: LangType): [string, any] | undefined {
+function findRoute(uri: string, routes: RouteMapType, lang: LangType): [string, any] | undefined {
     for (const [key, route] of Object.entries(routes)) {
         // Check for parent route
         if (route.paths[lang] === uri) {
