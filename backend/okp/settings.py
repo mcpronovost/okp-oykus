@@ -15,6 +15,14 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")
 
+CORS_ALLOWED_ORIGINS = [
+    "http://api.localhost",
+    "http://okp.localhost",
+    "http://mail.localhost",
+    "http://backend",
+    "http://frontend",
+]
+
 CORS_ALLOW_HEADERS  = [
     "accept",
     "authorization",
@@ -55,6 +63,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OKP_APPS
 # Middleware
 # https://docs.djangoproject.com/en/5.1/ref/middleware/
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -141,7 +150,6 @@ STORAGES = {
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
