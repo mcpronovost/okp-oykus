@@ -4,6 +4,7 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
+from okp.api.v1.views import PingView
 
 # API documentation patterns
 api_doc_patterns = [
@@ -25,6 +26,7 @@ api_doc_patterns = [
 ]
 
 urlpatterns = [
+    path("v1/ping/", PingView.as_view(), name="ping"),
     path("v1/users/", include("okp.api.v1.users.urls")),
     *api_doc_patterns,
 ]
