@@ -1,7 +1,90 @@
+# version: "3.8"
+
 services:
+  backend:
+    container_name: okp-oykus-backend
+    build:
+      context: ./backend
+      dockerfile: ../.docker/backend/Dockerfile
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    expose:
+      - 8000
+    volumes:
+      - "./backend:/app:rw"
+    environment:
+      - TZ=America/Toronto
+    env_file:
+      - .env
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`api.localhost`)"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+    networks:
+      - okp-oykus
+
+  frontend:
+    container_name: okp-oykus-frontend
+    build:
+      context: ./frontend
+      dockerfile: ../.docker/frontend/Dockerfile
+    command: sh -c "npm run dev --host"
+    expose:
+      - 3000
+    volumes:
+      - "./frontend:/app:rw"
+    environment:
+      - TZ=America/Toronto
+      - VITE_BACKEND=backend:8000
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`okp.localhost`)"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
+    networks:
+      - okp-oykus
+
+  db:
+    container_name: okp-oykus-db
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - TZ=America/Toronto
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    env_file:
+      - .env
+    networks:
+      - okp-oykus
+
+  mailpit:
+    container_name: okp-oykus-mailpit
+    image: axllent/mailpit:latest
+    expose:
+      - 1025
+      - 8025
+    volumes:
+      - mailpit_data:/data
+    environment:
+      - TZ=America/Toronto
+      - MP_DATABASE=/data/mailpit.db
+      - MP_SMTP_AUTH_ACCEPT_ANY=1
+      - MP_MAX_MESSAGES=1000
+      - MP_SMTP_AUTH_ALLOW_INSECURE=1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mailpit.rule=Host(`mail.localhost`)"
+      - "traefik.http.services.mailpit.loadbalancer.server.port=8025"
+    networks:
+      - okp-oykus
+
   traefik:
     container_name: okp-oykus-traefik
-    image: "traefik:v2.10.1"
+    image: traefik:v2.11.14
     command:
       # - "--log.level=DEBUG"
       - "--api.insecure=true"
@@ -9,114 +92,17 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
     ports:
-      - 80:80
-      - 8080:8080
-    environment:
-      TZ: America/Toronto
+      - "80:80"
+      - "8080:8080"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-      - okpoykus
-    depends_on:
-      - frontend
-      - django
-
-  frontend:
-    container_name: okp-oykus-frontend
-    build: ./frontend
-    command: sh -c "yarn dev --host --port 3000"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.okp.rule=Host(`okp.localhost`) && !PathPrefix(`/health`)"
-      - "traefik.http.routers.okp.entrypoints=web"
-    expose:
-      - 3000
-    ports:
-      - 3000:3000
-    environment:
-      TZ: America/Toronto
-      VITE_LANGUAGE: ${VITE_LANGUAGE}
-      VITE_PORT: ${VITE_PORT}
-      VITE_PROTOCOL: ${VITE_PROTOCOL}
-      VITE_DOMAIN: ${VITE_DOMAIN}
-      VITE_NODE_ENV: ${NODE_ENV}
-    env_file: .env
-    volumes:
-      - "./frontend:/app:rw"
-    networks:
-      - okpoykus
-    depends_on:
-      - django
-
-  django:
-    container_name: okp-oykus-django
-    build: ./backend
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
-    restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`okp.localhost`) && (PathPrefix(`/admin`)||PathPrefix(`/static`)||PathPrefix(`/media`)||PathPrefix(`/api`))"
-    expose:
-      - 8000
-    ports:
-      - 8000:8000
-    environment:
-      TZ: America/Toronto
-      PORT: ${PORT}
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-    env_file: .env
-    volumes:
-      - "./backend:/app:rw"
-    networks:
-      - okpoykus
-    depends_on:
-      - db
-
-  db:
-    container_name: okp-oykus-db
-    image: postgres:13.16-alpine
-    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
-    restart: unless-stopped
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-    env_file: .env
-    volumes:
-      - pgdata:/var/lib/postgresql/data/
-      - ./postgresql.conf:/etc/postgresql/postgresql.conf
-    networks:
-      - okpoykus
-
-  # elasticsearch:
-  #   container_name: okp-oykus-elasticsearch
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
-  #   volumes:
-  #     - esdata:/usr/share/elasticsearch/data
-  #   ports:
-  #     - "9200:9200"
-  #     - "9300:9300"
-  #   environment:
-  #     discovery.type: single-node
-  #     xpack.security.enabled: "false"
-  #     cluster.routing.allocation.disk.watermark.low: "97%"
-  #     cluster.routing.allocation.disk.watermark.high: "98%"
-  #     cluster.routing.allocation.disk.watermark.flood_stage: "99%"
-  #     ES_JAVA_OPTS: "-Xms512m -Xmx512m"
-  #   networks:
-  #     - okpoykus
+      - okp-oykus
 
 volumes:
-  pgdata:
-  # esdata:
+  postgres_data:
+  mailpit_data:
 
 networks:
-  okpoykus:
+  okp-oykus:
     driver: bridge
