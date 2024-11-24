@@ -4,6 +4,7 @@ export type RouteType = {
         en: string;
         fr: string;
     };
+    children?: RouteMapType;
 };
 
 export type RouteMapType = {

@@ -32,13 +32,24 @@ const routes: RouteMapType = {
             en: "about",
             fr: "a-propos",
         },
-    },
-    contact: {
-        component: "About/Contact",
-        paths: {
-            en: "about/contact",
-            fr: "a-propos/contact",
-        },
+        children: {
+            contact: {
+                component: "Contact",
+                paths: {
+                    en: "contact",
+                    fr: "contact",
+                },
+                children: {
+                    test: {
+                        component: "common/Test",
+                        paths: {
+                            en: "test",
+                            fr: "testfr",
+                        },
+                    },
+                }
+            },
+        }
     },
 };
 
@@ -55,11 +66,30 @@ if (!LANGUAGES.includes(lang)) {
 }
 
 /**
+ * Recursive function to find the route by matching the URI to translations
+ */
+ function findRoute(uri: string, routes: RouteMapType, lang: LangType): [string, any] | undefined {
+    for (const [key, route] of Object.entries(routes)) {
+        // Check for parent route
+        if (route.paths[lang] === uri) {
+            return [key, route];
+        }
+        // Check for child routes recursively
+        if (route.children) {
+            const childUri = `${route.paths[lang]}/`;
+            const childRoute = findRoute(uri.replace(childUri, ""), route.children, lang);
+            if (childRoute) {
+                return childRoute;
+            }
+        }
+    }
+    return undefined;
+}
+
+/**
  * Find the route by matching the URI to translations
  */
-const route = Object.entries(routes).find(([_, r]) => {
-    return r.paths[lang] === uri;
-});
+const route = findRoute(uri, routes, lang);
 
 /**
  * Redirect to 404 if no route is found
