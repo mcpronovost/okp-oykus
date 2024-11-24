@@ -1,6 +1,13 @@
 ---
+import { Test1, Test2 } from "@/components/react/applications";
+
 const { lang } = Astro.params;
 ---
 
 <h1>Home {lang}</h1>
 
+<Test1 client:only="react" />
+
+<p>aaa</p>
+
+<Test2 client:only="react" />

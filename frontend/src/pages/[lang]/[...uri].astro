@@ -1,6 +1,7 @@
 ---
-import type { LangType, RouteMapType } from "@/services/utils/types";
-import { LANG_DEFAULT, LANGUAGES } from "@/services/utils/constants";
+import type { LangType } from "@/services/utils/types";
+import { LANG_DEFAULT, LANGUAGES, ROUTES } from "@/services/utils/constants";
+import { findRoute } from "@/services/router";
 import MainLayout from "@/components/layout/MainLayout.astro";
 
 type ParamsType = {
@@ -16,80 +17,21 @@ const views = import.meta.glob("../../components/views/**/*.astro", {
 });
 
 /**
- * Define routes
- */
-const routes: RouteMapType = {
-    home: {
-        component: "Home",
-        paths: {
-            en: "/",
-            fr: "/",
-        },
-    },
-    about: {
-        component: "About",
-        paths: {
-            en: "about",
-            fr: "a-propos",
-        },
-        children: {
-            contact: {
-                component: "Contact",
-                paths: {
-                    en: "contact",
-                    fr: "contact",
-                },
-                children: {
-                    test: {
-                        component: "common/Test",
-                        paths: {
-                            en: "test",
-                            fr: "testfr",
-                        },
-                    },
-                },
-            },
-        },
-    },
-};
-
-/**
  * Get params
  */
-const { lang, uri = "/" } = Astro.params as ParamsType;
+const { lang, uri = "" } = Astro.params as ParamsType;
 
 /**
  * Redirect to default language if not specified
  */
 if (!LANGUAGES.includes(lang)) {
-    return Astro.redirect(LANG_DEFAULT);
-}
-
-/**
- * Recursive function to find the route by matching the URI to translations
- */
-function findRoute(uri: string, routes: RouteMapType, lang: LangType): [string, any] | undefined {
-    for (const [key, route] of Object.entries(routes)) {
-        // Check for parent route
-        if (route.paths[lang] === uri) {
-            return [key, route];
-        }
-        // Check for child routes recursively
-        if (route.children) {
-            const childUri = `${route.paths[lang]}/`;
-            const childRoute = findRoute(uri.replace(childUri, ""), route.children, lang);
-            if (childRoute) {
-                return childRoute;
-            }
-        }
-    }
-    return undefined;
+    return Astro.redirect(`/${LANG_DEFAULT}`);
 }
 
 /**
  * Find the route by matching the URI to translations
  */
-const route = findRoute(uri, routes, lang);
+const route = findRoute(uri, ROUTES, lang);
 
 /**
  * Redirect to 404 if no route is found
