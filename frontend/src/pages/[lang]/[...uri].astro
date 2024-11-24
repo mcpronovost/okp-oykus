@@ -1,0 +1,71 @@
+---
+import MainLayout from "@/components/layout/MainLayout.astro";
+
+const views = import.meta.glob("../../components/views/**/*.astro", {
+    eager: false,
+});
+
+interface Route {
+    component: string;
+    translations: {
+        en: string;
+        fr: string;
+    };
+}
+
+interface RouteMap {
+    [key: string]: Route;
+}
+
+const routes: RouteMap = {
+    home: {
+        component: "Home",
+        translations: {
+            en: "home",
+            fr: "accueil",
+        },
+    },
+    about: {
+        component: "About",
+        translations: {
+            en: "about",
+            fr: "a-propos",
+        },
+    },
+    contact: {
+        component: "About/Contact",
+        translations: {
+            en: "about/contact",
+            fr: "a-propos/contact",
+        },
+    },
+};
+
+const { lang = "fr", uri = "" } = Astro.params;
+
+if (!lang ||!["en", "fr"].includes(lang)) {
+    return Astro.redirect("/404");
+}
+
+// Find the route by matching the URI to translations
+const route = Object.entries(routes).find(([_, r]) => {
+    return r.translations[lang] === uri;
+});
+
+if (!route || !lang) {
+    return Astro.redirect("/404");
+}
+
+const [_, { component }] = route;
+const viewPath = `../../components/views/${component}.astro`;
+
+if (!(viewPath in views)) {
+    return Astro.redirect("/404");
+}
+
+const ViewComponent = (await views[viewPath]()) as { default: any };
+---
+
+<MainLayout>
+    <ViewComponent.default />
+</MainLayout>
