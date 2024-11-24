@@ -1,6 +1,6 @@
 import { api } from "@/services/api";
 
-export const authService = {
+export const authApi = {
     async login(username: string, password: string): Promise<any> {
         try {
             const response = await api.post("users/login/", {

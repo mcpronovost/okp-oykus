@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { createContext, useContext, useState, useCallback } from "react";
-import { api, authService } from "@/services/api";
+import { api, authApi } from "@/services/api";
 import { API } from "@/services/utils/constants";
 
 interface AuthContextType {
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const login = useCallback(async (username: string, password: string) => {
         try {
-            const { token, user: userData } = await authService.login(username, password);
+            const { token, user: userData } = await authApi.login(username, password);
 
             doSetRat(token);
             doSetUser(userData || null);

@@ -205,4 +205,4 @@ export const api = {
         doRequest(HTTP_METHODS.DELETE, url, undefined, options),
 };
 
-export * from "./authService";
+export * from "./authApi";
