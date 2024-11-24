@@ -1,7 +1,38 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "extends": "astro/tsconfigs/base",
+    
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ES2022",
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+        "useDefineForClassFields": true,
+        "types": ["astro/client"],
+
+        /* Paths */
+        "baseUrl": ".",
+        "paths": {
+            "*": ["*"],
+            "@/assets/*": ["src/_assets/*"],
+            "@/services/*": ["src/_services/*"],
+            "@/*": ["src/*"]
+        },
+
+        /* Bundler mode */
+        "moduleResolution": "Bundler",
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+        "allowJs": true,
+        "checkJs": false,
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    }
 }

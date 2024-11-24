@@ -1,51 +1,39 @@
 {
   "name": "okp-oykus-frontend",
-  "description": "Frontend for Oykus project.",
   "type": "module",
-  "version": "0.3.2",
-  "license": "UNLICENSED",
-  "author": {
-    "name": "M-C Pronovost"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mcpronovost/okp-oykus.git"
-  },
+  "version": "0.0.0-alpha.7",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "check-translations": "node ./src/_libs/i18n/check-translations.js"
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@mcpronovost/qpfilters": "^2.2.0",
-    "lucide-react": "^0.453.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-select": "^5.8.2",
-    "simplebar-react": "^3.2.6"
+    "@astrojs/check": "0.9.4",
+    "@astrojs/node": "9.0.0-beta.3",
+    "@astrojs/react": "3.6.3",
+    "astro": "^5.0.0-beta.10",
+    "axios": "1.7.7",
+    "js-cookie": "3.0.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-select": "5.8.3",
+    "react-select-async-paginate": "0.7.6"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^9.13.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-promise": "^7.1.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.11.0",
-    "prettier": "^3.3.3",
-    "sass": "^1.80.6",
-    "typescript": "~5.6.2",
-    "typescript-eslint": "^8.11.0",
-    "vite": "^5.4.10"
-  },
-  "engines": {
-    "node": ">=18.14.1",
-    "npm": ">=9.3.1"
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@typescript-eslint/parser": "8.15.0",
+    "esbuild": "0.24.0",
+    "eslint": "9.15.0",
+    "eslint-plugin-astro": "1.3.1",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-n": "17.14.0",
+    "eslint-plugin-promise": "7.1.0",
+    "prettier": "3.3.3",
+    "prettier-plugin-astro": "0.14.1",
+    "sass-embedded": "1.81.0",
+    "typescript": "5.6.3"
   }
 }

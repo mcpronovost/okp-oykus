@@ -1,0 +1,45 @@
+# Base stage
+FROM node:23-alpine AS base
+LABEL org.opencontainers.image.authors="mcpronovost"
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV NPM_CONFIG_LOGLEVEL=warn
+
+# Update system packages and install required dependencies
+RUN apk update && apk upgrade --no-cache
+
+# ================================================================
+# Create builder stage for installing Node.js dependencies
+FROM base AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json (or yarn.lock) first to leverage Docker layer caching
+COPY package*.json ./
+
+# Install Node.js dependencies
+RUN npm install --no-cache
+
+# Copy the rest of the application source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# ================================================================
+# Create final stage with minimal image size
+FROM base
+
+# Set working directory
+WORKDIR /app
+
+# Copy built application from builder stage
+COPY --from=builder /app/dist /app/dist
+
+# Copy any other necessary files (e.g., static assets)
+COPY --from=builder /app/public /app/public
+
+# Start the application (adjust the command based on your setup)
+CMD ["npm", "run", "serve"]
