@@ -1,7 +1,12 @@
 ---
 import MainLayout from "@/components/layout/MainLayout.astro";
+import Test from "@/components/common/Test.tsx";
+import { authService } from "@/services/api";
+
+const loginResult = await authService.login("", "");
 ---
 
 <MainLayout>
-	aaa
+	{loginResult || "no loginResult"}
+	<Test client:only="react" />
 </MainLayout>
