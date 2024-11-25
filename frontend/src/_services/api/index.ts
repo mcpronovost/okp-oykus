@@ -56,7 +56,9 @@ const doRequestError = async (
                         : errorResponse.msg;
                     break;
             }
-        } catch {} // If parsing fails, we'll use the default error
+        } catch {
+            // If parsing fails, we'll use the default error
+        }
     }
 
     return errorResponse;
@@ -135,7 +137,7 @@ const doServer = async (
     data?: unknown,
     options: RequestInit = {},
 ): Promise<Response> => {
-    let request: RequestInit = {
+    const request: RequestInit = {
         method,
         body: data ? JSON.stringify(data) : undefined,
         ...options,
