@@ -1,0 +1,54 @@
+---
+import { Mail } from "lucide";
+import OkpIcon from "@/components/common/Icon.astro";
+---
+
+<header id="okp-core-header" role="navigation">
+    <section class="okp-header-branding">
+        <a href="/" class="okp-header-branding-link" role="link" aria-label="Oykus">
+            <figure class="okp-header-branding-logo">
+                <img src="/favicon.svg" alt="Oykus" />
+            </figure>
+            <span class="okp-header-branding-title">Oykus</span>
+        </a>
+    </section>
+    <section>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        Terms of Use
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <section>(spacer)</section>
+    <section>
+        <div>
+            <button>
+                <OkpIcon icon={Mail} />
+            </button>
+        </div>
+    </section>
+    <section>
+        <div>
+            <button>
+                <span>Username</span>
+                <figure>
+                    <img src="/images/avatar.png" alt="Avatar" />
+                </figure>
+            </button>
+        </div>
+    </section>
+</header>

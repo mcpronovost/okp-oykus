@@ -1,19 +1,9 @@
+@use "base/variables";
+@use "base/fonts";
+@use "base/okp";
 
-body {
-    background-color: #151413;
-    color: #bab1a8;
-
-    &::after {
-        content: "";
-        background-image: url("../img/noise.png");
-        background-repeat: repeat;
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 500;
-        pointer-events: none;
-    }
-}
+// Core
+@use "core/header" as core-header;
+@use "core/left" as core-left;
+@use "core/main" as core-main;
+@use "core/right" as core-right;

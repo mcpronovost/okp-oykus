@@ -1,13 +1,21 @@
 ---
+import { Award } from "lucide";
 import { Test1, Test2 } from "@/components/react/applications";
+import OkpIcon from "@/components/common/Icon.astro";
 
 const { lang } = Astro.params;
 ---
 
-<h1>Home {lang}</h1>
+<h1 style="font-size: 12rem; line-height: 0.8; word-spacing: 100vw;">Explore Build Survive</h1>
 
-<Test1 client:only="react" />
+<p style="display: block;max-width: 25vw;">The only aim in Rust is to survive. Everything wants you to die - the island’s wildlife and other inhabitants, the environment, other survivors. Do whatever it takes to last another night.</p>
 
-<p>aaa</p>
+<p>aaa {lang}</p>
+
+<div>
+    <OkpIcon icon={Award} />
+</div>
 
 <Test2 client:only="react" />
+
+<Test1 client:only="react" />

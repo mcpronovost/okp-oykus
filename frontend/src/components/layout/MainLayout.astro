@@ -1,5 +1,8 @@
 ---
 import "@/assets/css/main.scss";
+import OkpCoreHeader from "@/components/core/Header.astro";
+import OkpCoreLeft from "@/components/core/Left.astro";
+import OkpCoreRight from "@/components/core/Right.astro";
 
 const { lang } = Astro.params;
 ---
@@ -17,7 +20,14 @@ const { lang } = Astro.params;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <!-- --- -->
     </head>
-    <body>
-        <slot />
+    <body id="okp">
+        <OkpCoreHeader />
+        <main id="okp-core-main">
+            <OkpCoreLeft />
+            <div id="okp-core-content" role="main">
+                <slot />
+            </div>
+            <OkpCoreRight />
+        </main>
     </body>
 </html>
