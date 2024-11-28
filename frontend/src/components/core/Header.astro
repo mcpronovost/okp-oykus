@@ -1,5 +1,5 @@
 ---
-import { Mail } from "lucide";
+import { Bell, Mail, Smile } from "lucide";
 import OkpIcon from "@/components/common/Icon.astro";
 ---
 
@@ -12,41 +12,54 @@ import OkpIcon from "@/components/common/Icon.astro";
             <span class="okp-header-branding-title">Oykus</span>
         </a>
     </section>
-    <section>
+    <section class="okp-header-menu">
         <nav>
             <ul>
                 <li>
-                    <a href="/">
-                        Home
+                    <a href="#">
+                        Devblog
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="#">
                         FAQ
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="#">
                         Terms of Use
                     </a>
                 </li>
             </ul>
         </nav>
     </section>
-    <section>(spacer)</section>
-    <section>
+    <section class="okp-header-spacer"></section>
+    <section class="okp-header-notifications">
+        <div>
+            <button>
+                <OkpIcon icon={Bell} />
+            </button>
+        </div>
         <div>
             <button>
                 <OkpIcon icon={Mail} />
             </button>
         </div>
-    </section>
-    <section>
         <div>
             <button>
-                <span>Username</span>
-                <figure>
-                    <img src="/images/avatar.png" alt="Avatar" />
+                <OkpIcon icon={Smile} />
+            </button>
+        </div>
+    </section>
+    <section class="okp-header-user">
+        <div class="okp-header-user-dropdown">
+            <button class="okp-header-user-button">
+                <div class="okp-header-user-button-name">
+                    <span>M-C Pronovost</span>
+                    <small>mcpronovost@oykus.ca</small>
+                </div>
+                <figure class="okp-header-user-button-avatar">
+                    {/* <img src="/images/avatar.png" alt="Avatar" /> */}
                 </figure>
             </button>
         </div>

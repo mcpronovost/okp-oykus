@@ -1,4 +1,5 @@
 ---
+import "@/assets/vendors/simplebar/simplebar.css";
 import "@/assets/css/main.scss";
 import OkpCoreHeader from "@/components/core/Header.astro";
 import OkpCoreLeft from "@/components/core/Left.astro";
@@ -31,3 +32,13 @@ const { lang } = Astro.params;
         </main>
     </body>
 </html>
+
+<script>
+  import { SimpleBar } from "@/assets/vendors/simplebar/simplebar.min.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const mainElement = document.getElementById("okp-core-content");
+
+    if (mainElement) new SimpleBar(mainElement);
+  });
+</script>

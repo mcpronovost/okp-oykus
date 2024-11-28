@@ -4,6 +4,9 @@
 }
 
 #okp-core-content {
+    overflow: auto;
     display: block;
     flex: 1 1 auto;
+    width: 100%;
+    height: calc(100vh - 64px)
 }
