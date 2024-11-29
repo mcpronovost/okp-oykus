@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginAstro from "eslint-plugin-astro";
+import importPlugin from "eslint-plugin-import";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
@@ -11,6 +12,7 @@ export default tseslint.config(
             js.configs.recommended,
             ...tseslint.configs.recommended,
             ...eslintPluginAstro.configs.recommended,
+            ...importPlugin.configs.recommended,
         ],
         files: ["**/*.{ts,tsx,astro,js,jsx}"],
         languageOptions: {
@@ -22,11 +24,12 @@ export default tseslint.config(
             },
             globals: {
                 browser: true,
-                es2021: true,
+                es2024: true,
                 node: true,
             },
         },
         plugins: {
+            "import-plugin": importPlugin,
             "react-hooks": reactHooks,
             "react-refresh": reactRefresh,
         },
@@ -37,6 +40,15 @@ export default tseslint.config(
             /* Astro */
             "astro/no-conflict-set-directives": "error",
             "astro/no-unused-define-vars-in-style": "error",
+            /* Import */
+            "import/order": ["error", {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+                "newlines-between": "always",
+                "alphabetize": { "order": "asc" }
+            }],
+            "import/no-unresolved": "error",
+            "import/no-cycle": "error",
+            "import/no-unused-modules": "error",
             /* General */
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-implicit-any": "off",
