@@ -49,9 +49,10 @@ export default tseslint.config(
             "import/no-unresolved": "error",
             "import/no-cycle": "error",
             "import/no-unused-modules": "error",
-            /* General */
+            /* TypeScript */
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/no-implicit-any": "off",
+            /* General */
             "no-console": "error",
             "space-before-function-paren": [
                 "error",
