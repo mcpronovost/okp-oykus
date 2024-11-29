@@ -23,7 +23,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://frontend",
 ]
 
-CORS_ALLOW_HEADERS  = [
+CORS_ALLOW_HEADERS = [
     "accept",
     "authorization",
     "content-type",
@@ -53,6 +53,7 @@ THIRD_PARTY_APPS = [
 
 OKP_APPS = [
     "okp.users",
+    "okp.games",
     "okp.api",
     # cleanup
     "django_cleanup.apps.CleanupConfig",  # https://pypi.org/project/django-cleanup/
