@@ -2,6 +2,7 @@
 import { Award } from "lucide";
 import { Test1, Test2 } from "@/components/react/applications";
 import OkpIcon from "@/components/common/Icon.astro";
+import OkpTag from "@/components/react/common/Tag";
 
 const { lang } = Astro.params;
 ---
@@ -29,12 +30,22 @@ const { lang } = Astro.params;
 </div>
 
 <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; justify-content: center; margin: 32px auto;">
-    <span style="background: color-mix(in srgb, var(--okp-tier1) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier1); color: color-mix(in srgb, var(--okp-tier1) 50%, var(--okp-card-fg)); padding: 4px 12px;">Tier 1</span>
-    <span style="background: color-mix(in srgb, var(--okp-tier2) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier2); color: color-mix(in srgb, var(--okp-tier2) 50%, var(--okp-card-fg)); padding: 4px 12px;">
-        <span>Tier 2</span>
-    </span>
-    <span style="background: color-mix(in srgb, var(--okp-tier3) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier3); color: color-mix(in srgb, var(--okp-tier3) 50%, var(--okp-card-fg)); padding: 4px 12px;">Tier 3</span>
-    <span style="background: color-mix(in srgb, var(--okp-tier4) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier4); color: color-mix(in srgb, var(--okp-tier4) 50%, var(--okp-card-fg)); padding: 4px 12px;">Tier 4</span>
-    <span style="background: color-mix(in srgb, var(--okp-tier5) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier5); color: color-mix(in srgb, var(--okp-tier5) 50%, var(--okp-card-fg)); padding: 4px 12px;">Tier 5</span>
-    <span style="background: color-mix(in srgb, var(--okp-tier6) 15%, var(--okp-card-bg)); border-left: 1px solid var(--okp-tier6); color: color-mix(in srgb, var(--okp-tier6) 50%, var(--okp-card-fg)); padding: 4px 12px;">Tier 6</span>
+    <span>Tier -</span>
+    {Array.from({ length: 7 }, (_, i) => i).map((tier) => ( 
+        <span style={`color: var(--okp-tier${tier});`}>Tier {tier}</span>
+    ))}
+</div>
+
+<div style="display: flex; flex-direction: row; gap: 12px; align-items: center; justify-content: center; margin: 32px auto;">
+    <OkpTag>Tier -</OkpTag>
+    {Array.from({ length: 7 }, (_, i) => i).map((tier) => (
+        <OkpTag type={`tier${tier}`}>Tier {tier}</OkpTag>
+    ))}
+</div>
+
+<div style="display: flex; flex-direction: row; gap: 12px; align-items: center; justify-content: center; margin: 32px auto;">
+    <OkpTag size="sm">Tier -</OkpTag>
+    {Array.from({ length: 7 }, (_, i) => i).map((tier) => (
+        <OkpTag type={`tier${tier}`} size="sm">Tier {tier}</OkpTag>
+    ))}
 </div>
