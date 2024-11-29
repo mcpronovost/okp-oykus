@@ -1,11 +1,57 @@
 import type { RouteType, RouteMapType, LangType } from "@/services/utils/types";
+import { routesAuth } from "./routesAuth";
+
+/**
+ * Routes
+ */
+export const routes: RouteMapType = {
+    home: {
+        component: "Home",
+        paths: {
+            en: "",
+            fr: "",
+        },
+    },
+    about: {
+        component: "About",
+        paths: {
+            en: "about",
+            fr: "a-propos",
+        },
+        children: {
+            contact: {
+                component: "Contact",
+                paths: {
+                    en: "contact",
+                    fr: "contact",
+                },
+                children: {
+                    test: {
+                        component: "common/Test",
+                        paths: {
+                            en: "test",
+                            fr: "testfr",
+                        },
+                    },
+                },
+            },
+        },
+    },
+    ...routesAuth,
+    settings: {
+        component: "Settings",
+        paths: {
+            en: "settings",
+            fr: "parametres",
+        },
+    },
+};
 
 /**
  * Recursive function to find the route by matching the URI to translations
  */
 export const findRoute = (
     uri: string,
-    routes: RouteMapType,
     lang: LangType,
 ): [string, RouteType] | undefined => {
     for (const [key, route] of Object.entries(routes)) {

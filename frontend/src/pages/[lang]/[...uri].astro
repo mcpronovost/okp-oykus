@@ -1,6 +1,6 @@
 ---
 import type { LangType } from "@/services/utils/types";
-import { LANG_DEFAULT, LANGUAGES, ROUTES } from "@/services/utils/constants";
+import { LANG_DEFAULT, LANGUAGES } from "@/services/utils/constants";
 import { findRoute } from "@/services/router";
 import MainLayout from "@/components/layout/MainLayout.astro";
 
@@ -22,7 +22,7 @@ const views = import.meta.glob("../../components/views/**/*.astro", {
 const { lang, uri = "" } = Astro.params as ParamsType;
 
 /**
- * Redirect to default language if not specified
+ * Redirect to default language if not supported
  */
 if (!LANGUAGES.includes(lang)) {
     return Astro.redirect(`/${LANG_DEFAULT}`);
@@ -31,7 +31,7 @@ if (!LANGUAGES.includes(lang)) {
 /**
  * Find the route by matching the URI to translations
  */
-const route = findRoute(uri, ROUTES, lang);
+const route = findRoute(uri, lang);
 
 /**
  * Redirect to 404 if no route is found
