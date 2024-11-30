@@ -73,64 +73,7 @@ git push origin feature/your-feature-name
 
 ## Project Structure
 
-Please maintain the existing project structure:
-
-```plaintext
-/okp-oykus
-├── frontend/
-│   ├── _assets/
-│   │   ├── css/
-│   │   └── img/
-│   ├── _services/
-│   │   ├── api/
-│   │   ├── store/
-│   │   └── utils/
-│   │       ├── constants/
-│   │       ├── locales/
-│   │       └── types/
-│   ├── components/
-│   │   ├── common/
-│   │   ├── core/
-│   │   └── layout/
-│   └── pages/
-├── backend/
-│   ├── locale/
-│   ├── media/
-│   └── okp/
-│       ├── api/
-│       │   └── v1/
-│       │       ├── games/
-│       │       │   ├── views/
-│       │       │   ├── serializers.py
-│       │       │   └── urls.py
-│       │       ├── forums/
-│       │       │   ├── views/
-│       │       │   ├── serializers.py
-│       │       │   └── urls.py
-│       │       └── users/
-│       │           ├── views/
-│       │           ├── serializers.py
-│       │           └── urls.py
-│       ├── games/
-│       │   │── migrations/
-│       │   │── models/
-│       │   │── admin.py
-│       │   └── apps.py
-│       ├── forums/
-│       │   │── migrations/
-│       │   │── models/
-│       │   │── admin.py
-│       │   └── apps.py
-│       ├── users/
-│       │   │── migrations/
-│       │   │── models/
-│       │   │── admin.py
-│       │   └── apps.py
-│       ├── fields.py
-│       ├── urls.py
-│       └── utils.py
-└── database/
-```
+Please maintain the existing project structure.
 
 ## Getting Help
 
