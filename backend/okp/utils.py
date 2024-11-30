@@ -1,3 +1,5 @@
+from django.utils.text import slugify
+
 def get_abbr(string, max=2):
     parts = string.split()
     if not parts:
@@ -21,3 +23,17 @@ def get_abbr(string, max=2):
         abbr = parts[0][0]
 
     return abbr.upper()[:max]
+
+
+def get_slug(string, instance, model):
+    base_slug = slugify(string)
+    slug = base_slug
+    counter = 1
+    
+    # Check if slug exists and increment counter until unique
+    while model.objects.filter(slug=slug).exclude(id=instance.id).exists():
+        slug = f"{base_slug}-{counter}"
+        counter += 1
+    
+    return slug
+
