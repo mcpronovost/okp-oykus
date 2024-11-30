@@ -7,9 +7,13 @@ from okp.games.models import OkpGame
 @admin.register(OkpGame)
 class OkpGameAdmin(admin.ModelAdmin):
     list_display = ("name", "owner", "total_players", "total_characters")
-    list_filter = (("owner", admin.RelatedOnlyFieldListFilter),)
+    list_filter = (
+        ("owner", admin.RelatedOnlyFieldListFilter),
+        ("is_active", admin.BooleanFieldListFilter),
+        ("is_private", admin.BooleanFieldListFilter),
+    )
     search_fields = ("name",)
-    readonly_fields = ("abbr", "total_players", "total_characters", "created_at", "updated_at")
+    readonly_fields = ("total_players", "total_characters", "created_at", "updated_at")
 
     def get_fieldsets(self, request, obj=None):
         # Return all fieldsets when editing (obj is not None)
@@ -18,13 +22,19 @@ class OkpGameAdmin(admin.ModelAdmin):
                 (
                     _("Identity"),
                     {
-                        "fields": ("name", "abbr"),
+                        "fields": ("name", ("abbr", "is_abbr_auto"), ("slug", "is_slug_auto")),
                     },
                 ),
                 (
                     _("Ownership"),
                     {
                         "fields": ("owner", "founder"),
+                    },
+                ),
+                (
+                    _("Status"),
+                    {
+                        "fields": ("is_active", "is_private"),
                     },
                 ),
                 (
