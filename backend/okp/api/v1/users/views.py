@@ -1,7 +1,8 @@
+from django.conf import settings
 from django.contrib.auth import login
-
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import AllowAny
+from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from knox.views import LogoutView as KnoxLogoutView
 from knox.views import LogoutAllView as KnoxLogoutAllView
@@ -42,6 +43,13 @@ class LoginView(KnoxLoginView):
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
+
+        # Count user's tokens and delete oldest if limit reached
+        user_tokens = AuthToken.objects.filter(user=user)
+        if user_tokens.count() >= settings.REST_KNOX["TOKEN_LIMIT_PER_USER"]:
+            oldest_token = user_tokens.order_by("created").first()
+            oldest_token.delete()
+
         login(request, user)
         return super(LoginView, self).post(request, format=None)
 
