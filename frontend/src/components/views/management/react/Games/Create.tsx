@@ -3,6 +3,7 @@ import Providers from "@/components/react/Providers";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { PencilLine, Plus } from "lucide-react";
+import { gamesApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
 import { findLocaleRoute } from "@/services/router";
 
@@ -28,9 +29,10 @@ export function GamesCreate() {
         window.location.href = route;
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log("submit");
+        const result = await gamesApi.create(formName);
+        console.log("submit", result);
     };
 
     return (

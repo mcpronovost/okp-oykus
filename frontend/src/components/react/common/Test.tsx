@@ -12,8 +12,8 @@ export default function Test() {
 
     useEffect(() => {
         const ping = async () => {
-            const result = await authApi.login("", "");
-            setResult(result);
+            const result = await authApi.login("mc", "1");
+            setResult(JSON.stringify(result));
         };
         ping();
     }, []);

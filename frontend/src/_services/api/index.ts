@@ -55,6 +55,9 @@ const doRequestError = async (
                         ? "Unauthorized access"
                         : errorResponse.msg;
                     break;
+                case 403:
+                    errorResponse.msg = data || errorResponse.msg;
+                    break;
             }
         } catch {
             // If parsing fails, we'll use the default error
@@ -208,3 +211,4 @@ export const api = {
 };
 
 export * from "./authApi";
+export * from "./gamesApi";
