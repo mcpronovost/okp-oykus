@@ -1,0 +1,49 @@
+.okp-btn {
+    background-color: var(--okp-card-bg);
+    border: none;
+    outline: none;
+    color: var(--okp-card-fg);
+    font-family: "SofiaSans", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: calc(12px + 0.1em) 32px 12px;
+    transition: filter 0.3s;
+
+    &-success {
+        background: color-mix(in srgb, var(--okp-success) 15%, var(--okp-card-bg));
+        color: color-mix(in srgb, var(--okp-success) 80%, var(--okp-card-fg));
+    }
+
+    &-error {
+        background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
+        color: color-mix(in srgb, var(--okp-error) 80%, var(--okp-card-fg));
+    }
+
+    &:not(:disabled):hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(0.5);
+    }
+
+    .lucide,
+    svg {
+        display: inline-block;
+        margin-bottom: 0.1em;
+    }
+}

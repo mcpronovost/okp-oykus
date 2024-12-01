@@ -1,0 +1,63 @@
+.okp-form {
+    &-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 12px 0;
+
+        label {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 6px 24px 6px 0;
+        }
+
+        &-input {
+            flex: 1 1 auto;
+        }
+
+        &-count {
+            font-size: 0.8rem;
+            line-height: 1;
+            text-align: right;
+            display: block;
+            flex: 0 0 48px;
+            padding: 12px 0;
+
+            &.okp-error {
+                color: var(--okp-error);
+            }
+        }
+
+        &-errors {
+            color: var(--okp-error);
+            font-size: 0.8rem;
+            line-height: 1;
+            display: block;
+            width: 100%;
+            padding: 12px 12px;
+
+            li {
+                margin: 0 0 6px;
+            }
+        }
+    }
+
+    &-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 0 0;
+    }
+}

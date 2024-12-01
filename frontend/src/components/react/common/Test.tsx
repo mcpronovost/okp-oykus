@@ -12,8 +12,8 @@ export default function Test() {
 
     useEffect(() => {
         const ping = async () => {
-            const result = await authApi.login("", "");
-            setResult(result);
+            const result = await authApi.login("mc", "1");
+            setResult(JSON.stringify(result));
         };
         ping();
     }, []);
@@ -21,13 +21,6 @@ export default function Test() {
     return (
         <>
             <div>client : {result || "no result"}</div>
-            <div>lang : {lang}</div>
-            <div>{t("Home")}</div>
-            <div>0 {t("Categories", 0)}</div>
-            <div>1 {t("Categories", 1)}</div>
-            <div>2 {t("Categories", 2)}</div>
-            <div>3 {t("Categories", 3)}</div>
-            <div>{t("Untranslated")}</div>
         </>
     );
 }

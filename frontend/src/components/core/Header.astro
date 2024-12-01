@@ -1,6 +1,11 @@
 ---
+import type { LangType } from "@/services/utils/types";
 import { Bell, Mail, Smile } from "lucide";
+import { getRoute } from "@/services/router";
 import OkpIcon from "@/components/common/Icon.astro";
+
+const { lang } = Astro.params as { lang: LangType };
+const { r } = getRoute(lang);
 ---
 
 <header id="okp-core-header" role="navigation">
@@ -53,7 +58,7 @@ import OkpIcon from "@/components/common/Icon.astro";
     </section>
     <section class="okp-header-user">
         <div class="okp-header-user-dropdown">
-            <button class="okp-header-user-button">
+            <a href={r("management/games")} class="okp-header-user-button">
                 <div class="okp-header-user-button-name">
                     <span>M-C Pronovost</span>
                     <small>mcpronovost@oykus.ca</small>
@@ -61,7 +66,7 @@ import OkpIcon from "@/components/common/Icon.astro";
                 <figure class="okp-header-user-button-avatar">
                     {/* <img src="/images/avatar.png" alt="Avatar" /> */}
                 </figure>
-            </button>
+            </a>
         </div>
     </section>
 </header>

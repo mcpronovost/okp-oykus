@@ -2,19 +2,46 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from okp.utils import get_abbr
+from okp.utils import get_abbr, get_slug
 
 
 class OkpGame(models.Model):
     name = models.CharField(
         verbose_name=_("Name"),
         max_length=255,
+        unique=True,
+        blank=False,
+        null=False,
     )
     abbr = models.CharField(
         verbose_name=_("Abbreviation"),
         max_length=3,
         blank=True,
         null=False,
+    )
+    is_abbr_auto = models.BooleanField(
+        verbose_name=_("Auto-Generate Abbreviation"),
+        default=True,
+    )
+    slug = models.SlugField(
+        verbose_name=_("Slug"),
+        max_length=255,
+        unique=True,
+        blank=True,
+        null=False,
+    )
+    is_slug_auto = models.BooleanField(
+        verbose_name=_("Auto-Generate Slug"),
+        default=True,
+    )
+    # Status
+    is_active = models.BooleanField(
+        verbose_name=_("Is Active"),
+        default=True,
+    )
+    is_private = models.BooleanField(
+        verbose_name=_("Is Private"),
+        default=True,
     )
     # Ownership
     founder = models.ForeignKey(
@@ -60,5 +87,8 @@ class OkpGame(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.abbr = get_abbr(self.name)
+        if self.is_abbr_auto:
+            self.abbr = get_abbr(self.name)
+        if self.is_slug_auto:
+            self.slug = get_slug(self.name, self, OkpGame)
         super().save(*args, **kwargs)

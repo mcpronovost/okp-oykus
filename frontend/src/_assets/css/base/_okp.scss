@@ -16,7 +16,7 @@ body {
         content: "";
         background-image: url("../img/noise.png");
         background-repeat: repeat;
-        display: block;
+        display: none;
         position: absolute;
         top: 0;
         left: 0;
@@ -34,4 +34,12 @@ body {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+}
+
+.okp-fullview {
+    text-align: center;
+    display: flex;
+    height: calc(100vh - 64px);
+    justify-content: center;
+    align-items: center;
 }

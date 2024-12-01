@@ -31,7 +31,10 @@ if (!LANGUAGES.includes(lang)) {
 /**
  * Find the route by matching the URI to translations
  */
-const route = findRoute(uri, lang);
+const route = findRoute(uri, lang) || ["", {
+    component: "common/NotFound",
+    props: {},
+}];
 
 /**
  * Redirect to 404 if no route is found
@@ -43,8 +46,9 @@ if (!route) {
 /**
  * Find the view by matching the component name
  */
-const [_, { component }] = route;
+const [_, { component, props }] = route;
 const viewPath = `../../components/views/${component}.astro`;
+const viewProps = props || {};
 
 /**
  * Redirect to 404 if the view is not found
@@ -60,5 +64,5 @@ const ViewComponent = (await views[viewPath]()) as { default: any };
 ---
 
 <MainLayout>
-    <ViewComponent.default />
+    <ViewComponent.default {...viewProps} />
 </MainLayout>
