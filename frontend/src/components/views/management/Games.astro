@@ -1,9 +1,8 @@
 ---
-import { Test1 } from "@/components/react/applications";
-
 const { lang } = Astro.params;
+const { view } = Astro.props;
 ---
 
 <h1>Games {lang}</h1>
 
-<Test1 client:only="react" />
+{view === "list" ? <p>List</p> : <p>Create</p>}
