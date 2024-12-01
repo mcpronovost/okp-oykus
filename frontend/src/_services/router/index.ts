@@ -62,9 +62,12 @@ export const findRoute = (
         // Check for child routes recursively
         if (route.children) {
             const childUri = `${route.paths[lang]}/`;
-            const childRoute = findRoute(uri.replace(childUri, ""), route.children, lang);
-            if (childRoute) {
-                return childRoute;
+            // Only recurse if the URI starts with the parent path
+            if (uri.startsWith(childUri)) {
+                const childRoute = findRoute(uri.replace(childUri, ""), lang);
+                if (childRoute) {
+                    return childRoute;
+                }
             }
         }
     }
