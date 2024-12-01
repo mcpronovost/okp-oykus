@@ -1,5 +1,6 @@
 import type { RouteType, RouteMapType, LangType } from "@/services/utils/types";
 import { routesAuth } from "./routesAuth";
+import { routesManagement } from "./routesManagement";
 
 /**
  * Routes
@@ -38,6 +39,7 @@ export const routes: RouteMapType = {
         },
     },
     ...routesAuth,
+    ...routesManagement,
     settings: {
         component: "Settings",
         paths: {
@@ -53,8 +55,10 @@ export const routes: RouteMapType = {
 export const findRoute = (
     uri: string,
     lang: LangType,
+    routesList?: RouteMapType | undefined,
 ): [string, RouteType] | undefined => {
-    for (const [key, route] of Object.entries(routes)) {
+    if (!routesList) routesList = routes;
+    for (const [key, route] of Object.entries(routesList)) {
         // Check for parent route
         if (route.paths[lang] === uri) {
             return [key, route];
@@ -64,7 +68,7 @@ export const findRoute = (
             const childUri = `${route.paths[lang]}/`;
             // Only recurse if the URI starts with the parent path
             if (uri.startsWith(childUri)) {
-                const childRoute = findRoute(uri.replace(childUri, ""), lang);
+                const childRoute = findRoute(uri.replace(childUri, ""), lang, route.children);
                 if (childRoute) {
                     return childRoute;
                 }
