@@ -1,6 +1,7 @@
 import type { RouteType, RouteMapType, LangType } from "@/services/utils/types";
 import { routesAuth } from "./routesAuth";
 import { routesManagement } from "./routesManagement";
+import { LANG_DEFAULT } from "@/services/utils/constants";
 
 /**
  * Global Routes
@@ -76,7 +77,12 @@ export const findRoute = (
             // Only recurse if the URI starts with the parent path
             if (uri.startsWith(childUri)) {
                 const nextParentPath = parentPath ? `${parentPath}.${key}` : key;
-                const childRoute = findRoute(uri.replace(childUri, ""), lang, route.children, nextParentPath);
+                const childRoute = findRoute(
+                    uri.replace(childUri, ""),
+                    lang,
+                    route.children,
+                    nextParentPath,
+                );
                 if (childRoute) {
                     return childRoute;
                 }
@@ -109,7 +115,7 @@ export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangTyp
     for (let i = 0; i < routeParts.length; i++) {
         const part = routeParts[i];
         const currentPart = routesList[part];
-        
+
         if (currentPart) {
             toPath += (i > 0 ? "/" : "") + currentPart.paths[toLang];
             routesList = currentPart.children || {};
@@ -117,4 +123,10 @@ export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangTyp
     }
 
     return `/${toLang}/${toPath}`;
+};
+
+export const getRoute = (toLang: LangType = LANG_DEFAULT) => {
+    return {
+        r: (uri: string) => findLocaleRoute(uri, "en", toLang),
+    };
 };
