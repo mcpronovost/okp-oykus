@@ -11,4 +11,6 @@
 @use "core/right" as core-right;
 
 // Common
+@use "common/error" as common-error;
+@use "common/button" as common-button;
 @use "common/tag" as common-tag;

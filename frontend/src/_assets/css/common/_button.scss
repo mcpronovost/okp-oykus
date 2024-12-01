@@ -1,0 +1,26 @@
+.okp-btn {
+    background-color: var(--okp-card-bg);
+    color: var(--okp-card-fg);
+    font-family: "SofiaSans", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    padding: calc(12px + 0.1em) 32px 12px;
+    transition: filter 0.3s;
+
+    &-error {
+        background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
+        color: color-mix(in srgb, var(--okp-error) 80%, var(--okp-card-fg));
+    }
+
+    &:hover {
+        filter: brightness(1.1);
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}

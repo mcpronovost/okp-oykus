@@ -3,5 +3,8 @@
     "Categories": {
         "one": "Catégorie",
         "other": "Catégories"
-    }
+    },
+    "Oops! Page Not Found": "Oups ! Page introuvable",
+    "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.": "La page que vous recherchez peut avoir été supprimée, avoir changé de nom, ou être temporairement indisponible.",
+    "Go Back Home": "Retour à l'accueil"
 }

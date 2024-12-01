@@ -31,7 +31,9 @@ if (!LANGUAGES.includes(lang)) {
 /**
  * Find the route by matching the URI to translations
  */
-const route = findRoute(uri, lang);
+const route = findRoute(uri, lang) || ["", {
+    component: "common/NotFound",
+}];
 
 /**
  * Redirect to 404 if no route is found
