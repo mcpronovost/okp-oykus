@@ -3,6 +3,16 @@ a {
     text-decoration: none;
 }
 
+button {
+    background: none;
+    border: none;
+    color: inherit;
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "SofiaSans", sans-serif;
     font-size: 2rem;

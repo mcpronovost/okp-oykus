@@ -4,6 +4,7 @@ import "@/assets/css/main.scss";
 import OkpCoreHeader from "@/components/core/Header.astro";
 import OkpCoreLeft from "@/components/core/Left.astro";
 import OkpCoreRight from "@/components/core/Right.astro";
+import OkpToaster from "@/components/react/common/Toaster";
 
 const { lang } = Astro.params;
 ---
@@ -30,6 +31,7 @@ const { lang } = Astro.params;
             </div>
             <OkpCoreRight />
         </main>
+        <OkpToaster client:only="react" />
     </body>
 </html>
 

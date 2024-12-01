@@ -1,0 +1,47 @@
+.okp-toaster {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: fixed;
+    top: 64px;
+    right: 64px;
+    z-index: 2000;
+    padding: 12px;
+
+    &-toast {
+        background-color: var(--okp-card-bg);
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+        color: var(--okp-card-fg);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        position: relative;
+        padding: 16px 32px 16px 16px;
+
+        &.okp-success {
+            background: color-mix(in srgb, var(--okp-success) 15%, var(--okp-card-bg));
+            color: color-mix(in srgb, var(--okp-success) 80%, var(--okp-card-fg));
+        }
+
+        &.okp-error {
+            background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
+            color: color-mix(in srgb, var(--okp-error) 80%, var(--okp-card-fg));
+        }
+
+        &-close {
+            color: currentColor;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            padding: 0;
+
+            &:hover {
+                opacity: 0.8;
+
+                &:active {
+                    transform: scale(0.8);
+                }
+            }
+        }
+    }
+}
