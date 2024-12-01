@@ -12,15 +12,24 @@ export function GamesCreate() {
     const { t } = getTranslation(lang);
     const NAME_MAX_LENGTH = 120;
 
-    const [formName, setFormName] = useState("");
+    const [formPayload, setFormPayload] = useState({
+        name: "",
+    });
+    const [formErrors, setFormErrors] = useState<Record<string, string[]>>({});
 
     const handleFormNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormName(event.target.value);
+        setFormPayload({
+            ...formPayload,
+            name: event.target.value,
+        });
     };
 
     const handleFormNameKeyUp = () => {
-        if (formName.length > NAME_MAX_LENGTH) {
-            setFormName(formName.slice(0, NAME_MAX_LENGTH));
+        if (formPayload.name.length > NAME_MAX_LENGTH) {
+            setFormPayload({
+                ...formPayload,
+                name: formPayload.name.slice(0, NAME_MAX_LENGTH),
+            });
         }
     };
 
@@ -31,8 +40,11 @@ export function GamesCreate() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const result = await gamesApi.create(formName);
-        console.log("submit", result);
+        setFormErrors({});
+        const result = await gamesApi.create(formPayload.name);
+        if (result.status === 400) {
+            return setFormErrors(result.msg);
+        }
     };
 
     return (
@@ -46,14 +58,23 @@ export function GamesCreate() {
                         <label htmlFor="okp-form-field-name">
                             <PencilLine size={16} /> <span>{t("Name")}</span>
                         </label>
-                        <input type="text" id="okp-form-field-name" name="name" maxLength={NAME_MAX_LENGTH} value={formName} onKeyUp={handleFormNameKeyUp} onChange={handleFormNameChange} />
-                        <span className={`okp-form-row-count ${formName.length >= NAME_MAX_LENGTH ? "okp-error" : ""}`}>{formName.length}/{NAME_MAX_LENGTH}</span>
+                        <div className="okp-form-row-input">
+                            <input type="text" id="okp-form-field-name" name="name" maxLength={NAME_MAX_LENGTH} value={formPayload.name} onKeyUp={handleFormNameKeyUp} onChange={handleFormNameChange} />
+                            {formErrors.name?.length > 0 && (
+                                <ul className="okp-form-row-errors">
+                                    {formErrors.name.map((error) => (
+                                        <li key={error}>{error}</li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                        <span className={`okp-form-row-count ${formPayload.name.length >= NAME_MAX_LENGTH ? "okp-error" : ""}`}>{formPayload.name.length}/{NAME_MAX_LENGTH}</span>
                     </div>
                     <div className="okp-form-actions">
                         <button type="reset" className="okp-btn okp-btn-error" onClick={handleCancel}>
                             <span>{t("Cancel")}</span>
                         </button>
-                        <button type="submit" className="okp-btn okp-btn-success" disabled={!formName}>
+                        <button type="submit" className="okp-btn okp-btn-success" disabled={!formPayload.name}>
                             <span>{t("Create")}</span>
                             <Plus size={16} />
                         </button>

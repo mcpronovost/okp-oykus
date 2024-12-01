@@ -4,7 +4,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 12px;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
         padding: 12px 0;
 
@@ -17,10 +17,10 @@
             gap: 12px;
             align-items: center;
             justify-content: flex-start;
-            padding: 0 24px 0 0;
+            padding: 6px 24px 6px 0;
         }
 
-        input {
+        &-input {
             flex: 1 1 auto;
         }
 
@@ -28,11 +28,22 @@
             font-size: 0.8rem;
             line-height: 1;
             text-align: right;
+            display: block;
             flex: 0 0 48px;
+            padding: 12px 0;
 
             &.okp-error {
                 color: var(--okp-error);
             }
+        }
+
+        &-errors {
+            color: var(--okp-error);
+            font-size: 0.8rem;
+            line-height: 1;
+            display: block;
+            width: 100%;
+            padding: 12px 12px;
         }
     }
 

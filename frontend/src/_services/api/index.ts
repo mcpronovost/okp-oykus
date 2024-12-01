@@ -45,7 +45,6 @@ const doRequestError = async (
                 side === "server"
                     ? await (response as Response).json()
                     : (response as AxiosResponse)?.data;
-
             switch (response.status) {
                 case 400:
                     errorResponse.msg = data || errorResponse.msg;
@@ -63,7 +62,6 @@ const doRequestError = async (
             // If parsing fails, we'll use the default error
         }
     }
-
     return errorResponse;
 };
 
@@ -108,7 +106,8 @@ doClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 doClient.interceptors.response.use(
     (response: AxiosResponse) => response,
     async (error: AxiosError<{ detail?: string }>) => {
-        return Promise.reject(await doRequestError("client", error.response));
+        const errorResponse = await doRequestError("client", error.response);
+        return Promise.reject(errorResponse);
     },
 );
 
@@ -185,7 +184,7 @@ const doRequest = async (
         } as InternalAxiosRequestConfig);
     } catch (error) {
         if (error instanceof Error) throw error.message;
-        throw JSON.stringify(error);
+        throw error;
     }
 };
 
