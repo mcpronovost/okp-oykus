@@ -1,8 +1,11 @@
 ---
-const { lang } = Astro.params;
+import OkpGamesCreate from "./react/Games/Create";
+
 const { view } = Astro.props;
 ---
 
-<h1>Games {lang}</h1>
-
-{view === "list" ? <p>List</p> : <p>Create</p>}
+<section class="okp-grid">
+    {view === "list" ? <p>List</p> : (
+        <OkpGamesCreate client:only="react" />
+    )}
+</section>

@@ -18,7 +18,7 @@ const commonSlice = createSlice({
 
             const uri = window.location.pathname.replace(new RegExp(`^/${oldLang}/`), "");
             const route = findLocaleRoute(uri, oldLang, newLang);
-            const redirectPath = route ? `/${newLang}/${route}` : `/${newLang}`;
+            const redirectPath = route ? route : `/${newLang}`;
 
             state.lang = newLang;
             window.location.href = redirectPath;

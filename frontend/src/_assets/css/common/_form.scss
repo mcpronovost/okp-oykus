@@ -1,0 +1,48 @@
+.okp-form {
+    &-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12px 0;
+
+        label {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            flex: 0 0 auto;
+            flex-direction: row;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 24px 0 0;
+        }
+
+        input {
+            flex: 1 1 auto;
+        }
+
+        &-count {
+            font-size: 0.8rem;
+            line-height: 1;
+            text-align: right;
+            flex: 0 0 48px;
+
+            &.okp-error {
+                color: var(--okp-error);
+            }
+        }
+    }
+
+    &-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 0 0;
+    }
+}

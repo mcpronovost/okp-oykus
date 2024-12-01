@@ -116,5 +116,5 @@ export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangTyp
         }
     }
 
-    return toPath;
+    return `/${toLang}/${toPath}`;
 };
