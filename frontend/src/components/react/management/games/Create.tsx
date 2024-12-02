@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { PencilLine, Plus } from "lucide-react";
 import { gamesApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
-import { findLocaleRoute } from "@/services/router";
+import { getRoute } from "@/services/router";
 import { toasterActions } from "@/services/store/slices/toaster";
 
 export function GamesCreate() {
     const dispatch = useDispatch<AppDispatch>();
     const lang = useSelector((state: RootState) => state.common.lang);
     const { t } = getTranslation(lang);
+    const { r } = getRoute(lang);
     const NAME_MAX_LENGTH = 120;
 
     const [formPayload, setFormPayload] = useState({
@@ -36,8 +37,7 @@ export function GamesCreate() {
     };
 
     const handleCancel = () => {
-        const route = findLocaleRoute("management/games", "en", lang);
-        window.location.href = route;
+        window.location.href = r("management/games");
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -45,13 +45,12 @@ export function GamesCreate() {
         setFormErrors({});
         const result = await gamesApi.create(formPayload.name);
         if (result.status === 201) {
-            const route = findLocaleRoute("management/games", "en", lang);
             dispatch(toasterActions.addToast({
                 status: "success",
                 content: t("Game created successfully"),
                 duration: 5000,
             }));
-            return window.location.href = route;
+            return window.location.href = r("management/games");
         }
         const errorMessage = (
             (typeof result.msg === "object") && ("non_field_errors" in result.msg)

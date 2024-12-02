@@ -9,23 +9,31 @@ export const routesManagement: RouteMapType = {
         },
         children: {
             games: {
-                component: "management/Games/Index",
-                props: {
-                    view: "list",
-                },
+                component: "management/Games/List",
                 paths: {
                     en: "games",
                     fr: "jeux",
                 },
                 children: {
                     create: {
-                        component: "management/Games/Index",
-                        props: {
-                            view: "create",
-                        },
+                        component: "management/Games/Create",
                         paths: {
-                            en: "create",
-                            fr: "creer",
+                            en: "{slug}/create",
+                            fr: "{slug}/creer",
+                        },
+                    },
+                    edit: {
+                        component: "management/Games/Edit",
+                        paths: {
+                            en: "{slug}/edit",
+                            fr: "{slug}/modifier",
+                        },
+                    },
+                    view: {
+                        component: "management/Games/View",
+                        paths: {
+                            en: "{slug}/view",
+                            fr: "{slug}/voir",
                         },
                     },
                 },

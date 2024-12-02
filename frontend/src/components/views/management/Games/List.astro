@@ -3,15 +3,17 @@ import type { LangType, ManagementListGameType } from "@/services/utils/types";
 import { Eye, Trash2 } from "lucide";
 import { gamesApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
+import { getRoute } from "@/services/router";
 import OkpIcon from "@/components/common/Icon.astro";
 
 const { lang } = Astro.params as { lang: LangType };
 const { t } = getTranslation(lang);
+const { r } = getRoute(lang);
 
 const gamesList = await gamesApi.managementList();
 ---
 
-<section>
+<section class="okp-grid">
     <header class="okp-header">
         <h1 class="okp-header-title">{t("Your Games")}</h1>
     </header>
@@ -24,14 +26,14 @@ const gamesList = await gamesApi.managementList();
                     <p class="okp-management-games-list-item-header-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 </header>
                 <footer class="okp-management-games-list-item-actions">
-                    <a href="#" class="okp-btn okp-success">
+                    <a href={r("management/games/{slug}/edit", { slug: game.slug })} class="okp-btn okp-success">
                         <span>{t("Edit")}</span>
                     </a>
                     <div class="okp-management-games-list-item-actions-extra">
-                        <a href="#" class="okp-btn okp-small okp-info">
+                        <a href={r("management/games/{slug}/view", { slug: game.slug })} class="okp-btn okp-small okp-info">
                             <OkpIcon icon={Eye} size={16} aria-label={t("View")} />
                         </a>
-                        <a href="#" class="okp-btn okp-small okp-error">
+                        <a href={r("management/games/{slug}/delete", { slug: game.slug })} class="okp-btn okp-small okp-error">
                             <OkpIcon icon={Trash2} size={16} aria-label={t("Delete")} />
                         </a>
                     </div>

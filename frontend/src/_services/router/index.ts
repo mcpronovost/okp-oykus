@@ -99,7 +99,7 @@ export const findRoute = (
  * @param toLang - The target language code to translate the URI to
  * @returns The translated URI path in the new language, or the original URI if no translation is found
  */
-export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangType): string => {
+export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangType, params?: Record<string, string>): string => {
     // Find the current route based on the URI and current language
     const currentRoute = findRoute(uri, fromLang);
     if (!currentRoute) return uri;
@@ -122,11 +122,18 @@ export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangTyp
         }
     }
 
+    // Replace params in the path
+    if (params) {
+        for (const [key, value] of Object.entries(params)) {
+            toPath = toPath.replace(`{${key}}`, value);
+        }
+    }
+
     return `/${toLang}/${toPath}`;
 };
 
 export const getRoute = (toLang: LangType = LANG_DEFAULT) => {
     return {
-        r: (uri: string) => findLocaleRoute(uri, "en", toLang),
+        r: (uri: string, params?: Record<string, string>) => findLocaleRoute(uri, "en", toLang, params),
     };
 };
