@@ -1,11 +1,12 @@
 ---
+import OkpGamesList from "./GamesList.astro";
 import OkpGamesCreate from "./react/Games/Create";
 
 const { view } = Astro.props;
 ---
 
 <section class="okp-grid">
-    {view === "list" ? <p>List</p> : (
+    {view === "list" ? <OkpGamesList /> : (
         <OkpGamesCreate client:only="react" />
     )}
 </section>

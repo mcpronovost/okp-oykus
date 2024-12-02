@@ -11,4 +11,13 @@ export const gamesApi = {
             return e;
         }
     },
+    async managementList(): Promise<any> {
+        try {
+            const response = await api.get("games/management/list/");
+            const data = response instanceof Response ? await response.json() : response.data;
+            return data;
+        } catch (e) {
+            return e;
+        }
+    },
 };

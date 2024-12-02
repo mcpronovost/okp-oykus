@@ -16,12 +16,23 @@
     padding: calc(12px + 0.1em) 32px 12px;
     transition: filter 0.3s;
 
-    &-success {
+    &.okp-small {
+        font-size: 1rem;
+        line-height: 1;
+        padding: calc(6px + 0.1em) 16px 6px;
+    }
+
+    &.okp-info {
+        background: color-mix(in srgb, var(--okp-info) 15%, var(--okp-card-bg));
+        color: color-mix(in srgb, var(--okp-info) 80%, var(--okp-card-fg));
+    }
+
+    &.okp-success {
         background: color-mix(in srgb, var(--okp-success) 15%, var(--okp-card-bg));
         color: color-mix(in srgb, var(--okp-success) 80%, var(--okp-card-fg));
     }
 
-    &-error {
+    &.okp-error {
         background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
         color: color-mix(in srgb, var(--okp-error) 80%, var(--okp-card-fg));
     }
