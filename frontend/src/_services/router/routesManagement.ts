@@ -9,7 +9,7 @@ export const routesManagement: RouteMapType = {
         },
         children: {
             games: {
-                component: "management/Games",
+                component: "management/Games/Index",
                 props: {
                     view: "list",
                 },
@@ -19,7 +19,7 @@ export const routesManagement: RouteMapType = {
                 },
                 children: {
                     create: {
-                        component: "management/Games",
+                        component: "management/Games/Index",
                         props: {
                             view: "create",
                         },

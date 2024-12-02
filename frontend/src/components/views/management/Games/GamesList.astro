@@ -9,7 +9,6 @@ const { lang } = Astro.params as { lang: LangType };
 const { t } = getTranslation(lang);
 
 const gamesList = await gamesApi.managementList();
-console.log(">> gamesList : ", gamesList);
 ---
 
 <section>

@@ -53,12 +53,15 @@ export function GamesCreate() {
             }));
             return window.location.href = route;
         }
+        const errorMessage = (
+            (typeof result.msg === "object") && ("non_field_errors" in result.msg)
+        ) ? result.msg.non_field_errors[0] : t("Unable to create a new game");
         dispatch(toasterActions.addToast({
             status: "error",
-            content: ("non_field_errors" in result.msg) ? result.msg.non_field_errors[0] : t("Unable to create a new game"),
+            content: errorMessage,
             duration: 2000,
         }));
-        setFormErrors(result.msg);
+        setFormErrors(result?.msg || {});
     };
 
     return (
@@ -85,10 +88,10 @@ export function GamesCreate() {
                         <span className={`okp-form-row-count ${formPayload.name.length >= NAME_MAX_LENGTH ? "okp-error" : ""}`}>{formPayload.name.length}/{NAME_MAX_LENGTH}</span>
                     </div>
                     <div className="okp-form-actions">
-                        <button type="reset" className="okp-btn okp-btn-error" onClick={handleCancel}>
+                        <button type="reset" className="okp-btn okp-error" onClick={handleCancel}>
                             <span>{t("Cancel")}</span>
                         </button>
-                        <button type="submit" className="okp-btn okp-btn-success" disabled={!formPayload.name}>
+                        <button type="submit" className="okp-btn okp-success" disabled={!formPayload.name}>
                             <span>{t("Create")}</span>
                             <Plus size={16} />
                         </button>
