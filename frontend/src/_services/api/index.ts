@@ -52,7 +52,7 @@ const doRequestError = async (
                 case 401:
                     errorResponse.msg = data?.detail?.includes("Token")
                         ? "Unauthorized access"
-                        : errorResponse.msg;
+                        : data?.detail || errorResponse.msg;
                     break;
                 case 403:
                     errorResponse.msg = data || errorResponse.msg;
