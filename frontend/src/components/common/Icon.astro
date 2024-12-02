@@ -13,7 +13,11 @@ const componentChildren = children
     )
     .join("");
 
-const componentAttributes = { ...attributes, ...props };
+    const componentAttributes = { 
+    ...attributes, 
+    ...(props.size ? { width: props.size, height: props.size } : {}),
+    ...props 
+};
 ---
 
 <svg {...componentAttributes} set:html={componentChildren} />
