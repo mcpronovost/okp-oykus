@@ -31,6 +31,14 @@ class OkpGameCreateSerializer(serializers.ModelSerializer):
         fields = ["id", "name", "abbr", "slug", "founder", "owner"]
         read_only_fields = ["id", "abbr", "slug"]
 
+    def validate(self, attrs):
+        user = self.context["request"].user
+        if OkpGame.objects.filter(owner=user).count() >= user.max_games:
+            raise serializers.ValidationError(
+                _("You cannot create more than {max_games} games.").format(max_games=user.max_games)
+            )
+        return super().validate(attrs)
+
 
 class OkpGameListSerializer(serializers.ModelSerializer):
     class Meta:

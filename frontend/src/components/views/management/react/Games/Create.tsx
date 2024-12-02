@@ -55,7 +55,7 @@ export function GamesCreate() {
         }
         dispatch(toasterActions.addToast({
             status: "error",
-            content: t("Unable to create a new game"),
+            content: ("non_field_errors" in result.msg) ? result.msg.non_field_errors[0] : t("Unable to create a new game"),
             duration: 2000,
         }));
         setFormErrors(result.msg);
