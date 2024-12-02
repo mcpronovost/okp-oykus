@@ -1,7 +1,13 @@
+import type { ToastType } from "@/services/utils/types";
 import { createSlice } from "@reduxjs/toolkit";
 
+const getSessionToasts = (): ToastType[] => {
+    const saved = sessionStorage.getItem("toasts");
+    return saved ? JSON.parse(saved) : [];
+};
+
 const INITIAL_STATE = {
-    toasts: [] as Record<string, string>[],
+    toasts: getSessionToasts() as ToastType[],
 };
 
 const toasterSlice = createSlice({
@@ -9,7 +15,17 @@ const toasterSlice = createSlice({
     initialState: INITIAL_STATE,
     reducers: {
         addToast: (state, action) => {
-            state.toasts.push(action.payload);
+            const newToasts = [...state.toasts, {
+                ...action.payload,
+                id: crypto.randomUUID(),
+            }];
+            sessionStorage.setItem("toasts", JSON.stringify(newToasts));
+            state.toasts = newToasts;
+        },
+        deleteToast: (state, action) => {
+            const newToasts = state.toasts.filter((toast) => toast.id !== action.payload);
+            sessionStorage.setItem("toasts", JSON.stringify(newToasts));
+            state.toasts = newToasts;
         },
     },
 });

@@ -1,13 +1,15 @@
-import type { RootState } from "@/services/utils/types";
+import type { AppDispatch, RootState } from "@/services/utils/types";
 import Providers from "@/components/react/Providers";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PencilLine, Plus } from "lucide-react";
 import { gamesApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
 import { findLocaleRoute } from "@/services/router";
+import { toasterActions } from "@/services/store/slices/toaster";
 
 export function GamesCreate() {
+    const dispatch = useDispatch<AppDispatch>();
     const lang = useSelector((state: RootState) => state.common.lang);
     const { t } = getTranslation(lang);
     const NAME_MAX_LENGTH = 120;
@@ -42,9 +44,21 @@ export function GamesCreate() {
         event.preventDefault();
         setFormErrors({});
         const result = await gamesApi.create(formPayload.name);
-        if (result.status === 400) {
-            return setFormErrors(result.msg);
+        if (result.status === 201) {
+            const route = findLocaleRoute("management/games", "en", lang);
+            dispatch(toasterActions.addToast({
+                status: "success",
+                content: t("Game created successfully"),
+                duration: 5000,
+            }));
+            return window.location.href = route;
         }
+        dispatch(toasterActions.addToast({
+            status: "error",
+            content: t("Unable to create a new game"),
+            duration: 2000,
+        }));
+        setFormErrors(result.msg);
     };
 
     return (

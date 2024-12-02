@@ -7,16 +7,23 @@
     right: 64px;
     z-index: 2000;
     padding: 12px;
+    transition: all 0.3s ease-in-out;
 
     &-toast {
         background-color: var(--okp-card-bg);
         box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+        box-sizing: border-box;
         color: var(--okp-card-fg);
+        word-break: break-word;
         display: flex;
+        width: 320px;
+        max-width: calc(100vw - 152px);
         flex-direction: column;
-        gap: 16px;
+        align-items: flex-start;
+        justify-content: center;
         position: relative;
         padding: 16px 32px 16px 16px;
+        transition: opacity 0.2s ease-out, transform 2s ease-out;
 
         &.okp-success {
             background: color-mix(in srgb, var(--okp-success) 15%, var(--okp-card-bg));
@@ -26,6 +33,42 @@
         &.okp-error {
             background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
             color: color-mix(in srgb, var(--okp-error) 80%, var(--okp-card-fg));
+        }
+
+        &.okp-closing {
+            transform: translateX(100vw);
+            opacity: 0;
+        }
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        &-title {
+            font-family: "SofiaSans", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            text-transform: uppercase;
+            display: block;
+            margin: 0.02em 0 0;
+        }
+
+        &-content {
+            font-size: 0.875rem;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            padding: 0;
+        }
+
+        header + div {
+            margin-top: 12px;
         }
 
         &-close {
