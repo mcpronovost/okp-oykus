@@ -1,9 +1,13 @@
 from django.urls import path
 
-from .views import OkpGameCreateView, OkpGameListView, OkpGameDetailView
+from .views import (
+    OkpGameManagementCreateView,
+    OkpGameManagementListView,
+    OkpGameManagementDetailView,
+)
 
 urlpatterns = [
-    path("", OkpGameCreateView.as_view(), name="game_create"),
-    path("list/", OkpGameListView.as_view(), name="game_list"),
-    path("<slug:slug>/", OkpGameDetailView.as_view(), name="game_detail"),
+    path("", OkpGameManagementCreateView.as_view(), name="game_management_create"),
+    path("management/list/", OkpGameManagementListView.as_view(), name="game_management_list"),
+    path("management/<slug:slug>/", OkpGameManagementDetailView.as_view(), name="game_management_detail"),
 ]

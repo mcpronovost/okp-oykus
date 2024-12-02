@@ -1,8 +1,10 @@
+from django.db.models import Q
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from drf_spectacular.utils import extend_schema
 
 from okp.games.models import OkpGame
+from .pagination import OkpGameListPagination
 from .serializers import OkpGameCreateSerializer, OkpGameListSerializer, OkpGameDetailSerializer
 
 
@@ -15,7 +17,7 @@ from .serializers import OkpGameCreateSerializer, OkpGameListSerializer, OkpGame
     },
     tags=["games"]
 )
-class OkpGameCreateView(CreateAPIView):
+class OkpGameManagementCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = OkpGame.objects.all()
     serializer_class = OkpGameCreateSerializer
@@ -29,10 +31,16 @@ class OkpGameCreateView(CreateAPIView):
     },
     tags=["games"]
 )
-class OkpGameListView(ListAPIView):
+class OkpGameManagementListView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    queryset = OkpGame.objects.all()
     serializer_class = OkpGameListSerializer
+    pagination_class = OkpGameListPagination
+
+    def get_queryset(self):
+        return OkpGame.objects.filter(
+            Q(founder=self.request.user) |
+            Q(owner=self.request.user)
+        ).order_by("updated_at", "-created_at")
 
 
 @extend_schema(
@@ -44,7 +52,7 @@ class OkpGameListView(ListAPIView):
     },
     tags=["games"]
 )
-class OkpGameDetailView(RetrieveAPIView):
+class OkpGameManagementDetailView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     queryset = OkpGame.objects.all()
     serializer_class = OkpGameDetailSerializer
