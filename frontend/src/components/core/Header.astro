@@ -1,10 +1,12 @@
 ---
 import type { LangType } from "@/services/utils/types";
 import { Bell, Mail, Smile } from "lucide";
+import { getTranslation } from "@/services/i18n";
 import { getRoute } from "@/services/router";
 import OkpIcon from "@/components/common/Icon.astro";
 
 const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
 const { r } = getRoute(lang);
 ---
 
@@ -22,17 +24,17 @@ const { r } = getRoute(lang);
             <ul>
                 <li>
                     <a href="#">
-                        Devblog
+                        {t("Devblog")}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        FAQ
+                        {t("FAQ")}
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        Terms of Use
+                        {t("Privacy Policy")}
                     </a>
                 </li>
             </ul>
