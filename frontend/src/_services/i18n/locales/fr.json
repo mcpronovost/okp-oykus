@@ -1,5 +1,8 @@
 {
     "Home": "Accueil",
+    "Devblog": "Devblog",
+    "FAQ": "FAQ",
+    "Privacy Policy": "Politique de confidentialité",
     "Categories": {
         "one": "Catégorie",
         "other": "Catégories"
