@@ -1,6 +1,7 @@
 export type RouteType = {
     view: string;
     props?: Record<string, unknown>;
+    params?: Record<string, string>;
     paths: {
         en: string;
         fr: string;
