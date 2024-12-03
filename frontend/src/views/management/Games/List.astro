@@ -22,8 +22,24 @@ const gamesList = await gamesApi.managementList();
         {gamesList && gamesList.results && gamesList.results.map((game: ManagementListGameType) => (
             <article class="okp-management-games-list-item">
                 <header class="okp-management-games-list-item-header">
-                    <h2 class="okp-management-games-list-item-header-title">{game.name}</h2>
-                    <p class="okp-management-games-list-item-header-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                    <h2 class="okp-management-games-list-item-header-title">
+                        {game.name}
+                    </h2>
+                    <p class="okp-management-games-list-item-header-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                    </p>
+                    <div class="okp-management-games-list-item-header-status">
+                        {game.is_active ? (
+                            <span class="okp-tag okp-tag-size-sm okp-success">{t("Active")}</span>
+                        ) : (
+                            <span class="okp-tag okp-tag-size-sm okp-error">{t("Inactive")}</span>
+                        )}
+                        {game.is_public ? (
+                            <span class="okp-tag okp-tag-size-sm okp-success">{t("Public")}</span>
+                        ) : (
+                            <span class="okp-tag okp-tag-size-sm okp-error">{t("Private")}</span>
+                        )}
+                    </div>
                 </header>
                 <footer class="okp-management-games-list-item-actions">
                     <a href={r("management/games/{slug}/edit", { slug: game.slug })} class="okp-btn okp-success">

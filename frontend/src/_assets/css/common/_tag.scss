@@ -1,7 +1,7 @@
 .okp-tag {
     background: var(--okp-card-bg);
-    border-left: 1px solid currentcolor;
-    border-right: 1px solid transparent;
+    border-left: 0px solid currentcolor;
+    border-right: 0px solid transparent;
     color: var(--okp-card-fg);
     font-size: 1rem;
     line-height: 1;
@@ -9,6 +9,18 @@
     align-items: center;
     justify-content: center;
     padding: 4px 12px;
+
+    &.okp-success {
+        background: color-mix(in srgb, var(--okp-success) 15%, var(--okp-card-bg));
+        border-left-color: var(--okp-success);
+        color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-fg));
+    }
+
+    &.okp-error {
+        background: color-mix(in srgb, var(--okp-error) 15%, var(--okp-card-bg));
+        border-left-color: var(--okp-error);
+        color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-fg));
+    }
 
     &-type {
         &-tier0 {
@@ -56,7 +68,7 @@
 
     &-size {
         &-sm {
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             line-height: 1;
             padding: 4px 8px;
         }
