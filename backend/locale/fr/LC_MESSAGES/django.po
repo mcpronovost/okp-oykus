@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-03 11:19-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: okp/api/v1/games/serializers.py:15
+msgid "This game name is already taken. Please choose another one."
+msgstr ""
+
+#: okp/api/v1/games/serializers.py:19
+msgid "Game name must be at least 1 characters long."
+msgstr "Le nom du jeu doit comporter au moins 1 caractère."
+
+#: okp/api/v1/games/serializers.py:23
+msgid "Game name must be at most 120 characters long."
+msgstr "Le nom du jeu doit comporter au maximum 120 caractères."
+
+#: okp/api/v1/games/serializers.py:39
+#, python-brace-format
+msgid "You cannot create more than {max_games} games."
+msgstr "Vous ne pouvez créer plus de {max_games} jeux."
+
+#: okp/api/v1/users/serializers.py:27
+msgid "Player"
+msgstr "Joueur"
+
+#: okp/fields.py:12
+msgid "File size must be no more than 2MB."
+msgstr "La taille du fichier doit être inférieure à 2MB."
+
+#: okp/games/admin.py:23 okp/users/admin.py:23
+msgid "Identity"
+msgstr "Identité"
+
+#: okp/games/admin.py:29
+msgid "Ownership"
+msgstr "Propriété"
+
+#: okp/games/admin.py:35 okp/users/admin.py:35
+msgid "Status"
+msgstr "Statut"
+
+#: okp/games/admin.py:41
+msgid "Counts"
+msgstr "Comptes"
+
+#: okp/games/admin.py:48 okp/users/admin.py:50
+msgid "Important Dates"
+msgstr "Dates importantes"
+
+#: okp/games/apps.py:7 okp/games/models.py:84
+msgid "Games"
+msgstr "Jeux"
+
+#: okp/games/models.py:10
+msgid "Name"
+msgstr "Nom"
+
+#: okp/games/models.py:17 okp/users/models.py:100
+msgid "Abbreviation"
+msgstr "Abréviation"
+
+#: okp/games/models.py:23
+msgid "Auto-Generate Abbreviation"
+msgstr "Générer automatiquement l'abréviation"
+
+#: okp/games/models.py:27
+msgid "Slug"
+msgstr "Slug"
+
+#: okp/games/models.py:34
+msgid "Auto-Generate Slug"
+msgstr "Générer automatiquement le slug"
+
+#: okp/games/models.py:39
+msgid "Is Active"
+msgstr "Actif"
+
+#: okp/games/models.py:43
+msgid "Is Public"
+msgstr "Public"
+
+#: okp/games/models.py:51
+msgid "Founder"
+msgstr "Fondateur"
+
+#: okp/games/models.py:59
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: okp/games/models.py:65
+msgid "Total Players"
+msgstr "Total de joueurs"
+
+#: okp/games/models.py:69
+msgid "Total Characters"
+msgstr "Total de personnages"
+
+#: okp/games/models.py:74
+msgid "Created at"
+msgstr "Créé le"
+
+#: okp/games/models.py:78
+msgid "Updated at"
+msgstr "Mis à jour le"
+
+#: okp/games/models.py:83
+msgid "Game"
+msgstr "Jeu"
+
+#: okp/urls.py:18 okp/urls.py:19
+msgid "Oykus Admin Panel"
+msgstr "Panneau d'administration Oykus"
+
+#: okp/urls.py:20
+msgid "Administration"
+msgstr "Administration"
+
+#: okp/users/admin.py:17
+msgid "Auth"
+msgstr "Authentification"
+
+#: okp/users/admin.py:29
+msgid "Visual"
+msgstr "Visuel"
+
+#: okp/users/admin.py:41
+msgid "Permissions"
+msgstr "Permissions"
+
+#: okp/users/apps.py:7 okp/users/models.py:172
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: okp/users/models.py:75
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: okp/users/models.py:82
+msgid "A user with that username already exists."
+msgstr "Un utilisateur avec ce nom d'utilisateur existe déjà."
+
+#: okp/users/models.py:85
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Requis. 150 caractères ou moins. Lettres, chiffres et @/./+/-/_ uniquement."
+
+#: okp/users/models.py:89
+msgid "Email"
+msgstr "Courriel"
+
+#: okp/users/models.py:94
+msgid "Playername"
+msgstr "Nom de joueur"
+
+#: okp/users/models.py:106
+msgid "Avatar"
+msgstr "Avatar"
+
+#: okp/users/models.py:115
+msgid "Cover"
+msgstr "Couverture"
+
+#: okp/users/models.py:124
+msgid "Can Create Game"
+msgstr "Peut créer un jeu"
+
+#: okp/users/models.py:126
+msgid "Whether the user can create games."
+msgstr "Peut créer des jeux"
+
+#: okp/users/models.py:129
+msgid "Can Create Character"
+msgstr "Peut créer un personnage"
+
+#: okp/users/models.py:131
+msgid "Whether the user can create characters."
+msgstr "Peut créer des personnages"
+
+#: okp/users/models.py:134
+msgid "Max Games"
+msgstr "Nombre maximum de jeux"
+
+#: okp/users/models.py:136
+msgid "Maximum number of games a user can create."
+msgstr "Nombre maximum de jeux que un utilisateur peut créer."
+
+#: okp/users/models.py:139
+msgid "Max Characters"
+msgstr "Nombre maximum de personnages"
+
+#: okp/users/models.py:141
+msgid "Maximum number of characters a user can create."
+msgstr "Nombre maximum de personnages que un utilisateur peut créer."
+
+#: okp/users/models.py:144
+msgid "Staff"
+msgstr "Staff"
+
+#: okp/users/models.py:148
+msgid "Superuser"
+msgstr "Superutilisateur"
+
+#: okp/users/models.py:152
+msgid "Active"
+msgstr "Actif"
+
+#: okp/users/models.py:156
+msgid "Created"
+msgstr "Créé"
+
+#: okp/users/models.py:160
+msgid "Updated"
+msgstr "Mis à jour"
+
+#: okp/users/models.py:171
+msgid "User"
+msgstr "Utilisateur"
