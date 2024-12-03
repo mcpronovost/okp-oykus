@@ -1,7 +1,20 @@
 ---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+import OkpLoading from "@/components/common/Loading.astro";
 import OkpGamesCreate from "@/components/react/management/games/Create";
+
+const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
 ---
 
 <section class="okp-grid">
-    <OkpGamesCreate client:only="react" />
+    <header class="okp-header">
+        <section class="okp-header-content">
+            <h1 class="okp-header-title">{t("Create a New Game")}</h1>
+        </section>
+    </header>
+    <OkpGamesCreate client:only="react">
+        <OkpLoading slot="fallback" py={64} />
+    </OkpGamesCreate>
 </section>

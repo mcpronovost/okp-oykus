@@ -65,9 +65,6 @@ export function GamesCreate() {
 
     return (
         <section>
-            <header className="okp-header">
-                <h1 className="okp-header-title">{t("Create a New Game")}</h1>
-            </header>
             <div className="okp-card">
                 <form className="okp-form" onSubmit={handleSubmit}>
                     <div className="okp-form-row">
