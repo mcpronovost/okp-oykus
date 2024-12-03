@@ -65,26 +65,59 @@ export const findRoute = (
     parentPath: string = "",
 ): [string, RouteType] | undefined => {
     if (!routesList) routesList = routes;
+    const params: Record<string, string> = {};
+
     for (const [key, route] of Object.entries(routesList)) {
-        // Check for parent route
         const fullPath = parentPath ? `${parentPath}.${key}` : key;
-        if (route.paths[lang] === uri) {
-            return [fullPath, route];
+        const routePath = route.paths[lang];
+        
+        // Handle dynamic path segments
+        if (routePath.includes("{")) {
+            // Extract parameter names from the route path
+            const paramNames = [...routePath.matchAll(/{([^}]+)}/g)].map(match => match[1]);
+            const pathPattern = routePath.replace(/{[^}]+}/g, "([^/]+)");
+            const regex = new RegExp(`^${pathPattern}$`);
+            const matches = uri.match(regex);
+            
+            if (matches) {
+                // Store captured values with their parameter names
+                paramNames.forEach((name, index) => {
+                    params[name] = matches[index + 1];
+                });
+                return [fullPath, { ...route, params }];
+            }
+        } else if (routePath === uri) {
+            return [fullPath, { ...route, params }];
         }
+
         // Check for child routes recursively
         if (route.children) {
             const childUri = `${route.paths[lang]}/`;
-            // Only recurse if the URI starts with the parent path
-            if (uri.startsWith(childUri)) {
+            if (uri.startsWith(childUri) || (routePath.includes("{") && new RegExp(`^${routePath.replace(/{[^}]+}/g, "[^/]+")}/`).test(uri))) {
                 const nextParentPath = parentPath ? `${parentPath}.${key}` : key;
+                
+                // Extract params from current level if it's a dynamic route
+                if (routePath.includes("{")) {
+                    const paramNames = [...routePath.matchAll(/{([^}]+)}/g)].map(match => match[1]);
+                    const pathPattern = routePath.replace(/{[^}]+}/g, "([^/]+)");
+                    const matches = uri.match(new RegExp(`^${pathPattern}/`));
+                    if (matches) {
+                        paramNames.forEach((name, index) => {
+                            params[name] = matches[index + 1];
+                        });
+                    }
+                }
+
                 const childRoute = findRoute(
-                    uri.replace(childUri, ""),
+                    uri.replace(new RegExp(`^${routePath.replace(/{[^}]+}/g, "[^/]+")}/`), ""),
                     lang,
                     route.children,
                     nextParentPath,
                 );
+                
                 if (childRoute) {
-                    return childRoute;
+                    // Merge params from child route with current params
+                    return [childRoute[0], childRoute[1]];
                 }
             }
         }
@@ -99,12 +132,13 @@ export const findRoute = (
  * @param toLang - The target language code to translate the URI to
  * @returns The translated URI path in the new language, or the original URI if no translation is found
  */
-export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangType, params?: Record<string, string>): string => {
+export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangType, additionalParams?: Record<string, string>): string => {
     // Find the current route based on the URI and current language
     const currentRoute = findRoute(uri, fromLang);
     if (!currentRoute) return uri;
 
-    const [routePath, _] = currentRoute;
+    const [routePath, _, extractedParams] = currentRoute;
+    const params = { ...extractedParams, ...additionalParams };
 
     // Split the route path to handle nested routes
     const routeParts = routePath.split(".");
