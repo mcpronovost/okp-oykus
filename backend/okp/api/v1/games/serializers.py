@@ -43,7 +43,7 @@ class OkpGameCreateSerializer(serializers.ModelSerializer):
 class OkpGameListSerializer(serializers.ModelSerializer):
     class Meta:
         model = OkpGame
-        fields = ["id", "name", "abbr", "slug"]
+        fields = ["id", "name", "abbr", "slug", "is_active", "is_public"]
 
 
 class OkpGameDetailSerializer(serializers.ModelSerializer):

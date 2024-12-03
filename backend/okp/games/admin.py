@@ -6,11 +6,11 @@ from okp.games.models import OkpGame
 
 @admin.register(OkpGame)
 class OkpGameAdmin(admin.ModelAdmin):
-    list_display = ("name", "owner", "total_players", "total_characters")
+    list_display = ("name", "owner", "total_players", "total_characters", "is_active", "is_public")
     list_filter = (
         ("owner", admin.RelatedOnlyFieldListFilter),
         ("is_active", admin.BooleanFieldListFilter),
-        ("is_private", admin.BooleanFieldListFilter),
+        ("is_public", admin.BooleanFieldListFilter),
     )
     search_fields = ("name",)
     readonly_fields = ("total_players", "total_characters", "created_at", "updated_at")
@@ -34,7 +34,7 @@ class OkpGameAdmin(admin.ModelAdmin):
                 (
                     _("Status"),
                     {
-                        "fields": ("is_active", "is_private"),
+                        "fields": ("is_active", "is_public"),
                     },
                 ),
                 (

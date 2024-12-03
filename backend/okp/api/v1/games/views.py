@@ -40,7 +40,7 @@ class OkpGameManagementListView(ListAPIView):
         return OkpGame.objects.filter(
             Q(founder=self.request.user) |
             Q(owner=self.request.user)
-        ).order_by("updated_at", "-created_at")
+        ).order_by("-is_active", "-is_public", "-updated_at", "-created_at")
 
 
 @extend_schema(

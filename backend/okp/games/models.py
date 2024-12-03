@@ -39,9 +39,9 @@ class OkpGame(models.Model):
         verbose_name=_("Is Active"),
         default=True,
     )
-    is_private = models.BooleanField(
-        verbose_name=_("Is Private"),
-        default=True,
+    is_public = models.BooleanField(
+        verbose_name=_("Is Public"),
+        default=False,
     )
     # Ownership
     founder = models.ForeignKey(
