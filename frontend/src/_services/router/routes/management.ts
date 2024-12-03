@@ -18,8 +18,8 @@ export const routesManagement: RouteMapType = {
                     create: {
                         view: "management/Games/Create",
                         paths: {
-                            en: "{slug}/create",
-                            fr: "{slug}/creer",
+                            en: "create",
+                            fr: "creer",
                         },
                     },
                     edit: {
