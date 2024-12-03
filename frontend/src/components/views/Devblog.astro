@@ -1,0 +1,14 @@
+---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+
+const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
+---
+
+<section class="okp-grid">
+    <h1>{t("Devblog")}</h1>
+    <p>
+        Under construction
+    </p>
+</section>

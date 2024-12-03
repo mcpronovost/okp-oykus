@@ -14,6 +14,13 @@ export const routes: RouteMapType = {
             fr: "",
         },
     },
+    devblog: {
+        view: "Devblog",
+        paths: {
+            en: "devblog",
+            fr: "devblog",
+        },
+    },
     ...routesAuth,
     ...routesManagement,
     settings: {
