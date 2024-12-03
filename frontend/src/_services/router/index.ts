@@ -8,28 +8,28 @@ import { routesManagement } from "./routes/management";
  */
 export const routes: RouteMapType = {
     home: {
-        component: "Home",
+        view: "Home",
         paths: {
             en: "",
             fr: "",
         },
     },
     about: {
-        component: "About",
+        view: "About",
         paths: {
             en: "about",
             fr: "a-propos",
         },
         children: {
             contact: {
-                component: "Contact",
+                view: "Contact",
                 paths: {
                     en: "contact",
                     fr: "contact",
                 },
                 children: {
                     test: {
-                        component: "common/Test",
+                        view: "common/Test",
                         paths: {
                             en: "test",
                             fr: "testfr",
@@ -42,7 +42,7 @@ export const routes: RouteMapType = {
     ...routesAuth,
     ...routesManagement,
     settings: {
-        component: "Settings",
+        view: "Settings",
         paths: {
             en: "settings",
             fr: "parametres",

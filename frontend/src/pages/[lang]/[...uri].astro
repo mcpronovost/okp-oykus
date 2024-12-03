@@ -12,7 +12,7 @@ type ParamsType = {
 /**
  * Glob import views (lazy loading)
  */
-const views = import.meta.glob("../../components/views/**/*.astro", {
+const views = import.meta.glob("../../views/**/*.astro", {
     eager: false,
 });
 
@@ -32,7 +32,7 @@ if (!LANGUAGES.includes(lang)) {
  * Find the route by matching the URI to translations
  */
 const route = findRoute(uri, lang) || ["", {
-    component: "common/NotFound",
+    view: "common/NotFound",
     props: {},
 }];
 
@@ -40,14 +40,14 @@ const route = findRoute(uri, lang) || ["", {
  * Redirect to 404 if no route is found
  */
 if (!route) {
-    return Astro.redirect("/404");
+   return Astro.redirect("/404");
 }
 
 /**
  * Find the view by matching the component name
  */
-const [_, { component, props }] = route;
-const viewPath = `../../components/views/${component}.astro`;
+const [_, { view, props }] = route;
+const viewPath = `../../views/${view}.astro`;
 const viewProps = props || {};
 
 /**

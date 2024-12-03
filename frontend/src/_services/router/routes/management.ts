@@ -2,35 +2,35 @@ import type { RouteMapType } from "@/services/utils/types";
 
 export const routesManagement: RouteMapType = {
     management: {
-        component: "management/Index",
+        view: "management/Index",
         paths: {
             en: "management",
             fr: "gestion",
         },
         children: {
             games: {
-                component: "management/Games/List",
+                view: "management/Games/List",
                 paths: {
                     en: "games",
                     fr: "jeux",
                 },
                 children: {
                     create: {
-                        component: "management/Games/Create",
+                        view: "management/Games/Create",
                         paths: {
                             en: "{slug}/create",
                             fr: "{slug}/creer",
                         },
                     },
                     edit: {
-                        component: "management/Games/Edit",
+                        view: "management/Games/Edit",
                         paths: {
                             en: "{slug}/edit",
                             fr: "{slug}/modifier",
                         },
                     },
                     view: {
-                        component: "management/Games/View",
+                        view: "management/Games/View",
                         paths: {
                             en: "{slug}/view",
                             fr: "{slug}/voir",

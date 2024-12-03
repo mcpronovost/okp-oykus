@@ -1,5 +1,5 @@
 export type RouteType = {
-    component: string;
+    view: string;
     props?: Record<string, unknown>;
     paths: {
         en: string;

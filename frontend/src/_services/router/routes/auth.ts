@@ -2,21 +2,21 @@ import type { RouteMapType } from "@/services/utils/types";
 
 export const routesAuth: RouteMapType = {
     register: {
-        component: "auth/Register",
+        view: "auth/Register",
         paths: {
             en: "register",
             fr: "inscription",
         },
     },
     login: {
-        component: "auth/Login",
+        view: "auth/Login",
         paths: {
             en: "login",
             fr: "connexion",
         },
     },
     logout: {
-        component: "auth/Logout",
+        view: "auth/Logout",
         paths: {
             en: "logout",
             fr: "deconnexion",
