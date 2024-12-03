@@ -4,5 +4,9 @@
     "Delete": "Delete",
     "Cancel": "Cancel",
     "Create": "Create",
+    "Active": "Active",
+    "Inactive": "Inactive",
+    "Public": "Public",
+    "Private": "Private",
     "Name": "Name"
 }
