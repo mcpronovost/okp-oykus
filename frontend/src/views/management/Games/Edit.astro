@@ -1,0 +1,17 @@
+---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+import { getRoute } from "@/services/router";
+
+const { lang } = Astro.params as { lang: LangType };
+const { slug } = Astro.props as { slug: string };
+const { t } = getTranslation(lang);
+const { r } = getRoute(lang);
+---
+
+<section class="okp-grid">
+    <header class="okp-header">
+        <h1 class="okp-header-title">{t("Edit a Game")}</h1>
+    </header>
+    <p>({slug})</p>
+</section>
