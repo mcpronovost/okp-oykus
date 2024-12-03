@@ -34,6 +34,7 @@ if (!LANGUAGES.includes(lang)) {
 const route = findRoute(uri, lang) || ["", {
     view: "common/NotFound",
     props: {},
+    params: {},
 }];
 
 /**
@@ -46,7 +47,7 @@ if (!route) {
 /**
  * Find the view by matching the component name
  */
-const [_, { view, props }] = route;
+const [_, { view, props, params }] = route;
 const viewPath = `../../views/${view}.astro`;
 const viewProps = props || {};
 
@@ -64,5 +65,5 @@ const ViewComponent = (await views[viewPath]()) as { default: any };
 ---
 
 <MainLayout>
-    <ViewComponent.default {...viewProps} />
+    <ViewComponent.default {...viewProps} {...params} />
 </MainLayout>
