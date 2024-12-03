@@ -1,0 +1,15 @@
+---
+type Props = {
+    spinner?: "squares" | "layers" | "circles";
+    py?: number;
+};
+
+const {
+    spinner = "circles",
+    py = 12
+} = Astro.props as Props;
+---
+
+<div class="okp-loading" style={`padding: ${py}px`}>
+    <div class={`okp-loading-spinner okp-${spinner}`}></div>
+</div>
