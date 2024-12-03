@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PATH=/home/oykus/.local/bin:$PATH
 
 # Update system packages and install required dependencies
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get install -y gettext
 
 # ================================================================
 # Create builder stage for installing Python dependencies

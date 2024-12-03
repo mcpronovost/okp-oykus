@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
+from okp.api.v1.users.serializers import okpUserPreviewSerializer
 from okp.games.models import OkpGame
 
 
@@ -47,6 +48,9 @@ class OkpGameListSerializer(serializers.ModelSerializer):
 
 
 class OkpGameDetailSerializer(serializers.ModelSerializer):
+    founder = okpUserPreviewSerializer()
+    owner = okpUserPreviewSerializer()
+
     class Meta:
         model = OkpGame
         fields = ["id", "name", "abbr", "slug", "founder", "owner"]

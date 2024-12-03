@@ -41,7 +41,7 @@ const route = findRoute(uri, lang) || ["", {
  * Redirect to 404 if no route is found
  */
 if (!route) {
-   return Astro.redirect("/404");
+    return Astro.redirect("/404");
 }
 
 /**

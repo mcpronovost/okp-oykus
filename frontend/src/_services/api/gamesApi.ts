@@ -20,4 +20,13 @@ export const gamesApi = {
             return e;
         }
     },
+    async managementView(slug: string): Promise<any> {
+        try {
+            const response = await api.get(`games/management/${slug}/detail/`);
+            const data = response instanceof Response ? await response.json() : response.data;
+            return data;
+        } catch (e) {
+            return e;
+        }
+    },
 };

@@ -1,18 +1,24 @@
 ---
-import type { LangType, ManagementListGameType } from "@/services/utils/types";
-import { Eye, Trash2 } from "lucide";
+import type { LangType } from "@/services/utils/types";
 import { gamesApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
 import { getRoute } from "@/services/router";
-import OkpIcon from "@/components/common/Icon.astro";
 
 const { lang } = Astro.params as { lang: LangType };
+const { slug } = Astro.props as { slug: string };
 const { t } = getTranslation(lang);
 const { r } = getRoute(lang);
+
+const game = await gamesApi.managementView(slug);
+
+if (!game) {
+    return Astro.redirect("/404");
+}
 ---
 
 <section class="okp-grid">
     <header class="okp-header">
-        <h1 class="okp-header-title">A Game</h1>
+        <h1 class="okp-header-title">{game.name}</h1>
     </header>
+    <pre>{JSON.stringify(game, null, 2)}</pre>
 </section>
