@@ -1,7 +1,7 @@
 import type { RouteType, RouteMapType, LangType } from "@/services/utils/types";
-import { routesAuth } from "./routesAuth";
-import { routesManagement } from "./routesManagement";
 import { LANG_DEFAULT } from "@/services/utils/constants";
+import { routesAuth } from "./routes/auth";
+import { routesManagement } from "./routes/management";
 
 /**
  * Global Routes
