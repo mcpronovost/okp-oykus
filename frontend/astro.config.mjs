@@ -40,5 +40,12 @@ export default defineConfig({
             minify: "esbuild", // Use esbuild for minification
             target: "esnext", // Set the target for modern browsers
         },
+        resolve: {
+            alias: {
+                "@/assets": "/src/_assets",
+                "@/services": "/src/_services",
+                "@": "/src",
+            },
+        },
     },
 });
