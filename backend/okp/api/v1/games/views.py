@@ -3,9 +3,13 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from drf_spectacular.utils import extend_schema
 
+from okp.pagination import OkpPagination
 from okp.games.models import OkpGame
-from .pagination import OkpGameListPagination
-from .serializers import OkpGameCreateSerializer, OkpGameListSerializer, OkpGameDetailSerializer
+from .serializers import (
+    OkpGameCreateSerializer,
+    OkpGameListSerializer,
+    OkpGameDetailSerializer,
+)
 
 
 @extend_schema(
@@ -15,7 +19,7 @@ from .serializers import OkpGameCreateSerializer, OkpGameListSerializer, OkpGame
         201: OkpGameCreateSerializer,
         400: {"description": "Bad request"},
     },
-    tags=["games"]
+    tags=["games"],
 )
 class OkpGameManagementCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -26,20 +30,17 @@ class OkpGameManagementCreateView(CreateAPIView):
 @extend_schema(
     summary="Game List",
     description="Get all games",
-    responses={
-        200: OkpGameListSerializer
-    },
-    tags=["games"]
+    responses={200: OkpGameListSerializer},
+    tags=["games"],
 )
 class OkpGameManagementListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = OkpGameListSerializer
-    pagination_class = OkpGameListPagination
+    pagination_class = OkpPagination
 
     def get_queryset(self):
         return OkpGame.objects.filter(
-            Q(founder=self.request.user) |
-            Q(owner=self.request.user)
+            Q(founder=self.request.user) | Q(owner=self.request.user)
         ).order_by("-is_active", "-is_public", "-updated_at", "-created_at")
 
 
@@ -50,7 +51,7 @@ class OkpGameManagementListView(ListAPIView):
         200: OkpGameDetailSerializer,
         404: {"description": "Game not found"},
     },
-    tags=["games"]
+    tags=["games"],
 )
 class OkpGameManagementDetailView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]

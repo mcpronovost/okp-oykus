@@ -205,7 +205,11 @@ REST_KNOX = {
 SPECTACULAR_SETTINGS = {
     "TITLE": "Oykus API",
     "DESCRIPTION": "API for the Oykus project",
-    "VERSION": "0.0.0-alpha.7",
+    "VERSION": "0.0.0-alpha.12",
+    "SERVERS": [
+        {"url": "http://api.localhost", "description": "Local Server"},
+        {"url": "https://api.oykus.ca", "description": "Production Server"},
+    ],
     "SERVE_INCLUDE_SCHEMA": False,
 }
 
