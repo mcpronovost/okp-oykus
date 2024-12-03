@@ -14,31 +14,6 @@ export const routes: RouteMapType = {
             fr: "",
         },
     },
-    about: {
-        view: "About",
-        paths: {
-            en: "about",
-            fr: "a-propos",
-        },
-        children: {
-            contact: {
-                view: "Contact",
-                paths: {
-                    en: "contact",
-                    fr: "contact",
-                },
-                children: {
-                    test: {
-                        view: "common/Test",
-                        paths: {
-                            en: "test",
-                            fr: "testfr",
-                        },
-                    },
-                },
-            },
-        },
-    },
     ...routesAuth,
     ...routesManagement,
     settings: {

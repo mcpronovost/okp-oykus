@@ -61,7 +61,7 @@ const gamesList = response?.results || [];
                             <a href={r("management/games/{slug}/view", { slug: game.slug })} class="okp-btn okp-small okp-info">
                                 <OkpIcon icon={Eye} size={16} aria-label={t("View")} />
                             </a>
-                            <a href={r(`"management/games/{slug}/delete"`, { slug: game.slug })} class="okp-btn okp-small okp-error">
+                            <a href={r(`management/games/{slug}/delete`, { slug: game.slug })} class="okp-btn okp-small okp-error">
                                 <OkpIcon icon={Trash2} size={16} aria-label={t("Delete")} />
                             </a>
                         </div>
