@@ -75,6 +75,10 @@ const addAuthorizationHeader = (
     side: "client" | "server",
     headers: Record<string, string> | AxiosRequestHeaders,
 ): Record<string, string> | AxiosRequestHeaders => {
+    headers["Accept-Language"] =
+        typeof window !== "undefined"
+            ? window?.document?.documentElement?.lang || globalThis.currentLang
+            : globalThis.currentLang;
     const token =
         side === "client"
             ? localStorage.getItem(API.STORAGE.RAT)
