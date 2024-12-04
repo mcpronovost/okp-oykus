@@ -1,0 +1,20 @@
+---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+import OkpLoading from "@/components/common/Loading.astro";
+import OkpAuthLoginForm from "@/components/react/auth/LoginForm";
+
+const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
+---
+
+<section class="okp-grid">
+    <header class="okp-header">
+        <section class="okp-header-content">
+            <h1 class="okp-header-title">{t("Login")}</h1>
+        </section>
+    </header>
+    <OkpAuthLoginForm client:only="react">
+        <OkpLoading slot="fallback" py={64} />
+    </OkpAuthLoginForm>
+</section>
