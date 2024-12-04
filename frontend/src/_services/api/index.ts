@@ -76,12 +76,15 @@ const addAuthorizationHeader = (
     headers: Record<string, string> | AxiosRequestHeaders,
 ): Record<string, string> | AxiosRequestHeaders => {
     headers["Accept-Language"] =
-        typeof window !== "undefined"
+        side === "client"
             ? window?.document?.documentElement?.lang || globalThis.currentLang
             : globalThis.currentLang;
     const token =
         side === "client"
-            ? localStorage.getItem(API.STORAGE.RAT)
+            ? window?.document?.cookie
+                  ?.split("; ")
+                  .find((row) => row.startsWith(`${API.STORAGE.RAT}=`))
+                  ?.split("=")[1]
             : globalThis.currentCookies[API.STORAGE.RAT];
     if (token) {
         headers.Authorization = `OKP ${token}`;
