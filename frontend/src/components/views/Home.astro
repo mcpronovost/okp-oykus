@@ -1,32 +1,15 @@
 ---
 import { Award } from "lucide";
-import { Test1, Test2 } from "@/components/react/applications";
 import OkpIcon from "@/components/common/Icon.astro";
 import OkpTag from "@/components/react/common/Tag";
-
-const { lang } = Astro.params;
 ---
 
 <h1 style="font-size: 12rem; word-spacing: 100vw;">Explore Build Survive</h1>
 
 <p style="display: block;max-width: 25vw;">The only aim in Rust is to survive. Everything wants you to die - the island’s wildlife and other inhabitants, the environment, other survivors. Do whatever it takes to last another night.</p>
 
-<p>aaa {lang}</p>
-
 <div>
     <OkpIcon icon={Award} />
-</div>
-
-<Test2 client:only="react" />
-
-<div style="background-color: var(--okp-card-bg); border-left: 2px solid var(--okp-error); color: var(--okp-card-fg);display: block; width: 500px; padding: 12px 24px; margin: 0 auto;">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-</div>
-
-<Test1 client:only="react" />
-
-<div style="background-color: var(--okp-card-bg); border-left: 2px solid var(--okp-success); color: var(--okp-card-fg);display: block; width: 500px; padding: 12px 24px; margin: 0 auto;">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
 </div>
 
 <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; justify-content: center; margin: 32px auto;">
