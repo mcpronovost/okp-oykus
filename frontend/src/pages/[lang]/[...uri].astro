@@ -34,6 +34,7 @@ if (!LANGUAGES.includes(lang)) {
  */
 const route = findRoute(uri, lang) || ["", {
     view: "common/NotFound",
+    auth: false,
     props: {},
     params: {},
 }];
@@ -42,13 +43,13 @@ const route = findRoute(uri, lang) || ["", {
  * Redirect to 404 if no route is found
  */
 if (!route) {
-    return Astro.redirect("/404");
+    return Astro.redirect(`/${lang}/404`);
 }
 
 /**
  * Find the view by matching the component name
  */
-const [_, { view, props, params }] = route;
+const [_, { view, auth, props, params }] = route;
 const viewPath = `../../components/views/${view}.astro`;
 const viewProps = props || {};
 
@@ -56,13 +57,20 @@ const viewProps = props || {};
  * Redirect to 404 if the view is not found
  */
 if (!(viewPath in views)) {
-    return Astro.redirect("/404");
+    return Astro.redirect(`/${lang}/404`);
 }
 
 /**
  * Get the user data
  */
 const me = await usersApi.me();
+
+/**
+ * Redirect to 403 if the route is protected and the user is not authenticated
+ */
+if (auth && !me) {
+    return Astro.redirect(`/${lang}/403`);
+}
 
 /**
  * Get the view component

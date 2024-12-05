@@ -1,0 +1,21 @@
+---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+import OkpMainLayout from "@/components/layout/MainLayout.astro";
+
+const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
+---
+
+<OkpMainLayout>
+    <section class="okp-fullview">
+        <div class="okp-errorview">
+            <h1 class="okp-errorview-title">404</h1>
+            <h2 class="okp-errorview-subtitle">{t("Oops! Page Not Found")}</h2>
+            <p class="okp-errorview-message">
+                {t("The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.")}
+            </p>
+            <a href={`/${lang}`} class="okp-btn okp-btn-error">{t("Go Back Home")}</a>
+        </div>
+    </section>
+</OkpMainLayout>

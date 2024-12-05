@@ -7,6 +7,7 @@ export const routesManagement: RouteMapType = {
             en: "management",
             fr: "gestion",
         },
+        auth: true,
         children: {
             games: {
                 view: "management/Games/List",
@@ -14,6 +15,7 @@ export const routesManagement: RouteMapType = {
                     en: "games",
                     fr: "jeux",
                 },
+                auth: true,
                 children: {
                     create: {
                         view: "management/Games/Create",
@@ -21,6 +23,7 @@ export const routesManagement: RouteMapType = {
                             en: "create",
                             fr: "creer",
                         },
+                        auth: true,
                     },
                     edit: {
                         view: "management/Games/Edit",
@@ -28,6 +31,7 @@ export const routesManagement: RouteMapType = {
                             en: "{slug}/edit",
                             fr: "{slug}/modifier",
                         },
+                        auth: true,
                     },
                     view: {
                         view: "management/Games/View",
@@ -35,6 +39,7 @@ export const routesManagement: RouteMapType = {
                             en: "{slug}/view",
                             fr: "{slug}/voir",
                         },
+                        auth: true,
                     },
                 },
             },

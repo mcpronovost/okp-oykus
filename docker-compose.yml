@@ -36,7 +36,6 @@ services:
       - "./frontend:/app:rw"
     environment:
       - TZ=America/Toronto
-      - VITE_BACKEND=backend:8000
     env_file:
       - .env
     labels:

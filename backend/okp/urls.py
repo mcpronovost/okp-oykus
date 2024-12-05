@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("okp.api.urls")),
+    path("api/", include("okp.api.urls")),
 ] + i18n_patterns()
 
 # Add static and media files serving

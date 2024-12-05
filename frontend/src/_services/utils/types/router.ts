@@ -6,6 +6,7 @@ export type RouteType = {
         en: string;
         fr: string;
     };
+    auth?: boolean;
     children?: RouteMapType;
 };
 

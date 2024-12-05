@@ -39,7 +39,6 @@ class MeView(RetrieveAPIView):
             return Response({"is_authenticated": False})
         serialized_user = okpUserMeSerializer(request.user)
         return Response({
-            "is_authenticated": True,
             **serialized_user.data
         })
 

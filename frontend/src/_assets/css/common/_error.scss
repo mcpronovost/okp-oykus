@@ -1,8 +1,9 @@
 .okp-errorview {
     max-width: 600px;
-    padding: 12px;
+    padding: 12px 12px 76px;
 
     &-title {
+        color: var(--okp-error);
         font-size: 8rem;
         line-height: 1;
     }

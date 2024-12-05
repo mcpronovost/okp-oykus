@@ -59,7 +59,7 @@ const { r } = getRoute(lang);
             </button>
         </div>
     </section>
-    {user.is_authenticated ? (
+    {!!user ? (
         <section class="okp-header-user">
             <div class="okp-header-user-dropdown">
                 <a href={r("management/games")} class="okp-header-user-button">

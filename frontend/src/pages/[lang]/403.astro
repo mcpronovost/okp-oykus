@@ -1,0 +1,21 @@
+---
+import type { LangType } from "@/services/utils/types";
+import { getTranslation } from "@/services/i18n";
+import OkpMainLayout from "@/components/layout/MainLayout.astro";
+
+const { lang } = Astro.params as { lang: LangType };
+const { t } = getTranslation(lang);
+---
+
+<OkpMainLayout>
+    <section class="okp-fullview">
+        <div class="okp-errorview">
+            <h1 class="okp-errorview-title">403</h1>
+            <h2 class="okp-errorview-subtitle">{t("Forbidden")}</h2>
+            <p class="okp-errorview-message">
+                {t("You are not authorized to access this page.")}
+            </p>
+            <a href={`/${lang}`} class="okp-btn okp-btn-error">{t("Go Back Home")}</a>
+        </div>
+    </section>
+</OkpMainLayout>

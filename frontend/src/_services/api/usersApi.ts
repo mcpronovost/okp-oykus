@@ -5,15 +5,12 @@ export const usersApi = {
         try {
             const response = await api.get("users/me/");
             const data = response instanceof Response ? await response.json() : response.data;
-            if (response.status === 200 && "is_authenticated" in data) {
+            if (response.status === 200 && "id" in data) {
                 return data;
             }
-            return {
-                status: response.status,
-                data,
-            };
-        } catch (e) {
-            return e;
+            return null;
+        } catch {
+            return null;
         }
     },
 };
