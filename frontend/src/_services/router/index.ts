@@ -21,6 +21,13 @@ export const routes: RouteMapType = {
             fr: "devblog",
         },
     },
+    faq: {
+        view: "FAQ",
+        paths: {
+            en: "faq",
+            fr: "faq",
+        },
+    },
     ...routesAuth,
     ...routesManagement,
     settings: {
