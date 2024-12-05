@@ -124,10 +124,10 @@ export const findRoute = (
 export const findLocaleRoute = (uri: string, fromLang: LangType, toLang: LangType, additionalParams?: Record<string, string>): string => {
     // Find the current route based on the URI and current language
     const currentRoute = findRoute(uri, fromLang);
-    if (!currentRoute) return uri;
+    if (!currentRoute) return `/${toLang}/${uri}`;
 
-    const [routePath, _, extractedParams] = currentRoute;
-    const params = { ...extractedParams, ...additionalParams };
+    const [routePath, routeData] = currentRoute;
+    const params = { ...routeData.params, ...additionalParams };
 
     // Split the route path to handle nested routes
     const routeParts = routePath.split(".");
