@@ -61,10 +61,17 @@
             font-size: 0.875rem;
             line-height: 1.2;
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: flex-start;
             gap: 12px;
             padding: 0;
+
+            svg {
+                flex: 0 0 16px;
+                width: 16px;
+                height: 16px;
+            }
         }
 
         header + div {

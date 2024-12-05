@@ -56,13 +56,13 @@ export function AuthLoginForm() {
         setFormLoading(true);
         const result = await authApi.login(formPayload.username.trim(), formPayload.password.trim());
         if (result.status === 200) {
-            window.document.cookie = `${API.STORAGE.RAT}=${result.data.token}; path=/; domain=.okp.localhost`;
+            window.document.cookie = `${API.STORAGE.RAT}=${result.data.token}; expires=${new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toUTCString()}; path=/; domain=.okp.localhost`;
             dispatch(toasterActions.addToast({
                 status: "success",
                 content: t("Logged in successfully"),
                 duration: 5000,
             }));
-            // return window.location.href = r("/");
+            return window.location.href = r("/");
         }
         const errorMessage = (
             (typeof result.msg === "object") && ("non_field_errors" in result.msg)

@@ -1,6 +1,7 @@
 ---
 import type { LangType } from "@/services/utils/types";
 import { LANG_DEFAULT, LANGUAGES } from "@/services/utils/constants";
+import { usersApi } from "@/services/api";
 import { findRoute } from "@/services/router";
 import MainLayout from "@/components/layout/MainLayout.astro";
 
@@ -59,11 +60,16 @@ if (!(viewPath in views)) {
 }
 
 /**
+ * Get the user data
+ */
+const me = await usersApi.me();
+
+/**
  * Get the view component
  */
 const ViewComponent = (await views[viewPath]()) as { default: any };
 ---
 
-<MainLayout>
-    <ViewComponent.default {...viewProps} {...params} />
+<MainLayout user={me} >
+    <ViewComponent.default {...viewProps} {...params} user={me} />
 </MainLayout>

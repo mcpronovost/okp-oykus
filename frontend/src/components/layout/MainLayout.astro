@@ -7,6 +7,7 @@ import OkpCoreRight from "@/components/core/Right.astro";
 import OkpToaster from "@/components/react/common/Toaster";
 
 const { lang } = Astro.params;
+const { user } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ const { lang } = Astro.params;
         <!-- --- -->
     </head>
     <body id="okp">
-        <OkpCoreHeader />
+        <OkpCoreHeader user={user} />
         <main id="okp-core-main">
             <OkpCoreLeft />
             <div id="okp-core-content" role="main">

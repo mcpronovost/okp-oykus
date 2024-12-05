@@ -19,7 +19,7 @@ services:
       - db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`api.localhost`)"
+      - "traefik.http.routers.backend.rule=Host(`okp.localhost`) && (PathPrefix(`/api`) || PathPrefix(`/admin`) || PathPrefix(`/static`) || PathPrefix(`/media`))"
       - "traefik.http.services.backend.loadbalancer.server.port=8000"
     networks:
       - okp-oykus
@@ -41,7 +41,7 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`okp.localhost`)"
+      - "traefik.http.routers.frontend.rule=Host(`okp.localhost`) && !(PathPrefix(`/api`) || PathPrefix(`/admin`) || PathPrefix(`/static`) || PathPrefix(`/media`))"
       - "traefik.http.services.frontend.loadbalancer.server.port=3000"
     networks:
       - okp-oykus

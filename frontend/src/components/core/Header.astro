@@ -1,11 +1,12 @@
 ---
 import type { LangType } from "@/services/utils/types";
-import { Bell, Mail, Smile } from "lucide";
+import { Bell, LogIn, Mail, Smile } from "lucide";
 import { getTranslation } from "@/services/i18n";
 import { getRoute } from "@/services/router";
 import OkpIcon from "@/components/common/Icon.astro";
 
 const { lang } = Astro.params as { lang: LangType };
+const { user } = Astro.props;
 const { t } = getTranslation(lang);
 const { r } = getRoute(lang);
 ---
@@ -58,17 +59,31 @@ const { r } = getRoute(lang);
             </button>
         </div>
     </section>
-    <section class="okp-header-user">
-        <div class="okp-header-user-dropdown">
-            <a href={r("management/games")} class="okp-header-user-button">
-                <div class="okp-header-user-button-name">
-                    <span>M-C Pronovost</span>
-                    <small>mcpronovost@oykus.ca</small>
-                </div>
-                <figure class="okp-header-user-button-avatar">
-                    {/* <img src="/images/avatar.png" alt="Avatar" /> */}
-                </figure>
+    {user.is_authenticated ? (
+        <section class="okp-header-user">
+            <div class="okp-header-user-dropdown">
+                <a href={r("management/games")} class="okp-header-user-button">
+                    <div class="okp-header-user-button-name">
+                        <span>{user.playername}</span>
+                        <small>{user.email}</small>
+                    </div>
+                    <figure class="okp-header-user-button-avatar">
+                        {user.avatar && (
+                            <img src={user.avatar} alt={user.playername} aria-hidden="true" />
+                        )}
+                    </figure>
+                </a>
+            </div>
+        </section>
+    ) : (
+        <section class="okp-header-auth">
+            <a href={r("login")} class="okp-header-auth-login">
+                <span>{t("Login")}</span>
+                <OkpIcon icon={LogIn} />
             </a>
-        </div>
-    </section>
+            <a href={r("register")} class="okp-header-auth-register">
+                <span>{t("Register")}</span>
+            </a>
+        </section>
+    )}
 </header>

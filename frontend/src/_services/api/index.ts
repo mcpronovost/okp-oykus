@@ -218,3 +218,4 @@ export const api = {
 
 export * from "./authApi";
 export * from "./gamesApi";
+export * from "./usersApi";

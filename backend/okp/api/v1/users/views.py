@@ -1,12 +1,47 @@
 from django.conf import settings
 from django.contrib.auth import login
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from knox.views import LogoutView as KnoxLogoutView
 from knox.views import LogoutAllView as KnoxLogoutAllView
 from drf_spectacular.utils import extend_schema
+
+from .serializers import okpUserMeSerializer
+
+
+@extend_schema(
+    summary="Me",
+    description="Get the current user",
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "is_authenticated": {"type": "boolean"},
+                "username": {"type": "string"},
+            }
+        }
+    },
+    tags=["users"]
+)
+class MeView(RetrieveAPIView):
+    """
+    Get the current user
+    """
+    permission_classes = [AllowAny]
+    serializer_class = None
+
+    def get(self, request, format=None):
+        if not request.user.is_authenticated:
+            return Response({"is_authenticated": False})
+        serialized_user = okpUserMeSerializer(request.user)
+        return Response({
+            "is_authenticated": True,
+            **serialized_user.data
+        })
 
 
 class LoginView(KnoxLoginView):
