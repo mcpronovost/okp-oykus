@@ -3,7 +3,7 @@ import { API } from "src/_services/utils/constants";
 import Providers from "@/components/react/Providers";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PencilLine } from "lucide-react";
+import { CircleAlert, PencilLine } from "lucide-react";
 import { authApi } from "@/services/api";
 import { getTranslation } from "@/services/i18n";
 import { getRoute } from "@/services/router";
@@ -85,7 +85,7 @@ export function AuthLoginForm() {
                             <PencilLine size={16} /> <span>{t("Username")}</span>
                         </label>
                         <div className="okp-form-row-input">
-                            <input type="text" id="okp-form-field-username" name="username" maxLength={NAME_MAX_LENGTH} value={formPayload.username} onKeyUp={handleFormUsernameKeyUp} onChange={handleFormUsernameChange} />
+                            <input type="text" id="okp-form-field-username" name="username" maxLength={NAME_MAX_LENGTH} value={formPayload.username} onKeyUp={handleFormUsernameKeyUp} onChange={handleFormUsernameChange} tabIndex={1} autoFocus />
                             {formErrors.username?.length > 0 && (
                                 <ul className="okp-form-row-errors">
                                     {formErrors.username.map((error) => (
@@ -101,7 +101,7 @@ export function AuthLoginForm() {
                             <PencilLine size={16} /> <span>{t("Password")}</span>
                         </label>
                         <div className="okp-form-row-input">
-                            <input type="password" id="okp-form-field-password" name="password" maxLength={NAME_MAX_LENGTH} value={formPayload.password} onChange={handleFormPasswordChange} />
+                            <input type="password" id="okp-form-field-password" name="password" maxLength={NAME_MAX_LENGTH} value={formPayload.password} onChange={handleFormPasswordChange} tabIndex={2} />
                             {formErrors.password?.length > 0 && (
                                 <ul className="okp-form-row-errors">
                                     {formErrors.password.map((error) => (
@@ -112,6 +112,16 @@ export function AuthLoginForm() {
                         </div>
                         <span className={`okp-form-row-count ${formPayload.password.length >= NAME_MAX_LENGTH ? "okp-error" : ""}`}>{formPayload.password.length}/{NAME_MAX_LENGTH}</span>
                     </div>
+                    {formErrors.non_field_errors?.length > 0 && (
+                        <div className="okp-form-errors">
+                            <CircleAlert size={24} />
+                            <ul className="okp-form-errors-list">
+                                {formErrors.non_field_errors.map((error) => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     <div className="okp-form-actions">
                         <button type="reset" className="okp-btn okp-error" onClick={handleCancel} disabled={formLoading}>
                             <span>{t("Cancel")}</span>

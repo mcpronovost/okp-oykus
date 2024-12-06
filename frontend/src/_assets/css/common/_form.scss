@@ -51,6 +51,33 @@
         }
     }
 
+    &-errors {
+        background: color-mix(in srgb, var(--okp-error) 20%, var(--okp-card-bg));
+        border-left: 2px solid var(--okp-error);
+        color: var(--okp-error);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 4px 16px;
+        margin: 12px 0;
+
+        &-list {
+            color: var(--okp-error);
+            font-size: 0.9rem;
+            line-height: 1;
+            display: block;
+            width: 100%;
+            padding: 6px 6px;
+
+            li {
+                padding: 6px 0;
+            }
+        }
+    }
+
     &-actions {
         display: flex;
         flex-direction: row;
