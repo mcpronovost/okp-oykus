@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     # okp
     "okp.core",
     "okp.contrib.auth",
-    "okp.contrib.blog",
-    "okp.contrib.courrier",
-    "okp.contrib.forum",
+    # "okp.contrib.blog",
+    # "okp.contrib.courrier",
+    # "okp.contrib.forum",
     "okp.api",
     # cleanup
     "django_cleanup.apps.CleanupConfig",

@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth import get_user_model
 
-from okp.auth.serializers import (
+from okp.contrib.auth.serializers import (
     OkpAuthRegisterSerializer,
     OkpAuthTokenSerializer
 )

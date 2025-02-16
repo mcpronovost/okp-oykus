@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
-from okp.auth.models import OkpAuthToken
+from okp.contrib.auth.models import OkpAuthToken
 
 
 class Command(BaseCommand):

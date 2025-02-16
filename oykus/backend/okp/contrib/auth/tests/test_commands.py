@@ -3,7 +3,7 @@ from io import StringIO
 import pytest
 from django.core.management import call_command
 
-from okp.auth.models import OkpAuthToken
+from okp.contrib.auth.models import OkpAuthToken
 
 
 @pytest.mark.django_db

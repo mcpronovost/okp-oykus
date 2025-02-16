@@ -3,6 +3,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class OkpAuthConfig(AppConfig):
-    name = "okp.auth"
+    name = "okp.contrib.auth"
     label = "okp_auth"
     verbose_name = _("Authentication")
