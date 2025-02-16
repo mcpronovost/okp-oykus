@@ -6,11 +6,11 @@ export const routes = {
       fr: "",
     },
   },
-  devblog: {
-    view: "Devblog",
+  devlog: {
+    view: "Devlog",
     paths: {
-      en: "devblog",
-      fr: "devblog",
+      en: "devlog",
+      fr: "devlog",
     },
   },
   faq: {

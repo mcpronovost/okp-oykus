@@ -2,3 +2,6 @@
 @use "base/fonts";
 @use "base/variables";
 @use "base/core";
+
+// Components
+@use "components/feedback/alert" as components-feedback-alert;
