@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/oykus/frontend/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/oykus/backend/"
+    schedule:
+      interval: "weekly"
