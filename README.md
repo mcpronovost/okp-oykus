@@ -21,23 +21,26 @@ To start the development servers for both the backend and frontend, you can use 
 
 ### Usage
 
-1. Ensure you have the necessary dependencies installed for both the backend and frontend.
+1. Ensure you have the necessary virtual environment and dependencies installed for both the backend and frontend.
 
+   Inside the `oykus/backend` directory, run the following command to install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
+   Inside the `oykus/frontend` directory, run the following command to install the dependencies:
    ```bash
    npm install
    ```
 
 2. Run the following command to start the development servers:
 
+   Inside the root directory, run the following command to start the development servers:
    ```bash
    python devserver.py
    ```
 
-3. The backend server will start on the default Django port (usually 8000), and the frontend server will start on port 5173.
+3. The backend server will start on port `8000`, and the frontend server will start on port `5173`.
 
 4. To use Django management commands, you can use the following command, example to run the migrations:
 

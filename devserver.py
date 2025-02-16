@@ -24,7 +24,7 @@ def start_server(python_exec, npm_exec, backend_path, frontend_path):
         print("Starting backend development server...")
         # Start backend development server
         backend_process = subprocess.Popen(
-            [python_exec, "oykus/backend/manage.py", "runserver"],
+            [python_exec, "oykus/backend/manage.py", "runserver", "0.0.0.0:8000"],
             cwd=backend_path,
         )
 
