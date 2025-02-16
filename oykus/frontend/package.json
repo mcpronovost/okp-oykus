@@ -1,0 +1,45 @@
+{
+  "name": "okp-core",
+  "description": "Core project for okp.",
+  "version": "0.2.0",
+  "author": "M-C Pronovost",
+  "homepage": "https://github.com/mcpronovost/okp-core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcpronovost/okp-core.git"
+  },
+  "type": "module",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite build && vite preview",
+    "lint": "eslint .",
+    "check-translations": "check-translations --languages=en,fr --src=./src --locales=./src/_services/locales"
+  },
+  "dependencies": {
+    "@mcpronovost/okp-i18n": "file:../../okp-i18n",
+    "@mcpronovost/okp-router": "file:../../okp-router",
+    "axios": "^1.7.9",
+    "classnames": "^2.5.1",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.20.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "prettier-plugin-css-order": "^2.1.2",
+    "sass-embedded": "^1.83.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
