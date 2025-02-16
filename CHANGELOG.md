@@ -8,9 +8,14 @@ All notable changes to this project will be documented in this file.
 
 - Add devserver script
 
-### Changed
+### Fixed
 
 - Fix initializations
+
+### Updated
+
+- Bump coverage from 7.6.11 to 7.6.12 in /oykus/backend
+- Bump pytest-django from 4.9.0 to 4.10.0 in /oykus/backend
 
 ### Initial
 

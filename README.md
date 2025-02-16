@@ -8,9 +8,10 @@
 
 <div align="center">
 
-[![License](https://img.shields.io/badge/LICENSE-BSD--3--Clause-red.svg)](./LICENSE)
-[![made in Canada](https://img.shields.io/badge/made%20in-Canada-FF0000)](#)
-[![made in Québec](https://img.shields.io/badge/fait%20au-Québec-003399)](#)
+[![Version](https://img.shields.io/badge/Version-0.1.0-blue.svg)](./CHANGELOG.md)
+[![License](https://img.shields.io/badge/License-BSD--3--Clause-red.svg)](./LICENSE)
+[![made in Canada](https://img.shields.io/badge/Made%20in-Canada-FF0000)](#)
+[![made in Québec](https://img.shields.io/badge/Fait%20au-Québec-003399)](#)
 
 </div>
 
