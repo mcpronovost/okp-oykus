@@ -3,10 +3,14 @@ import { r } from "@mcpronovost/okp-router";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>{t("Hello")}</p>
-      <a href={r("components")}>Go to Components</a>
-    </div>
+    <section className="okp-grid">
+        <header className="okp-header">
+            <h1 className="okp-header-title">{t("Home")}</h1>
+        </header>
+        <section>
+            <p>Under construction</p>
+            <a href={r("components")}>Go to Components</a>
+        </section>
+    </section>
   );
 }

@@ -1,7 +1,18 @@
 @use "base/reset";
 @use "base/fonts";
 @use "base/variables";
+@use "base/grid";
+@use "base/scrollbar";
 @use "base/core";
+
+// Layout
+@use "layout/index" as layout;
+@use "layout/header" as layout-header;
+@use "layout/leftpanel" as layout-leftpanel;
+@use "layout/rightpanel" as layout-rightpanel;
+
+// Common
+@use "common/header" as common-header;
 
 // Components
 @use "components/feedback/alert" as components-feedback-alert;

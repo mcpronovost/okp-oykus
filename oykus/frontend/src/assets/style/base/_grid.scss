@@ -1,0 +1,52 @@
+@mixin okp-mixin-grid {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 1024px;
+    padding: 0 12px;
+    margin: 0 auto;
+
+    // xl: >= 1440px
+    @media (max-width: 1439px) {
+        & {
+            // max-width: 1280px;
+            max-width: 1024px;
+        }
+    }
+
+    // lg: >= 1280px
+    @media (max-width: 1279px) {
+        & {
+            max-width: 1024px;
+        }
+    }
+
+    // md: >= 1024px
+    @media (max-width: 1023px) {
+        & {
+            max-width: 768px;
+        }
+    }
+
+    // sm: >= 768px
+    @media (max-width: 767px) {
+        & {
+            max-width: 600px;
+        }
+    }
+
+    // xs: < 600px
+    @media (max-width: 599px) {
+        & {
+            max-width: 90%;
+        }
+    }
+}
+
+.okp-grid {
+    @include okp-mixin-grid;
+
+    + .okp-grid {
+        margin-top: 12px;
+    }
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { t } from "@mcpronovost/okp-i18n";
 import { r } from "@mcpronovost/okp-router";
 import { OkpAlert, OkpLoading } from "@/components/feedback";
 
@@ -10,17 +11,17 @@ export default function Components() {
   };
 
   return (
-    <section style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-      <header>
-        <h1>Components</h1>
-        <p>Welcome to the components page</p>
-        <a href={r("home")}>Go to Home</a>
+    <section className="okp-grid">
+      <header className="okp-header">
+        <h1 className="okp-header-title">{t("Components")}</h1>
       </header>
+      <p>Welcome to the components page</p>
+      <a href={r("home")}>Go to Home</a>
       <article style={{ margin: "24px 0" }}>
         <h2>Feedback</h2>
         <nav style={{ margin: "12px 0 32px" }}>
-          <button onClick={() => setActiveSection("loading")}>Loading</button>
           <button onClick={() => setActiveSection("alert")}>Alert</button>
+          <button onClick={() => setActiveSection("loading")}>Loading</button>
         </nav>
         {activeSection === "alert" && (
           <section>
@@ -32,15 +33,28 @@ export default function Components() {
               <OkpAlert>This is a default alert</OkpAlert>
             </div>
             <div style={{ margin: "24px 0" }}>
-              <OkpAlert title="This is my title" icon={false} closable onClose={handleCloseAlert}>
+              <OkpAlert
+                title="This is my title"
+                icon={false}
+                closable
+                onClose={handleCloseAlert}
+              >
                 This is a default closable alert without icon
               </OkpAlert>
             </div>
             <div style={{ margin: "24px 0" }}>
-              <OkpAlert title="Profile updated" variant="success">Your profile has been updated successfully.</OkpAlert>
+              <OkpAlert title="Profile updated" variant="success">
+                Your profile has been updated successfully.
+              </OkpAlert>
             </div>
             <div style={{ margin: "24px 0" }}>
-              <OkpAlert title="An error occurred" message="Your profile could not be updated." variant="error">Please, try again later.</OkpAlert>
+              <OkpAlert
+                title="An error occurred"
+                message="Your profile could not be updated."
+                variant="error"
+              >
+                Please, try again later.
+              </OkpAlert>
             </div>
             <div style={{ margin: "24px 0" }}>
               <OkpAlert variant="warning" title="This is a warning alert" />

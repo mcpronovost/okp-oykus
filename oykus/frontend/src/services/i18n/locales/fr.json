@@ -1,3 +1,10 @@
 {
-    "Hello": "Bonjour"
+    "Hello": "Bonjour",
+    "Home": "Accueil",
+    "Login": "Connexion",
+    "Register": "Inscription",
+    "Devblog": "Devblog",
+    "FAQ": "FAQ",
+    "Privacy Policy": "Politique de confidentialité",
+    "Components": "Composants"
 }
