@@ -2,16 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## What's Changed
+## [v0.1.2] - 2025-02-17
 
 ### Added
 
+- Implement layout structure with header, panels, and styling
 - Add Loading component with styling and variants
 - Add Alert component with styling and variants
+
+### Changed
+
+- Set default HTML language to English
 
 ### Updated
 
 - Bump okp-i18n and okp-router
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.1.1...v0.1.2
 
 ## [v0.1.1] - 2025-02-16
 
