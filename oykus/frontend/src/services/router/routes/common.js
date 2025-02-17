@@ -6,25 +6,11 @@ export const routes = {
       fr: "",
     },
   },
-  devlog: {
-    view: "Devlog",
+  components: {
+    view: "Components",
     paths: {
-      en: "devlog",
-      fr: "devlog",
-    },
-  },
-  faq: {
-    view: "FAQ",
-    paths: {
-      en: "faq",
-      fr: "faq",
-    },
-  },
-  settings: {
-    view: "Settings",
-    paths: {
-      en: "settings",
-      fr: "parametres",
+      en: "components",
+      fr: "composants",
     },
   },
   notfound: {
