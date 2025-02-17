@@ -6,6 +6,17 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Add Loading component with styling and variants
+- Add Alert component with styling and variants
+
+### Updated
+
+- Bump okp-i18n and okp-router
+
+## [v0.1.1] - 2025-02-16
+
+### Added
+
 - Add devserver script
 
 ### Fixed
@@ -21,6 +32,8 @@ All notable changes to this project will be documented in this file.
 
 - Initial frontend
 - Initial backend
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.1.0...v0.1.1
 
 ## [v0.1.0] - 2025-02-16
 
