@@ -25,8 +25,8 @@ export default function App() {
   }, [fontsLoaded]);
 
   return (
-    <SafeAreaView style={[s.safeArea, !isReady && { opacity: 0 }]}>
-      <SafeAreaProvider style={s.safeProvider}>
+    <SafeAreaProvider style={[s.safeArea, !isReady && { opacity: 0 }]}>
+      <SafeAreaView style={s.safeProvider}>
         <StatusBar barStyle="light-content" backgroundColor={v.colours.layout.header.bg} />
         <View style={s.core}>
           <OkpLayoutHeader />
@@ -38,7 +38,7 @@ export default function App() {
             {width >= v.breakpoints.lg && <OkpLayoutRightPanel />}
           </View>
         </View>
-      </SafeAreaProvider>
-    </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

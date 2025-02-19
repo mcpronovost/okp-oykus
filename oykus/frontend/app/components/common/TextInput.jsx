@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 8,
     flex: 1,
-    color: "inherit",
+    color: "#f00",
   },
   icon: {
     marginRight: 8,
