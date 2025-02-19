@@ -6,17 +6,20 @@ export const layoutHeaderStyles = () =>
     header: {
       backgroundColor: v.colours.layout.header.bg,
       color: v.colours.layout.header.fg,
+      flex: 0,
+      flexBasis: 64,
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
       width: "100%",
       height: 64,
-      gap: 64,
+      gap: 8,
     },
     brand: {
       flexDirection: "row",
       alignItems: "center",
       gap: 8,
+      marginRight: 32,
     },
     brandLogo: {
       width: 64,
@@ -39,6 +42,8 @@ export const layoutHeaderStyles = () =>
       alignItems: "center",
       justifyContent: "center",
       height: "100%",
+      marginLeft: 32,
+      marginRight: 32,
     },
     menuList: {
       gap: 16,
@@ -76,6 +81,7 @@ export const layoutHeaderStyles = () =>
     user: {
       flexDirection: "row",
       alignItems: "center",
+      marginLeft: 32,
     },
     userIdentity: {
       flexDirection: "row",
@@ -120,22 +126,23 @@ export const layoutHeaderNotificationsStyles = () =>
     notifications: {
       flexDirection: "row",
       alignItems: "center",
-      height: "100%",
+      justifyContent: "center",
+      height: 64,
+      marginLeft: 32,
+      marginRight: 32,
     },
     notificationsList: {
       flexDirection: "row",
       alignItems: "center",
-      height: "100%",
+      height: 64,
     },
     notificationsItem: {
       userSelect: "none",
-      transition: "color 0.3s",
-      flex: 1,
       alignItems: "center",
       justifyContent: "center",
-      height: "100%",
-      paddingVertical: 8,
-      paddingHorizontal: 24,
+      width: 64,
+      height: 64,
+      transition: "color 0.3s",
     },
     notificationsItemHovered: {
       color: v.colours.primary,

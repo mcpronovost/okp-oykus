@@ -16,7 +16,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <OkpIcon name="bell" size={16} />
+            <OkpIcon name="bell" size={16} stroke={2} />
           </View>
         </Pressable>
         <Pressable
@@ -27,7 +27,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <OkpIcon name="mail" size={16} />
+            <OkpIcon name="mail" size={16} stroke={2} />
           </View>
         </Pressable>
         <Pressable
@@ -38,7 +38,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <OkpIcon name="smile" size={16} />
+            <OkpIcon name="smile" size={16} stroke={2} />
           </View>
         </Pressable>
       </View>

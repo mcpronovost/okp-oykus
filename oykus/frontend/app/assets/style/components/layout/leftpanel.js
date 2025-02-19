@@ -21,12 +21,11 @@ export const layoutLeftPanelStyles = () =>
       gap: 64,
     },
     leftPanelMenuList: {
-      flex: 1,
       justifyContent: "center",
       alignItems: "center",
     },
     leftPanelMenuItem: {
-      flex: 1,
+      color: v.colours.layout.leftPanel.fg,
       flexBasis: 64,
       justifyContent: "center",
       alignItems: "center",
@@ -36,6 +35,11 @@ export const layoutLeftPanelStyles = () =>
     },
     leftPanelMenuItemHovered: {
       color: v.colours.layout.leftPanel.hoverFg,
+    },
+    leftPanelMenuItemPressed: {
+      color: v.colours.layout.leftPanel.hoverFg,
+      opacity: 0.5,
+      scale: 0.9,
     },
     leftPanelMenuItemTab: {
       backgroundColor: v.colours.layout.leftPanel.fg,

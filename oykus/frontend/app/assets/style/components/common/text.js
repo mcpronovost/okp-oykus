@@ -5,6 +5,6 @@ export const textStyles = () => StyleSheet.create({
   text: {
     ...v.fonts.default,
     fontSize: 16,
-    color: "inherit",
+    color: v.colours.fg,
   },
 });

@@ -35,6 +35,7 @@ export const v = {
     },
   },
   breakpoints: {
+    xs: 320,
     sm: 576,
     md: 768,
     lg: 992,

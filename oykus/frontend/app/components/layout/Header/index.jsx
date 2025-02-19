@@ -6,7 +6,7 @@ import {
   Pressable,
   useWindowDimensions,
 } from "react-native";
-import { layoutHeaderStyles } from "@/assets/style";
+import { v, layoutHeaderStyles } from "@/assets/style";
 import { OkpImage, OkpText } from "@/components/common";
 import OkpLayoutHeaderNotifications from "./Notifications";
 
@@ -25,10 +25,12 @@ export default function OkpLayoutHeader() {
             style={s.brandLogoImage}
           />
         </View>
-        <OkpText style={s.brandName}>Oykus</OkpText>
+        {width >= v.breakpoints.xs && (
+          <OkpText style={s.brandName}>Oykus</OkpText>
+        )}
       </View>
-      <View style={s.menu}>
-        {width >= 992 && (
+      {width >= v.breakpoints.lg && (
+        <View style={s.menu}>
           <FlatList
             data={[
               { id: 1, name: "Devlog" },
@@ -60,13 +62,15 @@ export default function OkpLayoutHeader() {
             showsHorizontalScrollIndicator={false}
             style={s.menuList}
           />
-        )}
-      </View>
+        </View>
+      )}
       <View style={s.spacer} />
-      <OkpLayoutHeaderNotifications />
+      {width >= v.breakpoints.sm && (<OkpLayoutHeaderNotifications />)}
       <View style={s.user}>
         <Pressable style={s.userIdentity}>
-          <OkpText style={s.userName}>mcpronovost</OkpText>
+          {width >= v.breakpoints.lg && (
+            <OkpText style={s.userName}>mcpronovost</OkpText>
+          )}
           <View style={s.userAvatar}>
             <OkpImage
               source={require("@/assets/img/placeholders/mcpronovost.jpg")}

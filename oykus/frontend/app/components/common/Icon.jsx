@@ -1,16 +1,17 @@
 import { Platform } from "react-native";
 import * as LucideNative from "lucide-react-native";
 import * as LucideWeb from "lucide-react";
+import { v } from "@/assets/style";
 
-export default function OkpIcon({ name, size, color }) {
+export default function OkpIcon({ name, size, color, stroke }) {
   const iconProps = Platform.OS === "web" ? {
     size: `${size}px`,
     stroke: color || "currentColor",
-    strokeWidth: 1.5
+    strokeWidth: stroke || 1.5
   } : {
     size: size,
-    color: color || "inherit",
-    strokeWidth: 1.5
+    color: color || v.colours.fg,
+    strokeWidth: stroke || 1.5
   };
 
   const Icons = Platform.OS === "web" ? LucideWeb : LucideNative;

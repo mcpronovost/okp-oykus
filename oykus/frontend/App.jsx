@@ -19,6 +19,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    console.log("fontsLoaded", fontsLoaded);
     if (fontsLoaded) {
       setIsReady(true);
     }
@@ -31,7 +32,7 @@ export default function App() {
         <View style={s.core}>
           <OkpLayoutHeader />
           <View style={s.main}>
-            {width >= v.breakpoints.sm && <OkpLayoutLeftPanel />}
+            {width >= v.breakpoints.xs && <OkpLayoutLeftPanel />}
             <View style={s.content}>
               <Home />
             </View>
