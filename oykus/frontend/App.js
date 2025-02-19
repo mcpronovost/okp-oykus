@@ -1,7 +1,8 @@
 import { useFonts } from "expo-font";
 import { Nunito_400Regular, Nunito_700Bold } from "@expo-google-fonts/nunito";
 import { useEffect, useState } from "react";
-import { SafeAreaView, View, useWindowDimensions } from "react-native";
+import { View, StatusBar, useWindowDimensions } from "react-native";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { v, layoutStyles } from "@/assets/style";
 import OkpLayoutHeader from "@/components/layout/Header";
 import OkpLayoutLeftPanel from "@/components/layout/LeftPanel";
@@ -11,8 +12,7 @@ import Home from "@/screens/Home";
 export default function App() {
   const [fontsLoaded] = useFonts({
     Nunito_400Regular,
-    Nunito_700Bold,
-    Lucide: require("@react-native-vector-icons/lucide/fonts/Lucide.ttf"),
+    Nunito_700Bold
   });
   const s = layoutStyles();
   const { width } = useWindowDimensions();
@@ -25,15 +25,20 @@ export default function App() {
   }, [fontsLoaded]);
 
   return (
-    <SafeAreaView style={[s.core, !isReady && { opacity: 0 }]}>
-      <OkpLayoutHeader />
-      <View style={s.main}>
-        {width >= v.breakpoints.sm && <OkpLayoutLeftPanel />}
-        <View style={s.content}>
-          <Home />
+    <SafeAreaView style={[s.safeArea, !isReady && { opacity: 0 }]}>
+      <SafeAreaProvider style={s.safeProvider}>
+        <StatusBar barStyle="light-content" backgroundColor={v.colours.layout.header.bg} />
+        <View style={s.core}>
+          <OkpLayoutHeader />
+          <View style={s.main}>
+            {width >= v.breakpoints.sm && <OkpLayoutLeftPanel />}
+            <View style={s.content}>
+              <Home />
+            </View>
+            {width >= v.breakpoints.lg && <OkpLayoutRightPanel />}
+          </View>
         </View>
-        {width >= v.breakpoints.lg && <OkpLayoutRightPanel />}
-      </View>
+      </SafeAreaProvider>
     </SafeAreaView>
   );
 }

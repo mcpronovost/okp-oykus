@@ -4,7 +4,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.copiedText}>{copiedText}</Text>
+      <Text style={styles.copiedText}>aaa</Text>
     </View>
   );
 }

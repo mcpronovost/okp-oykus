@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Oykus",
+    "slug": "oykus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/img/favicon.png",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./app/assets/img/favicon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#161B28"
     },
     "ios": {
       "supportsTablet": true
@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/img/favicon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#161B28"
       }
     },
     "web": {
