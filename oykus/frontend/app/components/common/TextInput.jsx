@@ -1,11 +1,9 @@
 import { View, TextInput, StyleSheet } from "react-native";
 
 export default function OkpTextInput({ icon, ...props }) {
-  const Icon = icon;
 
   return (
     <View style={styles.container}>
-      {Icon && <Icon size={24} style={styles.icon} />}
       <TextInput style={styles.input} {...props} />
     </View>
   );

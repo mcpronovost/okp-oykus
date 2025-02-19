@@ -1,6 +1,6 @@
 import { View, Pressable } from "react-native";
 import { layoutHeaderNotificationsStyles } from "@/assets/style";
-import { Bell, Mail, Smile } from "lucide-react-native";
+import OkpIcon from "@/components/common/Icon";
 
 export default function OkpLayoutHeaderNotifications() {
   const s = layoutHeaderNotificationsStyles();
@@ -16,7 +16,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <Bell size={16} />
+            <OkpIcon name="bell" size={16} />
           </View>
         </Pressable>
         <Pressable
@@ -27,7 +27,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <Mail size={16} />
+            <OkpIcon name="mail" size={16} />
           </View>
         </Pressable>
         <Pressable
@@ -38,7 +38,7 @@ export default function OkpLayoutHeaderNotifications() {
           ]}
         >
           <View style={s.notificationsItemIcon}>
-            <Smile size={16} />
+            <OkpIcon name="smile" size={16} />
           </View>
         </Pressable>
       </View>

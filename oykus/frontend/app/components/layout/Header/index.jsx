@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { layoutHeaderStyles } from "@/assets/style";
-import { OkpText } from "@/components/common";
+import { OkpImage, OkpText } from "@/components/common";
 import OkpLayoutHeaderNotifications from "./Notifications";
 
 export default function OkpLayoutHeader() {
@@ -21,7 +21,7 @@ export default function OkpLayoutHeader() {
       <View style={s.brand}>
         <View style={s.brandLogo}>
           <Image
-            source={require("@/assets/img/favicon.png")}
+            source={require("@/assets/img/logo.png")}
             style={s.brandLogoImage}
           />
         </View>
@@ -65,13 +65,16 @@ export default function OkpLayoutHeader() {
       <View style={s.spacer} />
       <OkpLayoutHeaderNotifications />
       <View style={s.user}>
-        <OkpText style={s.userName}>mcpronovost</OkpText>
-        <View style={s.userAvatar}>
-          <Image
-            source={require("@/assets/img/favicon.png")}
-            style={s.userAvatarImage}
-          />
-        </View>
+        <Pressable style={s.userIdentity}>
+          <OkpText style={s.userName}>mcpronovost</OkpText>
+          <View style={s.userAvatar}>
+            <OkpImage
+              source={require("@/assets/img/placeholders/mcpronovost.jpg")}
+              style={s.userAvatarImage}
+            />
+            <View style={s.userAvatarStatus} />
+          </View>
+        </Pressable>
       </View>
     </View>
   );

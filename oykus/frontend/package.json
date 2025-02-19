@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "expo start --web --port 5173",
+    "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -12,6 +12,8 @@
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.2.3",
     "@expo/metro-runtime": "~4.0.1",
+    "@react-native-vector-icons/common": "^11.0.0",
+    "@react-native-vector-icons/lucide": "^0.474.0-alpha.0",
     "expo": "~52.0.35",
     "expo-clipboard": "~7.0.1",
     "expo-font": "~13.0.3",
