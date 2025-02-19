@@ -1,26 +1,29 @@
 :root {
-  --okp-primary: #36433d;
+  --okp-dark: #000000;
+  --okp-light: #ffffff;
+
+  --okp-primary: #d3b018;
   --okp-secondary: #3f3d3c;
 
-  --okp-bg: #151413;
-  --okp-fg: #bab1a8;
+  --okp-bg: #161B28;
+  --okp-fg: #bfc4cf;
 
-  --okp-layout-header-bg: #1e201f;
-  --okp-layout-header-fg: #bab1a8;
-  --okp-layout-header-link: #bab1a8;
-  --okp-layout-header-link-hover: #e7dcd2;
+  --okp-layout-header-bg: #0B0E15;
+  --okp-layout-header-fg: #7D808D;
+  --okp-layout-header-link: #7D808D;
+  --okp-layout-header-link-hover: #d3b018;
   --okp-layout-header-mask-bg: #191919;
-  --okp-layout-header-mask-fg: #bab1a8;
+  --okp-layout-header-mask-fg: #7D808D;
 
-  --okp-card-bg: #191919;
-  --okp-card-fg: #a8a098;
+  --okp-card-bg: #1D2333;
+  --okp-card-fg: #d6d9e0;
   --okp-card-radius: 0;
 
-  --okp-form-bg: #1c1c1c;
-  --okp-form-fg: #a8a098;
+  --okp-form-bg: #1D2333;
+  --okp-form-fg: #d6d9e0;
 
   --okp-scrollbar-bg: transparent;
-  --okp-scrollbar-fg: #474543;
+  --okp-scrollbar-fg: #1D2333;
 
   --okp-info: #1d7197;
   --okp-success: #569725;
