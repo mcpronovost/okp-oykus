@@ -1,23 +1,33 @@
-{% load static i18n %}
-
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="{% static 'react.svg' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oykus</title>
-  </head>
-  <body>
-    <div id="okp"></div>
-    <script type="module">
-      import RefreshRuntime from "http://localhost:5173/@react-refresh"
-      RefreshRuntime.injectIntoGlobalHook(window)
-      window.$RefreshReg$ = () => {}
-      window.$RefreshSig$ = () => (type) => type
-      window.__vite_plugin_react_preamble_installed__ = true
-    </script>
-    <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/src/main.jsx"></script>
-  </body>
+    <title>React Native Web with Django (Dev Mode)</title>
+    <meta httpequiv="X-UA-Compatible" content="IE=edge" />
+    <style id="react-native-stylesheet"></style>
+    <style id="expo-reset">
+        /* These styles make the body full-height */
+        html,
+        body {
+          height: 100%;
+        }
+        /* These styles disable body scrolling if you are using <ScrollView> */
+        body {
+          overflow: hidden;
+        }
+        /* These styles make the root element full-height */
+        #root {
+          display: flex;
+          height: 100%;
+          flex: 1;
+        }
+      </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Load React Native Web from Expo Dev Server -->
+    <script src="http://localhost:5173/index.bundle?platform=web&dev=true&hot=false&transform.engine=hermes&transform.routerRoot=app&unstable_transformProfile=hermes-stable" type="text/javascript"></script>
+</body>
 </html>

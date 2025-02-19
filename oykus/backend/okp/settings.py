@@ -219,7 +219,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "data" / "staticfiles"
 STATICFILES_DIRS = [
-    ROOT_DIR / "frontend" / "dist" / "static",
+    ROOT_DIR / "frontend" / "dist" / "_expo" / "static",
 ] if not DEBUG else []
 
 MEDIA_URL = "media/"
