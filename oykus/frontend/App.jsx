@@ -23,6 +23,7 @@ export default function App() {
     if (fontsLoaded) {
       setIsReady(true);
     }
+    setIsReady(true);
   }, [fontsLoaded]);
 
   return (

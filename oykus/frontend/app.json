@@ -22,11 +22,16 @@
       }
     },
     "web": {
-      "favicon": "./app/assets/img/favicon.png"
+      "favicon": "./app/assets/img/favicon.png",
+      "bundler": "metro"
+    },
+    "experiments": {
+      "baseUrl": "http://localhost:5173"
     },
     "plugins": [
       [
-        "expo-font", {
+        "expo-font",
+        {
           "fonts": [
             "node_modules/@expo-google-fonts/nunito/Nunito_400Regular.ttf",
             "node_modules/@expo-google-fonts/nunito/Nunito_700Bold.ttf"
