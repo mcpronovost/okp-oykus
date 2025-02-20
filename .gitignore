@@ -13,6 +13,7 @@ build/
 dist/
 dist-ssr/
 .vite/
+.expo/
 *.local
 
 # Editor directories and files
