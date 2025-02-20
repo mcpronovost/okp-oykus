@@ -1,25 +1,24 @@
 export const v = {
   colours: {
     primary: "#d3b018",
-    fg: "#ffffff",
-    bg: "#161B28",
+    fg: "#9fa1ab",
+    bg: "#16171C",
     layout: {
       header: {
-        bg: "#0B0E15",
-        fg: "#86888e",
-        hoverBg: "#161B28",
-        hoverFg: "#dbdee5",
+        bg: "#0E0F12",
+        fg: "#3D3F4D",
+        accentFg: "#7d7f87",
       },
       leftPanel: {
-        bg: "#111520",
-        fg: "#86888e",
-        hoverBg: "#161B28",
+        bg: "#121317",
+        fg: "#3D3F4D",
+        hoverBg: "#16171C",
         hoverFg: "#dbdee5",
       },
       rightPanel: {
-        bg: "#111520",
-        fg: "#86888e",
-        hoverBg: "#161B28",
+        bg: "#121317",
+        fg: "#3D3F4D",
+        hoverBg: "#16171C",
         hoverFg: "#dbdee5",
       },
     },

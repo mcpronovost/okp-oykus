@@ -32,26 +32,6 @@ export const layoutStyles = () => StyleSheet.create({
     flexDirection: "row",
     width: "100%",
   },
-  leftPanel: {
-    backgroundColor: "#111520",
-    color: "#fff",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: 64,
-  },
-  leftPanelText: {
-    color: "#fff",
-  },
-  rightPanel: {
-    backgroundColor: "#111520",
-    color: "#fff",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: 64,
-  },
-  rightPanelText: {
-    color: "#fff",
-  },
   content: {
     flex: 1,
     flexDirection: "column",

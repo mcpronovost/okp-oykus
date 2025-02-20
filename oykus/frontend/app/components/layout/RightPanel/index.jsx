@@ -1,14 +1,12 @@
 import { View, Text } from "react-native";
-import { layoutStyles } from "@/assets/style";
+import { layoutRightPanelStyles } from "@/assets/style";
 
 export default function OkpLayoutRightPanel() {
-  const s = layoutStyles();
+  const s = layoutRightPanelStyles();
 
   return (
     <View style={s.rightPanel}>
-      <Text style={s.rightPanelText}>rightPanel</Text>
-      <Text style={s.rightPanelText}>rightPanel</Text>
-      <Text style={s.rightPanelText}>rightPanel</Text>
+      {/* todo: add right panel content */}
     </View>
   );
 }

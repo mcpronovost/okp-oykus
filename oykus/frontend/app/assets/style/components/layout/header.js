@@ -33,7 +33,7 @@ export const layoutHeaderStyles = () =>
     },
     brandName: {
       fontFamily: v.fonts.defaultBold,
-      color: v.colours.layout.header.hoverFg,
+      color: v.colours.layout.header.accentFg,
       fontSize: 24,
       textTransform: "uppercase",
     },
@@ -67,7 +67,8 @@ export const layoutHeaderStyles = () =>
       scale: 0.9,
     },
     menuText: {
-      ...v.fonts.default,
+      fontFamily: v.fonts.defaultBold,
+      color: v.colours.layout.header.fg,
       fontSize: 12,
       userSelect: "none",
       transition: "color 0.3s",
@@ -89,7 +90,8 @@ export const layoutHeaderStyles = () =>
       gap: 8,
     },
     userName: {
-      ...v.fonts.default,
+      fontFamily: v.fonts.defaultBold,
+      color: v.colours.layout.header.fg,
       fontSize: 14,
     },
     userAvatar: {
@@ -98,6 +100,7 @@ export const layoutHeaderStyles = () =>
       height: 64,
       alignItems: "center",
       justifyContent: "center",
+      opacity: 0.75,
     },
     userAvatarImage: {
       borderRadius: 48,
