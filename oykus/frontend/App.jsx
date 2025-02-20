@@ -19,16 +19,14 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    console.log("fontsLoaded", fontsLoaded);
     if (fontsLoaded) {
       setIsReady(true);
     }
-    setIsReady(true);
   }, [fontsLoaded]);
 
   return (
-    <SafeAreaProvider style={[s.safeArea, !isReady && { opacity: 0 }]}>
-      <SafeAreaView style={s.safeProvider}>
+    <SafeAreaProvider style={s.safeArea}>
+      <SafeAreaView style={[s.safeProvider, !isReady && { opacity: 0 }]}>
         <StatusBar barStyle="light-content" backgroundColor={v.colours.layout.header.bg} />
         <View style={s.core}>
           <OkpLayoutHeader />

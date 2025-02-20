@@ -32,7 +32,7 @@ export const layoutHeaderStyles = () =>
       height: 48,
     },
     brandName: {
-      ...v.fonts.defaultBold,
+      fontFamily: v.fonts.defaultBold,
       color: v.colours.layout.header.hoverFg,
       fontSize: 24,
       textTransform: "uppercase",

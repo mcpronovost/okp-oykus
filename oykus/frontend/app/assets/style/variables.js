@@ -25,14 +25,8 @@ export const v = {
     },
   },
   fonts: {
-    default: {
-      fontFamily: "Nunito_400Regular",
-      fontWeight: "400",
-    },
-    defaultBold: {
-      fontFamily: "Nunito_700Bold",
-      fontWeight: "700",
-    },
+    default: "Nunito_400Regular",
+    defaultBold: "Nunito_700Bold",
   },
   breakpoints: {
     xs: 320,
