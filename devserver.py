@@ -31,7 +31,7 @@ def start_server(python_exec, npm_exec, backend_path, frontend_path):
         print("Starting frontend server... ")
         # Start frontend server in a separate process
         frontend_process = subprocess.Popen(
-            [npm_exec, "run", "dev"],
+            [npm_exec, "run", "start"],
             cwd=frontend_path,
         )
 
