@@ -120,11 +120,15 @@ SPECTACULAR_SETTINGS = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            ROOT_DIR / "frontend" / "dev",
-        ] if DEBUG else [
-            ROOT_DIR / "frontend" / "dist",
-        ],
+        "DIRS": (
+            [
+                ROOT_DIR / "frontend" / "dev",
+            ]
+            if DEBUG
+            else [
+                ROOT_DIR / "frontend" / "dist",
+            ]
+        ),
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -218,9 +222,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "data" / "staticfiles"
-STATICFILES_DIRS = [
-    ROOT_DIR / "frontend" / "dist" / "_expo" / "static",
-] if not DEBUG else []
+STATICFILES_DIRS = [ROOT_DIR / "frontend" / "dist" / "_expo" / "static"] if not DEBUG else []
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "data" / "mediafiles"

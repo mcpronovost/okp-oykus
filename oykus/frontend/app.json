@@ -25,9 +25,6 @@
       "favicon": "./app/assets/img/favicon.png",
       "bundler": "metro"
     },
-    "experiments": {
-      "baseUrl": "http://localhost:5173"
-    },
     "plugins": [
       [
         "expo-font",
