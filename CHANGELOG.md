@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed
+
+### Added
+
+- Implement right panel styling and component
+
+### Refactored
+
+- Refactor font handling and text component styling
+- Refactor frontend dependencies and improve app configuration
+
+### Changed
+
+- Improve frontend development and assets routing
+- Enhance responsive design and add Nunito font support
+- Improve cross-platform icon and layout compatibility
+- Enhance frontend layout with responsive design and new components
+- Migrate frontend to React Native and Expo
+- Update .gitignore
+- Update frontend styling with Nunito font and colour scheme
+
+### Removed
+
+- Remove fonts
+- Remove old frontend
+
+### Updated
+
+- Bump flake8 from 7.1.1 to 7.1.2 in /oykus/backend
+
 ## [v0.1.2] - 2025-02-17
 
 ### Added
