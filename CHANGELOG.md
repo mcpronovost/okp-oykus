@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## What's Changed
+## [v0.1.3] - 2025-02-20
 
 ### Added
 
@@ -31,6 +31,8 @@ All notable changes to this project will be documented in this file.
 ### Updated
 
 - Bump flake8 from 7.1.1 to 7.1.2 in /oykus/backend
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.1.2...v0.1.3
 
 ## [v0.1.2] - 2025-02-17
 
