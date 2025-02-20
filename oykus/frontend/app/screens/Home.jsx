@@ -1,11 +1,11 @@
 import { ScrollView, FlatList, StyleSheet } from "react-native";
 import { OkpText } from "@/components/common";
 
-export default function Home() {
+export default function Home({ view }) {
   return (
     <ScrollView>
       <OkpText bold>
-        OYKUS This should be bold text
+        OYKUS This should be bold text and this is a view: ({view?.viewModule?.default?.name})
       </OkpText>
       <OkpText>
         OYKUS This should be regular text
