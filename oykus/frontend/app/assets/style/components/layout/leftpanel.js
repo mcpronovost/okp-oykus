@@ -24,6 +24,10 @@ export const layoutLeftPanelStyles = () =>
       justifyContent: "center",
       alignItems: "center",
     },
+    leftPanelMenuListLast: {
+      justifyContent: "flex-end",
+      marginTop: "auto"
+    },
     leftPanelMenuItem: {
       color: v.colours.layout.leftPanel.fg,
       flexBasis: 64,
