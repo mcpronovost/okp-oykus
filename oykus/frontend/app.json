@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/img/favicon.png",
         "backgroundColor": "#161B28"
-      }
+      },
+      "package": "ca.mcpronovost.oykus"
     },
     "web": {
       "favicon": "./app/assets/img/favicon.png",
@@ -35,6 +36,11 @@
           ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "0472c2d1-0e6f-4698-b861-2ccd4b418af5"
+      }
+    }
   }
 }

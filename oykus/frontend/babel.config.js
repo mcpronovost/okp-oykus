@@ -7,7 +7,6 @@ module.exports = function (api) {
         root: ["./"],
         alias: {
           "@": "./app",
-          "react-native-svg": "react-native-svg/lib/module/ReactNativeSVG.web.js"
         },
       }],
     ],

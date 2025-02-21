@@ -8,7 +8,7 @@ import OkpLayoutHeader from "@/components/layout/Header";
 import OkpLayoutLeftPanel from "@/components/layout/LeftPanel";
 import OkpLayoutRightPanel from "@/components/layout/RightPanel";
 import Home from "@/screens/Home";
-import { getView } from "@/services/router";
+// import { getView } from "@/services/router";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,14 +18,14 @@ export default function App() {
   const s = layoutStyles();
   const { width } = useWindowDimensions();
   const [isReady, setIsReady] = useState(false);
-  const [view, setView] = useState(null);
+  // const [view, setView] = useState(null);
 
   useEffect(() => {
     async function loadView() {
       if (fontsLoaded) {
         setIsReady(true);
-        const view = await getView();
-        setView(view);
+        // const view = await getView();
+        // setView(view);
       }
     }
   
@@ -41,7 +41,7 @@ export default function App() {
           <View style={s.main}>
             {width >= v.breakpoints.xs && <OkpLayoutLeftPanel />}
             <View style={s.content}>
-              <Home view={view} />
+              <Home />
             </View>
             {width >= v.breakpoints.lg && <OkpLayoutRightPanel />}
           </View>
