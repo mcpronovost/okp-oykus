@@ -11,14 +11,14 @@ export const layoutLeftPanelStyles = () =>
       alignItems: "center",
       width: 64,
       height: "100%",
-      gap: 64,
+      gap: 0,
     },
     leftPanelMenu: {
       flexDirection: "column",
       justifyContent: "space-between",
       alignItems: "center",
       height: "100%",
-      gap: 64,
+      gap: 0,
     },
     leftPanelMenuList: {
       justifyContent: "center",
@@ -39,7 +39,6 @@ export const layoutLeftPanelStyles = () =>
     leftPanelMenuItemPressed: {
       color: v.colours.layout.leftPanel.hoverFg,
       opacity: 0.5,
-      scale: 0.9,
     },
     leftPanelMenuItemTab: {
       backgroundColor: v.colours.layout.leftPanel.fg,

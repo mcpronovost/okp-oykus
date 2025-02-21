@@ -39,7 +39,6 @@ export const layoutRightPanelStyles = () =>
     rightPanelMenuItemPressed: {
       color: v.colours.layout.rightPanel.hoverFg,
       opacity: 0.5,
-      scale: 0.9,
     },
     rightPanelMenuItemTab: {
       backgroundColor: v.colours.layout.rightPanel.fg,

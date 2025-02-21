@@ -14,7 +14,7 @@ export default function OkpLayoutLeftPanel() {
         <FlatList
           style={{ flex: -1 }}
           contentContainerStyle={s.leftPanelMenuList}
-          data={[{ name: "user", icon: "contact-round" }]}
+          data={[{ name: "user", icon: "home-circle-outline" }]}
           renderItem={({ item }) => (
             <Pressable
               onHoverIn={() => setHoveredItem(item.name)}
@@ -37,7 +37,11 @@ export default function OkpLayoutLeftPanel() {
               <OkpIcon
                 name={item.icon}
                 size={24}
-                color={v.colours.layout.leftPanel.fg}
+                color={
+                  (hoveredItem === item.name || pressedItem === item.name)
+                    ? v.colours.hoverFg
+                    : v.colours.layout.leftPanel.fg
+                }
               />
             </Pressable>
           )}
@@ -45,11 +49,12 @@ export default function OkpLayoutLeftPanel() {
         <FlatList
           contentContainerStyle={s.leftPanelMenuList}
           data={[
-            { name: "users", icon: "users" },
-            { name: "award", icon: "award" },
-            { name: "chart-no-axes-combined", icon: "chart-no-axes-combined" },
+            { name: "users", icon: "account-group" },
+            { name: "award", icon: "certificate-outline" },
+            { name: "podium", icon: "podium" },
             { name: "calendar", icon: "calendar" },
-            { name: "sparkles", icon: "sparkles" },
+            { name: "sparkles", icon: "bacteria-outline" },
+            { name: "boom-gate", icon: "boom-gate" },
           ]}
           renderItem={({ item }) => (
             <Pressable
@@ -73,7 +78,11 @@ export default function OkpLayoutLeftPanel() {
               <OkpIcon
                 name={item.icon}
                 size={24}
-                color={v.colours.layout.leftPanel.fg}
+                color={
+                  (hoveredItem === item.name || pressedItem === item.name)
+                    ? v.colours.hoverFg
+                    : v.colours.layout.leftPanel.fg
+                }
               />
             </Pressable>
           )}
@@ -81,7 +90,7 @@ export default function OkpLayoutLeftPanel() {
         <FlatList
           style={{ flex: -1 }}
           contentContainerStyle={s.leftPanelMenuList}
-          data={[{ name: "settings", icon: "cog" }]}
+          data={[{ name: "settings", icon: "cog-outline" }]}
           renderItem={({ item }) => (
             <Pressable
               onHoverIn={() => setHoveredItem(item.name)}
@@ -104,7 +113,11 @@ export default function OkpLayoutLeftPanel() {
               <OkpIcon
                 name={item.icon}
                 size={24}
-                color={v.colours.layout.leftPanel.fg}
+                color={
+                  (hoveredItem === item.name || pressedItem === item.name)
+                    ? v.colours.hoverFg
+                    : v.colours.layout.leftPanel.fg
+                }
               />
             </Pressable>
           )}
