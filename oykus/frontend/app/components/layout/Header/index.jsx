@@ -6,13 +6,13 @@ import {
   Pressable,
   useWindowDimensions,
 } from "react-native";
-import { v, layoutHeaderStyles } from "@/assets/style";
-import { OkpImage, OkpText } from "@/components/common";
+import { v, layoutHeaderStyles as s } from "@/assets/style";
+import { OkpText } from "@/components/common";
 import OkpLayoutHeaderNotifications from "./Notifications";
+import OkpLayoutHeaderUser from "./User";
 
 export default function OkpLayoutHeader() {
   const { width } = useWindowDimensions();
-  const s = layoutHeaderStyles();
 
   const [hoveredItem, setHoveredItem] = useState(null);
 
@@ -66,20 +66,7 @@ export default function OkpLayoutHeader() {
       )}
       <View style={s.spacer} />
       {width >= v.breakpoints.sm && (<OkpLayoutHeaderNotifications />)}
-      <View style={s.user}>
-        <Pressable style={s.userIdentity}>
-          {width >= v.breakpoints.lg && (
-            <OkpText style={s.userName}>mcpronovost</OkpText>
-          )}
-          <View style={s.userAvatar}>
-            <OkpImage
-              source={require("@/assets/img/placeholders/mcpronovost.jpg")}
-              style={s.userAvatarImage}
-            />
-            <View style={s.userAvatarStatus} />
-          </View>
-        </Pressable>
-      </View>
+      <OkpLayoutHeaderUser width={width} />
     </View>
   );
 }
