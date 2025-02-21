@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed
+
+### Added
+
+- Implement custom routing service
+
+### Refactored
+
+- Refactor Header components and styles
+- Refactor Icon component to use MaterialCommunityIcons
+
+### Changed
+
+- Update LeftPanel icons and styling
+- Configure Expo build and development settings
+
+### Removed
+
+- Remove custom router service and simplify app initialization
+
 ## [v0.1.3] - 2025-02-20
 
 ### Added
