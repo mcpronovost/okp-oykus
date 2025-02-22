@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## What's Changed
+## [v0.1.4] - 2025-02-22
 
 ### Added
 
@@ -28,6 +28,8 @@ All notable changes to this project will be documented in this file.
 
 - Remove webpack configuration for Expo frontend
 - Remove custom router service and simplify app initialization
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.1.3...v0.1.4
 
 ## [v0.1.3] - 2025-02-20
 
