@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { View, FlatList, Pressable } from "react-native";
 import { v, layoutLeftPanelStyles } from "@/assets/style";
+import { RouterContext } from "@/services/router";
 import { OkpIcon } from "@/components/common";
 
 function OkpLayoutLeftPanelMenuList({
@@ -12,26 +13,33 @@ function OkpLayoutLeftPanelMenuList({
   styles,
   isLast,
 }) {
+  const { go } = useContext(RouterContext);
+
+  const handlePress = (r) => {
+    go(r);
+  };
+
   return (
     <FlatList
       contentContainerStyle={[styles.leftPanelMenuList, isLast && styles.leftPanelMenuListLast]}
       data={data}
       renderItem={({ item }) => (
         <Pressable
-          onHoverIn={() => setHoveredItem(item.name)}
+          onHoverIn={() => setHoveredItem(item.route)}
           onHoverOut={() => setHoveredItem(null)}
-          onPressIn={() => setPressedItem(item.name)}
+          onPressIn={() => setPressedItem(item.route)}
           onPressOut={() => setPressedItem(null)}
+          onPress={() => handlePress(item.route)}
           style={({ hovered }) => [
             styles.leftPanelMenuItem,
             hovered && styles.leftPanelMenuItemHovered,
-            pressedItem === item.name && styles.leftPanelMenuItemPressed,
+            pressedItem === item.route && styles.leftPanelMenuItemPressed,
           ]}
         >
           <View
             style={[
               styles.leftPanelMenuItemTab,
-              (hoveredItem === item.name || pressedItem === item.name) &&
+              (hoveredItem === item.route || pressedItem === item.route) &&
                 styles.leftPanelMenuItemTabHovered,
             ]}
           />
@@ -39,7 +47,7 @@ function OkpLayoutLeftPanelMenuList({
             name={item.icon}
             size={24}
             color={
-              hoveredItem === item.name || pressedItem === item.name
+              hoveredItem === item.route || pressedItem === item.route
                 ? v.colours.hoverFg
                 : v.colours.layout.leftPanel.fg
             }
@@ -56,14 +64,14 @@ export default function OkpLayoutLeftPanel() {
   const [pressedItem, setPressedItem] = useState(null);
 
   const menuItems = [
-    [{ name: "home", icon: "home-circle-outline" }],
+    [{ route: "/", icon: "home-circle-outline" }],
     [
-      { name: "community", icon: "account-group" },
-      { name: "awards", icon: "certificate-outline" },
-      { name: "leaderboard", icon: "podium" },
-      { name: "events", icon: "calendar" },
+      { route: "community", icon: "account-group" },
+      { route: "awards", icon: "certificate-outline" },
+      { route: "leaderboard", icon: "podium" },
+      { route: "events", icon: "calendar" },
     ],
-    [{ name: "settings", icon: "cog-outline" }],
+    [{ route: "settings", icon: "cog-outline" }],
   ];
 
   return (

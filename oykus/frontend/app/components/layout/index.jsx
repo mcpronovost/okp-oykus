@@ -9,9 +9,10 @@ import OkpLayoutRightPanel from "@/components/layout/RightPanel";
 import Error404 from "@/screens/Error404";
 
 export default function OkpLayout() {
-  const { isReadyRouter, screen } = useContext(RouterContext);
   const s = layoutStyles();
   const { width } = useWindowDimensions();
+  const { isReadyRouter, screen } = useContext(RouterContext);
+  const ScreenComponent = screen ? screen.default : null;
 
   if (!isReadyRouter) {
     return null;
@@ -23,7 +24,7 @@ export default function OkpLayout() {
       <View style={s.main}>
         {width >= v.breakpoints.xs && <OkpLayoutLeftPanel />}
         <View style={s.content}>
-          {screen || <Error404 />}
+          {screen ? <ScreenComponent /> : <Error404 />}
         </View>
         {width >= v.breakpoints.lg && <OkpLayoutRightPanel />}
       </View>
