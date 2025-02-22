@@ -6,20 +6,27 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Implement custom routing system for frontend
+- Add base HTML and robots.txt for frontend
 - Implement custom routing service
 
 ### Refactored
 
+- Refactor Notifications component with interactive state management
+- Refactor LeftPanel menu rendering and styling
 - Refactor Header components and styles
 - Refactor Icon component to use MaterialCommunityIcons
 
 ### Changed
 
+- Enhance routing and navigation in frontend layout
+- Create basic Error404 screen
 - Update LeftPanel icons and styling
 - Configure Expo build and development settings
 
 ### Removed
 
+- Remove webpack configuration for Expo frontend
 - Remove custom router service and simplify app initialization
 
 ## [v0.1.3] - 2025-02-20
