@@ -86,14 +86,21 @@ export function useRouter() {
       setScreen(null);
       return;
     }
-  
+
     try {
       const screenModule = await route[1].component();
-      setScreen(screenModule.default || null);
+      setScreen(screenModule || null);
     } catch (error) {
       console.error(`Failed to load screen component: ${route[0]}`, error);
       setScreen(null);
     }
+  };
+
+  const go = (payload) => {
+    if (Platform.OS === "web") {
+      window.history.pushState({}, "", `/${lang}/${payload}`);
+    }
+    setPath(payload);
   };
 
   useEffect(() => {
@@ -114,5 +121,5 @@ export function useRouter() {
     }
   }, [screen]);
 
-  return { isReadyRouter: isReady, lang, path, route, screen };
+  return { isReadyRouter: isReady, lang, path, route, screen, go };
 }
