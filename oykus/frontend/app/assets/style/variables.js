@@ -3,6 +3,7 @@ export const v = {
     primary: "#d3b018",
     fg: "#9fa1ab",
     bg: "#16171C",
+    subtleFg: "#5e626f",
     layout: {
       header: {
         bg: "#0E0F12",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Image,
@@ -8,13 +8,19 @@ import {
 } from "react-native";
 import { v, layoutHeaderStyles as s } from "@/assets/style";
 import { OkpText } from "@/components/common";
+import { RouterContext } from "@/services/router";
 import OkpLayoutHeaderNotifications from "./Notifications";
 import OkpLayoutHeaderUser from "./User";
 
 export default function OkpLayoutHeader() {
+  const { go } = useContext(RouterContext);
   const { width } = useWindowDimensions();
 
   const [hoveredItem, setHoveredItem] = useState(null);
+
+  const handlePress = (r) => {
+    go(r);
+  };
 
   return (
     <View style={s.header}>
@@ -33,14 +39,15 @@ export default function OkpLayoutHeader() {
         <View style={s.menu}>
           <FlatList
             data={[
-              { id: 1, name: "Devlog" },
-              { id: 2, name: "FAQ" },
-              { id: 3, name: "About" },
+              { id: 1, route: "devlog", name: "Devlog" },
+              { id: 2, route: "faq", name: "FAQ" },
+              { id: 3, route: "about", name: "About" },
             ]}
             renderItem={({ item, index }) => (
               <Pressable
                 onHoverIn={() => setHoveredItem(index)}
                 onHoverOut={() => setHoveredItem(null)}
+                onPress={() => handlePress(item.route)}
                 style={({ hovered, pressed }) => [
                   s.menuItem,
                   hovered && s.menuItemHovered,

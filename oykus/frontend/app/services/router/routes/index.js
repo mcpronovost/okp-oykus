@@ -7,12 +7,14 @@ const routes = {
     },
   },
   devlog: {
+    component: () => import("@/screens/Devlog"),
     paths: {
       en: "devlog",
       fr: "devlog",
     },
   },
   settings: {
+    component: () => import("@/screens/Settings"),
     paths: {
       en: "settings",
       fr: "parametres",
