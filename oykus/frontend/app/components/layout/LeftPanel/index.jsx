@@ -64,7 +64,7 @@ export default function OkpLayoutLeftPanel() {
   const [pressedItem, setPressedItem] = useState(null);
 
   const menuItems = [
-    [{ route: "", icon: "home-circle-outline" }],
+    [{ route: "/", icon: "home-circle-outline" }],
     [
       { route: "community", icon: "account-group" },
       { route: "awards", icon: "certificate-outline" },
