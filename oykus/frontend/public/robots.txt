@@ -1,0 +1,11 @@
+# Allow all robots complete access
+User-agent: *
+Disallow:
+
+# Disallow all robots from accessing the /private directory
+User-agent: *
+Disallow: /private/
+
+# Disallow a specific robot from accessing the entire site
+User-agent: ChatGPTBot
+Disallow: /
