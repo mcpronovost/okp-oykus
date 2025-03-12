@@ -25,7 +25,7 @@ urlpatterns = [
     re_path(r"^assets/(?P<path>.*)$", redirect_assets),
 ] + i18n_patterns(
     # app
-    re_path(r"^", TemplateView.as_view(template_name="index.html")),
+    re_path(r"^", TemplateView.as_view(template_name="app.html")),
 )
 
 urlpatterns += static(
