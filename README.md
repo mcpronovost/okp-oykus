@@ -23,6 +23,11 @@ To start the development servers for both the backend and frontend, you can use 
 
 1. Ensure you have the necessary virtual environment and dependencies installed for both the backend and frontend.
 
+   Inside the root directory, run the following command to install the virtual environment:
+   ```bash
+   python3 -m venv .venv
+   ```
+
    Inside the `oykus/backend` directory, run the following command to install the dependencies:
    ```bash
    pip install -r requirements.txt
