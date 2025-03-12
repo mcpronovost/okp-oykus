@@ -4,7 +4,7 @@
 
 # Database and static files
 *.sqlite3
-backend/data/
+oykus/backend/data/
 
 # Vite
 package-lock.json
