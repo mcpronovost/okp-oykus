@@ -19,11 +19,12 @@ def redirect_assets(request, path):
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("i18n/", include("django.conf.urls.i18n")),
     # api
     path("api/", include("okp.api.urls")),
     re_path(r"^assets/(?P<path>.*)$", redirect_assets),
 ] + i18n_patterns(
+    path("admin/", admin.site.urls),
     # app
     re_path(r"^", TemplateView.as_view(template_name="app.html")),
 )

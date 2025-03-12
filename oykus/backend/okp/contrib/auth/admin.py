@@ -3,11 +3,17 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _, pgettext_lazy
 
+from unfold.admin import ModelAdmin
+from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
+
 from .models import OkpUser, OkpAuthToken
 
 
 @admin.register(OkpUser)
-class OkpUserAdmin(UserAdmin):
+class OkpUserAdmin(UserAdmin, ModelAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    change_password_form = AdminPasswordChangeForm
     list_display = ("name", "email", "is_active")
     list_filter = ("is_active",)
     filter_horizontal = ("groups", "user_permissions")
@@ -23,9 +29,9 @@ class OkpUserAdmin(UserAdmin):
                 "first_name",
                 "middle_name",
                 "last_name",
-                ("name", "is_name_auto"),
-                ("abbr", "is_abbr_auto"),
-                ("slug", "is_slug_auto"),
+                "name", "is_name_auto",
+                "abbr", "is_abbr_auto",
+                "slug", "is_slug_auto",
             )
         }),
         (_("Media"), {
@@ -63,7 +69,7 @@ class OkpUserAdmin(UserAdmin):
 
 
 @admin.register(OkpAuthToken)
-class OkpAuthTokenAdmin(admin.ModelAdmin):
+class OkpAuthTokenAdmin(ModelAdmin):
     list_display = ("user", "token_key", "created", "expiry")
     list_filter = ("expiry",)
     search_fields = ("user__name", "user__username", "user__email")

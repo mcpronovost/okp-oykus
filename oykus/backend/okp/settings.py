@@ -21,6 +21,8 @@ DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 # https://docs.djangoproject.com/en/5.1/ref/applications/
 
 INSTALLED_APPS = [
+    # unfold
+    "unfold",
     # django
     "django.contrib.admin",
     "django.contrib.auth",
@@ -234,6 +236,26 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Unfold Settings
+# https://unfoldadmin.com/docs/installation/quickstart
+
+UNFOLD = {
+    "SITE_TITLE": "OKP",
+    "SITE_HEADER": "Oykus",
+    "SITE_SUBHEADER": "Administration",
+    "SITE_URL": "/",
+    "SITE_SYMBOL": "dashboard",
+    "SHOW_HISTORY": True,
+    "SHOW_LANGUAGES": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "SHOW_BACK_BUTTON": True,
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    }
+}
 
 
 # OKP Admin Order
