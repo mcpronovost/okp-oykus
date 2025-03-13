@@ -1,6 +1,6 @@
 import "@/assets/styles/forum/topic.scss";
 import { useState } from "react";
-import { Button, Text, TextArea, TextField } from "@radix-ui/themes";
+import { OkpForm, OkpSelect, OkpField, OkpActions, OkpSubmit, OkpReset } from "@/components/form";
 import imgMC from "@/assets/img/mc.jpg";
 import imgPachua from "@/assets/img/pachua.jpg";
 
@@ -81,36 +81,32 @@ export default function OkpTopic() {
         {posts.map((post) => (
           <article
             key={post.id}
-            className={`okp-topic-post okp-topic-post--first okp-topic-post--${
-              post.id % 2 === 0 ? "right" : "left"
-            }`}
+            className="okp-topic-post"
             id={`post-${post.id}`}
           >
             <header className="okp-topic-post-header">
-              <div className="okp-topic-post-header-wrapper">
-                <div className="okp-topic-post-header-character">
-                  <figure
-                    aria-hidden="true"
-                    className="okp-topic-post-header-character-avatar"
-                  >
-                    <img src={post.character.avatar} alt="mcpronovost" />
-                  </figure>
-                  <p className="okp-topic-post-header-character-name">
-                    <span className="sr-only">Post from </span>
-                    <strong>
-                      <a href="#">{post.character.name}</a>
-                    </strong>
-                  </p>
-                </div>
-                <div className="okp-topic-post-header-author">
-                  <span className="sr-only"> written </span>
+              <div className="okp-topic-post-header-character">
+                <figure
+                  aria-hidden="true"
+                  className="okp-topic-post-header-character-avatar"
+                >
+                  <img src={post.character.avatar} alt="mcpronovost" />
+                </figure>
+                <p className="okp-topic-post-header-character-name">
+                  <span className="sr-only">Post from </span>
                   <strong>
-                    by <a href="#">{post.author.name}</a>
+                    <a href="#">{post.character.name}</a>
                   </strong>
-                  <span>
-                    , <time dateTime="2021-01-01">{post.date}</time>
-                  </span>
-                </div>
+                </p>
+              </div>
+              <div className="okp-topic-post-header-author">
+                <span className="sr-only"> written </span>
+                <strong>
+                  by <a href="#">{post.author.name}</a>
+                </strong>
+                <span>
+                  , <time dateTime="2021-01-01">{post.date}</time>
+                </span>
               </div>
             </header>
             <section
@@ -144,34 +140,36 @@ export default function OkpTopic() {
       <section className="okp-topic-reply" aria-labelledby="reply-heading">
         <header className="okp-topic-reply-header">
           <h2 className="okp-topic-reply-header-title" id="reply-heading">
-            Write a Reply
+            Répondre
           </h2>
+          <div className="okp-topic-reply-header-description">
+            <p>
+              Vous pouvez répondre à ce sujet.
+            </p>
+          </div>
         </header>
         <div className="okp-topic-reply-card">
-          <form className="okp-topic-reply-form" onSubmit={handleSubmit}>
-            <label>
-              <Text as="div" size="2" mb="1">
-                Author Name
-              </Text>
-              <TextField.Root
-                defaultValue="Freja Johnsen"
-                placeholder="Enter your full name"
-              />
-            </label>
-            <label>
-              <Text as="div" size="2" mb="1">
-                Character Name
-              </Text>
-              <TextField.Root id="reply-character-name" />
-            </label>
-            <label>
-              <Text as="div" size="2" mb="1">
-                Your reply
-              </Text>
-              <TextArea id="reply-content" name="reply" rows="5" />
-            </label>
-            <Button type="submit">Post Reply</Button>
-          </form>
+          <OkpForm onSubmit={handleSubmit}>
+            <OkpField name="character" label="Character" errors={[{
+              message: "Please select a character",
+              match: "valueMissing",
+            }]}>
+              <OkpSelect name="character" placeholder="Select a character" required />
+            </OkpField>
+            <OkpField name="message" label="Message" errors={[{
+              message: "Please enter a message",
+              match: "valueMissing",
+            }, {
+              message: "Message must be at least 10 characters long",
+              match: "tooShort",
+            }]}>
+              <textarea className="okp-form-textarea" required minLength={10} />
+            </OkpField>
+            <OkpActions>
+              <OkpSubmit label="Envoyer" />
+              <OkpReset label="Réinitialiser" />
+            </OkpActions>
+          </OkpForm>
         </div>
       </section>
 

@@ -2,13 +2,22 @@
   --okp-primary: #d3b017;
   --okp-secondary: #808080;
 
+  --okp-bg: #212121;
+  --okp-fg: #A7A8AA;
+  --okp-fg-subtle: #787979;
+
+  --okp-card-bg: #191919;
+  --okp-card-bg-subtle: #1E1E1E;
+  --okp-card-fg: #A7A8AA;
+  --okp-card-fg-subtle: #787979;
+
   --okp-font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
   --okp-font-family-title: "Quicksand", system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  background-color: #242424;
-  color: #e3e3e3;
+  background-color: var(--okp-bg);
+  color: var(--okp-card-fg);
   
-  font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--okp-font-family);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -34,6 +43,12 @@ a {
   &:hover {
     color: #c4c4c4;
   }
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 #okp {

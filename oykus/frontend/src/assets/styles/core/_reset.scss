@@ -34,6 +34,8 @@ textarea,
 select,
 strong {
   font: inherit;
+	all: unset;
+	box-sizing: border-box;
 }
 
 /* 7. Avoid text overflows */

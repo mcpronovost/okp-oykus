@@ -1,0 +1,84 @@
+.okp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &-field {
+    display: grid;
+    margin-bottom: 12px;
+  }
+
+  &-label-and-message {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 3px 2px;
+  }
+
+  &-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--okp-card-fg);
+  }
+
+  &-message {
+    font-size: 0.875rem;
+    color: #f00;
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    &-btn,
+    &-submit,
+    &-reset {
+      background-color: var(--okp-fg);
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1;
+      display: inline-flex;
+      flex: 0 1 auto;
+      width: auto;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+    }
+
+    &-submit {
+      background-color: var(--okp-primary);
+    }
+
+    &-reset {
+      background-color: var(--okp-card-bg-subtle);
+    }
+  }
+
+  &-input,
+  &-textarea {
+    background-color: var(--okp-card-bg-subtle);
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--okp-card-fg-subtle), transparent calc(100% - 0.05 * 100%));
+    color: var(--okp-card-fg-subtle);
+    font-size: 15px;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--okp-card-fg-subtle), transparent calc(100% - 0.2 * 100%));
+      color: var(--okp-card-fg);
+    }
+  }
+
+  &-textarea {
+    resize: none;
+    padding: 12px;
+  }
+}

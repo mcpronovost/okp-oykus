@@ -8,7 +8,7 @@ export const REGEX = {
 
 export const getLangAndPath = (fullpath) => {
   const [, langCode, ...pathParts] = fullpath.split(REGEX.LANG_CODE);
-  const path = pathParts.join("/");
+  const path = pathParts.join("/").replace(/\/$/, "");
   return {
     langCode,
     pathPart: path,
