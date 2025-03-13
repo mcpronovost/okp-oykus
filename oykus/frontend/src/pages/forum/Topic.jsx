@@ -1,53 +1,178 @@
+import "@/assets/styles/forum/topic.scss";
+import { useState } from "react";
+import { Button, Text, TextArea, TextField } from "@radix-ui/themes";
+import imgMC from "@/assets/img/mc.jpg";
+import imgPachua from "@/assets/img/pachua.jpg";
+
 export default function OkpTopic() {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      author: {
+        name: "mcpronovost",
+        avatar: imgMC,
+      },
+      character: {
+        name: "Pachu'a Wapi Qatlaalawsiq",
+        avatar: imgPachua,
+      },
+      date: "January 1, 2021",
+      message:
+        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat rhoncus est nec scelerisque. Nullam ut cursus libero. Maecenas neque ante, ultricies eu libero vitae, ullamcorper facilisis metus. Sed a posuere odio, a luctus quam. Nam condimentum nisl id lacus gravida, id mollis dui eleifend. Curabitur rhoncus ornare consequat. In et nunc id risus tristique elementum.</p>",
+    },
+    {
+      id: 2,
+      author: {
+        name: "Kamuy Sinen",
+        avatar: imgPachua,
+      },
+      character: {
+        name: "Seðom Øþornkilpič",
+        avatar: imgMC,
+      },
+      date: "January 1, 2021",
+      message:
+        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat rhoncus est nec scelerisque. Nullam ut cursus libero. Maecenas neque ante, ultricies eu libero vitae, ullamcorper facilisis metus. Sed a posuere odio, a luctus quam. Nam condimentum nisl id lacus gravida, id mollis dui eleifend. Curabitur rhoncus ornare consequat. In et nunc id risus tristique elementum.</p>",
+    },
+  ]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const message = formData.get("message");
+    const authorName = formData.get("authorName");
+    const authorAvatar = imgMC;
+    const characterName = formData.get("characterName");
+    const characterAvatar = imgPachua;
+    const date = new Date().toISOString();
+
+    setPosts([
+      ...posts,
+      {
+        id: posts.length + 1,
+        author: {
+          name: authorName,
+          avatar: authorAvatar,
+        },
+        character: {
+          name: characterName,
+          avatar: characterAvatar,
+        },
+        date,
+        message,
+      },
+    ]);
+  };
+
   return (
     <section className="okp-topic">
-      <header>
-        <h1>Topic Title</h1>
-        <p>Topic Description</p>
+      <header className="okp-topic-header">
+        <h1 className="okp-topic-header-title">Topic Title</h1>
+        <div className="okp-topic-header-description">
+          <p>Topic Description</p>
+        </div>
       </header>
 
       {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
 
       {/* Posts Section */}
       <section className="okp-topic-posts">
-        <article className="okp-topic-post" id="post-1">
-          <header>
-            <p>
-              <span className="sr-only">Post by </span>
-              <strong><a href="#">Author</a></strong>
-            </p>
-            <p>
-              <time dateTime="2021-01-01">January 1, 2021</time>
-            </p>
-          </header>
-          <section aria-labelledby="post-1">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              quos.
-            </p>
-          </section>
-        </article>
+        {posts.map((post) => (
+          <article
+            key={post.id}
+            className={`okp-topic-post okp-topic-post--first okp-topic-post--${
+              post.id % 2 === 0 ? "right" : "left"
+            }`}
+            id={`post-${post.id}`}
+          >
+            <header className="okp-topic-post-header">
+              <div className="okp-topic-post-header-wrapper">
+                <div className="okp-topic-post-header-character">
+                  <figure
+                    aria-hidden="true"
+                    className="okp-topic-post-header-character-avatar"
+                  >
+                    <img src={post.character.avatar} alt="mcpronovost" />
+                  </figure>
+                  <p className="okp-topic-post-header-character-name">
+                    <span className="sr-only">Post from </span>
+                    <strong>
+                      <a href="#">{post.character.name}</a>
+                    </strong>
+                  </p>
+                </div>
+                <div className="okp-topic-post-header-author">
+                  <span className="sr-only"> written </span>
+                  <strong>
+                    by <a href="#">{post.author.name}</a>
+                  </strong>
+                  <span>
+                    , <time dateTime="2021-01-01">{post.date}</time>
+                  </span>
+                </div>
+              </div>
+            </header>
+            <section
+              aria-labelledby="post-1"
+              className="okp-topic-post-content"
+            >
+              <div className="okp-topic-post-content-message">
+                <div dangerouslySetInnerHTML={{ __html: post.message }} />
+              </div>
+            </section>
+            <footer className="okp-topic-post-footer"></footer>
+          </article>
+        ))}
       </section>
 
       {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
 
       {/* Permissions Section */}
-      <section className="okp-permissions" aria-labelledby="permissions-heading">
-        <h2 id="permissions-heading" className="sr-only">Permissions</h2>
+      <section
+        className="okp-permissions"
+        aria-labelledby="permissions-heading"
+      >
+        <h2 id="permissions-heading" className="sr-only">
+          Permissions
+        </h2>
         <p>You can reply to this topic.</p>
         <p>Editing is allowed for 15 minutes after posting.</p>
       </section>
 
       {/* Reply Form Section */}
-      <section className="okp-reply" aria-labelledby="reply-heading">
-        <h2 id="reply-heading">Write a Reply</h2>
-        <form>
-          <div>
-            <label htmlFor="reply-content" className="sr-only">Your reply</label>
-            <textarea id="reply-content" name="reply" rows="5"></textarea>
-          </div>
-          <button type="submit">Post Reply</button>
-        </form>
+      <section className="okp-topic-reply" aria-labelledby="reply-heading">
+        <header className="okp-topic-reply-header">
+          <h2 className="okp-topic-reply-header-title" id="reply-heading">
+            Write a Reply
+          </h2>
+        </header>
+        <div className="okp-topic-reply-card">
+          <form className="okp-topic-reply-form" onSubmit={handleSubmit}>
+            <label>
+              <Text as="div" size="2" mb="1">
+                Author Name
+              </Text>
+              <TextField.Root
+                defaultValue="Freja Johnsen"
+                placeholder="Enter your full name"
+              />
+            </label>
+            <label>
+              <Text as="div" size="2" mb="1">
+                Character Name
+              </Text>
+              <TextField.Root id="reply-character-name" />
+            </label>
+            <label>
+              <Text as="div" size="2" mb="1">
+                Your reply
+              </Text>
+              <TextArea id="reply-content" name="reply" rows="5" />
+            </label>
+            <Button type="submit">Post Reply</Button>
+          </form>
+        </div>
       </section>
 
       <footer>

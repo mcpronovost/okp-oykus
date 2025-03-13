@@ -1,4 +1,4 @@
-import "@/assets/styles/ui/_loading.scss";
+import "@/assets/styles/ui/loading.scss";
 
 export default function Loading({ variant = "circles" }) {
   const variants = ["squares", "layers", "circles"];

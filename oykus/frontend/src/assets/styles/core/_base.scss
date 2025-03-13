@@ -2,12 +2,16 @@
   --okp-primary: #d3b017;
   --okp-secondary: #808080;
 
+  --okp-font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --okp-font-family-title: "Quicksand", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   background-color: #242424;
   color: #e3e3e3;
   
   font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-size: 16px;
   font-weight: 400;
+  line-height: 1.5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,21 +19,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #ffffff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #c4c4c4;
-}
-
 body {
-  margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: inherit;
+
+  &:hover {
+    color: #c4c4c4;
+  }
 }
 
 #okp {
@@ -38,32 +42,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  color: #c4c4c4;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #c4c4c4;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  justify-content: flex-start;
 }
 
 .sr-only {
@@ -77,4 +56,3 @@ button:focus-visible {
   white-space: nowrap;
   border: 0;
 }
-
