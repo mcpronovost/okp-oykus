@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed
+
+### Added
+
+- Add navigation structure for admin interface
+- Add initial forum module with models, admin interfaces, and migrations
+- Add initial game module with models, admin, and configuration
+- Add OkpOrderableMixin model for order management
+- Add superuser creation and initial fixtures
+- Add Radix UI themes and update styles
+- Add OkpProviders component to wrap the App with RouterProvider
+- Implement router context and utility functions for navigation and localization
+- Add django-unfold to requirements and configure Unfold settings
+
+### Refactored
+
+- Refactor form components and update styles
+- Refactor App component to use dynamic routing with lazy loading and Loading component
+- Refactor frontend from Expo to Vite
+
+### Changed
+
+- Update styles and structure of Topic component
+- Update HTML language to French and change title to 'Oykus', modify root div ID to 'okp'
+- Change HTML language attribute to French and update root div ID to 'okp'
+- Update .gitignore to specify backend data directory path
+- Enhance routing and navigation with new screens and components
+
+### Updated
+
+- Bump isort from 6.0.0 to 6.0.1 in /oykus/backend
+- Bump rpds-py from 0.22.3 to 0.23.1 in /oykus/backend
+- Bump pytest from 8.3.4 to 8.3.5 in /oykus/backend
+
 ## [v0.1.4] - 2025-02-22
 
 ### Added
