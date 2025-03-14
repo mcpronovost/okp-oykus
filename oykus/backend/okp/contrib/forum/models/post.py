@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from okp.core.utils import get_slug
 from okp.contrib.game.models import OkpGame
 
 from .forum import OkpForum
@@ -10,11 +9,11 @@ from .section import OkpForumSection
 from .topic import OkpForumTopic
 
 
-class OkpForumMessage(models.Model):
+class OkpForumPost(models.Model):
     game = models.ForeignKey(
         OkpGame,
         on_delete=models.CASCADE,
-        related_name="messages",
+        related_name="posts",
         verbose_name=_("Game"),
         blank=False,
         null=False,
@@ -22,7 +21,7 @@ class OkpForumMessage(models.Model):
     forum = models.ForeignKey(
         OkpForum,
         on_delete=models.CASCADE,
-        related_name="messages",
+        related_name="posts",
         verbose_name=_("Forum"),
         blank=False,
         null=False,
@@ -30,7 +29,7 @@ class OkpForumMessage(models.Model):
     category = models.ForeignKey(
         OkpForumCategory,
         on_delete=models.SET_NULL,
-        related_name="messages",
+        related_name="posts",
         verbose_name=_("Category"),
         blank=True,
         null=True,
@@ -38,7 +37,7 @@ class OkpForumMessage(models.Model):
     section = models.ForeignKey(
         OkpForumSection,
         on_delete=models.SET_NULL,
-        related_name="messages",
+        related_name="posts",
         verbose_name=_("Section"),
         blank=True,
         null=True,
@@ -46,12 +45,12 @@ class OkpForumMessage(models.Model):
     topic = models.ForeignKey(
         OkpForumTopic,
         on_delete=models.CASCADE,
-        related_name="messages",
+        related_name="posts",
         verbose_name=_("Topic"),
     )
     # Content
-    content = models.TextField(
-        verbose_name=_("Content"),
+    message = models.TextField(
+        verbose_name=_("Message"),
         blank=False,
         null=False,
     )
@@ -72,9 +71,9 @@ class OkpForumMessage(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Message")
-        verbose_name_plural = _("Messages")
+        verbose_name = _("Post")
+        verbose_name_plural = _("Posts")
         ordering = ["-created_at"]
 
     def __str__(self):
-        return self.content
+        return f"\"{self.message[:100]}{'...' if len(self.message) > 100 else ''}\""

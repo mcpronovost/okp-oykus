@@ -32,7 +32,7 @@ def get_abbr(string, max_length=3):
     return "".join(abbr).upper()[:max_length]
 
 
-def get_slug(string, instance, model):
+def get_slug(string, instance, model, scope=None):
     """
     Get a slug from a string.
 
@@ -48,8 +48,17 @@ def get_slug(string, instance, model):
     slug = base_slug
     counter = 1
 
+    # Get filters for scope
+    filters = {}
+    if scope:
+        for field in scope:
+            filters[field] = getattr(instance, field)
+
     # Check if slug exists and increment counter until unique
-    while model.objects.filter(slug=slug).exclude(id=instance.id).exists():
+    while model.objects.filter(
+        slug=slug,
+        **filters,
+    ).exclude(id=instance.id).exists():
         slug = f"{base_slug}-{counter}"
         counter += 1
 

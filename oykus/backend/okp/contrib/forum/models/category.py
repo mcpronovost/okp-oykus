@@ -35,7 +35,6 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
     slug = models.SlugField(
         verbose_name=_("Slug"),
         max_length=255,
-        unique=True,
         blank=True,
         null=False,
     )
@@ -58,16 +57,23 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
         verbose_name=_("Updated At"),
         auto_now=True,
     )
+    order_scope = ["forum"]
 
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
         ordering = ["order", "title", "-updated_at", "-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["forum", "slug"],
+                name="unique_category_slug_per_forum",
+            ),
+        ]
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
-            self.slug = get_slug(self.title, self, OkpForumCategory)
+            self.slug = get_slug(self.title, self, OkpForumCategory, scope=["forum"])
         super().save(*args, **kwargs)

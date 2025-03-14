@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from unfold.admin import ModelAdmin
 from unfold.decorators import display
 
-from okp.contrib.forum.models import OkpForumMessage
+from okp.contrib.forum.models import OkpForumPost
 
 VISIBLE_STATUS = {
     _("Visible"): "success",
@@ -12,16 +12,16 @@ VISIBLE_STATUS = {
 }
 
 
-@admin.register(OkpForumMessage)
-class OkpForumMessageAdmin(ModelAdmin):
-    list_display = ("show_message", "forum", "category", "section", "topic", "show_is_visible")
+@admin.register(OkpForumPost)
+class OkpForumPostAdmin(ModelAdmin):
+    list_display = ("show_post", "forum", "category", "section", "topic", "show_is_visible")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
 
-    @display(description=_("Message"), header=True)
-    def show_message(self, obj):
-        return obj.content
+    @display(description=_("Post"), header=True)
+    def show_post(self, obj):
+        return f"{obj.message[:100]}{'...' if len(obj.message) > 100 else ''}", f"#{obj.pk}"
 
     @display(
         description=_("Visible"),
@@ -43,7 +43,7 @@ class OkpForumMessageAdmin(ModelAdmin):
         }),
         (_("Content"), {
             "fields": (
-                "content",
+                "message",
             )
         }),
         (_("Flags"), {

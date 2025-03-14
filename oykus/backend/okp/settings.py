@@ -313,9 +313,9 @@ UNFOLD = {
                         "link": reverse_lazy("admin:okp_forum_okpforumtopic_changelist"),
                     },
                     {
-                        "title": "Messages",
+                        "title": "Posts",
                         "icon": "text_snippet",
-                        "link": reverse_lazy("admin:okp_forum_okpforummessage_changelist"),
+                        "link": reverse_lazy("admin:okp_forum_okpforumpost_changelist"),
                     },
                 ]
             }

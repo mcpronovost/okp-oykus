@@ -2,7 +2,11 @@ from django.db import models, transaction
 
 
 class OkpOrderableMixin(models.Model):
+    """
+    Abstract model for orderable objects through a scope.
+    """
     order = models.PositiveIntegerField(default=0)
+    order_scope = []
 
     class Meta:
         abstract = True
@@ -19,13 +23,21 @@ class OkpOrderableMixin(models.Model):
     def shift_orders(self, old_order, new_order):
         """Shifts the order of related objects to avoid conflicts."""
         with transaction.atomic():
+            filters = {}
+            for field in self.order_scope:
+                filters[field] = getattr(self, field)
+
             if old_order < new_order:
                 # Moving down
                 self.__class__.objects.filter(
-                    order__gt=old_order, order__lte=new_order
+                    **filters,
+                    order__gt=old_order,
+                    order__lte=new_order
                 ).update(order=models.F("order") - 1)
             else:
                 # Moving up
                 self.__class__.objects.filter(
-                    order__gte=new_order, order__lt=old_order
+                    **filters,
+                    order__gte=new_order,
+                    order__lt=old_order
                 ).update(order=models.F("order") + 1)
