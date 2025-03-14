@@ -19,5 +19,5 @@ class OkpForumPostsView(ListAPIView):
         queryset = OkpForumPost.objects.all()
         topic_id = self.kwargs.get("topic_id")
         if topic_id:
-            queryset = queryset.filter(topic__id=topic_id)
+            queryset = queryset.filter(topic__id=topic_id).order_by("created_at")
         return queryset

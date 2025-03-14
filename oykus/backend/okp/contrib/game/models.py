@@ -1,8 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import FileExtensionValidator
 
+from okp.core.fields import OkpImageField
 from okp.core.utils import get_abbr, get_slug
+from okp.core.validators import okp_image_size_validator
 
 User = get_user_model()
 
@@ -128,6 +131,20 @@ class OkpGameCharacter(models.Model):
     is_abbr_auto = models.BooleanField(
         verbose_name=_("Auto-Generate Abbreviation"),
         default=True,
+    )
+    avatar = OkpImageField(
+        verbose_name=_("Avatar"),
+        upload_to="characters/avatars",
+        max_width=200,
+        max_height=200,
+        blank=True,
+        null=True,
+        validators=[
+            okp_image_size_validator,
+            FileExtensionValidator(
+                allowed_extensions=["jpg", "jpeg", "png", "webp"]
+            ),
+        ],
     )
     # Flags
     is_active = models.BooleanField(

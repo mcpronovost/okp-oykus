@@ -147,4 +147,4 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
 class OkpUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("id", "username", "avatar")
+        fields = ("id", "name", "slug", "abbr", "avatar")

@@ -1,40 +1,44 @@
 import "@/assets/styles/forum/topic.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OkpForm, OkpSelect, OkpField, OkpActions, OkpSubmit, OkpReset } from "@/components/form";
+import { useApi } from "@/services/api";
+import { useI18n } from "@/services/i18n";
 import imgMC from "@/assets/img/mc.jpg";
 import imgPachua from "@/assets/img/pachua.jpg";
 
 export default function OkpTopic() {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      author: {
-        name: "mcpronovost",
-        avatar: imgMC,
-      },
-      character: {
-        name: "Pachu'a Wapi Qatlaalawsiq",
-        avatar: imgPachua,
-      },
-      date: "January 1, 2021",
-      message:
-        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat rhoncus est nec scelerisque. Nullam ut cursus libero. Maecenas neque ante, ultricies eu libero vitae, ullamcorper facilisis metus. Sed a posuere odio, a luctus quam. Nam condimentum nisl id lacus gravida, id mollis dui eleifend. Curabitur rhoncus ornare consequat. In et nunc id risus tristique elementum.</p>",
-    },
-    {
-      id: 2,
-      author: {
-        name: "Kamuy Sinen",
-        avatar: imgPachua,
-      },
-      character: {
-        name: "Seðom Øþornkilpič",
-        avatar: imgMC,
-      },
-      date: "January 1, 2021",
-      message:
-        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat rhoncus est nec scelerisque. Nullam ut cursus libero. Maecenas neque ante, ultricies eu libero vitae, ullamcorper facilisis metus. Sed a posuere odio, a luctus quam. Nam condimentum nisl id lacus gravida, id mollis dui eleifend. Curabitur rhoncus ornare consequat. In et nunc id risus tristique elementum.</p>",
-    },
-  ]);
+  const { get } = useApi();
+  const { t } = useI18n();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function getPosts() {
+      try {
+        const result = await get("/forum/topics/1/posts/");
+        setTimeout(() => {
+          if (mounted) {
+            setPosts(result);
+          }
+        }, 1000);
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    getPosts();
+  
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +82,7 @@ export default function OkpTopic() {
 
       {/* Posts Section */}
       <section className="okp-topic-posts">
-        {posts.map((post) => (
+        {posts?.length > 0 && posts.map((post) => (
           <article
             key={post.id}
             className="okp-topic-post"
@@ -86,26 +90,28 @@ export default function OkpTopic() {
           >
             <header className="okp-topic-post-header">
               <div className="okp-topic-post-header-character">
-                <figure
-                  aria-hidden="true"
-                  className="okp-topic-post-header-character-avatar"
-                >
-                  <img src={post.character.avatar} alt="mcpronovost" />
-                </figure>
+                {post.character && (
+                  <figure
+                    aria-hidden="true"
+                    className="okp-topic-post-header-character-avatar"
+                  >
+                    <img src={post.character?.avatar} alt={post.character?.name || "Character Avatar"} />
+                  </figure>
+                )}
                 <p className="okp-topic-post-header-character-name">
                   <span className="sr-only">Post from </span>
                   <strong>
-                    <a href="#">{post.character.name}</a>
+                    {post.character?.name ? <a href="#">{post.character.name}</a> : "Unknown"}
                   </strong>
                 </p>
               </div>
               <div className="okp-topic-post-header-author">
                 <span className="sr-only"> written </span>
                 <strong>
-                  by <a href="#">{post.author.name}</a>
+                  by {post.user?.name ? <a href="#">{post.user.name}</a> : "Unknown"}
                 </strong>
                 <span>
-                  , <time dateTime="2021-01-01">{post.date}</time>
+                  , <time dateTime={post.created_at}>{new Date(post.created_at).toDateString()}</time>
                 </span>
               </div>
             </header>
@@ -137,10 +143,11 @@ export default function OkpTopic() {
       </section>
 
       {/* Reply Form Section */}
-      <section className="okp-topic-reply" aria-labelledby="reply-heading">
-        <header className="okp-topic-reply-header">
-          <h2 className="okp-topic-reply-header-title" id="reply-heading">
-            Répondre
+      {!isLoading && posts?.length > 0 &&  (
+        <section className="okp-topic-reply" aria-labelledby="reply-heading">
+          <header className="okp-topic-reply-header">
+            <h2 className="okp-topic-reply-header-title" id="reply-heading">
+              {t("Reply")}
           </h2>
           <div className="okp-topic-reply-header-description">
             <p>
@@ -163,15 +170,16 @@ export default function OkpTopic() {
               message: "Message must be at least 10 characters long",
               match: "tooShort",
             }]}>
-              <textarea className="okp-form-textarea" required minLength={10} />
+              <textarea className="okp-form-textarea" required minLength={10} rows={8} />
             </OkpField>
             <OkpActions>
               <OkpSubmit label="Envoyer" />
               <OkpReset label="Réinitialiser" />
             </OkpActions>
           </OkpForm>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       <footer>
         <p>

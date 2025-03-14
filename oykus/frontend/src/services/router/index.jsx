@@ -3,7 +3,7 @@ import { getLangAndPath, getRoute, getLocalizedPath } from "./utils";
 
 const RouterContext = createContext();
 
-const RouterProvider = ({ children }) => {
+function RouterProvider({ children }) {
   const [path, setPath] = useState(window.location.pathname);
   const [lang, setLang] = useState(getLangAndPath(path).langCode);
   const [routeName, setRouteName] = useState(getLangAndPath(path).pathPart);
@@ -57,15 +57,14 @@ const RouterProvider = ({ children }) => {
       {children}
     </RouterContext.Provider>
   );
-};
+}
 
-const useRouter = () => {
+function useRouter() {
   const context = useContext(RouterContext);
   if (!context) {
     throw new Error("useRouter must be used within a RouterProvider");
   }
   return context;
-};
+}
 
-export default RouterProvider;
-export { useRouter };
+export { RouterProvider, useRouter };

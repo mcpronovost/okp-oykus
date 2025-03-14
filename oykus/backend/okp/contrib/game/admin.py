@@ -80,6 +80,7 @@ class OkpGameCharacterAdmin(ModelAdmin):
                 "is_slug_auto",
                 "abbr",
                 "is_abbr_auto",
+                "avatar",
             )
         }),
         (_("Flags"), {
