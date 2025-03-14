@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     # okp
     "okp.core",
     "okp.contrib.auth",
-    # "okp.contrib.blog",
-    # "okp.contrib.courrier",
-    # "okp.contrib.forum",
+    "okp.contrib.game",
+    "okp.contrib.forum",
     "okp.api",
     # cleanup
     "django_cleanup.apps.CleanupConfig",
@@ -241,6 +240,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Unfold Settings
 # https://unfoldadmin.com/docs/installation/quickstart
 
+from django.urls import reverse_lazy
+
 UNFOLD = {
     "SITE_TITLE": "OKP",
     "SITE_HEADER": "Oykus",
@@ -254,7 +255,72 @@ UNFOLD = {
     "SIDEBAR": {
         "show_search": True,
         "show_all_applications": True,
-    }
+        "navigation": [
+            {
+                "title": "Authentication",
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Users",
+                        "icon": "group",
+                        "link": reverse_lazy("admin:okp_auth_okpuser_changelist"),
+                    },
+                    {
+                        "title": "Tokens",
+                        "icon": "token",
+                        "link": reverse_lazy("admin:okp_auth_okpauthtoken_changelist"),
+                    }
+                ]
+            },
+            {
+                "title": "Games",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Games",
+                        "icon": "gamepad",
+                        "link": reverse_lazy("admin:okp_game_okpgame_changelist"),
+                    },
+                    {
+                        "title": "Characters",
+                        "icon": "face",
+                        "link": reverse_lazy("admin:okp_game_okpgamecharacter_changelist"),
+                    },
+                ]
+            },
+            {
+                "title": "Forums",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Forums",
+                        "icon": "forum",
+                        "link": reverse_lazy("admin:okp_forum_okpforum_changelist"),
+                    },
+                    {
+                        "title": "Categories",
+                        "icon": "stacks",
+                        "link": reverse_lazy("admin:okp_forum_okpforumcategory_changelist"),
+                    },
+                    {
+                        "title": "Sections",
+                        "icon": "stack",
+                        "link": reverse_lazy("admin:okp_forum_okpforumsection_changelist"),
+                    },
+                    {
+                        "title": "Topics",
+                        "icon": "list",
+                        "link": reverse_lazy("admin:okp_forum_okpforumtopic_changelist"),
+                    },
+                    {
+                        "title": "Messages",
+                        "icon": "text_snippet",
+                        "link": reverse_lazy("admin:okp_forum_okpforummessage_changelist"),
+                    },
+                ]
+            }
+        ],
+    },
 }
 
 
