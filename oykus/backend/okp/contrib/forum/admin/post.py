@@ -14,14 +14,17 @@ VISIBLE_STATUS = {
 
 @admin.register(OkpForumPost)
 class OkpForumPostAdmin(ModelAdmin):
-    list_display = ("show_post", "forum", "category", "section", "topic", "show_is_visible")
+    list_display = ("show_post", "forum", "category", "section", "show_is_visible")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
 
     @display(description=_("Post"), header=True)
     def show_post(self, obj):
-        return f"{obj.message[:100]}{'...' if len(obj.message) > 100 else ''}", f"#{obj.pk}"
+        return (
+            f"{obj.truncated_message}",
+            f"{obj.topic.title}",
+        )
 
     @display(
         description=_("Visible"),
@@ -39,6 +42,12 @@ class OkpForumPostAdmin(ModelAdmin):
                 "category",
                 "section",
                 "topic",
+            )
+        }),
+        (_("Author"), {
+            "fields": (
+                "user",
+                "character",
             )
         }),
         (_("Content"), {

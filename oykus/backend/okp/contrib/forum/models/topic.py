@@ -66,6 +66,12 @@ class OkpForumTopic(models.Model):
         default=True,
         help_text=_("Whether the topic is visible to users."),
     )
+    # Statistics
+    total_posts = models.PositiveIntegerField(
+        verbose_name=_("Total Posts"),
+        default=0,
+        help_text=_("The total number of posts in the topic."),
+    )
     # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),
