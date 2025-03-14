@@ -3,6 +3,7 @@
 import os
 import subprocess
 import sys
+from dotenv import load_dotenv
 from pathlib import Path
 
 
@@ -107,6 +108,53 @@ def run_tests():
     run_pytest()
 
 
+def run_clean_migrate(python_exec, backend_path):
+    """
+    Run a clean migration for the backend.
+    """
+    # Run migrations
+    subprocess.run(
+        [python_exec, "oykus/backend/manage.py", "migrate"],
+        cwd=backend_path,
+        check=True
+    )
+
+    # Create superuser
+    try:
+        load_dotenv(os.path.join(backend_path, ".env"))
+        subprocess.run(
+            [
+                python_exec,
+                "oykus/backend/manage.py",
+                "createsuperuser",
+                "--noinput",
+                "--username", os.getenv("DJANGO_SUPERUSER_USERNAME"),
+                "--email", os.getenv("DJANGO_SUPERUSER_EMAIL"),
+            ],
+            cwd=backend_path,
+            env=os.environ,
+            check=True
+        )
+    except subprocess.CalledProcessError:
+        print("Note: Superuser might already exist, skipping creation")
+
+    # Load initial fixtures
+    try:
+        subprocess.run(
+            [
+                python_exec,
+                "oykus/backend/manage.py",
+                "loaddata",
+                "games",
+                "forums",
+            ],
+            cwd=backend_path,
+            check=True
+        )
+    except subprocess.CalledProcessError:
+        print("Note: Error loading initial fixtures")
+
+
 def main():
     """
     Main function to start development servers or run backend with arguments.
@@ -125,6 +173,8 @@ def main():
             run_pytest()
         elif sys.argv[1] == "tests":
             run_tests()
+        elif sys.argv[1] == "cmigrate":
+            run_clean_migrate(python_exec, backend_path)
         else:
             backend_args = sys.argv[1:]
             run_backend(python_exec, backend_path, backend_args)
