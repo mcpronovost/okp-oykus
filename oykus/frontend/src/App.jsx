@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { useRouter } from "@/services/router";
+import OkpErrorBoundary from "@/components/ErrorBoundary";
 import Loading from "@/components/ui/Loading";
 
 function App() {
@@ -8,9 +9,11 @@ function App() {
   if (route?.component) {
     const Component = lazy(route.component);
     return (
-      <Suspense fallback={<Loading />}>
-        <Component />
-      </Suspense>
+      <OkpErrorBoundary>
+        <Suspense fallback={<Loading />}>
+          <Component />
+        </Suspense>
+      </OkpErrorBoundary>
     );
   }
 
