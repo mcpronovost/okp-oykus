@@ -1,12 +1,12 @@
-import { RouterProvider } from "@/services/router";
-import { I18nProvider } from "@/services/i18n";
+import RouterProvider from "@/services/router/context";
+import I18nProvider from "@/services/i18n/context";
 
 export default function OkpProviders({ children }) {
   return (
-      <I18nProvider lang="fr">
     <RouterProvider>
+      <I18nProvider>
         {children}
-    </RouterProvider>
       </I18nProvider>
+    </RouterProvider>
   );
 }
