@@ -69,3 +69,4 @@ class OkpForumPostCreateSerializer(serializers.ModelSerializer):
             "character",
             "message",
         )
+        read_only_fields = ("id",)

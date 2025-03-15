@@ -15,6 +15,11 @@ export const getLangAndPath = (fullpath) => {
   };
 };
 
+export const getLang = () => {
+  const { langCode } = getLangAndPath(window.location.pathname);
+  return langCode;
+};
+
 export const getRoute = (
   path,
   lang = "fr",

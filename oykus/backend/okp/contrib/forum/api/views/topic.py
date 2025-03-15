@@ -17,7 +17,6 @@ class OkpForumTopicView(RetrieveAPIView):
     permission_classes = (AllowAny,)
     serializer_class = OkpForumTopicSerializer
     queryset = OkpForumTopic.objects.all()
-    pagination_class = PageNumberPagination
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -37,6 +36,7 @@ class OkpForumTopicView(RetrieveAPIView):
             "posts": posts_data,
             "pagination": {
                 "count": paginator.page.paginator.count,
+                "page": paginator.page.number,
                 "next": paginator.get_next_link(),
                 "previous": paginator.get_previous_link(),
             }

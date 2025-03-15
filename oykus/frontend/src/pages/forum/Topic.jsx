@@ -1,41 +1,42 @@
 import "@/assets/styles/forum/topic.scss";
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { OkpForm, OkpSelect, OkpField, OkpActions, OkpSubmit, OkpReset } from "@/components/form";
 import { useForumApi } from "@/services/api";
 import { useI18n } from "@/services/i18n";
 import { OkpError, OkpHeading } from "@/components/common";
-import { OkpAvatar, OkpLoading } from "@/components/ui";
+import { OkpLoading } from "@/components/ui";
+import { OkpTopicPost } from "@/components/forum";
 
 export default function OkpTopic() {
   const { getTopic, createPost } = useForumApi();
   const { t } = useI18n();
 
-  const isInit = useRef(true);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const url = new URL(window.location);
+    return url.searchParams.get("page") || 1;
+  });
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [topic, setTopic] = useState(null);
 
-  useEffect(() => {
-    async function getPosts() {
-      try {
-        const result = await getTopic(1);
-        setTopic(result);
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-      } finally {
-        setIsLoading(false);
-      }
+  const fetchTopic = useCallback(async (page = currentPage) => {
+    try {
+      const result = await getTopic(1, page);
+      setTopic(result);
+      setCurrentPage(result.pagination.page);
+      const url = new URL(window.location);
+      url.searchParams.set("page", result.pagination.page);
+      window.history.pushState({}, "", url);
+    } catch (error) {
+      console.error("Failed to fetch posts:", error);
+    } finally {
+      setIsLoading(false);
     }
+  }, [currentPage, getTopic]);
 
-    if (!isLoading || isInit.current) {
-      setIsLoading(true);
-      getPosts();
-      isInit.current = false;
-    }
-  }, []);
-
-  const handleReply = async (e) => {
-    console.log("handleReply");
+  const handleReply = useCallback(async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const formData = new FormData(e.target);
     formData.append("topic", topic.id);
@@ -44,17 +45,36 @@ export default function OkpTopic() {
     formData.forEach((value, key) => {
       postData[key] = value;
     });
-    
-    // Log the form data entries object
-    console.log(postData);
 
     try {
       const result = await createPost(postData);
-      console.log(result);
+      await fetchTopic("last");
+      e.target.reset();
+      
+      setTimeout(() => {
+        const newPost = document.getElementById(`post-${result.id}`);
+        if (newPost) {
+          newPost.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } catch (error) {
-      // console.error(error);
+      console.error("Failed to create post:", error);
+    } finally {
+      setIsSubmitting(false);
     }
-  };
+  }, [topic?.id, createPost, fetchTopic]);
+
+  useEffect(() => {
+    fetchTopic();
+  }, [fetchTopic]);
+
+  const posts = useMemo(() => {
+    if (!topic?.posts) return null;
+
+    return topic.posts.map((post) => (
+      <OkpTopicPost key={post.id} post={post} />
+    ));
+  }, [topic?.posts]);
 
   if (isLoading) {
     return <OkpLoading />;
@@ -72,50 +92,7 @@ export default function OkpTopic() {
 
       {/* Posts Section */}
       <section className="okp-topic-posts">
-        {topic.posts?.length > 0 && topic.posts.map((post) => (
-          <article
-            key={post.id}
-            className="okp-topic-post"
-            id={`post-${post.id}`}
-          >
-            <header className="okp-topic-post-header">
-              <div className="okp-topic-post-header-character">
-                {post.character && (
-                  <OkpAvatar
-                    src={post.character?.avatar}
-                    fallback={post.character?.abbr}
-                    className="okp-topic-post-header-character-avatar"
-                    size={"inherit"}
-                  />
-                )}
-                <p className="okp-topic-post-header-character-name">
-                  <span className="sr-only">Post from </span>
-                  <strong>
-                    {post.character?.name ? <a href="#">{post.character.name}</a> : "Unknown"}
-                  </strong>
-                </p>
-              </div>
-              <div className="okp-topic-post-header-author">
-                <span className="sr-only"> written </span>
-                <strong>
-                  by {post.user?.name ? <a href="#">{post.user.name}</a> : "Unknown"}
-                </strong>
-                <span>
-                  , <time dateTime={post.created_at}>{new Date(post.created_at).toDateString()}</time>
-                </span>
-              </div>
-            </header>
-            <section
-              aria-labelledby="post-1"
-              className="okp-topic-post-content"
-            >
-              <div className="okp-topic-post-content-message">
-                <div dangerouslySetInnerHTML={{ __html: post.message }} />
-              </div>
-            </section>
-            <footer className="okp-topic-post-footer"></footer>
-          </article>
-        ))}
+        {topic.posts?.length > 0 && posts}
       </section>
 
       {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
@@ -137,30 +114,21 @@ export default function OkpTopic() {
         <section className="okp-topic-reply" aria-labelledby="reply-heading">
           <OkpHeading title={t("Reply")} description="You can reply to this topic." tag="h2" />
           <OkpForm onSubmit={handleReply} className="okp-topic-reply-card">
-            <OkpField name="character" label="Character" errors={[{
-              message: "Please select a character",
-              match: "valueMissing",
-            }]}>
-              <OkpSelect name="character" placeholder="Select a character" items={[{
+            <OkpField name="character" label="Character">
+              <OkpSelect placeholder="Select a character" items={[{
                 value: "1",
                 label: "Pachua",
               }, {
                 value: "2",
                 label: "Sedem",
-              }]} required />
+              }]} disabled={isSubmitting} required />
             </OkpField>
-            <OkpField name="message" label="Message" errors={[{
-              message: "Please enter a message",
-              match: "valueMissing",
-            }, {
-              message: "Message must be at least 10 characters long",
-              match: "tooShort",
-            }]}>
-              <textarea className="okp-form-textarea" required minLength={1} rows={8} />
+            <OkpField name="message" label="Message">
+              <textarea className="okp-form-textarea" rows={8} disabled={isSubmitting} required />
             </OkpField>
             <OkpActions>
-              <OkpSubmit label="Envoyer" />
-              <OkpReset label="Réinitialiser" />
+              <OkpSubmit label={isSubmitting ? "Sending..." : "Send"} disabled={isSubmitting} />
+              <OkpReset label="Reset" disabled={isSubmitting} />
             </OkpActions>
           </OkpForm>
         </section>

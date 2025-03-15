@@ -1,13 +1,13 @@
-import { useState, useCallback } from "react";
-import { API_BASE_URL, API_HEADERS } from "./utils";
-
+import { useCallback, useState } from "react";
+import { API_URL, API_HEADERS } from "./utils";
+import { getLang } from "@/services/router/utils";
 function useApi() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const request = useCallback(async (endpoint, options = {}) => {
-    const url = `${API_BASE_URL}${endpoint}`;
-    const headers = { ...API_HEADERS, ...options.headers };
+    const url = `${API_URL}${endpoint}`;
+    const headers = { ...API_HEADERS, ...options.headers, "Accept-Language": getLang() };
 
     setLoading(true);
     setError(null);
