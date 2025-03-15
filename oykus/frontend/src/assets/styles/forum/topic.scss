@@ -5,25 +5,6 @@
 
   @include grid.grid;
 
-  &-header {
-    h1 {
-      color: var(--okp-fg);
-      font-family: var(--okp-font-family-title);
-      font-size: 3rem;
-      font-weight: 300;
-      line-height: 1.2;
-    }
-
-    &-description {
-      color: var(--okp-fg-subtle);
-      margin: 0.5rem 0.1em;
-
-      p {
-        font-size: 1rem;
-      }
-    }
-  }
-
   &-posts {
     display: flex;
     flex-direction: column;
@@ -53,25 +34,13 @@
         width: 100%;
 
         &-avatar {
-          background-color: var(--okp-card-bg);
-          border-radius: 50%;
-          outline: 8px solid var(--okp-card-bg);
-          overflow: hidden;
           width: 200px;
           height: 200px;
           position: relative;
           top: -4px;
 
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: relative;
-            opacity: 0.5;
-          }
-
           + .okp-topic-post-header-character-name {
-            margin-top: 0;
+            margin-top: 12px;
           }
 
           @media (max-width: 1200px) {
@@ -162,27 +131,11 @@
   &-reply {
     margin: 32px 0;
 
-    &-header {
-      margin-bottom: 24px;
-
-      &-title {
-        color: var(--okp-fg);
-        font-family: var(--okp-font-family-title);
-        font-size: 2rem;
-        font-weight: 300;
-        line-height: 1.2;
-      }
-
-      &-description {
-        color: var(--okp-fg-subtle);
-        font-size: 1rem;
-      }
-    }
-
     &-card {
       background-color: var(--okp-card-bg);
       border-radius: 8px;
       padding: 32px;
+      margin: 32px 0;
     }
 
     &-form {

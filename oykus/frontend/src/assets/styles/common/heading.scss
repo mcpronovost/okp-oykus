@@ -1,0 +1,18 @@
+.okp-heading {
+  &-title {
+    color: var(--okp-fg);
+    font-family: var(--okp-font-family-title);
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  &-description {
+    color: var(--okp-fg-subtle);
+    margin: 0.5rem 0.1em;
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}

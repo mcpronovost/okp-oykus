@@ -56,3 +56,16 @@ class OkpForumPostDetailSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         )
+
+
+class OkpForumPostCreateSerializer(serializers.ModelSerializer):
+    """Serializer for creating a new forum post"""
+
+    class Meta:
+        model = OkpForumPost
+        fields = (
+            "id",
+            "topic",
+            "character",
+            "message",
+        )
