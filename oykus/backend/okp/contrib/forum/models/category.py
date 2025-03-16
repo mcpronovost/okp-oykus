@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 
 from okp.core.models import OkpOrderableMixin
@@ -6,6 +7,16 @@ from okp.core.utils import get_slug
 from okp.contrib.game.models import OkpGame
 
 from .forum import OkpForum
+
+
+class OkpForumCategoryManager(models.Manager):
+    def index(self):
+        return self.select_related(
+            "last_post",
+            "last_post__topic",
+            "last_post__character",
+            "last_post__user",
+        )
 
 
 class OkpForumCategory(OkpOrderableMixin, models.Model):
@@ -48,6 +59,23 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
         default=True,
         help_text=_("Whether the category is visible to users."),
     )
+    # Statistics
+    total_posts = models.IntegerField(
+        verbose_name=_("Total Posts"),
+        default=0,
+    )
+    total_topics = models.IntegerField(
+        verbose_name=_("Total Topics"),
+        default=0,
+    )
+    last_post = models.ForeignKey(
+        "okp_forum.OkpForumPost",
+        verbose_name=_("Last Post"),
+        on_delete=models.SET_NULL,
+        related_name="last_post_category",
+        blank=True,
+        null=True,
+    )
     # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),
@@ -58,6 +86,8 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
         auto_now=True,
     )
     order_scope = ["forum"]
+
+    objects = OkpForumCategoryManager()
 
     class Meta:
         verbose_name = _("Category")
@@ -72,6 +102,12 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
 
     def __str__(self):
         return self.title
+
+    @cached_property
+    def url(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.id}-{self.slug}"
+        return f"{g}{c}/"
 
     def save(self, *args, **kwargs):
         if self.is_slug_auto:

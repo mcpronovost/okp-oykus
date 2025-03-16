@@ -7,3 +7,10 @@ class OkpGameCharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = OkpGameCharacter
         fields = ("id", "name", "slug", "abbr", "avatar")
+
+
+class OkpGameCharacterAuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OkpGameCharacter
+        fields = ("id", "name", "slug", "abbr", "avatar")
+        read_only_fields = ("id", "name", "slug", "abbr", "avatar")

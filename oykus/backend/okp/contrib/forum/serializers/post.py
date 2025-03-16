@@ -4,8 +4,18 @@ from okp.contrib.auth.serializers import OkpUserSerializer
 from okp.contrib.game.serializers import (
     OkpGameSerializer,
     OkpGameCharacterSerializer,
+    OkpGameCharacterAuthorSerializer,
 )
 from okp.contrib.forum.models import OkpForumPost
+
+
+class OkpForumSectionPostSerializer(serializers.ModelSerializer):
+    character = OkpGameCharacterAuthorSerializer(read_only=True)
+
+    class Meta:
+        model = OkpForumPost
+        fields = ("id", "character", "created_at", "updated_at")
+        read_only_fields = ("id", "character", "created_at", "updated_at")
 
 
 class OkpForumPostListSerializer(serializers.ModelSerializer):

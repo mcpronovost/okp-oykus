@@ -19,7 +19,13 @@ VISIBLE_STATUS = {
 
 @admin.register(OkpForum)
 class OkpForumAdmin(ModelAdmin):
-    list_display = ("show_forum", "show_is_active", "show_is_visible")
+    list_display = (
+        "show_forum",
+        "total_posts",
+        "total_topics",
+        "show_is_active",
+        "show_is_visible",
+    )
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
@@ -45,21 +51,25 @@ class OkpForumAdmin(ModelAdmin):
         return _("Visible") if obj.is_visible else _("Hidden")
 
     fieldsets = (
-        (None, {
-            "fields": (
-                "game",
-                "title",
-                "slug",
-                "is_slug_auto",
-            )
-        }),
-        (_("Flags"), {
-            "fields": (
-                "is_active",
-                "is_visible",
-            ),
-        }),
-        (_("Important Dates"), {
-            "fields": ("created_at", "updated_at")
-        }),
+        (
+            None,
+            {
+                "fields": (
+                    "game",
+                    "title",
+                    "slug",
+                    "is_slug_auto",
+                )
+            },
+        ),
+        (
+            _("Flags"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_visible",
+                ),
+            },
+        ),
+        (_("Important Dates"), {"fields": ("created_at", "updated_at")}),
     )

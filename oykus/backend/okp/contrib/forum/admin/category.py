@@ -18,7 +18,7 @@ VISIBLE_STATUS = {
 
 @admin.register(OkpForumCategory)
 class OkpForumCategoryAdmin(ModelAdmin):
-    list_display = ("show_category", "forum", "show_is_visible", "show_order")
+    list_display = ("show_category", "forum", "total_posts", "total_topics", "show_is_visible", "show_order")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
@@ -52,6 +52,7 @@ class OkpForumCategoryAdmin(ModelAdmin):
         (_("Flags"), {
             "fields": (
                 "is_visible",
+                "order",
             ),
         }),
         (_("Important Dates"), {

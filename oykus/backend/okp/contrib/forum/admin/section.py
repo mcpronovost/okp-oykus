@@ -16,9 +16,10 @@ VISIBLE_STATUS = {
     _("Hidden"): "danger",
 }
 
+
 @admin.register(OkpForumSection)
 class OkpForumSectionAdmin(ModelAdmin):
-    list_display = ("show_section", "forum", "category", "show_is_visible", "show_order")
+    list_display = ("show_section", "forum", "category", "total_posts", "total_topics", "show_is_visible", "show_order")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
@@ -50,10 +51,19 @@ class OkpForumSectionAdmin(ModelAdmin):
                 "is_slug_auto",
             )
         }),
+        (_("Appearance"), {
+            "fields": (
+                "flex",
+            ),
+        }),
         (_("Flags"), {
             "fields": (
                 "is_visible",
+                "order",
             ),
+        }),
+        (_("Statistics"), {
+            "fields": ("total_posts", "total_topics"),
         }),
         (_("Important Dates"), {
             "fields": ("created_at", "updated_at")

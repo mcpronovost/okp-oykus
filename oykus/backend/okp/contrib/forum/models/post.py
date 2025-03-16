@@ -139,9 +139,19 @@ class OkpForumPost(models.Model):
             self.forum = self.topic.section.category.forum
             self.game = self.topic.section.category.game
 
-        # Update topic post count
+        # Update statistics
         if is_new:
             self.topic.total_posts = self.topic.posts.count()
-            self.topic.save(update_fields=["total_posts"])
+            self.topic.last_post = self
+            self.topic.save(update_fields=["total_posts", "last_post"])
+            self.section.total_posts = self.section.posts.count()
+            self.section.last_post = self
+            self.section.save(update_fields=["total_posts", "last_post"])
+            self.category.total_posts = self.category.posts.count()
+            self.category.last_post = self
+            self.category.save(update_fields=["total_posts", "last_post"])
+            self.forum.total_posts = self.forum.posts.count()
+            self.forum.last_post = self
+            self.forum.save(update_fields=["total_posts", "last_post"])
 
         super().save(*args, **kwargs)

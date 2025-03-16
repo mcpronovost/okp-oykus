@@ -26,6 +26,7 @@ urlpatterns = [
 ] + i18n_patterns(
     path("admin/", admin.site.urls),
     # app
+    path("g/", include("okp.contrib.game.urls")),
     re_path(r"^", TemplateView.as_view(template_name="app.html")),
 )
 

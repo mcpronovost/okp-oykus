@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 
 from okp.core.utils import get_slug
@@ -7,6 +8,15 @@ from okp.contrib.game.models import OkpGame
 from .forum import OkpForum
 from .category import OkpForumCategory
 from .section import OkpForumSection
+
+
+class OkpForumTopicManager(models.Manager):
+    def section(self):
+        return self.select_related(
+            "last_post",
+            "last_post__character",
+            "last_post__user",
+        )
 
 
 class OkpForumTopic(models.Model):
@@ -72,6 +82,14 @@ class OkpForumTopic(models.Model):
         default=0,
         help_text=_("The total number of posts in the topic."),
     )
+    last_post = models.ForeignKey(
+        "okp_forum.OkpForumPost",
+        verbose_name=_("Last Post"),
+        on_delete=models.SET_NULL,
+        related_name="last_post_topic",
+        blank=True,
+        null=True,
+    )
     # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),
@@ -89,6 +107,14 @@ class OkpForumTopic(models.Model):
 
     def __str__(self):
         return self.title
+
+    @cached_property
+    def url(self):
+        g = f"/g/{self.game.slug}"
+        c = f"/c{self.category.id}-{self.category.slug}" if self.category else ""
+        s = f"/s{self.section.id}-{self.section.slug}" if self.section else ""
+        t = f"/t{self.id}-{self.slug}"
+        return f"{g}{c}{s}{t}/"
 
     def save(self, *args, **kwargs):
         if self.is_slug_auto:

@@ -11,9 +11,10 @@ VISIBLE_STATUS = {
     _("Hidden"): "danger",
 }
 
+
 @admin.register(OkpForumTopic)
 class OkpForumTopicAdmin(ModelAdmin):
-    list_display = ("show_topic", "forum", "category", "section", "show_is_visible")
+    list_display = ("show_topic", "forum", "category", "section", "total_posts", "show_is_visible")
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
@@ -46,6 +47,12 @@ class OkpForumTopicAdmin(ModelAdmin):
             "fields": (
                 "is_visible",
             ),
+        }),
+        (_("Statistics"), {
+            "fields": (
+                "total_posts",
+                "last_post",
+            )
         }),
         (_("Important Dates"), {
             "fields": ("created_at", "updated_at")
