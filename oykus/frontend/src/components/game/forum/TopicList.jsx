@@ -1,12 +1,13 @@
+import "@/assets/styles/forum/topicList.scss";
 import { OkpGameForumTopicCard } from "@/components/game";
 
-export default function OkpGameForumTopicList({ topics, className }) {
+export default function OkpGameForumTopicList({ topics, className = "" }) {
   if (!topics) return null;
 
   return (
     <section className={`okp-forum-topics-list ${className}`}>
-      {topics.map((topic) => (
-        <OkpGameForumTopicCard key={topic.id} topic={topic} />
+      {topics.map((topic, index) => (
+        <OkpGameForumTopicCard key={topic.id} topic={topic} total={topics.length} index={index} />
       ))}
     </section>
   );

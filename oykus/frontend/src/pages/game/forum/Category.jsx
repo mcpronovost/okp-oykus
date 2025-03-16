@@ -6,7 +6,7 @@ export default function OkpForumCategory({ data }) {
 
   return (
     <OkpGameLayout data={data}>
-      <OkpGameForumCategoryCard category={data.category} />
+      <OkpGameForumCategoryCard category={data.category} standalone />
     </OkpGameLayout>
   );
 }

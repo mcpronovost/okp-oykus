@@ -1,6 +1,6 @@
 import { OkpGameForumCategoryCard } from "@/components/game";
 
-export default function OkpGameForumCategoryList({ categories, className }) {
+export default function OkpGameForumCategoryList({ categories, className = "" }) {
   if (!categories) return null;
 
   return (
