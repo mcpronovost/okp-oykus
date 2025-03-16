@@ -1,13 +1,17 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 
 from okp.core.utils import get_slug
-from okp.contrib.game.models import OkpGame
+from okp.contrib.game.models import OkpGame, OkpGameCharacter
 
 from .forum import OkpForum
 from .category import OkpForumCategory
 from .section import OkpForumSection
+
+
+User = get_user_model()
 
 
 class OkpForumTopicManager(models.Manager):
@@ -69,6 +73,23 @@ class OkpForumTopic(models.Model):
     is_slug_auto = models.BooleanField(
         verbose_name=_("Auto-Generate Slug"),
         default=True,
+    )
+    # Author
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        related_name="topics",
+        verbose_name=_("User"),
+        blank=True,
+        null=True,
+    )
+    character = models.ForeignKey(
+        OkpGameCharacter,
+        on_delete=models.SET_NULL,
+        related_name="topics",
+        verbose_name=_("Character"),
+        blank=True,
+        null=True,
     )
     # Flags
     is_visible = models.BooleanField(

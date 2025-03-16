@@ -1,0 +1,17 @@
+.okp-banner {
+  background-color: var(--okp-card-bg-subtle);
+  border-top-left-radius: var(--okp-radius);
+  border-top-right-radius: var(--okp-radius);
+  overflow: hidden;
+  width: 100%;
+  height: 120px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
+}

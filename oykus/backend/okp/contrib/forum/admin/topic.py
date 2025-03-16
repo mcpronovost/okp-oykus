@@ -40,10 +40,20 @@ class OkpForumTopicAdmin(ModelAdmin):
                 "forum",
                 "category",
                 "section",
+            )
+        }),
+        (_("Identity"), {
+            "fields": (
                 "title",
                 "slug",
                 "is_slug_auto",
-            )
+            ),
+        }),
+        (_("Author"), {
+            "fields": (
+                "user",
+                "character",
+            ),
         }),
         (_("Flags"), {
             "fields": (

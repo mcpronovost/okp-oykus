@@ -10,12 +10,22 @@ from okp.contrib.forum.models import OkpForumPost
 
 
 class OkpForumSectionPostSerializer(serializers.ModelSerializer):
-    character = OkpGameCharacterAuthorSerializer(read_only=True)
+    author = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = OkpForumPost
-        fields = ("id", "character", "created_at", "updated_at")
-        read_only_fields = ("id", "character", "created_at", "updated_at")
+        fields = ("id", "author", "created_at", "updated_at")
+        read_only_fields = ("id", "author", "created_at", "updated_at")
+
+    def get_author(self, obj):
+        if obj.user is None and obj.character is None:
+            return None
+        author = {}
+        # if obj.user:
+        #     author["user"] = OkpUserSerializer(obj.user).data
+        if obj.character:
+            author["character"] = OkpGameCharacterAuthorSerializer(obj.character).data
+        return author
 
 
 class OkpForumPostListSerializer(serializers.ModelSerializer):

@@ -28,12 +28,67 @@
 
   &-box {
     @include card.card;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 100%;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    &-banner {
+      margin-bottom: 48px;
+    }
+
+    &-avatar {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &-footer {
+    color: var(--okp-card-fg-subtle);
+    font-size: 0.8rem;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     padding: 12px;
+
+    &-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      &-date,
+      &-count {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-date {
+        text-align: left;
+      }
+
+      &-count {
+        text-align: right;
+      }
+    }
   }
 }
