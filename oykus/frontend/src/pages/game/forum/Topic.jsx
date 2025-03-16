@@ -26,7 +26,7 @@ export default function OkpTopic() {
       setCurrentPage(result.pagination.page);
       const url = new URL(window.location);
       url.searchParams.set("page", result.pagination.page);
-      window.history.pushState({}, "", url);
+      window.history.replaceState({}, "", url);
     } catch (error) {
       console.error("Failed to fetch posts:", error);
     } finally {
