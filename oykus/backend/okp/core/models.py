@@ -5,7 +5,7 @@ class OkpOrderableMixin(models.Model):
     """
     Abstract model for orderable objects through a scope.
     """
-    order = models.PositiveIntegerField(default=0)
+    order = models.PositiveIntegerField(default=1, blank=False, null=False)
     order_scope = []
 
     class Meta:
@@ -13,10 +13,15 @@ class OkpOrderableMixin(models.Model):
 
     def save(self, *args, **kwargs):
         if self.pk:
-            # Updating an existing instance
             old_order = self.__class__.objects.get(pk=self.pk).order
             if old_order != self.order:
                 self.shift_orders(old_order, self.order)
+        else:
+            filters = {}
+            for field in self.order_scope:
+                filters[field] = getattr(self, field)
+            last_order = self.__class__.objects.filter(**filters).last()
+            self.order = last_order.order + 1 if last_order else 1
 
         super().save(*args, **kwargs)
 
