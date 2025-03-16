@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import { getLangAndPath, getRoute, getLocalizedPath } from "./utils";
+import { enforceTrailingSlash, getLangAndPath, getRoute, getLocalizedPath } from "./utils";
 
 const RouterContext = createContext({
   path: "/fr/",
@@ -15,14 +15,18 @@ const RouterContext = createContext({
 });
 
 function RouterProvider({ children }) {
-  const [path, setPath] = useState(() => window.location.pathname);
+  const [path, setPath] = useState(() => {
+    const currentPath = window.location.pathname;
+    return enforceTrailingSlash(currentPath);
+  });
   const [lang, setLang] = useState(() => getLangAndPath(path).langCode);
   const [routeName, setRouteName] = useState(() => getLangAndPath(path).pathPart)
   const [route, setRoute] = useState(() => getRoute(routeName, lang)[1]);
 
   const updateRouter = useCallback((newPath) => {
-    const { langCode, pathPart } = getLangAndPath(newPath);
-    setPath(newPath);
+    const pathWithSlash = enforceTrailingSlash(newPath);
+    const { langCode, pathPart } = getLangAndPath(pathWithSlash);
+    setPath(pathWithSlash);
     if (langCode !== lang) {
       setLang(langCode);
     }

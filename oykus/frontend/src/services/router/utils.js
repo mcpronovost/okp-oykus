@@ -6,6 +6,15 @@ export const REGEX = {
   PARAM_REPLACE: /{[^}]+}/g,
 };
 
+export const enforceTrailingSlash = (fullpath) => {
+  if (!fullpath.endsWith("/")) {
+    const newPath = `${fullpath}/`;
+    window.history.replaceState({}, "", newPath);
+    return newPath;
+  }
+  return fullpath;
+};
+
 export const getLangAndPath = (fullpath) => {
   const [, langCode, ...pathParts] = fullpath.split(REGEX.LANG_CODE);
   const path = pathParts.join("/").replace(/\/$/, "");
@@ -147,5 +156,5 @@ export const getLocalizedPath = (
     }
   }
 
-  return `/${toLang}/${toPath}`;
+  return `/${toLang}/${toPath}/`;
 };

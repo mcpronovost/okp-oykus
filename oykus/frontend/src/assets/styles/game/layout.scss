@@ -1,0 +1,21 @@
+@use "../core/grid" as grid;
+
+.okp-game {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include grid.grid;
+
+  &-header {
+    text-align: center;
+    padding: 120px 0;
+
+    &-title {
+      font-family: var(--okp-game-header-font-family);
+      font-size: var(--okp-game-header-font-size);
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+}
