@@ -103,10 +103,16 @@ class OkpForumTopic(models.Model):
     class Meta:
         verbose_name = _("Topic")
         verbose_name_plural = _("Topics")
-        ordering = ["title", "-updated_at", "-created_at"]
+        ordering = ["-updated_at", "-created_at"]
+
+    @cached_property
+    def truncated_title(self):
+        if len(self.title) <= 32:
+            return self.title
+        return f"{self.title[:32]}..."
 
     def __str__(self):
-        return self.title
+        return self.truncated_title
 
     @cached_property
     def url(self):

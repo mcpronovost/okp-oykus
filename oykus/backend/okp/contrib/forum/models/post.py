@@ -122,9 +122,9 @@ class OkpForumPost(models.Model):
 
     @cached_property
     def truncated_message(self):
-        if len(self.message) <= 100:
+        if len(self.message) <= 64:
             return self.message
-        return f"{self.message[:100]}..."
+        return f"{self.message[:64]}..."
 
     def __str__(self):
         return f"\"{self.truncated_message}\""

@@ -19,14 +19,21 @@ VISIBLE_STATUS = {
 
 @admin.register(OkpForumSection)
 class OkpForumSectionAdmin(ModelAdmin):
-    list_display = ("show_section", "forum", "category", "total_posts", "total_topics", "show_is_visible", "show_order")
+    list_display = (
+        "show_section",
+        "forum",
+        "total_posts",
+        "total_topics",
+        "show_is_visible",
+        "show_order",
+    )
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
 
     @display(description=_("Section"), header=True)
     def show_section(self, obj):
-        return obj.title, obj.slug
+        return (obj.truncated_title, obj.category.title if obj.category else "")
 
     @display(
         description=_("Visible"),
@@ -41,31 +48,39 @@ class OkpForumSectionAdmin(ModelAdmin):
         return obj.order
 
     fieldsets = (
-        (None, {
-            "fields": (
-                "game",
-                "forum",
-                "category",
-                "title",
-                "slug",
-                "is_slug_auto",
-            )
-        }),
-        (_("Appearance"), {
-            "fields": (
-                "flex",
-            ),
-        }),
-        (_("Flags"), {
-            "fields": (
-                "is_visible",
-                "order",
-            ),
-        }),
-        (_("Statistics"), {
-            "fields": ("total_posts", "total_topics"),
-        }),
-        (_("Important Dates"), {
-            "fields": ("created_at", "updated_at")
-        }),
+        (
+            None,
+            {
+                "fields": (
+                    "game",
+                    "forum",
+                    "category",
+                    "title",
+                    "slug",
+                    "is_slug_auto",
+                )
+            },
+        ),
+        (
+            _("Appearance"),
+            {
+                "fields": ("flex",),
+            },
+        ),
+        (
+            _("Flags"),
+            {
+                "fields": (
+                    "is_visible",
+                    "order",
+                ),
+            },
+        ),
+        (
+            _("Statistics"),
+            {
+                "fields": ("total_posts", "total_topics"),
+            },
+        ),
+        (_("Important Dates"), {"fields": ("created_at", "updated_at")}),
     )

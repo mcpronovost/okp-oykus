@@ -110,10 +110,25 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
     class Meta:
         verbose_name = _("Section")
         verbose_name_plural = _("Sections")
-        ordering = [models.F("order").asc(nulls_last=True), "title", "-updated_at", "-created_at"]
+        ordering = [
+            "forum",
+            "category",
+            models.F("order").asc(nulls_last=True),
+            "title",
+            "-created_at",
+        ]
+
+    @cached_property
+    def truncated_title(self):
+        if len(self.title) <= 32:
+            return self.title
+        return f"{self.title[:32]}..."
 
     def __str__(self):
-        return self.title
+        f = f"{self.forum.title} - " if self.forum else ""
+        c = f"{self.category.title} - " if self.category else ""
+        s = self.truncated_title
+        return f"{f}{c}{s}"
 
     @cached_property
     def url(self):

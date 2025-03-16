@@ -16,6 +16,7 @@ VISIBLE_STATUS = {
     _("Hidden"): "danger",
 }
 
+
 @admin.register(OkpForumCategory)
 class OkpForumCategoryAdmin(ModelAdmin):
     list_display = ("show_category", "forum", "total_posts", "total_topics", "show_is_visible", "show_order")
@@ -25,7 +26,7 @@ class OkpForumCategoryAdmin(ModelAdmin):
 
     @display(description=_("Category"), header=True)
     def show_category(self, obj):
-        return obj.title, obj.slug
+        return (obj.truncated_title, obj.slug)
 
     @display(
         description=_("Visible"),

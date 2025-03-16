@@ -92,7 +92,12 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
-        ordering = ["order", "title", "-updated_at", "-created_at"]
+        ordering = [
+            "forum",
+            models.F("order").asc(nulls_last=True),
+            "title",
+            "-created_at",
+        ]
         constraints = [
             models.UniqueConstraint(
                 fields=["forum", "slug"],
@@ -100,8 +105,16 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
             ),
         ]
 
+    @cached_property
+    def truncated_title(self):
+        if len(self.title) <= 32:
+            return self.title
+        return f"{self.title[:32]}..."
+
     def __str__(self):
-        return self.title
+        f = f"{self.forum.title} - " if self.forum else ""
+        c = self.truncated_title
+        return f"{f}{c}"
 
     @cached_property
     def url(self):

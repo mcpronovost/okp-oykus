@@ -5,8 +5,6 @@ import { OkpForumTopicList } from "@/components/forum";
 export default function OkpForumSection({ data }) {
   if (!data) return <OkpError />;
 
-  console.log(data);
-
   return (
     <OkpGameLayout data={data}>
       <OkpHeading title={data.section.title} />
