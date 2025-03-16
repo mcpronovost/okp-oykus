@@ -2,12 +2,14 @@
   background-color: var(--okp-card-bg-subtle);
   outline: 8px solid var(--okp-card-bg);
   border-radius: 50%;
+  box-sizing: content-box;
   color: var(--okp-card-fg-subtle);
   overflow: hidden;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 8px;
 
   &-fallback {
     font-size: max(1.5em, 1.23em + 2cqi);

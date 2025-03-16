@@ -1,14 +1,14 @@
 import "@/assets/styles/ui/avatar.scss";
 import { useState } from "react";
 
-export default function OkpAvatar({ src, fallback, className, size }) {
+export default function OkpAvatar({ src, fallback, size = 48, className = "" }) {
   const [imgError, setImgError] = useState(false);
 
   return (
     <figure
       aria-hidden="true"
       className={`okp-avatar ${className}`}
-      style={size ? { width: `${size}px`, height: `${size}px` } : {}}
+      style={{ width: `${size}px`, height: `${size}px` }}
     >
       {src && !imgError ? (
         <img
