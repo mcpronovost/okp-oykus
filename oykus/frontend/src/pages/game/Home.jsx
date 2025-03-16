@@ -1,6 +1,6 @@
 import { OkpGameLayout } from "@/components/game";
 import { OkpError } from "@/components/common";
-import { OkpForumCategoryList } from "@/components/forum";
+import { OkpGameForumCategoryList } from "@/components/game";
 
 export default function OkpGameHome({ data }) {
   if (!data) return <OkpError />;
@@ -9,7 +9,7 @@ export default function OkpGameHome({ data }) {
     <OkpGameLayout data={data}>
       <section className="okp-forum">
         <section className="okp-forum-index">
-          {data.forum && <OkpForumCategoryList categories={data.forum.categories} />}
+          {data.forum && <OkpGameForumCategoryList categories={data.forum.categories} />}
         </section>
       </section>
     </OkpGameLayout>

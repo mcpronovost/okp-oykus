@@ -1,6 +1,6 @@
 import { OkpAvatar } from "@/components/ui";
 
-export default function OkpTopicPost({ post }) {
+export default function OkpGameForumTopicPost({ post }) {
   return (
     <article key={post.id} className="okp-topic-post" id={`post-${post.id}`}>
       <header className="okp-topic-post-header">

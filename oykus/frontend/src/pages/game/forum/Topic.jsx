@@ -5,7 +5,7 @@ import { useForumApi } from "@/services/api";
 import { useI18n } from "@/services/i18n";
 import { OkpError, OkpHeading } from "@/components/common";
 import { OkpLoading } from "@/components/ui";
-import { OkpTopicPost } from "@/components/forum";
+import { OkpGameForumTopicPost } from "@/components/game";
 
 export default function OkpTopic() {
   const { getTopic, createPost } = useForumApi();
@@ -72,7 +72,7 @@ export default function OkpTopic() {
     if (!topic?.posts) return null;
 
     return topic.posts.map((post) => (
-      <OkpTopicPost key={post.id} post={post} />
+      <OkpGameForumTopicPost key={post.id} post={post} />
     ));
   }, [topic?.posts]);
 

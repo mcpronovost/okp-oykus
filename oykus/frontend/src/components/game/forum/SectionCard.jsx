@@ -1,6 +1,6 @@
 import "@/assets/styles/forum/sectionCard.scss";
 
-export default function OkpForumSectionCard({ section, tag = "section" }) {
+export default function OkpGameForumSectionCard({ section, tag = "section" }) {
   if (!section) return null;
 
   const OkpSectionTag = tag;

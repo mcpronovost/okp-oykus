@@ -1,7 +1,7 @@
 import { OkpHeading } from "@/components/common";
-import { OkpForumSectionList } from "@/components/forum";
+import { OkpGameForumSectionList } from "@/components/game";
 
-export default function OkpForumCategoryCard({ category, tag = "section" }) {
+export default function OkpGameForumCategoryCard({ category, tag = "section" }) {
   if (!category) return null;
 
   const OkpCategoryTag = tag;
@@ -9,7 +9,7 @@ export default function OkpForumCategoryCard({ category, tag = "section" }) {
   return (
     <OkpCategoryTag className="okp-forum-category" key={category.id}>
       <OkpHeading title={category.title} link={category.url} className="okp-forum-category-title" />
-      <OkpForumSectionList sections={category.sections} className="okp-forum-category-sections" />
+      <OkpGameForumSectionList sections={category.sections} className="okp-forum-category-sections" />
     </OkpCategoryTag>
   );
 }

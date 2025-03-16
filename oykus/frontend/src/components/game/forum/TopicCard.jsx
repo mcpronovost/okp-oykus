@@ -1,4 +1,4 @@
-export default function OkpForumTopicCard({ topic }) {
+export default function OkpGameForumTopicCard({ topic }) {
   if (!topic) return null;
 
   console.log(topic);
