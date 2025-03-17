@@ -28,6 +28,25 @@ class OkpForumSectionPostSerializer(serializers.ModelSerializer):
         return author
 
 
+class OkpForumTopicPostSerializer(serializers.ModelSerializer):
+    author = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = OkpForumPost
+        fields = ("id", "author", "message", "created_at", "updated_at")
+        read_only_fields = ("id", "author", "message", "created_at", "updated_at")
+
+    def get_author(self, obj):
+        if obj.user is None and obj.character is None:
+            return None
+        author = {}
+        # if obj.user:
+        #     author["user"] = OkpUserSerializer(obj.user).data
+        if obj.character:
+            author["character"] = OkpGameCharacterAuthorSerializer(obj.character).data
+        return author
+
+
 class OkpForumPostListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for list views"""
 

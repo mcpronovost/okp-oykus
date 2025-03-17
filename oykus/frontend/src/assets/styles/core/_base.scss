@@ -42,11 +42,12 @@ body {
 }
 
 a {
-  color: #ffffff;
+  color: inherit;
   text-decoration: inherit;
 
   &:hover {
-    color: #c4c4c4;
+    color: inherit;
+    opacity: 0.8;
   }
 }
 

@@ -65,5 +65,9 @@ class OkpGameForumTopicSerializer(OkpGameSerializer):
     def get_topic(self, obj):
         from okp.contrib.forum.serializers.topic import OkpForumTopicSerializer  # noqa
 
-        topic = OkpForumTopic.objects.get(pk=self.context["topic_id"])
-        return OkpForumTopicSerializer(topic).data
+        topic = obj.topics.get(pk=self.context["topic_id"])
+        context = {
+            "view": self.context.get("view"),
+            "request": self.context.get("request"),
+        }
+        return OkpForumTopicSerializer(topic, context=context).data

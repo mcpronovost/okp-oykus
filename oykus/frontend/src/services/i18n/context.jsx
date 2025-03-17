@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
-import { loadTranslations } from "./utils";
+import { loadTranslations, getDate } from "./utils";
 
 const I18nContext = createContext({
   t: () => {},
 });
 
 function I18nProvider({ children }) {
-  const lang = "fr";
+  const lang = window.document.documentElement.lang;
   const [translations, setTranslations] = useState({});
 
   useEffect(() => {
@@ -39,8 +39,12 @@ function I18nProvider({ children }) {
     return key;
   };
 
+  const d = (value, toLang = lang, tz = "America/Toronto", show = "full") => {
+    return getDate(value, toLang, tz, show);
+  };
+
   return (
-    <I18nContext.Provider value={{ t }}>{children}</I18nContext.Provider>
+    <I18nContext.Provider value={{ t, d }}>{children}</I18nContext.Provider>
   );
 }
 

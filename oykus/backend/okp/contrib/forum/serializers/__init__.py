@@ -13,6 +13,7 @@ from .topic import (
 )
 from .post import (
     OkpForumSectionPostSerializer,
+    OkpForumTopicPostSerializer,
     OkpForumPostListSerializer,
     OkpForumPostDetailSerializer,
     OkpForumPostCreateSerializer,

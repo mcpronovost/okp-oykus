@@ -1,9 +1,12 @@
 export const getInitData = () => {
   try {
-    const initData = document.getElementById("okp-init").textContent;
+    const initDataElement = document.getElementById("okp-init");
+    if (!initDataElement) return null;
+    const initData = initDataElement.textContent;
+    initDataElement.remove();
     return JSON.parse(initData);
   } catch {
-    return {};
+    return null;
   }
 };
 

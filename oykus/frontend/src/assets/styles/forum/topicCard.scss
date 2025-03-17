@@ -45,7 +45,7 @@
     position: relative;
 
     &-banner {
-      margin-bottom: 48px;
+      margin-bottom: 42px;
     }
 
     &-avatar {
@@ -53,6 +53,47 @@
       top: -8px;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    &-lastpost {
+      background-color: var(--okp-card-bg-subtle);
+      border: 4px solid var(--okp-card-bg);
+      border-radius: 50%;
+      text-align: center;
+      position: absolute;
+      top: 64px;
+      left: calc(50% + 42px);
+      padding: 4px;
+
+      &-text {
+        display: none;
+      }
+    }
+
+    &-title {
+      font-size: 1rem;
+      font-weight: 600;
+      display: block;
+      width: 100%;
+
+      &-link {
+        color: var(--okp-primary);
+        text-decoration: inherit;
+        display: block;
+        width: 100%;
+        padding: 6px;
+        transition: opacity 0.3s;
+
+        &:hover {
+          color: var(--okp-primary);
+          opacity: 0.6;
+        }
+
+        &:active {
+          color: var(--okp-primary);
+          transform: scale(0.9);
+        }
+      }
     }
   }
 
@@ -73,6 +114,12 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
+
+      &-text {
+        font-size: 12px;
+        line-height: 1;
+        margin: 0 6px;
+      }
 
       &-date,
       &-count {

@@ -1,3 +1,8 @@
 {
-  "Reply": "Reply"
+  "Reply": "Reply",
+  "Go to the last post": "Go to the last post",
+  "messages": {
+    "one": "message",
+    "other": "messages"
+  }
 }

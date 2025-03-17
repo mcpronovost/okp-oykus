@@ -1,0 +1,116 @@
+.okp-forum-post-card {
+  background-color: var(--okp-card-bg);
+  border-radius: 8px;
+  color: var(--okp-card-fg);
+  position: relative;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+
+    &-character {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      &-avatar {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        top: -4px;
+
+        + .okp-forum-post-card-header-character-name {
+          margin-top: 12px;
+        }
+
+        @media (max-width: 1200px) {
+          width: 160px;
+          height: 160px;
+        }
+
+        @media (max-width: 960px) {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      &-name {
+        color: var(--okp-card-fg);
+        font-family: "Quicksand", system-ui, Avenir, Helvetica, Arial,
+          sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-top: 72px;
+        margin-bottom: 6px;
+
+        a {
+          color: inherit;
+          transition: opacity 0.3s;
+
+          &:hover {
+            opacity: 0.6;
+          }
+
+          &:active {
+            opacity: 0.4;
+          }
+        }
+
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &-author {
+      color: var(--okp-card-fg-subtle);
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      margin-bottom: 64px;
+
+      a {
+        color: inherit;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.6;
+        }
+
+        &:active {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  &-content {
+    &-message {
+      color: var(--okp-card-fg);
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 2;
+      text-align: justify;
+      max-width: 800px;
+      position: relative;
+      padding: 0 32px 32px;
+      margin: 0 auto;
+    }
+  }
+
+  &-footer {
+    padding: 32px;
+  }
+}
