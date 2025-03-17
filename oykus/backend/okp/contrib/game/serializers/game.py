@@ -1,18 +1,15 @@
 from rest_framework import serializers
 
-from okp.contrib.forum.models import (
-    OkpForumCategory,
-    OkpForumSection,
-    OkpForumTopic,
-)
-
+from okp.contrib.auth.serializers import OkpUserSerializer
 from okp.contrib.game.models import OkpGame
 
 
 class OkpGameSerializer(serializers.ModelSerializer):
+    owner = OkpUserSerializer(read_only=True)
+
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug")
+        fields = ("id", "title", "slug", "owner", "created_at", "updated_at")
 
 
 class OkpGameForumIndexSerializer(OkpGameSerializer):
@@ -20,7 +17,7 @@ class OkpGameForumIndexSerializer(OkpGameSerializer):
 
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug", "forum")
+        fields = OkpGameSerializer.Meta.fields + ("forum",)
 
     def get_forum(self, obj):
         from okp.contrib.forum.serializers.forum import OkpForumIndexSerializer
@@ -32,12 +29,12 @@ class OkpGameForumCategorySerializer(OkpGameSerializer):
 
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug", "category")
+        fields = OkpGameSerializer.Meta.fields + ("category",)
 
     def get_category(self, obj):
         from okp.contrib.forum.serializers.category import OkpForumCategorySerializer  # noqa
 
-        category = OkpForumCategory.objects.get(pk=self.context["category_id"])
+        category = obj.forum.categories.get(pk=self.context["category_id"])
         return OkpForumCategorySerializer(category).data
 
 
@@ -46,12 +43,12 @@ class OkpGameForumSectionSerializer(OkpGameSerializer):
 
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug", "section")
+        fields = OkpGameSerializer.Meta.fields + ("section",)
 
     def get_section(self, obj):
         from okp.contrib.forum.serializers.section import OkpForumSectionSerializer  # noqa
 
-        section = OkpForumSection.objects.get(pk=self.context["section_id"])
+        section = obj.forum.sections.get(pk=self.context["section_id"])
         return OkpForumSectionSerializer(section).data
 
 
@@ -60,12 +57,12 @@ class OkpGameForumTopicSerializer(OkpGameSerializer):
 
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug", "topic")
+        fields = OkpGameSerializer.Meta.fields + ("topic",)
 
     def get_topic(self, obj):
         from okp.contrib.forum.serializers.topic import OkpForumTopicSerializer  # noqa
 
-        topic = obj.topics.get(pk=self.context["topic_id"])
+        topic = obj.forum.topics.get(pk=self.context["topic_id"])
         context = {
             "view": self.context.get("view"),
             "request": self.context.get("request"),
