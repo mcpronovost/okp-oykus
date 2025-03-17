@@ -1,16 +1,12 @@
 import { OkpGameLayout, OkpGameForumPostList } from "@/components/game";
-import { OkpError, OkpHeading } from "@/components/common";
+import { OkpHeading } from "@/components/common";
 import { OkpBreadcrumb } from "@/components/ui";
 
 export default function OkpForumTopic({ data }) {
-  if (!data) return <OkpError />;
-
-  console.log(data.topic.breadcrumb);
-
   return (
     <OkpGameLayout data={data}>
       <section className="okp-forum">
-        {data.topic && (
+        {data?.topic && (
           <section className="okp-forum-topic">
             <OkpHeading title={data.topic.title} />
             <OkpBreadcrumb breadcrumb={data.topic.breadcrumb} />

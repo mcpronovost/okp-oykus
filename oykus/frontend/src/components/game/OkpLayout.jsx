@@ -1,6 +1,10 @@
 import "@/assets/styles/game/layout.scss";
+// import { OkpError } from "@/components/common";
 import { OkpScrollarea } from "@/components/ui";
+
 export default function OkpGameLayout({ children, data }) {
+  if (!data) return window.location.reload(true);
+
   return (
     <OkpScrollarea>
       <section className="okp-game">
