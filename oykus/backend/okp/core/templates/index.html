@@ -19,6 +19,13 @@
     <script id="okp-init" type="application/json">
       {{ initial_data|safe }}
     </script>
+    {% if theme %}
+      <style>
+        #okp {
+          --okp-primary: {{ theme.primary }};
+        }
+      </style>
+    {% endif %}
   </head>
   <body>
     <div id="okp"></div>

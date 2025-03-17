@@ -28,6 +28,8 @@ class OkpPageView(TemplateView):
 
         # Add the serialized data to the context
         context = super().get_context_data(**kwargs)
+        if "theme" in serialized_data:
+            context["theme"] = serialized_data.pop("theme")
         context["initial_data"] = json.dumps(serialized_data)
         if self.page_title:
             context["page_title"] = self.page_title
