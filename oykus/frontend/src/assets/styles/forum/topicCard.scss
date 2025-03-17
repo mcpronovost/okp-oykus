@@ -39,6 +39,7 @@
 
   &-header {
     display: flex;
+    flex: 1 1 100%;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -77,13 +78,17 @@
     }
 
     &-title {
-      font-size: 1rem;
-      font-weight: 600;
-      display: block;
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
       width: 100%;
 
       &-link {
         color: var(--okp-primary);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.2;
         text-decoration: inherit;
         display: block;
         width: 100%;
@@ -97,7 +102,7 @@
 
         &:active {
           color: var(--okp-primary);
-          transform: scale(0.9);
+          transform: scale(0.95);
         }
       }
     }
@@ -124,6 +129,7 @@
       &-text {
         font-size: 12px;
         line-height: 1;
+        white-space: nowrap;
         margin: 0 6px;
       }
 

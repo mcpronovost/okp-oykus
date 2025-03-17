@@ -16,14 +16,25 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
+      position: relative;
+
+      &-banner {
+        height: 120px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+      }
 
       &-avatar {
         width: 200px;
         height: 200px;
         position: relative;
         top: -4px;
+        z-index: 2;
 
         + .okp-forum-post-card-header-character-name {
           margin-top: 12px;

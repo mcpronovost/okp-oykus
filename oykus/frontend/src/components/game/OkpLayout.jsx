@@ -6,7 +6,7 @@ export default function OkpGameLayout({ children, data }) {
   if (!data) return window.location.reload(true);
 
   return (
-    <OkpScrollarea>
+    <OkpScrollarea id="okp-scrollarea">
       <section className="okp-game">
         <header className="okp-game-header">
           <h1 className="okp-game-header-title">

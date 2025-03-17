@@ -1,9 +1,9 @@
 import "@/assets/styles/ui/scrollarea.scss";
 import { ScrollArea } from "radix-ui";
 
-export default function OkpScrollarea({ children, className = "" }) {
+export default function OkpScrollarea({ children, id = "", className = "" }) {
   return (
-    <ScrollArea.Root className={`okp-scrollarea ${className}`}>
+    <ScrollArea.Root id={id} className={`okp-scrollarea ${className}`}>
       <ScrollArea.Viewport className="okp-scrollarea-viewport">
         {children}
       </ScrollArea.Viewport>

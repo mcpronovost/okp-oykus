@@ -1,8 +1,29 @@
+import { useEffect } from "react";
 import { OkpGameLayout, OkpGameForumPostList } from "@/components/game";
 import { OkpHeading } from "@/components/common";
 import { OkpBreadcrumb } from "@/components/ui";
 
 export default function OkpForumTopic({ data }) {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get("page");
+    if (page === "last") {
+      const lastPost = document.querySelector(".okp-last");
+      const viewportElement = document.querySelector("#okp-scrollarea .okp-scrollarea-viewport");
+
+      if (lastPost && viewportElement) {
+        const lastPostRect = lastPost.getBoundingClientRect();
+        const viewportRect = viewportElement.getBoundingClientRect();
+        const scrollTop = lastPostRect.top - viewportRect.top + viewportElement.scrollTop;
+
+        viewportElement.scrollTo({
+          top: scrollTop,
+          behavior: "smooth"
+        });
+      }
+    }
+  }, []);
+
   return (
     <OkpGameLayout data={data}>
       <section className="okp-forum">
@@ -29,7 +50,7 @@ export default function OkpForumTopic({ data }) {
               <p>Editing is allowed for 15 minutes after posting.</p>
             </section>
 
-            <footer>
+            <footer style={{ margin: "120px 0 500px" }}>
               <p>
                 <a href="#">Back to Forum</a>
               </p>

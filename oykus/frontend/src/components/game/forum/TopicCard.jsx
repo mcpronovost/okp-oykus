@@ -20,7 +20,7 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
         <header className="okp-forum-topic-card-header">
           <OkpBanner
             src={topic.author?.character?.avatar}
-            fallback={topic.author?.character?.name}
+            fallback={topic.author?.character?.abbr}
             size={80}
             className="okp-forum-topic-card-header-banner"
           />
@@ -30,8 +30,8 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
               topic.author?.character?.avatar
             }
             fallback={
-              topic.last_post?.author?.character?.name ||
-              topic.author?.character?.name
+              topic.last_post?.author?.character?.abbr ||
+              topic.author?.character?.abbr
             }
             size={120}
             className="okp-forum-topic-card-header-avatar"
@@ -55,7 +55,7 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
             </div>
             <div className="okp-forum-topic-card-footer-info-count">
               <span className="okp-forum-topic-card-footer-info-text">
-                {topic.total_posts} {t("messages", topic.total_posts)}
+                {topic.total_posts} <span className="sr-only">{t("messages", topic.total_posts)}</span>
               </span>
               <MessagesSquare size={16} className="okp-forum-topic-card-footer-info-icon" />
             </div>

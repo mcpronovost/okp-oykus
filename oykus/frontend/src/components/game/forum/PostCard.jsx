@@ -1,21 +1,28 @@
 import "@/assets/styles/forum/postCard.scss";
 import { useI18n } from "@/services/i18n";
-import { OkpAvatar } from "@/components/ui";
+import { OkpAvatar, OkpBanner } from "@/components/ui";
 
-export default function OkpGameForumPostCard({ post }) {
+export default function OkpGameForumPostCard({ post, isLast }) {
   const { t, d } = useI18n();
 
   return (
-    <article key={post.id} className="okp-forum-post-card" id={`post-${post.id}`}>
+    <article key={post.id} className={`okp-forum-post-card ${isLast ? "okp-last" : ""}`} id={`post-${post.id}`}>
       <header className="okp-forum-post-card-header">
         <div className="okp-forum-post-card-header-character">
           {post.author?.character && (
-            <OkpAvatar
-              src={post.author?.character?.avatar}
-              fallback={post.author?.character?.abbr}
-              className="okp-forum-post-card-header-character-avatar"
-              size={"inherit"}
-            />
+            <>
+              <OkpBanner
+                src={post.author?.character?.avatar}
+                className="okp-forum-post-card-header-character-banner"
+                size={"inherit"}
+              />
+              <OkpAvatar
+                src={post.author?.character?.avatar}
+                fallback={post.author?.character?.abbr}
+                className="okp-forum-post-card-header-character-avatar"
+                size={"inherit"}
+              />
+            </>
           )}
           <p className="okp-forum-post-card-header-character-name">
             <span className="sr-only">Post from </span>
