@@ -1,6 +1,9 @@
 from rest_framework import serializers
 
-from okp.contrib.auth.serializers import OkpUserSerializer
+from okp.contrib.auth.serializers import (
+    OkpUserSerializer,
+    OkpGameUserAuthorSerializer,
+)
 from okp.contrib.game.serializers import (
     OkpGameSerializer,
     OkpGameCharacterSerializer,
@@ -18,13 +21,13 @@ class OkpForumSectionPostSerializer(serializers.ModelSerializer):
         read_only_fields = ("id", "author", "created_at", "updated_at")
 
     def get_author(self, obj):
-        if obj.user is None and obj.character is None:
+        if obj.character is None:
             return None
         author = {}
-        # if obj.user:
-        #     author["user"] = OkpUserSerializer(obj.user).data
         if obj.character:
-            author["character"] = OkpGameCharacterAuthorSerializer(obj.character).data
+            author["character"] = OkpGameCharacterAuthorSerializer(
+                obj.character
+            ).data
         return author
 
 
@@ -34,16 +37,24 @@ class OkpForumTopicPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = OkpForumPost
         fields = ("id", "author", "message", "created_at", "updated_at")
-        read_only_fields = ("id", "author", "message", "created_at", "updated_at")
+        read_only_fields = (
+            "id",
+            "author",
+            "message",
+            "created_at",
+            "updated_at",
+        )
 
     def get_author(self, obj):
         if obj.user is None and obj.character is None:
             return None
         author = {}
-        # if obj.user:
-        #     author["user"] = OkpUserSerializer(obj.user).data
+        if obj.user:
+            author["user"] = OkpGameUserAuthorSerializer(obj.user).data
         if obj.character:
-            author["character"] = OkpGameCharacterAuthorSerializer(obj.character).data
+            author["character"] = OkpGameCharacterAuthorSerializer(
+                obj.character
+            ).data
         return author
 
 
