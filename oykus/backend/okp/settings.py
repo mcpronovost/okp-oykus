@@ -123,15 +123,7 @@ SPECTACULAR_SETTINGS = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": (
-            [
-                ROOT_DIR / "frontend" / "dev",
-            ]
-            if DEBUG
-            else [
-                ROOT_DIR / "frontend" / "dist",
-            ]
-        ),
+        "DIRS": (ROOT_DIR / "frontend" / "dist",) if not DEBUG else [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -225,7 +217,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "data" / "staticfiles"
-STATICFILES_DIRS = [ROOT_DIR / "frontend" / "dist" / "_expo" / "static"] if not DEBUG else []
+STATICFILES_DIRS = (
+    ROOT_DIR / "frontend" / "dist" / "static",
+) if not DEBUG else []
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "data" / "mediafiles"
@@ -265,14 +259,18 @@ UNFOLD = {
                     {
                         "title": "Users",
                         "icon": "group",
-                        "link": reverse_lazy("admin:okp_auth_okpuser_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_auth_okpuser_changelist"
+                        ),
                     },
                     {
                         "title": "Tokens",
                         "icon": "token",
-                        "link": reverse_lazy("admin:okp_auth_okpauthtoken_changelist"),
-                    }
-                ]
+                        "link": reverse_lazy(
+                            "admin:okp_auth_okpauthtoken_changelist"
+                        ),
+                    },
+                ],
             },
             {
                 "title": "Games",
@@ -281,14 +279,18 @@ UNFOLD = {
                     {
                         "title": "Games",
                         "icon": "gamepad",
-                        "link": reverse_lazy("admin:okp_game_okpgame_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_game_okpgame_changelist"
+                        ),
                     },
                     {
                         "title": "Characters",
                         "icon": "face",
-                        "link": reverse_lazy("admin:okp_game_okpgamecharacter_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_game_okpgamecharacter_changelist"
+                        ),
                     },
-                ]
+                ],
             },
             {
                 "title": "Forums",
@@ -297,30 +299,40 @@ UNFOLD = {
                     {
                         "title": "Forums",
                         "icon": "forum",
-                        "link": reverse_lazy("admin:okp_forum_okpforum_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_forum_okpforum_changelist"
+                        ),
                     },
                     {
                         "title": "Categories",
                         "icon": "stacks",
-                        "link": reverse_lazy("admin:okp_forum_okpforumcategory_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_forum_okpforumcategory_changelist"
+                        ),
                     },
                     {
                         "title": "Sections",
                         "icon": "stack",
-                        "link": reverse_lazy("admin:okp_forum_okpforumsection_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_forum_okpforumsection_changelist"
+                        ),
                     },
                     {
                         "title": "Topics",
                         "icon": "list",
-                        "link": reverse_lazy("admin:okp_forum_okpforumtopic_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_forum_okpforumtopic_changelist"
+                        ),
                     },
                     {
                         "title": "Posts",
                         "icon": "text_snippet",
-                        "link": reverse_lazy("admin:okp_forum_okpforumpost_changelist"),
+                        "link": reverse_lazy(
+                            "admin:okp_forum_okpforumpost_changelist"
+                        ),
                     },
-                ]
-            }
+                ],
+            },
         ],
     },
 }

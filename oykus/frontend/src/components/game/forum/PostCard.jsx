@@ -25,19 +25,19 @@ export default function OkpGameForumPostCard({ post, isLast }) {
             </>
           )}
           <p className="okp-forum-post-card-header-character-name">
-            <span className="sr-only">Post from </span>
+            <span className="sr-only">{t("Post from")} </span>
             <strong>
               {post.author?.character?.name ? (
                 <a href="#">{post.author?.character?.name}</a>
               ) : (
-                "Unknown"
+                t("Unknown")
               )}
             </strong>
           </p>
         </div>
         <div className="okp-forum-post-card-header-author">
           <strong>
-            by {post.author?.user?.name ? <a href="#">{post.author?.user?.name}</a> : "Unknown"}
+            {t("by")} {post.author?.user?.name ? <a href="#">{post.author?.user?.name}</a> : t("Unknown")}
           </strong>
           <span>
             ,{" "}

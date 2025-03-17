@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 
 
 class OkpPageView(TemplateView):
-    template_name = "app.html"
+    template_name = "index.html"
     model = None
     serializer_class = None
     key = "pk"
