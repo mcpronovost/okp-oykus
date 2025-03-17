@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "knox",
     "drf_spectacular",
+    "colorfield",
     # okp
     "okp.core",
     "okp.contrib.auth",
