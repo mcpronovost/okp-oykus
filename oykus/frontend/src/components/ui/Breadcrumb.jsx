@@ -1,5 +1,6 @@
 import "@/assets/styles/ui/breadcrumb.scss";
 import { Compass, ChevronRight } from "lucide-react";
+import { OkpLink } from "@/components/ui";
 
 export default function OkpBreadcrumb({ breadcrumb }) {
   if (!breadcrumb) return null;
@@ -10,9 +11,9 @@ export default function OkpBreadcrumb({ breadcrumb }) {
       <ol className="okp-breadcrumb-list">
         {breadcrumb.map((item, index) => (
           <li key={item.name} className="okp-breadcrumb-list-item">
-            <a href={item.url} className="okp-breadcrumb-list-item-link">
+            <OkpLink href={item.url} className="okp-breadcrumb-list-item-link">
               {item.name}
-            </a>
+            </OkpLink>
             {index < breadcrumb.length - 1 && (
               <ChevronRight size={12} className="okp-breadcrumb-list-item-icon" />
             )}

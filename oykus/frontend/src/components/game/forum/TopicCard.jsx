@@ -1,7 +1,7 @@
 import "@/assets/styles/forum/topicCard.scss";
 import { ChevronLast, Clock, MessagesSquare } from "lucide-react";
 import { useI18n } from "@/services/i18n";
-import { OkpAvatar, OkpBanner } from "@/components/ui";
+import { OkpAvatar, OkpBanner, OkpLink } from "@/components/ui";
 
 export default function OkpGameForumTopicCard({ topic, total, index }) {
   const { t, d } = useI18n();
@@ -37,12 +37,12 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
             className="okp-forum-topic-card-header-avatar"
           />
           <h3 className="okp-forum-topic-card-header-title">
-            <a href={topic.url} className="okp-forum-topic-card-header-title-link">{topic.title}</a>
+            <OkpLink href={topic.url} className="okp-forum-topic-card-header-title-link">{topic.title}</OkpLink>
           </h3>
           <p className="okp-forum-topic-card-header-lastpost">
-            <a href={`${topic.url}?page=last`} className="okp-forum-topic-card-header-lastpost-link" aria-label={t("Go to the last post")} title={t("Go to the last post")}>
+            <OkpLink href={`${topic.url}?page=last`} className="okp-forum-topic-card-header-lastpost-link" aria-label={t("Go to the last post")} title={t("Go to the last post")}>
               <ChevronLast size={16} className="okp-forum-topic-card-header-lastpost-icon" />
-            </a>
+            </OkpLink>
           </p>
         </header>
         <footer className="okp-forum-topic-card-footer">

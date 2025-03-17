@@ -50,9 +50,10 @@ export default function OkpForumTopic({ data }) {
               <p>Editing is allowed for 15 minutes after posting.</p>
             </section>
 
-            <footer style={{ margin: "120px 0 500px" }}>
+            {/* Footer Section */}
+            <footer>
               <p>
-                <a href="#">Back to Forum</a>
+                This is a footer.
               </p>
             </footer>
           </section>

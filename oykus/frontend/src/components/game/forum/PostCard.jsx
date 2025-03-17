@@ -1,6 +1,6 @@
 import "@/assets/styles/forum/postCard.scss";
 import { useI18n } from "@/services/i18n";
-import { OkpAvatar, OkpBanner } from "@/components/ui";
+import { OkpAvatar, OkpBanner, OkpLink } from "@/components/ui";
 
 export default function OkpGameForumPostCard({ post, isLast }) {
   const { t, d } = useI18n();
@@ -28,7 +28,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
             <span className="sr-only">{t("Post from")} </span>
             <strong>
               {post.author?.character?.name ? (
-                <a href="#">{post.author?.character?.name}</a>
+                <OkpLink href="#">{post.author?.character?.name}</OkpLink>
               ) : (
                 t("Unknown")
               )}
@@ -37,7 +37,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
         </div>
         <div className="okp-forum-post-card-header-author">
           <strong>
-            {t("by")} {post.author?.user?.name ? <a href="#">{post.author?.user?.name}</a> : t("Unknown")}
+            {t("by")} {post.author?.user?.name ? <OkpLink href="#">{post.author?.user?.name}</OkpLink> : t("Unknown")}
           </strong>
           <span>
             ,{" "}
