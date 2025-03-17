@@ -122,6 +122,13 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
         c = f"/c{self.id}-{self.slug}"
         return f"{g}{c}/"
 
+    @cached_property
+    def breadcrumb(self):
+        breadcrumb = []
+        if self.forum:
+            breadcrumb.append({"name": self.forum.title, "url": self.forum.url})
+        return breadcrumb
+
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
             self.slug = get_slug(self.title, self, OkpForumCategory, scope=["forum"])

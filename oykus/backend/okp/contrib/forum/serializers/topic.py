@@ -31,10 +31,15 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
 
 class OkpForumTopicSerializer(serializers.ModelSerializer):
     posts = serializers.SerializerMethodField(read_only=True)
+    breadcrumb = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = OkpForumTopic
-        fields = ("id", "title", "slug", "posts")
+        fields = ("id", "title", "slug", "breadcrumb", "posts")
+        read_only_fields = ("id", "title", "slug", "breadcrumb", "posts")
+
+    def get_breadcrumb(self, obj):
+        return obj.breadcrumb
 
     def get_posts(self, obj):
         # Get pagination parameters from context if available

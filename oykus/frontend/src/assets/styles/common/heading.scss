@@ -1,4 +1,13 @@
 .okp-heading {
+  &::after {
+    content: "";
+    background-color: var(--okp-primary);
+    display: block;
+    width: 64px;
+    height: 2px;
+    margin: 24px 0 32px;
+  }
+
   &-title {
     color: var(--okp-fg);
     font-family: var(--okp-font-family-title);

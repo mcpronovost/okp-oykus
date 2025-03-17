@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 
 from okp.core.utils import get_slug
@@ -88,6 +89,11 @@ class OkpForum(models.Model):
 
     def __str__(self):
         return self.title
+
+    @cached_property
+    def url(self):
+        g = f"/g/{self.game.slug}"
+        return f"{g}/"
 
     def save(self, *args, **kwargs):
         if self.is_slug_auto:

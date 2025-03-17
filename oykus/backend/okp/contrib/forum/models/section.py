@@ -137,6 +137,15 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
         s = f"/s{self.id}-{self.slug}"
         return f"{g}{c}{s}/"
 
+    @cached_property
+    def breadcrumb(self):
+        breadcrumb = []
+        if self.forum:
+            breadcrumb.append({"name": self.forum.title, "url": self.forum.url})
+        if self.category:
+            breadcrumb.append({"name": self.category.title, "url": self.category.url})
+        return breadcrumb
+
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
             self.slug = get_slug(self.title, self, OkpForumSection)

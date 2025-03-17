@@ -143,6 +143,17 @@ class OkpForumTopic(models.Model):
         t = f"/t{self.id}-{self.slug}"
         return f"{g}{c}{s}{t}/"
 
+    @cached_property
+    def breadcrumb(self):
+        breadcrumb = []
+        if self.forum:
+            breadcrumb.append({"name": self.forum.title, "url": self.forum.url})
+        if self.category:
+            breadcrumb.append({"name": self.category.title, "url": self.category.url})
+        if self.section:
+            breadcrumb.append({"name": self.section.title, "url": self.section.url})
+        return breadcrumb
+
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
             self.slug = get_slug(self.title, self, OkpForumSection)
