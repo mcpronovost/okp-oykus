@@ -124,7 +124,7 @@ class OkpForumTopic(models.Model):
     class Meta:
         verbose_name = _("Topic")
         verbose_name_plural = _("Topics")
-        ordering = ["-updated_at", "-created_at"]
+        ordering = ["-last_post__updated_at", "-last_post__created_at", "-created_at"]
 
     @cached_property
     def truncated_title(self):

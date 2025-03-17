@@ -12,8 +12,24 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OkpForumTopic
-        fields = ("id", "title", "slug", "url", "author", "total_posts", "last_post")
-        read_only_fields = ("id", "title", "slug", "url", "author", "total_posts", "last_post")
+        fields = (
+            "id",
+            "title",
+            "slug",
+            "url",
+            "author",
+            "total_posts",
+            "last_post",
+        )
+        read_only_fields = (
+            "id",
+            "title",
+            "slug",
+            "url",
+            "author",
+            "total_posts",
+            "last_post",
+        )
 
     def get_queryset(self):
         return OkpForumTopic.objects.section()
@@ -25,7 +41,9 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
         # if obj.user:
         #     author["user"] = OkpUserSerializer(obj.user).data
         if obj.character:
-            author["character"] = OkpGameCharacterAuthorSerializer(obj.character).data
+            author["character"] = OkpGameCharacterAuthorSerializer(
+                obj.character
+            ).data
         return author
 
 
@@ -64,7 +82,9 @@ class OkpForumTopicSerializer(serializers.ModelSerializer):
 
         # Use the view's paginate_data method if available
         if view and hasattr(view, "paginate_data"):
-            paginated_data = view.paginate_data(posts_queryset, page_size, page)
+            paginated_data = view.paginate_data(
+                posts_queryset, page_size, page
+            )
             # Serialize only the results
             paginated_data["results"] = OkpForumTopicPostSerializer(
                 paginated_data["results"], many=True, context=self.context
