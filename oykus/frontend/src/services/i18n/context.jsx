@@ -44,7 +44,7 @@ function I18nProvider({ children }) {
   };
 
   return (
-    <I18nContext.Provider value={{ t, d }}>{children}</I18nContext.Provider>
+    <I18nContext.Provider value={{ lang, t, d }}>{children}</I18nContext.Provider>
   );
 }
 
