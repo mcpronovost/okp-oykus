@@ -17,4 +17,12 @@
       margin: 0;
     }
   }
+
+  &-footer {
+    color: var(--okp-fg-subtle);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    padding: 120px 0;
+  }
 }
