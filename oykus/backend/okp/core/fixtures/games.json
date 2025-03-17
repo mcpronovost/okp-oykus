@@ -15,6 +15,21 @@
     }
   },
   {
+    "model": "okp_game.okpgame",
+    "pk": 2,
+    "fields": {
+      "title": "Hobeon",
+      "slug": "hobeon",
+      "abbr": "H",
+      "founder": "M-C Pronovost",
+      "founder_link": "https://github.com/mcpronovost",
+      "owner": 1,
+      "founded_at": "2018-09-20",
+      "created_at": "2023-01-20T00:00:00Z",
+      "updated_at": "2023-01-20T00:00:00Z"
+    }
+  },
+  {
     "model": "okp_game.okpgamecharacter",
     "pk": 1,
     "fields": {
@@ -37,6 +52,20 @@
       "name": "Seðem Øþornkilpič",
       "slug": "sedem-thornkilpic",
       "abbr": "ST",
+      "is_active": true,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_game.okpgamecharacter",
+    "pk": 3,
+    "fields": {
+      "game": 2,
+      "user": 1,
+      "name": "Fox",
+      "slug": "fox",
+      "abbr": "F",
       "is_active": true,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
