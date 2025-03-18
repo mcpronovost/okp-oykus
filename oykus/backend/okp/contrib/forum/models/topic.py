@@ -155,6 +155,28 @@ class OkpForumTopic(models.Model):
         return breadcrumb
 
     def save(self, *args, **kwargs):
+        is_new = self.pk is None
+
+        # Set slug
         if self.is_slug_auto:
             self.slug = get_slug(self.title, self, OkpForumSection)
+
+        # Set related fields
+        if self.section:
+            self.category = self.section.category
+            self.forum = self.section.category.forum
+            self.game = self.section.category.game
+
         super().save(*args, **kwargs)
+
+        # Update statistics
+        if is_new:
+            self.section.total_topics = self.section.topics.count()
+            self.section.last_post = self.last_post
+            self.section.save(update_fields=["total_topics", "last_post"])
+            self.category.total_topics = self.category.topics.count()
+            self.category.last_post = self.last_post
+            self.category.save(update_fields=["total_topics", "last_post"])
+            self.forum.total_topics = self.forum.topics.count()
+            self.forum.last_post = self.last_post
+            self.forum.save(update_fields=["total_topics", "last_post"])

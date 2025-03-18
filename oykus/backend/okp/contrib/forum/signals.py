@@ -1,7 +1,33 @@
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
-from okp.contrib.forum.models import OkpForumPost
+from okp.contrib.forum.models import OkpForumTopic, OkpForumPost
+
+
+@receiver(post_delete, sender=OkpForumTopic)
+def update_statistics_on_topic_delete(sender, instance, **kwargs):
+    """
+    Update statistics for section, category and forum when a topic is deleted.
+    """
+    # Get related objects
+    section = instance.section
+    category = instance.category
+    forum = instance.forum
+
+    # Update section statistics
+    if section:
+        section.total_topics = section.topics.count()
+        section.save(update_fields=["total_topics"])
+
+    # Update category statistics
+    if category:
+        category.total_topics = category.topics.count()
+        category.save(update_fields=["total_topics"])
+
+    # Update forum statistics
+    if forum:
+        forum.total_topics = forum.topics.count()
+        forum.save(update_fields=["total_topics"])
 
 
 @receiver(post_delete, sender=OkpForumPost)
