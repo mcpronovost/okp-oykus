@@ -2,5 +2,8 @@
 @mixin card {
   background-color: var(--okp-card-bg);
   border-radius: var(--okp-radius);
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.05);
+  outline: 1px solid var(--okp-bg);
   color: var(--okp-card-fg);
+  position: relative;
 }

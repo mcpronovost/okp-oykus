@@ -1,8 +1,7 @@
+@use "../core/_card" as card;
+
 .okp-forum-post-card {
-  background-color: var(--okp-card-bg);
-  border-radius: 8px;
-  color: var(--okp-card-fg);
-  position: relative;
+  @include card.card;
 
   &-header {
     display: flex;

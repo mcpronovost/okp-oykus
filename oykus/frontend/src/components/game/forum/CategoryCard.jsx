@@ -1,5 +1,6 @@
 import "@/assets/styles/forum/categoryCard.scss";
 import { OkpHeading } from "@/components/common";
+import { OkpBreadcrumb } from "@/components/ui";
 import { OkpGameForumSectionList } from "@/components/game";
 
 export default function OkpGameForumCategoryCard({ category, tag = "section", standalone = false }) {
@@ -10,6 +11,7 @@ export default function OkpGameForumCategoryCard({ category, tag = "section", st
   return (
     <OkpCategoryTag className="okp-forum-category-card" key={category.id}>
       <OkpHeading title={category.title} link={standalone ? null : category.url} className="okp-forum-category-title" />
+      {standalone && <OkpBreadcrumb breadcrumb={category.breadcrumb} />}
       <OkpGameForumSectionList sections={category.sections} className="okp-forum-category-sections" />
     </OkpCategoryTag>
   );

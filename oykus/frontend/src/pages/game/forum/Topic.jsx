@@ -39,13 +39,7 @@ export default function OkpForumTopic({ data }) {
             {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
 
             {/* Permissions Section */}
-            <section
-              className="okp-permissions"
-              aria-labelledby="permissions-heading"
-            >
-              <h2 id="permissions-heading" className="sr-only">
-                Permissions
-              </h2>
+            <section className="okp-permissions">
               <p>You can reply to this topic.</p>
               <p>Editing is allowed for 15 minutes after posting.</p>
             </section>
