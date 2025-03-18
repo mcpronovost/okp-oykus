@@ -13,7 +13,7 @@ export default function OkpAvatar({
   return (
     <div
       className={`okp-avatar ${className}`}
-      style={{ width: `${size}px`, height: `${size}px` }}
+      style={{ width: `${size}px`, height: `${size}px`, padding: `${stroke}px` }}
     >
       <figure
         aria-hidden="true"

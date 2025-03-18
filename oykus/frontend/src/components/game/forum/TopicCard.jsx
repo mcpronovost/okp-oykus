@@ -20,7 +20,7 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
         <header className="okp-forum-topic-card-header">
           <OkpBanner
             src={topic.author?.character?.avatar}
-            fallback={topic.author?.character?.abbr}
+            alt={topic.author?.character?.abbr}
             size={80}
             className="okp-forum-topic-card-header-banner"
           />

@@ -1,0 +1,85 @@
+.okp-button {
+  border-radius: var(--okp-radius);
+  font-family: var(--okp-font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  height: auto;
+  position: relative;
+
+  &-variant {
+    &-default {
+      background: transparent;
+      border-width: 0;
+      border-style: solid;
+      color: var(--okp-card-fg-subtle);
+    }
+
+    &-outline {
+      background: transparent !important;
+      border-width: 1px;
+      border-style: solid;
+      color: var(--okp-card-fg-subtle);
+    }
+  }
+
+  &-colour {
+    &-default {
+      background-color: color-mix(in srgb, var(--okp-card-bg) 50%, var(--okp-card-bg));
+      border-color: color-mix(in srgb, var(--okp-card-fg-subtle) 50%, var(--okp-card-bg));
+      color: var(--okp-card-fg-subtle);
+    }
+
+    &-primary {
+      background-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
+      border-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
+      color: var(--okp-primary);
+    }
+
+    &-success {
+      background-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
+      border-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
+      color: var(--okp-success);
+    }
+
+    &-warning {
+      background-color: color-mix(in srgb, var(--okp-warning) 50%, var(--okp-card-bg));
+      border-color: color-mix(in srgb, var(--okp-warning) 50%, var(--okp-card-bg));
+      color: var(--okp-warning);
+    }
+
+    &-error {
+      background-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
+      border-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
+      color: var(--okp-error);
+    }
+  }
+
+  &-size {
+    &-default {
+      font-size: 1rem;
+      line-height: 1;
+      padding: 16px 24px;
+    }
+
+    &-small {
+      font-size: 0.875rem;
+      line-height: 1;
+      padding: 8px 12px;
+    }
+  }
+
+  &-content {
+    filter: brightness(1.4);
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+}

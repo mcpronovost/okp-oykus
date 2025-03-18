@@ -49,6 +49,13 @@ const ROUTES = {
       },
     },
   },
+  ui: {
+    component: () => import("@/pages/Ui.jsx"),
+    paths: {
+      en: "ui",
+      fr: "ui",
+    },
+  },
 };
 
 export default ROUTES;

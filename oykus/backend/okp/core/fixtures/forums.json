@@ -8,6 +8,9 @@
       "slug": "oykus",
       "is_active": true,
       "is_visible": true,
+      "total_posts": 6,
+      "total_topics": 5,
+      "last_post": 6,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
     }
@@ -21,6 +24,9 @@
       "slug": "hobeon",
       "is_active": true,
       "is_visible": true,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
     }
@@ -34,6 +40,9 @@
       "title": "Category 1",
       "slug": "category-1",
       "is_visible": true,
+      "total_posts": 6,
+      "total_topics": 5,
+      "last_post": 6,
       "order": 1,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
@@ -48,6 +57,9 @@
       "title": "Category 2",
       "slug": "category-2",
       "is_visible": true,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
       "order": 2,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
@@ -63,6 +75,13 @@
       "title": "Section 1",
       "slug": "section-1",
       "is_visible": true,
+      "flex": 25,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 6,
+      "total_topics": 5,
+      "last_post": 6,
       "order": 1,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
@@ -78,7 +97,124 @@
       "title": "Section 2",
       "slug": "section-2",
       "is_visible": true,
+      "flex": 25,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
       "order": 2,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_forum.okpforumsection",
+    "pk": 3,
+    "fields": {
+      "game": 1,
+      "forum": 1,
+      "category": 1,
+      "title": "Section 3",
+      "slug": "section-3",
+      "is_visible": true,
+      "flex": 25,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
+      "order": 3,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_forum.okpforumsection",
+    "pk": 4,
+    "fields": {
+      "game": 1,
+      "forum": 1,
+      "category": 1,
+      "title": "Section 4",
+      "slug": "section-4",
+      "is_visible": true,
+      "flex": 25,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
+      "order": 4,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_forum.okpforumsection",
+    "pk": 5,
+    "fields": {
+      "game": 1,
+      "forum": 1,
+      "category": 1,
+      "title": "Section 5",
+      "slug": "section-5",
+      "is_visible": true,
+      "flex": 50,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
+      "order": 5,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_forum.okpforumsection",
+    "pk": 6,
+    "fields": {
+      "game": 1,
+      "forum": 1,
+      "category": 1,
+      "title": "Section 6",
+      "slug": "section-6",
+      "is_visible": true,
+      "flex": 50,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
+      "order": 6,
+      "created_at": "2024-02-20T00:00:00Z",
+      "updated_at": "2024-02-20T00:00:00Z"
+    }
+  },
+  {
+    "model": "okp_forum.okpforumsection",
+    "pk": 7,
+    "fields": {
+      "game": 1,
+      "forum": 1,
+      "category": 1,
+      "title": "Section 7",
+      "slug": "section-7",
+      "is_visible": true,
+      "flex": 100,
+      "is_show_last_post": true,
+      "colour": null,
+      "cover": null,
+      "total_posts": 0,
+      "total_topics": 0,
+      "last_post": null,
+      "order": 7,
       "created_at": "2024-02-20T00:00:00Z",
       "updated_at": "2024-02-20T00:00:00Z"
     }

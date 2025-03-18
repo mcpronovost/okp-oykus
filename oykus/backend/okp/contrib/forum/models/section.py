@@ -66,6 +66,12 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
         verbose_name=_("Auto-Generate Slug"),
         default=True,
     )
+    # Flags
+    is_visible = models.BooleanField(
+        verbose_name=_("Is Visible"),
+        default=True,
+        help_text=_("Whether the section is visible to users."),
+    )
     # Appearance
     flex = models.PositiveSmallIntegerField(
         verbose_name=_("Flex"),
@@ -94,12 +100,6 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
             okp_image_size_validator,
             FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "webp"]),
         ],
-    )
-    # Flags
-    is_visible = models.BooleanField(
-        verbose_name=_("Is Visible"),
-        default=True,
-        help_text=_("Whether the section is visible to users."),
     )
     # Statistics
     total_posts = models.IntegerField(

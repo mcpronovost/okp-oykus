@@ -11,6 +11,7 @@
     background-color: var(--okp-card-bg-subtle);
     border-radius: 50%;
     box-sizing: content-box;
+    // box-shadow: 0 0 1px 8px var(--okp-card-bg);
     outline: 8px solid var(--okp-card-bg);
     color: var(--okp-card-fg-subtle);
     overflow: hidden;
@@ -25,6 +26,7 @@
   }
 
   &-fallback {
+    font-family: var(--okp-font-family-heading);
     font-size: max(1rem, 1.23rem + 2cqi);
     font-weight: 600;
     line-height: 1;
