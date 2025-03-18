@@ -8,7 +8,7 @@ export default function OkpButton({
   className = "",
 }) {
   const variants = ["default", "outline"];
-  const colours = ["default", "primary", "success", "warning", "error"];
+  const colours = ["default", "primary", "success", "error", "warning"];
   const sizes = ["default", "small"];
 
   const variantClass = variants.includes(variant) ? `okp-button-variant-${variant}` : "okp-button-variant-default";

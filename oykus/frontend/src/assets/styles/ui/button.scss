@@ -1,57 +1,63 @@
 .okp-button {
+  --okp-button-bg-opacity: 100%;
+  --okp-button-bg-plain: var(--okp-card-bg);
+  --okp-button-bg: color-mix(in srgb, var(--okp-button-bg-plain) var(--okp-button-bg-opacity), transparent);
+  --okp-button-border-width: 0;
+  --okp-button-border-style: solid;
+  --okp-button-border-color: var(--okp-card-fg-subtle);
+  --okp-button-color: var(--okp-card-fg-subtle);
+
+  background-color: var(--okp-button-bg);
+  border-width: var(--okp-button-border-width);
+  border-style: var(--okp-button-border-style);
+  border-color: var(--okp-button-border-color);
   border-radius: var(--okp-radius);
+  color: var(--okp-button-color);
   font-family: var(--okp-font-family);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1;
   height: auto;
   position: relative;
+  padding: 16px 24px;
 
   &-variant {
     &-default {
-      background: transparent;
-      border-width: 0;
-      border-style: solid;
-      color: var(--okp-card-fg-subtle);
+      --okp-button-bg-opacity: 100%;
+      --okp-button-border-width: 0;
+      --okp-button-border-style: solid;
     }
 
     &-outline {
-      background: transparent !important;
-      border-width: 1px;
-      border-style: solid;
-      color: var(--okp-card-fg-subtle);
+      --okp-button-bg-opacity: 10%;
+      --okp-button-border-width: 1px;
+      --okp-button-border-style: solid;
     }
   }
 
   &-colour {
     &-default {
-      background-color: color-mix(in srgb, var(--okp-card-bg) 50%, var(--okp-card-bg));
-      border-color: color-mix(in srgb, var(--okp-card-fg-subtle) 50%, var(--okp-card-bg));
-      color: var(--okp-card-fg-subtle);
+      --okp-button-bg-plain: color-mix(in srgb, var(--okp-card-bg) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--okp-card-fg-subtle) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--okp-card-fg-subtle);
     }
 
     &-primary {
-      background-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
-      border-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
-      color: var(--okp-primary);
+      --okp-button-bg-plain: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--okp-primary);
     }
 
     &-success {
-      background-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
-      border-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
-      color: var(--okp-success);
-    }
-
-    &-warning {
-      background-color: color-mix(in srgb, var(--okp-warning) 50%, var(--okp-card-bg));
-      border-color: color-mix(in srgb, var(--okp-warning) 50%, var(--okp-card-bg));
-      color: var(--okp-warning);
+      --okp-button-bg-plain: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--okp-success);
     }
 
     &-error {
-      background-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
-      border-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
-      color: var(--okp-error);
+      --okp-button-bg-plain: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--okp-error);
     }
   }
 

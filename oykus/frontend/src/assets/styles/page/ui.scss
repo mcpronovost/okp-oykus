@@ -12,4 +12,11 @@
   article {
     margin: 32px 0;
   }
+
+  &-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
