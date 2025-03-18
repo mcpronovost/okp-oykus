@@ -2,10 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
-## What's Changed
+## [v0.2.0] - 2025-03-18
 
 ### Added
 
+- Add breadcrumb to category serializer and update related components
+- Add django-colorfield
+- Add OkpGameUserAuthorSerializer and update imports in forum serializers
+- Add OkpLink component for improved navigation consistency
+- Add footer to OkpGameLayout
+- Add breadcrumb functionality to forum models and serializers
+- Add OkpForumTopicPostSerializer and update serializers for forum posts
+- Add lucide-react
+- Add user and character fields to OkpForumTopic model and update related serializers
+- Add forum topic and list styles, and update component structure
+- Add game and forum components with initial data handling
+- Add forum game routing and statistics management
+- Add OkpPageView for dynamic context handling
+- Add forum topic and post management features
+- Add OkpErrorBoundary component for error handling in App
 - Add navigation structure for admin interface
 - Add initial forum module with models, admin interfaces, and migrations
 - Add initial game module with models, admin, and configuration
@@ -18,12 +33,35 @@ All notable changes to this project will be documented in this file.
 
 ### Refactored
 
+- Refactor template and settings for improved frontend integration
+- Refactor data handling in game components to improve robustness
+- Refactor forum components for game integration
+- Refactor forum admin and model structures for improved title handling
+- Refactor internationalization and routing components
+- Refactor forum module to replace 'Message' with 'Post'
 - Refactor form components and update styles
 - Refactor App component to use dynamic routing with lazy loading and Loading component
 - Refactor frontend from Expo to Vite
 
 ### Changed
 
+- Update category components
+- Update game admin and models, add OkpGameTheme support
+- Update OkpBanner style
+- Update lastpost button style
+- Update topic ordering and format serializer fields
+- Update i18n context to include language in provider value.
+- Update serializers to include read-only fields and enhance game model relationships
+- Update forum fixtures and enhance UI components
+- Update fixtures
+- Update "go to last post" button style
+- Clean
+- Enhance OkpAvatar component and styles
+- Update URL handling in OkpTopic component to use replaceState for better navigation
+- Update OkpOrderableMixin to enforce order field constraints and improve order assignment logic
+- Update forum API views and pagination system
+- Update forum and game modules with new features and improvements
+- Enhance forum module with new post management features
 - Update styles and structure of Topic component
 - Update HTML language to French and change title to 'Oykus', modify root div ID to 'okp'
 - Change HTML language attribute to French and update root div ID to 'okp'
@@ -35,6 +73,8 @@ All notable changes to this project will be documented in this file.
 - Bump isort from 6.0.0 to 6.0.1 in /oykus/backend
 - Bump rpds-py from 0.22.3 to 0.23.1 in /oykus/backend
 - Bump pytest from 8.3.4 to 8.3.5 in /oykus/backend
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.1.4...v0.2.0
 
 ## [v0.1.4] - 2025-02-22
 
