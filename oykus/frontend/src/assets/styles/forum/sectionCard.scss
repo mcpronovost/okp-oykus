@@ -1,9 +1,16 @@
 @use "../core/_card" as card;
 
 .okp-forum-section-card {
+  text-align: center;
   display: flex;
   flex: 1 1 100%;
+  position: relative;
   padding: 12px;
+
+  &.okp-flex-25 {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
 
   &.okp-flex-50 {
     flex-basis: 50%;
@@ -22,6 +29,8 @@
 
   &-box {
     @include card.card;
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,5 +38,127 @@
     width: 100%;
     height: 100%;
     padding: 12px;
+  }
+
+  &-banner {
+    border-radius: var(--okp-radius);
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05;
+
+    &-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+    }
+  }
+
+  &-header {
+    width: 100%;
+
+    &-title {
+      font-family: var(--okp-font-family-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      text-shadow: 0 0 3px var(--okp-card-bg);
+      position: relative;
+      z-index: 1;
+      padding: 6px 0;
+
+      &-link {
+        color: var(--okp-link);
+        display: block;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  &-lastpost {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 6px 0 12px;
+
+    &-goto {
+      background-color: var(--okp-card-bg-subtle);
+      border: 3px solid var(--okp-card-bg);
+      border-radius: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 64px;
+      left: calc(50% + 16px);
+
+      &-link {
+        border-radius: 50%;
+        font-size: 16px;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &-footer {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    &-lastpost {
+      color: var(--okp-card-fg-subtle);
+      font-size: 0.8rem;
+      line-height: 1.2;
+      text-shadow: 0 0 3px var(--okp-card-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      &-link {
+        font-size: 0.9rem;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: opacity 0.3s;
+        max-width: 100%;
+        margin-bottom: 2px;
+      }
+
+      &-date {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 100%;
+        opacity: 0.8;
+      }
+    }
   }
 }

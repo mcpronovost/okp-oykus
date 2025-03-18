@@ -1,10 +1,12 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
-
+from colorfield.fields import ColorField
+from okp.core.fields import OkpImageField
 from okp.core.models import OkpOrderableMixin
 from okp.core.utils import get_slug
+from okp.core.validators import okp_image_size_validator
 from okp.contrib.game.models import OkpGame
 
 from .forum import OkpForum
@@ -70,6 +72,28 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
         default=50,
         validators=[MinValueValidator(1), MaxValueValidator(100)],
         help_text=_("The percentage of the width of the section in index and category pages."),
+    )
+    is_show_last_post = models.BooleanField(
+        verbose_name=_("Show Last Post"),
+        default=True,
+        help_text=_("Whether to show the last post of the section in index and category pages."),
+    )
+    colour = ColorField(
+        verbose_name=_("Colour"),
+        blank=True,
+        null=True,
+    )
+    cover = OkpImageField(
+        verbose_name=_("Cover"),
+        upload_to="forum/sections/cover",
+        max_width=1024,
+        max_height=256,
+        blank=True,
+        null=True,
+        validators=[
+            okp_image_size_validator,
+            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "webp"]),
+        ],
     )
     # Flags
     is_visible = models.BooleanField(

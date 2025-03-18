@@ -1,16 +1,28 @@
 .okp-avatar {
-  background-color: var(--okp-card-bg-subtle);
-  outline: 8px solid var(--okp-card-bg);
-  border-radius: 50%;
   box-sizing: content-box;
-  color: var(--okp-card-fg-subtle);
-  overflow: hidden;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  container-type: size;
+  padding: 8px;
+
+  &-figure {
+    background-color: var(--okp-card-bg-subtle);
+    border-radius: 50%;
+    box-sizing: content-box;
+    outline: 8px solid var(--okp-card-bg);
+    color: var(--okp-card-fg-subtle);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    container-type: size;
+  }
 
   &-fallback {
     font-size: max(1rem, 1.23rem + 2cqi);
@@ -27,7 +39,7 @@
     user-select: none;
   }
 
-  img {
+  &-image {
     width: 100%;
     height: 100%;
     object-fit: cover;

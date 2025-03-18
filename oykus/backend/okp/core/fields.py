@@ -6,14 +6,16 @@ from django.db.models import ImageField
 
 
 class OkpImageField(ImageField):
-    def __init__(self, *args, max_width=None, max_height=None, **kwargs):
+    def __init__(self, *args, max_width=None, max_height=None, format="WEBP", **kwargs):
         self.max_width = max_width
         self.max_height = max_height
+        self.format = format
         super().__init__(*args, **kwargs)
 
     def pre_save(self, model_instance, add):
         file = getattr(model_instance, self.attname)
-        filename = f"{model_instance.id}-{str(uuid.uuid4())[:8]}.png"
+        extension = self.format.lower()
+        filename = f"{model_instance.id}-{str(uuid.uuid4())[:8]}.{extension}"
         if file and not file._committed:  # pylint: disable=protected-access
             # Open image
             pil_image = Image.open(file)
@@ -27,14 +29,10 @@ class OkpImageField(ImageField):
                 # First, resize the image so the smaller dimension
                 # matches the target
                 orig_width, orig_height = pil_image.size
-                ratio = max(
-                    self.max_width / orig_width, self.max_height / orig_height
-                )
+                ratio = max(self.max_width / orig_width, self.max_height / orig_height)
                 new_width = int(orig_width * ratio)
                 new_height = int(orig_height * ratio)
-                pil_image = pil_image.resize(
-                    (new_width, new_height), Image.Resampling.LANCZOS
-                )
+                pil_image = pil_image.resize((new_width, new_height), Image.Resampling.LANCZOS)
 
                 # Then crop from center to target dimensions
                 left = (new_width - self.max_width) // 2
@@ -45,7 +43,7 @@ class OkpImageField(ImageField):
 
             # Save the image
             buffer = io.BytesIO()
-            pil_image.save(buffer, format="PNG", optimize=True)
+            pil_image.save(buffer, format=self.format, optimize=True, lossless=True)
             buffer.seek(0)
 
             # Update the file

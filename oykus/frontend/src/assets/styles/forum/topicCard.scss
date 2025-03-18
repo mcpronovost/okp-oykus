@@ -51,7 +51,7 @@
 
     &-avatar {
       position: absolute;
-      top: -8px;
+      top: -16px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -90,7 +90,7 @@
       width: 100%;
 
       &-link {
-        color: var(--okp-primary);
+        color: var(--okp-link);
         font-size: 1rem;
         font-weight: 600;
         line-height: 1.2;
@@ -101,7 +101,6 @@
         transition: opacity 0.3s;
 
         &:hover {
-          color: var(--okp-primary);
           opacity: 0.6;
         }
 

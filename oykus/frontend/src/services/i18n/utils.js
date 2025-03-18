@@ -37,9 +37,9 @@ export const loadTranslations = async (lang = "fr") => {
 
 export const getDate = (
   value,
+  show = "full",
   lang = "fr",
-  tz = "America/Toronto",
-  show = "full"
+  tz = "America/Toronto"
 ) => {
   if (lang === "en") lang = "en-CA";
   let d = !!value ? new Date(value) : new Date(new Date().toString());

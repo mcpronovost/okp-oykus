@@ -39,11 +39,11 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
           <h3 className="okp-forum-topic-card-header-title">
             <OkpLink href={topic.url} className="okp-forum-topic-card-header-title-link">{topic.title}</OkpLink>
           </h3>
-          <p className="okp-forum-topic-card-header-lastpost">
+          <div className="okp-forum-topic-card-header-lastpost">
             <OkpLink href={`${topic.url}?page=last`} className="okp-forum-topic-card-header-lastpost-link" aria-label={t("Go to the last post")} title={t("Go to the last post")}>
               <ChevronLast size={16} className="okp-forum-topic-card-header-lastpost-icon" />
             </OkpLink>
-          </p>
+          </div>
         </header>
         <footer className="okp-forum-topic-card-footer">
           <div className="okp-forum-topic-card-footer-info">

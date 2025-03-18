@@ -64,7 +64,7 @@ class OkpForumSectionAdmin(ModelAdmin):
         (
             _("Appearance"),
             {
-                "fields": ("flex",),
+                "fields": ("flex", "is_show_last_post", "colour", "cover"),
             },
         ),
         (

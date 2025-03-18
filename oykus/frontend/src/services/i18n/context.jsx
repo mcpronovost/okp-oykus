@@ -39,8 +39,8 @@ function I18nProvider({ children }) {
     return key;
   };
 
-  const d = (value, toLang = lang, tz = "America/Toronto", show = "full") => {
-    return getDate(value, toLang, tz, show);
+  const d = (value, show = "full", toLang = lang, tz = "America/Toronto") => {
+    return getDate(value, show, toLang, tz);
   };
 
   return (
