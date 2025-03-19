@@ -1,5 +1,6 @@
 import "@/assets/styles/forum/postCard.scss";
 import { useI18n } from "@/services/i18n";
+import { okpCode } from "@/utils";
 import { OkpAvatar, OkpBanner, OkpLink } from "@/components/ui";
 
 export default function OkpGameForumPostCard({ post, isLast }) {
@@ -30,14 +31,14 @@ export default function OkpGameForumPostCard({ post, isLast }) {
               {post.author?.character?.name ? (
                 <OkpLink href="#">{post.author?.character?.name}</OkpLink>
               ) : (
-                t("Unknown")
+                t("an unknown")
               )}
             </strong>
           </p>
         </div>
         <div className="okp-forum-post-card-header-author">
           <strong>
-            {t("by")} {post.author?.user?.name ? <OkpLink href="#">{post.author?.user?.name}</OkpLink> : t("Unknown")}
+            {post.author?.user?.name ? <OkpLink href="#">{`${t("by")} ${post.author?.user?.name}`}</OkpLink> : t("by an unknown")}
           </strong>
           <span>
             ,{" "}
@@ -49,7 +50,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
       </header>
       <section aria-labelledby="post-1" className="okp-forum-post-card-content">
         <div className="okp-forum-post-card-content-message">
-          <div dangerouslySetInnerHTML={{ __html: post.message }} />
+          <div dangerouslySetInnerHTML={{ __html: okpCode(post.message) }} />
         </div>
       </section>
       <footer className="okp-forum-post-card-footer"></footer>

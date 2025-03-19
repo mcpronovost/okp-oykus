@@ -13,6 +13,7 @@ export default function OkpButton({
   isLoading = false,
   isDisabled = false,
   className = "",
+  ...props
 }) {
   const variants = ["default", "outline", "soft"];
   const colours = [
@@ -43,6 +44,7 @@ export default function OkpButton({
         isLoading ? "okp-button-loading" : ""
       }`}
       style={{ width: block ? "100%" : "auto", borderStyle: dashed ? "dashed" : "solid" }}
+      {...props}
     >
       <div className="okp-button-content">
         <span className="okp-button-content-prepend">{prepend}</span>

@@ -18,9 +18,9 @@ export default function OkpGameLayout({ children, data }) {
       <section className="okp-game">
         {/* Game Header */}
         <header className="okp-game-header">
-          <h1 className="okp-game-header-title">
+          <p className="okp-game-header-title">
             <OkpLink href={`/g/${data.slug}/`}>{data.title}</OkpLink>
-          </h1>
+          </p>
         </header>
 
         {/* Game Content */}

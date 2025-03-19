@@ -1,15 +1,15 @@
 import "@/assets/styles/form/form.scss";
 import { Form } from "radix-ui";
 
-export function OkpForm({ children, className, onSubmit }) {
+export function OkpForm({ children, submit, className = "" }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(e);
+    submit(e);
   };
 
   return (
-    <Form.Root className={`okp-form ${className}`} onSubmit={handleSubmit}>
+    <form className={`okp-form ${className}`} onSubmit={handleSubmit}>
       {children}
-    </Form.Root>
+    </form>
   );
 }

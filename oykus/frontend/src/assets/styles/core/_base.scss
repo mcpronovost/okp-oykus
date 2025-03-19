@@ -1,14 +1,14 @@
 :root {
-  --okp-primary: #d3b017;
-  --okp-secondary: #808080;
-  --okp-success: #338a36;
-  --okp-error: #af3333;
+  --c-primary: #d3b017;
+  --c-secondary: #808080;
+  --c-success: #338a36;
+  --c-error: #af3333;
 
   --okp-bg: #212121;
   --okp-fg: #A7A8AA;
   --okp-fg-subtle: #787979;
 
-  --okp-link: var(--okp-primary);
+  --okp-link: var(--c-primary);
 
   --okp-card-bg: #191919;
   --okp-card-bg-subtle: #1E1E1E;

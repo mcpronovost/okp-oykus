@@ -1,4 +1,5 @@
 import { Form } from "radix-ui";
+import { OkpButton } from "@/components/ui";
 
 export function OkpActions({ children, ...props }) {
   return (
@@ -11,15 +12,13 @@ export function OkpActions({ children, ...props }) {
 export function OkpSubmit({ label, ...props }) {
   return (
     <Form.Submit {...props} asChild>
-      <button className="okp-form-actions-submit">
-        {label}
-      </button>
+      <OkpButton type="submit" colour="primary" {...props}>{label}</OkpButton>
     </Form.Submit>
   );
 }
 
 export function OkpReset({ label, ...props }) {
   return (
-    <button className="okp-form-actions-reset" type="reset" {...props}>{label}</button>
+    <OkpButton type="reset" variant="outline" {...props}>{label}</OkpButton>
   );
 }

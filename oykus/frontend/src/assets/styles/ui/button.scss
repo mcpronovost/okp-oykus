@@ -21,6 +21,7 @@
   display: inline-block;
   height: auto;
   position: relative;
+  cursor: default;
   padding: 12px 24px;
 
   &-variant {
@@ -48,27 +49,27 @@
     }
 
     &-primary {
-      --okp-button-bg-plain: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
-      --okp-button-border-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
-      --okp-button-color: var(--okp-primary);
+      --okp-button-bg-plain: color-mix(in srgb, var(--c-primary) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--c-primary) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--c-primary);
     }
 
     &-secondary {
-      --okp-button-bg-plain: color-mix(in srgb, var(--okp-secondary) 50%, var(--okp-card-bg));
-      --okp-button-border-color: color-mix(in srgb, var(--okp-secondary) 50%, var(--okp-card-bg));
-      --okp-button-color: var(--okp-secondary);
+      --okp-button-bg-plain: color-mix(in srgb, var(--c-secondary) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--c-secondary) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--c-secondary);
     }
 
     &-success {
-      --okp-button-bg-plain: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
-      --okp-button-border-color: color-mix(in srgb, var(--okp-success) 50%, var(--okp-card-bg));
-      --okp-button-color: var(--okp-success);
+      --okp-button-bg-plain: color-mix(in srgb, var(--c-success) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--c-success) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--c-success);
     }
 
     &-error {
-      --okp-button-bg-plain: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
-      --okp-button-border-color: color-mix(in srgb, var(--okp-error) 50%, var(--okp-card-bg));
-      --okp-button-color: var(--okp-error);
+      --okp-button-bg-plain: color-mix(in srgb, var(--c-error) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--c-error) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--c-error);
     }
   }
 
@@ -154,13 +155,18 @@
     }
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     opacity: 0.8;
     cursor: pointer;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     opacity: 0.6;
     transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
   }
 }

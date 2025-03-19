@@ -6,8 +6,8 @@ export default function OkpGameForumPostList({ posts, className = "" }) {
   const postListMemo = useMemo(() => {
     if (!posts) return null;
 
-    return posts.results.map((post, index) => (
-      <OkpGameForumPostCard key={post.id} post={post} isLast={index === posts.results.length - 1} />
+    return posts.map((post, index) => (
+      <OkpGameForumPostCard key={post.id} post={post} isLast={index === posts.length - 1} />
     ));
   }, [posts]);
 

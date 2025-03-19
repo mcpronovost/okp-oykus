@@ -16,7 +16,7 @@
       &::after,
       &::before {
         content: "";
-        border: 2px solid var(--okp-secondary);
+        border: 2px solid var(--c-secondary);
         box-sizing: border-box;
         width: 48px;
         height: 48px;
@@ -27,14 +27,14 @@
       }
 
       &::after {
-        border-color: var(--okp-primary);
+        border-color: var(--c-primary);
         animation-delay: 1s;
       }
     }
 
     &.okp-layers {
-      background: var(--okp-secondary);
-      color: var(--okp-primary);
+      background: var(--c-secondary);
+      color: var(--c-primary);
       position: relative;
       width: 48px;
       height: 48px;
@@ -43,7 +43,7 @@
 
       &:after {
         content: "";
-        background-color: var(--okp-primary);
+        background-color: var(--c-primary);
         inset: 0;
         position: absolute;
         opacity: 0.5;
@@ -53,7 +53,7 @@
 
     &.okp-circles {
       border: 3px solid;
-      border-color: var(--okp-primary) var(--okp-primary) transparent
+      border-color: var(--c-primary) var(--c-primary) transparent
         transparent;
       border-radius: 50%;
       box-sizing: border-box;
@@ -67,8 +67,8 @@
       &::before {
         content: "";
         border: 3px solid;
-        border-color: transparent transparent var(--okp-secondary)
-          var(--okp-secondary);
+        border-color: transparent transparent var(--c-secondary)
+          var(--c-secondary);
         border-radius: 50%;
         box-sizing: border-box;
         position: absolute;
@@ -83,7 +83,7 @@
         animation: okploadingtriplerotationBack 0.5s linear infinite;
       }
       &::before {
-        border-color: var(--okp-primary) var(--okp-primary) transparent
+        border-color: var(--c-primary) var(--c-primary) transparent
           transparent;
         width: 32px;
         height: 32px;

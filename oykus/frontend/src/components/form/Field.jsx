@@ -1,19 +1,30 @@
 import { Form } from "radix-ui";
+import { OkpSelect } from "@/components/form";
 
-export function OkpField({ name, label, errors, children }) {
+export function OkpField({ name, label, input, value, onChange, errors, required = false, children, ...props }) {
   return (
-    <Form.Field className="okp-form-field" name={name}>
+    <div className="okp-form-field" name={name}>
       <div className="okp-form-label-and-message">
-        <Form.Label className="okp-form-label">{label}</Form.Label>
-        {errors?.length > 0 && errors.map((error) => (
-          <Form.Message key={error.match} className="okp-form-message" match={error.match}>
-            {error.message}
-          </Form.Message>
-        ))}
+        <label htmlFor={name} className="okp-form-label">{label}</label>
+        {errors?.length > 0 && (
+          <div className="okp-form-errors">
+            {errors.map((error, index) => (
+              <p key={index} className="okp-form-errors-message">
+                {error}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
-      <Form.Control asChild>
-        {children}
-      </Form.Control>
-    </Form.Field>
+      <div>
+        {input === "textarea" ? (
+          <textarea name={name} required={required} value={value} onChange={onChange} className="okp-form-textarea" {...props} />
+        ) : input === "select" ? (
+          <OkpSelect name={name} required={required} value={value} onChange={onChange} className="okp-form-select" {...props} />
+        ) : (
+          children
+        )}
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,9 @@
+import "@/assets/styles/forum/topic.scss";
 import { useEffect } from "react";
 import { OkpGameLayout, OkpGameForumPostList } from "@/components/game";
 import { OkpHeading } from "@/components/common";
-import { OkpBreadcrumb } from "@/components/ui";
+import { OkpBreadcrumb, OkpCard } from "@/components/ui";
+import OkpGameForumFormNewPost from "@/components/game/forum/forms/NewPost";
 
 export default function OkpForumTopic({ data }) {
   useEffect(() => {
@@ -9,16 +11,19 @@ export default function OkpForumTopic({ data }) {
     const page = urlParams.get("page");
     if (page === "last") {
       const lastPost = document.querySelector(".okp-last");
-      const viewportElement = document.querySelector("#okp-scrollarea .okp-scrollarea-viewport");
+      const viewportElement = document.querySelector(
+        "#okp-scrollarea .okp-scrollarea-viewport"
+      );
 
       if (lastPost && viewportElement) {
         const lastPostRect = lastPost.getBoundingClientRect();
         const viewportRect = viewportElement.getBoundingClientRect();
-        const scrollTop = lastPostRect.top - viewportRect.top + viewportElement.scrollTop;
+        const scrollTop =
+          lastPostRect.top - viewportRect.top + viewportElement.scrollTop;
 
         viewportElement.scrollTo({
           top: scrollTop,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
     }
@@ -29,26 +34,39 @@ export default function OkpForumTopic({ data }) {
       <section className="okp-forum">
         {data?.topic && (
           <section className="okp-forum-topic">
-            <OkpHeading title={data.topic.title} />
+            <OkpHeading title={data.topic.title} tag="h1" />
             <OkpBreadcrumb breadcrumb={data.topic.breadcrumb} />
 
             {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
 
-            <OkpGameForumPostList posts={data.topic.posts} />
+            <OkpGameForumPostList posts={data.topic.posts.results} />
 
             {/* TODO: Add a section for "Reply" and "New Topic" buttons, pagination, etc. */}
 
             {/* Permissions Section */}
-            <section className="okp-permissions">
+            <section className="okp-forum-topic-permissions">
               <p>You can reply to this topic.</p>
               <p>Editing is allowed for 15 minutes after posting.</p>
             </section>
 
+            {/* Reply Form Section */}
+            {data.topic.posts.results?.length > 0 && (
+              <section className="okp-forum-topic-reply">
+                <OkpHeading
+                  title="Reply"
+                  description="You can reply to this topic."
+                />
+                <OkpCard>
+                  <OkpGameForumFormNewPost topicId={data.topic.id} afterSubmit={() => {
+                    window.location.href = `${window.location.pathname}?page=last`;
+                  }} />
+                </OkpCard>
+              </section>
+            )}
+
             {/* Footer Section */}
             <footer>
-              <p>
-                This is a footer.
-              </p>
+              <p>This is a footer.</p>
             </footer>
           </section>
         )}

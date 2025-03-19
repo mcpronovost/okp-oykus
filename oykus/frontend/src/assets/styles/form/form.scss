@@ -22,9 +22,11 @@
     color: var(--okp-card-fg);
   }
 
-  &-message {
-    font-size: 0.875rem;
-    color: #f00;
+  &-errors {
+    &-message {
+      font-size: 0.875rem;
+      color: #f00;
+    }
   }
 
   &-actions {
@@ -51,7 +53,7 @@
     }
 
     &-submit {
-      background-color: var(--okp-primary);
+      background-color: var(--c-primary);
     }
 
     &-reset {

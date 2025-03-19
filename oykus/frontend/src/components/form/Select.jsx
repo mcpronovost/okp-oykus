@@ -15,11 +15,11 @@ export const OkpSelectItem = forwardRef(
   }
 );
 
-export function OkpSelect({ name, placeholder, items, disabled, ...props }) {
+export function OkpSelect({ name, placeholder, items, disabled, value, onChange, ...props }) {
   return (
-    <Select.Root className="okp-select" disabled={disabled || !items ||items?.length === 0} {...props}>
+    <Select.Root className="okp-select" onValueChange={(value) => onChange({target: {name, value}})} disabled={disabled || !items ||items?.length === 0} {...props}>
       <Select.Trigger className="okp-select-trigger">
-        <Select.Value placeholder={placeholder} />
+        <Select.Value placeholder={placeholder} name={name} value={value} onChange={onChange} />
       </Select.Trigger>
       <Select.Portal>
         <Select.Content className="okp-select-content">
