@@ -18,6 +18,8 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
             "slug",
             "url",
             "author",
+            "is_pinned",
+            "is_important",
             "is_locked",
             "total_posts",
             "last_post",
@@ -28,13 +30,12 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
             "slug",
             "url",
             "author",
+            "is_pinned",
+            "is_important",
             "is_locked",
             "total_posts",
             "last_post",
         )
-
-    def get_queryset(self):
-        return OkpForumTopic.objects.section()
 
     def get_author(self, obj):
         if obj.user is None and obj.character is None:

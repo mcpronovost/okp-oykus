@@ -15,12 +15,7 @@ User = get_user_model()
 
 
 class OkpForumTopicManager(models.Manager):
-    def section(self):
-        return self.select_related(
-            "last_post",
-            "last_post__character",
-            "last_post__user",
-        )
+    pass
 
 
 class OkpForumTopic(models.Model):
@@ -96,6 +91,16 @@ class OkpForumTopic(models.Model):
         verbose_name=_("Is Visible"),
         default=True,
         help_text=_("Whether the topic is visible to users."),
+    )
+    is_pinned = models.BooleanField(
+        verbose_name=_("Is Pinned"),
+        default=False,
+        help_text=_("Whether the topic is pinned and will be displayed at the top of the section."),
+    )
+    is_important = models.BooleanField(
+        verbose_name=_("Is Important"),
+        default=False,
+        help_text=_("Whether the topic is important and will be highlighted."),
     )
     is_locked = models.BooleanField(
         verbose_name=_("Is Locked"),

@@ -69,8 +69,12 @@ class OkpGameForumSectionSerializer(OkpGameSerializer):
             OkpForumSectionSerializer,
         )  # noqa
 
-        section = obj.forum.sections.get(pk=self.context["section_id"])
-        return OkpForumSectionSerializer(section).data
+        section = obj.forum.sections.filter(
+            pk=self.context["section_id"]
+        ).first()
+        if section:
+            return OkpForumSectionSerializer(section).data
+        return None
 
 
 class OkpGameForumTopicSerializer(OkpGameSerializer):

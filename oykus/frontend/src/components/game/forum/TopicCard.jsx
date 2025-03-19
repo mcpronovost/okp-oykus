@@ -1,5 +1,5 @@
 import "@/assets/styles/forum/topicCard.scss";
-import { ChevronLast, Clock, Lock, MessagesSquare } from "lucide-react";
+import { ChevronLast, Clock, Lock, MessagesSquare, Pin } from "lucide-react";
 import { useI18n } from "@/services/i18n";
 import { OkpAvatar, OkpBanner, OkpLink } from "@/components/ui";
 
@@ -16,7 +16,7 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
 
   return (
     <article className={`okp-forum-topic-card ${flex}`}>
-      <div className="okp-forum-topic-card-box">
+      <div className={`okp-forum-topic-card-box ${topic.is_important ? "okp-flag-important" : ""}`}>
         <header className="okp-forum-topic-card-header">
           <OkpBanner
             src={topic.author?.character?.avatar}
@@ -45,6 +45,12 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
             </OkpLink>
           </div>
           <div className="okp-forum-topic-card-header-flags">
+            {topic.is_pinned && (
+              <span className="okp-forum-topic-card-header-flags-item">
+                <Pin size={12} className="okp-forum-topic-card-header-flags-item-icon" />
+                <span className="sr-only">{t("Topic is pinned")}</span>
+              </span>
+            )}
             {topic.is_locked && (
               <span className="okp-forum-topic-card-header-flags-item">
                 <Lock size={12} className="okp-forum-topic-card-header-flags-item-icon" />
