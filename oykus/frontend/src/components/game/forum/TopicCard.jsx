@@ -1,5 +1,5 @@
 import "@/assets/styles/forum/topicCard.scss";
-import { ChevronLast, Clock, MessagesSquare } from "lucide-react";
+import { ChevronLast, Clock, Lock, MessagesSquare } from "lucide-react";
 import { useI18n } from "@/services/i18n";
 import { OkpAvatar, OkpBanner, OkpLink } from "@/components/ui";
 
@@ -43,6 +43,14 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
             <OkpLink href={`${topic.url}?page=last`} className="okp-forum-topic-card-header-lastpost-link" aria-label={t("Go to the last post")} title={t("Go to the last post")}>
               <ChevronLast size={16} className="okp-forum-topic-card-header-lastpost-icon" />
             </OkpLink>
+          </div>
+          <div className="okp-forum-topic-card-header-flags">
+            {topic.is_locked && (
+              <span className="okp-forum-topic-card-header-flags-item">
+                <Lock size={12} className="okp-forum-topic-card-header-flags-item-icon" />
+                <span className="sr-only">{t("Topic is locked")}</span>
+              </span>
+            )}
           </div>
         </header>
         <footer className="okp-forum-topic-card-footer">

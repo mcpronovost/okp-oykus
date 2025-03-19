@@ -97,6 +97,11 @@ class OkpForumTopic(models.Model):
         default=True,
         help_text=_("Whether the topic is visible to users."),
     )
+    is_locked = models.BooleanField(
+        verbose_name=_("Is Locked"),
+        default=False,
+        help_text=_("Whether the topic is locked and cannot be replied to."),
+    )
     # Statistics
     total_posts = models.PositiveIntegerField(
         verbose_name=_("Total Posts"),

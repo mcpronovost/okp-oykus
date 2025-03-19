@@ -58,6 +58,7 @@ class OkpForumTopicAdmin(ModelAdmin):
         (_("Flags"), {
             "fields": (
                 "is_visible",
+                "is_locked",
             ),
         }),
         (_("Statistics"), {

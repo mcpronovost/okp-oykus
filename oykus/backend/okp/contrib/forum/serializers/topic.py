@@ -18,6 +18,7 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
             "slug",
             "url",
             "author",
+            "is_locked",
             "total_posts",
             "last_post",
         )
@@ -27,6 +28,7 @@ class OkpForumSectionTopicSerializer(serializers.ModelSerializer):
             "slug",
             "url",
             "author",
+            "is_locked",
             "total_posts",
             "last_post",
         )
@@ -53,8 +55,8 @@ class OkpForumTopicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OkpForumTopic
-        fields = ("id", "title", "slug", "breadcrumb", "posts")
-        read_only_fields = ("id", "title", "slug", "breadcrumb", "posts")
+        fields = ("id", "title", "slug", "breadcrumb", "posts", "is_locked")
+        read_only_fields = ("id", "title", "slug", "breadcrumb", "posts", "is_locked")
 
     def get_breadcrumb(self, obj):
         return obj.breadcrumb

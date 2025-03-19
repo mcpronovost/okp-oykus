@@ -45,12 +45,15 @@ export default function OkpForumTopic({ data }) {
 
             {/* Permissions Section */}
             <section className="okp-forum-topic-permissions">
-              <p>You can reply to this topic.</p>
-              <p>Editing is allowed for 15 minutes after posting.</p>
+              {data.topic.is_locked ? (
+                <p>This topic is locked and cannot be replied to.</p>
+              ) : (
+                <p>You can reply to this topic.</p>
+              )}
             </section>
 
             {/* Reply Form Section */}
-            {data.topic.posts.results?.length > 0 && (
+            {!data.topic.is_locked && data.topic.posts.results?.length > 0 && (
               <section className="okp-forum-topic-reply">
                 <OkpHeading
                   title="Reply"

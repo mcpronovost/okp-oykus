@@ -82,6 +82,28 @@
       }
     }
 
+    &-flags {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+
+      &-item {
+        background-color: var(--okp-card-bg-subtle);
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+
+        &-icon {
+          color: var(--okp-card-fg-subtle);
+        }
+      }
+    }
+
     &-title {
       display: flex;
       flex: 1 1 auto;
