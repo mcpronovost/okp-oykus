@@ -16,6 +16,7 @@ function useApi() {
       const response = await fetch(url, {
         ...options,
         headers,
+        credentials: "include",
       });
 
       if (!response.ok) {

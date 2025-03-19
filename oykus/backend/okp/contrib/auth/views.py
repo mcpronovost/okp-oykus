@@ -4,6 +4,7 @@ from django.utils import timezone
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
+from rest_framework.views import APIView
 from knox.models import get_token_model
 from knox.views import (
     LoginView as KnoxLoginView,
@@ -106,3 +107,19 @@ class OkpAuthRegisterView(OkpAuthLoginView):
             },
             status=HTTP_201_CREATED,
         )
+
+
+class OkpAuthMeView(APIView):
+    """
+    Get the current user
+    """
+
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        return Response(
+            {
+                "user": request.user.id,
+            }
+        )
+

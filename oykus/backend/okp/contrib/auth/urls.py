@@ -5,6 +5,7 @@ from .views import (
     OkpAuthLogoutView,
     OkpAuthLogoutAllView,
     OkpAuthRegisterView,
+    OkpAuthMeView,
 )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path("logout/", OkpAuthLogoutView.as_view(), name="okp_auth_logout"),
     path("logoutall/", OkpAuthLogoutAllView.as_view(), name="okp_auth_logoutall"),
     path("register/", OkpAuthRegisterView.as_view(), name="okp_auth_register"),
+    path("me/", OkpAuthMeView.as_view(), name="okp_auth_me"),
 ]
