@@ -11,33 +11,38 @@
   border-width: var(--okp-button-border-width);
   border-style: var(--okp-button-border-style);
   border-color: var(--okp-button-border-color);
-  border-radius: var(--okp-radius);
+  border-radius: var(--okp-radius-subtle);
   color: var(--okp-button-color);
   font-family: var(--okp-font-family);
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 0;
+  text-align: center;
+  display: inline-block;
   height: auto;
   position: relative;
-  padding: 16px 24px;
+  padding: 12px 24px;
 
   &-variant {
     &-default {
       --okp-button-bg-opacity: 100%;
       --okp-button-border-width: 0;
-      --okp-button-border-style: solid;
     }
 
     &-outline {
       --okp-button-bg-opacity: 10%;
       --okp-button-border-width: 1px;
-      --okp-button-border-style: solid;
+    }
+
+    &-soft {
+      --okp-button-bg-opacity: 50%;
+      --okp-button-border-width: 1px;
     }
   }
 
   &-colour {
     &-default {
-      --okp-button-bg-plain: color-mix(in srgb, var(--okp-card-bg) 50%, var(--okp-card-bg));
+      --okp-button-bg-plain: var(--okp-card-bg);
       --okp-button-border-color: color-mix(in srgb, var(--okp-card-fg-subtle) 50%, var(--okp-card-bg));
       --okp-button-color: var(--okp-card-fg-subtle);
     }
@@ -46,6 +51,12 @@
       --okp-button-bg-plain: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
       --okp-button-border-color: color-mix(in srgb, var(--okp-primary) 50%, var(--okp-card-bg));
       --okp-button-color: var(--okp-primary);
+    }
+
+    &-secondary {
+      --okp-button-bg-plain: color-mix(in srgb, var(--okp-secondary) 50%, var(--okp-card-bg));
+      --okp-button-border-color: color-mix(in srgb, var(--okp-secondary) 50%, var(--okp-card-bg));
+      --okp-button-color: var(--okp-secondary);
     }
 
     &-success {
@@ -65,7 +76,7 @@
     &-default {
       font-size: 1rem;
       line-height: 1;
-      padding: 16px 24px;
+      padding: 12px 24px;
     }
 
     &-small {
@@ -76,7 +87,71 @@
   }
 
   &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     filter: brightness(1.4);
+
+    &-text {
+      white-space: wrap;
+    }
+
+    &-prepend,
+    &-append {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+
+      svg {
+        width: 1em;
+        height: 1em;
+      }
+    }
+
+    &-prepend {
+      margin-right: 8px;
+    }
+
+    &-append {
+      margin-left: 8px;
+    }
+
+    &-loading {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &-icon {
+        animation: spin 1s linear infinite;
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            transform: rotate(-360deg);
+          }
+        }
+      }
+    }
+  }
+
+  &-loading {
+    pointer-events: none;
+
+    .okp-button-content-prepend,
+    .okp-button-content-append,
+    .okp-button-content-text {
+      opacity: 0.2;
+    }
   }
 
   &:hover {

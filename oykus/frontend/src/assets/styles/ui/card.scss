@@ -1,0 +1,7 @@
+@use "../core/_card" as card;
+
+.okp-card {
+  @include card.card;
+
+  padding: 24px;
+}
