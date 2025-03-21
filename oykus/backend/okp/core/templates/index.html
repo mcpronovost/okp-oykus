@@ -1,11 +1,12 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE|default:'fr' }}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% if page_title %}{{ page_title }} - {% endif %}Oykus</title>
+    <meta name="description" content="{{ page_description|default:'Là où tout joueur est à la fois auteur et aventurier.' }}" />
     <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg" />
     <script type="module">
       import RefreshRuntime from "http://localhost:5173/@react-refresh";
