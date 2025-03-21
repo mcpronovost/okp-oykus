@@ -11,10 +11,14 @@ class OkpPageView(TemplateView):
     key = "pk"
     page_title = None
     page_title_field = None
+    page_description = None
+    page_description_field = None
     page_size = 24
+    theme = None
+    theme_field = None
 
     def get_context_data(self, **kwargs):
-        # Get the object dynamically using the model and primary key
+        # Get the object dynamically using the model and specified key
         obj = get_object_or_404(self.model, **{self.key: kwargs[self.key]})
 
         # Add view and request to the serializer context
@@ -28,38 +32,56 @@ class OkpPageView(TemplateView):
 
         # Add the serialized data to the context
         context = super().get_context_data(**kwargs)
-        if "theme" in serialized_data:
-            context["theme"] = serialized_data.pop("theme")
+
+        # Get SEO data
+        context["page_title"] = self.get_page_title(serialized_data)
+        context["page_description"] = self.get_page_description(serialized_data)
+
+        # Get theme
+        context["theme"] = self.get_theme(serialized_data)
+
+        # Add the serialized data to the context
         context["initial_data"] = json.dumps(serialized_data)
-        if self.page_title:
-            context["page_title"] = self.page_title
-        elif self.page_title_field:
-            if "." in self.page_title_field:
-                parts = self.page_title_field.split(".")
-                value = serialized_data
-                for part in parts:
-                    if value is None or not isinstance(value, dict) or part not in value:
-                        value = None
-                        break
-                    value = value[part]
-                context["page_title"] = value
-            else:
-                context["page_title"] = serialized_data.get(self.page_title_field)
+
         return context
 
+    def get_page_title(self, obj):
+        if self.page_title:
+            return self.page_title
+        elif self.page_title_field:
+            return self.get_field_value(obj, self.page_title_field)
+        return None
+
+    def get_page_description(self, obj):
+        if self.page_description:
+            return self.page_description
+        elif self.page_description_field:
+            return self.get_field_value(obj, self.page_description_field)
+        return None
+
+    def get_theme(self, obj):
+        if "theme" in obj:
+            return obj.pop("theme")
+        if self.theme:
+            return self.theme
+        if self.theme_field:
+            return self.get_field_value(obj, self.theme_field)
+        return None
+
+    def get_field_value(self, obj, field):
+        if "." in field:
+            parts = field.split(".")
+            value = obj
+            for part in parts:
+                if value is None or not isinstance(value, dict) or part not in value:
+                    value = None
+                    break
+                value = value[part]
+            return value
+        else:
+            return obj.get(field)
+
     def paginate_data(self, data, page_size=None, page=1):
-        """
-        Paginate a queryset or list of objects.
-
-        Args:
-            data: The queryset or list to paginate
-            page_size: Number of items per page (defaults to self.page_size)
-            page: The page number to return (defaults to 1)
-
-        Returns:
-            dict: A dictionary containing pagination metadata and results
-        """
-
         # Use provided page_size or fall back to class default
         page_size = page_size or self.page_size
         paginator = Paginator(data, page_size)
