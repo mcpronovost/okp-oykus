@@ -238,6 +238,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Unfold Settings
 # https://unfoldadmin.com/docs/installation/quickstart
 
+from django.templatetags.static import static  # noqa: E402
 from django.urls import reverse_lazy  # noqa: E402
 
 UNFOLD = {
@@ -246,6 +247,15 @@ UNFOLD = {
     "SITE_SUBHEADER": "Administration",
     "SITE_URL": "/",
     "SITE_SYMBOL": "dashboard",
+    "SITE_ICON": lambda request: static("img/oykus-32.png"),
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/png",
+            "href": lambda request: static("img/oykus-favicon.png"),
+        },
+    ],
     "SHOW_HISTORY": True,
     "SHOW_LANGUAGES": True,
     "SHOW_VIEW_ON_SITE": True,
@@ -352,17 +362,17 @@ UNFOLD = {
             "950": "15 15 15",
         },
         "primary": {
-            "50": "255 242 244",
-            "100": "255 230 234",
-            "200": "255 204 212",
-            "300": "251 164 177",
-            "400": "238 107 127",
-            "500": "223 58 82",
-            "600": "195 18 46",
-            "700": "165 11 35",
-            "800": "134 11 31",
-            "900": "112 9 26",
-            "950": "73 6 17",
+            "50": "247 245 235",
+            "100": "239 234 214",
+            "200": "228 220 185",
+            "300": "212 201 143",
+            "400": "192 179 93",
+            "500": "175 156 45",
+            "600": "157 131 15",
+            "700": "131 110 12",
+            "800": "105 88 10",
+            "900": "86 72 8",
+            "950": "55 46 5",
         }
     }
 }
