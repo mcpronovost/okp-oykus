@@ -1,9 +1,10 @@
 import "@/assets/styles/game/layout.scss";
 import { useI18n } from "@/services/i18n";
+import { OkpError } from "@/components/common";
 import { OkpLink, OkpScrollarea } from "@/components/ui";
 
 export default function OkpGameLayout({ children, data }) {
-  if (!data) return window.location.reload(true);
+  if (!data) return <OkpError />;
 
   const { t } = useI18n();
 
