@@ -10,6 +10,18 @@ export const getInitData = () => {
   }
 };
 
+export const getInitTheme = () => {
+  try {
+    const initThemeElement = document.getElementById("okp-theme");
+    if (!initThemeElement) return null;
+    const initTheme = initThemeElement.textContent;
+    initThemeElement.remove();
+    return JSON.parse(initTheme);
+  } catch {
+    return null;
+  }
+};
+
 export const okpUnit = (num, digits = 2) => {
   const l = [
     { v: 1, u: "" },

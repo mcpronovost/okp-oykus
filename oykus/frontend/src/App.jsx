@@ -1,11 +1,9 @@
-import { useRef, Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { useRouter } from "@/services/router";
-import { getInitData } from "@/utils";
 import OkpErrorBoundary from "@/components/ErrorBoundary";
 import Loading from "@/components/ui/Loading";
 
-function App() {
-  const initDataRef = useRef(getInitData());
+function App({ data }) {
   const { route } = useRouter();
 
   if (route?.component) {
@@ -13,7 +11,7 @@ function App() {
     return (
       <OkpErrorBoundary>
         <Suspense fallback={<Loading />}>
-          <Component data={initDataRef.current} />
+          <Component data={data} />
         </Suspense>
       </OkpErrorBoundary>
     );

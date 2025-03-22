@@ -21,9 +21,13 @@
       {{ initial_data|safe }}
     </script>
     {% if theme %}
+      <script id="okp-theme" type="application/json">
+        {{ theme|safe }}
+      </script>
       <style>
         #okp {
           --c-primary: {{ theme.primary }};
+          --okp-core-header-bg: {{ theme.core_header_bg|default:"#435259" }};
         }
       </style>
     {% endif %}
