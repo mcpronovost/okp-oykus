@@ -1,4 +1,3 @@
-export { default as OkpGameLayout } from "./OkpLayout";
 // Forum
 export { default as OkpGameForumCategoryCard } from "./forum/CategoryCard";
 export { default as OkpGameForumCategoryList } from "./forum/CategoryList";

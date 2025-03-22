@@ -1,4 +1,5 @@
-import { OkpGameLayout, OkpGameForumCategoryCard } from "@/components/game";
+import { OkpGameLayout } from "@/components/layout";
+import { OkpGameForumCategoryCard } from "@/components/game";
 
 export default function OkpForumCategory({ data }) {
   return (

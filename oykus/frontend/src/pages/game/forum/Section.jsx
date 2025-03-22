@@ -1,4 +1,5 @@
-import { OkpGameLayout, OkpGameForumTopicList } from "@/components/game";
+import { OkpGameLayout } from "@/components/layout";
+import { OkpGameForumTopicList } from "@/components/game";
 import { OkpHeading } from "@/components/common";
 import { OkpBreadcrumb } from "@/components/ui";
 

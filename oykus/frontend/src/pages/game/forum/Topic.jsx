@@ -1,6 +1,7 @@
 import "@/assets/styles/forum/topic.scss";
 import { useEffect } from "react";
-import { OkpGameLayout, OkpGameForumPostList } from "@/components/game";
+import { OkpGameLayout } from "@/components/layout";
+import { OkpGameForumPostList } from "@/components/game";
 import { OkpHeading } from "@/components/common";
 import { OkpBreadcrumb, OkpCard } from "@/components/ui";
 import OkpGameForumFormNewPost from "@/components/game/forum/forms/NewPost";

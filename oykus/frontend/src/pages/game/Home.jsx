@@ -1,4 +1,5 @@
-import { OkpGameLayout } from "@/components/game";
+import { Button } from "antd";
+import { OkpGameLayout } from "@/components/layout";
 import { OkpGameForumCategoryList } from "@/components/game";
 
 export default function OkpGameHome({ data }) {
@@ -8,6 +9,7 @@ export default function OkpGameHome({ data }) {
         <section className="okp-forum-index">
           {data?.forum && <OkpGameForumCategoryList categories={data.forum.categories} />}
         </section>
+        <Button type="primary">Primary Button</Button>
       </section>
     </OkpGameLayout>
   );

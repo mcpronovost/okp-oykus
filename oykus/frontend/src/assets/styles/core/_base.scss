@@ -18,8 +18,8 @@
   --okp-font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
   --okp-font-family-heading: "Quicksand", system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --okp-radius: 8px;
-  --okp-radius-subtle: 6px;
+  --okp-radius: 4px;
+  --okp-radius-subtle: 2px;
 
   --okp-game-header-font-family: var(--okp-font-family-heading);
   --okp-game-header-font-size: 4rem;
@@ -62,12 +62,11 @@ button {
 }
 
 #okp {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: block;
   align-items: center;
-  justify-content: flex-start;
 }
 
 .sr-only {
