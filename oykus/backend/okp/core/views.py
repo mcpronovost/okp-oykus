@@ -61,11 +61,11 @@ class OkpPageView(TemplateView):
 
     def get_theme(self, obj):
         if "theme" in obj:
-            return obj.pop("theme")
+            return json.dumps(obj.pop("theme"))
         if self.theme:
-            return self.theme
+            return json.dumps(self.theme)
         if self.theme_field:
-            return self.get_field_value(obj, self.theme_field)
+            return json.dumps(self.get_field_value(obj, self.theme_field))
         return None
 
     def get_field_value(self, obj, field):
