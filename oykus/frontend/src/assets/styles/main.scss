@@ -1,4 +1,11 @@
-@use "./core/reset";
-@use "./core/fonts";
-@use "./core/base";
-@use "./core/radix";
+// Core
+@use "@/assets/styles/core/reset" as core-reset;
+@use "@/assets/styles/core/fonts" as core-fonts;
+@use "@/assets/styles/core/base" as core-base;
+@use "@/assets/styles/core/grid" as core-grid;
+
+// UI
+@use "@/assets/styles/ui/avatar" as ui-avatar;
+@use "@/assets/styles/ui/banner" as ui-banner;
+@use "@/assets/styles/ui/loading" as ui-loading;
+@use "@/assets/styles/ui/scrollarea" as ui-scrollarea;

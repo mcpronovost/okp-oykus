@@ -1,8 +1,0 @@
-// Card mixin to handle consistent card styles
-@mixin card {
-  background-color: var(--okp-card-bg);
-  border-radius: var(--okp-radius);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  color: var(--okp-card-fg);
-  position: relative;
-}

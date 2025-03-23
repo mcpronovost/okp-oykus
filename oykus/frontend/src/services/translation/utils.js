@@ -34,23 +34,3 @@ export const loadTranslations = async (lang = "fr") => {
 
   return translations;
 };
-
-export const getDate = (
-  value,
-  show = "full",
-  lang = "fr",
-  tz = "America/Toronto"
-) => {
-  if (lang === "en") lang = "en-CA";
-  let d = !!value ? new Date(value) : new Date(new Date().toString());
-  let o = {
-    timeZone: tz,
-    hour12: false,
-    year: ["full", "date"].includes(show) ? "numeric" : undefined,
-    month: ["full", "date"].includes(show) ? "long" : undefined,
-    day: ["full", "date"].includes(show) ? "numeric" : undefined,
-    hour: ["full", "time"].includes(show) ? "2-digit" : undefined,
-    minute: ["full", "time"].includes(show) ? "2-digit" : undefined,
-  };
-  return d.toLocaleString(lang, o);
-};

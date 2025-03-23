@@ -6,27 +6,28 @@
   justify-content: center;
   position: relative;
   padding: 8px;
+  transition: width 0.3s, height 0.3s, top 0.3s;
 
   &-figure {
-    background-color: var(--okp-card-bg-subtle);
+    background-color: #1E1E1E;
     border-radius: 50%;
     box-sizing: content-box;
-    // box-shadow: 0 0 1px 8px var(--okp-card-bg);
-    outline: 8px solid var(--okp-card-bg);
-    color: var(--okp-card-fg-subtle);
+    box-shadow: 0 0 1px 8px #191919;
+    outline: 8px solid #191919;
+    color: #1E1E1E;
     overflow: hidden;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
     position: relative;
-    container-type: size;
+    transition: width 0.3s, height 0.3s;
   }
 
   &-fallback {
-    font-family: var(--okp-font-family-heading);
+    font-family: "Quicksand", system-ui, Helvetica, Arial, sans-serif;
     font-size: max(1rem, 1.23rem + 2cqi);
     font-weight: 600;
     line-height: 1;

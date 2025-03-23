@@ -1,7 +1,0 @@
-@use "../core/grid" as grid;
-
-.okp-error {
-  padding: 120px 0;
-
-  @include grid.grid;
-}

@@ -1,25 +1,34 @@
-import "@/assets/styles/ui/avatar.scss";
 import { useState } from "react";
+import { theme } from "antd";
+
+const { useToken } = theme;
 
 export default function OkpAvatar({
   src,
   fallback,
+  selfCenter = true,
   size = 48,
   stroke = 8,
-  className = "",
+  top = 0,
+  className = ""
 }) {
+  const { token } = useToken();
   const [imgError, setImgError] = useState(false);
 
   return (
     <div
       className={`okp-avatar ${className}`}
-      style={{ width: `${size}px`, height: `${size}px`, padding: `${stroke}px` }}
+      style={{ width: `${size}px`, height: `${size}px`, justifySelf: selfCenter ? "center" : "flex-start", top: `${top}px`, padding: `${stroke}px` }}
     >
       <figure
         aria-hidden="true"
         className="okp-avatar-figure"
         style={{
+          background: token.colorBgLayout,
+          boxShadow: `0 0 1px ${stroke}px ${token.colorBgContainer}`,
           outlineWidth: `${stroke}px`,
+          outlineColor: token.colorBgContainer,
+          color: token.colorTextTertiary,
           width: `${size}px`,
           height: `${size}px`,
         }}
@@ -32,7 +41,7 @@ export default function OkpAvatar({
             className="okp-avatar-image"
           />
         ) : (
-          fallback && <span className="okp-avatar-fallback">{fallback}</span>
+          fallback && <span className="okp-avatar-fallback" style={{ fontSize: `${size / 4}px` }}>{fallback}</span>
         )}
       </figure>
     </div>

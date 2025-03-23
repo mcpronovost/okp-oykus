@@ -6,13 +6,11 @@ export const REGEX = {
   PARAM_REPLACE: /{[^}]+}/g,
 };
 
-export const enforceTrailingSlash = (fullpath) => {
-  if (!fullpath.endsWith("/")) {
-    const newPath = `${fullpath}/`;
-    window.history.replaceState({}, "", newPath);
-    return newPath;
+export const enforceTrailingSlash = (pathname) => {
+  if (!pathname.endsWith("/")) {
+    const newPath = `${pathname}/${window.location.search}`;
+    window.location.href = newPath;
   }
-  return fullpath;
 };
 
 export const getLangAndPath = (fullpath) => {
@@ -26,6 +24,13 @@ export const getLangAndPath = (fullpath) => {
 
 export const getLang = () => {
   const { langCode } = getLangAndPath(window.location.pathname);
+  return langCode;
+};
+
+export const getLangAndEnforceTrailingSlash = () => {
+  const pathname = window.location.pathname;
+  const { langCode } = getLangAndPath(pathname);
+  enforceTrailingSlash(pathname);
   return langCode;
 };
 

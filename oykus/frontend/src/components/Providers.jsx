@@ -1,40 +1,58 @@
 import { ConfigProvider, theme as antdTheme } from "antd";
-import enGB from "antd/locale/en_GB";
-import frCA from "antd/locale/fr_CA";
-import RouterProvider from "@/services/router/context";
-import I18nProvider from "@/services/i18n/context";
+import en from "antd/locale/en_GB";
+import fr from "antd/locale/fr_CA";
+import { RouterProvider } from "@/services/router";
+import { TranslationProvider } from "@/services/translation";
 
 export default function OkpProviders({ children, theme, lang }) {
   return (
-    <RouterProvider>
-      <I18nProvider>
+    <RouterProvider lang={lang}>
+      <TranslationProvider lang={lang}>
         <ConfigProvider
-          locale={lang === "en" ? enGB : frCA}
+          locale={lang === "en" ? en : fr}
           theme={{
-            algorithm: antdTheme.darkAlgorithm,
+            algorithm: antdTheme.lightAlgorithm,
             token: {
               // SeedToken
               borderRadius: 4,
               colorBgBase: "#212121",
-              colorPrimary: theme?.primary,
+              colorTextBase: "#A7A8AA",
+              colorLink: "#d3b017",
+              colorPrimary: "#d3b017",
+              colorSuccess: "#338a36",
+              colorInfo: "#d3b017",
+              colorWarning: "#d3b017",
+              colorError: "#af3333",
+              fontFamily: "'Roboto Condensed', system-ui, Avenir, Helvetica, Arial, sans-serif",
+              fontSize: 14,
 
-              // AliasToken
+              // MapToken
+              colorBgContainer: "#191919",
+              colorBgSpotlight: "#121212",
+
+              // Alias
               boxShadow: "none",
               boxShadowSecondary: "none",
               boxShadowTertiary: "none",
             },
             components: {
-              Layout: {
-                headerBg: theme?.layout_header_bg || "#435259",
-                siderBg: theme?.layout_sider_bg || "#dbe0e2",
-                triggerBg: theme?.layout_trigger_bg || "#435259",
+              Card: {
+                lineWidth: 0,
               },
+              Layout: {
+                headerBg: "#121212",
+                headerHeight: 64,
+              },
+              Menu: {
+                activeBarBorderWidth: 0,
+                collapsedIconSize: 20,
+              }
             },
           }}
         >
           {children}
         </ConfigProvider>
-      </I18nProvider>
+      </TranslationProvider>
     </RouterProvider>
   );
 }

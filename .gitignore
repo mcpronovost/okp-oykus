@@ -38,3 +38,4 @@ lerna-debug.log*
 # Caches
 .pytest_cache/
 __pycache__/
+*_old/

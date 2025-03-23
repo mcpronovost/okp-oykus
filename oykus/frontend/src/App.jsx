@@ -1,7 +1,8 @@
 import { Suspense, lazy } from "react";
+import { Card } from "antd";
 import { useRouter } from "@/services/router";
-import OkpErrorBoundary from "@/components/ErrorBoundary";
-import Loading from "@/components/ui/Loading";
+import { OkpLoading } from "@/components/ui";
+import { OkpLayout } from "@/components/layout";
 
 function App({ data }) {
   const { route } = useRouter();
@@ -9,15 +10,21 @@ function App({ data }) {
   if (route?.component) {
     const Component = lazy(route.component);
     return (
-      <OkpErrorBoundary>
-        <Suspense fallback={<Loading />}>
-          <Component data={data} />
-        </Suspense>
-      </OkpErrorBoundary>
+      <Suspense fallback={<OkpLoading />}>
+        <Component data={data} />
+      </Suspense>
     );
   }
 
-  return <Loading />;
+  return (
+    <OkpLayout>
+      <div className="okp-grid">
+        <Card>
+          aaa
+        </Card>
+      </div>
+    </OkpLayout>
+  );
 }
 
 export default App;

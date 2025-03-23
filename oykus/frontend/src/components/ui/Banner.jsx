@@ -1,4 +1,3 @@
-import "@/assets/styles/ui/banner.scss";
 import { useState } from "react";
 
 export default function OkpBanner({
