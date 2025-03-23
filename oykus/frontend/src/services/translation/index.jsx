@@ -42,7 +42,9 @@ export function TranslationProvider({ children, lang = "fr" }) {
 export function useTranslation() {
   const context = useContext(TranslationContext);
   if (!context) {
-    throw new Error("useTranslation must be used within a TranslationProvider");
+    // throw new Error("useTranslation must be used within a TranslationProvider");
+    console.warn("useTranslation must be used within a TranslationProvider");
+    return window.location.reload();
   }
   return context;
 }

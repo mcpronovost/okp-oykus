@@ -4,9 +4,9 @@ import fr from "antd/locale/fr_CA";
 import { RouterProvider } from "@/services/router";
 import { TranslationProvider } from "@/services/translation";
 
-export default function OkpProviders({ children, theme, lang }) {
+export default function OkpProviders({ children, theme, lang, path }) {
   return (
-    <RouterProvider lang={lang}>
+    <RouterProvider lang={lang} routePath={path}>
       <TranslationProvider lang={lang}>
         <ConfigProvider
           locale={lang === "en" ? en : fr}
@@ -29,6 +29,8 @@ export default function OkpProviders({ children, theme, lang }) {
               // MapToken
               colorBgContainer: "#191919",
               colorBgSpotlight: "#121212",
+              colorBorder: "#3d3d3d",
+              colorBorderSecondary: "#1f1f1f",
 
               // Alias
               boxShadow: "none",
@@ -42,10 +44,13 @@ export default function OkpProviders({ children, theme, lang }) {
               Layout: {
                 headerBg: "#121212",
                 headerHeight: 64,
+                headerPadding: 0,
               },
               Menu: {
                 activeBarBorderWidth: 0,
                 collapsedIconSize: 20,
+                itemActiveBg: "#1f1f1f",
+                itemSelectedBg: "#1f1f1f",
               }
             },
           }}

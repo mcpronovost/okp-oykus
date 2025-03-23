@@ -27,11 +27,11 @@ export const getLang = () => {
   return langCode;
 };
 
-export const getLangAndEnforceTrailingSlash = () => {
+export const getLangPathAndEnforceTrailingSlash = () => {
   const pathname = window.location.pathname;
-  const { langCode } = getLangAndPath(pathname);
+  const { langCode, pathPart } = getLangAndPath(pathname);
   enforceTrailingSlash(pathname);
-  return langCode;
+  return { langCode, pathPart };
 };
 
 export const getRoute = (

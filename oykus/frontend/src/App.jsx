@@ -1,29 +1,28 @@
 import { Suspense, lazy } from "react";
-import { Card } from "antd";
-import { useRouter } from "@/services/router";
+import { getRoute, useRouter } from "@/services/router";
 import { OkpLoading } from "@/components/ui";
-import { OkpLayout } from "@/components/layout";
+import OkpErrorBoundary from "@/components/ErrorBoundary";
 
-function App({ data }) {
-  const { route } = useRouter();
+function App({ lang, path, data }) {
+  return <AppContent lang={lang} path={path} data={data} />
+}
+
+function AppContent({ lang, path, data }) {
+  const route = getRoute(path, lang)[1]
 
   if (route?.component) {
     const Component = lazy(route.component);
     return (
-      <Suspense fallback={<OkpLoading />}>
-        <Component data={data} />
-      </Suspense>
+      <OkpErrorBoundary>
+        <Suspense fallback={<OkpLoading />}>
+          <Component data={data} />
+        </Suspense>
+      </OkpErrorBoundary>
     );
   }
 
   return (
-    <OkpLayout>
-      <div className="okp-grid">
-        <Card>
-          aaa
-        </Card>
-      </div>
-    </OkpLayout>
+    <OkpLoading />
   );
 }
 
