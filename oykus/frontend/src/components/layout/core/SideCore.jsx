@@ -32,6 +32,7 @@ export default function OkpSideCore() {
 
   return (
     <Sider
+      id="okp-core-side-core"
       theme="light"
       collapsible
       collapsed={collapsed}

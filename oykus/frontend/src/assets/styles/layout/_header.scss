@@ -1,0 +1,78 @@
+#okp-core-header {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  justify-content: center;
+  gap: 16px;
+  
+  &-brand {
+    display: block;
+    flex: 1 0 auto;
+
+    &-link {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 16px;
+      padding: 0 8px;
+    }
+
+    &-logo {
+      flex: 0 0 auto;
+      width: 48px;
+      height: 48px;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 16px 0 0;
+    }
+  }
+
+  &-spacer {
+    flex: 1 1 100%;
+  }
+
+  &-menu {
+    flex: 1 1 50%;
+  }
+
+  &-notifications {
+    flex: 0 0 auto;
+
+    .ant-menu-item {
+      display: flex;
+      width: 72px;
+      height: 64px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ant-menu-item-icon {
+      width: 24px;
+      height: 24px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    .ant-menu-title-content {
+      display: none;
+    }
+  }
+
+  &-user {
+    flex: 0 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

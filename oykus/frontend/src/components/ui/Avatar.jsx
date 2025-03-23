@@ -9,6 +9,7 @@ export default function OkpAvatar({
   selfCenter = true,
   size = 48,
   stroke = 8,
+  strokeColor = null,
   top = 0,
   className = ""
 }) {
@@ -25,9 +26,9 @@ export default function OkpAvatar({
         className="okp-avatar-figure"
         style={{
           background: token.colorBgLayout,
-          boxShadow: `0 0 1px ${stroke}px ${token.colorBgContainer}`,
+          boxShadow: `0 0 1px ${stroke}px ${strokeColor || token.colorBgContainer}`,
           outlineWidth: `${stroke}px`,
-          outlineColor: token.colorBgContainer,
+          outlineColor: strokeColor || token.colorBgContainer,
           color: token.colorTextTertiary,
           width: `${size}px`,
           height: `${size}px`,

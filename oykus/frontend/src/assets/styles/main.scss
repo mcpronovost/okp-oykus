@@ -9,3 +9,7 @@
 @use "@/assets/styles/ui/banner" as ui-banner;
 @use "@/assets/styles/ui/loading" as ui-loading;
 @use "@/assets/styles/ui/scrollarea" as ui-scrollarea;
+
+// Layout
+@use "@/assets/styles/layout/header" as layout-header;
+@use "@/assets/styles/layout/sidecore" as layout-sidecore;
