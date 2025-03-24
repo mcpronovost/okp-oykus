@@ -3,7 +3,7 @@ import { loadTranslations } from "./utils";
 
 const TranslationContext = createContext(null);
 
-export function TranslationProvider({ children, lang = "fr" }) {
+const TranslationProvider = ({ children, lang = "fr" }) => {
   const translationRef = useRef(null);
 
   useEffect(() => {
@@ -39,12 +39,12 @@ export function TranslationProvider({ children, lang = "fr" }) {
   );
 }
 
-export function useTranslation() {
+const useTranslation = () => {
   const context = useContext(TranslationContext);
   if (!context) {
-    // throw new Error("useTranslation must be used within a TranslationProvider");
-    console.warn("useTranslation must be used within a TranslationProvider");
-    return window.location.reload();
+    throw new Error("useTranslation must be used within a TranslationProvider");
   }
   return context;
 }
+
+export { TranslationProvider, useTranslation };
