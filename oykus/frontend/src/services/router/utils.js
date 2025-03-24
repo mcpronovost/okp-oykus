@@ -133,7 +133,7 @@ export const getLocalizedPath = (
 ) => {
   // Find the current route based on the path and current language
   const currentRoute = getRoute(path, fromLang);
-  if (!currentRoute) return `/${toLang}/${path}`;
+  if (!currentRoute || currentRoute[0] === "error") return `/${toLang}/${path}/`.replace(/\/\/$/, "/");
 
   const [routePath, routeData] = currentRoute;
   const params = { ...routeData.params, ...additionalParams };
@@ -161,5 +161,5 @@ export const getLocalizedPath = (
     }
   }
 
-  return `/${toLang}/${toPath}/`;
+  return `/${toLang}/${toPath}/`.replace(/\/\/$/, "/");
 };

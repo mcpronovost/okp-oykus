@@ -1,6 +1,7 @@
 import { Layout, Tooltip } from "antd";
 import { OkpScrollarea, OkpAvatar, OkpLink } from "@/components/ui";
 import imgPachua from "@/assets/img/pachua.jpg";
+
 export default function OkpSideGame() {
   const { Sider } = Layout;
 

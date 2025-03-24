@@ -1,5 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { getRoute } from "./utils";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { getRoute, getLocalizedPath } from "./utils";
 
 const RouterContext = createContext(null);
 
@@ -7,13 +13,20 @@ const RouterProvider = ({ children, lang = "fr", routePath = "" }) => {
   const [routeName, setRouteName] = useState(routePath);
   const [route, setRoute] = useState(() => getRoute(routePath, lang)[1]);
 
+  const doNavigate = useCallback(
+    (toRouteName, toLang = lang) => {
+      return getLocalizedPath(toRouteName, toLang);
+    },
+    [lang]
+  );
+
   useEffect(() => {
     setRouteName(routePath);
     setRoute(getRoute(routePath, lang)[1]);
   }, [routePath, lang]);
 
   return (
-    <RouterContext.Provider value={{ lang, routeName, route }}>
+    <RouterContext.Provider value={{ lang, routeName, route, r: doNavigate }}>
       {children}
     </RouterContext.Provider>
   );

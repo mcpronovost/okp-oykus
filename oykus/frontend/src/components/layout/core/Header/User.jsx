@@ -48,7 +48,7 @@ export default function OkpHeaderUser() {
             {
               key: "7",
               label: (
-                <OkpLink href="/logout">
+                <OkpLink href="logout">
                   Déconnexion
                 </OkpLink>
               ),
