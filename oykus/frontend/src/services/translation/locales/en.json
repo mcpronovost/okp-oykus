@@ -1,7 +1,13 @@
 {
   "Login": "Login",
   "SignUp": "SignUp",
+  "Cancel": "Cancel",
+  "This field is required!": "This field is required!",
+  "Login failed": "Login failed",
+  "Username": "Username",
+  "Password": "Password",
   "Reply": "Reply",
+  "Unable to log in with provided credentials.": "Unable to log in with provided credentials.",
   "Go to the last post": "Go to the last post",
   "messages": {
     "one": "message",

@@ -1,19 +1,32 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthApi } from "@/services/api";
+import { okpEncode, okpDecode } from "./utils";
 
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const { getCurrentUser } = useAuthApi();
+  const [user, setUserState] = useState(() => {
+    const encodedUser = localStorage.getItem("okp-oykus-user");
+    return encodedUser ? okpDecode(encodedUser) : null;
+  });
 
-  const login = async (username, password) => {
-    const response = await useAuthApi.login(username, password);
-    setUser(response.data);
+  const setUser = (user) => {
+    if (user) {
+      setUserState(user);
+      localStorage.setItem("okp-oykus-user", okpEncode(user));
+    } else {
+      setUserState(null);
+      localStorage.removeItem("okp-oykus-user");
+    }
   };
 
-  const logout = async () => {
-    await useAuthApi.logout();
-    setUser(null);
+  const setRat = (rat) => {
+    if (rat) {
+      localStorage.setItem("okp-oykus-rat", rat);
+    } else {
+      localStorage.removeItem("okp-oykus-rat");
+    }
   };
   
   // Check for existing auth on mount
@@ -23,17 +36,15 @@ const AuthProvider = ({ children }) => {
       if (token) {
         try {
           // Validate token with backend
-          const response = await useAuthApi.validateRat();
-          
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData);
+          const response = await getCurrentUser();
+          if (response.success) {
+            setUser(response.user);
           } else {
             throw new Error("Invalid token");
           }
-        } catch (error) {
-          console.error("Auth validation error:", error);
-          localStorage.removeItem("okp-oykus-rat");
+        } catch {
+          setRat(null);
+          setUser(null);
         }
       }
     };
@@ -42,7 +53,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, setRat }}>
       {children}
     </AuthContext.Provider>
   );

@@ -11,7 +11,7 @@ export default function OkpHeaderLoginSignup() {
     {
       key: "1",
       label: (
-        <OkpLink href="/">
+        <OkpLink href="login">
           {t("Login")}
         </OkpLink>
       ),
@@ -20,11 +20,12 @@ export default function OkpHeaderLoginSignup() {
     {
       key: "2",
       label: (
-        <OkpLink href="/">
+        <OkpLink href="signup">
           {t("SignUp")}
         </OkpLink>
       ),
       icon: <LogIn size={14} />,
+      disabled: true,
     },
   ], [t]);
 

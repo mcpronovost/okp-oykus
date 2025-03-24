@@ -3,6 +3,7 @@ import { API_URL, API_HEADERS } from "./utils";
 import { getLang } from "@/services/router/utils";
 
 function useApi() {
+  const [token, setToken] = useState(localStorage.getItem("okp-oykus-rat"));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -14,7 +15,6 @@ function useApi() {
       "Accept-Language": getLang(),
     };
 
-    const token = localStorage.getItem("okp-oykus-rat");
     if (token) {
       headers.Authorization = `Okp ${token}`;
     }
@@ -26,7 +26,6 @@ function useApi() {
       const response = await fetch(url, {
         ...options,
         headers,
-        credentials: "include",
       });
 
       if (!response.ok) {
@@ -44,7 +43,7 @@ function useApi() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [token]);
 
   const get = useCallback(
     (endpoint) => {

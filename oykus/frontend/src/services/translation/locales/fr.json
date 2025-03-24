@@ -1,7 +1,13 @@
 {
   "Login": "Connexion",
   "SignUp": "Inscription",
+  "Cancel": "Annuler",
+  "This field is required!": "Ce champ est requis !",
+  "Login failed": "Connexion échouée",
+  "Username": "Nom d'utilisateur",
+  "Password": "Mot de passe",
   "Reply": "Répondre",
+  "Unable to log in with provided credentials.": "Impossible de se connecter avec les identifiants fournis.",
   "Go to the last post": "Aller au dernier message",
   "messages": {
     "one": "message",

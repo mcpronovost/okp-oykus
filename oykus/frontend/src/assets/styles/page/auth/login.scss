@@ -1,0 +1,32 @@
+.okp-auth-login {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+
+  &-header {
+    text-align: center;
+    display: flex;
+    width: 452px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &-title {
+      font-family: "Quicksand", "Roboto Condensed", system-ui, Avenir, Helvetica, Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+  }
+}

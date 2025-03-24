@@ -33,7 +33,7 @@ const TranslationProvider = ({ children, lang = "fr" }) => {
   };
 
   return (
-    <TranslationContext.Provider value={{ t }}>
+    <TranslationContext.Provider value={{ t, lang }}>
       {children}
     </TranslationContext.Provider>
   );

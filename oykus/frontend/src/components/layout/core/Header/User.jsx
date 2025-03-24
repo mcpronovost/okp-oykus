@@ -1,8 +1,13 @@
 import { Dropdown, Space } from "antd";
 import { LogOut } from "lucide-react";
+import { useAuth } from "@/services/auth";
+import { useTranslation } from "@/services/translation";
 import { OkpAvatar, OkpLink } from "@/components/ui";
 
 export default function OkpHeaderUser() {
+  const { user } = useAuth();
+  const { t } = useTranslation();
+
   return (
     <div id="okp-core-header-user">
       <Dropdown
@@ -12,7 +17,7 @@ export default function OkpHeaderUser() {
               key: "1",
               label: (
                 <span>
-                  Connecté en tant que<br /><b>John Doe</b>
+                  {t("Connected as")}<br /><b>{user.username}</b>
                 </span>
               ),
               disabled: true,
@@ -20,28 +25,28 @@ export default function OkpHeaderUser() {
             { type: "divider" },
             {
               key: "2",
-              label: "Votre profil",
+              label: t("Your profile"),
               disabled: true,
             },
             {
               key: "3",
-              label: "Vos personnages",
+              label: t("Your characters"),
               disabled: true,
             },
             {
               key: "4",
-              label: "Vos mondes",
+              label: t("Your worlds"),
               disabled: true,
             },
             { type: "divider" },
             {
               key: "5",
-              label: "Aide",
+              label: t("Help"),
               disabled: true,
             },
             {
               key: "6",
-              label: "Paramètres",
+              label: t("Settings"),
               disabled: true,
             },
             { type: "divider" },
@@ -49,7 +54,7 @@ export default function OkpHeaderUser() {
               key: "7",
               label: (
                 <OkpLink href="logout">
-                  Déconnexion
+                  {t("Logout")}
                 </OkpLink>
               ),
               icon: <LogOut size={14} />,
@@ -59,9 +64,9 @@ export default function OkpHeaderUser() {
         trigger={["click"]}
       >
         <Space>
-          <span>John Doe</span>
+          <span>{user.name}</span>
           <OkpAvatar
-            src="https://i.pravatar.cc/49"
+            src={user.avatar}
             size={48}
             strokeColor={"transparent"}
           />

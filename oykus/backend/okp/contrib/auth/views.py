@@ -119,7 +119,11 @@ class OkpAuthMeView(APIView):
     def get(self, request, *args, **kwargs):
         return Response(
             {
-                "user": request.user.id,
+                "user": {
+                    "id": request.user.id,
+                    "username": request.user.username,
+                    "name": request.user.name,
+                    "avatar": request.user.avatar.url if request.user.avatar else None,
+                },
             }
         )
-

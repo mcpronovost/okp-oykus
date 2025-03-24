@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { useApi } from "./index";
+import { useApi } from "./client";
 
-export function useAuthApi() {
+const useAuthApi = () => {
   const { get, post } = useApi();
 
   const login = useCallback(async (data) => {
@@ -14,15 +14,12 @@ export function useAuthApi() {
     return result;
   }, [post]);
 
-  const validateRat = useCallback(async () => {
-    const result = await get("/auth/validate-rat/");
-    return result;
-  }, [get]);
-
   const getCurrentUser = useCallback(async () => {
     const result = await get("/auth/me/");
     return result;
   }, [get]);
 
-  return { login, logout, validateRat, getCurrentUser };
+  return { login, logout, getCurrentUser };
 }
+
+export { useAuthApi };
