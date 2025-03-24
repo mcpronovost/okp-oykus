@@ -18,7 +18,7 @@ export const getTranslationFiles = (lang = "fr") => {
  * @param {string} lang - The language to load the translations for
  * @returns {Object} - An object with the translations
  */
-export const loadTranslations = async (lang = "fr") => {
+export const loadTranslations = (lang = "fr") => {
   const translations = {};
 
   try {
