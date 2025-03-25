@@ -52,8 +52,12 @@ export default function OkpSideCore() {
       }}
     >
       <OkpScrollarea>
-        <OkpBanner src={user.avatar} alt="Banner" fade radius={0} size={collapsed ? 48 : 120} blur={4} opacity={0.5} />
-        <OkpAvatar src={user.avatar} alt={user.name} fallback={user.abbr} size={collapsed ? 48 : 120} radius={0} top={collapsed ? -32 : -64} />
+        {user && (
+          <>
+            <OkpBanner src={user.avatar} alt="Banner" fade radius={0} size={collapsed ? 48 : 120} blur={4} opacity={0.5} />
+            <OkpAvatar src={user.avatar} alt={user.name} fallback={user.abbr} size={collapsed ? 48 : 120} radius={0} top={collapsed ? -32 : -64} />
+          </>
+        )}
         <Menu mode="inline" inlineCollapsed={collapsed} items={items} style={{ width: collapsed ? 64 : 300 }} />
       </OkpScrollarea>
     </Sider>

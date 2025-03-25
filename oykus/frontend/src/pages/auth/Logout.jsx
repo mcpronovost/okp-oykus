@@ -1,4 +1,4 @@
-import "@/assets/styles/page/auth/login.scss";
+import "@/assets/styles/page/auth/logout.scss";
 import { useEffect } from "react";
 import { Card } from "antd";
 import { okpApi } from "@/services/api";
@@ -10,21 +10,21 @@ export default function OkpAuthLogout() {
   const { setUser, setRat } = useAuth();
   const { t, lang } = useTranslation();
 
-  useEffect(() => {
-    okpApi.logout().finally(() => {
-      setUser(null);
-      setRat(null);
-      window.location.href = `/${lang}/`;
-    });
-  }, [logout, setUser, lang]);
+  // useEffect(() => {
+  //   okpApi.logout().finally(() => {
+  //     setUser(null);
+  //     setRat(null);
+  //     window.location.href = `/${lang}/`;
+  //   });
+  // }, [setUser, setRat, lang]);
 
   return (
     <div className="okp-auth-logout">
-      <Card cover={<OkpBanner src="https://placehold.co/400x200" size="200" blur={0} />}>
-        <header className="okp-auth-login-header">
-          <h1 className="okp-auth-login-header-title">{t("Logout")}</h1>
+      <Card>
+        <header className="okp-auth-logout-header">
+          <h1 className="okp-auth-logout-header-title">{t("Logout")}</h1>
         </header>
-        <div className="okp-auth-login-content">
+        <div className="okp-auth-logout-content">
           <OkpLoading />
         </div>
       </Card>
