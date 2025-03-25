@@ -1,5 +1,6 @@
 {
   "Login": "Connexion",
+  "Logout": "Déconnexion",
   "SignUp": "Inscription",
   "Cancel": "Annuler",
   "This field is required!": "Ce champ est requis !",
@@ -19,5 +20,11 @@
   "an unknown": "un inconnu",
   "by an unknown": "par un inconnu",
   "No results found": "Aucun résultat trouvé",
-  "All rights reserved.": "Tous droits réservés."
+  "All rights reserved.": "Tous droits réservés.",
+  "Connected as": "Connecté en tant que",
+  "Your profile": "Votre profil",
+  "Your characters": "Vos personnages",
+  "Your worlds": "Vos mondes",
+  "Help": "Aide",
+  "Settings": "Paramètres"
 }

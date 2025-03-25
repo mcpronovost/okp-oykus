@@ -1,5 +1,6 @@
 {
   "Login": "Login",
+  "Logout": "Logout",
   "SignUp": "SignUp",
   "Cancel": "Cancel",
   "This field is required!": "This field is required!",
@@ -19,5 +20,11 @@
   "an unknown": "an unknown",
   "by an unknown": "by an unknown",
   "No results found": "No results found",
-  "All rights reserved.": "All rights reserved."
+  "All rights reserved.": "All rights reserved.",
+  "Connected as": "Connected as",
+  "Your profile": "Your profile",
+  "Your characters": "Your characters",
+  "Your worlds": "Your worlds",
+  "Help": "Help",
+  "Settings": "Settings"
 }
