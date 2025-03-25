@@ -12,7 +12,7 @@ from knox.views import (
     LogoutAllView as KnoxLogoutAllView,
 )
 
-from .serializers import OkpAuthTokenSerializer, OkpAuthRegisterSerializer
+from .serializers import OkpAuthTokenSerializer, OkpAuthRegisterSerializer, OkpUserSerializer
 
 
 class OkpAuthLoginView(KnoxLoginView):
@@ -50,11 +50,12 @@ class OkpAuthLoginView(KnoxLoginView):
         instance, token = self.create_token()
         user_logged_in.send(sender=request.user.__class__, request=request, user=request.user)
         data = self.get_post_response_data(request, token, instance)
+        serialized_user = OkpUserSerializer(request.user)
 
         return Response(
             {
                 "token": data["token"],
-                "user": data["user"],
+                "user": serialized_user.data,
             }
         )
 
@@ -117,14 +118,9 @@ class OkpAuthMeView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
+        serialized_user = OkpUserSerializer(request.user)
         return Response(
             {
-                "user": {
-                    "id": request.user.id,
-                    "username": request.user.username,
-                    "name": request.user.name,
-                    "abbr": request.user.abbr,
-                    "avatar": request.user.avatar.url if request.user.avatar else None,
-                },
+                "user": serialized_user.data,
             }
         )
