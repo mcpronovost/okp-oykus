@@ -1,11 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useAuthApi } from "@/services/api";
+import { okpApi } from "@/services/api";
 import { okpEncode, okpDecode } from "./utils";
 
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const { getCurrentUser } = useAuthApi();
   const [user, setUserState] = useState(() => {
     const encodedUser = localStorage.getItem("okp-oykus-user");
     return encodedUser ? okpDecode(encodedUser) : null;
@@ -36,7 +35,7 @@ const AuthProvider = ({ children }) => {
       if (token) {
         try {
           // Validate token with backend
-          const response = await getCurrentUser();
+          const response = await okpApi.getCurrentUser();
           if (response.success) {
             setUser(response.user);
           } else {

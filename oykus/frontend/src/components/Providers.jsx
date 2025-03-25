@@ -1,21 +1,25 @@
+import { Suspense, lazy } from "react";
 import { ConfigProvider, theme as antdTheme } from "antd";
 import en from "antd/locale/en_GB";
 import fr from "antd/locale/fr_CA";
 import { AuthProvider } from "@/services/auth";
 import { RouterProvider } from "@/services/router";
 import { TranslationProvider } from "@/services/translation";
+import { OkpLoading } from "@/components/ui";
 
 export default function OkpProviders({ children, theme, lang, path }) {
   return (
-    <RouterProvider lang={lang} routePath={path}>
-      <TranslationProvider lang={lang}>
-        <AuthProvider>
-          <OkpProvidersContent lang={lang} theme={theme}>
-            {children}
-          </OkpProvidersContent>
-        </AuthProvider>
-      </TranslationProvider>
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider lang={lang} routePath={path}>
+        <TranslationProvider lang={lang}>
+            <OkpProvidersContent lang={lang} theme={theme}>
+              <Suspense fallback={<OkpLoading />}>
+                {children}
+              </Suspense>
+            </OkpProvidersContent>
+        </TranslationProvider>
+      </RouterProvider>
+    </AuthProvider>
   );
 }
 
@@ -80,7 +84,9 @@ function OkpProvidersContent({ children, lang, theme }) {
         },
       }}
     >
-      {children}
+      <Suspense fallback={<OkpLoading />}>
+        {children}
+      </Suspense>
     </ConfigProvider>
   );
 }

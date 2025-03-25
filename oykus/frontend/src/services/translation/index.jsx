@@ -12,6 +12,11 @@ const TranslationProvider = ({ children, lang = "fr" }) => {
   }, [lang]);
 
   const t = (key, count) => {
+    if (!translationRef.current) {
+      const translation = loadTranslations(lang);
+      translationRef.current = translation;
+    }
+
     const translation = translationRef.current[key];
     if (typeof translation === "object" && count !== undefined) {
       const rules = new Intl.PluralRules(lang);

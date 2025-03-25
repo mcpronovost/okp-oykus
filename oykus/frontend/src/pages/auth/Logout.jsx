@@ -1,18 +1,17 @@
 import "@/assets/styles/page/auth/login.scss";
 import { useEffect } from "react";
 import { Card } from "antd";
-import { useAuthApi } from "@/services/api";
+import { okpApi } from "@/services/api";
 import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { OkpBanner, OkpLoading } from "@/components/ui";
 
 export default function OkpAuthLogout() {
-  const { logout } = useAuthApi();
   const { setUser, setRat } = useAuth();
   const { t, lang } = useTranslation();
 
   useEffect(() => {
-    logout().finally(() => {
+    okpApi.logout().finally(() => {
       setUser(null);
       setRat(null);
       window.location.href = `/${lang}/`;

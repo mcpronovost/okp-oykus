@@ -2,7 +2,7 @@ import "@/assets/styles/page/auth/login.scss";
 import { useState } from "react";
 import { Card, Form, Input, Button, Space, notification } from "antd";
 import { User, Lock } from "lucide-react";
-import { useAuthApi } from "@/services/api";
+import { okpApi } from "@/services/api";
 import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { OkpBanner, OkpLink } from "@/components/ui";
@@ -11,13 +11,12 @@ export default function OkpAuthLogin() {
   const [api, contextHolder] = notification.useNotification();
   const { setUser, setRat } = useAuth();
   const { t, lang } = useTranslation();
-  const { login } = useAuthApi();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (values) => {
     try {
       setIsLoading(true);
-      const result = await login(values);
+      const result = await okpApi.login(values);
       if (result.token) {
         setRat(result.token);
         setUser(result.user);
