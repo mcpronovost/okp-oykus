@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Layout, Menu } from "antd";
 import { Home, User, Settings } from "lucide-react";
+import { useAuth } from "@/services/auth";
 import { OkpAvatar, OkpBanner, OkpScrollarea } from "@/components/ui";
 
 export default function OkpSideCore() {
   const { Sider } = Layout;
+  const { user } = useAuth();
   const [collapsed, setCollapsed] = useState(window.localStorage.getItem("okp-side-collapsed") === "true");
 
   const handleCollapse = (e) => {
@@ -50,8 +52,8 @@ export default function OkpSideCore() {
       }}
     >
       <OkpScrollarea>
-        <OkpBanner src={"https://mcpronovost.pythonanywhere.com/media/players/banners/43543543.png"} alt="Banner" fade radius={0} size={collapsed ? 48 : 120} blur={0} opacity={0.5} />
-        <OkpAvatar alt="MCP" fallback="MCP" size={collapsed ? 48 : 120} radius={0} top={collapsed ? -32 : -64} />
+        <OkpBanner src={user.avatar} alt="Banner" fade radius={0} size={collapsed ? 48 : 120} blur={4} opacity={0.5} />
+        <OkpAvatar src={user.avatar} alt={user.name} fallback={user.abbr} size={collapsed ? 48 : 120} radius={0} top={collapsed ? -32 : -64} />
         <Menu mode="inline" inlineCollapsed={collapsed} items={items} style={{ width: collapsed ? 64 : 300 }} />
       </OkpScrollarea>
     </Sider>

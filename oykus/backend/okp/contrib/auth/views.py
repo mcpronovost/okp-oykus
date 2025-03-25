@@ -123,6 +123,7 @@ class OkpAuthMeView(APIView):
                     "id": request.user.id,
                     "username": request.user.username,
                     "name": request.user.name,
+                    "abbr": request.user.abbr,
                     "avatar": request.user.avatar.url if request.user.avatar else None,
                 },
             }
