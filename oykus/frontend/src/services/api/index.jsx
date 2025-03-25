@@ -1,9 +1,9 @@
 import { API_URL, API_HEADERS } from "./utils";
-import { getLang } from "@/services/router/utils";
 
 class OkpApi {
   constructor() {
     this.token = localStorage.getItem("okp-oykus-rat");
+    this.lang = window.document.documentElement.lang;
   }
 
   async request(endpoint, options = {}) {
@@ -11,7 +11,7 @@ class OkpApi {
     const headers = {
       ...API_HEADERS,
       ...options.headers,
-      "Accept-Language": getLang(),
+      "Accept-Language": this.lang,
     };
 
     if (this.token) {

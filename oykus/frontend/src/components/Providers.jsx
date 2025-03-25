@@ -9,8 +9,8 @@ import { OkpLoading } from "@/components/ui";
 
 export default function OkpProviders({ children, theme, lang, path }) {
   return (
-    <AuthProvider>
-      <RouterProvider lang={lang} routePath={path}>
+    <RouterProvider lang={lang} routePath={path}>
+      <AuthProvider>
         <TranslationProvider lang={lang}>
             <OkpProvidersContent lang={lang} theme={theme}>
               <Suspense fallback={<OkpLoading />}>
@@ -18,8 +18,8 @@ export default function OkpProviders({ children, theme, lang, path }) {
               </Suspense>
             </OkpProvidersContent>
         </TranslationProvider>
-      </RouterProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </RouterProvider>
   );
 }
 

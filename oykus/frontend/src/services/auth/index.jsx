@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem("okp-oykus-rat");
     }
   };
-  
+
   // Check for existing auth on mount
   useEffect(() => {
     const checkAuth = async () => {
@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
         }
       }
     };
-    
+
     checkAuth();
   }, []);
 
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 const useAuth = () => {
   const context = useContext(AuthContext);
@@ -64,6 +64,6 @@ const useAuth = () => {
     throw new Error("useAuth must be used within a AuthProvider");
   }
   return context;
-}
+};
 
-export { AuthProvider, useAuth };
+export { AuthContext, AuthProvider, useAuth };
