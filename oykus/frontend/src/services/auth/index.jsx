@@ -12,8 +12,12 @@ const AuthProvider = ({ children }) => {
 
   const setUser = (user) => {
     if (user) {
-      setUserState(user);
-      localStorage.setItem("okp-oykus-user", okpEncode(user));
+      const payload = {
+        ...user,
+        lastUpdate: Date.now(),
+      }
+      setUserState(payload);
+      localStorage.setItem("okp-oykus-user", okpEncode(payload));
     } else {
       setUserState(null);
       localStorage.removeItem("okp-oykus-user");
@@ -48,7 +52,15 @@ const AuthProvider = ({ children }) => {
       }
     };
 
-    checkAuth();
+    if (user?.lastUpdate) {
+      const delta = 5 * 60 * 1000;  // 5 minutes
+      const now = Date.now();
+      if (now - user?.lastUpdate > delta) {
+        checkAuth();
+      }
+    } else {
+      checkAuth();
+    }
   }, []);
 
   return (
