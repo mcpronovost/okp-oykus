@@ -17,7 +17,7 @@ export default function OkpHeaderUser() {
               key: "1",
               label: (
                 <span>
-                  {t("Connected as")}<br /><b>{user.username}</b>
+                  {t("Connected as")}<br /><b>{user.name}</b>
                 </span>
               ),
               disabled: true,
@@ -25,17 +25,17 @@ export default function OkpHeaderUser() {
             { type: "divider" },
             {
               key: "2",
-              label: t("Your profile"),
+              label: t("Your Profile"),
               disabled: true,
             },
             {
               key: "3",
-              label: t("Your characters"),
+              label: t("Your Characters"),
               disabled: true,
             },
             {
               key: "4",
-              label: t("Your worlds"),
+              label: t("Your Worlds"),
               disabled: true,
             },
             { type: "divider" },
@@ -64,7 +64,7 @@ export default function OkpHeaderUser() {
         trigger={["click"]}
       >
         <Space>
-          <span>{user.name}</span>
+          <span id="okp-core-header-user-name">{user.name}</span>
           <OkpAvatar
             src={user.avatar}
             size={48}

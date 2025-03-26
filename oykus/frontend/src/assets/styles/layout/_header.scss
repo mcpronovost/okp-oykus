@@ -33,6 +33,10 @@
       font-weight: 600;
       color: #fff;
       margin: 0 16px 0 0;
+
+      @media (max-width: 1023px) {
+        display: none;
+      }
     }
   }
 
@@ -78,6 +82,16 @@
 
     &:active {
       opacity: 0.6;
+    }
+
+    &-name {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.2;
+
+      @media (max-width: 1023px) {
+        display: none;
+      }
     }
   }
 
