@@ -16,8 +16,17 @@ function Root() {
   return (
     <StrictMode>
       <OkpErrorBoundary>
-        <OkpProviders lang={langPath.current.langCode} path={langPath.current.pathPart} theme={initThemeRef.current}>
-          <App lang={langPath.current.langCode} path={langPath.current.pathPart} data={initDataRef.current} />
+        <OkpProviders
+          lang={langPath.current.langCode}
+          path={langPath.current.pathPart}
+          theme={initThemeRef.current}
+          data={initDataRef.current}
+        >
+          <App
+            lang={langPath.current.langCode}
+            path={langPath.current.pathPart}
+            data={initDataRef.current}
+          />
         </OkpProviders>
       </OkpErrorBoundary>
     </StrictMode>

@@ -6,10 +6,10 @@ import OkpErrorBoundary from "@/components/ErrorBoundary";
 // Move Component creation outside of render to prevent recreation on hot-reload
 function getComponent(componentImport) {
   try {
-    return componentImport;
+    return lazy(componentImport);
   } catch (error) {
     console.error("Error loading component: ", error);
-    return <div>no</div>;
+    return <OkpLoading />;
   }
 }
 
