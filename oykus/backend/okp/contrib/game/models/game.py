@@ -55,6 +55,17 @@ class OkpGame(models.Model):
         blank=True,
         null=True,
     )
+    # Flags
+    is_active = models.BooleanField(
+        verbose_name=_("Is Active"),
+        default=True,
+        help_text=_("Whether the game is active and can be used."),
+    )
+    is_public = models.BooleanField(
+        verbose_name=_("Is Public"),
+        default=True,
+        help_text=_("Whether the game is public and can be viewed by everyone."),
+    )
     # Important Dates
     founded_at = models.DateField(
         verbose_name=_("Founded At"),
@@ -84,3 +95,10 @@ class OkpGame(models.Model):
         if self.is_abbr_auto:
             self.abbr = get_abbr(self.title, 3)
         super().save(*args, **kwargs)
+
+    @property
+    def primary(self):
+        theme = self.theme.filter(is_active=True).first()
+        if theme:
+            return theme.primary
+        return None
