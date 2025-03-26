@@ -3,20 +3,23 @@ import { ConfigProvider, theme as antdTheme } from "antd";
 import en from "antd/locale/en_GB";
 import fr from "antd/locale/fr_CA";
 import { AuthProvider } from "@/services/auth";
+import { InitDataProvider } from "@/services/initData";
 import { RouterProvider } from "@/services/router";
 import { TranslationProvider } from "@/services/translation";
 import { OkpLoading } from "@/components/ui";
 
-export default function OkpProviders({ children, theme, lang, path }) {
+export default function OkpProviders({ children, theme, lang, path, data }) {
   return (
     <RouterProvider lang={lang} routePath={path}>
       <AuthProvider>
         <TranslationProvider lang={lang}>
+          <InitDataProvider data={data}>
             <OkpProvidersContent lang={lang} theme={theme}>
               <Suspense fallback={<OkpLoading />}>
                 {children}
               </Suspense>
             </OkpProvidersContent>
+          </InitDataProvider>
         </TranslationProvider>
       </AuthProvider>
     </RouterProvider>
