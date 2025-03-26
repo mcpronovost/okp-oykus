@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { okpApi } from "@/services/api";
-import { okpEncode, okpDecode } from "./utils";
+import { okpApi, okpEncode, okpDecode } from "@/services/api";
 
 const AuthContext = createContext(null);
 

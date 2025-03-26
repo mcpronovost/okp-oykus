@@ -1,4 +1,4 @@
-import { API_URL, API_HEADERS } from "./utils";
+import { API_URL, API_HEADERS, okpEncode, okpDecode } from "./utils";
 
 class OkpApi {
   constructor() {
@@ -77,3 +77,4 @@ class OkpApi {
 }
 
 export const okpApi = new OkpApi();
+export { okpEncode, okpDecode };
