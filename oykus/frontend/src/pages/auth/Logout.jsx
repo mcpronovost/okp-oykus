@@ -10,13 +10,13 @@ export default function OkpAuthLogout() {
   const { setUser, setRat } = useAuth();
   const { t, lang } = useTranslation();
 
-  // useEffect(() => {
-  //   okpApi.logout().finally(() => {
-  //     setUser(null);
-  //     setRat(null);
-  //     window.location.href = `/${lang}/`;
-  //   });
-  // }, [setUser, setRat, lang]);
+  useEffect(() => {
+    okpApi.logout().finally(() => {
+      setUser(null);
+      setRat(null);
+      window.location.href = `/${lang}/`;
+    });
+  }, [setUser, setRat, lang]);
 
   return (
     <div className="okp-auth-logout">

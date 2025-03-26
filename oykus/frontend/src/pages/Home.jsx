@@ -1,9 +1,9 @@
 import { Card } from "antd";
 import { OkpLayout } from "@/components/layout";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
-    <OkpLayout>
+    <OkpLayout data={data}>
       <div className="okp-grid">
         <Card>
           aaa
