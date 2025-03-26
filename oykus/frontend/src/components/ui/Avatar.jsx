@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { theme } from "antd";
+import { okpContrast } from "@/utils/formatters";
 
 const { useToken } = theme;
 
@@ -10,6 +11,7 @@ export default function OkpAvatar({
   size = 48,
   stroke = 8,
   strokeColor = null,
+  color = null,
   top = 0,
   className = ""
 }) {
@@ -25,11 +27,11 @@ export default function OkpAvatar({
         aria-hidden="true"
         className="okp-avatar-figure"
         style={{
-          background: token.colorBgLayout,
+          background: color || token.colorBgLayout,
           boxShadow: `0 0 1px ${stroke}px ${strokeColor || token.colorBgContainer}`,
           outlineWidth: `${stroke}px`,
           outlineColor: strokeColor || token.colorBgContainer,
-          color: token.colorTextTertiary,
+          color: color ? okpContrast(color) : token.colorTextTertiary,
           width: `${size}px`,
           height: `${size}px`,
         }}

@@ -74,3 +74,39 @@ export const okpUnit = (num, digits = 2) => {
     });
   return i ? (num / i.v).toFixed(digits).replace(rx, "$1") + i.u : "0";
 };
+
+// Helper functions to manipulate colors
+const hexToRGB = (hex) => {
+  if (!hex) return null;
+  const h = hex.replace("#", "");
+  return {
+    r: parseInt(h.substr(0, 2), 16),
+    g: parseInt(h.substr(2, 2), 16),
+    b: parseInt(h.substr(4, 2), 16)
+  };
+};
+
+const isLightColor = (colour) => {
+  if (!colour) return true;
+  const rgb = hexToRGB(colour);
+  const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
+  return luminance > 0.5;
+};
+
+const adjustColor = (colour, percent) => {
+  if (!colour) return null;
+  const rgb = hexToRGB(colour);
+  const adjust = (value) => {
+    const adjusted = Math.floor(value * (1 + percent));
+    return Math.min(255, Math.max(0, adjusted));
+  };
+  
+  const r = adjust(rgb.r).toString(16).padStart(2, "0");
+  const g = adjust(rgb.g).toString(16).padStart(2, "0");
+  const b = adjust(rgb.b).toString(16).padStart(2, "0");
+  return `#${r}${g}${b}`;
+};
+
+export const okpContrast = (colour) => {
+  return isLightColor(colour) ? adjustColor(colour, -1) : adjustColor(colour, 1);
+};
