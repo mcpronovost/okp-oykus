@@ -18,30 +18,31 @@ class OkpPageView(TemplateView):
     theme_field = None
 
     def get_context_data(self, **kwargs):
-        # Get the object dynamically using the model and specified key
-        obj = get_object_or_404(self.model, **{self.key: kwargs[self.key]})
-
         # Add view and request to the serializer context
         serializer_context = kwargs.copy()
         serializer_context["view"] = self
         serializer_context["request"] = self.request
 
-        # Serialize the object data using the given serializer
-        serializer = self.serializer_class(obj, context=serializer_context)
-        serialized_data = serializer.data
-
         # Add the serialized data to the context
         context = super().get_context_data(**kwargs)
 
-        # Get SEO data
-        context["page_title"] = self.get_page_title(serialized_data)
-        context["page_description"] = self.get_page_description(serialized_data)
+        if self.model:
+            # Get the object dynamically using the model and specified key
+            obj = get_object_or_404(self.model, **{self.key: kwargs[self.key]})
 
-        # Get theme
-        context["theme"] = self.get_theme(serialized_data)
+            # Serialize the object data using the given serializer
+            serializer = self.serializer_class(obj, context=serializer_context)
+            serialized_data = serializer.data
 
-        # Add the serialized data to the context
-        context["initial_data"] = json.dumps(serialized_data)
+            # Get SEO data
+            context["page_title"] = self.get_page_title(serialized_data)
+            context["page_description"] = self.get_page_description(serialized_data)
+
+            # Get theme
+            context["theme"] = self.get_theme(serialized_data)
+
+            # Add the serialized data to the context
+            context["initial_data"] = json.dumps(serialized_data)
 
         return context
 
@@ -106,3 +107,7 @@ class OkpPageView(TemplateView):
             ),
             "results": paginated_data.object_list,
         }
+
+
+class OkpView(OkpPageView):
+    pass
