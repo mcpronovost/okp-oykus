@@ -108,5 +108,5 @@ const adjustColor = (colour, percent) => {
 };
 
 export const okpContrast = (colour) => {
-  return isLightColor(colour) ? adjustColor(colour, -1) : adjustColor(colour, 1);
+  return isLightColor(colour) ? adjustColor(colour, -0.6) : adjustColor(colour, 0.6);
 };

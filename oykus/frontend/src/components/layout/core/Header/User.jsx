@@ -20,7 +20,6 @@ export default function OkpHeaderUser() {
                   {t("Connected as")}<br /><b>{user.name}</b>
                 </span>
               ),
-              disabled: true,
             },
             { type: "divider" },
             {

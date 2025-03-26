@@ -295,6 +295,13 @@ UNFOLD = {
                         ),
                     },
                     {
+                        "title": "Themes",
+                        "icon": "palette",
+                        "link": reverse_lazy(
+                            "admin:okp_game_okpgametheme_changelist"
+                        ),
+                    },
+                    {
                         "title": "Characters",
                         "icon": "face",
                         "link": reverse_lazy(

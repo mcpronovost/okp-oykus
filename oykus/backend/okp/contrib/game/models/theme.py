@@ -28,6 +28,66 @@ class OkpGameTheme(models.Model):
         blank=False,
         null=False,
     )
+    core_bg = ColorField(
+        verbose_name=_("Core Background Colour"),
+        blank=False,
+        null=False,
+    )
+    core_fg = ColorField(
+        verbose_name=_("Core Text Colour"),
+        blank=False,
+        null=False,
+    )
+    core_link = ColorField(
+        verbose_name=_("Core Link Colour"),
+        blank=False,
+        null=False,
+    )
+    core_border = ColorField(
+        verbose_name=_("Core Border Colour"),
+        blank=False,
+        null=False,
+    )
+    core_header_bg = ColorField(
+        verbose_name=_("Core Header Background Colour"),
+        blank=False,
+        null=False,
+    )
+    core_header_fg = ColorField(
+        verbose_name=_("Core Header Text Colour"),
+        blank=False,
+        null=False,
+    )
+    core_elevated_bg = ColorField(
+        verbose_name=_("Core Elevated Background Colour"),
+        blank=False,
+        null=False,
+    )
+    core_elevated_fg = ColorField(
+        verbose_name=_("Core Elevated Text Colour"),
+        blank=False,
+        null=False,
+    )
+    card_bg = ColorField(
+        verbose_name=_("Card Background Colour"),
+        blank=False,
+        null=False,
+    )
+    card_placeholder_bg = ColorField(
+        verbose_name=_("Card Placeholder Background Colour"),
+        blank=False,
+        null=False,
+    )
+    card_placeholder_fg = ColorField(
+        verbose_name=_("Card Placeholder Text Colour"),
+        blank=False,
+        null=False,
+    )
+    card_separator = ColorField(
+        verbose_name=_("Card Separator Colour"),
+        blank=False,
+        null=False,
+    )
     # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),

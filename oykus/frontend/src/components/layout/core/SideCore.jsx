@@ -54,7 +54,7 @@ export default function OkpSideCore() {
       <OkpScrollarea>
         {user && (
           <>
-            <OkpBanner src={user.avatar} alt="Banner" fade radius={0} size={collapsed ? 48 : 120} blur={4} opacity={0.5} />
+            <OkpBanner src={user.cover || user.avatar} alt="Banner" radius={0} size={collapsed ? 48 : 120} blur={4} opacity={0.5} />
             <OkpAvatar src={user.avatar} alt={user.name} fallback={user.abbr} size={collapsed ? 48 : 120} radius={0} top={collapsed ? -32 : -64} />
           </>
         )}

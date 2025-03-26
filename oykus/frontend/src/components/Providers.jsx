@@ -27,6 +27,8 @@ export default function OkpProviders({ children, theme, lang, path, data }) {
 }
 
 function OkpProvidersContent({ children, lang, theme }) {
+  console.log("theme", theme);
+
   return (
     <ConfigProvider
       locale={lang === "en" ? en : fr}
@@ -35,10 +37,10 @@ function OkpProvidersContent({ children, lang, theme }) {
         token: {
           // SeedToken
           borderRadius: 4,
-          colorBgBase: "#212121",
-          colorTextBase: "#A7A8AA",
-          colorLink: "#d3b017",
-          colorPrimary: "#d3b017",
+          colorBgBase: theme?.core_bg || "#1c1c1c",
+          colorTextBase: theme?.core_fg || "#A7A8AA",
+          colorLink: theme?.core_link || "#d3b017",
+          colorPrimary: theme?.primary || "#d3b017",
           colorSuccess: "#338a36",
           colorInfo: "#d3b017",
           colorWarning: "#d3b017",
@@ -47,18 +49,20 @@ function OkpProvidersContent({ children, lang, theme }) {
           fontSize: 14,
 
           // MapToken
-          colorBgContainer: "#191919",  // card
-          colorBgElevated: "#121212",  // submenu
-          colorBgLayout: "#171717",  // bg
-          colorBgSpotlight: "#121212",  // tooltip
-          colorBorder: "#3d3d3d",
-          colorBorderSecondary: "#1f1f1f",
+          colorBgContainer: theme?.card_bg || "#1f1f1f",  // "#191919",  // card
+          colorBgElevated: theme?.core_elevated_bg || "#121212",  // submenu
+          colorBgLayout: theme?.core_bg || "#1c1c1c",  //"#171717",  // bg
+          colorBgSpotlight: theme?.core_elevated_bg || "#121212",  // tooltip
+          colorBorder: theme?.core_border || "#313131",
+          colorBorderSecondary: theme?.card_separator || "#313131",
+          colorFill: theme?.card_placeholder_bg || "#232323", // "#1c1c1c",  // card mask
+          colorTextTertiary: theme?.card_placeholder_fg || "#A7A8AA",
 
           // Alias
-          boxShadow: "none",
-          boxShadowSecondary: "none",
-          boxShadowTertiary: "none",
-          colorFill: "#1c1c1c",
+          // boxShadow: "none",
+          // boxShadowSecondary: "none",
+          // boxShadowTertiary: "none",
+          colorTextLightSolid: theme?.core_elevated_fg || "#A7A8AA",
         },
         components: {
           Button: {
@@ -76,7 +80,8 @@ function OkpProvidersContent({ children, lang, theme }) {
             warningActiveShadow: "none",
           },
           Layout: {
-            headerBg: "#121212",
+            headerBg: theme?.core_header_bg || "#121212",
+            headerColor: theme?.core_header_fg || "#A7A8AA",
             headerHeight: 64,
             headerPadding: 0,
           },

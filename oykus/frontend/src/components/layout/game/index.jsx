@@ -36,7 +36,7 @@ export default function OkpGameLayout({ children, data }) {
               )}
               . {t("All rights reserved.")}
             </small>
-            <small style={{ opacity: 0.4 }}>
+            <small style={{ opacity: 0.8 }}>
               Oykus &copy; 2025 <OkpLink href="https://github.com/mcpronovost" target="_blank">mcpronovost</OkpLink>. {t("All rights reserved.")}
             </small>
           </section>

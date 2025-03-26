@@ -40,9 +40,30 @@ class OkpGameThemeAdmin(ModelAdmin):
             },
         ),
         (
-            _("Colours"),
+            _("Core"),
             {
-                "fields": ("primary",),
+                "fields": (
+                    "primary",
+                    "core_bg",
+                    "core_fg",
+                    "core_link",
+                    "core_border",
+                    "core_header_bg",
+                    "core_header_fg",
+                    "core_elevated_bg",
+                    "core_elevated_fg",
+                ),
+            },
+        ),
+        (
+            _("Card"),
+            {
+                "fields": (
+                    "card_bg",
+                    "card_placeholder_bg",
+                    "card_placeholder_fg",
+                    "card_separator",
+                ),
             },
         ),
     )

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { ConfigProvider, Layout, theme } from "antd";
 import { useAuth } from "@/services/auth";
 import { OkpLink } from "@/components/ui";
@@ -13,11 +14,18 @@ export default function OkpHeader() {
   const { Header } = Layout;
   const { token } = useToken();
   const { user } = useAuth();
+
+  const headerColorWithOpacity = useMemo(() => {
+    return `rgba(${parseInt(token.Layout.headerColor.slice(1,3), 16)}, ${parseInt(token.Layout.headerColor.slice(3,5), 16)}, ${parseInt(token.Layout.headerColor.slice(5,7), 16)}, 0.5)`;
+  }, [token.Layout.headerColor]);
+
   return (
     <ConfigProvider theme={{
       components: {
         Menu: {
           itemBg: token.Layout.headerBg,
+          itemColor: token.Layout.headerColor,
+          itemDisabledColor: headerColorWithOpacity,
           itemHeight: 64,
           iconSize: 14,
         },
