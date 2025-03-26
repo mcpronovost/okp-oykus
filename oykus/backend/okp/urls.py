@@ -7,7 +7,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import include, path, re_path
-from django.views.generic import TemplateView
+
+from okp.core.views import OkpView
 
 
 def redirect_assets(request, path):
@@ -27,7 +28,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # app
     path("g/", include("okp.contrib.game.urls")),
-    re_path(r"^", TemplateView.as_view(template_name="index.html")),
+    re_path(r"^", OkpView.as_view()),
 )
 
 urlpatterns += static(
