@@ -4,7 +4,7 @@ import { useRouter } from "@/services/router";
 export default function OkpLink({ children, href, colour, toLang, disabled = false, ...props }) {
   const { r } = useRouter();
   
-  const toRouteName = useMemo(() => r(href, toLang), [href, r, toLang]);
+  const toRouteName = href.startsWith("http") ? href : useMemo(() => r(href, toLang), [href, r, toLang]);
   const linkStyle = useMemo(() => ({
     color: colour || null,
   }), [colour]);

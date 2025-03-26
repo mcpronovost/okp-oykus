@@ -1,0 +1,33 @@
+@use "../../core/_grid" as grid;
+
+.okp-game {
+  &-header {
+    &-default {
+      text-align: center;
+      margin-top: 24px;
+
+      @include grid.grid;
+
+      &-title {
+        font-family: "Quicksand", sans-serif;
+        font-size: 4rem;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0 0 8px;
+      }
+    }
+  }
+
+  &-footer {
+    padding: 120px 0 32px;
+
+    small {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.5;
+      text-align: center;
+      display: block;
+      opacity: 0.5;
+    }
+  }
+}

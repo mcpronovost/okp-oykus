@@ -1,3 +1,5 @@
+import { GAMES_ROUTES } from "./game";
+
 const ROUTES = {
     home: {
       component: () => import("@/pages/Home.jsx"),
@@ -27,6 +29,7 @@ const ROUTES = {
         fr: "404",
       }
     },
+    ...GAMES_ROUTES,
 };
 
 export default ROUTES;

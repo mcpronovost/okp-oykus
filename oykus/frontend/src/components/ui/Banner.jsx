@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { theme } from "antd";
+
+const { useToken } = theme;
 
 export default function OkpBanner({
   src,
@@ -10,6 +13,7 @@ export default function OkpBanner({
   blur = 4,
   className = "",
 }) {
+  const { token } = useToken();
   const [imgError, setImgError] = useState(false);
 
   return (
@@ -17,7 +21,7 @@ export default function OkpBanner({
       aria-hidden="true"
       className={`okp-banner ${className}`}
       style={{
-        background: fade ? "transparent" : "var(--okp-card-bg-subtle)",
+        background: fade ? "transparent" : token.colorFill,
         height: `${size}px`,
         borderTopLeftRadius: `${radius}px`,
         borderTopRightRadius: `${radius}px`,

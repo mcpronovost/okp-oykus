@@ -47,9 +47,10 @@ function OkpProvidersContent({ children, lang, theme }) {
           fontSize: 14,
 
           // MapToken
-          colorBgContainer: "#191919",
-          colorBgElevated: "#121212",
-          colorBgSpotlight: "#121212",
+          colorBgContainer: "#191919",  // card
+          colorBgElevated: "#121212",  // submenu
+          colorBgLayout: "#171717",  // bg
+          colorBgSpotlight: "#121212",  // tooltip
           colorBorder: "#3d3d3d",
           colorBorderSecondary: "#1f1f1f",
 
@@ -57,6 +58,7 @@ function OkpProvidersContent({ children, lang, theme }) {
           boxShadow: "none",
           boxShadowSecondary: "none",
           boxShadowTertiary: "none",
+          colorFill: "#1c1c1c",
         },
         components: {
           Button: {
