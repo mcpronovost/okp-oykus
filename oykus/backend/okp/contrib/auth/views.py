@@ -68,7 +68,10 @@ class OkpAuthLogoutView(KnoxLogoutView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
+        response = super().post(request, *args, **kwargs)
+        response.delete_cookie("sessionid")
+        response.delete_cookie("csrftoken")
+        return response
 
 
 class OkpAuthLogoutAllView(KnoxLogoutAllView):
@@ -79,7 +82,10 @@ class OkpAuthLogoutAllView(KnoxLogoutAllView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
+        response = super().post(request, *args, **kwargs)
+        response.delete_cookie("sessionid")
+        response.delete_cookie("csrftoken")
+        return response
 
 
 class OkpAuthRegisterView(OkpAuthLoginView):
