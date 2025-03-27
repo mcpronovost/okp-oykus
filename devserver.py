@@ -146,6 +146,7 @@ def run_clean_migrate(python_exec, backend_path):
                 "oykus/backend/manage.py",
                 "loaddata",
                 "games",
+                "themes",
                 "forums",
             ],
             cwd=backend_path,

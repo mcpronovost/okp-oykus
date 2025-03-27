@@ -1,0 +1,26 @@
+[
+{
+  "model": "okp_game.okpgametheme",
+  "pk": 1,
+  "fields": {
+    "game": 1,
+    "name": "Default Oykus",
+    "is_active": true,
+    "primary": "#D1AE1B",
+    "core_bg": "#C8CFD1",
+    "core_fg": "#596B72",
+    "core_link": "#69570D",
+    "core_border": "#CFD4D6",
+    "core_header_bg": "#435259",
+    "core_header_fg": "#C9CFD1",
+    "core_elevated_bg": "#DAE0E2",
+    "core_elevated_fg": "#596B72",
+    "card_bg": "#DAE0E2",
+    "card_placeholder_bg": "#B6C1C4",
+    "card_placeholder_fg": "#596B72",
+    "card_separator": "#CFD4D6",
+    "created_at": "2025-03-26T14:27:47.117Z",
+    "updated_at": "2025-03-26T15:36:24.643Z"
+  }
+}
+]
