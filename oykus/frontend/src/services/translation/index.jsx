@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useRef } from "react";
 import { loadTranslations } from "./utils";
+import { okpDate } from "@/utils/formatters";
 
 const TranslationContext = createContext(null);
 
@@ -37,8 +38,12 @@ const TranslationProvider = ({ children, lang = "fr" }) => {
     return key;
   };
 
+  const d = (value, show = "full", tz = "America/Toronto", toLang = lang) => {
+    return okpDate(value, show, toLang, tz);
+  };
+
   return (
-    <TranslationContext.Provider value={{ t, lang }}>
+    <TranslationContext.Provider value={{ t, d, lang }}>
       {children}
     </TranslationContext.Provider>
   );

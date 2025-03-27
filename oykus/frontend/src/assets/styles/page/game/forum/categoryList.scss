@@ -1,0 +1,5 @@
+@use "@/assets/styles/core/_grid" as grid;
+
+.okp-forum-category-list {
+  @include grid.grid;
+}

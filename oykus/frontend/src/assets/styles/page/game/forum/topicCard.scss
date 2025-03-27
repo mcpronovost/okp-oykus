@@ -1,0 +1,180 @@
+.okp-forum-topic-card {
+  display: flex;
+  flex: 1 1 25%;
+  // max-width: 25%;
+  padding: 12px;
+
+  &.okp-flex-100 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  &.okp-flex-50 {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  &.okp-flex-33 {
+    flex-basis: calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  @media (max-width: 720px) {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  &-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    &.okp-flag-important {
+      box-shadow: 0 0 2px 0 color-mix(in srgb, var(--c-primary) 50%, transparent);
+    }
+  }
+
+  &-header {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    &-banner {
+      margin-bottom: 42px;
+    }
+
+    &-avatar {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &-lastpost {
+      background-color: var(--okp-card-bg-subtle);
+      border: 4px solid var(--okp-card-bg);
+      border-radius: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 64px;
+      left: calc(50% + 42px);
+
+      &-link {
+        border-radius: 50%;
+        font-size: 16px;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-flags {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+
+      &-item {
+        background-color: var(--okp-card-bg-subtle);
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+
+        &-icon {
+          color: var(--okp-card-fg-subtle);
+        }
+      }
+    }
+
+    &-title {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      &-link {
+        color: var(--okp-link);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-decoration: inherit;
+        display: block;
+        width: 100%;
+        padding: 6px;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.6;
+        }
+
+        &:active {
+          color: var(--c-primary);
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+
+  &-footer {
+    color: var(--okp-card-fg-subtle);
+    font-size: 0.8rem;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+
+    &-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      &-text {
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+        margin: 0 6px;
+      }
+
+      &-date,
+      &-count {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-date {
+        text-align: left;
+      }
+
+      &-count {
+        text-align: right;
+      }
+    }
+  }
+}

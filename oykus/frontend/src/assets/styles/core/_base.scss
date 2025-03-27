@@ -25,6 +25,7 @@ body {
 a {
   color: inherit;
   text-decoration: inherit;
+  transition: color 0.3s, opacity 0.3s;
 
   &:hover:not([disabled]) {
     opacity: 0.8;

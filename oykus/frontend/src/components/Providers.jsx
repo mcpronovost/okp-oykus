@@ -59,9 +59,9 @@ function OkpProvidersContent({ children, lang, theme }) {
           colorTextTertiary: theme?.card_placeholder_fg || "#A7A8AA",
 
           // Alias
-          // boxShadow: "none",
-          // boxShadowSecondary: "none",
-          // boxShadowTertiary: "none",
+          boxShadow: "1px 1px 1px 1px #f00",
+          boxShadowSecondary: "0px 0px 4px rgba(0,0,0,.12)",
+          boxShadowTertiary: "1px 1px 1px 1px #00f",
           colorTextLightSolid: theme?.core_elevated_fg || "#A7A8AA",
         },
         components: {
@@ -73,6 +73,7 @@ function OkpProvidersContent({ children, lang, theme }) {
           },
           Card: {
             lineWidth: 0,
+            bodyPadding: 12,
           },
           Input: {
             activeShadow: "none",
@@ -95,7 +96,9 @@ function OkpProvidersContent({ children, lang, theme }) {
       }}
     >
       <Suspense fallback={<OkpLoading />}>
-        {children}
+        <div id="okp-theme" style={{ "--c-primary": theme?.primary || "#d3b017" }}>
+          {children}
+        </div>
       </Suspense>
     </ConfigProvider>
   );

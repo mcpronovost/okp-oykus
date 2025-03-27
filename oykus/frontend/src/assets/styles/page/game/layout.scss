@@ -1,4 +1,10 @@
 @use "../../core/_grid" as grid;
+@use "./forum/categoryList" as game-forum-categoryList;
+@use "./forum/categoryCard" as game-forum-categoryCard;
+@use "./forum/sectionList" as game-forum-sectionList;
+@use "./forum/sectionCard" as game-forum-sectionCard;
+@use "./forum/topicList" as game-forum-topicList;
+@use "./forum/topicCard" as game-forum-topicCard;
 
 .okp-game {
   &-header {
