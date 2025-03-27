@@ -27,8 +27,6 @@ export default function OkpProviders({ children, theme, lang, path, data }) {
 }
 
 function OkpProvidersContent({ children, lang, theme }) {
-  console.log("theme", theme);
-
   return (
     <ConfigProvider
       locale={lang === "en" ? en : fr}

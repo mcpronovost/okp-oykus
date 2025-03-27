@@ -147,7 +147,7 @@ class OkpForumTopic(models.Model):
 
     @cached_property
     def url(self):
-        g = f"/g/{self.game.slug}"
+        g = f"g/{self.game.slug}"
         c = f"/c{self.category.id}-{self.category.slug}" if self.category else ""
         s = f"/s{self.section.id}-{self.section.slug}" if self.section else ""
         t = f"/t{self.id}-{self.slug}"

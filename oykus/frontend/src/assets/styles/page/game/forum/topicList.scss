@@ -1,8 +1,16 @@
-.okp-forum-topics-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-  margin: 0 -12px;
+@use "@/assets/styles/core/_grid" as grid;
+
+.okp-forum-topic-list {
+  margin: 0;
+
+  @include grid.grid;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    margin: 0 -12px;
+  }
 }

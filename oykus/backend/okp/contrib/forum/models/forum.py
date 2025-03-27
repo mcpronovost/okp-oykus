@@ -92,7 +92,7 @@ class OkpForum(models.Model):
 
     @cached_property
     def url(self):
-        g = f"/g/{self.game.slug}"
+        g = f"g/{self.game.slug}"
         return f"{g}/"
 
     def save(self, *args, **kwargs):
