@@ -15,7 +15,7 @@ VISIBLE_STATUS = {
 @admin.register(OkpForumPost)
 class OkpForumPostAdmin(ModelAdmin):
     list_display = ("show_post", "forum", "show_is_visible")
-    list_filter = ("created_at", "updated_at")
+    list_filter = ("game", "character", "user", "created_at", "updated_at")
     search_fields = ("title", "slug")
     readonly_fields = ("created_at", "updated_at")
 
