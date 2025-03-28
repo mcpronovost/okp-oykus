@@ -1,5 +1,5 @@
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.generics import CreateAPIView, ListAPIView
 
 from okp.contrib.forum.models import OkpForumPost
@@ -30,13 +30,5 @@ class OkpForumPostCreateView(CreateAPIView):
     Create a new forum post
     """
 
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = OkpForumPostCreateSerializer
-
-    def perform_create(self, serializer):
-        topic = serializer.validated_data.get("topic")
-        if not topic:
-            raise ValidationError({"topic": "Topic does not exist."})
-        if topic.is_locked:
-            raise ValidationError({"topic": "Cannot create posts in a locked topic."})
-        serializer.save()

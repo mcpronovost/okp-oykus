@@ -147,3 +147,28 @@ class OkpForumPostCreateSerializer(serializers.ModelSerializer):
             "message",
         )
         read_only_fields = ("id",)
+
+    def validate(self, data):
+        request = self.context.get("request")
+        character = data.get("character")
+        topic = data.get("topic")
+
+        # Topic validations
+        if not topic:
+            raise serializers.ValidationError({"topic": "Topic does not exist."})
+        if topic.is_locked:
+            raise serializers.ValidationError({"topic": "Cannot create posts in a locked topic."})
+
+        # Character validations
+        if not character:
+            raise serializers.ValidationError({"character": "Character does not exist."})
+        if not character.is_active:
+            raise serializers.ValidationError({"character": "Character is not active."})
+
+        # Character ownership and game validations
+        if character.user != request.user:
+            raise serializers.ValidationError({"character": "Character does not belong to you."})
+        if character.game.id != topic.game.id:
+            raise serializers.ValidationError({"character": "Character does not belong to this game."})
+
+        return data
