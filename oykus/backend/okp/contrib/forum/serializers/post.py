@@ -6,7 +6,6 @@ from okp.contrib.auth.serializers import (
 )
 from okp.contrib.game.serializers import (
     OkpGameSerializer,
-    OkpGameCharacterSerializer,
     OkpGameCharacterAuthorSerializer,
 )
 from okp.contrib.forum.models import OkpForumPost
@@ -90,7 +89,7 @@ class OkpForumPostListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for list views"""
 
     user = OkpUserSerializer(read_only=True)
-    character = OkpGameCharacterSerializer(read_only=True)
+    character = OkpGameCharacterAuthorSerializer(read_only=True)
     game = OkpGameSerializer(read_only=True)
 
     class Meta:
@@ -116,7 +115,7 @@ class OkpForumPostDetailSerializer(serializers.ModelSerializer):
 
     game = OkpGameSerializer(read_only=True)
     user = OkpUserSerializer(read_only=True)
-    character = OkpGameCharacterSerializer(read_only=True)
+    character = OkpGameCharacterAuthorSerializer(read_only=True)
 
     class Meta:
         model = OkpForumPost

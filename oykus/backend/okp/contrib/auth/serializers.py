@@ -50,9 +50,9 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
         validators=[
             UniqueValidator(
                 queryset=get_user_model().objects.all(),
-                message=_("A user with that username already exists.")
+                message=_("A user with that username already exists."),
             )
-        ]
+        ],
     )
     email = serializers.EmailField(
         write_only=True,
@@ -60,19 +60,13 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
         validators=[
             UniqueValidator(
                 queryset=get_user_model().objects.all(),
-                message=_("A user with that email already exists.")
+                message=_("A user with that email already exists."),
             )
-        ]
+        ],
     )
-    password = serializers.CharField(
-        write_only=True,
-        required=True,
-        validators=[validate_password]
-    )
+    password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(
-        write_only=True,
-        required=True,
-        validators=[validate_password]
+        write_only=True, required=True, validators=[validate_password]
     )
     first_name = serializers.CharField(write_only=True, required=False)
     last_name = serializers.CharField(write_only=True, required=False)
@@ -80,22 +74,27 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ("username", "email", "password", "password2",
-                  "first_name", "last_name", "terms_accepted")
+        fields = (
+            "username",
+            "email",
+            "password",
+            "password2",
+            "first_name",
+            "last_name",
+            "terms_accepted",
+        )
 
     def validate_username(self, value):
         if len(value) < 3:
-            raise serializers.ValidationError(
-                _("Username must be at least 3 characters long.")
-            )
+            raise serializers.ValidationError(_("Username must be at least 3 characters long."))
         if len(value) > 150:
-            raise serializers.ValidationError(
-                _("Username must be less than 150 characters long.")
-            )
+            raise serializers.ValidationError(_("Username must be less than 150 characters long."))
         if not re.match(r"^[a-zA-Z0-9_-]+$", value):
             raise serializers.ValidationError(
-                _("Username must contain only letters, numbers, \
-                  underscores, and hyphens.")
+                _(
+                    "Username must contain only letters, numbers, \
+                  underscores, and hyphens."
+                )
             )
         return value
 
@@ -108,23 +107,17 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
 
     def validate_last_name(self, value):
         if len(value) > 150:
-            raise serializers.ValidationError(
-                _("Last name must be less than 150 characters long.")
-            )
+            raise serializers.ValidationError(_("Last name must be less than 150 characters long."))
         return value
 
     def validate_terms_accepted(self, value):
         if not value:
-            raise serializers.ValidationError(
-                _("You must accept the terms of service.")
-            )
+            raise serializers.ValidationError(_("You must accept the terms of service."))
         return value
 
     def validate(self, attrs):
         if attrs["password"] != attrs["password2"]:
-            raise serializers.ValidationError(
-                {"password": _("Password fields didn't match.")}
-            )
+            raise serializers.ValidationError({"password": _("Password fields didn't match.")})
         return attrs
 
     def create(self, validated_data):
@@ -145,10 +138,19 @@ class OkpAuthRegisterSerializer(serializers.ModelSerializer):
 
 
 class OkpUserSerializer(serializers.ModelSerializer):
+    characters = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = get_user_model()
-        fields = ("id", "name", "slug", "abbr", "avatar", "cover")
-        read_only_fields = ("id", "name", "slug", "abbr", "avatar", "cover")
+        fields = ("id", "name", "slug", "abbr", "avatar", "cover", "characters")
+        read_only_fields = ("id", "name", "slug", "abbr", "avatar", "cover", "characters")
+
+    def get_characters(self, obj):
+        from okp.contrib.game.serializers import OkpGameCharacterSerializer  # noqa
+
+        return OkpGameCharacterSerializer(
+            obj.characters.filter(is_active=True), many=True
+        ).data
 
 
 class OkpGameUserAuthorSerializer(serializers.ModelSerializer):
