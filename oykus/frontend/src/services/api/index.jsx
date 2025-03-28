@@ -74,6 +74,11 @@ class OkpApi {
     const result = await this.get("/auth/me/");
     return result;
   }
+
+  async createPost(data) {
+    const result = await this.post("/forum/posts/create/", data);
+    return result;
+  }
 }
 
 export const okpApi = new OkpApi();

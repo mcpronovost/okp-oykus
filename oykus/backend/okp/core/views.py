@@ -17,14 +17,18 @@ class OkpPageView(TemplateView):
     theme = None
     theme_field = None
 
+    def get_pre_context(self, **kwargs):
+        return super().get_context_data(**kwargs)
+
     def get_context_data(self, **kwargs):
+        # Get the pre-context data
+        context = self.get_pre_context(**kwargs)
+
         # Add view and request to the serializer context
         serializer_context = kwargs.copy()
         serializer_context["view"] = self
         serializer_context["request"] = self.request
-
-        # Add the serialized data to the context
-        context = super().get_context_data(**kwargs)
+        print("super context: ", context)
 
         if self.model:
             # Get the object dynamically using the model and specified key

@@ -74,6 +74,7 @@ class OkpForumSectionSerializer(serializers.ModelSerializer):
             .filter(is_visible=True)
             .order_by(
                 "-is_pinned",
+                "-is_important",
                 "-last_post__created_at",
                 "-created_at",
             )

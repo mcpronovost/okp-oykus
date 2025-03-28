@@ -5,6 +5,8 @@
 @use "./forum/sectionCard" as game-forum-sectionCard;
 @use "./forum/topicList" as game-forum-topicList;
 @use "./forum/topicCard" as game-forum-topicCard;
+@use "./forum/postList" as game-forum-postList;
+@use "./forum/postCard" as game-forum-postCard;
 
 .okp-game {
   &-header {
@@ -35,5 +37,9 @@
       display: block;
       opacity: 0.9;
     }
+  }
+
+  .okp-forum-topic {
+    @include grid.grid;
   }
 }

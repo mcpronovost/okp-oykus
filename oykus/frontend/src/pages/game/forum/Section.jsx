@@ -3,7 +3,6 @@ import { OkpGameForumTopicList } from "@/components/game";
 import { OkpBreadcrumb, OkpHeading } from "@/components/ui";
 
 export default function OkpGameForumSection({ data }) {
-  console.log("data", data);
   return (
     <OkpGameLayout data={data}>
       {data?.section && (

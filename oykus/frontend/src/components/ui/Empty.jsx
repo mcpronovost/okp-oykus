@@ -1,12 +1,15 @@
+import { theme } from "antd";
 import { Ghost } from "lucide-react";
 import { useTranslation } from "@/services/translation";
 
+const { useToken } = theme;
+
 export default function OkpEmpty({ text, subtext, children, className = "" }) {
   const { t } = useTranslation();
-
+  const { token } = useToken();
   return (
-    <aside className={`okp-empty ${className}`}>
-      <div aria-hidden="true" className="okp-empty-icon">
+    <aside className={`okp-empty ${className}`} style={{ borderColor: token.colorBorder, borderRadius: token.borderRadiusLG }}>
+      <div aria-hidden="true" className="okp-empty-icon" style={{ borderColor: token.colorBorder }}>
         <Ghost size={32} />
       </div>
       <p className="okp-empty-text">{text || t("No results found")}</p>

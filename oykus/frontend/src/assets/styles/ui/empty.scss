@@ -1,0 +1,44 @@
+.okp-empty {
+  border-width: 1px;
+  border-style: dashed;
+  text-align: center;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 32px;
+  margin: 12px;
+
+  &-icon {
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  &-text {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &-subtext {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  &-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+}

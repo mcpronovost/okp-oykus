@@ -5,6 +5,8 @@ import { OkpLayout } from "@/components/layout";
 import { OkpBanner, OkpLink } from "@/components/ui";
 
 export default function OkpGameLayout({ children, data }) {
+  if (!data) return null;
+
   const { t } = useTranslation();
 
   const gameCopyear = (() => {

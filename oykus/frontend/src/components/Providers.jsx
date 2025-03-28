@@ -89,7 +89,12 @@ function OkpProvidersContent({ children, lang, theme }) {
             collapsedIconSize: 20,
             itemActiveBg: "#1f1f1f",
             itemSelectedBg: "#1f1f1f",
-          }
+          },
+          Select: {
+            activeOutlineColor: "transparent",
+            optionSelectedBg: theme?.card_placeholder_bg || "#232323",
+            optionSelectedColor: theme?.card_placeholder_fg || "#A7A8AA",
+          },
         },
       }}
     >
