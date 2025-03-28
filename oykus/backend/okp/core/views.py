@@ -28,7 +28,6 @@ class OkpPageView(TemplateView):
         serializer_context = kwargs.copy()
         serializer_context["view"] = self
         serializer_context["request"] = self.request
-        print("super context: ", context)
 
         if self.model:
             # Get the object dynamically using the model and specified key
