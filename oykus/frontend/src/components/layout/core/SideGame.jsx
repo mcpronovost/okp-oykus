@@ -1,14 +1,16 @@
 import { Layout, Tooltip } from "antd";
 import { UsersRound, Orbit } from "lucide-react";
 import { useInitData } from "@/services/initData";
+import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { OkpScrollarea, OkpAvatar, OkpLink } from "@/components/ui";
 import imgPachua from "@/assets/img/pachua.jpg";
 
 export default function OkpSideGame() {
   const { Sider } = Layout;
-  const { t } = useTranslation();
   const { sideGamesPopular } = useInitData();
+  const { user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <Sider
@@ -27,32 +29,29 @@ export default function OkpSideGame() {
       }}
     >
       <OkpScrollarea>
-        <ul className="okp-list">
-          <li className="okp-list-header">
-            <UsersRound size={24} aria-label={t("Your Characters")} />
-          </li>
-          <li className="okp-list-item">
-            <Tooltip title={"Pachu'a Wapi-Qatlaalawsiq"} placement="left">
-              <OkpLink href="w/oykus/characters/01-pachua-wapi-qatlaalawsiq">
-                <OkpAvatar src={imgPachua} alt="Game" size={48} />
-              </OkpLink>
-            </Tooltip>
-          </li>
-          <li className="okp-list-item">
-            <Tooltip title="Pachu'a Wapi-Qatlaalawsiq" placement="left">
-              <OkpLink href="w/oykus/characters/01-pachua-wapi-qatlaalawsiq">
-                <OkpAvatar src={imgPachua} alt="Game" size={48} />
-              </OkpLink>
-            </Tooltip>
-          </li>
-        </ul>
-        {sideGamesPopular && (
+        {user?.characters?.length > 0 && (
+          <ul className="okp-list">
+            <li className="okp-list-header">
+              <UsersRound size={24} aria-label={t("Your Characters")} />
+            </li>
+            {user.characters.map((character) => (
+              <li key={character.id} className="okp-list-item">
+                <Tooltip title={character.name} placement="left">
+                  <OkpLink href={`w/oykus/characters/${character.slug}`}>
+                    <OkpAvatar src={character.avatar} fallback={character.abbr} alt={character.name} size={48} />
+                  </OkpLink>
+                </Tooltip>
+              </li>
+            ))}
+          </ul>
+        )}
+        {sideGamesPopular?.length > 0 && (
           <ul className="okp-list">
             <li className="okp-list-header">
               <Orbit size={24} aria-label={t("Popular Games")} />
             </li>
             {sideGamesPopular.map((game) => (
-              <li className="okp-list-item" key={game.id}>
+              <li key={game.id} className="okp-list-item">
                 <Tooltip title={game.title} placement="left">
                   <OkpLink href={`g/${game.slug}`}>
                     <OkpAvatar src={game.image} fallback={game.abbr} color={game.primary} alt="Game" size={48} />
