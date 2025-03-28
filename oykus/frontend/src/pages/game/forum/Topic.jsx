@@ -34,7 +34,7 @@ export default function OkpGameForumCategory({ data }) {
                 description="You can reply to this topic."
               />
               <OkpCard>
-                <OkpGameForumFormNewPost topicId={data.topic.id} afterSubmit={() => {
+                <OkpGameForumFormNewPost gameId={data.id} topicId={data.topic.id} afterSubmit={() => {
                   window.location.href = `${window.location.pathname}?page=last`;
                 }} />
               </OkpCard>

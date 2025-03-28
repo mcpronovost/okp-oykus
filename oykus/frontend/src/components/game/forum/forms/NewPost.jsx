@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Form } from "antd";
 import { okpApi } from "@/services/api";
+import { useAuth } from "@/services/auth";
 import {
   OkpForm,
   OkpFormField,
@@ -9,38 +10,18 @@ import {
   OkpFormReset,
 } from "@/components/form";
 
-export default function OkpForumNewPost({ topicId, afterSubmit = () => {} }) {
-  const [errors, setErrors] = useState({});
+export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {} }) {
+  const { user } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form] = Form.useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
+  const characters = useMemo(() => {
+    if (!user) return [];
+    return user?.characters?.filter((c) => c.game == gameId).map((c) => ({
+      value: c.id,
+      label: c.name,
     }));
-
-    // Clear error when the user types/selects
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: [],
-    }));
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    // Character validation
-    if (!formData.character) {
-      newErrors.character = ["Please select a character."];
-    }
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = ["Message is required."];
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  }, [user, gameId]);
 
   const handleSubmit = async (e) => {
     setIsSubmitting(true);
@@ -63,22 +44,13 @@ export default function OkpForumNewPost({ topicId, afterSubmit = () => {} }) {
   };
 
   return (
-    <OkpForm form={form} submit={handleSubmit}>
+    <OkpForm form={form} submit={handleSubmit} initialValues={{ character: characters[0]?.value }}>
       <OkpFormField
         name="character"
         label="Character"
         inputType="select"
         placeholder="Select a character"
-        options={[
-          {
-            value: "1",
-            label: "Pachua",
-          },
-          {
-            value: "2",
-            label: "Sedem",
-          },
-        ]}
+        options={characters}
         required
       />
       <OkpFormField
