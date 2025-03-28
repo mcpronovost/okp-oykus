@@ -58,6 +58,12 @@ class OkpUserAdmin(UserAdmin, ModelAdmin):
                 "classes": ("collapse",),
             },
         ),
+        (
+            _("Statistics"),
+            {
+                "fields": ("total_topics", "total_posts", "last_post"),
+            },
+        ),
         (_("Important dates"), {
             "fields": (
                 "created_at",

@@ -75,6 +75,24 @@ class OkpUser(AbstractUser):
             ),
         ],
     )
+    # Statistics
+    total_topics = models.IntegerField(
+        verbose_name=_("Total Topics"),
+        default=0,
+    )
+    total_posts = models.IntegerField(
+        verbose_name=_("Total Posts"),
+        default=0,
+    )
+    last_post = models.ForeignKey(
+        "okp_forum.OkpForumPost",
+        verbose_name=_("Last Post"),
+        on_delete=models.SET_NULL,
+        related_name="last_post_user",
+        blank=True,
+        null=True,
+    )
+    # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),
         auto_now_add=True,
