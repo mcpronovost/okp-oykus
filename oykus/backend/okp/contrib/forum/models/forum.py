@@ -54,6 +54,14 @@ class OkpForum(models.Model):
         help_text=_("Whether the forum is visible to users."),
     )
     # Statistics
+    total_users = models.IntegerField(
+        verbose_name=_("Total Users"),
+        default=0,
+    )
+    total_characters = models.IntegerField(
+        verbose_name=_("Total Characters"),
+        default=0,
+    )
     total_posts = models.IntegerField(
         verbose_name=_("Total Posts"),
         default=0,
