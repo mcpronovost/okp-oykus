@@ -28,5 +28,17 @@
   "Your Worlds": "Your Worlds",
   "Help": "Help",
   "Settings": "Settings",
-  "Popular Games": "Popular Games"
+  "Popular Games": "Popular Games",
+  "Title": "Title",
+  "Character": "Character",
+  "Message": "Message",
+  "Send": "Send",
+  "Topic is pinned": "Topic is pinned",
+  "Topic is locked": "Topic is locked",
+  "Create a new topic.": "Create a new topic.",
+  "Enter your title": "Enter your title",
+  "Enter your message": "Enter your message",
+  "Select a character": "Select a character",
+  "Failed to create topic": "Failed to create topic",
+  "Failed to create post": "Failed to create post"
 }

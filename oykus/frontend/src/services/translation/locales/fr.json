@@ -28,5 +28,17 @@
   "Your Worlds": "Vos mondes",
   "Help": "Aide",
   "Settings": "Paramètres",
-  "Popular Games": "Jeux populaires"
+  "Popular Games": "Jeux populaires",
+  "Title": "Titre",
+  "Character": "Personnage",
+  "Message": "Message",
+  "Send": "Envoyer",
+  "Topic is pinned": "Le sujet est épinglé",
+  "Topic is locked": "Le sujet est verrouillé",
+  "Create a new topic.": "Créer un nouveau sujet.",
+  "Enter your title": "Entrez votre titre",
+  "Enter your message": "Entrez votre message",
+  "Select a character": "Sélectionnez un personnage",
+  "Failed to create topic": "Erreur lors de la création du sujet",
+  "Failed to create post": "Erreur lors de la création du message"
 }
