@@ -177,3 +177,23 @@ class OkpForumPostCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"character": "Character does not belong to this game."})
 
         return data
+
+
+class OkpForumPostDeleteSerializer(serializers.ModelSerializer):
+    """Serializer for deleting a forum post"""
+
+    class Meta:
+        model = OkpForumPost
+        fields = ("id",)
+        read_only_fields = ("id",)
+
+    def validate(self, data):
+        request = self.context.get("request")
+        post = self.get_object()
+
+        if not post:
+            raise serializers.ValidationError({"post": "Post does not exist."})
+        if post.user != request.user:
+            raise serializers.ValidationError({"post": "Post does not belong to you."})
+
+        return data

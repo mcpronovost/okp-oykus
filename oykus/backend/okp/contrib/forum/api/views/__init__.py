@@ -1,5 +1,5 @@
 from .topic import OkpForumTopicView, OkpForumTopicCreateView
-from .post import OkpForumPostsView, OkpForumPostCreateView
+from .post import OkpForumPostsView, OkpForumPostCreateView, OkpForumPostDeleteView
 
 
 __all__ = [
@@ -7,4 +7,5 @@ __all__ = [
     "OkpForumTopicCreateView",
     "OkpForumPostsView",
     "OkpForumPostCreateView",
+    "OkpForumPostDeleteView",
 ]

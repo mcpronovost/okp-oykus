@@ -54,6 +54,7 @@ function OkpProvidersContent({ children, lang, theme }) {
           colorBorder: theme?.core_border || "#313131",
           colorBorderSecondary: theme?.card_separator || "#313131",
           colorFill: theme?.card_placeholder_bg || "#232323", // "#1c1c1c",  // card mask
+          colorTextSecondary: theme?.core_subtle_fg || "#5a5c5f",
           colorTextTertiary: theme?.card_placeholder_fg || "#A7A8AA",
 
           // Alias

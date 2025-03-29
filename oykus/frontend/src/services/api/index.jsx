@@ -25,7 +25,20 @@ class OkpApi {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        let errorMsg = `HTTP error! status: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMsg = JSON.stringify(errorData);
+        } catch (err) {
+          errorMsg = `HTTP error! status: ${response.status}`;
+        }
+        throw new Error(errorMsg);
+      }
+
+      if (response.status === 204) {
+        return {
+          success: true,
+        };
       }
 
       const data = await response.json();
@@ -82,6 +95,11 @@ class OkpApi {
 
   async createPost(data) {
     const result = await this.post("/forum/posts/create/", data);
+    return result;
+  }
+
+  async deletePost(id) {
+    const result = await this.delete(`/forum/posts/${id}/delete/`);
     return result;
   }
 }

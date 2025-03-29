@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Form, notification } from "antd";
 import { okpApi } from "@/services/api";
 import { useAuth } from "@/services/auth";
+import { useTranslation } from "@/services/translation";
 import {
   OkpForm,
   OkpFormField,
@@ -13,6 +14,7 @@ import {
 export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {} }) {
   const [api, contextHolder] = notification.useNotification();
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form] = Form.useForm();
 
@@ -38,7 +40,11 @@ export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {
         throw new Error(result?.message);
       }
     } catch (error) {
-      openNotification(error);
+      if (error.message.includes("topic")) {
+        openNotification(t("You are not allowed to create a post in this topic"));
+      } else {
+        openNotification(error);
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -1,12 +1,61 @@
+import { useState } from "react";
+import { X, Pencil } from "lucide-react";
+import { Popconfirm, Tooltip, theme, notification } from "antd";
+import { okpApi } from "@/services/api";
+import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { okpCode } from "@/utils";
-import { OkpAvatar, OkpBanner, OkpCard, OkpLink } from "@/components/ui";
+import { OkpAvatar, OkpBanner, OkpButton, OkpCard, OkpEmpty, OkpLink } from "@/components/ui";
+
+const { useToken } = theme;
 
 export default function OkpGameForumPostCard({ post, isLast }) {
+  const [api, contextHolder] = notification.useNotification();
+  const { token } = useToken();
+  const { user } = useAuth();
   const { t, d } = useTranslation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleDeletePost = async () => {
+    setIsSubmitting(true);
+
+    try {
+      const result = await okpApi.deletePost(post.id);
+      if (result?.success) {
+        setIsDeleted(true);
+      } else {
+        throw new Error(result?.message);
+      }
+    } catch (error) {
+      openNotification(t("Failed to delete post"), error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleEditPost = () => {
+    console.log("edit post");
+  };
+
+  const openNotification = (title, msg) => {
+    api.error({
+      message: title,
+      description: msg?.message || String(msg),
+    });
+  };
+
+  if (isDeleted) {
+    return (
+      <OkpCard key={post.id} className={`okp-forum-post-card ${isLast ? "okp-last" : ""}`} id={`post-${post.id}`}>
+        <OkpEmpty text={t("Post deleted")} />
+      </OkpCard>
+    );
+  }
 
   return (
     <OkpCard key={post.id} className={`okp-forum-post-card ${isLast ? "okp-last" : ""}`} id={`post-${post.id}`}>
+      {contextHolder}
       <header className="okp-forum-post-card-header">
         <div className="okp-forum-post-card-header-character">
           {post.author?.character && (
@@ -37,7 +86,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
             </strong>
           </p>
         </div>
-        <div className="okp-forum-post-card-header-author">
+        <div className="okp-forum-post-card-header-author" style={{ color: token.colorTextSecondary }}>
           <strong>
             {post.author?.user?.name ? <OkpLink href="#">{`${t("by")} ${post.author?.user?.name}`}</OkpLink> : t("by an unknown")}
           </strong>
@@ -54,7 +103,32 @@ export default function OkpGameForumPostCard({ post, isLast }) {
           <div dangerouslySetInnerHTML={{ __html: okpCode(post.message) }} />
         </div>
       </section>
-      <footer className="okp-forum-post-card-footer"></footer>
+      <footer className="okp-forum-post-card-footer">
+        <div className="okp-forum-post-card-footer-actions">
+          {(post.author?.user?.id === user?.id) && (
+            <>
+              <Tooltip title={t("Edit post")} placement="bottom">
+                <OkpButton type="dashed" size="small" onClick={handleEditPost} disabled={isSubmitting}>
+                  <Pencil size={12} />
+                </OkpButton>
+              </Tooltip>
+              <Popconfirm
+                title={t("Delete post")}
+                description={t("Are you sure you want to delete this post?")}
+                onConfirm={handleDeletePost}
+                okText={t("Yes")}
+                cancelText={t("No")}
+              >
+                <Tooltip title={t("Delete post")} placement="bottom">
+                  <OkpButton type="dashed" size="small" disabled={isSubmitting}>
+                    <X size={12} />
+                  </OkpButton>
+                </Tooltip>
+              </Popconfirm>
+            </>
+          )}
+        </div>
+      </footer>
     </OkpCard>
   );
 }

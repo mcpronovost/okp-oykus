@@ -1,12 +1,17 @@
 import "@/assets/styles/ui/breadcrumb.scss";
 import { Compass, ChevronRight } from "lucide-react";
+import { theme } from "antd";
 import { OkpLink } from "@/components/ui";
+
+const { useToken } = theme;
 
 export default function OkpBreadcrumb({ breadcrumb }) {
   if (!breadcrumb) return null;
 
+  const { token } = useToken();
+
   return (
-    <nav className="okp-breadcrumb" aria-label="Breadcrumb">
+    <nav className="okp-breadcrumb" aria-label="Breadcrumb" style={{ color: token.colorTextSecondary }}>
       <Compass size={14} className="okp-breadcrumb-icon" />
       <ol className="okp-breadcrumb-list">
         {breadcrumb.map((item, index) => (

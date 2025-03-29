@@ -1,11 +1,12 @@
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView
 
 from okp.contrib.forum.models import OkpForumPost
 from okp.contrib.forum.serializers import (
     OkpForumPostListSerializer,
     OkpForumPostCreateSerializer,
+    OkpForumPostDeleteSerializer,
 )
 
 
@@ -32,3 +33,25 @@ class OkpForumPostCreateView(CreateAPIView):
 
     permission_classes = (IsAuthenticated,)
     serializer_class = OkpForumPostCreateSerializer
+
+
+class OkpForumPostDeleteView(DestroyAPIView):
+    """
+    Delete a forum post
+    """
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = OkpForumPostDeleteSerializer
+    queryset = OkpForumPost.objects.all()
+
+    def perform_destroy(self, instance):
+        topic = instance.topic
+        is_first_post = topic.posts.order_by("created_at").first() == instance
+        is_only_post = topic.total_posts == 1
+
+        # Delete the post
+        instance.delete()
+
+        # If this was the first or only post, delete the topic too
+        if is_first_post or is_only_post:
+            topic.delete()
