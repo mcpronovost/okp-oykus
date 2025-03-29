@@ -1,15 +1,16 @@
 import io
 import uuid
-from PIL import Image
+from PIL import Image, ImageDraw
 from django.core.files import File
 from django.db.models import ImageField
 
 
 class OkpImageField(ImageField):
-    def __init__(self, *args, max_width=None, max_height=None, format="WEBP", **kwargs):
+    def __init__(self, *args, max_width=None, max_height=None, format="WEBP", shape=None, **kwargs):
         self.max_width = max_width
         self.max_height = max_height
         self.format = format
+        self.shape = shape
         super().__init__(*args, **kwargs)
 
     def pre_save(self, model_instance, add):
@@ -40,6 +41,18 @@ class OkpImageField(ImageField):
                 right = left + self.max_width
                 bottom = top + self.max_height
                 pil_image = pil_image.crop((left, top, right, bottom))
+
+            # Apply circular mask if shape is circle
+            if self.shape == "circle":
+                # Create a circular mask
+                mask = Image.new("L", (self.max_width, self.max_height), 0)
+                draw = ImageDraw.Draw(mask)
+                draw.ellipse((0, 0, self.max_width - 1, self.max_height - 1), fill=255)
+
+                # Create output image with transparent background
+                output = Image.new("RGBA", (self.max_width, self.max_height), (0, 0, 0, 0))
+                output.paste(pil_image, mask=mask)
+                pil_image = output
 
             # Save the image
             buffer = io.BytesIO()
