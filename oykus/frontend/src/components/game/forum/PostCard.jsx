@@ -107,7 +107,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
       <section aria-labelledby="post-1" className="okp-forum-post-card-content">
         <div className="okp-forum-post-card-content-message">
           {isEditing ? (
-            <OkpForumEditPost post={post} afterSubmit={handleEditPostSubmit} onCancel={() => setIsEditing(false)} />
+            <OkpForumEditPost post={post} message={message} afterSubmit={handleEditPostSubmit} onCancel={() => setIsEditing(false)} />
           ) : (
             <div dangerouslySetInnerHTML={{ __html: okpCode(message) }} />
           )}

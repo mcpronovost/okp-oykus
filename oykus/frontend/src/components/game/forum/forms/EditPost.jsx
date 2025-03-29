@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Form, notification } from "antd";
 import { okpApi } from "@/services/api";
 import { useTranslation } from "@/services/translation";
@@ -10,11 +10,13 @@ import {
   OkpFormReset,
 } from "@/components/form";
 
-export default function OkpForumEditPost({ post, afterSubmit = () => {}, onCancel = () => {} }) {
+export default function OkpForumEditPost({ post, message, afterSubmit = () => {}, onCancel = () => {} }) {
   const [api, contextHolder] = notification.useNotification();
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form] = Form.useForm();
+
+  const initialValues = useMemo(() => ({ message }), [message]);
 
   const handleSubmit = async (e) => {
     setIsSubmitting(true);
@@ -43,7 +45,7 @@ export default function OkpForumEditPost({ post, afterSubmit = () => {}, onCance
   return (
     <>
       {contextHolder}
-      <OkpForm form={form} submit={handleSubmit} initialValues={{ message: post.message }}>
+      <OkpForm form={form} submit={handleSubmit} initialValues={initialValues}>
         <OkpFormField
           name="message"
           inputType="textarea"
