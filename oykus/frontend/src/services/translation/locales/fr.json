@@ -31,7 +31,10 @@
   "Popular Games": "Jeux populaires",
   "Post deleted": "Message supprimé",
   "Post from": "Message de",
+  "Post updated": "Message modifié",
+  "Post updated successfully": "Message modifié avec succès",
   "Reply": "Répondre",
+  "Save": "Enregistrer",
   "Select a character": "Sélectionnez un personnage",
   "Send": "Envoyer",
   "Settings": "Paramètres",
@@ -45,6 +48,7 @@
   "written on": "écrit le",
   "Yes": "Oui",
   "You are not allowed to create a post in this topic": "Vous n'êtes pas autorisé à créer un message dans ce sujet",
+  "You are not allowed to update this post": "Vous n'êtes pas autorisé à modifier ce message",
   "Your Characters": "Vos personnages",
   "Your Profile": "Votre profil",
   "Your Worlds": "Vos mondes"
