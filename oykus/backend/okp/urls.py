@@ -27,7 +27,7 @@ urlpatterns = [
 ] + i18n_patterns(
     path("admin/", admin.site.urls),
     # app
-    path("g/", include("okp.contrib.game.urls")),
+    path("u/", include("okp.contrib.game.urls")),
     re_path(r"^", OkpView.as_view()),
 )
 

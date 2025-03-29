@@ -15,20 +15,23 @@ class OkpGameSidePopularView(ListAPIView):
     queryset = OkpGame.objects.filter(
         is_active=True,
         is_public=True,
-    ).order_by("-updated_at")[:10]
+    ).order_by(
+        "-updated_at"
+    )[:10]
 
     def list(self, request, *args, **kwargs):
         instance = self.get_queryset()
         games = []
         for game in instance:
-            games.append({
-                "id": game.id,
-                "title": game.title,
-                "slug": game.slug,
-                "abbr": game.abbr,
-                "logo": game.logo.url if game.logo else None,
-                "primary": game.primary,
-            })
-        return Response({
-            "games": games
-        })
+            games.append(
+                {
+                    "id": game.id,
+                    "title": game.title,
+                    "slug": game.slug,
+                    "abbr": game.abbr,
+                    "logo": game.logo.url if game.logo else None,
+                    "url": game.url,
+                    "primary": game.primary,
+                }
+            )
+        return Response({"games": games})

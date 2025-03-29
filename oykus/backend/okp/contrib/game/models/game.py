@@ -1,6 +1,7 @@
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 
 from okp.core.fields import OkpImageField
@@ -136,6 +137,18 @@ class OkpGame(models.Model):
     def __str__(self):
         return self.title
 
+    @cached_property
+    def url(self):
+        g = f"u/{self.slug}"
+        return f"{g}/"
+
+    @property
+    def primary(self):
+        theme = self.theme.filter(is_active=True).first()
+        if theme:
+            return theme.primary
+        return None
+
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
             self.slug = get_slug(self.title, self, OkpGame)
@@ -151,10 +164,3 @@ class OkpGame(models.Model):
             self.favicon = self.logo
 
         super().save(*args, **kwargs)
-
-    @property
-    def primary(self):
-        theme = self.theme.filter(is_active=True).first()
-        if theme:
-            return theme.primary
-        return None

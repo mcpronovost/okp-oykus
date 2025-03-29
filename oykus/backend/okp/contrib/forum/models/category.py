@@ -118,7 +118,7 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
 
     @cached_property
     def url(self):
-        g = f"g/{self.game.slug}"
+        g = f"u/{self.game.slug}"
         c = f"/c{self.id}-{self.slug}"
         return f"{g}{c}/"
 

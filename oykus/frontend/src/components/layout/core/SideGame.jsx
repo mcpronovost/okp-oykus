@@ -53,7 +53,7 @@ export default function OkpSideGame() {
             {sideGamesPopular.map((game) => (
               <li key={game.id} className="okp-list-item">
                 <Tooltip title={game.title} placement="left">
-                  <OkpLink href={`g/${game.slug}`}>
+                  <OkpLink href={game.url}>
                     <OkpAvatar src={game.logo} fallback={game.abbr} color={game.logo ? undefined : game.primary} alt="Game" size={48} />
                   </OkpLink>
                 </Tooltip>
