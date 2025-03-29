@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { okpApi, okpEncode, okpDecode } from "@/services/api";
 
-const REFRESH_INTERVAL = 10 * 60 * 5; // 5 minutes
+const REFRESH_INTERVAL = 10 * 60 * 5; // 5 minutes = 1000 * 60 * 5
 const KEY_SIDE_GAMES_POPULAR = "okp-oykus-side-games-popular";
 
 const InitDataContext = createContext(null);

@@ -1,11 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { okpApi, okpEncode, okpDecode } from "@/services/api";
 
+const REFRESH_INTERVAL = 10 * 60 * 5; // 5 minutes = 1000 * 60 * 5
+const KEY_USER = "okp-oykus-user";
+const KEY_RAT = "okp-oykus-rat";
+
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUserState] = useState(() => {
-    const encodedUser = localStorage.getItem("okp-oykus-user");
+    const encodedUser = localStorage.getItem(KEY_USER);
     return encodedUser ? okpDecode(encodedUser) : null;
   });
 
@@ -16,25 +20,25 @@ const AuthProvider = ({ children }) => {
         lastUpdate: Date.now(),
       }
       setUserState(payload);
-      localStorage.setItem("okp-oykus-user", okpEncode(payload));
+      localStorage.setItem(KEY_USER, okpEncode(payload));
     } else {
       setUserState(null);
-      localStorage.removeItem("okp-oykus-user");
+      localStorage.removeItem(KEY_USER);
     }
   };
 
   const setRat = (rat) => {
     if (rat) {
-      localStorage.setItem("okp-oykus-rat", rat);
+      localStorage.setItem(KEY_RAT, rat);
     } else {
-      localStorage.removeItem("okp-oykus-rat");
+      localStorage.removeItem(KEY_RAT);
     }
   };
 
   // Check for existing auth on mount
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("okp-oykus-rat");
+      const token = localStorage.getItem(KEY_RAT);
       if (token) {
         try {
           // Validate token with backend
@@ -52,9 +56,8 @@ const AuthProvider = ({ children }) => {
     };
 
     if (user?.lastUpdate) {
-      const delta = 5 * 60 * 1000;  // 5 minutes
       const now = Date.now();
-      if (now - user?.lastUpdate > delta) {
+      if (now - user?.lastUpdate > REFRESH_INTERVAL) {
         checkAuth();
       }
     } else {
