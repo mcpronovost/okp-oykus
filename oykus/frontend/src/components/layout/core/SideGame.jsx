@@ -54,7 +54,7 @@ export default function OkpSideGame() {
               <li key={game.id} className="okp-list-item">
                 <Tooltip title={game.title} placement="left">
                   <OkpLink href={`g/${game.slug}`}>
-                    <OkpAvatar src={game.image} fallback={game.abbr} color={game.primary} alt="Game" size={48} />
+                    <OkpAvatar src={game.logo} fallback={game.abbr} color={game.logo ? undefined : game.primary} alt="Game" size={48} />
                   </OkpLink>
                 </Tooltip>
               </li>
