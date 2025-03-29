@@ -27,7 +27,7 @@ export default function OkpAvatar({
         aria-hidden="true"
         className="okp-avatar-figure"
         style={{
-          background: color || token.colorFill,
+          background: (!src || imgError) ? color || token.colorFill : "transparent",
           boxShadow: `0 0 1px ${stroke}px ${strokeColor || token.colorBgContainer}`,
           outlineWidth: `${stroke}px`,
           outlineColor: strokeColor || token.colorBgContainer,
