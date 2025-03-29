@@ -8,6 +8,7 @@
   "Username": "Nom d'utilisateur",
   "Password": "Mot de passe",
   "Reply": "Répondre",
+  "New Topic": "Nouveau sujet",
   "Unable to log in with provided credentials.": "Impossible de se connecter avec les identifiants fournis.",
   "Go to the last post": "Aller au dernier message",
   "messages": {

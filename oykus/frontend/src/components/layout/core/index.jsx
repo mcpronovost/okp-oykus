@@ -16,7 +16,7 @@ export default function OkpLayout({ children }) {
             overflow: "auto",
             maxHeight: "calc(100vh - 64px)",
           }}>
-          <OkpScrollarea>
+          <OkpScrollarea id="okp-scroll">
             {children}
           </OkpScrollarea>
         </Content>

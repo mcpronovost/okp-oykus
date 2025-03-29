@@ -39,7 +39,35 @@
     }
   }
 
-  .okp-forum-topic {
-    @include grid.grid;
+  .okp-forum {
+    &-breadtions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-breadcrumb {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      &-actions {
+        text-align: right;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 16px;
+      }
+    }
+
+    &-section {
+      @include grid.grid;
+    }
+
+    &-topic {
+      @include grid.grid;
+    }
   }
 }
