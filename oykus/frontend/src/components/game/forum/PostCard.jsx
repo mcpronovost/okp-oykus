@@ -37,10 +37,6 @@ export default function OkpGameForumPostCard({ post, isLast }) {
     }
   };
 
-  const handleEditPost = () => {
-    setIsEditing(!isEditing);
-  };
-
   const handleEditPostSubmit = (msg) => {
     setMessage(msg);
     setIsEditing(false);
@@ -122,7 +118,7 @@ export default function OkpGameForumPostCard({ post, isLast }) {
           {(post.author?.user?.id === user?.id) && (
             <>
               <Tooltip title={t("Edit post")} placement="bottom">
-                <OkpButton type="dashed" size="small" onClick={handleEditPost} disabled={isSubmitting}>
+                <OkpButton type="dashed" size="small" onClick={() => setIsEditing(!isEditing)} disabled={isSubmitting}>
                   <Pencil size={12} />
                 </OkpButton>
               </Tooltip>
