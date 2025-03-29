@@ -25,6 +25,8 @@ function OkpBreadcrumbActions({ breadcrumb }) {
 }
 
 export default function OkpGameForumTopic({ data }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get("page");
@@ -43,21 +45,12 @@ export default function OkpGameForumTopic({ data }) {
           <OkpGameForumPostList posts={data.topic.posts.results} />
           <OkpBreadcrumbActions breadcrumb={data.topic.breadcrumb} />
 
-          {/* Permissions Section
-          <section className="okp-forum-topic-permissions">
-            {data.topic.is_locked ? (
-              <p>This topic is locked and cannot be replied to.</p>
-            ) : (
-              <p>You can reply to this topic.</p>
-            )}
-          </section> */}
-
           {/* Reply Form Section */}
           {!data.topic.is_locked && data.topic.posts.results?.length > 0 && (
             <section id="reply" className="okp-forum-topic-reply">
               <OkpHeading
-                title="Reply"
-                description="You can reply to this topic."
+                title={t("Reply")}
+                description={t("You can reply to this topic.")}
               />
               <OkpCard>
                 <OkpGameForumFormNewPost gameId={data.id} topicId={data.topic.id} afterSubmit={() => {
