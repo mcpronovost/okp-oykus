@@ -6,20 +6,19 @@ import { OkpGameForumPostList } from "@/components/game";
 import { OkpBreadcrumb, OkpButton, OkpCard, OkpHeading  } from "@/components/ui";
 import OkpGameForumFormNewPost from "@/components/game/forum/forms/NewPost";
 
-function OkpBreadcrumbActions({ data }) {
+function OkpBreadcrumbActions({ breadcrumb }) {
   const { t } = useTranslation();
 
   return (
     <div className="okp-forum-breadtions">
       <div className="okp-forum-breadtions-breadcrumb">
-        <OkpBreadcrumb breadcrumb={data.topic.breadcrumb} />
+        <OkpBreadcrumb breadcrumb={breadcrumb} />
       </div>
       <div className="okp-forum-breadtions-actions">
         <OkpButton onClick={() => {
           const replySection = document.getElementById("reply");
           okpScrollTo(replySection);
         }}>{t("Reply")}</OkpButton>
-        <OkpButton>{t("New Topic")}</OkpButton>
       </div>
     </div>
   );
@@ -40,9 +39,9 @@ export default function OkpGameForumTopic({ data }) {
       {data?.topic && (
         <section className="okp-forum-topic">
           <OkpHeading title={data.topic.title} tag="h1" />
-          <OkpBreadcrumbActions data={data} />
+          <OkpBreadcrumbActions breadcrumb={data.topic.breadcrumb} />
           <OkpGameForumPostList posts={data.topic.posts.results} />
-          <OkpBreadcrumbActions data={data} />
+          <OkpBreadcrumbActions breadcrumb={data.topic.breadcrumb} />
 
           {/* Permissions Section
           <section className="okp-forum-topic-permissions">
