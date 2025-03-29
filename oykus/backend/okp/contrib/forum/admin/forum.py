@@ -28,7 +28,7 @@ class OkpForumAdmin(ModelAdmin):
     )
     list_filter = ("created_at", "updated_at")
     search_fields = ("title", "slug")
-    readonly_fields = ("created_at", "updated_at")
+    readonly_fields = ("total_topics", "total_posts", "created_at", "updated_at")
 
     @display(description=_("Forum"), header=True)
     def show_forum(self, obj):
@@ -60,6 +60,15 @@ class OkpForumAdmin(ModelAdmin):
                     "slug",
                     "is_slug_auto",
                 )
+            },
+        ),
+        (
+            _("Statistics"),
+            {
+                "fields": (
+                    "total_topics",
+                    "total_posts",
+                ),
             },
         ),
         (
