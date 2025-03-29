@@ -6,6 +6,7 @@ from .views import (
     OkpForumPostsView,
     OkpForumPostCreateView,
     OkpForumPostDeleteView,
+    OkpForumPostUpdateView,
 )
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path("topics/<int:topic_id>/posts/", OkpForumPostsView.as_view(), name="topic-posts-list"),
     path("posts/create/", OkpForumPostCreateView.as_view(), name="post-create"),
     path("posts/<int:pk>/delete/", OkpForumPostDeleteView.as_view(), name="post-delete"),
+    path("posts/<int:pk>/update/", OkpForumPostUpdateView.as_view(), name="post-update"),
 ]

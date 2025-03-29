@@ -69,6 +69,13 @@ class OkpApi {
     });
   }
 
+  patch(endpoint, data) {
+    return this.request(endpoint, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    });
+  }
+
   delete(endpoint) {
     return this.request(endpoint, { method: "DELETE" });
   }
@@ -100,6 +107,11 @@ class OkpApi {
 
   async deletePost(id) {
     const result = await this.delete(`/forum/posts/${id}/delete/`);
+    return result;
+  }
+
+  async updatePost(id, data) {
+    const result = await this.patch(`/forum/posts/${id}/update/`, data);
     return result;
   }
 }

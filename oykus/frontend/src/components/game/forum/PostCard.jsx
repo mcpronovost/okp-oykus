@@ -6,6 +6,7 @@ import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { okpCode } from "@/utils";
 import { OkpAvatar, OkpBanner, OkpButton, OkpCard, OkpEmpty, OkpLink } from "@/components/ui";
+import OkpForumEditPost from "./forms/EditPost";
 
 const { useToken } = theme;
 
@@ -14,7 +15,9 @@ export default function OkpGameForumPostCard({ post, isLast }) {
   const { token } = useToken();
   const { user } = useAuth();
   const { t, d } = useTranslation();
+  const [message, setMessage] = useState(post.message);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
   const handleDeletePost = async () => {
@@ -35,7 +38,12 @@ export default function OkpGameForumPostCard({ post, isLast }) {
   };
 
   const handleEditPost = () => {
-    console.log("edit post");
+    setIsEditing(!isEditing);
+  };
+
+  const handleEditPostSubmit = (msg) => {
+    setMessage(msg);
+    setIsEditing(false);
   };
 
   const openNotification = (title, msg) => {
@@ -100,7 +108,11 @@ export default function OkpGameForumPostCard({ post, isLast }) {
       </header>
       <section aria-labelledby="post-1" className="okp-forum-post-card-content">
         <div className="okp-forum-post-card-content-message">
-          <div dangerouslySetInnerHTML={{ __html: okpCode(post.message) }} />
+          {isEditing ? (
+            <OkpForumEditPost post={post} afterSubmit={handleEditPostSubmit} onCancel={() => setIsEditing(false)} />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: okpCode(message) }} />
+          )}
         </div>
       </section>
       <footer className="okp-forum-post-card-footer">

@@ -1,12 +1,13 @@
-from rest_framework.exceptions import ValidationError
+from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView, UpdateAPIView
 
 from okp.contrib.forum.models import OkpForumPost
 from okp.contrib.forum.serializers import (
     OkpForumPostListSerializer,
     OkpForumPostCreateSerializer,
     OkpForumPostDeleteSerializer,
+    OkpForumPostUpdateSerializer,
 )
 
 
@@ -55,3 +56,15 @@ class OkpForumPostDeleteView(DestroyAPIView):
         # If this was the first or only post, delete the topic too
         if is_first_post or is_only_post:
             topic.delete()
+
+
+class OkpForumPostUpdateView(UpdateAPIView):
+    """
+    Update a forum post
+    """
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = OkpForumPostUpdateSerializer
+
+    def get_object(self):
+        return get_object_or_404(OkpForumPost, id=self.kwargs.get("pk"))

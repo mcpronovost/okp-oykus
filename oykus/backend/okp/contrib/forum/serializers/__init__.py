@@ -19,6 +19,7 @@ from .post import (
     OkpForumPostDetailSerializer,
     OkpForumPostCreateSerializer,
     OkpForumPostDeleteSerializer,
+    OkpForumPostUpdateSerializer,
 )
 
 
@@ -37,4 +38,5 @@ __all__ = [
     "OkpForumPostDetailSerializer",
     "OkpForumPostCreateSerializer",
     "OkpForumPostDeleteSerializer",
+    "OkpForumPostUpdateSerializer",
 ]
