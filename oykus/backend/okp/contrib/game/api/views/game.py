@@ -26,6 +26,7 @@ class OkpGameSidePopularView(ListAPIView):
                 "title": game.title,
                 "slug": game.slug,
                 "abbr": game.abbr,
+                "logo": game.logo.url if game.logo else None,
                 "primary": game.primary,
             })
         return Response({

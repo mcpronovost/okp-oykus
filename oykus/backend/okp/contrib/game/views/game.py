@@ -13,6 +13,7 @@ class OkpGameView(OkpPageView):
     serializer_class = OkpGameForumIndexSerializer
     key = "slug"
     page_title_field = "title"
+    page_favicon_field = "favicon"
 
 
 class OkpGameForumCategoryView(OkpPageView):
@@ -20,6 +21,7 @@ class OkpGameForumCategoryView(OkpPageView):
     serializer_class = OkpGameForumCategorySerializer
     key = "slug"
     page_title_field = "category.title"
+    page_favicon_field = "favicon"
 
 
 class OkpGameForumSectionView(OkpPageView):
@@ -27,6 +29,7 @@ class OkpGameForumSectionView(OkpPageView):
     serializer_class = OkpGameForumSectionSerializer
     key = "slug"
     page_title_field = "section.title"
+    page_favicon_field = "favicon"
 
 
 class OkpGameForumTopicView(OkpPageView):
@@ -34,3 +37,4 @@ class OkpGameForumTopicView(OkpPageView):
     serializer_class = OkpGameForumTopicSerializer
     key = "slug"
     page_title_field = "topic.title"
+    page_favicon_field = "favicon"

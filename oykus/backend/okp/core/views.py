@@ -13,6 +13,8 @@ class OkpPageView(TemplateView):
     page_title_field = None
     page_description = None
     page_description_field = None
+    page_favicon = None
+    page_favicon_field = None
     page_size = 24
     theme = None
     theme_field = None
@@ -40,6 +42,7 @@ class OkpPageView(TemplateView):
             # Get SEO data
             context["page_title"] = self.get_page_title(serialized_data)
             context["page_description"] = self.get_page_description(serialized_data)
+            context["page_favicon"] = self.get_page_favicon(serialized_data)
 
             # Get theme
             context["theme"] = self.get_theme(serialized_data)
@@ -61,6 +64,13 @@ class OkpPageView(TemplateView):
             return self.page_description
         elif self.page_description_field:
             return self.get_field_value(obj, self.page_description_field)
+        return None
+
+    def get_page_favicon(self, obj):
+        if self.page_favicon:
+            return self.page_favicon
+        elif self.page_favicon_field:
+            return self.get_field_value(obj, self.page_favicon_field)
         return None
 
     def get_theme(self, obj):
