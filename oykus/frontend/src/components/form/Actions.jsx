@@ -12,9 +12,9 @@ export function OkpFormSubmit({ label, isLoading, children }) {
   );
 }
 
-export function OkpFormReset({ label, isLoading, children }) {
+export function OkpFormReset({ label, isLoading, onClick, children }) {
   return (
-    <Button htmlType="reset" disabled={isLoading}>
+    <Button htmlType="reset" disabled={isLoading} onClick={onClick}>
       {label || children}
     </Button>
   );
