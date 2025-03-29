@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## What's Changed
+## [v0.2.1] - 2025-03-29
 
 ### Added
 
@@ -108,6 +108,8 @@ All notable changes to this project will be documented in this file.
 - Bump django-unfold from 0.51.0 to 0.52.0 in /oykus/backend
 - Bump globals from 15.15.0 to 16.0.0 in /oykus/frontend
 - Bump attrs from 25.1.0 to 25.3.0 in /oykus/backend
+
+**Full Changelog**: https://github.com/mcpronovost/okp-oykus/compare/v0.2.0...v0.2.1
 
 ## [v0.2.0] - 2025-03-18
 
