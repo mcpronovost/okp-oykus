@@ -1,9 +1,12 @@
 import { API_URL, API_HEADERS, okpEncode, okpDecode } from "./utils";
 
 class OkpApi {
-  constructor() {
-    this.token = localStorage.getItem("okp-oykus-rat");
-    this.lang = window.document.documentElement.lang;
+  get lang() {
+    return window.document.documentElement.lang;
+  }
+
+  get token() {
+    return localStorage.getItem("okp-oykus-rat");
   }
 
   async request(endpoint, options = {}) {
