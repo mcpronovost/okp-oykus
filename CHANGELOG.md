@@ -2,6 +2,113 @@
 
 All notable changes to this project will be documented in this file.
 
+## What's Changed
+
+### Added
+
+- Add forum topic creation functionality with corresponding serializer and view
+- Add onClick handler to OkpFormReset component
+- Add breadcrumb and actions to forum section and topic pages
+- Add okpScrollTo utility function
+- Add OkpButton component
+- Add statistics fields to OkpUser model and update admin interface
+- Add statistics fields to OkpGameCharacter model and update admin interface
+- Add initial values to OkpForm
+- Add forum post components and styles, including post list and post card, and integrate new form for creating posts
+- Add card component and integrate it into the forum topic card
+- Add themes fixture and include it in the migration process
+- Add forum components and styles, including breadcrumb and heading, and update game layout
+- Add game layout component and styles, update routing and translations
+- Add side game layout styles and integrate side game component into the main layout
+- Add InitDataProvider to manage side games data and integrate it into OkpProviders component
+- Add disabled state handling to OkpLink component
+- Add okpEncode and okpDecode utility functions to API service and update imports in Auth service
+- Add colour manipulation utilities and enhance OkpAvatar component to support custom background and text colours
+- Add game API endpoints and views for popular games
+- Add is_active and is_public fields to OkpGame model
+- Add user abbreviation and update avatar handling in OkpAuthMeView and SideCore components
+- Add AuthProvider to Providers component, update header to conditionally render login/signup
+- Add Login and Logout components with routing integration
+- Add theme handling and initial data retrieval to OkpProviders and App components, enhancing styling and functionality
+- Add SEO and theme handling to OkpPageView, including page title and description methods
+- Add site icon and favicon configurations to UNFOLD settings, and include new image files for icons.
+- Add color palette configuration to UNFOLD settings
+- Add 'is_pinned' and 'is_important' fields to OkpForumTopic model, update serializers and UI components to support new topic features.
+- Add 'is_locked' field to OkpForumTopic model and update related components for topic locking functionality
+- Add fields for colour, cover, and last post visibility to OkpForumSection model and update related serializers and admin interface.
+
+### Refactored
+
+- Refactor forum statistics updates to handle both post_save and post_delete signals for topics and posts, including character and user statistics.
+- Refactor forum URL generation and enhance topic card and list components with new styles and structure
+- Refactor component loading in App.jsx to use lazy loading and update main.jsx to pass data prop to OkpProviders
+- Refactor route components to remove lazy loading
+- Refactor OkpPageView to conditionally retrieve and serialize object data, enhancing context preparation for SEO and theme handling
+- Refactor API handling by replacing useAuthApi with okpApi, streamline component loading, and enhance error handling in App and Providers components.
+- Refactor authentication components and styles, enhance user data handling, and integrate translations for improved user experience.
+- Refactor frontend design library from radix to antd
+- Refactor layout components by introducing OkpLayout and OkpSideCore, enhancing structure and usability.
+- Refactor OkpScrollarea to conditionally render scrollbars based on enableHorizontal and enableVertical props
+- Refactor OkpForumTopic component to include reply form
+
+### Fixed
+
+- Fix inputType text
+
+### Changed
+
+- Update translations
+- Update topicCard banner opacity
+- Update default background and shadow colours in Providers component
+- Update
+- Update breadcrumb font size
+- Enhance OkpForumPostAdmin with additional filters and update post creation to associate the current user.
+- Clean
+- Update forum post creation to require authentication and enhance validation for topic and character ownership
+- Update NewPost component to use user characters dynamically
+- Display user characters dynamically
+- Update GameCharacter serializer
+- Alter colour fields in OkpGameTheme model to allow blank and null values
+- Update game theme
+- Temporarly enable overflow scrollbar on scrollarea
+- Update header styles for mobile responsiveness and standardise translation keys for user profile labels
+- Modify hover effect for links to exclude disabled elements
+- Replace TemplateView with OkpView in URL routing
+- Delete session and CSRF cookies upon user logout in OkpAuthLogoutView and OkpAuthLogoutAllView
+- Integrate OkpUserSerializer to streamline user data handling in authentication responses
+- Update auth to update logged in user after some times
+- Reorganise Providers component structure, update API language handling, and clean up AuthProvider
+- Enhance header styles with hover and active opacity effects, improve link routing logic, and refactor router utilities for better path handling.
+- Update App, main and Providers components to integrate OkpErrorBoundary for improved error handling and update routing logic for better language support
+- Update theme handling in OkpPageView to return JSON formatted themes
+- Enhance OkpBanner component with additional props for fade, radius, opacity, and blur effects, improving styling flexibility
+- Update package.json to include new dependencies '@ant-design/v5-patch-for-react-19' and 'antd', and upgrade 'lucide-react' to version 0.483.0
+- Replace data reload with OkpError component in OkpGameLayout for better error handling.
+- Update index.html to set default language to French and add meta description for improved SEO.
+- Enhance button and card ui components with new styles and loading states
+- Update colours
+- Update forum fixtures with new statistics fields, and implement UI components for buttons and empty states.
+- Update OkpForumTopic to automatically update related statistics on save and delete
+
+### Removed
+
+- Remove negative margin on ant-card-cover
+- Remove async keyword on loadTranslations
+
+### Updated
+
+- Bump pylint from 3.3.4 to 3.3.6 in /oykus/backend
+- Bump tzdata from 2025.1 to 2025.2 in /oykus/backend
+- Bump platformdirs from 4.3.6 to 4.3.7 in /oykus/backend
+- Bump iniconfig from 2.0.0 to 2.1.0 in /oykus/backend
+- Bump django-unfold from 0.52.0 to 0.53.0 in /oykus/backend
+- Bump django from 5.1.6 to 5.1.7 in /oykus/backend
+- Bump coverage from 7.6.12 to 7.7.0 in /oykus/backend
+- Bump astroid from 3.3.8 to 3.3.9 in /oykus/backend
+- Bump django-unfold from 0.51.0 to 0.52.0 in /oykus/backend
+- Bump globals from 15.15.0 to 16.0.0 in /oykus/frontend
+- Bump attrs from 25.1.0 to 25.3.0 in /oykus/backend
+
 ## [v0.2.0] - 2025-03-18
 
 ### Added
