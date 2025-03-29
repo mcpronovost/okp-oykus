@@ -1,10 +1,11 @@
-from rest_framework.generics import RetrieveAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.generics import RetrieveAPIView, CreateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from okp.contrib.forum.models import OkpForumTopic, OkpForumPost
 from okp.contrib.forum.serializers import (
     OkpForumTopicSerializer,
+    OkpForumTopicCreateSerializer,
     OkpForumPostListSerializer,
 )
 
@@ -41,3 +42,12 @@ class OkpForumTopicView(RetrieveAPIView):
                 "previous": paginator.get_previous_link(),
             }
         })
+
+
+class OkpForumTopicCreateView(CreateAPIView):
+    """
+    Create a new forum post
+    """
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = OkpForumTopicCreateSerializer

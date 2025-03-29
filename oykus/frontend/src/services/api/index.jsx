@@ -75,6 +75,11 @@ class OkpApi {
     return result;
   }
 
+  async createTopic(data) {
+    const result = await this.post("/forum/topics/create/", data);
+    return result;
+  }
+
   async createPost(data) {
     const result = await this.post("/forum/posts/create/", data);
     return result;

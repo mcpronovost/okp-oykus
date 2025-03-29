@@ -61,7 +61,6 @@ class OkpForumTopic(models.Model):
     slug = models.SlugField(
         verbose_name=_("Slug"),
         max_length=255,
-        unique=True,
         blank=True,
         null=False,
     )
@@ -165,14 +164,14 @@ class OkpForumTopic(models.Model):
         return breadcrumb
 
     def save(self, *args, **kwargs):
-        # Set slug
-        if self.is_slug_auto:
-            self.slug = get_slug(self.title, self, OkpForumSection)
-
         # Set related fields
         if self.section:
             self.category = self.section.category
             self.forum = self.section.category.forum
             self.game = self.section.category.game
+
+        # Set slug
+        if self.is_slug_auto:
+            self.slug = get_slug(self.title, self, OkpForumSection, scope=["game"])
 
         super().save(*args, **kwargs)

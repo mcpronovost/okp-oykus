@@ -10,6 +10,7 @@ from .section import (
 from .topic import (
     OkpForumSectionTopicSerializer,
     OkpForumTopicSerializer,
+    OkpForumTopicCreateSerializer,
 )
 from .post import (
     OkpForumSectionPostSerializer,
@@ -28,7 +29,9 @@ __all__ = [
     "OkpForumSectionSerializer",
     "OkpForumSectionTopicSerializer",
     "OkpForumTopicSerializer",
+    "OkpForumTopicCreateSerializer",
     "OkpForumSectionPostSerializer",
+    "OkpForumTopicPostSerializer",
     "OkpForumPostListSerializer",
     "OkpForumPostDetailSerializer",
     "OkpForumPostCreateSerializer",

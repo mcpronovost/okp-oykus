@@ -15,7 +15,15 @@ export default function OkpForm({
   };
 
   return (
-    <Form form={form} colon={false} labelCol={{ span: labelCol }} className={`okp-form ${className}`} onFinish={handleOnFinish} initialValues={initialValues} {...props}>
+    <Form
+      form={form}
+      colon={false}
+      labelCol={{ span: labelCol }}
+      className={`okp-form ${className}`}
+      onFinish={handleOnFinish}
+      initialValues={initialValues}
+      {...props}
+    >
       {children}
     </Form>
   );

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Form, notification } from "antd";
 import { okpApi } from "@/services/api";
 import { useAuth } from "@/services/auth";
+import { useTranslation } from "@/services/translation";
 import {
   OkpForm,
   OkpFormField,
@@ -10,30 +11,37 @@ import {
   OkpFormReset,
 } from "@/components/form";
 
-export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {} }) {
+export default function OkpGameForumFormNewTopic({
+  gameId,
+  sectionId,
+  onCancel,
+}) {
   const [api, contextHolder] = notification.useNotification();
   const { user } = useAuth();
+  const { t, lang } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form] = Form.useForm();
 
   const characters = useMemo(() => {
     if (!user) return [];
-    return user?.characters?.filter((c) => c.game == gameId).map((c) => ({
-      value: c.id,
-      label: c.name,
-    }));
+    return user?.characters
+      ?.filter((c) => c.game == gameId)
+      .map((c) => ({
+        value: c.id,
+        label: c.name,
+      }));
   }, [user, gameId]);
 
   const handleSubmit = async (e) => {
     setIsSubmitting(true);
 
     try {
-      const result = await okpApi.createPost({
+      const result = await okpApi.createTopic({
         ...e,
-        topic: topicId,
+        section: sectionId,
       });
       if (result?.success) {
-        afterSubmit();
+        window.location.href = `/${lang}/${result.url}?page=last`;
       } else {
         throw new Error(result?.message);
       }
@@ -44,9 +52,13 @@ export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {
     }
   };
 
+  const handleCancel = () => {
+    onCancel();
+  };
+
   const openNotification = (msg) => {
     api.error({
-      message: t("Failed to create post"),
+      message: t("Failed to create topic"),
       description: msg?.message || String(msg),
     });
   };
@@ -54,26 +66,41 @@ export default function OkpForumNewPost({ gameId, topicId, afterSubmit = () => {
   return (
     <>
       {contextHolder}
-      <OkpForm form={form} submit={handleSubmit} initialValues={{ character: characters[0]?.value }}>
+      <OkpForm
+        form={form}
+        submit={handleSubmit}
+        initialValues={{ character: characters[0]?.value }}
+      >
+        <OkpFormField
+          name="title"
+          label={t("Title")}
+          inputType="text"
+          placeholder={t("Enter your title")}
+          required
+        />
         <OkpFormField
           name="character"
-          label="Character"
+          label={t("Character")}
           inputType="select"
-          placeholder="Select a character"
+          placeholder={t("Select a character")}
           options={characters}
           required
         />
         <OkpFormField
           name="message"
-          label="Message"
+          label={t("Message")}
           inputType="textarea"
-          placeholder="Enter your message"
+          placeholder={t("Enter your message")}
           rows={8}
           required
         />
         <OkpFormActions>
-          <OkpFormReset label="Reset" disabled={isSubmitting} />
-          <OkpFormSubmit label="Send" isLoading={isSubmitting} />
+          <OkpFormReset
+            label={t("Cancel")}
+            disabled={isSubmitting}
+            onClick={handleCancel}
+          />
+          <OkpFormSubmit label={t("Send")} isLoading={isSubmitting} />
         </OkpFormActions>
       </OkpForm>
     </>
