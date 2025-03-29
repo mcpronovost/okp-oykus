@@ -28,7 +28,7 @@ export default function OkpGameForumTopicCard({ topic, total, index }) {
             src={topic.author?.character?.avatar}
             alt={topic.author?.character?.abbr}
             size={80}
-            opacity={0.2}
+            opacity={0.1}
             className="okp-forum-topic-card-header-banner"
           />
           <OkpAvatar
