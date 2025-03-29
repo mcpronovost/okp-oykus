@@ -15,7 +15,13 @@ const RouterProvider = ({ children, lang = "fr", routePath = "" }) => {
 
   const doNavigate = useCallback(
     (toRouteName, toLang = lang) => {
-      return getLocalizedPath(toRouteName, toLang);
+      // Remove query params
+      const newRouteName = toRouteName.split("?");
+      let newPath = getLocalizedPath(newRouteName[0], toLang);
+      if (newRouteName[1]) {
+        newPath += `?${newRouteName[1]}`;
+      }
+      return newPath;
     },
     [lang]
   );
