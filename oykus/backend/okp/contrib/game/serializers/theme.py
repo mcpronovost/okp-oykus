@@ -10,6 +10,7 @@ class OkpGameThemeSerializer(serializers.ModelSerializer):
             "primary",
             "core_bg",
             "core_fg",
+            "core_subtle_fg",
             "core_link",
             "core_border",
             "core_header_bg",

@@ -38,6 +38,11 @@ class OkpGameTheme(models.Model):
         blank=True,
         null=True,
     )
+    core_subtle_fg = ColorField(
+        verbose_name=_("Core Subtle Text Colour"),
+        blank=True,
+        null=True,
+    )
     core_link = ColorField(
         verbose_name=_("Core Link Colour"),
         blank=True,
