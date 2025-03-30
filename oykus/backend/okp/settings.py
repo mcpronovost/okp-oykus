@@ -3,6 +3,7 @@ Django 5.1.5 settings.
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -105,6 +106,8 @@ KNOX_TOKEN_MODEL = "okp_auth.OkpAuthToken"
 
 REST_KNOX = {
     "TOKEN_LIMIT_PER_USER": 4,
+    "AUTO_REFRESH": True,
+    "AUTO_REFRESH_MAX_TTL": timedelta(days=30),
     "USER_SERIALIZER": "knox.serializers.UserSerializer",
     "AUTH_HEADER_PREFIX": "okp",
     "TOKEN_MODEL": KNOX_TOKEN_MODEL,
