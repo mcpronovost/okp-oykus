@@ -52,5 +52,21 @@
   "You can reply to this topic.": "You can reply to this topic.",
   "Your Characters": "Your Characters",
   "Your Games": "Your Games",
-  "Your Profile": "Your Profile"
+  "Your Profile": "Your Profile",
+  "Players": {
+    "one": "Player",
+    "other": "Players"
+  },
+  "Characters": {
+    "one": "Character",
+    "other": "Characters"
+  },
+  "Topics": {
+    "one": "Topic",
+    "other": "Topics"
+  },
+  "Posts": {
+    "one": "Post",
+    "other": "Posts"
+  }
 }

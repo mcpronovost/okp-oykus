@@ -52,5 +52,21 @@
   "You can reply to this topic.": "Vous pouvez répondre à ce sujet.",
   "Your Characters": "Vos personnages",
   "Your Games": "Vos jeux",
-  "Your Profile": "Votre profil"
+  "Your Profile": "Votre profil",
+  "Players": {
+    "one": "Joueur",
+    "other": "Joueurs"
+  },
+  "Characters": {
+    "one": "Personnage",
+    "other": "Personnages"
+  },
+  "Topics": {
+    "one": "Sujet",
+    "other": "Sujets"
+  },
+  "Posts": {
+    "one": "Message",
+    "other": "Messages"
+  }
 }
