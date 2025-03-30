@@ -1,6 +1,6 @@
 import { theme } from "antd";
 
-export default function OkpLoading({ variant = "circles" }) {
+export default function OkpLoading({ variant = "circles", fullview = false }) {
   const { token } = theme.useToken();
   const variants = ["squares", "layers", "circles"];
 
@@ -10,7 +10,7 @@ export default function OkpLoading({ variant = "circles" }) {
 
   return (
     <div
-      className="okp-loading"
+      className={`okp-loading ${fullview ? "okp-loading-fullview" : ""}`}
       style={{
         "--c-primary": token.colorPrimaryText,
         "--c-secondary": token.colorBorder,

@@ -24,7 +24,7 @@ function AppContent({ lang, path, data }) {
     const Component = getComponent(route.component);
     return (
       <OkpErrorBoundary>
-        <Suspense fallback={<OkpLoading />}>
+        <Suspense fallback={<OkpLoading fullview />}>
           <Component data={data} />
         </Suspense>
       </OkpErrorBoundary>

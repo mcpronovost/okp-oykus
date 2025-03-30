@@ -49,8 +49,8 @@ function OkpProvidersContent({ children, lang, theme }) {
           colorBgElevated: theme?.core_elevated_bg || "#161616",  // submenu
           colorBgLayout: theme?.core_bg || "#1c1c1c",  //"#171717",  // bg
           colorBgSpotlight: theme?.core_elevated_bg || "#161616",  // tooltip
-          colorBorder: theme?.core_border || "#313131",
-          colorBorderSecondary: theme?.card_separator || "#313131",
+          colorBorder: theme?.core_border || "#313131",  // form and collapse separator/border
+          colorBorderSecondary: theme?.card_separator || "#313131",  // elevated separator
           colorFill: theme?.card_placeholder_bg || "#232323", // "#1c1c1c",  // card mask
           colorTextSecondary: theme?.core_subtle_fg || "#5a5c5f",
           colorTextTertiary: theme?.card_placeholder_fg || "#A7A8AA",

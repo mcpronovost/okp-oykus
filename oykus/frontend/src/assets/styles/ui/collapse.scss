@@ -1,0 +1,48 @@
+.okp-collapse {
+  .ant-collapse-expand-icon {
+    align-self: center;
+  }
+
+  .ant-collapse-content {
+    border-top: 1px solid var(--okp-separator) !important;
+  }
+
+  .ant-collapse-content-box {
+    padding: 16px 32px !important;
+  }
+
+  &-label {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 6px;
+
+    &-icon {
+      margin: 4px 16px 0 0;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &-title {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      &-description {
+        font-size: 0.8rem;
+        font-weight: 400;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

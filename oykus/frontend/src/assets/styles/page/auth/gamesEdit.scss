@@ -1,0 +1,36 @@
+.okp-auth-games-edit {
+  &-banner {
+    height: 100%;
+
+    .ant-card-body {
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+  
+    &-cover {
+      height: 150px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &-title {
+      font-family: "Quicksand", sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    &-subtitle {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.2;
+      text-align: center;
+      opacity: 0.6;
+      padding: 0 0 12px;
+    }
+  }
+}

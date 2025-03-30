@@ -1,37 +1,46 @@
 export const AUTH_ROUTES = {
   login: {
-    component: () => import("@/pages/auth/Login.jsx"),
+    component: () => import("@/pages/auth/Login"),
     paths: {
       en: "login",
       fr: "connexion",
     },
   },
   logout: {
-    component: () => import("@/pages/auth/Logout.jsx"),
+    component: () => import("@/pages/auth/Logout"),
     paths: {
       en: "logout",
       fr: "deconnexion",
     },
   },
   auth: {
-    component: () => import("@/pages/Home.jsx"),
+    component: () => import("@/pages/Home"),
     paths: {
       en: "a",
       fr: "a",
     },
     children: {
       characters: {
-        component: () => import("@/pages/auth/Characters.jsx"),
+        component: () => import("@/pages/auth/Characters"),
         paths: {
           en: "characters",
           fr: "personnages",
         },
       },
       games: {
-        component: () => import("@/pages/auth/Games.jsx"),
+        component: () => import("@/pages/auth/Games"),
         paths: {
           en: "games",
           fr: "jeux",
+        },
+        children: {
+          edit: {
+            component: () => import("@/pages/auth/Games/Edit"),
+            paths: {
+              en: "{game_id}/edit",
+              fr: "{game_id}/modifier",
+            },
+          },
         },
       },
     },

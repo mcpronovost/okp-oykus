@@ -3,7 +3,7 @@ import { GAMES_ROUTES } from "./game";
 
 const ROUTES = {
   home: {
-    component: () => import("@/pages/Home.jsx"),
+    component: () => import("@/pages/Home"),
     paths: {
       en: "",
       fr: "",
@@ -12,7 +12,7 @@ const ROUTES = {
   ...AUTH_ROUTES,
   ...GAMES_ROUTES,
   error404: {
-    component: () => import("@/pages/Error404.jsx"),
+    component: () => import("@/pages/Error404"),
     paths: {
       en: "404",
       fr: "404",

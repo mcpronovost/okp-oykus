@@ -1,13 +1,18 @@
 import "@/assets/styles/page/auth/games.scss";
+import { useRouter } from "@/services/router";
 import { useTranslation } from "@/services/translation";
 import { okpUnit } from "@/utils";
 import { OkpLayout } from "@/components/layout";
 import { OkpCard, OkpEmpty, OkpHeading, OkpTag } from "@/components/ui";
 
 export default function OkpAuthGames({ data }) {
+  const { r } = useRouter();
   const { t } = useTranslation();
-
   console.log(data);
+
+  const handleClick = (gameId) => {
+    window.location.href = r(`a/games/${gameId}/edit`);
+  };
 
   return (
     <OkpLayout data={data}>
@@ -16,7 +21,7 @@ export default function OkpAuthGames({ data }) {
         {data?.games?.length > 0 ? (
           <section className="okp-auth-games-list">
             {data?.games?.map((game) => (
-              <OkpCard key={game.id} hoverable direction="row" className="okp-auth-games-list-card">
+              <OkpCard key={game.id} hoverable direction="row" className="okp-auth-games-list-card" onClick={() => handleClick(game.id)}>
                 <div className="okp-auth-games-list-card-identity">
                   <h2 className="okp-auth-games-list-card-identity-title">{game.title}</h2>
                   <div className="okp-auth-games-list-card-identity-flags">

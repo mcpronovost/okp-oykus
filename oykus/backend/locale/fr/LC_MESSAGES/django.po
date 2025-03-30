@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 00:24-0400\n"
+"POT-Creation-Date: 2025-03-30 14:52-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,8 +255,12 @@ msgid "Password fields didn't match."
 msgstr "Les champs de mot de passe ne correspondent pas."
 
 #: .\oykus\backend\okp\contrib\auth\urls.py:9
-msgid "^games/$"
-msgstr "^jeux/$"
+msgid "games/"
+msgstr "jeux/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:10
+msgid "edit/"
+msgstr "modifier/"
 
 #: .\oykus\backend\okp\contrib\forum\admin\category.py:10
 #: .\oykus\backend\okp\contrib\forum\admin\forum.py:10
@@ -342,7 +346,7 @@ msgstr "Flags"
 #: .\oykus\backend\okp\contrib\forum\admin\section.py:85
 #: .\oykus\backend\okp\contrib\forum\admin\topic.py:106
 #: .\oykus\backend\okp\contrib\game\admin\character.py:68
-#: .\oykus\backend\okp\contrib\game\admin\game.py:48
+#: .\oykus\backend\okp\contrib\game\admin\game.py:57
 msgid "Important Dates"
 msgstr "Dates importantes"
 
@@ -554,6 +558,10 @@ msgstr "Sujets"
 #: .\oykus\backend\okp\contrib\game\admin\game.py:38
 msgid "Ownership"
 msgstr "Propriété"
+
+#: .\oykus\backend\okp\contrib\game\admin\game.py:48
+msgid "Status"
+msgstr "Statut"
 
 #: .\oykus\backend\okp\contrib\game\admin\theme.py:16
 msgid "Theme"

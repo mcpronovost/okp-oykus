@@ -2,7 +2,7 @@ import { useTranslation } from "@/services/translation";
 import { OkpLayout } from "@/components/layout";
 import { OkpCard, OkpEmpty, OkpHeading } from "@/components/ui";
 
-export default function OkpMeCharacters({ data }) {
+export default function OkpAuthCharacters({ data }) {
   const { t } = useTranslation();
 
   return (

@@ -6,6 +6,10 @@
   justify-content: center;
   padding: 12px;
 
+  &-fullview {
+    min-height: 50vh;
+  }
+
   &-spinner {
     &.okp-squares {
       display: inline-block;
