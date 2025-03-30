@@ -38,11 +38,12 @@ export const getRoute = (
   path,
   lang = "fr",
   routesList = null,
-  parentPath = ""
+  parentPath = "",
+  parentParams = {}
 ) => {
   if (!routesList) routesList = ROUTES;
   if (path === "/") path = "";
-  const params = {};
+  const params = { ...parentParams };
 
   for (const [key, route] of Object.entries(routesList)) {
     const fullPath = parentPath ? `${parentPath}.${key}` : key;
@@ -102,7 +103,8 @@ export const getRoute = (
           ),
           lang,
           route.children,
-          nextParentPath
+          nextParentPath,
+          params
         );
 
         if (childRoute) {
@@ -137,7 +139,6 @@ export const getLocalizedPath = (
 
   const [routePath, routeData] = currentRoute;
   const params = { ...routeData.params, ...additionalParams };
-
   // Split the route path to handle nested routes
   const routeParts = routePath.split(".");
   let routesList = ROUTES;
