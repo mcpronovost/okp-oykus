@@ -1,0 +1,691 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-29 22:03-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:27
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:68
+#: .\oykus\backend\okp\contrib\game\admin\character.py:43
+msgid "Identity"
+msgstr "Identité"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:37
+msgid "Media"
+msgstr "Média"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:44
+msgctxt "admin_is_boolean"
+msgid "Status"
+msgstr "Statut"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:52
+msgid "Permissions"
+msgstr "Permissions"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:62
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:68
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:80
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:98
+#: .\oykus\backend\okp\contrib\game\admin\character.py:62
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:67
+msgid "Important dates"
+msgstr "Dates importantes"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:101
+#: .\oykus\backend\okp\contrib\auth\models.py:136
+msgid "Data"
+msgstr "Données"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:112
+msgid "Browser Agent"
+msgstr "Navigateur"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:116
+msgid "Browser Platform"
+msgstr "Plateforme"
+
+#: .\oykus\backend\okp\contrib\auth\admin.py:120
+msgid "Browser Mobile"
+msgstr "Mobile"
+
+#: .\oykus\backend\okp\contrib\auth\apps.py:8
+msgid "Authentication"
+msgstr "Authentification"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:14
+msgid "email address"
+msgstr "Courriel"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:18
+msgid "Middle Name"
+msgstr "Autre(s) prénom(s)"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:23
+msgid "Public Name"
+msgstr "Nom public"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:29
+msgid "Auto-Generate Name"
+msgstr "Nom auto-généré"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:33
+#: .\oykus\backend\okp\contrib\game\models\character.py:47
+#: .\oykus\backend\okp\contrib\game\models\game.py:33
+msgid "Abbreviation"
+msgstr "Abréviation"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:38
+#: .\oykus\backend\okp\contrib\game\models\character.py:53
+#: .\oykus\backend\okp\contrib\game\models\game.py:39
+msgid "Auto-Generate Abbreviation"
+msgstr "Abréviation auto-générée"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:42
+#: .\oykus\backend\okp\contrib\forum\models\category.py:47
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:35
+#: .\oykus\backend\okp\contrib\forum\models\section.py:59
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:62
+#: .\oykus\backend\okp\contrib\game\models\character.py:36
+#: .\oykus\backend\okp\contrib\game\models\game.py:22
+msgid "Slug"
+msgstr "Slug"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:47
+#: .\oykus\backend\okp\contrib\forum\models\category.py:53
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:42
+#: .\oykus\backend\okp\contrib\forum\models\section.py:66
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:68
+#: .\oykus\backend\okp\contrib\game\models\character.py:43
+#: .\oykus\backend\okp\contrib\game\models\game.py:29
+msgid "Auto-Generate Slug"
+msgstr "Slug auto-généré"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:51
+#: .\oykus\backend\okp\contrib\game\models\character.py:57
+msgid "Avatar"
+msgstr "Avatar"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:65
+#: .\oykus\backend\okp\contrib\forum\models\section.py:93
+#: .\oykus\backend\okp\contrib\game\models\game.py:73
+msgid "Cover"
+msgstr "Couverture"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:80
+#: .\oykus\backend\okp\contrib\forum\models\category.py:68
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:70
+#: .\oykus\backend\okp\contrib\forum\models\section.py:110
+#: .\oykus\backend\okp\contrib\game\models\character.py:82
+msgid "Total Topics"
+msgstr "Total de sujets"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:84
+#: .\oykus\backend\okp\contrib\forum\models\category.py:64
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:66
+#: .\oykus\backend\okp\contrib\forum\models\section.py:106
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:111
+#: .\oykus\backend\okp\contrib\game\models\character.py:78
+msgid "Total Posts"
+msgstr "Total de messages"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:89
+#: .\oykus\backend\okp\contrib\forum\models\category.py:73
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:75
+#: .\oykus\backend\okp\contrib\forum\models\section.py:115
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:117
+#: .\oykus\backend\okp\contrib\game\models\character.py:87
+msgid "Last Post"
+msgstr "Dernier message"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:97
+#: .\oykus\backend\okp\contrib\forum\models\category.py:81
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:83
+#: .\oykus\backend\okp\contrib\forum\models\post.py:105
+#: .\oykus\backend\okp\contrib\forum\models\section.py:123
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:125
+#: .\oykus\backend\okp\contrib\game\models\character.py:95
+#: .\oykus\backend\okp\contrib\game\models\game.py:124
+#: .\oykus\backend\okp\contrib\game\models\theme.py:98
+msgid "Created At"
+msgstr "Créé le"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:101
+#: .\oykus\backend\okp\contrib\forum\models\category.py:85
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:87
+#: .\oykus\backend\okp\contrib\forum\models\post.py:110
+#: .\oykus\backend\okp\contrib\forum\models\section.py:127
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:129
+#: .\oykus\backend\okp\contrib\game\models\character.py:99
+#: .\oykus\backend\okp\contrib\game\models\game.py:128
+#: .\oykus\backend\okp\contrib\game\models\theme.py:103
+msgid "Updated At"
+msgstr "Mis à jour le"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:106
+#: .\oykus\backend\okp\contrib\forum\models\post.py:79
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:76
+#: .\oykus\backend\okp\contrib\game\models\character.py:26
+msgid "User"
+msgstr "Utilisateur"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:107
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:142
+msgid "Auth Token"
+msgstr "Jeton d'authentification"
+
+#: .\oykus\backend\okp\contrib\auth\models.py:143
+msgid "Auth Tokens"
+msgstr "Jetons d'authentification"
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:11
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:15
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:20
+msgid "Token"
+msgstr "Jeton"
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:39
+msgid "Unable to log in with provided credentials."
+msgstr "Impossible de se connecter avec les identifiants fournis."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:53
+msgid "A user with that username already exists."
+msgstr "Un utilisateur avec ce nom d'utilisateur existe déjà."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:63
+msgid "A user with that email already exists."
+msgstr "Un utilisateur avec cet email existe déjà."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:89
+msgid "Username must be at least 3 characters long."
+msgstr "Le nom d'utilisateur doit contenir au moins 3 caractères."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:91
+msgid "Username must be less than 150 characters long."
+msgstr "Le nom d'utilisateur doit contenir moins de 150 caractères."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:95
+msgid ""
+"Username must contain only letters, numbers,                   underscores, "
+"and hyphens."
+msgstr "Le nom d'utilisateur doit contenir uniquement des lettres, des chiffres, des underscores et des traits d'union."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:104
+msgid "First name must be less than 150 characters long."
+msgstr "Le prénom doit contenir moins de 150 caractères."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:110
+msgid "Last name must be less than 150 characters long."
+msgstr "Le nom doit contenir moins de 150 caractères."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:115
+msgid "You must accept the terms of service."
+msgstr "Vous devez accepter les conditions d'utilisation."
+
+#: .\oykus\backend\okp\contrib\auth\serializers.py:120
+msgid "Password fields didn't match."
+msgstr "Les champs de mot de passe ne correspondent pas."
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:9
+msgid "^games/$"
+msgstr "^jeux/$"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:10
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:10
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:40
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:45
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:10
+#: .\oykus\backend\okp\contrib\game\admin\character.py:22
+#: .\oykus\backend\okp\contrib\game\admin\character.py:25
+#: .\oykus\backend\okp\contrib\game\admin\character.py:30
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:21
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:24
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:29
+msgid "Active"
+msgstr "Actif"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:11
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:11
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:45
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:11
+#: .\oykus\backend\okp\contrib\game\admin\character.py:26
+#: .\oykus\backend\okp\contrib\game\admin\character.py:30
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:25
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:29
+msgid "Inactive"
+msgstr "Inactif"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:15
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:32
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:37
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:15
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:48
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:53
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:10
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:33
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:38
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:15
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:39
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:44
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:15
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:48
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:53
+msgid "Visible"
+msgstr "Visible"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:16
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:37
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:16
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:53
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:11
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:38
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:16
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:44
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:16
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:53
+msgid "Hidden"
+msgstr "Masqué"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:27
+#: .\oykus\backend\okp\contrib\forum\models\category.py:93
+#: .\oykus\backend\okp\contrib\forum\models\post.py:56
+#: .\oykus\backend\okp\contrib\forum\models\section.py:47
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:42
+msgid "Category"
+msgstr "Catégorie"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:39
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:46
+msgid "Order"
+msgstr "Ordre"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:53
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:79
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:61
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:71
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:87
+#: .\oykus\backend\okp\contrib\game\admin\character.py:56
+msgid "Flags"
+msgstr "Flags"
+
+#: .\oykus\backend\okp\contrib\forum\admin\category.py:59
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:87
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:66
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:85
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:106
+#: .\oykus\backend\okp\contrib\game\admin\character.py:68
+#: .\oykus\backend\okp\contrib\game\admin\game.py:48
+msgid "Important Dates"
+msgstr "Dates importantes"
+
+#: .\oykus\backend\okp\contrib\forum\admin\forum.py:35
+#: .\oykus\backend\okp\contrib\forum\apps.py:8
+#: .\oykus\backend\okp\contrib\forum\models\category.py:35
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:94
+#: .\oykus\backend\okp\contrib\forum\models\post.py:48
+#: .\oykus\backend\okp\contrib\forum\models\section.py:39
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:34
+msgid "Forum"
+msgstr "Forum"
+
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:22
+#: .\oykus\backend\okp\contrib\forum\models\post.py:115
+msgid "Post"
+msgstr "Message"
+
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:50
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:78
+msgid "Author"
+msgstr "Auteur"
+
+#: .\oykus\backend\okp\contrib\forum\admin\post.py:56
+msgid "Content"
+msgstr "Contenu"
+
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:34
+#: .\oykus\backend\okp\contrib\forum\models\post.py:64
+#: .\oykus\backend\okp\contrib\forum\models\section.py:135
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:50
+msgid "Section"
+msgstr "Section"
+
+#: .\oykus\backend\okp\contrib\forum\admin\section.py:65
+msgid "Appearance"
+msgstr "Apparence"
+
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:10
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:40
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:45
+msgid "Locked"
+msgstr "Verrouillé"
+
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:11
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:45
+msgid "Unlocked"
+msgstr "Déverrouillé"
+
+#: .\oykus\backend\okp\contrib\forum\admin\topic.py:33
+#: .\oykus\backend\okp\contrib\forum\models\post.py:72
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:134
+msgid "Topic"
+msgstr "Sujet"
+
+#: .\oykus\backend\okp\contrib\forum\models\category.py:27
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:22
+#: .\oykus\backend\okp\contrib\forum\models\post.py:40
+#: .\oykus\backend\okp\contrib\forum\models\section.py:31
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:26
+#: .\oykus\backend\okp\contrib\game\admin\game.py:17
+#: .\oykus\backend\okp\contrib\game\apps.py:8
+#: .\oykus\backend\okp\contrib\game\models\character.py:18
+#: .\oykus\backend\okp\contrib\game\models\game.py:133
+#: .\oykus\backend\okp\contrib\game\models\theme.py:12
+msgid "Game"
+msgstr "Jeu"
+
+#: .\oykus\backend\okp\contrib\forum\models\category.py:41
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:29
+#: .\oykus\backend\okp\contrib\forum\models\section.py:53
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:56
+#: .\oykus\backend\okp\contrib\game\models\game.py:16
+msgid "Title"
+msgstr "Titre"
+
+#: .\oykus\backend\okp\contrib\forum\models\category.py:58
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:52
+#: .\oykus\backend\okp\contrib\forum\models\post.py:99
+#: .\oykus\backend\okp\contrib\forum\models\section.py:71
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:90
+msgid "Is Visible"
+msgstr "Visible"
+
+#: .\oykus\backend\okp\contrib\forum\models\category.py:60
+msgid "Whether the category is visible to users."
+msgstr "Si la catégorie est visible aux utilisateurs."
+
+#: .\oykus\backend\okp\contrib\forum\models\category.py:94
+msgid "Categories"
+msgstr "Catégories"
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:47
+#: .\oykus\backend\okp\contrib\game\models\character.py:72
+#: .\oykus\backend\okp\contrib\game\models\game.py:108
+#: .\oykus\backend\okp\contrib\game\models\theme.py:21
+msgid "Is Active"
+msgstr "Actif"
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:49
+msgid "Whether the forum is active and can be used."
+msgstr "Si le forum est actif et peut être utilisé."
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:54
+msgid "Whether the forum is visible to users."
+msgstr "Si le forum est visible aux utilisateurs."
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:58
+msgid "Total Users"
+msgstr "Total d'utilisateurs"
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:62
+msgid "Total Characters"
+msgstr "Total de personnages"
+
+#: .\oykus\backend\okp\contrib\forum\models\forum.py:95
+msgid "Forums"
+msgstr "Forums"
+
+#: .\oykus\backend\okp\contrib\forum\models\post.py:87
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:84
+#: .\oykus\backend\okp\contrib\game\admin\character.py:17
+#: .\oykus\backend\okp\contrib\game\models\character.py:104
+msgid "Character"
+msgstr "Personnage"
+
+#: .\oykus\backend\okp\contrib\forum\models\post.py:93
+msgid "Message"
+msgstr "Message"
+
+#: .\oykus\backend\okp\contrib\forum\models\post.py:101
+msgid "Whether the message is visible to users."
+msgstr "Si le message est visible aux utilisateurs."
+
+#: .\oykus\backend\okp\contrib\forum\models\post.py:116
+msgid "Posts"
+msgstr "Messages"
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:73
+msgid "Whether the section is visible to users."
+msgstr "Si la section est visible aux utilisateurs."
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:77
+msgid "Flex"
+msgstr "Flex"
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:80
+msgid "The percentage of the width of the section in index and category pages."
+msgstr "Le pourcentage de la largeur de la section dans les pages d'index et de catégorie."
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:83
+msgid "Show Last Post"
+msgstr "Afficher le dernier message"
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:85
+msgid "Whether to show the last post of the section in index and category pages."
+msgstr "Si le dernier message de la section est affiché dans les pages d'index et de catégorie."
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:88
+msgid "Colour"
+msgstr "Couleur"
+
+#: .\oykus\backend\okp\contrib\forum\models\section.py:136
+msgid "Sections"
+msgstr "Sections"
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:92
+msgid "Whether the topic is visible to users."
+msgstr "Si le sujet est visible aux utilisateurs."
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:95
+msgid "Is Pinned"
+msgstr "Épinglé"
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:97
+msgid "Whether the topic is pinned and will be displayed at the top of the section."
+msgstr "Si le sujet est épinglé et sera affiché en haut de la section."
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:100
+msgid "Is Important"
+msgstr "Important"
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:102
+msgid "Whether the topic is important and will be highlighted."
+msgstr "Si le sujet est important et sera mis en évidence."
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:105
+msgid "Is Locked"
+msgstr "Verrouillé"
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:107
+msgid "Whether the topic is locked and cannot be replied to."
+msgstr "Si le sujet est verrouillé et ne peut pas être répondu."
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:113
+msgid "The total number of posts in the topic."
+msgstr "Le nombre total de messages dans le sujet."
+
+#: .\oykus\backend\okp\contrib\forum\models\topic.py:135
+msgid "Topics"
+msgstr "Sujets"
+
+#: .\oykus\backend\okp\contrib\game\admin\game.py:38
+msgid "Ownership"
+msgstr "Propriété"
+
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:16
+msgid "Theme"
+msgstr "Thème"
+
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:43
+#: .\oykus\backend\okp\core\apps.py:8
+msgid "Core"
+msgstr "Core"
+
+#: .\oykus\backend\okp\contrib\game\admin\theme.py:60
+msgid "Card"
+msgstr "Carte"
+
+#: .\oykus\backend\okp\contrib\game\models\character.py:32
+#: .\oykus\backend\okp\contrib\game\models\theme.py:15
+msgid "Name"
+msgstr "Nom"
+
+#: .\oykus\backend\okp\contrib\game\models\character.py:74
+msgid "Whether the character is active and can be used."
+msgstr "Si le personnage est actif et peut être utilisé."
+
+#: .\oykus\backend\okp\contrib\game\models\character.py:105
+msgid "Characters"
+msgstr "Personnages"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:43
+msgid "Subtitle"
+msgstr "Sous-titre"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:49
+msgid "Logo"
+msgstr "Logo"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:63
+msgid "Favicon"
+msgstr "Favicon"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:88
+msgid "Founder"
+msgstr "Fondateur"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:94
+msgid "Founder Link"
+msgstr "Lien du fondateur"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:100
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:110
+msgid "Whether the game is active and can be used."
+msgstr "Si le jeu est actif et peut être utilisé."
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:113
+msgid "Is Public"
+msgstr "Public"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:115
+msgid "Whether the game is public and can be viewed by everyone."
+msgstr "Si le jeu est public et peut être vu par tous."
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:119
+msgid "Founded At"
+msgstr "Fondé le"
+
+#: .\oykus\backend\okp\contrib\game\models\game.py:134
+msgid "Games"
+msgstr "Jeux"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:23
+msgid "If the theme is active, it will be used for the game."
+msgstr "Si le thème est actif, il sera utilisé pour le jeu."
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:27
+msgid "Primary Colour"
+msgstr "Couleur primaire"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:32
+msgid "Core Background Colour"
+msgstr "Couleur de fond"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:37
+msgid "Core Text Colour"
+msgstr "Couleur de texte"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:42
+msgid "Core Subtle Text Colour"
+msgstr "Couleur de texte subtile"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:47
+msgid "Core Link Colour"
+msgstr "Couleur de lien"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:52
+msgid "Core Border Colour"
+msgstr "Couleur de bordure"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:57
+msgid "Core Header Background Colour"
+msgstr "Couleur de fond de l'en-tête"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:62
+msgid "Core Header Text Colour"
+msgstr "Couleur de texte de l'en-tête"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:67
+msgid "Core Elevated Background Colour"
+msgstr "Couleur de fond élevée"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:72
+msgid "Core Elevated Text Colour"
+msgstr "Couleur de texte élevée"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:77
+msgid "Card Background Colour"
+msgstr "Couleur de fond des cartes"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:82
+msgid "Card Placeholder Background Colour"
+msgstr "Couleur de fond des placeholders des cartes"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:87
+msgid "Card Placeholder Text Colour"
+msgstr "Couleur de texte des placeholders des cartes"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:92
+msgid "Card Separator Colour"
+msgstr "Couleur de séparateur des cartes"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:109
+msgid "Game Theme"
+msgstr "Thème du jeu"
+
+#: .\oykus\backend\okp\contrib\game\models\theme.py:110
+msgid "Game Themes"
+msgstr "Thèmes du jeu"
+
+#: .\oykus\backend\okp\core\validators.py:21
+#, python-format
+msgid "File size must be no more than %sMB."
+msgstr "La taille du fichier doit être inférieure à %sMB."
