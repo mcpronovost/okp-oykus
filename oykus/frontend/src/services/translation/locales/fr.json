@@ -8,6 +8,8 @@
   "Character": "Personnage",
   "Connected as": "Connecté en tant que",
   "Create a new topic.": "Créer un nouveau sujet.",
+  "Create a new post.": "Créer un nouveau message.",
+  "Create a new character to start": "Créer un nouveau personnage pour commencer",
   "Delete post": "Supprimer le message",
   "Edit post": "Modifier le message",
   "Enter your message": "Entrez votre message",
@@ -27,6 +29,10 @@
   "New Topic": "Nouveau sujet",
   "No": "Non",
   "No results found": "Aucun résultat trouvé",
+  "No characters found": "Aucun personnage trouvé",
+  "No games found": "Aucun jeu trouvé",
+  "No topics found": "Aucun sujet trouvé",
+  "No posts found": "Aucun message trouvé",
   "Password": "Mot de passe",
   "Popular Games": "Jeux populaires",
   "Post deleted": "Message supprimé",
@@ -68,5 +74,7 @@
   "Posts": {
     "one": "Message",
     "other": "Messages"
-  }
+  },
+  "Page is under construction": "Cette page est en cours de construction",
+  "Please come back later": "Veuillez revenir plus tard"
 }

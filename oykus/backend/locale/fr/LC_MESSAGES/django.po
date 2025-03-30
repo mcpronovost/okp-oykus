@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-29 22:03-0400\n"
+"POT-Creation-Date: 2025-03-30 00:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,13 +87,13 @@ msgid "Auto-Generate Name"
 msgstr "Nom auto-généré"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:33
-#: .\oykus\backend\okp\contrib\game\models\character.py:47
+#: .\oykus\backend\okp\contrib\game\models\character.py:48
 #: .\oykus\backend\okp\contrib\game\models\game.py:33
 msgid "Abbreviation"
 msgstr "Abréviation"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:38
-#: .\oykus\backend\okp\contrib\game\models\character.py:53
+#: .\oykus\backend\okp\contrib\game\models\character.py:54
 #: .\oykus\backend\okp\contrib\game\models\game.py:39
 msgid "Auto-Generate Abbreviation"
 msgstr "Abréviation auto-générée"
@@ -103,7 +103,7 @@ msgstr "Abréviation auto-générée"
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:35
 #: .\oykus\backend\okp\contrib\forum\models\section.py:59
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:62
-#: .\oykus\backend\okp\contrib\game\models\character.py:36
+#: .\oykus\backend\okp\contrib\game\models\character.py:37
 #: .\oykus\backend\okp\contrib\game\models\game.py:22
 msgid "Slug"
 msgstr "Slug"
@@ -113,13 +113,13 @@ msgstr "Slug"
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:42
 #: .\oykus\backend\okp\contrib\forum\models\section.py:66
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:68
-#: .\oykus\backend\okp\contrib\game\models\character.py:43
+#: .\oykus\backend\okp\contrib\game\models\character.py:44
 #: .\oykus\backend\okp\contrib\game\models\game.py:29
 msgid "Auto-Generate Slug"
 msgstr "Slug auto-généré"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:51
-#: .\oykus\backend\okp\contrib\game\models\character.py:57
+#: .\oykus\backend\okp\contrib\game\models\character.py:58
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -133,7 +133,7 @@ msgstr "Couverture"
 #: .\oykus\backend\okp\contrib\forum\models\category.py:68
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:70
 #: .\oykus\backend\okp\contrib\forum\models\section.py:110
-#: .\oykus\backend\okp\contrib\game\models\character.py:82
+#: .\oykus\backend\okp\contrib\game\models\character.py:83
 msgid "Total Topics"
 msgstr "Total de sujets"
 
@@ -142,7 +142,7 @@ msgstr "Total de sujets"
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:66
 #: .\oykus\backend\okp\contrib\forum\models\section.py:106
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:111
-#: .\oykus\backend\okp\contrib\game\models\character.py:78
+#: .\oykus\backend\okp\contrib\game\models\character.py:79
 msgid "Total Posts"
 msgstr "Total de messages"
 
@@ -151,7 +151,7 @@ msgstr "Total de messages"
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:75
 #: .\oykus\backend\okp\contrib\forum\models\section.py:115
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:117
-#: .\oykus\backend\okp\contrib\game\models\character.py:87
+#: .\oykus\backend\okp\contrib\game\models\character.py:88
 msgid "Last Post"
 msgstr "Dernier message"
 
@@ -161,7 +161,7 @@ msgstr "Dernier message"
 #: .\oykus\backend\okp\contrib\forum\models\post.py:105
 #: .\oykus\backend\okp\contrib\forum\models\section.py:123
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:125
-#: .\oykus\backend\okp\contrib\game\models\character.py:95
+#: .\oykus\backend\okp\contrib\game\models\character.py:96
 #: .\oykus\backend\okp\contrib\game\models\game.py:124
 #: .\oykus\backend\okp\contrib\game\models\theme.py:98
 msgid "Created At"
@@ -173,7 +173,7 @@ msgstr "Créé le"
 #: .\oykus\backend\okp\contrib\forum\models\post.py:110
 #: .\oykus\backend\okp\contrib\forum\models\section.py:127
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:129
-#: .\oykus\backend\okp\contrib\game\models\character.py:99
+#: .\oykus\backend\okp\contrib\game\models\character.py:100
 #: .\oykus\backend\okp\contrib\game\models\game.py:128
 #: .\oykus\backend\okp\contrib\game\models\theme.py:103
 msgid "Updated At"
@@ -182,7 +182,7 @@ msgstr "Mis à jour le"
 #: .\oykus\backend\okp\contrib\auth\models.py:106
 #: .\oykus\backend\okp\contrib\forum\models\post.py:79
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:76
-#: .\oykus\backend\okp\contrib\game\models\character.py:26
+#: .\oykus\backend\okp\contrib\game\models\character.py:27
 msgid "User"
 msgstr "Utilisateur"
 
@@ -234,7 +234,9 @@ msgstr "Le nom d'utilisateur doit contenir moins de 150 caractères."
 msgid ""
 "Username must contain only letters, numbers,                   underscores, "
 "and hyphens."
-msgstr "Le nom d'utilisateur doit contenir uniquement des lettres, des chiffres, des underscores et des traits d'union."
+msgstr ""
+"Le nom d'utilisateur doit contenir uniquement des lettres, des chiffres, des "
+"underscores et des traits d'union."
 
 #: .\oykus\backend\okp\contrib\auth\serializers.py:104
 msgid "First name must be less than 150 characters long."
@@ -403,7 +405,7 @@ msgstr "Sujet"
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:26
 #: .\oykus\backend\okp\contrib\game\admin\game.py:17
 #: .\oykus\backend\okp\contrib\game\apps.py:8
-#: .\oykus\backend\okp\contrib\game\models\character.py:18
+#: .\oykus\backend\okp\contrib\game\models\character.py:19
 #: .\oykus\backend\okp\contrib\game\models\game.py:133
 #: .\oykus\backend\okp\contrib\game\models\theme.py:12
 msgid "Game"
@@ -434,7 +436,7 @@ msgid "Categories"
 msgstr "Catégories"
 
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:47
-#: .\oykus\backend\okp\contrib\game\models\character.py:72
+#: .\oykus\backend\okp\contrib\game\models\character.py:73
 #: .\oykus\backend\okp\contrib\game\models\game.py:108
 #: .\oykus\backend\okp\contrib\game\models\theme.py:21
 msgid "Is Active"
@@ -463,7 +465,7 @@ msgstr "Forums"
 #: .\oykus\backend\okp\contrib\forum\models\post.py:87
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:84
 #: .\oykus\backend\okp\contrib\game\admin\character.py:17
-#: .\oykus\backend\okp\contrib\game\models\character.py:104
+#: .\oykus\backend\okp\contrib\game\models\character.py:105
 msgid "Character"
 msgstr "Personnage"
 
@@ -489,15 +491,20 @@ msgstr "Flex"
 
 #: .\oykus\backend\okp\contrib\forum\models\section.py:80
 msgid "The percentage of the width of the section in index and category pages."
-msgstr "Le pourcentage de la largeur de la section dans les pages d'index et de catégorie."
+msgstr ""
+"Le pourcentage de la largeur de la section dans les pages d'index et de "
+"catégorie."
 
 #: .\oykus\backend\okp\contrib\forum\models\section.py:83
 msgid "Show Last Post"
 msgstr "Afficher le dernier message"
 
 #: .\oykus\backend\okp\contrib\forum\models\section.py:85
-msgid "Whether to show the last post of the section in index and category pages."
-msgstr "Si le dernier message de la section est affiché dans les pages d'index et de catégorie."
+msgid ""
+"Whether to show the last post of the section in index and category pages."
+msgstr ""
+"Si le dernier message de la section est affiché dans les pages d'index et de "
+"catégorie."
 
 #: .\oykus\backend\okp\contrib\forum\models\section.py:88
 msgid "Colour"
@@ -516,7 +523,8 @@ msgid "Is Pinned"
 msgstr "Épinglé"
 
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:97
-msgid "Whether the topic is pinned and will be displayed at the top of the section."
+msgid ""
+"Whether the topic is pinned and will be displayed at the top of the section."
 msgstr "Si le sujet est épinglé et sera affiché en haut de la section."
 
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:100
@@ -560,16 +568,16 @@ msgstr "Core"
 msgid "Card"
 msgstr "Carte"
 
-#: .\oykus\backend\okp\contrib\game\models\character.py:32
+#: .\oykus\backend\okp\contrib\game\models\character.py:33
 #: .\oykus\backend\okp\contrib\game\models\theme.py:15
 msgid "Name"
 msgstr "Nom"
 
-#: .\oykus\backend\okp\contrib\game\models\character.py:74
+#: .\oykus\backend\okp\contrib\game\models\character.py:75
 msgid "Whether the character is active and can be used."
 msgstr "Si le personnage est actif et peut être utilisé."
 
-#: .\oykus\backend\okp\contrib\game\models\character.py:105
+#: .\oykus\backend\okp\contrib\game\models\character.py:106
 msgid "Characters"
 msgstr "Personnages"
 
@@ -684,6 +692,10 @@ msgstr "Thème du jeu"
 #: .\oykus\backend\okp\contrib\game\models\theme.py:110
 msgid "Game Themes"
 msgstr "Thèmes du jeu"
+
+#: .\oykus\backend\okp\contrib\game\urls.py:12
+msgid "community/"
+msgstr "communaute/"
 
 #: .\oykus\backend\okp\core\validators.py:21
 #, python-format

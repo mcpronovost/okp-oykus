@@ -8,6 +8,8 @@
   "Character": "Character",
   "Connected as": "Connected as",
   "Create a new topic.": "Create a new topic.",
+  "Create a new post.": "Create a new post.",
+  "Create a new character to start": "Create a new character to start",
   "Delete post": "Delete post",
   "Edit post": "Edit post",
   "Enter your message": "Enter your message",
@@ -27,6 +29,10 @@
   "New Topic": "New Topic",
   "No": "No",
   "No results found": "No results found",
+  "No characters found": "No characters found",
+  "No games found": "No games found",
+  "No topics found": "No topics found",
+  "No posts found": "No posts found",
   "Password": "Password",
   "Popular Games": "Popular Games",
   "Post deleted": "Post deleted",
@@ -68,5 +74,7 @@
   "Posts": {
     "one": "Post",
     "other": "Posts"
-  }
+  },
+  "Page is under construction": "Page is under construction",
+  "Please come back later": "Please come back later"
 }
