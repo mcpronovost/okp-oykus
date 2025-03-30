@@ -120,7 +120,7 @@ class OkpForumCategory(OkpOrderableMixin, models.Model):
     def url(self):
         g = f"g/{self.game.slug}"
         c = f"/c{self.id}-{self.slug}"
-        return f"{g}{c}/"
+        return f"{g}{c}"
 
     @cached_property
     def breadcrumb(self):

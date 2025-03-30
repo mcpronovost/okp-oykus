@@ -150,7 +150,7 @@ class OkpForumTopic(models.Model):
         c = f"/c{self.category.id}-{self.category.slug}" if self.category else ""
         s = f"/s{self.section.id}-{self.section.slug}" if self.section else ""
         t = f"/t{self.id}-{self.slug}"
-        return f"{g}{c}{s}{t}/"
+        return f"{g}{c}{s}{t}"
 
     @cached_property
     def breadcrumb(self):

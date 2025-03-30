@@ -159,7 +159,7 @@ class OkpForumSection(OkpOrderableMixin, models.Model):
         g = f"g/{self.game.slug}"
         c = f"/c{self.category.id}-{self.category.slug}" if self.category else ""
         s = f"/s{self.id}-{self.slug}"
-        return f"{g}{c}{s}/"
+        return f"{g}{c}{s}"
 
     @cached_property
     def breadcrumb(self):

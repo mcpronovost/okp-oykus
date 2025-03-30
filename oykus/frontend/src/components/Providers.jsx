@@ -39,10 +39,8 @@ function OkpProvidersContent({ children, lang, theme }) {
           colorTextBase: theme?.core_fg || "#A7A8AA",
           colorLink: theme?.core_link || "#d3b017",
           colorPrimary: theme?.primary || "#d3b017",
-          colorSuccess: "#338a36",
           colorInfo: "#d3b017",
           colorWarning: "#d3b017",
-          colorError: "#af3333",
           fontFamily: "'Roboto Condensed', system-ui, Avenir, Helvetica, Arial, sans-serif",
           fontSize: 14,
 

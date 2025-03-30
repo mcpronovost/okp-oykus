@@ -4,7 +4,6 @@ import { useInitData } from "@/services/initData";
 import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
 import { OkpScrollarea, OkpAvatar, OkpLink } from "@/components/ui";
-import imgPachua from "@/assets/img/pachua.jpg";
 
 export default function OkpSideGame() {
   const { Sider } = Layout;
@@ -37,7 +36,7 @@ export default function OkpSideGame() {
             {user.characters.map((character) => (
               <li key={character.id} className="okp-list-item">
                 <Tooltip title={character.name} placement="left">
-                  <OkpLink href={`w/oykus/characters/${character.slug}`}>
+                  <OkpLink href={character.url}>
                     <OkpAvatar src={character.avatar} fallback={character.abbr} alt={character.name} size={48} />
                   </OkpLink>
                 </Tooltip>
