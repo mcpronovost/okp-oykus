@@ -139,7 +139,7 @@ class OkpGame(models.Model):
 
     @cached_property
     def url(self):
-        g = f"u/{self.slug}"
+        g = f"g/{self.slug}"
         return f"{g}/"
 
     @property

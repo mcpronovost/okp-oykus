@@ -2,8 +2,8 @@ export const GAMES_ROUTES = {
     games: {
       component: () => import("@/pages/game/Home.jsx"),
       paths: {
-        en: "u",
-        fr: "u",
+        en: "g",
+        fr: "g",
       },
       children: {
         game: {

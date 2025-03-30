@@ -12,7 +12,11 @@ from knox.views import (
     LogoutAllView as KnoxLogoutAllView,
 )
 
-from .serializers import OkpAuthTokenSerializer, OkpAuthRegisterSerializer, OkpUserSerializer
+from okp.contrib.auth.serializers import (
+    OkpAuthTokenSerializer,
+    OkpAuthRegisterSerializer,
+    OkpUserSerializer,
+)
 
 
 class OkpAuthLoginView(KnoxLoginView):

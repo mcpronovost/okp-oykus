@@ -16,36 +16,54 @@ export default function OkpHeaderUser() {
             {
               key: "1",
               label: (
-                <span>
+                <OkpLink href={`players/${user.slug}`}>
                   {t("Connected as")}<br /><b>{user.name}</b>
-                </span>
+                </OkpLink>
               ),
             },
             { type: "divider" },
             {
               key: "2",
-              label: t("Your Profile"),
+              label: (
+                <OkpLink href="me/profile">
+                  {t("Your Profile")}
+                </OkpLink>
+              ),
               disabled: true,
             },
             {
               key: "3",
-              label: t("Your Characters"),
-              disabled: true,
+              label: (
+                <OkpLink href="m/characters">
+                  {t("Your Characters")}
+                </OkpLink>
+              ),
             },
             {
               key: "4",
-              label: t("Your Worlds"),
-              disabled: true,
+              label: (
+                <OkpLink href="m/games">
+                  {t("Your Games")}
+                </OkpLink>
+              ),
             },
             { type: "divider" },
             {
               key: "5",
-              label: t("Help"),
+              label: (
+                <OkpLink href="help">
+                  {t("Help")}
+                </OkpLink>
+              ),
               disabled: true,
             },
             {
               key: "6",
-              label: t("Settings"),
+              label: (
+                <OkpLink href="settings">
+                  {t("Settings")}
+                </OkpLink>
+              ),
               disabled: true,
             },
             { type: "divider" },
