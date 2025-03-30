@@ -103,7 +103,7 @@ class OkpGame(models.Model):
         blank=True,
         null=True,
     )
-    # Flags
+    # Status
     is_active = models.BooleanField(
         verbose_name=_("Is Active"),
         default=True,

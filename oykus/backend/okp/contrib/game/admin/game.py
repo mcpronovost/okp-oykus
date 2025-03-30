@@ -45,6 +45,15 @@ class OkpGameAdmin(ModelAdmin):
             },
         ),
         (
+            _("Status"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_public",
+                )
+            },
+        ),
+        (
             _("Important Dates"),
             {
                 "fields": (

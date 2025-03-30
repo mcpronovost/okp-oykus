@@ -42,7 +42,7 @@ class OkpForum(models.Model):
         verbose_name=_("Auto-Generate Slug"),
         default=True,
     )
-    # Flags
+    # Status
     is_active = models.BooleanField(
         verbose_name=_("Is Active"),
         default=True,
