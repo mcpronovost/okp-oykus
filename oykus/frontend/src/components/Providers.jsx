@@ -57,10 +57,23 @@ function OkpProvidersContent({ children, lang, theme }) {
           colorTextSecondary: theme?.core_subtle_fg || "#5a5c5f",
           colorTextTertiary: theme?.card_placeholder_fg || "#A7A8AA",
 
+          colorSuccess: "#4ba51f",
+          colorSuccessBg: "#24301f",
+          // colorSuccessActive: "#000000",
+          // colorSuccessBorder: "#000000",
+          // colorSuccessText: "#000000",
+          // colorSuccessTextActive: "#000000",
+          colorError: "#af3333",
+          colorErrorBg: "#301f1f",
+          // colorErrorActive: "#000000",
+          // colorErrorBorder: "#000000",
+          // colorErrorText: "#000000",
+          // colorErrorTextActive: "#000000",
+
           // Alias
           boxShadow: "1px 1px 1px 1px rgba(0,0,0,.12)",
-          boxShadowSecondary: "0px 0px 4px rgba(0,0,0,.12)",
-          boxShadowTertiary: "1px 1px 1px 1px #00f",
+          boxShadowSecondary: "0 0 4px rgba(0,0,0,.12)",
+          boxShadowTertiary: "0 0 1px 0 rgba(0,0,0,.12)",  // card shadow
           colorTextLightSolid: theme?.core_elevated_fg || "#A7A8AA",
         },
         components: {
