@@ -6,4 +6,10 @@
     height: 100%;
     padding: 0;
   }
+
+  &-direction-row {
+    .ant-card-body {
+      flex-direction: row;
+    }
+  }
 }
