@@ -76,5 +76,9 @@
     "other": "Messages"
   },
   "Page is under construction": "Cette page est en cours de construction",
-  "Please come back later": "Veuillez revenir plus tard"
+  "Please come back later": "Veuillez revenir plus tard",
+  "Active": "Actif",
+  "Inactive": "Inactif",
+  "Public": "Public",
+  "Private": "Privé"
 }

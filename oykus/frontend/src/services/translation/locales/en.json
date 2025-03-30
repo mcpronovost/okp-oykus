@@ -76,5 +76,9 @@
     "other": "Posts"
   },
   "Page is under construction": "Page is under construction",
-  "Please come back later": "Please come back later"
+  "Please come back later": "Please come back later",
+  "Active": "Active",
+  "Inactive": "Inactive",
+  "Public": "Public",
+  "Private": "Private"
 }
