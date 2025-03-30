@@ -160,11 +160,23 @@ def run_compilemessages(python_exec, backend_path):
     """
     Run the compilemessages command for the backend.
     """
-    subprocess.run(
-        [python_exec, "oykus/backend/manage.py", "compilemessages", "-i", ".venv/*"],
-        cwd=backend_path,
-        check=True
-    )
+    try:
+        backend_process = subprocess.run(
+            [python_exec, "oykus/backend/manage.py", "compilemessages", "-i", ".venv/*"],
+            cwd=backend_path,
+            check=True
+        )
+
+    except KeyboardInterrupt:
+        print("\nStopping server...")
+        terminate_processes(backend_process, None)
+
+    except subprocess.SubprocessError as e:
+        print(f"Subprocess error: {e}")
+        terminate_processes(backend_process, None)
+    except OSError as e:
+        print(f"OS error: {e}")
+        terminate_processes(backend_process, None)
 
 
 def main():
