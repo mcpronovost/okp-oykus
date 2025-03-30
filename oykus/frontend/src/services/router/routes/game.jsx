@@ -21,7 +21,7 @@ export const GAMES_ROUTES = {
               },
               children: {
                 character: {
-                  component: () => import("@/pages/game/Home.jsx"),  // TODO: Create Character page
+                  component: () => import("@/pages/game/community/CharacterProfile.jsx"),
                   paths: {
                     en: "c{character_id}-{character_slug}",
                     fr: "c{character_id}-{character_slug}",

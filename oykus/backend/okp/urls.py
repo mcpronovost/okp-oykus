@@ -19,7 +19,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # app
     path("a/", include("okp.contrib.auth.urls")),
-    path("g/", include("okp.contrib.game.urls")),
+    re_path(r"^g/(?P<slug>[\w-]+)/", include("okp.contrib.game.urls")),
     re_path(r"^", OkpView.as_view()),
 )
 

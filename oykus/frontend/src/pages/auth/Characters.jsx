@@ -17,7 +17,7 @@ export default function OkpMeCharacters({ data }) {
           <OkpCard>
             <OkpEmpty
               text={t("No characters found")}
-              subtext={t("Create a character to start")}
+              subtext={t("Create a new character to start")}
             />
           </OkpCard>
         )}

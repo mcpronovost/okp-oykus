@@ -9,7 +9,7 @@ from .character import (
     OkpGameCharacterSerializer,
     OkpGameCharacterAuthorSerializer,
 )
-
+from .theme import OkpGameThemeSerializer
 
 __all__ = [
     # Game
@@ -21,4 +21,6 @@ __all__ = [
     # Character
     "OkpGameCharacterSerializer",
     "OkpGameCharacterAuthorSerializer",
+    # Theme
+    "OkpGameThemeSerializer",
 ]
