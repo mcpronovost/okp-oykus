@@ -156,6 +156,17 @@ def run_clean_migrate(python_exec, backend_path):
         print("Note: Error loading initial fixtures")
 
 
+def run_compilemessages(python_exec, backend_path):
+    """
+    Run the compilemessages command for the backend.
+    """
+    subprocess.run(
+        [python_exec, "oykus/backend/manage.py", "compilemessages", "-i", ".venv/*"],
+        cwd=backend_path,
+        check=True
+    )
+
+
 def main():
     """
     Main function to start development servers or run backend with arguments.
@@ -176,6 +187,8 @@ def main():
             run_tests()
         elif sys.argv[1] == "cmigrate":
             run_clean_migrate(python_exec, backend_path)
+        elif sys.argv[1] == "compilemessages":
+            run_compilemessages(python_exec, backend_path)
         else:
             backend_args = sys.argv[1:]
             run_backend(python_exec, backend_path, backend_args)
