@@ -1,15 +1,7 @@
 from .auth import (
-    OkpAuthLoginView,
-    OkpAuthLogoutView,
-    OkpAuthLogoutAllView,
-    OkpAuthRegisterView,
+    OkpAuthGamesView,
 )
-from .me import OkpAuthMeView
 
 __all__ = [
-    "OkpAuthLoginView",
-    "OkpAuthLogoutView",
-    "OkpAuthLogoutAllView",
-    "OkpAuthRegisterView",
-    "OkpAuthMeView",
+    "OkpAuthGamesView",
 ]

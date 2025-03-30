@@ -2,8 +2,10 @@ import { useTranslation } from "@/services/translation";
 import { OkpLayout } from "@/components/layout";
 import { OkpCard, OkpEmpty, OkpHeading } from "@/components/ui";
 
-export default function OkpMeGames({ data }) {
+export default function OkpAuthGames({ data }) {
   const { t } = useTranslation();
+
+  console.log(data);
 
   return (
     <OkpLayout data={data}>

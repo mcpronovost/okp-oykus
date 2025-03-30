@@ -13,6 +13,29 @@ export const AUTH_ROUTES = {
       fr: "deconnexion",
     },
   },
+  auth: {
+    component: () => import("@/pages/Home.jsx"),
+    paths: {
+      en: "a",
+      fr: "a",
+    },
+    children: {
+      characters: {
+        component: () => import("@/pages/auth/Characters.jsx"),
+        paths: {
+          en: "characters",
+          fr: "personnages",
+        },
+      },
+      games: {
+        component: () => import("@/pages/auth/Games.jsx"),
+        paths: {
+          en: "games",
+          fr: "jeux",
+        },
+      },
+    },
+  },
 };
 
 export default AUTH_ROUTES;

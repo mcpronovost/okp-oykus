@@ -1,17 +1,10 @@
-from django.urls import path
+from django.urls import re_path
+from django.utils.translation import gettext_lazy as _
 
 from .views import (
-    OkpAuthLoginView,
-    OkpAuthLogoutView,
-    OkpAuthLogoutAllView,
-    OkpAuthRegisterView,
-    OkpAuthMeView,
+    OkpAuthGamesView,
 )
 
 urlpatterns = [
-    path("login/", OkpAuthLoginView.as_view(), name="okp_auth_login"),
-    path("logout/", OkpAuthLogoutView.as_view(), name="okp_auth_logout"),
-    path("logoutall/", OkpAuthLogoutAllView.as_view(), name="okp_auth_logoutall"),
-    path("register/", OkpAuthRegisterView.as_view(), name="okp_auth_register"),
-    path("me/", OkpAuthMeView.as_view(), name="okp_auth_me"),
+    re_path(_(r"^games/$"), OkpAuthGamesView.as_view(), name="okp_auth_games"),
 ]

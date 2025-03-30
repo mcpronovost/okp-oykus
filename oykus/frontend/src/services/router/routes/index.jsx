@@ -1,5 +1,4 @@
 import { AUTH_ROUTES } from "./auth";
-import { ME_ROUTES } from "./me";
 import { GAMES_ROUTES } from "./game";
 
 const ROUTES = {
@@ -11,7 +10,6 @@ const ROUTES = {
     },
   },
   ...AUTH_ROUTES,
-  ...ME_ROUTES,
   ...GAMES_ROUTES,
   error404: {
     component: () => import("@/pages/Error404.jsx"),

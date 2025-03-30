@@ -25,7 +25,7 @@ export default function OkpHeaderUser() {
             {
               key: "2",
               label: (
-                <OkpLink href="me/profile">
+                <OkpLink href="a/profile">
                   {t("Your Profile")}
                 </OkpLink>
               ),
@@ -34,7 +34,7 @@ export default function OkpHeaderUser() {
             {
               key: "3",
               label: (
-                <OkpLink href="m/characters">
+                <OkpLink href="a/characters">
                   {t("Your Characters")}
                 </OkpLink>
               ),
@@ -42,7 +42,7 @@ export default function OkpHeaderUser() {
             {
               key: "4",
               label: (
-                <OkpLink href="m/games">
+                <OkpLink href="a/games">
                   {t("Your Games")}
                 </OkpLink>
               ),
