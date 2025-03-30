@@ -13,6 +13,22 @@ export const GAMES_ROUTES = {
             fr: "{slug}",
           },
           children: {
+            community: {
+              component: () => import("@/pages/game/Home.jsx"),  // TODO: Create Community page
+              paths: {
+                en: "community",
+                fr: "communaute",
+              },
+              children: {
+                character: {
+                  component: () => import("@/pages/game/Home.jsx"),  // TODO: Create Character page
+                  paths: {
+                    en: "c{character_id}-{character_slug}",
+                    fr: "c{character_id}-{character_slug}",
+                  },
+                },
+              },
+            },
             forum: {
               component: () => import("@/pages/game/forum/Category.jsx"),
               paths: {

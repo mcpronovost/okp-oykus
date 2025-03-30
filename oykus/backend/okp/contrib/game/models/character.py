@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
 
@@ -107,6 +108,10 @@ class OkpGameCharacter(models.Model):
 
     def __str__(self):
         return self.name
+
+    @cached_property
+    def url(self):
+        return f"{self.game.url}/{_("community")}/c{self.id}-{self.slug}"
 
     def save(self, *args, **kwargs):
         if self.is_slug_auto:
