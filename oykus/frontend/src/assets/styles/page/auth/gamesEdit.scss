@@ -12,6 +12,27 @@
       height: 150px;
       width: 100%;
       object-fit: cover;
+
+      &-upload {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        &-icon {
+          margin: 0 0 6px;
+        }
+
+        &-title {
+          font-size: 1rem;
+        }
+
+        &-description {
+          font-size: 0.7rem;
+          opacity: 0.6;
+        }
+      }
     }
 
     &-title {
@@ -31,6 +52,15 @@
       text-align: center;
       opacity: 0.6;
       padding: 0 0 12px;
+    }
+  }
+
+  &-general {
+    &-title {
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0 0 24px;
     }
   }
 }

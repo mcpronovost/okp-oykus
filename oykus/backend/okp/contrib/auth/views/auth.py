@@ -51,6 +51,7 @@ class OkpAuthGamesEditView(OkpPageView):
                 "id": game.id,
                 "title": game.title,
                 "subtitle": game.subtitle,
+                "slug": game.slug,
                 "cover": game.cover.url if game.cover else None,
                 "is_active": game.is_active,
                 "is_public": game.is_public,
