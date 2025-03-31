@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Row, Col, Form, notification } from "antd";
 import { Image } from "lucide-react";
 import { okpApi } from "@/services/api";
@@ -24,6 +24,7 @@ export default function OkpAuthGamesEditGeneral({
 
   const titleValue = Form.useWatch("title", form);
   const subtitleValue = Form.useWatch("subtitle", form);
+  const coverValue = Form.useWatch("cover", form);
   const [coverPreview, setCoverPreview] = useState(game.cover);
 
   const initialValues = useMemo(
@@ -32,24 +33,42 @@ export default function OkpAuthGamesEditGeneral({
       slug: game.slug,
       subtitle: game.subtitle,
       is_public: game.is_public,
+      cover: game.cover ? [{ uid: "original", url: game.cover }] : [],
     }),
     [game]
   );
 
+  const handleCoverUpload = (file) => {
+    const previewUrl = URL.createObjectURL(file);
+    setCoverPreview(previewUrl);
+    return false;
+  }
+
   const handleSubmit = async (e) => {
     setIsSubmitting(true);
 
-    console.log(e);
+    const formData = new FormData();
+    // Add all non-file fields
+    formData.append("title", e.title);
+    formData.append("slug", e.slug);
+    formData.append("subtitle", e.subtitle);
+    formData.append("is_public", e.is_public);
+  
+    // Handle cover file
+    const coverFile = e.cover[0]?.originFileObj;
+    if (coverFile) {
+      formData.append("cover", coverFile);
+    }
 
     try {
-      const result = await okpApi.updateGame(game.id, e);
+      const result = await okpApi.updateGame(game.id, formData);
       if (result?.success) {
         afterSubmit(result.message);
       } else {
         throw new Error(result?.message);
       }
-    } catch (error) {
-      openNotification(t("An error occurred while editing the game"));
+    } catch (e) {
+      openNotification(`${t("An error occurred while editing the game")}: "${e.message}"`);
     } finally {
       setIsSubmitting(false);
     }
@@ -61,6 +80,12 @@ export default function OkpAuthGamesEditGeneral({
       description: msg?.message || String(msg),
     });
   };
+
+  useEffect(() => {
+    if (coverValue?.[0] && coverValue[0].uid === "original" && coverValue[0].url !== coverPreview) {
+      setCoverPreview(coverValue[0].url);
+    }
+  }, [coverValue]);
 
   return (
     <>
@@ -100,13 +125,9 @@ export default function OkpAuthGamesEditGeneral({
                 <OkpFormField
                   name="cover"
                   inputType="upload"
-                  maxLength={1}
+                  maxCount={1}
                   showUploadList={false}
-                  beforeUpload={(file) => {
-                    const previewUrl = URL.createObjectURL(file);
-                    setCoverPreview(previewUrl);
-                    return false;
-                  }}
+                  beforeUpload={handleCoverUpload}
                   style={{ margin: 0 }}
                 >
                   <OkpButton variant="link" color="default" className="okp-auth-games-edit-banner-cover-upload">

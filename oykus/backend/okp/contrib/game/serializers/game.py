@@ -100,3 +100,23 @@ class OkpGameForumTopicSerializer(OkpGameSerializer):
             "request": self.context.get("request"),
         }
         return OkpForumTopicSerializer(topic, context=context).data
+
+
+class OkpGameUpdateSerializer(serializers.ModelSerializer):
+    """Serializer for updating a game"""
+
+    class Meta:
+        model = OkpGame
+        fields = ("id", "title", "slug", "subtitle", "cover")
+        read_only_fields = ("id",)
+
+    def validate(self, data):
+        request = self.context.get("request")
+        game = self.instance
+
+        if not game:
+            raise serializers.ValidationError({"game": "Game does not exist."})
+        if game.owner != request.user:
+            raise serializers.ValidationError({"game": "Game does not belong to you."})
+
+        return data

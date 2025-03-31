@@ -1,6 +1,7 @@
 {
   "All rights reserved.": "All rights reserved.",
   "an unknown": "an unknown",
+  "An error occurred while editing the game": "An error occurred while editing the game",
   "Are you sure you want to delete this post?": "Are you sure you want to delete this post?",
   "by": "by",
   "by an unknown": "by an unknown",
@@ -80,5 +81,13 @@
   "Active": "Active",
   "Inactive": "Inactive",
   "Public": "Public",
-  "Private": "Private"
+  "Private": "Private",
+  "Edit cover image": "Edit cover image",
+  "Recommended size: 1200x250": "Recommended size: 1200x250",
+  "Failed to edit game": "Failed to edit game",
+  "General Information": "General Information",
+  "Slug": "Slug",
+  "Subtitle": "Subtitle",
+  "Enter your subtitle": "Enter your subtitle",
+  "Reset": "Reset"
 }

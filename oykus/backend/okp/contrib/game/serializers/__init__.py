@@ -4,6 +4,7 @@ from .game import (
     OkpGameForumCategorySerializer,
     OkpGameForumSectionSerializer,
     OkpGameForumTopicSerializer,
+    OkpGameUpdateSerializer,
 )
 from .character import (
     OkpGameCharacterSerializer,
@@ -18,6 +19,7 @@ __all__ = [
     "OkpGameForumCategorySerializer",
     "OkpGameForumSectionSerializer",
     "OkpGameForumTopicSerializer",
+    "OkpGameUpdateSerializer",
     # Character
     "OkpGameCharacterSerializer",
     "OkpGameCharacterAuthorSerializer",

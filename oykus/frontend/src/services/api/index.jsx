@@ -17,6 +17,10 @@ class OkpApi {
       "Accept-Language": this.lang,
     };
 
+    if (options.body instanceof FormData) {
+      delete headers["Content-Type"];
+    }
+
     if (this.token) {
       headers.Authorization = `Okp ${this.token}`;
     }
@@ -73,9 +77,10 @@ class OkpApi {
   }
 
   patch(endpoint, data) {
+    const body = data instanceof FormData ? data : JSON.stringify(data);
     return this.request(endpoint, {
       method: "PATCH",
-      body: JSON.stringify(data),
+      body,
     });
   }
 
@@ -115,6 +120,11 @@ class OkpApi {
 
   async updatePost(id, data) {
     const result = await this.patch(`/forum/posts/${id}/update/`, data);
+    return result;
+  }
+
+  async updateGame(id, data) {
+    const result = await this.patch(`/game/${id}/update/`, data);
     return result;
   }
 }

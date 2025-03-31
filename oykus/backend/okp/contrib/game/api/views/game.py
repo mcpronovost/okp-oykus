@@ -1,8 +1,10 @@
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import AllowAny
+from django.shortcuts import get_object_or_404
+from rest_framework.generics import ListAPIView, UpdateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from okp.contrib.game.models import OkpGame
+from okp.contrib.game.serializers import OkpGameUpdateSerializer
 
 
 class OkpGameSidePopularView(ListAPIView):
@@ -35,3 +37,15 @@ class OkpGameSidePopularView(ListAPIView):
                 }
             )
         return Response({"games": games})
+
+
+class OkpGameUpdateView(UpdateAPIView):
+    """
+    Update a game
+    """
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = OkpGameUpdateSerializer
+
+    def get_object(self):
+        return get_object_or_404(OkpGame, id=self.kwargs.get("pk"))

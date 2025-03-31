@@ -70,7 +70,7 @@ export default function OkpField({
       ) : inputType === "checkbox" ? (
         <Checkbox size={size} disabled={disabled} required={required} />
       ) : inputType === "upload" ? (
-        <Upload maxLength={1} {...props}>
+        <Upload {...props}>
           {children}
         </Upload>
       ) : (
