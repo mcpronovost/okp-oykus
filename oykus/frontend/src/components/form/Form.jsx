@@ -6,6 +6,7 @@ export default function OkpForm({
   form,
   submit,
   labelCol = 4,
+  padding = 24,
   className = "",
   initialValues = {},
   ...props
@@ -22,6 +23,7 @@ export default function OkpForm({
       className={`okp-form ${className}`}
       onFinish={handleOnFinish}
       initialValues={initialValues}
+      style={{ padding: `${padding}px` }}
       {...props}
     >
       {children}
