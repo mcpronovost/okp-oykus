@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-30 14:52-0400\n"
+"POT-Creation-Date: 2025-03-31 23:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Statut"
 msgid "Permissions"
 msgstr "Permissions"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:62
+#: .\oykus\backend\okp\contrib\auth\admin.py:63
 #: .\oykus\backend\okp\contrib\forum\admin\forum.py:68
 #: .\oykus\backend\okp\contrib\forum\admin\section.py:80
 #: .\oykus\backend\okp\contrib\forum\admin\topic.py:98
@@ -45,24 +45,24 @@ msgstr "Permissions"
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:67
+#: .\oykus\backend\okp\contrib\auth\admin.py:68
 msgid "Important dates"
 msgstr "Dates importantes"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:101
-#: .\oykus\backend\okp\contrib\auth\models.py:136
+#: .\oykus\backend\okp\contrib\auth\admin.py:102
+#: .\oykus\backend\okp\contrib\auth\models.py:142
 msgid "Data"
 msgstr "Données"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:112
+#: .\oykus\backend\okp\contrib\auth\admin.py:113
 msgid "Browser Agent"
 msgstr "Navigateur"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:116
+#: .\oykus\backend\okp\contrib\auth\admin.py:117
 msgid "Browser Platform"
 msgstr "Plateforme"
 
-#: .\oykus\backend\okp\contrib\auth\admin.py:120
+#: .\oykus\backend\okp\contrib\auth\admin.py:121
 msgid "Browser Mobile"
 msgstr "Mobile"
 
@@ -156,6 +156,14 @@ msgid "Last Post"
 msgstr "Dernier message"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:97
+msgid "Max Owned Games"
+msgstr ""
+
+#: .\oykus\backend\okp\contrib\auth\models.py:99
+msgid "The maximum number of games a user can own."
+msgstr ""
+
+#: .\oykus\backend\okp\contrib\auth\models.py:103
 #: .\oykus\backend\okp\contrib\forum\models\category.py:81
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:83
 #: .\oykus\backend\okp\contrib\forum\models\post.py:105
@@ -167,7 +175,7 @@ msgstr "Dernier message"
 msgid "Created At"
 msgstr "Créé le"
 
-#: .\oykus\backend\okp\contrib\auth\models.py:101
+#: .\oykus\backend\okp\contrib\auth\models.py:107
 #: .\oykus\backend\okp\contrib\forum\models\category.py:85
 #: .\oykus\backend\okp\contrib\forum\models\forum.py:87
 #: .\oykus\backend\okp\contrib\forum\models\post.py:110
@@ -179,22 +187,22 @@ msgstr "Créé le"
 msgid "Updated At"
 msgstr "Mis à jour le"
 
-#: .\oykus\backend\okp\contrib\auth\models.py:106
+#: .\oykus\backend\okp\contrib\auth\models.py:112
 #: .\oykus\backend\okp\contrib\forum\models\post.py:79
 #: .\oykus\backend\okp\contrib\forum\models\topic.py:76
 #: .\oykus\backend\okp\contrib\game\models\character.py:27
 msgid "User"
 msgstr "Utilisateur"
 
-#: .\oykus\backend\okp\contrib\auth\models.py:107
+#: .\oykus\backend\okp\contrib\auth\models.py:113
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: .\oykus\backend\okp\contrib\auth\models.py:142
+#: .\oykus\backend\okp\contrib\auth\models.py:148
 msgid "Auth Token"
 msgstr "Jeton d'authentification"
 
-#: .\oykus\backend\okp\contrib\auth\models.py:143
+#: .\oykus\backend\okp\contrib\auth\models.py:149
 msgid "Auth Tokens"
 msgstr "Jetons d'authentification"
 
@@ -261,6 +269,10 @@ msgstr "jeux/"
 #: .\oykus\backend\okp\contrib\auth\urls.py:10
 msgid "edit/"
 msgstr "modifier/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:11
+msgid "deletion/"
+msgstr "suppression/"
 
 #: .\oykus\backend\okp\contrib\forum\admin\category.py:10
 #: .\oykus\backend\okp\contrib\forum\admin\forum.py:10

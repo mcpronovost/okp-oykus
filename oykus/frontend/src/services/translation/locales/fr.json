@@ -98,5 +98,22 @@
   "Failed to create game": "Erreur lors de la création du jeu",
   "An error occurred while creating the game": "Une erreur est survenue lors de la création du jeu",
   "Maximum number of games reached": "Maximum de jeux atteint",
-  "You have reached the maximum number of games you can be the owner of": "Vous avez atteint le nombre maximum de jeux dont vous pouvez être le propriétaire"
+  "You have reached the maximum number of games you can be the owner of": "Vous avez atteint le nombre maximum de jeux dont vous pouvez être le propriétaire",
+  "Game Information": "Informations du jeu",
+  "Title, description, cover, visibility, and more": "Titre, description, couverture, visibilité et plus",
+  "Forum": "Forum",
+  "Categories, sections, permissions, and settings": "Catégories, sections, permissions et paramètres",
+  "General": "Général",
+  "Deletion": "Suppression",
+  "Colours and custom stylesheet": "Couleurs et feuille de style personnalisée",
+  "Stylesheet": "Feuille de style",
+  "No game found": "Aucun jeu trouvé",
+  "No character found": "Aucun personnage trouvé",
+  "No topic found": "Aucun sujet trouvé",
+  "No post found": "Aucun message trouvé",
+  "Index": "Index",
+  "Style": "Style",
+  "Error": "Erreur",
+  "This action is not possible yet.": "Cette action n'est pas possible pour le moment.",
+  "Are you sure you want to delete this game?": "Êtes-vous sûr de vouloir supprimer ce jeu ?"
 }
