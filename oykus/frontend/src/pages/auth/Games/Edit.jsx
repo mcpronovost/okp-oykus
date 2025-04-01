@@ -3,6 +3,7 @@ import { Col, Row } from "antd";
 import { useTranslation } from "@/services/translation";
 import { OkpLayout } from "@/components/layout";
 import {
+  OkpBreadcrumb,
   OkpCard,
   OkpEmpty,
   OkpHeading,
@@ -12,7 +13,6 @@ import OkpAuthGamesEditGeneral from "@/components/auth/games/forms/EditGeneral";
 
 export default function OkpAuthGamesEdit({ data }) {
   const { t } = useTranslation();
-  console.log(data);
 
   return (
     <OkpLayout data={data}>
@@ -20,14 +20,17 @@ export default function OkpAuthGamesEdit({ data }) {
         {data?.game ? (
           <>
             <OkpHeading title={data.game.title} tag="h1" />
-            <Row gutter={[16, 16]}>
-              <Col span={24} md={6}>
-                <OkpAuthGamesMenu />
-              </Col>
-              <Col span={24} md={18}>
-                <OkpAuthGamesEditGeneral game={data.game} />
-              </Col>
-            </Row>
+            <OkpBreadcrumb items={[{ name: t("Your Games"), url: "a/games" }]} />
+            <section className="okp-auth-games-edit">
+              <Row gutter={[16, 16]}>
+                <Col span={24} md={8} xl={6}>
+                  <OkpAuthGamesMenu />
+                </Col>
+                <Col span={24} md={16} xl={18}>
+                  <OkpAuthGamesEditGeneral game={data.game} />
+                </Col>
+              </Row>
+            </section>
           </>
         ) : (
           <OkpCard>

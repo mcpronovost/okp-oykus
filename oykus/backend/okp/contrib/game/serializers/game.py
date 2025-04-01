@@ -107,8 +107,8 @@ class OkpGameUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OkpGame
-        fields = ("id", "title", "slug", "subtitle", "cover")
-        read_only_fields = ("id",)
+        fields = ("id", "title", "slug", "abbr", "subtitle", "logo", "cover", "is_public")
+        read_only_fields = ("id", "abbr")
 
     def validate(self, data):
         request = self.context.get("request")

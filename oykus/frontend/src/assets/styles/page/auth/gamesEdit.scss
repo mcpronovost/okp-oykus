@@ -1,4 +1,6 @@
 .okp-auth-games-edit {
+  margin: 32px 0;
+
   &-banner {
     height: 100%;
 
@@ -35,6 +37,10 @@
       }
     }
 
+    &-logo {
+      position: absolute;
+    }
+
     &-title {
       font-family: "Quicksand", sans-serif;
       font-size: 2rem;
@@ -42,6 +48,7 @@
       line-height: 1.2;
       text-align: center;
       padding: 12px 0;
+      margin: 12px 0 0;
     }
 
     &-subtitle {

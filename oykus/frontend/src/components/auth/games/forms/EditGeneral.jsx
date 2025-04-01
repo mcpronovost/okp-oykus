@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { Row, Col, Form, notification } from "antd";
-import { Image } from "lucide-react";
 import { okpApi } from "@/services/api";
 import { useTranslation } from "@/services/translation";
 import {
@@ -10,11 +9,10 @@ import {
   OkpFormSubmit,
   OkpFormReset,
 } from "@/components/form";
-import { OkpBanner, OkpButton, OkpCard } from "@/components/ui";
+import { OkpAvatar, OkpBanner, OkpButton, OkpCard } from "@/components/ui";
 
 export default function OkpAuthGamesEditGeneral({
   game,
-  afterSubmit = () => {},
   onReset = () => {},
 }) {
   const [api, contextHolder] = notification.useNotification();
@@ -24,7 +22,9 @@ export default function OkpAuthGamesEditGeneral({
 
   const titleValue = Form.useWatch("title", form);
   const subtitleValue = Form.useWatch("subtitle", form);
+  const logoValue = Form.useWatch("logo", form);
   const coverValue = Form.useWatch("cover", form);
+  const [logoPreview, setLogoPreview] = useState(game.logo);
   const [coverPreview, setCoverPreview] = useState(game.cover);
 
   const initialValues = useMemo(
@@ -33,10 +33,17 @@ export default function OkpAuthGamesEditGeneral({
       slug: game.slug,
       subtitle: game.subtitle,
       is_public: game.is_public,
+      logo: game.logo ? [{ uid: "original", url: game.logo }] : [],
       cover: game.cover ? [{ uid: "original", url: game.cover }] : [],
     }),
     [game]
   );
+
+  const handleLogoUpload = (file) => {
+    const previewUrl = URL.createObjectURL(file);
+    setLogoPreview(previewUrl);
+    return false;
+  }
 
   const handleCoverUpload = (file) => {
     const previewUrl = URL.createObjectURL(file);
@@ -48,12 +55,17 @@ export default function OkpAuthGamesEditGeneral({
     setIsSubmitting(true);
 
     const formData = new FormData();
-    // Add all non-file fields
     formData.append("title", e.title);
     formData.append("slug", e.slug);
     formData.append("subtitle", e.subtitle);
     formData.append("is_public", e.is_public);
-  
+
+    // Handle logo file
+    const logoFile = e.logo[0]?.originFileObj;
+    if (logoFile) {
+      formData.append("logo", logoFile);
+    }
+
     // Handle cover file
     const coverFile = e.cover[0]?.originFileObj;
     if (coverFile) {
@@ -63,23 +75,30 @@ export default function OkpAuthGamesEditGeneral({
     try {
       const result = await okpApi.updateGame(game.id, formData);
       if (result?.success) {
-        afterSubmit(result.message);
+        openNotification(t("Game updated"), t("Game updated successfully"), "success");
       } else {
         throw new Error(result?.message);
       }
     } catch (e) {
-      openNotification(`${t("An error occurred while editing the game")}: "${e.message}"`);
+      openNotification(t("Failed to edit game"), `${t("An error occurred while editing the game")}: "${e.message}"`, "error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const openNotification = (msg) => {
-    api.error({
-      message: t("Failed to edit game"),
+  const openNotification = (title, msg, type = "error") => {
+    api.open({
+      type,
+      message: title,
       description: msg?.message || String(msg),
     });
   };
+
+  useEffect(() => {
+    if (logoValue?.[0] && logoValue[0].uid === "original" && logoValue[0].url !== logoPreview) {
+      setLogoPreview(logoValue[0].url);
+    }
+  }, [logoValue]);
 
   useEffect(() => {
     if (coverValue?.[0] && coverValue[0].uid === "original" && coverValue[0].url !== coverPreview) {
@@ -98,7 +117,7 @@ export default function OkpAuthGamesEditGeneral({
         padding={0}
       >
         <Row gutter={[16, 16]}>
-          <Col span={24} sm={17}>
+          <Col span={24} xl={17}>
             <section className="okp-auth-games-edit-banner">
               <OkpCard
                 cover={
@@ -110,34 +129,68 @@ export default function OkpAuthGamesEditGeneral({
                   />
                 }
               >
+                <OkpAvatar
+                  src={logoPreview}
+                  alt={game.title}
+                  fallback={game.abbr}
+                  size={48}
+                  stroke={4}
+                  colour={game.logo ? undefined : game.primary}
+                  top={96}
+                  className="okp-auth-games-edit-banner-logo"
+                />
                 <div className="okp-auth-games-edit-banner-title">
                   {titleValue}
                 </div>
-                <div className="okp-auth-games-edit-banner-subtitle">
-                  {subtitleValue}
-                </div>
+                {subtitleValue && (
+                  <div className="okp-auth-games-edit-banner-subtitle">
+                    {subtitleValue}
+                  </div>
+                )}
               </OkpCard>
             </section>
           </Col>
-          <Col span={24} sm={7}>
-            <section className="okp-auth-games-edit-banner">
-              <OkpCard style={{ height: "100%" }}>
-                <OkpFormField
-                  name="cover"
-                  inputType="upload"
-                  maxCount={1}
-                  showUploadList={false}
-                  beforeUpload={handleCoverUpload}
-                  style={{ margin: 0 }}
-                >
-                  <OkpButton variant="link" color="default" className="okp-auth-games-edit-banner-cover-upload">
-                    <Image size={24} className="okp-auth-games-edit-banner-cover-upload-icon" />
-                    <span className="okp-auth-games-edit-banner-cover-upload-title">{t("Edit cover image")}</span>
-                    <small className="okp-auth-games-edit-banner-cover-upload-description">{t("Recommended size: 1200x250")}</small>
-                  </OkpButton>
-                </OkpFormField>
-              </OkpCard>
-            </section>
+          <Col span={24} xl={7}>
+            <Row gutter={[16, 16]} style={{ height: "100%" }}>
+              <Col span={24} sm={12} xl={24}>
+                <section className="okp-auth-games-edit-banner">
+                  <OkpCard style={{ height: "100%" }}>
+                    <OkpFormField
+                      name="cover"
+                      inputType="upload"
+                      maxCount={1}
+                      showUploadList={false}
+                      beforeUpload={handleCoverUpload}
+                      style={{ margin: 0 }}
+                    >
+                      <OkpButton variant="link" color="default" className="okp-auth-games-edit-banner-cover-upload">
+                        <span className="okp-auth-games-edit-banner-cover-upload-title">{t("Edit cover image")}</span>
+                        <small className="okp-auth-games-edit-banner-cover-upload-description">{t("Recommended size: 1200x250")}</small>
+                      </OkpButton>
+                    </OkpFormField>
+                  </OkpCard>
+                </section>
+              </Col>
+              <Col span={24} sm={12} xl={24}>
+                <section className="okp-auth-games-edit-banner">
+                  <OkpCard style={{ height: "100%" }}>
+                    <OkpFormField
+                      name="logo"
+                      inputType="upload"
+                      maxCount={1}
+                      showUploadList={false}
+                      beforeUpload={handleLogoUpload}
+                      style={{ margin: 0 }}
+                    >
+                      <OkpButton variant="link" color="default" className="okp-auth-games-edit-banner-cover-upload">
+                        <span className="okp-auth-games-edit-banner-cover-upload-title">{t("Edit logo")}</span>
+                        <small className="okp-auth-games-edit-banner-cover-upload-description">{t("Recommended size: 200x200")}</small>
+                      </OkpButton>
+                    </OkpFormField>
+                  </OkpCard>
+                </section>
+              </Col>
+            </Row>
           </Col>
           <Col span={24}>
             <section className="okp-auth-games-edit-general">
@@ -167,7 +220,6 @@ export default function OkpAuthGamesEditGeneral({
                   placeholder={t("Enter your subtitle")}
                   maxLength={200}
                   showCount
-                  required
                 />
                 <OkpFormField
                   label={t("Public")}
