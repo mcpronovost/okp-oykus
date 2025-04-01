@@ -11,7 +11,7 @@ export default function OkpAvatar({
   size = 48,
   stroke = 8,
   strokeColor = null,
-  color = null,
+  colour = null,
   top = 0,
   className = ""
 }) {
@@ -27,11 +27,11 @@ export default function OkpAvatar({
         aria-hidden="true"
         className="okp-avatar-figure"
         style={{
-          background: (!src || imgError) ? color || token.colorFill : "transparent",
+          background: (!src || imgError) ? colour || token.colorFill : "transparent",
           boxShadow: `0 0 1px ${stroke}px ${strokeColor || token.colorBgContainer}`,
           outlineWidth: `${stroke}px`,
           outlineColor: strokeColor || token.colorBgContainer,
-          color: color ? okpContrast(color) : token.colorTextTertiary,
+          color: colour ? okpContrast(colour) : token.colorTextTertiary,
           width: `${size}px`,
           height: `${size}px`,
         }}
