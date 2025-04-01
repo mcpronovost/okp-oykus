@@ -7,7 +7,12 @@ import {
 } from "react";
 import { getRoute, getLocalizedPath } from "./utils";
 
-const RouterContext = createContext(null);
+const RouterContext = createContext({
+  lang: "fr",
+  routeName: "",
+  route: "",
+  r: () => {},
+});
 
 const RouterProvider = ({ children, lang = "fr", routePath = "" }) => {
   const [routeName, setRouteName] = useState(routePath);

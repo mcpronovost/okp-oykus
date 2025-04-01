@@ -91,5 +91,10 @@
   "Enter your subtitle": "Enter your subtitle",
   "Reset": "Reset",
   "Edit logo": "Edit logo",
-  "Recommended size: 200x200": "Recommended size: 200x200"
+  "Recommended size: 200x200": "Recommended size: 200x200",
+  "Create Game": "Create Game",
+  "Game created": "Game created",
+  "Game created successfully": "Game created successfully",
+  "Failed to create game": "Failed to create game",
+  "An error occurred while creating the game": "An error occurred while creating the game"
 }

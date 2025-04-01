@@ -91,5 +91,10 @@
   "Enter your subtitle": "Entrez votre sous-titre",
   "Reset": "Réinitialiser",
   "Edit logo": "Modifier le logo",
-  "Recommended size: 200x200": "Taille recommandée: 200x200"
+  "Recommended size: 200x200": "Taille recommandée: 200x200",
+  "Create Game": "Créer un jeu",
+  "Game created": "Jeu créé",
+  "Game created successfully": "Jeu créé avec succès",
+  "Failed to create game": "Erreur lors de la création du jeu",
+  "An error occurred while creating the game": "Une erreur est survenue lors de la création du jeu"
 }

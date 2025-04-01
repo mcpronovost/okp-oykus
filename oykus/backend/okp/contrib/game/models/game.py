@@ -111,7 +111,7 @@ class OkpGame(models.Model):
     )
     is_public = models.BooleanField(
         verbose_name=_("Is Public"),
-        default=True,
+        default=False,
         help_text=_("Whether the game is public and can be viewed by everyone."),
     )
     # Important Dates

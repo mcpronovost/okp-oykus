@@ -74,9 +74,7 @@ class OkpGameForumSectionSerializer(OkpGameSerializer):
             OkpForumSectionSerializer,
         )  # noqa
 
-        section = obj.forum.sections.filter(
-            pk=self.context["section_id"]
-        ).first()
+        section = obj.forum.sections.filter(pk=self.context["section_id"]).first()
         if section:
             return OkpForumSectionSerializer(section).data
         return None
@@ -100,6 +98,34 @@ class OkpGameForumTopicSerializer(OkpGameSerializer):
             "request": self.context.get("request"),
         }
         return OkpForumTopicSerializer(topic, context=context).data
+
+
+class OkpGameCreateSerializer(serializers.ModelSerializer):
+    """Serializer for creating a new game"""
+
+    class Meta:
+        model = OkpGame
+        fields = ("id", "title", "subtitle")
+        read_only_fields = ("id",)
+
+    def create(self, validated_data):
+        validated_data["owner"] = self.context["request"].user
+        validated_data["is_public"] = False
+        game = super().create(validated_data)
+
+        # Create forum
+        OkpForum = (
+            self.context["view"]
+            .get_serializer()
+            .Meta.model._meta.apps.get_model("okp_forum", "OkpForum")
+        )
+
+        OkpForum.objects.create(
+            title=game.title,
+            game=game,
+        )
+
+        return game
 
 
 class OkpGameUpdateSerializer(serializers.ModelSerializer):

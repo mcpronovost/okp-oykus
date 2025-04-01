@@ -10,3 +10,4 @@ export { default as OkpLink } from "./Link";
 export { default as OkpLoading } from "./Loading";
 export { default as OkpScrollarea } from "./Scrollarea";
 export { default as OkpTag } from "./Tag";
+export { default as OkpTooltip } from "./Tooltip";

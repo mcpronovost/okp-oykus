@@ -7,7 +7,23 @@
     display: block;
     width: 64px;
     height: 2px;
-    margin: 24px 0 32px;
+    margin: 0 auto 32px 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 960px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &-content {
+    margin: 0 0 24px;
   }
 
   &-title {
@@ -22,6 +38,18 @@
 
     p {
       font-size: 1rem;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+
+    @media (max-width: 960px) {
+      margin: 0 0 24px;
     }
   }
 }

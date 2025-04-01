@@ -63,9 +63,10 @@ class OkpApi {
   }
 
   post(endpoint, data) {
+    const body = data instanceof FormData ? data : JSON.stringify(data);
     return this.request(endpoint, {
       method: "POST",
-      body: JSON.stringify(data),
+      body,
     });
   }
 
@@ -120,6 +121,11 @@ class OkpApi {
 
   async updatePost(id, data) {
     const result = await this.patch(`/forum/posts/${id}/update/`, data);
+    return result;
+  }
+
+  async createGame(data) {
+    const result = await this.post("/game/create/", data);
     return result;
   }
 

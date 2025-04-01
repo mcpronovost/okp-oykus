@@ -1,9 +1,9 @@
-import { Layout, Tooltip } from "antd";
+import { Layout } from "antd";
 import { UsersRound, Orbit } from "lucide-react";
 import { useInitData } from "@/services/initData";
 import { useAuth } from "@/services/auth";
 import { useTranslation } from "@/services/translation";
-import { OkpScrollarea, OkpAvatar, OkpLink } from "@/components/ui";
+import { OkpScrollarea, OkpAvatar, OkpLink, OkpTooltip } from "@/components/ui";
 
 export default function OkpSideGame() {
   const { Sider } = Layout;
@@ -35,11 +35,11 @@ export default function OkpSideGame() {
             </li>
             {user.characters.map((character) => (
               <li key={character.id} className="okp-list-item">
-                <Tooltip title={character.name} placement="left">
+                <OkpTooltip title={character.name} placement="left">
                   <OkpLink href={character.url}>
                     <OkpAvatar src={character.avatar} fallback={character.abbr} alt={character.name} size={48} />
                   </OkpLink>
-                </Tooltip>
+                </OkpTooltip>
               </li>
             ))}
           </ul>
@@ -51,11 +51,11 @@ export default function OkpSideGame() {
             </li>
             {sideGamesPopular.map((game) => (
               <li key={game.id} className="okp-list-item">
-                <Tooltip title={game.title} placement="left">
+                <OkpTooltip title={game.title} placement="left">
                   <OkpLink href={game.url}>
                     <OkpAvatar src={game.logo} fallback={game.abbr} colour={game.logo ? undefined : game.primary} alt="Game" size={48} />
                   </OkpLink>
-                </Tooltip>
+                </OkpTooltip>
               </li>
             ))}
           </ul>

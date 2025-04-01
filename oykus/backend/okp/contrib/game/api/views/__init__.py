@@ -1,7 +1,8 @@
-from .game import OkpGameSidePopularView, OkpGameUpdateView
+from .game import OkpGameSidePopularView, OkpGameCreateView, OkpGameUpdateView
 
 
 __all__ = [
     "OkpGameSidePopularView",
+    "OkpGameCreateView",
     "OkpGameUpdateView",
 ]
