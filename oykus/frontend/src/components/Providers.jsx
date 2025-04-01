@@ -57,14 +57,14 @@ function OkpProvidersContent({ children, lang, theme }) {
 
           colorSuccess: "#4ba51f",
           colorSuccessBg: "#24301f",
+          colorSuccessBorder: "#24301f",
           // colorSuccessActive: "#000000",
-          // colorSuccessBorder: "#000000",
           // colorSuccessText: "#000000",
           // colorSuccessTextActive: "#000000",
           colorError: "#af3333",
           colorErrorBg: "#301f1f",
+          colorErrorBorder: "#af3333",
           // colorErrorActive: "#000000",
-          // colorErrorBorder: "#000000",
           // colorErrorText: "#000000",
           // colorErrorTextActive: "#000000",
 

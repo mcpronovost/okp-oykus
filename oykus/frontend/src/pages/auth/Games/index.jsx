@@ -39,7 +39,7 @@ export default function OkpAuthGames({ data }) {
     <OkpLayout data={data}>
       <div className="okp-grid">
         {showCreateForm ? (
-          <OkpAuthGamesNewGame onCancel={handleCancelCreate} />
+          <OkpAuthGamesNewGame maxOwnedGames={data?.user?.max_owned_games || 0} totalOwnedGames={data?.user?.total_owned_games || 0} onCancel={handleCancelCreate} />
         ) : (
           <>
             <OkpHeading title={t("Your Games")} tag="h1" actions={<OkpAuthGamesHeadingActions handleClickCreate={handleClickCreate} />} />

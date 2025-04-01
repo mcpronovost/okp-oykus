@@ -10,7 +10,7 @@ import {
   OkpFormSubmit,
   OkpFormReset,
 } from "@/components/form";
-import { OkpCard, OkpHeading } from "@/components/ui";
+import { OkpAlert, OkpCard, OkpHeading } from "@/components/ui";
 
 const DEFAULT_FORM_VALUES = {
   title: "",
@@ -21,6 +21,8 @@ const DEFAULT_FORM_VALUES = {
 };
 
 export default function OkpAuthGamesNewGame({
+  maxOwnedGames = 0,
+  totalOwnedGames = 0,
   onCancel = () => {},
 }) {
   const [api, contextHolder] = notification.useNotification();
@@ -43,13 +45,21 @@ export default function OkpAuthGamesNewGame({
       const result = await okpApi.createGame(formData);
       if (result?.success && result?.id) {
         form.resetFields();
-        openNotification(t("Game created"), t("Game created successfully"), "success");
+        openNotification(
+          t("Game created"),
+          t("Game created successfully"),
+          "success"
+        );
         window.location.href = r(`a/games/${result?.id}/edit`);
       } else {
         throw new Error(result?.message);
       }
     } catch (e) {
-      openNotification(t("Failed to create game"), `${t("An error occurred while creating the game")}: "${e.message}"`, "error");
+      openNotification(
+        t("Failed to create game"),
+        `${t("An error occurred while creating the game")}: "${e.message}"`,
+        "error"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -91,13 +101,26 @@ export default function OkpAuthGamesNewGame({
             maxLength={200}
             showCount
           />
+          {totalOwnedGames >= maxOwnedGames && (
+            <OkpAlert
+              type="error"
+              message={t("Maximum number of games reached")}
+              description={`${t(
+                "You have reached the maximum number of games you can be the owner of"
+              )} (${totalOwnedGames}/${maxOwnedGames}).`}
+            />
+          )}
           <OkpFormActions>
             <OkpFormReset
               label={t("Cancel")}
               disabled={isSubmitting}
               onClick={onCancel}
             />
-            <OkpFormSubmit label={t("Save")} isLoading={isSubmitting} />
+            <OkpFormSubmit
+              label={t("Save")}
+              isLoading={isSubmitting}
+              disabled={totalOwnedGames >= maxOwnedGames}
+            />
           </OkpFormActions>
         </OkpForm>
       </OkpCard>

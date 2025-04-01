@@ -4,9 +4,9 @@ export function OkpFormActions({ children }) {
   return <div className="okp-form-actions">{children}</div>;
 }
 
-export function OkpFormSubmit({ label, isLoading, children }) {
+export function OkpFormSubmit({ label, isLoading, disabled, children }) {
   return (
-    <Button htmlType="submit" type="primary" loading={isLoading} disabled={isLoading}>
+    <Button htmlType="submit" type="primary" loading={isLoading} disabled={disabled || isLoading}>
       {label || children}
     </Button>
   );

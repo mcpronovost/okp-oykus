@@ -30,6 +30,10 @@ class OkpAuthGamesView(OkpPageView):
 
         context["initial_data"] = json.dumps({
             "games": games,
+            "user": {
+                "max_owned_games": user.max_owned_games,
+                "total_owned_games": user.games.count(),
+            }
         })
 
         return context

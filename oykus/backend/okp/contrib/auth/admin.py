@@ -52,8 +52,9 @@ class OkpUserAdmin(UserAdmin, ModelAdmin):
             _("Permissions"),
             {
                 "fields": (
-                    "groups",
-                    "user_permissions",
+                    "max_owned_games",
+                    # "groups",
+                    # "user_permissions",
                 ),
                 "classes": ("collapse",),
             },

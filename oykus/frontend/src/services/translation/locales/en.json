@@ -96,5 +96,7 @@
   "Game created": "Game created",
   "Game created successfully": "Game created successfully",
   "Failed to create game": "Failed to create game",
-  "An error occurred while creating the game": "An error occurred while creating the game"
+  "An error occurred while creating the game": "An error occurred while creating the game",
+  "Maximum number of games reached": "Maximum number of games reached",
+  "You have reached the maximum number of games you can be the owner of": "You have reached the maximum number of games you can be the owner of"
 }

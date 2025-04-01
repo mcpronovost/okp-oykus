@@ -92,6 +92,12 @@ class OkpUser(AbstractUser):
         blank=True,
         null=True,
     )
+    # Permissions
+    max_owned_games = models.IntegerField(
+        verbose_name=_("Max Owned Games"),
+        default=2,
+        help_text=_("The maximum number of games a user can own."),
+    )
     # Important Dates
     created_at = models.DateTimeField(
         verbose_name=_("Created At"),

@@ -96,5 +96,7 @@
   "Game created": "Jeu créé",
   "Game created successfully": "Jeu créé avec succès",
   "Failed to create game": "Erreur lors de la création du jeu",
-  "An error occurred while creating the game": "Une erreur est survenue lors de la création du jeu"
+  "An error occurred while creating the game": "Une erreur est survenue lors de la création du jeu",
+  "Maximum number of games reached": "Maximum de jeux atteint",
+  "You have reached the maximum number of games you can be the owner of": "Vous avez atteint le nombre maximum de jeux dont vous pouvez être le propriétaire"
 }
