@@ -8,8 +8,10 @@ from .views import (
 
 games = _("games/")
 edit = _("edit/")
+deletion = _("deletion/")
 
 urlpatterns = [
     re_path(rf"^{games}$", OkpAuthGamesView.as_view(), name="okp_auth_games"),
     re_path(rf"^{games}(?P<game_id>\d+)/{edit}$", OkpAuthGamesEditView.as_view(), name="okp_auth_games_edit"),
+    re_path(rf"^{games}(?P<game_id>\d+)/{deletion}$", OkpAuthGamesEditView.as_view(), name="okp_auth_games_deletion"),
 ]

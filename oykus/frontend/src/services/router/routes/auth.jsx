@@ -41,6 +41,13 @@ export const AUTH_ROUTES = {
               fr: "{game_id}/modifier",
             },
           },
+          delete: {
+            component: () => import("@/pages/auth/Games/Delete"),
+            paths: {
+              en: "{game_id}/deletion",
+              fr: "{game_id}/suppression",
+            },
+          },
         },
       },
     },

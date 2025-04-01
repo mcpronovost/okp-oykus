@@ -1,81 +1,97 @@
+import { useMemo } from "react";
 import { Orbit, MessagesSquare, Paintbrush } from "lucide-react";
+import { useTranslation } from "@/services/translation";
 import { OkpCard, OkpCollapse, OkpCollapseLabel, OkpCollapseMenu } from "@/components/ui";
 
-const items = [
-  {
-    key: "1",
-    label: (
-      <OkpCollapseLabel
-        title="Game Information"
-        description="Title, description, cover, visibility, and more"
-        icon={Orbit}
-      />
-    ),
-    children: (
-      <OkpCollapseMenu
-        items={[
-          {
-            label: "General",
-            href: "#",
-          },
-        ]}
-      />
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <OkpCollapseLabel
-        title="Forum"
-        description="Categories, sections, permissions, and settings"
-        icon={MessagesSquare}
-      />
-    ),
-    children: (
-      <OkpCollapseMenu
-        items={[
-          {
-            label: "General",
-            href: "#",
-          },
-          {
-            label: "Index",
-            href: "#",
-          },
-        ]}
-      />
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <OkpCollapseLabel
-        title="Style"
-        description="Colours and custom stylesheet"
-        icon={Paintbrush}
-      />
-    ),
-    children: (
-      <OkpCollapseMenu
-        items={[
-          {
-            label: "General",
-            href: "#",
-          },
-          {
-            label: "Stylesheet",
-            href: "#",
-          },
-        ]}
-      />
-    ),
-  },
-];
+export default function OkpAuthGamesMenu({ gameId, defaultActiveKey = 1, activeItem = "edit" }) {
+  const { t } = useTranslation();
 
-export default function OkpAuthGamesMenu() {
+  const items = useMemo(() => {
+    return [
+      {
+        key: "1",
+        label: (
+          <OkpCollapseLabel
+            title={t("Game Information")}
+            description={t("Title, description, cover, visibility, and more")}
+            icon={Orbit}
+          />
+        ),
+        children: (
+          <OkpCollapseMenu
+            items={[
+              {
+                label: t("General"),
+                href: `a/games/${gameId}/edit`,
+                active: activeItem === "edit",
+              },
+              {
+                label: t("Deletion"),
+                href: `a/games/${gameId}/deletion`,
+                active: activeItem === "deletion",
+              }
+            ]}
+          />
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <OkpCollapseLabel
+            title={t("Forum")}
+            description={t("Categories, sections, permissions, and settings")}
+            icon={MessagesSquare}
+          />
+        ),
+        children: (
+          <OkpCollapseMenu
+            items={[
+              {
+                label: t("General"),
+                href: `a/games/${gameId}/forum/general`,
+                active: activeItem === "forum-general",
+              },
+              {
+                label: t("Index"),
+                href: `a/games/${gameId}/forum/index`,
+                active: activeItem === "forum-index",
+              },
+            ]}
+          />
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <OkpCollapseLabel
+            title={t("Style")}
+            description={t("Colours and custom stylesheet")}
+            icon={Paintbrush}
+          />
+        ),
+        children: (
+          <OkpCollapseMenu
+            items={[
+              {
+                label: t("General"),
+                href: `a/games/${gameId}/style/general`,
+                active: activeItem === "style-general",
+              },
+              {
+                label: t("Stylesheet"),
+                href: `a/games/${gameId}/style/stylesheet`,
+                active: activeItem === "style-stylesheet",
+              },
+            ]}
+          />
+        ),
+      },
+    ];
+  }, []);
+
   return (
     <OkpCard>
-      <OkpCollapse items={items} defaultActiveKey={["1"]} />
+      <OkpCollapse items={items} defaultActiveKey={[defaultActiveKey]} />
     </OkpCard>
   );
 }
