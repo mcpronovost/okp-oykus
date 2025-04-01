@@ -9,7 +9,7 @@ export default function OkpGameForumCategoryCard({ category, tag = "section", st
   return (
     <OkpCategoryTag className="okp-forum-category-card" key={category.id}>
       <OkpHeading title={category.title} link={standalone ? null : category.url} className="okp-forum-category-title" />
-      {standalone && <OkpBreadcrumb breadcrumb={category.breadcrumb} />}
+      {standalone && <OkpBreadcrumb items={category.breadcrumb} />}
       <OkpGameForumSectionList sections={category.sections} className="okp-forum-category-sections" />
     </OkpCategoryTag>
   );

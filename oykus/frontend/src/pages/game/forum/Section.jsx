@@ -5,13 +5,13 @@ import { OkpGameForumTopicList } from "@/components/game";
 import { OkpBreadcrumb, OkpButton, OkpCard, OkpHeading } from "@/components/ui";
 import OkpGameForumFormNewTopic from "@/components/game/forum/forms/NewTopic";
 
-function OkpBreadcrumbActions({ breadcrumb, showAction, action }) {
+function OkpBreadcrumbActions({ items, showAction, action }) {
   const { t } = useTranslation();
 
   return (
     <div className="okp-forum-breadtions">
       <div className="okp-forum-breadtions-breadcrumb">
-        <OkpBreadcrumb breadcrumb={breadcrumb} />
+        <OkpBreadcrumb items={items} />
       </div>
       {!showAction && (
         <div className="okp-forum-breadtions-actions">
@@ -39,7 +39,7 @@ export default function OkpGameForumSection({ data }) {
       {data?.section && (
         <section className="okp-forum-section">
           <OkpHeading title={data.section.title} />
-          <OkpBreadcrumbActions breadcrumb={data.section.breadcrumb} showAction={!!showNewTopic} action={handleNewTopic} />
+          <OkpBreadcrumbActions items={data.section.breadcrumb} showAction={!!showNewTopic} action={handleNewTopic} />
           {showNewTopic ? (
             <section id="reply" className="okp-forum-topic-reply">
               <OkpHeading
@@ -53,7 +53,7 @@ export default function OkpGameForumSection({ data }) {
           ) : (
             <OkpGameForumTopicList topics={data.section.topics} />
           )}
-          <OkpBreadcrumbActions breadcrumb={data.section.breadcrumb} action={handleNewTopic} />
+          <OkpBreadcrumbActions items={data.section.breadcrumb} action={handleNewTopic} />
         </section>
       )}
     </OkpGameLayout>

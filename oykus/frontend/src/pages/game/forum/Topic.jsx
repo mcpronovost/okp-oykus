@@ -6,13 +6,13 @@ import { OkpGameForumPostList } from "@/components/game";
 import { OkpBreadcrumb, OkpButton, OkpCard, OkpHeading  } from "@/components/ui";
 import OkpGameForumFormNewPost from "@/components/game/forum/forms/NewPost";
 
-function OkpBreadcrumbActions({ breadcrumb }) {
+function OkpBreadcrumbActions({ items }) {
   const { t } = useTranslation();
 
   return (
     <div className="okp-forum-breadtions">
       <div className="okp-forum-breadtions-breadcrumb">
-        <OkpBreadcrumb breadcrumb={breadcrumb} />
+        <OkpBreadcrumb items={items} />
       </div>
       <div className="okp-forum-breadtions-actions">
         <OkpButton onClick={() => {
@@ -41,9 +41,9 @@ export default function OkpGameForumTopic({ data }) {
       {data?.topic && (
         <section className="okp-forum-topic">
           <OkpHeading title={data.topic.title} tag="h1" />
-          <OkpBreadcrumbActions breadcrumb={data.topic.breadcrumb} />
+          <OkpBreadcrumbActions items={data.topic.breadcrumb} />
           <OkpGameForumPostList posts={data.topic.posts.results} />
-          <OkpBreadcrumbActions breadcrumb={data.topic.breadcrumb} />
+          <OkpBreadcrumbActions items={data.topic.breadcrumb} />
 
           {/* Reply Form Section */}
           {!data.topic.is_locked && data.topic.posts.results?.length > 0 && (
