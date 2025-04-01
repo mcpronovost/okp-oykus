@@ -57,7 +57,7 @@ export function OkpCollapseMenu({ items, className = "", ...props }) {
   return (
     <div className={`okp-collapse-menu ${className}`} {...props}>
       {items.map((item, index) => (
-        <OkpLink key={index} className="okp-collapse-menu-item" href={item.href}>
+        <OkpLink key={index} className={`okp-collapse-menu-item ${item.active ? "okp-collapse-menu-item-active" : ""}`} href={item.href}>
           {item.label}
         </OkpLink>
       ))}
