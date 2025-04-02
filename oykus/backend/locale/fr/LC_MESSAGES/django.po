@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-31 23:55-0400\n"
+"POT-Creation-Date: 2025-04-01 21:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,11 +157,11 @@ msgstr "Dernier message"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:97
 msgid "Max Owned Games"
-msgstr ""
+msgstr "Nombre maximum de jeux possédés"
 
 #: .\oykus\backend\okp\contrib\auth\models.py:99
 msgid "The maximum number of games a user can own."
-msgstr ""
+msgstr "Le nombre maximum de jeux que peut posséder un utilisateur."
 
 #: .\oykus\backend\okp\contrib\auth\models.py:103
 #: .\oykus\backend\okp\contrib\forum\models\category.py:81
@@ -273,6 +273,22 @@ msgstr "modifier/"
 #: .\oykus\backend\okp\contrib\auth\urls.py:11
 msgid "deletion/"
 msgstr "suppression/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:12
+msgid "forum/"
+msgstr "forum/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:13
+msgid "structure/"
+msgstr "structure/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:14
+msgid "style/"
+msgstr "style/"
+
+#: .\oykus\backend\okp\contrib\auth\urls.py:15
+msgid "stylesheet/"
+msgstr "feuille-de-style/"
 
 #: .\oykus\backend\okp\contrib\forum\admin\category.py:10
 #: .\oykus\backend\okp\contrib\forum\admin\forum.py:10
