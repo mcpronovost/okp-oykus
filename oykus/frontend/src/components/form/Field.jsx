@@ -1,4 +1,4 @@
-import { Form, Input, Select, Checkbox, Upload } from "antd";
+import { Form, Input, Select, Checkbox, Upload, ColorPicker } from "antd";
 
 const getValueFromEvent = e => {
   if (Array.isArray(e)) {
@@ -73,6 +73,8 @@ export default function OkpField({
         <Upload {...props}>
           {children}
         </Upload>
+      ) : inputType === "colorPicker" ? (
+        <ColorPicker format="hex" showText disabledAlpha disabledFormat {...props} />
       ) : (
         children
       )}

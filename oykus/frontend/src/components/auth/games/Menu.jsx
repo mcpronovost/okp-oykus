@@ -48,13 +48,13 @@ export default function OkpAuthGamesMenu({ gameId, defaultActiveKey = 1, activeI
             items={[
               {
                 label: t("General"),
-                href: `a/games/${gameId}/forum/general`,
+                href: `a/games/${gameId}/forum`,
                 active: activeItem === "forum-general",
               },
               {
-                label: t("Index"),
-                href: `a/games/${gameId}/forum/index`,
-                active: activeItem === "forum-index",
+                label: t("Structure"),
+                href: `a/games/${gameId}/forum/structure`,
+                active: activeItem === "forum-structure",
               },
             ]}
           />
@@ -74,7 +74,7 @@ export default function OkpAuthGamesMenu({ gameId, defaultActiveKey = 1, activeI
             items={[
               {
                 label: t("General"),
-                href: `a/games/${gameId}/style/general`,
+                href: `a/games/${gameId}/style`,
                 active: activeItem === "style-general",
               },
               {

@@ -48,6 +48,38 @@ export const AUTH_ROUTES = {
               fr: "{game_id}/suppression",
             },
           },
+          forum: {
+            component: () => import("@/pages/auth/Games/Forum"),
+            paths: {
+              en: "{game_id}/forum",
+              fr: "{game_id}/forum",
+            },
+            children: {
+              structure: {
+                component: () => import("@/pages/auth/Games/Forum/Structure"),
+                paths: {
+                  en: "structure",
+                  fr: "structure",
+                },
+              },
+            },
+          },
+          style: {
+            component: () => import("@/pages/auth/Games/Style"),
+            paths: {
+              en: "{game_id}/style",
+              fr: "{game_id}/style",
+            },
+            children: {
+              stylesheet: {
+                component: () => import("@/pages/auth/Games/Style/Stylesheet"),
+                paths: {
+                  en: "stylesheet",
+                  fr: "feuille-de-style",
+                },
+              },
+            },
+          },
         },
       },
     },

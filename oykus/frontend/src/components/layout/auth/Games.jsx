@@ -10,7 +10,7 @@ import {
 } from "@/components/ui";
 import OkpAuthGamesMenu from "@/components/auth/games/Menu";
 
-export default function OkpAuthGamesLayout({ data, children, activeItem = "edit" }) {
+export default function OkpAuthGamesLayout({ data, children, defaultActiveKey = 1, activeItem = "edit" }) {
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ export default function OkpAuthGamesLayout({ data, children, activeItem = "edit"
             <section className="okp-auth-games-edit">
               <Row gutter={[16, 16]}>
                 <Col span={24} md={8} xl={6}>
-                  <OkpAuthGamesMenu gameId={data.game.id} defaultActiveKey={1} activeItem={activeItem} />
+                  <OkpAuthGamesMenu gameId={data.game.id} defaultActiveKey={defaultActiveKey} activeItem={activeItem} />
                 </Col>
                 <Col span={24} md={16} xl={18}>
                   {children}

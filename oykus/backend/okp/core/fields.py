@@ -11,6 +11,7 @@ class OkpImageField(ImageField):
         self.max_height = max_height
         self.format = format
         self.shape = shape
+        kwargs["max_length"] = 1024
         super().__init__(*args, **kwargs)
 
     def pre_save(self, model_instance, add):
