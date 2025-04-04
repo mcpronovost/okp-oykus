@@ -10,6 +10,7 @@ const getValueFromEvent = e => {
 export default function OkpField({
   name,
   label,
+  tooltip,
   placeholder,
   maxLength,
   showCount = false,
@@ -28,6 +29,7 @@ export default function OkpField({
     <Form.Item
       name={name}
       label={label}
+      tooltip={tooltip}
       rules={[{ required: required }]}
       hasFeedback={hasFeedback}
       valuePropName={
