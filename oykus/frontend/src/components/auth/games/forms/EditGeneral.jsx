@@ -32,6 +32,7 @@ export default function OkpAuthGamesEditGeneral({
       title: game.title,
       slug: game.slug,
       subtitle: game.subtitle,
+      abbr: game.abbr,
       is_public: game.is_public,
       logo: game.logo ? [{ uid: "original", url: game.logo }] : [],
       cover: game.cover ? [{ uid: "original", url: game.cover }] : [],
@@ -56,7 +57,8 @@ export default function OkpAuthGamesEditGeneral({
 
     const formData = new FormData();
     formData.append("title", e.title);
-    formData.append("slug", e.slug);
+    // formData.append("slug", e.slug);
+    // formData.append("abbr", e.abbr);
     formData.append("subtitle", e.subtitle);
     formData.append("is_public", e.is_public);
 
@@ -113,7 +115,8 @@ export default function OkpAuthGamesEditGeneral({
         form={form}
         submit={handleSubmit}
         initialValues={initialValues}
-        labelCol={3}
+        labelCol={{ sm: 8, md: 7, lg: 5, xl: 4 }}
+        labelWrap={true}
         padding={0}
       >
         <Row gutter={[16, 16]}>
@@ -209,7 +212,15 @@ export default function OkpAuthGamesEditGeneral({
                 />
                 <OkpFormField
                   label={t("Slug")}
+                  tooltip={t("Will be used in the URL.")}
                   name="slug"
+                  inputType="text"
+                  disabled
+                />
+                <OkpFormField
+                  label={t("Abbreviation")}
+                  tooltip={t("Will be used when there's no logo.")}
+                  name="abbr"
                   inputType="text"
                   disabled
                 />
@@ -223,6 +234,7 @@ export default function OkpAuthGamesEditGeneral({
                 />
                 <OkpFormField
                   label={t("Public")}
+                  tooltip={t("Will be used to determine if the game is visible to the public.")}
                   name="is_public"
                   inputType="checkbox"
                 />
