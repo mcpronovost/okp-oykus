@@ -19,7 +19,7 @@ export default function OkpForm({
     <Form
       form={form}
       colon={false}
-      labelCol={{ span: labelCol }}
+      labelCol={typeof labelCol === "number" ? { span: labelCol } : labelCol}
       className={`okp-form ${className}`}
       onFinish={handleOnFinish}
       initialValues={initialValues}
