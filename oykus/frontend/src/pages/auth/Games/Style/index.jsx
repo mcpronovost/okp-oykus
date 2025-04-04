@@ -10,6 +10,10 @@ export default function OkpAuthGamesStyle({ data }) {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
+  const initialValues = {
+    primary: data?.game?.primary,
+  }
+
   const primary = Form.useWatch("primary", form);
   const core_bg = Form.useWatch("core_bg", form);
   const core_fg = Form.useWatch("core_fg", form);
@@ -25,7 +29,7 @@ export default function OkpAuthGamesStyle({ data }) {
     <OkpAuthGamesLayout data={data} defaultActiveKey={3} activeItem="style-general">
       <OkpCard padding={24}>
         <OkpAuthGamesPreview data={{
-          primary: primary?.toHexString() || null,
+          primary: (primary && typeof primary === "string") ? primary : primary?.toHexString() || null,
           core_bg: core_bg?.toHexString() || null,
           core_fg: core_fg?.toHexString() || null,
           core_subtle_fg: core_subtle_fg?.toHexString() || null,
@@ -36,7 +40,8 @@ export default function OkpAuthGamesStyle({ data }) {
           card_placeholder_bg: card_placeholder_bg?.toHexString() || null,
           card_placeholder_fg: card_placeholder_fg?.toHexString() || null,
         }} />
-        <OkpForm form={form}>
+        {JSON.stringify(primary)}
+        <OkpForm form={form} initialValues={initialValues}>
           <OkpFormField label={t("Primary Colour")} name="primary" inputType="colorPicker" />
           <OkpFormField label={t("Background Colour")} name="core_bg" inputType="colorPicker" />
           <OkpFormField label={t("Text Colour")} name="core_fg" inputType="colorPicker" />

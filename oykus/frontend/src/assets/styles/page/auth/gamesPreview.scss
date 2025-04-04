@@ -4,6 +4,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  pointer-events: none;
+  user-select: none;
   margin: 0 0 24px;
 
   &-header {
