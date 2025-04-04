@@ -106,6 +106,7 @@ KNOX_TOKEN_MODEL = "okp_auth.OkpAuthToken"
 
 REST_KNOX = {
     "TOKEN_LIMIT_PER_USER": 4,
+    "TOKEN_TTL": timedelta(days=7),
     "AUTO_REFRESH": True,
     "AUTO_REFRESH_MAX_TTL": timedelta(days=30),
     "USER_SERIALIZER": "knox.serializers.UserSerializer",
