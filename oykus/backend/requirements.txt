@@ -9,7 +9,7 @@ django-cleanup==9.0.0
 django-colorfield==0.14.0
 django-cors-headers==4.7.0
 django-rest-knox==5.0.2
-django-unfold==0.59.0
+django-unfold==0.63.0
 djangorestframework==3.16.0
 drf-spectacular==0.28.0
 flake8==7.2.0
