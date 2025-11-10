@@ -1,4 +1,4 @@
-asgiref==3.8.1
+asgiref==3.10.0
 astroid==3.3.9
 attrs==25.3.0
 colorama==0.4.6
